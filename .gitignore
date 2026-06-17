@@ -27,3 +27,12 @@ workspace/
 *.tgz
 protected/env-vault/files/
 protected/env-vault/archives/
+
+# protected runtime vaults - local only, never normal GitHub tracking
+protected/hermes-vault/raw/
+protected/hermes-vault/archives/
+protected/omx-vault/raw/
+protected/omx-vault/archives/
+*.tgz
+*.tar.zst
+*.tar.gz
