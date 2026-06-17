@@ -1,0 +1,36 @@
+{
+  "artifact_type": "social_posting_risk_review",
+  "channel_id": "social_posting",
+  "reviewed_at": "2026-06-05T07:09:40Z",
+  "policy_version": "risk_policy.v1",
+  "candidates_reviewed": 3,
+  "auto_approved": 1,
+  "blocked": 1,
+  "gate_required": 1,
+  "blocked_candidates": [
+    {
+      "candidate_id": "social_cand_003_sha256_g7h8i9",
+      "blocked_reason": "blocked_language_detected",
+      "source_artifact": "cand_creator_scorecards_call_blocked_language_0_1c71b301"
+    }
+  ],
+  "risk_level_summary": {
+    "low": 1,
+    "medium": 1,
+    "high": 0,
+    "critical": 1
+  },
+  "all_candidates_source_bound": true,
+  "all_candidates_payload_hashed": true,
+  "no_financial_advice_detected": true,
+  "no_defamatory_claims_detected": true,
+  "live_pilot_blocked_without_exact_approval": true,
+  "secret_values_printed": false,
+  "external_mutation_performed": false,
+  "no_profit_guarantees_detected": true,
+  "no_unverifiable_claims_detected": true,
+  "no_predictive_edge_framing_detected": true,
+  "education_research_caveat_present": true,
+  "asset_pack_001_selected_candidate": "social_cand_001_asset_pack_001_x_launch_thread",
+  "asset_pack_001_selected_payload_hash": "sha256:9b7b700111dbacd3a426edfa9a21f8707f5aef23def127620c1dccdbeabbda25"
+}

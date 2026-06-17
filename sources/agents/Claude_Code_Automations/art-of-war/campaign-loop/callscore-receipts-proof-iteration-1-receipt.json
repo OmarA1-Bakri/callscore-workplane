@@ -1,0 +1,449 @@
+{
+  "approval_required": true,
+  "artifact_type": "CampaignReceipt",
+  "campaign_id": "callscore-receipts-proof",
+  "contract": {
+    "allowed_claims": [
+      "evidence-backed CallScore fixture or production-safe aggregate claims",
+      "methodology/process explanations with stated limitations",
+      "private draft claims marked dry-run only"
+    ],
+    "allowed_outputs": [
+      "private campaign draft",
+      "persona scorecard",
+      "dry-run campaign report",
+      "Gemma evaluation receipt",
+      "approval packet",
+      "campaign receipt"
+    ],
+    "approval_policy": {
+      "private_iteration_allowed": true,
+      "public_action_allowed_without_approval": false,
+      "required_before_public": [
+        "all_verifier_gates_pass",
+        "persona_tests_pass",
+        "dry_run_passes",
+        "gemma_evaluation_passes",
+        "whop_dependency_check_passes",
+        "explicit_operator_approval"
+      ]
+    },
+    "artifact_type": "CampaignLoopContract",
+    "campaign_id": "callscore-receipts-proof",
+    "denied_outputs": [
+      "public post",
+      "outbound email/DM/outreach",
+      "paid spend",
+      "Whop pricing/product/payment/entitlement mutation",
+      "provider mutation",
+      "production mutation"
+    ],
+    "forbidden_claims": [
+      "guaranteed returns",
+      "financial advice",
+      "unsupported creator misconduct or fraud claims",
+      "claims that public publishing, outreach, spend, or Whop mutation occurred"
+    ],
+    "max_iterations": 3,
+    "objective": "Create a private CallScore proof-of-accuracy campaign draft from evidence-backed story candidates.",
+    "source_data": [
+      "art-of-war/fixtures/story-candidates.fixture.json"
+    ],
+    "stop_conditions": [
+      "same_failure_class_repeats_3_times",
+      "forbidden_public_action_requested",
+      "evidence_insufficient_after_iteration",
+      "approval_missing_for_public_action",
+      "max_iterations_reached"
+    ],
+    "track": "receipts_proof_of_accuracy",
+    "verifier_stack": [
+      "validate-docs",
+      "dry-run report",
+      "evidence-level check",
+      "forbidden-claim scan",
+      "source freshness check",
+      "Whop dependency check",
+      "publish/spend/outreach gate check",
+      "persona-test gate",
+      "Gemma evaluation gate"
+    ]
+  },
+  "created_at": "2026-06-13T10:28:19Z",
+  "decision": "revise_or_hold",
+  "draft_artifact": {
+    "artifact_type": "CampaignDraft",
+    "body": "@GammaCalls has a positive CallScore fixture sample for ARB in the stated window. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+    "candidate_id": "story_creator_receipts_story_e4_arb_named_003_ao_bbaa7804",
+    "claims": [
+      "@GammaCalls has a positive CallScore fixture sample for ARB in the stated window."
+    ],
+    "cta": {
+      "cta_type": "leaderboard",
+      "destination_url": "https://call-score.com"
+    },
+    "dry_run": true,
+    "evidence_level": "E4",
+    "external_mutation_performed": false,
+    "public_action_allowed": false,
+    "risk_decision": "auto",
+    "source_id": "story_e4_arb_named_003",
+    "track": "receipts_proof_of_accuracy"
+  },
+  "dry_run_report": {
+    "approval_requirements": [
+      "operator approval before publish/outreach/spend/provider mutation"
+    ],
+    "artifact_type": "DryRunCampaignReport",
+    "buyer_objections": [
+      "Can I trust the evidence?",
+      "Is this financial advice?",
+      "What happens after Whop checkout?"
+    ],
+    "conversion_handoff": {
+      "provider_mutation_performed": false,
+      "simulated": true
+    },
+    "cta": {
+      "simulated": true,
+      "value": {
+        "cta_type": "leaderboard",
+        "destination_url": "https://call-score.com"
+      }
+    },
+    "evidence_trust_checks": {
+      "evidence_level": "E4",
+      "passed": true
+    },
+    "external_mutation_performed": false,
+    "failure_points": [
+      {
+        "approval_required": true,
+        "failure_class": "audience_mismatch",
+        "gate": "publish/spend/outreach gate check",
+        "passed": false,
+        "public_action_allowed": false,
+        "safe_next_action": "revise_or_hold_private_campaign"
+      },
+      {
+        "approval_required": false,
+        "failure_class": "audience_mismatch",
+        "gate": "persona-test gate",
+        "passed": false,
+        "public_action_allowed": false,
+        "safe_next_action": "revise_or_hold_private_campaign"
+      },
+      {
+        "approval_required": false,
+        "failure_class": "audience_mismatch",
+        "gate": "Gemma evaluation gate",
+        "passed": false,
+        "public_action_allowed": false,
+        "safe_next_action": "revise_or_hold_private_campaign"
+      }
+    ],
+    "landing_page": {
+      "mutation_performed": false,
+      "simulated": true
+    },
+    "passed": false,
+    "public_action_performed": false,
+    "whop_path": {
+      "live_mutation_performed": false,
+      "simulated": true,
+      "status": "approval_gated"
+    }
+  },
+  "evidence": {
+    "blocked_count": 0,
+    "candidate_count": 10,
+    "evidence_spans": [
+      {
+        "field": "transcript_excerpt",
+        "hash": "sha256:bc9665becddf2f0d25aa8aa82a442a3e9d0a4c6f304f52d34f2e69d8825edd5b",
+        "quote": "Creator described ARB upside with explicit uncertainty and no guarantee.",
+        "source_id": "story_e4_arb_named_003",
+        "span_id": "span_story_e4_arb_named_003_transcript_excerpt_9503bb41",
+        "supports_claim_indexes": [
+          0
+        ]
+      },
+      {
+        "field": "outcome_summary",
+        "hash": "sha256:af9dca03ceb2b9ac3c13fffff60cdce5391268cb3da59cb75d5ffaad92b6a4a5",
+        "quote": "Fixture window closed with positive relative performance.",
+        "source_id": "story_e4_arb_named_003",
+        "span_id": "span_story_e4_arb_named_003_outcome_summary_9ea3553f",
+        "supports_claim_indexes": [
+          0
+        ]
+      }
+    ],
+    "source_data": [
+      "art-of-war/fixtures/story-candidates.fixture.json"
+    ],
+    "source_evidence_ids": [
+      "ev_story_e4_arb_named_003_e4_8bf4cae0"
+    ]
+  },
+  "external_mutation_performed": false,
+  "failure_class": "audience_mismatch",
+  "failure_taxonomy": [
+    "insufficient_evidence",
+    "forbidden_claim",
+    "unsupported_creator_claim",
+    "stale_data",
+    "trust_gate_required",
+    "publish_gate_required",
+    "audience_mismatch",
+    "cta_mismatch",
+    "whop_dependency_blocked",
+    "no_progress",
+    "safety_gate_blocked",
+    "approval_missing"
+  ],
+  "gemma_evaluation": {
+    "artifact_type": "GemmaEvaluationReceipt",
+    "failure_class": "audience_mismatch",
+    "mode": "local_evaluator_simulated_receipt",
+    "model": "callscore-gemma4-extractor:latest",
+    "passed": false,
+    "public_action_allowed": false,
+    "receipts_required": true,
+    "recommendation": "revise campaign and rerun private gates",
+    "responsibilities": [
+      "evaluate draft",
+      "classify failure",
+      "recommend next iteration"
+    ]
+  },
+  "iteration": 1,
+  "next_safe_action": "revise_private_campaign_or_add_evidence",
+  "objective": "Create a private CallScore proof-of-accuracy campaign draft from evidence-backed story candidates.",
+  "persona_scorecard": {
+    "artifact_type": "PersonaScorecard",
+    "contract": {
+      "artifact_type": "PersonaTestContract",
+      "dimensions": [
+        "clarity",
+        "trust",
+        "relevance",
+        "pain_point_match",
+        "cta_strength",
+        "objection_handling",
+        "likelihood_to_convert"
+      ],
+      "minimum_dimension_score": 70,
+      "personas": [
+        "creator_operator",
+        "whop_buyer",
+        "skeptical_prospect",
+        "high_intent_buyer",
+        "low_trust_cold_prospect",
+        "technical_evaluator"
+      ],
+      "public_action_allowed": false
+    },
+    "failure_class": "audience_mismatch",
+    "passed": false,
+    "scorecards": [
+      {
+        "average_score": 82.0,
+        "notes": "Private simulated persona review; no public user contact performed.",
+        "passed": true,
+        "persona": "creator_operator",
+        "scores": {
+          "clarity": 82,
+          "cta_strength": 82,
+          "likelihood_to_convert": 82,
+          "objection_handling": 82,
+          "pain_point_match": 82,
+          "relevance": 82,
+          "trust": 82
+        },
+        "threshold": 70
+      },
+      {
+        "average_score": 83.0,
+        "notes": "Private simulated persona review; no public user contact performed.",
+        "passed": true,
+        "persona": "whop_buyer",
+        "scores": {
+          "clarity": 83,
+          "cta_strength": 83,
+          "likelihood_to_convert": 83,
+          "objection_handling": 83,
+          "pain_point_match": 83,
+          "relevance": 83,
+          "trust": 83
+        },
+        "threshold": 70
+      },
+      {
+        "average_score": 72.0,
+        "notes": "Private simulated persona review; no public user contact performed.",
+        "passed": false,
+        "persona": "skeptical_prospect",
+        "scores": {
+          "clarity": 74,
+          "cta_strength": 74,
+          "likelihood_to_convert": 74,
+          "objection_handling": 68,
+          "pain_point_match": 74,
+          "relevance": 74,
+          "trust": 66
+        },
+        "threshold": 70
+      },
+      {
+        "average_score": 83.0,
+        "notes": "Private simulated persona review; no public user contact performed.",
+        "passed": true,
+        "persona": "high_intent_buyer",
+        "scores": {
+          "clarity": 83,
+          "cta_strength": 83,
+          "likelihood_to_convert": 83,
+          "objection_handling": 83,
+          "pain_point_match": 83,
+          "relevance": 83,
+          "trust": 83
+        },
+        "threshold": 70
+      },
+      {
+        "average_score": 70.0,
+        "notes": "Private simulated persona review; no public user contact performed.",
+        "passed": false,
+        "persona": "low_trust_cold_prospect",
+        "scores": {
+          "clarity": 72,
+          "cta_strength": 72,
+          "likelihood_to_convert": 72,
+          "objection_handling": 66,
+          "pain_point_match": 72,
+          "relevance": 72,
+          "trust": 64
+        },
+        "threshold": 70
+      },
+      {
+        "average_score": 79.0,
+        "notes": "Private simulated persona review; no public user contact performed.",
+        "passed": true,
+        "persona": "technical_evaluator",
+        "scores": {
+          "clarity": 79,
+          "cta_strength": 79,
+          "likelihood_to_convert": 79,
+          "objection_handling": 79,
+          "pain_point_match": 79,
+          "relevance": 79,
+          "trust": 79
+        },
+        "threshold": 70
+      }
+    ]
+  },
+  "production_mutation_performed": false,
+  "provider_mutation_performed": false,
+  "public_action_performed": false,
+  "revenue_feedback_training_record": {
+    "artifact_type": "RevenueFeedbackTrainingRecord",
+    "conversion_observed": false,
+    "public_action_performed": false,
+    "revenue_observed": false,
+    "source": "dry_run_fixture_and_campaign_receipt",
+    "training_use": "future private evaluator calibration only"
+  },
+  "variant_comparison": {
+    "artifact_type": "CampaignVariantComparison",
+    "public_action_allowed": false,
+    "reason": "highest ranked safe story candidate from local fixture",
+    "variants_compared": [
+      "story_creator_receipts_story_e4_arb_named_003_ao_bbaa7804"
+    ],
+    "winner": null
+  },
+  "verifier_result": {
+    "artifact_type": "VerifierResultStack",
+    "gates": [
+      {
+        "approval_required": false,
+        "failure_class": null,
+        "gate": "validate-docs",
+        "passed": true,
+        "public_action_allowed": false,
+        "safe_next_action": "create private approval packet"
+      },
+      {
+        "approval_required": false,
+        "failure_class": null,
+        "gate": "dry-run report",
+        "passed": true,
+        "public_action_allowed": false,
+        "safe_next_action": "create private approval packet"
+      },
+      {
+        "approval_required": false,
+        "failure_class": null,
+        "gate": "evidence-level check",
+        "passed": true,
+        "public_action_allowed": false,
+        "safe_next_action": "create private approval packet"
+      },
+      {
+        "approval_required": false,
+        "failure_class": null,
+        "gate": "forbidden-claim scan",
+        "passed": true,
+        "public_action_allowed": false,
+        "safe_next_action": "create private approval packet"
+      },
+      {
+        "approval_required": false,
+        "failure_class": null,
+        "gate": "source freshness check",
+        "passed": true,
+        "public_action_allowed": false,
+        "safe_next_action": "create private approval packet"
+      },
+      {
+        "approval_required": false,
+        "failure_class": null,
+        "gate": "Whop dependency check",
+        "passed": true,
+        "public_action_allowed": false,
+        "safe_next_action": "create private approval packet"
+      },
+      {
+        "approval_required": true,
+        "failure_class": "audience_mismatch",
+        "gate": "publish/spend/outreach gate check",
+        "passed": false,
+        "public_action_allowed": false,
+        "safe_next_action": "revise_or_hold_private_campaign"
+      },
+      {
+        "approval_required": false,
+        "failure_class": "audience_mismatch",
+        "gate": "persona-test gate",
+        "passed": false,
+        "public_action_allowed": false,
+        "safe_next_action": "revise_or_hold_private_campaign"
+      },
+      {
+        "approval_required": false,
+        "failure_class": "audience_mismatch",
+        "gate": "Gemma evaluation gate",
+        "passed": false,
+        "public_action_allowed": false,
+        "safe_next_action": "revise_or_hold_private_campaign"
+      }
+    ],
+    "passed": false,
+    "public_action_allowed": false
+  },
+  "what_changed_from_previous_iteration": "initial governed campaign-loop receipt",
+  "whop_mutation_performed": false
+}

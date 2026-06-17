@@ -1,0 +1,372 @@
+{
+  "cases": [
+    {
+      "candidate": {
+        "claim_type": "aggregate",
+        "confidence": "unknown",
+        "content_body": "Internal data-quality note only; evidence is incomplete.",
+        "primary_evidence_level": "E0",
+        "proposed_claims": [
+          "Internal data-quality note only; evidence is incomplete."
+        ],
+        "required_caveats": [],
+        "sample_size": 0
+      },
+      "case_id": "golden_e0_block",
+      "claim_type": "aggregate",
+      "description": "E0 evidence blocks public-facing output.",
+      "evidence_level": "E0",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "evidence_E0"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "aggregate",
+        "confidence": "low",
+        "content_body": "A call exists but required metadata is incomplete.",
+        "primary_evidence_level": "E1",
+        "proposed_claims": [
+          "A call exists but required metadata is incomplete."
+        ],
+        "required_caveats": [],
+        "sample_size": 1
+      },
+      "case_id": "golden_e1_block",
+      "claim_type": "aggregate",
+      "description": "E1 incomplete metadata blocks public-facing output.",
+      "evidence_level": "E1",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "evidence_E1"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "aggregate",
+        "confidence": "medium",
+        "content_body": "Draft-only observed ETH call without complete outcome proof.",
+        "primary_evidence_level": "E2",
+        "proposed_claims": [
+          "Draft-only observed ETH call without complete outcome proof."
+        ],
+        "required_caveats": [],
+        "sample_size": 2
+      },
+      "case_id": "golden_e2_draft_only",
+      "claim_type": "aggregate",
+      "description": "E2 has source/call direction but not enough outcome proof for public use.",
+      "evidence_level": "E2",
+      "expected": {
+        "decision": "draft_only",
+        "risk_class": "B",
+        "risk_level": "medium",
+        "risk_reasons_include": [
+          "evidence_E2_draft_only"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "aggregate",
+        "confidence": "high",
+        "content_body": "Aggregate CallScore fixture calls show a positive low-risk pattern in the stated window. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "primary_evidence_level": "E3",
+        "proposed_claims": [
+          "Aggregate CallScore fixture calls show a positive low-risk pattern in the stated window."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 8
+      },
+      "case_id": "golden_e3_aggregate_auto",
+      "claim_type": "aggregate",
+      "description": "E3 aggregate positive with caveat can become low-risk dry-run candidate.",
+      "evidence_level": "E3",
+      "expected": {
+        "decision": "auto",
+        "risk_class": "A",
+        "risk_level": "low"
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "named_positive",
+        "confidence": "high",
+        "content_body": "@AlphaSignals has a positive CallScore fixture sample for AVAX in the stated window. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "creator_handle": "@AlphaSignals",
+        "primary_evidence_level": "E4",
+        "proposed_claims": [
+          "@AlphaSignals has a positive CallScore fixture sample for AVAX in the stated window."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 6
+      },
+      "case_id": "golden_e4_named_positive_auto",
+      "claim_type": "named_positive",
+      "description": "E4 named positive with caveat is low-risk dry-run candidate.",
+      "evidence_level": "E4",
+      "expected": {
+        "decision": "auto",
+        "risk_class": "A",
+        "risk_level": "low",
+        "risk_reasons_include": [
+          "named_creator_positive"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "dispute",
+        "confidence": "medium",
+        "content_body": "This CallScore Court dispute item has source proof but requires Trust review before public use. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "creator_handle": "@BetaMacro",
+        "primary_evidence_level": "E5",
+        "proposed_claims": [
+          "This CallScore Court dispute item has source proof but requires Trust review before public use."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 3
+      },
+      "case_id": "golden_e5_dispute_gate",
+      "claim_type": "dispute",
+      "description": "E5 dispute remains Trust/PUBLISH gated in Phase 0/1.",
+      "evidence_level": "E5",
+      "expected": {
+        "decision": "gate_required",
+        "required_gates_include": [
+          "TRUST_GATE",
+          "PUBLISH_GATE"
+        ],
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "dispute_or_callscore_court",
+          "named_negative_creator"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "named_positive",
+        "confidence": "high",
+        "content_body": "@GammaCalls made a guaranteed DOGE call that can't lose. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "creator_handle": "@GammaCalls",
+        "primary_evidence_level": "E4",
+        "proposed_claims": [
+          "@GammaCalls made a guaranteed DOGE call that can't lose."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 5
+      },
+      "case_id": "golden_blocked_language",
+      "claim_type": "named_positive",
+      "description": "Blocked language forces blocked decision.",
+      "evidence_level": "E4",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "blocked_language",
+          "forbidden_claim"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "aggregate",
+        "confidence": "medium",
+        "content_body": "Aggregate CallScore fixture calls for LINK show a positive pattern in the stated window.",
+        "primary_evidence_level": "E3",
+        "proposed_claims": [
+          "Aggregate CallScore fixture calls for LINK show a positive pattern in the stated window."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 3
+      },
+      "case_id": "golden_missing_caveat",
+      "claim_type": "aggregate",
+      "description": "Missing mandatory caveat keeps candidate draft-only until corrected.",
+      "evidence_level": "E3",
+      "expected": {
+        "decision": "draft_only",
+        "risk_class": "B",
+        "risk_level": "medium",
+        "risk_reasons_include": [
+          "missing_caveat",
+          "small_n_or_deanonymization"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "claim_type": "named_positive",
+        "confidence": "high",
+        "content_body": "@DeltaOnchain's ARB call drove 40% more paid Whop users. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "creator_handle": "@DeltaOnchain",
+        "primary_evidence_level": "E4",
+        "proposed_claims": [
+          "@DeltaOnchain's ARB call drove 40% more paid Whop users."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 5,
+        "unsupported_factual_claims": [
+          "40% more paid Whop users"
+        ]
+      },
+      "case_id": "golden_unsupported_fact",
+      "claim_type": "named_positive",
+      "description": "Unsupported Whop/revenue factual claim blocks output.",
+      "evidence_level": "E4",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "unsupported_factual_claim"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "golden_leet_scam_block",
+        "claim_type": "aggregate",
+        "confidence": "high",
+        "content_body": "This call proves the creator is a sc4m. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "primary_evidence_level": "E3",
+        "proposed_claims": [
+          "This call proves the creator is a sc4m."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 8,
+        "source_evidence_ids": [
+          "ev_fixture_leet"
+        ]
+      },
+      "case_id": "golden_leet_scam_block",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "blocked_language"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "golden_spaced_rugpull_block",
+        "claim_type": "aggregate",
+        "confidence": "high",
+        "content_body": "This looks like a r u g p u l l. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "primary_evidence_level": "E3",
+        "proposed_claims": [
+          "This looks like a r u g p u l l."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 8,
+        "source_evidence_ids": [
+          "ev_fixture_spaced"
+        ]
+      },
+      "case_id": "golden_spaced_rugpull_block",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "blocked_language"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "golden_phase2_named_negative_gate",
+        "claim_type": "named_negative",
+        "confidence": "high",
+        "content_body": "@DeltaRisk underperformed the stated CallScore fixture window. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "creator_handle": "@DeltaRisk",
+        "primary_evidence_level": "E4",
+        "proposed_claims": [
+          "@DeltaRisk underperformed the stated CallScore fixture window."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "sample_size": 6,
+        "source_evidence_ids": [
+          "ev_fixture_named_negative"
+        ]
+      },
+      "case_id": "golden_phase2_named_negative_gate",
+      "expected": {
+        "decision": "gate_required",
+        "required_gates_include": [
+          "TRUST_GATE",
+          "PUBLISH_GATE"
+        ],
+        "risk_class": "C",
+        "risk_reasons_include": [
+          "named_negative_creator"
+        ]
+      }
+    },
+    {
+      "candidate": {
+        "candidate_id": "golden_phase2_hallucinated_source_block",
+        "claim_type": "aggregate",
+        "confidence": "medium",
+        "content_body": "A source says this creator admitted manipulation. Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added.",
+        "primary_evidence_level": "E3",
+        "proposed_claims": [
+          "A source says this creator admitted manipulation."
+        ],
+        "required_caveats": [
+          "Based on the available CallScore sample and stated outcome window; not financial advice. Results can change as more calls, sources, and market data are added."
+        ],
+        "requires_source_evidence": true,
+        "sample_size": 8,
+        "source_claims": [
+          "claimed external source not present in evidence refs"
+        ],
+        "source_evidence_ids": []
+      },
+      "case_id": "golden_phase2_hallucinated_source_block",
+      "expected": {
+        "decision": "blocked",
+        "risk_class": "C",
+        "risk_level": "critical",
+        "risk_reasons_include": [
+          "hallucinated_source"
+        ]
+      }
+    }
+  ],
+  "fixture_version": "art_of_war.risk_golden_cases.v1",
+  "policy_version": "risk_policy.v1"
+}

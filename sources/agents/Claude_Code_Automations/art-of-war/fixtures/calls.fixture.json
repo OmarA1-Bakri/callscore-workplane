@@ -1,0 +1,304 @@
+{
+  "fixture_version": "art_of_war.calls.v1",
+  "generated_for": "Phase 0/1 dry-run fixtures / replay lane",
+  "calls": [
+    {
+      "source_id": "call_e0_no_source_001",
+      "call_id": "call_e0_no_source_001",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "daily_receipts",
+      "story_angle": "methodology",
+      "claim_type": "aggregate",
+      "sample_size": 0,
+      "confidence": "unknown",
+      "capability_status": "manual_fallback",
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_e1_incomplete_metadata_002",
+      "call_id": "call_e1_incomplete_metadata_002",
+      "source_url": "https://fixtures.call-score.local/calls/e1-incomplete",
+      "asset": "BTC",
+      "direction": "bullish",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "daily_receipts",
+      "story_angle": "methodology",
+      "claim_type": "aggregate",
+      "sample_size": 1,
+      "confidence": "low",
+      "capability_status": "manual_fallback",
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_e2_draft_only_eth_003",
+      "call_id": "call_e2_draft_only_eth_003",
+      "source_url": "https://fixtures.call-score.local/calls/e2-eth",
+      "call_timestamp": "2026-05-21T12:00:00Z",
+      "asset": "ETH",
+      "direction": "bullish",
+      "horizon": "7d",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "daily_receipts",
+      "story_angle": "aggregate_trend",
+      "claim_type": "aggregate",
+      "sample_size": 2,
+      "confidence": "medium",
+      "capability_status": "manual_fallback",
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_e3_aggregate_positive_sol_004",
+      "call_id": "call_e3_aggregate_positive_sol_004",
+      "source_url": "https://fixtures.call-score.local/calls/e3-sol-aggregate",
+      "call_timestamp": "2026-05-22T09:30:00Z",
+      "asset": "SOL",
+      "direction": "bullish",
+      "horizon": "7d",
+      "reference_price": "171.25",
+      "reference_price_timestamp": "2026-05-22T09:30:00Z",
+      "outcome_window": "7d",
+      "outcome_summary": "Fixture window closed above the reference price for an aggregate positive example.",
+      "transcript_excerpt": "The speaker described SOL strength with a seven-day horizon and explicit uncertainty.",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "daily_receipts",
+      "story_angle": "aggregate_trend",
+      "claim_type": "aggregate",
+      "sample_size": 8,
+      "confidence": "high",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Fixture prices are deterministic examples for dry-run validation."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_e4_named_positive_avax_005",
+      "call_id": "call_e4_named_positive_avax_005",
+      "source_url": "https://fixtures.call-score.local/calls/e4-avax-positive",
+      "source_archived_url": "https://archive.fixtures.call-score.local/calls/e4-avax-positive",
+      "source_hash": "sha256:4d2c0f6c7d4bb26be7c1cdbb5a985f5b16db7c10f916c742a5c9b89b78d5a001",
+      "call_timestamp": "2026-05-22T14:00:00Z",
+      "creator_id": "creator_alpha",
+      "creator_handle": "@AlphaSignals",
+      "asset": "AVAX",
+      "direction": "bullish",
+      "horizon": "7d",
+      "reference_price": "36.40",
+      "reference_price_timestamp": "2026-05-22T14:00:00Z",
+      "outcome_window": "7d",
+      "outcome_summary": "Named creator positive fixture, caveated and archived.",
+      "transcript_excerpt": "AlphaSignals framed AVAX as a high-conviction setup while noting market risk.",
+      "score_value": 86,
+      "score_grade": "A",
+      "scoring_model_version": "score_v_fixture_1",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "creator_scorecards",
+      "story_angle": "positive_creator_highlight",
+      "claim_type": "named_positive",
+      "sample_size": 6,
+      "confidence": "high",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Small fixture corpus; not a full creator-history claim."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_e5_dispute_gated_006",
+      "call_id": "call_e5_dispute_gated_006",
+      "source_url": "https://fixtures.call-score.local/calls/e5-dispute",
+      "source_archived_url": "https://archive.fixtures.call-score.local/calls/e5-dispute",
+      "source_hash": "sha256:f55a5d2d9e5f0c7a44ad0e7cdd3e927df3e7a89a56d41a329d5a06f671e50006",
+      "call_timestamp": "2026-05-23T10:15:00Z",
+      "creator_id": "creator_beta",
+      "creator_handle": "@BetaMacro",
+      "asset": "BTC",
+      "direction": "bearish",
+      "horizon": "7d",
+      "reference_price": "69000.00",
+      "reference_price_timestamp": "2026-05-23T10:15:00Z",
+      "outcome_window": "7d",
+      "outcome_summary": "Dispute fixture has complete evidence but requires trust review before public use.",
+      "transcript_excerpt": "The record contains a disputed BTC bearish call and operator review notes.",
+      "score_value": 51,
+      "score_grade": "C",
+      "scoring_model_version": "score_v_fixture_1",
+      "trust_review": true,
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "callscore_court",
+      "story_angle": "methodology",
+      "claim_type": "dispute",
+      "sample_size": 3,
+      "confidence": "medium",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Dispute and creator-sensitive fixture; Trust/PUBLISH gates required."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_blocked_language_007",
+      "call_id": "call_blocked_language_007",
+      "source_url": "https://fixtures.call-score.local/calls/blocked-language",
+      "source_archived_url": "https://archive.fixtures.call-score.local/calls/blocked-language",
+      "source_hash": "sha256:7b51e6627dc25ac6f7aa4454d49293f5c2db4d8e2ed9dcdf0ac7190700000007",
+      "call_timestamp": "2026-05-24T16:20:00Z",
+      "creator_id": "creator_gamma",
+      "creator_handle": "@GammaCalls",
+      "asset": "DOGE",
+      "direction": "bullish",
+      "horizon": "24h",
+      "reference_price": "0.167",
+      "reference_price_timestamp": "2026-05-24T16:20:00Z",
+      "outcome_window": "24h",
+      "outcome_summary": "Unsafe wording fixture.",
+      "transcript_excerpt": "A creator discussed DOGE volatility.",
+      "score_value": 72,
+      "score_grade": "B",
+      "scoring_model_version": "score_v_fixture_1",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "creator_scorecards",
+      "story_angle": "positive_creator_highlight",
+      "claim_type": "named_positive",
+      "proposed_claims": [
+        "@GammaCalls made a guaranteed DOGE call that can't lose."
+      ],
+      "sample_size": 5,
+      "confidence": "high",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Unsafe language fixture."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_missing_caveat_008",
+      "call_id": "call_missing_caveat_008",
+      "source_url": "https://fixtures.call-score.local/calls/missing-caveat",
+      "call_timestamp": "2026-05-25T08:45:00Z",
+      "asset": "LINK",
+      "direction": "bullish",
+      "horizon": "7d",
+      "reference_price": "16.10",
+      "reference_price_timestamp": "2026-05-25T08:45:00Z",
+      "outcome_window": "7d",
+      "outcome_summary": "Missing caveat fixture.",
+      "transcript_excerpt": "The speaker discussed LINK trend strength with uncertainty.",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "daily_receipts",
+      "story_angle": "aggregate_trend",
+      "claim_type": "aggregate",
+      "content_body": "Aggregate CallScore fixture calls for LINK show a positive pattern in the stated window.",
+      "sample_size": 3,
+      "confidence": "medium",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Missing caveat fixture."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_unsupported_fact_009",
+      "call_id": "call_unsupported_fact_009",
+      "source_url": "https://fixtures.call-score.local/calls/unsupported-fact",
+      "source_archived_url": "https://archive.fixtures.call-score.local/calls/unsupported-fact",
+      "source_hash": "sha256:a90016e1d5c3b4f0f42a72ef691d019da803b9654bbaf73d2ee8c0000000009",
+      "call_timestamp": "2026-05-25T18:30:00Z",
+      "creator_id": "creator_delta",
+      "creator_handle": "@DeltaOnchain",
+      "asset": "ARB",
+      "direction": "bullish",
+      "horizon": "7d",
+      "reference_price": "1.08",
+      "reference_price_timestamp": "2026-05-25T18:30:00Z",
+      "outcome_window": "7d",
+      "outcome_summary": "Unsupported Whop metric fixture.",
+      "transcript_excerpt": "DeltaOnchain discussed ARB upside and risk.",
+      "score_value": 78,
+      "score_grade": "B",
+      "scoring_model_version": "score_v_fixture_1",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "creator_scorecards",
+      "story_angle": "positive_creator_highlight",
+      "claim_type": "named_positive",
+      "proposed_claims": [
+        "@DeltaOnchain's ARB call drove 40% more paid Whop users."
+      ],
+      "unsupported_factual_claims": [
+        "40% more paid Whop users"
+      ],
+      "sample_size": 5,
+      "confidence": "high",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Whop conversion claim is intentionally unsupported."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    },
+    {
+      "source_id": "call_e3_aggregate_positive_btc_010",
+      "call_id": "call_e3_aggregate_positive_btc_010",
+      "source_url": "https://fixtures.call-score.local/calls/e3-btc-aggregate",
+      "call_timestamp": "2026-05-26T11:10:00Z",
+      "asset": "BTC",
+      "direction": "bullish",
+      "horizon": "7d",
+      "reference_price": "68420.00",
+      "reference_price_timestamp": "2026-05-26T11:10:00Z",
+      "outcome_window": "7d",
+      "outcome_summary": "Second aggregate positive example to keep fixture coverage representative.",
+      "transcript_excerpt": "The BTC call emphasized a measured seven-day setup and risk limits.",
+      "campaign": "aow_phase_0_1_fixture",
+      "franchise": "daily_receipts",
+      "story_angle": "aggregate_trend",
+      "claim_type": "aggregate",
+      "sample_size": 9,
+      "confidence": "high",
+      "capability_status": "manual_fallback",
+      "limitations": [
+        "Fixture prices are deterministic examples for dry-run validation."
+      ],
+      "window": {
+        "start": "2026-05-20T00:00:00Z",
+        "end": "2026-05-27T00:00:00Z",
+        "label": "7d"
+      }
+    }
+  ]
+}

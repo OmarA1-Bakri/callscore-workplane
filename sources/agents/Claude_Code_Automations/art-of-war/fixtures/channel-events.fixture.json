@@ -1,0 +1,32 @@
+{
+  "fixture_version": "art_of_war.channel_events.v1",
+  "phase_0_1_dry_run_only": true,
+  "events": [
+    {
+      "channel_event_id": "chan_evt_x_dry_run_001",
+      "channel": "x",
+      "provider": "none",
+      "campaign": "aow_phase_0_1_fixture",
+      "source_id": "call_e3_aggregate_positive_sol_004",
+      "event_type": "dry_run_asset_prepared",
+      "provider_post_id": null,
+      "published_url": null,
+      "published_at": null,
+      "external_mutation_performed": false,
+      "notes": "X is represented only as a dry-run target label; no provider command is available."
+    },
+    {
+      "channel_event_id": "chan_evt_telegram_dry_run_002",
+      "channel": "telegram",
+      "provider": "none",
+      "campaign": "aow_phase_0_1_fixture",
+      "source_id": "call_e4_named_positive_avax_005",
+      "event_type": "dry_run_gate_checked",
+      "provider_post_id": null,
+      "published_url": null,
+      "published_at": null,
+      "external_mutation_performed": false,
+      "notes": "Telegram remains a future owned/community default, not a Phase 0/1 send path."
+    }
+  ]
+}

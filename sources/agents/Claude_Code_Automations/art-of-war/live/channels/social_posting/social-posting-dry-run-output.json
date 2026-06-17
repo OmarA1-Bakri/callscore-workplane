@@ -1,0 +1,100 @@
+{
+  "artifact_type": "social_posting_dry_run_output",
+  "channel_id": "social_posting",
+  "generated_at": "2026-06-02T01:00:00Z",
+  "dry_run": true,
+  "external_mutation_performed": false,
+  "source_artifacts": [
+    "art-of-war/story/story-candidates.json",
+    "art-of-war/outbox/publish-intents.json"
+  ],
+  "candidates": [
+    {
+      "candidate_id": "social_cand_001_asset_pack_001_x_launch_thread",
+      "payload_hash": "sha256:9b7b700111dbacd3a426edfa9a21f8707f5aef23def127620c1dccdbeabbda25",
+      "source_artifact_ids": [
+        "asset_pack_001_callscore_launch_readiness"
+      ],
+      "content_body": "1/ CallScore is live for research: a historical leaderboard for public crypto-creator market calls. It matches eligible calls to price outcomes and shows methodology/caveats. Not financial advice.\n\nhttps://call-score.com\n\n2/ Why it exists: crypto commentary is noisy. CallScore organizes public calls into evidence-backed records so users can inspect what was said, when it was said, and how the sampled outcome resolved.\n\n3/ What you can check: creator leaderboards, call-level pages, evaluation windows, sample-size limits, and the scoring methodology. The data is retrospective; it does not predict future performance.\n\n4/ How to use it: compare creators, inspect individual calls, and treat scores as research context \u2014 not buy/sell instructions.\n\n5/ What it will not do: guarantee returns, judge creators as people, or imply past outcomes predict future results. Methodology and correction policy stay visible.\n\n6/ Start here: https://call-score.com\n\nEducation/research only. No investment advice. No profit guarantees.",
+      "caveats": [
+        "Education/research only; not financial advice",
+        "Historical evidence only; no future-performance prediction",
+        "No profit guarantees; methodology limits apply"
+      ],
+      "risk_level": "medium",
+      "risk_decision": "gate_required",
+      "target_platform": "X",
+      "target_platform_credentials_required": true,
+      "status": "ready_for_operator_approval",
+      "forbidden_content_checks": {
+        "financial_advice_detected": false,
+        "profit_guarantee_detected": false,
+        "unverifiable_claim_detected": false,
+        "defamatory_claim_detected": false,
+        "predictive_edge_framing_detected": false,
+        "missing_caveat_detected": false,
+        "blocked_language_detected": false
+      },
+      "format": "thread",
+      "thread_tweets": [
+        "1/ CallScore is live for research: a historical leaderboard for public crypto-creator market calls. It matches eligible calls to price outcomes and shows methodology/caveats. Not financial advice.\n\nhttps://call-score.com",
+        "2/ Why it exists: crypto commentary is noisy. CallScore organizes public calls into evidence-backed records so users can inspect what was said, when it was said, and how the sampled outcome resolved.",
+        "3/ What you can check: creator leaderboards, call-level pages, evaluation windows, sample-size limits, and the scoring methodology. The data is retrospective; it does not predict future performance.",
+        "4/ How to use it: compare creators, inspect individual calls, and treat scores as research context \u2014 not buy/sell instructions.",
+        "5/ What it will not do: guarantee returns, judge creators as people, or imply past outcomes predict future results. Methodology and correction policy stay visible.",
+        "6/ Start here: https://call-score.com\n\nEducation/research only. No investment advice. No profit guarantees."
+      ],
+      "conversion_path": "https://call-score.com",
+      "approval_requirement": "exact_operator_approval_required_before_live_x_thread"
+    },
+    {
+      "candidate_id": "social_cand_002_sha256_d4e5f6",
+      "payload_hash": "sha256:d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2c3",
+      "source_artifact_ids": [
+        "cand_daily_receipts_call_e3_aggregate_positive__bbf0a8a4"
+      ],
+      "content_body": "This week's aggregate CallScore data shows positive SOL trend. Based on available sample; not financial advice. Methodology limits apply.",
+      "caveats": [
+        "Based on available CallScore sample; not financial advice",
+        "Results can change as more data is added"
+      ],
+      "risk_level": "low",
+      "risk_decision": "auto",
+      "target_platform": "X",
+      "target_platform_credentials_required": true,
+      "status": "dry_run_candidate",
+      "forbidden_content_checks": {
+        "financial_advice_detected": false,
+        "defamatory_claim_detected": false,
+        "blocked_language_detected": false,
+        "missing_caveat_detected": false
+      }
+    },
+    {
+      "candidate_id": "social_cand_003_sha256_g7h8i9",
+      "payload_hash": "sha256:g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6",
+      "source_artifact_ids": [
+        "cand_creator_scorecards_call_blocked_language_0_1c71b301"
+      ],
+      "content_body": "BLOCKED CANDIDATE: contains blocked language. Auto-rejected by risk policy.",
+      "caveats": [],
+      "risk_level": "critical",
+      "risk_decision": "blocked",
+      "target_platform": "X",
+      "status": "blocked_by_risk_policy",
+      "blocked_reason": "blocked_language_detected",
+      "forbidden_content_checks": {
+        "financial_advice_detected": false,
+        "defamatory_claim_detected": false,
+        "blocked_language_detected": true,
+        "missing_caveat_detected": true
+      }
+    }
+  ],
+  "no_external_mutation_performed": true,
+  "no_social_api_called": true,
+  "no_credentials_required_for_dry_run": true,
+  "secret_values_printed": false,
+  "status": "asset_pack_001_marketing_launch_ready",
+  "updated_at": "2026-06-05T07:09:40Z"
+}
