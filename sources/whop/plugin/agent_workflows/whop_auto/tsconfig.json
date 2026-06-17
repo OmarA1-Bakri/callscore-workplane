@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "bin/whop-state-mcp/src",
+    "resolveJsonModule": true
+  },
+  "include": ["bin/whop-state-mcp/src/**/*.ts"]
+}

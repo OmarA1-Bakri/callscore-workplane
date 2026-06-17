@@ -1,0 +1,877 @@
+{
+  "$schema": "../workflow-schema.json",
+  "id": "outlook_triage",
+  "name": "Outlook Inbox Triage",
+  "version": "1.0.0",
+  "description": "Triages Omar's inboxes (omar@thegent.uk via Outlook + albakri.omar@gmail.com via Gmail) — fetches unread emails from both mailboxes, classifies (prospect/inbound/internal/noise), moves noise to folders, drafts intelligent replies, auto-sends low-risk replies after delegated review, and escalates exceptions for Omar.",
+  "channel": "email",
+  "triggers": [
+    "scan inbox", "check email", "triage outlook", "email scan",
+    "morning inbox", "clean inbox", "what's in my inbox"
+  ],
+
+  "mailboxes": [
+    {"id": "work", "email": "omar@thegent.uk", "provider": "outlook", "priority": 1},
+    {"id": "personal", "email": "albakri.omar@gmail.com", "provider": "gmail", "priority": 2}
+  ],
+
+  "prerequisites": {
+    "connections": [
+      {
+        "name": "outlook",
+        "type": "rube",
+        "required": true,
+        "health_check": "OUTLOOK_LIST_MAIL_FOLDERS",
+        "on_unavailable": "abort"
+      },
+      {
+        "name": "gmail",
+        "type": "rube",
+        "required": false,
+        "health_check": "GMAIL_LIST_LABELS",
+        "on_unavailable": "skip_dependent_steps",
+        "note": "Gmail API access required for personal mailbox (albakri.omar@gmail.com)"
+      },
+      {
+        "name": "telegram",
+        "type": "rube",
+        "required": false,
+        "health_check": "TELEGRAM_SEND_MESSAGE",
+        "on_unavailable": "warn"
+      }
+    ],
+    "env_vars": [],
+    "key_ids": {
+      "telegram_chat_id": "1778273779"
+    }
+  },
+
+  "rate_limits": {
+    "outlook_batch_move": {
+      "max": 20,
+      "per": "call",
+      "enforce": "hard",
+      "on_breach": "abort"
+    },
+    "outlook_query_top": {
+      "max": 50,
+      "per": "call",
+      "enforce": "hard",
+      "on_breach": "abort"
+    },
+    "drafts_per_session": {
+      "max": 15,
+      "per": "session",
+      "enforce": "soft",
+      "on_breach": "warn"
+    }
+  },
+
+  "timeouts": {
+    "workflow_max_ms": 1800000,
+    "step_default_ms": 300000,
+    "api_call_ms": 30000,
+    "approval_wait_ms": 0
+  },
+
+  "shared_references": [
+    { "id": "thegent_company_info", "path": "shared_references/thegent-company-info.md", "load_when": "before_drafting", "required": true },
+    { "id": "persona_routing", "path": "shared_references/persona-routing.md", "load_when": "before_drafting", "required": true },
+    { "id": "cross_channel_intel", "path": "shared_references/cross-channel-intel.md", "load_when": "setup", "required": false },
+    { "id": "compliance_rules", "path": "shared_references/compliance-rules.md", "load_when": "before_drafting", "required": true },
+    { "id": "email_review_guardrails", "path": "shared_references/email-review-guardrails.md", "load_when": "before_drafting", "required": true },
+    { "id": "state_management", "path": "shared_references/state-management.md", "load_when": "setup", "required": false },
+    { "id": "cadence_procedures", "path": "shared_references/cadence-procedures.md", "load_when": "before_drafting", "required": false },
+    { "id": "context7_docs", "path": "shared_references/context7-documentation.md", "load_when": "setup", "required": true }
+  ],
+
+  "steps": [
+    {
+      "id": "context7_review",
+      "name": "Context7 Documentation Review",
+      "phase": 0,
+      "description": "Review FalkorDB Python client docs via Context7 MCP to ensure current API patterns",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "actions": [
+        {
+          "id": "resolve_falkordb",
+          "type": "cli",
+          "description": "Resolve FalkorDB library ID in Context7",
+          "config": {
+            "command": "resolve-library-id(\"FalkorDB\")"
+          },
+          "output_key": "falkordb_library_id",
+          "on_failure": "warn"
+        },
+        {
+          "id": "query_falkordb_docs",
+          "type": "cli",
+          "description": "Query FalkorDB docs for graph query patterns",
+          "config": {
+            "command": "query-docs(\"/falkordb/falkordb-py\", \"graph queries MERGE upsert contact interaction\")"
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "context7_loaded",
+            "type": "soft",
+            "check": "context7.falkordb_docs_loaded == true",
+            "on_fail": "warn",
+            "message": "Context7 FalkorDB docs not loaded — proceeding with cached knowledge"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "health_check",
+      "name": "Health Check",
+      "phase": 0,
+      "description": "Verify state manager and database connectivity",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "actions": [
+        {
+          "id": "run_health_check",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py health-check"
+          },
+          "output_key": "health",
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 3000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "not_stateless",
+            "type": "hard",
+            "check": "health.mode != 'stateless'",
+            "on_fail": "abort",
+            "message": "State manager is stateless — cannot proceed. Send Telegram alert."
+          },
+          {
+            "id": "degraded_warning",
+            "type": "soft",
+            "check": "health.mode == 'normal'",
+            "on_fail": "warn",
+            "message": "State manager is degraded — SQLite fallback active. Proceeding with caution."
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "register_agent",
+      "name": "Register Agent",
+      "phase": 0,
+      "description": "Register outlook_triage agent (idempotent, first run only)",
+      "execution": "sequential",
+      "timeout_ms": 10000,
+      "condition": "first_run == true",
+      "actions": [
+        {
+          "id": "register",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py register-agent --name \"outlook_triage\" --channels \"email\" --capabilities \"inbox_triage,reply_drafting,email_classification\""
+          },
+          "on_failure": "warn"
+        }
+      ]
+    },
+
+    {
+      "id": "pre_session",
+      "name": "Pre-Session State Load",
+      "phase": 0,
+      "description": "Load session state: recently contacted, pending follow-ups, DNC list, agent messages, memories, knowledge",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "depends_on": ["health_check"],
+      "actions": [
+        {
+          "id": "pre_session_check",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py pre-session-check --agent \"outlook_triage\""
+          },
+          "output_key": "session_state",
+          "on_failure": "warn"
+        },
+        {
+          "id": "get_messages",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py get-messages --agent \"outlook_triage\""
+          },
+          "output_key": "agent_messages",
+          "on_failure": "warn"
+        },
+        {
+          "id": "recall_memories",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py recall --agent \"outlook_triage\" --limit 20"
+          },
+          "output_key": "memories",
+          "on_failure": "skip"
+        },
+        {
+          "id": "load_knowledge",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py query-knowledge --category \"outreach\" --tags \"email\""
+          },
+          "output_key": "knowledge",
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "setup_workspace",
+      "name": "Setup Workspace & Folders",
+      "phase": 0,
+      "description": "Create working directories, check shared intel, ensure triage folders exist",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "actions": [
+        {
+          "id": "create_dirs",
+          "type": "cli",
+          "config": {
+            "command": "mkdir -p /tmp/outlook-ops && mkdir -p /tmp/shared-intel"
+          },
+          "on_failure": "abort_step"
+        },
+        {
+          "id": "read_shared_intel",
+          "type": "read_file",
+          "description": "Check for prospect signals from LinkedIn agent",
+          "config": {
+            "file_path": "/tmp/shared-intel/prospect-signals.json"
+          },
+          "output_key": "linkedin_signals",
+          "on_failure": "skip"
+        },
+        {
+          "id": "list_folders",
+          "type": "rube_tool",
+          "description": "List existing Outlook mail folders",
+          "config": {
+            "tool_slug": "OUTLOOK_LIST_MAIL_FOLDERS",
+            "arguments": {
+              "user_id": "me",
+              "select": "id,displayName"
+            }
+          },
+          "output_key": "mail_folders",
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 5000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "abort_workflow"
+        },
+        {
+          "id": "create_triage_folders",
+          "type": "rube_tool",
+          "description": "Create missing triage folders (idempotent with return_existing_if_exists)",
+          "config": {
+            "tool_slug": "OUTLOOK_CREATE_MAIL_FOLDER",
+            "arguments": {
+              "folder_names": ["_Newsletters", "_Spam & Sales", "_Recruiters", "_Notifications"],
+              "return_existing_if_exists": true
+            }
+          },
+          "output_key": "triage_folder_ids",
+          "on_failure": "abort_workflow"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "folders_exist",
+            "type": "hard",
+            "check": "triage_folder_ids contains '_Newsletters' AND '_Spam & Sales' AND '_Recruiters' AND '_Notifications'",
+            "on_fail": "abort",
+            "message": "Failed to create/find all 4 triage folders in Outlook"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "inbox_triage",
+      "name": "Phase 1: Inbox Triage",
+      "phase": 1,
+      "description": "Sub-agent fetches unread emails from both mailboxes (work: omar@thegent.uk via Outlook first, personal: albakri.omar@gmail.com via Gmail second), classifies, moves noise, drafts replies",
+      "execution": "sub_agent",
+      "timeout_ms": 600000,
+      "depends_on": ["setup_workspace", "pre_session"],
+      "actions": [
+        {
+          "id": "spawn_triage_agent",
+          "type": "sub_agent",
+          "description": "Spawn sub-agent for inbox processing",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute Outlook Inbox Triage Phase 1. You have access to Rube Outlook tools and Rube Gmail tools. Fetch unread emails (last 24h) from BOTH mailboxes: (1) omar@thegent.uk via Outlook (work, check first), (2) albakri.omar@gmail.com via Gmail (personal, check second — skip if Gmail connector unavailable). Classify each, move noise to triage folders, draft replies for actionable emails. Write results to /tmp/outlook-ops/triage-report.json. See full instructions in SKILL.md Phase 1."
+          },
+          "output_key": "triage_report",
+          "on_failure": "abort_workflow"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "triage_report_exists",
+            "type": "hard",
+            "check": "file_exists('/tmp/outlook-ops/triage-report.json')",
+            "on_fail": "abort",
+            "message": "Triage sub-agent did not produce triage-report.json"
+          },
+          {
+            "id": "triage_report_valid_json",
+            "type": "hard",
+            "check": "json_valid(triage_report)",
+            "on_fail": "abort",
+            "message": "Triage report is not valid JSON"
+          },
+          {
+            "id": "triage_report_has_required_fields",
+            "type": "hard",
+            "check": "triage_report.generated_at AND triage_report.total_processed >= 0 AND triage_report.actionable is array AND triage_report.moved is object",
+            "on_fail": "abort",
+            "message": "Triage report missing required fields (generated_at, total_processed, actionable, moved)"
+          }
+        ]
+      },
+      "format_validations": [
+        {
+          "field": "triage_report.actionable[*].classification",
+          "rule": "in_set",
+          "value": ["HOT PROSPECT", "WARM INBOUND", "EXISTING CONTACT"],
+          "on_fail": "warn",
+          "message": "Actionable email has unexpected classification"
+        },
+        {
+          "field": "triage_report.actionable[*].persona_lane",
+          "rule": "in_set",
+          "value": ["A", "B", "C", "D", "E"],
+          "on_fail": "warn",
+          "message": "Persona lane must be A-E"
+        }
+      ]
+    },
+
+    {
+      "id": "quality_gates_drafts",
+      "name": "Quality Gates: Draft Review",
+      "phase": 1,
+      "description": "Run humanizer, clarity, and copy-editing gates on all drafted replies",
+      "execution": "sequential",
+      "timeout_ms": 180000,
+      "depends_on": ["inbox_triage"],
+      "condition": "triage_report.actionable.length > 0",
+      "loop": {
+        "over": "triage_report.actionable",
+        "max_iterations": 15,
+        "per_item_timeout_ms": 30000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "humanizer_pass",
+          "type": "skill",
+          "description": "Remove AI writing patterns from draft",
+          "config": {
+            "skill_name": "humanizer"
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "clarity_pass",
+          "type": "skill",
+          "description": "Trim and sharpen prose for clarity",
+          "config": {
+            "skill_name": "writing-clearly-and-concisely"
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "professional_comm_pass",
+          "type": "skill",
+          "description": "Ensure appropriate business email tone",
+          "config": {
+            "skill_name": "professional-communication"
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "format_validations": [
+        {
+          "field": "draft.text",
+          "rule": "max_chars",
+          "value": 2000,
+          "on_fail": "retry",
+          "auto_fix_action": "Trim draft to under 2000 characters while preserving key points",
+          "message": "Email reply draft exceeds 2000 characters"
+        },
+        {
+          "field": "draft.text",
+          "rule": "not_contains",
+          "value": ["I hope this email finds you well", "In today's", "It's worth noting", "leverage", "synergy", "paradigm shift", "AI assistant", "language model"],
+          "on_fail": "retry",
+          "auto_fix_action": "Re-run humanizer to remove prohibited phrases",
+          "message": "Draft contains prohibited phrases"
+        },
+        {
+          "field": "draft.text",
+          "rule": "not_contains",
+          "value": ["Claude", "Anthropic", "OpenAI", "GPT", "AI-generated"],
+          "on_fail": "abort",
+          "message": "CRITICAL: Draft reveals AI involvement — must not send"
+        },
+        {
+          "field": "draft.text",
+          "rule": "regex_match",
+          "value": "(Omar|Best,\\s*Omar)\\s*$",
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Append 'Best, Omar' sign-off",
+          "message": "Draft missing Omar sign-off"
+        },
+        {
+          "field": "draft.text",
+          "rule": "is_plain_text",
+          "value": true,
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Strip HTML tags from reply",
+          "message": "Email replies must be plain text (not HTML)"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "all_drafts_pass_humanizer",
+            "type": "hard",
+            "check": "all(drafts, humanizer_score >= 0.8)",
+            "on_fail": "retry",
+            "max_retries": 2,
+            "retry_delay_ms": 0,
+            "retry_action": "Re-run humanizer on failing drafts",
+            "message": "One or more drafts still have AI patterns after humanizer",
+            "escalation": {
+              "after_retries": "flag_for_review",
+              "alert_channel": "telegram"
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "dedup_check",
+      "name": "Pre-Draft Dedup Check",
+      "phase": 1,
+      "description": "Check each actionable sender against FalkorDB graph for DNC status and recent contacts",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "depends_on": ["inbox_triage"],
+      "condition": "triage_report.actionable.length > 0",
+      "loop": {
+        "over": "triage_report.actionable",
+        "max_iterations": 15,
+        "per_item_timeout_ms": 10000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "check_contact",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py check-contact --email \"{{item.sender_email}}\" --name \"{{item.sender_name}}\""
+          },
+          "output_key": "contact_status"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "dnc_filter",
+            "type": "hard",
+            "check": "contact_status != 'DO_NOT_CONTACT'",
+            "on_fail": "skip",
+            "message": "Contact is on DNC list — skipping"
+          },
+          {
+            "id": "caution_flag",
+            "type": "soft",
+            "check": "contact_status != 'CAUTION'",
+            "on_fail": "flag_for_review",
+            "message": "Contact flagged CAUTION — presenting to Omar with warning"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "approval",
+      "name": "Phase 2: Automated Review",
+      "phase": 2,
+      "description": "Run delegated review on all inbox drafts, auto-approve low-risk replies, and present only exception drafts to Omar",
+      "execution": "sequential",
+      "timeout_ms": 0,
+      "depends_on": ["quality_gates_drafts", "dedup_check"],
+      "condition": "triage_report.actionable.length > 0",
+      "actions": [
+        {
+          "id": "present_drafts",
+          "type": "approval",
+          "description": "Present only exception draft cards to Omar",
+          "config": {
+            "approval_prompt": "Apply shared_references/email-review-guardrails.md to every inbox reply draft. Auto-approve and queue any low-risk reply that is clearly grounded in the thread and commercially safe. Present only exception drafts to Omar with: SENDER, SUBJECT, CLASSIFICATION, PERSONA LANE, THEIR MESSAGE, DRAFT REPLY, DRAFT ID, ORIGINAL EMAIL link, CONFIDENCE, LINKEDIN cross-ref, NOTES, and EXCEPTION REASON. Also show summary of moved emails plus counts for auto-approved, escalated, and skipped drafts."
+          },
+          "output_key": "approval_decisions"
+        }
+      ],
+      "gates": {
+        "pre": [
+          {
+            "id": "drafts_available",
+            "type": "hard",
+            "check": "triage_report.actionable.length > 0",
+            "on_fail": "skip",
+            "message": "No actionable emails to present — skipping approval"
+          }
+        ],
+        "post": [
+          {
+            "id": "at_least_one_decision",
+            "type": "soft",
+            "check": "approval_decisions.length > 0 OR triage_report.auto_approved.length > 0",
+            "on_fail": "warn",
+            "message": "No inbox drafts required Omar review and none were auto-approved"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "send_approved",
+      "name": "Phase 3: Send Approved And Auto-Approved Drafts",
+      "phase": 3,
+      "description": "Send all approved and auto-approved drafts via Outlook, then verify each send succeeded",
+      "execution": "sequential",
+      "timeout_ms": 120000,
+      "depends_on": ["approval"],
+      "condition": "approval_decisions.approved.length > 0 OR triage_report.auto_approved.length > 0",
+      "loop": {
+        "over": "send_queue",
+        "max_iterations": 15,
+        "per_item_timeout_ms": 15000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "send_draft",
+          "type": "rube_tool",
+          "description": "Send the approved or auto-approved draft",
+          "config": {
+            "tool_slug": "OUTLOOK_SEND_DRAFT",
+            "arguments": {
+              "message_id": "{{item.draft_id}}",
+              "user_id": "me"
+            }
+          },
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 5000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "output_key": "send_result",
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "send_verification",
+            "type": "hard",
+            "check": "send_result.status == 'sent' OR send_result.http_status == 200 OR send_result.http_status == 202",
+            "on_fail": "retry",
+            "max_retries": 1,
+            "retry_delay_ms": 5000,
+            "message": "Draft send failed — retrying",
+            "escalation": {
+              "after_retries": "flag_for_review",
+              "alert_channel": "telegram"
+            }
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "post_send_logging",
+      "name": "Post-Send: Log to Graph",
+      "phase": 3,
+      "description": "Log each sent reply to FalkorDB graph",
+      "execution": "sequential",
+      "timeout_ms": 120000,
+      "depends_on": ["send_approved"],
+      "condition": "send_results.succeeded.length > 0",
+      "loop": {
+        "over": "send_results.succeeded",
+        "max_iterations": 15,
+        "per_item_timeout_ms": 20000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "log_interaction",
+          "type": "cli",
+          "description": "Log interaction to FalkorDB graph",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-interaction --email \"{{item.sender_email}}\" --channel \"email\" --type \"reply\" --direction \"outbound\" --summary \"{{item.summary}}\" --agent-name \"outlook_triage\" --draft-approved"
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "create_follow_up",
+          "type": "cli",
+          "description": "Schedule follow-up if warranted",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py create-follow-up --email \"{{item.sender_email}}\" --due-date \"{{item.follow_up_date}}\" --type \"email_follow_up\" --description \"Follow up on reply to {{item.subject}}\""
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "cross_channel_signal",
+          "type": "cli",
+          "description": "Post prospect signal for LinkedIn agent (hot prospects only)",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py post-message --from-agent \"outlook_triage\" --to-agent \"linkedin_triage\" --type \"PROSPECT_SIGNAL\" --payload '{\"contact\":\"{{item.sender_email}}\",\"signal\":\"Hot prospect replied, coordinate LinkedIn follow-up\"}'"
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "remember_learnings",
+          "type": "cli",
+          "description": "Store notable learnings about this contact",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py remember --key \"contact_pref_{{item.sender_name}}\" --content \"{{item.learning}}\" --tags \"contact,preference\" --agent \"outlook_triage\" --contact \"{{item.sender_name}}\""
+          },
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "write_shared_intel",
+      "name": "Write Shared Intel",
+      "phase": 3,
+      "description": "Write prospect signals to shared-intel for LinkedIn agent (DEPRECATED — FalkorDB post-message is authoritative)",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["post_send_logging"],
+      "actions": [
+        {
+          "id": "write_intel_file",
+          "type": "write_file",
+          "description": "Write prospect signals JSON (backward compat only)",
+          "config": {
+            "file_path": "/tmp/shared-intel/prospect-signals.json"
+          },
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "telegram_summary",
+      "name": "Telegram Alert",
+      "phase": 4,
+      "description": "Send triage summary via Telegram",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["send_approved"],
+      "actions": [
+        {
+          "id": "send_telegram",
+          "type": "rube_tool",
+          "config": {
+            "tool_slug": "TELEGRAM_SEND_MESSAGE",
+            "arguments": {
+              "chat_id": "1778273779",
+              "text": "Inbox Triage Complete\n\nActionable: {{counts.actionable}} (drafts ready)\nCleaned: {{counts.moved}} moved to folders\nInternal: {{counts.internal}} flagged\nSent: {{counts.sent}} approved\n\nReady in Cowork."
+            }
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "pre": [
+          {
+            "id": "no_confidential_in_telegram",
+            "type": "hard",
+            "check": "telegram_text does NOT contain email addresses, sender names, email content, or confidential info",
+            "on_fail": "abort",
+            "message": "CRITICAL: Telegram message contains confidential information — must not send"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "log_session",
+      "name": "Log Session & Cleanup",
+      "phase": 4,
+      "description": "Log session to state manager and clean up temp files",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["telegram_summary", "write_shared_intel"],
+      "actions": [
+        {
+          "id": "log_session_cmd",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"outlook-triage-{{date}}-{{time}}\" --agent-name \"outlook_triage\" --skills-run \"inbox_triage\" --contacts-processed {{counts.total}} --interactions-logged {{counts.sent}} --follow-ups-created {{counts.follow_ups}} --summary \"Processed {{counts.total}} emails, sent {{counts.sent}} replies, moved {{counts.moved}} to folders\""
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "cleanup",
+          "type": "cli",
+          "description": "Remove temp working directory (NOT shared-intel)",
+          "config": {
+            "command": "rm -rf /tmp/outlook-ops/"
+          },
+          "on_failure": "skip"
+        }
+      ]
+    }
+  ],
+
+  "quality_gates": [
+    {
+      "id": "humanizer",
+      "type": "hard",
+      "skill": "humanizer",
+      "applies_to": "all_drafts",
+      "order": 1,
+      "retry": {
+        "max_attempts": 2,
+        "on_exhausted": "flag_for_review"
+      }
+    },
+    {
+      "id": "clarity",
+      "type": "hard",
+      "skill": "writing-clearly-and-concisely",
+      "applies_to": "all_drafts",
+      "order": 2,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "flag_for_review"
+      }
+    },
+    {
+      "id": "professional_communication",
+      "type": "soft",
+      "skill": "professional-communication",
+      "applies_to": "all_drafts",
+      "order": 3,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "warn"
+      }
+    },
+    {
+      "id": "sentiment_analysis",
+      "type": "soft",
+      "skill": "sentiment-analysis-tool:analyze-sentiment",
+      "applies_to": "inbound_emails",
+      "order": 0,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "skip"
+      }
+    }
+  ],
+
+  "format_rules": {
+    "email_reply": {
+      "platform": "outlook",
+      "rules": [
+        { "field": "text", "rule": "is_plain_text", "value": true, "on_fail": "auto_fix", "message": "Replies must be plain text" },
+        { "field": "text", "rule": "max_chars", "value": 2000, "on_fail": "retry", "message": "Reply exceeds 2000 characters" },
+        { "field": "text", "rule": "count_sentences", "value": { "max": 6 }, "on_fail": "warn", "message": "Reply should be under 6 sentences" },
+        { "field": "text", "rule": "regex_match", "value": "(Omar|Best,\\s*Omar)\\s*$", "on_fail": "auto_fix", "message": "Must sign off as Omar" },
+        { "field": "text", "rule": "no_prohibited_phrases", "value": ["I hope this email finds you well", "In today's", "It's worth noting", "leverage", "synergy", "paradigm shift", "landscape", "It's important to mention"], "on_fail": "retry", "message": "Contains AI/corporate slop" },
+        { "field": "text", "rule": "no_prohibited_phrases", "value": ["Claude", "Anthropic", "OpenAI", "GPT", "AI assistant", "language model", "I'm an AI"], "on_fail": "abort", "message": "CRITICAL: Reveals AI involvement" }
+      ]
+    },
+    "hot_prospect_reply": {
+      "platform": "outlook",
+      "rules": [
+        { "field": "text", "rule": "count_sentences", "value": { "max": 4 }, "on_fail": "retry", "message": "HOT PROSPECT reply must be under 4 sentences" },
+        { "field": "text", "rule": "regex_match", "value": "(call|meeting|chat|connect|walk you through)", "on_fail": "warn", "message": "HOT PROSPECT reply should propose a meeting" }
+      ]
+    },
+    "warm_inbound_reply": {
+      "platform": "outlook",
+      "rules": [
+        { "field": "text", "rule": "count_sentences", "value": { "max": 3 }, "on_fail": "retry", "message": "WARM INBOUND reply must be under 3 sentences" },
+        { "field": "text", "rule": "regex_match", "value": "\\?", "on_fail": "warn", "message": "WARM INBOUND reply should include a qualifying question" }
+      ]
+    }
+  },
+
+  "error_handling": {
+    "on_step_failure": "log_and_continue",
+    "on_connection_failure": {
+      "outlook": "abort_workflow",
+      "gmail": "skip_dependent_steps",
+      "telegram": "skip_dependent_steps"
+    },
+    "alert_config": {
+      "channel": "telegram",
+      "chat_id": "1778273779",
+      "on_events": ["gate_failure", "rate_limit_breach", "workflow_abort"]
+    },
+    "max_consecutive_failures": 3
+  },
+
+  "post_completion": {
+    "log_session": {
+      "enabled": true,
+      "command_template": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"outlook-triage-{{date}}-{{time}}\" --agent-name \"outlook_triage\" --skills-run \"inbox_triage\" --contacts-processed {{counts.total}} --interactions-logged {{counts.sent}} --follow-ups-created {{counts.follow_ups}} --summary \"{{summary}}\""
+    },
+    "telegram_summary": {
+      "enabled": true,
+      "chat_id": "1778273779",
+      "template": "Inbox Triage Complete\n\nActionable: {{counts.actionable}} (drafts ready)\nCleaned: {{counts.moved}} moved to folders\nInternal: {{counts.internal}} flagged\nSent: {{counts.sent}} approved\n\nReady in Cowork."
+    },
+    "cross_channel_signals": [
+      {
+        "type": "PROSPECT_SIGNAL",
+        "from_agent": "outlook_triage",
+        "to_agent": "linkedin_triage",
+        "payload_template": "{\"contact\":\"{{email}}\",\"signal\":\"Hot prospect replied, coordinate LinkedIn follow-up\"}"
+      }
+    ],
+    "cleanup_paths": ["/tmp/outlook-ops/"],
+    "preserve_paths": ["/tmp/shared-intel/"]
+  }
+}

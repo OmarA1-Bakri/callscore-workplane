@@ -1,0 +1,1126 @@
+{
+  "$schema": "../workflow-schema.json",
+  "id": "orchestrator",
+  "name": "Master Orchestrator",
+  "version": "1.0.0",
+  "description": "Master coordinator for TheGent's agent workflows. Routes tasks to the correct workflow(s), manages scheduled execution blocks, dispatches workflows sequentially or in parallel where safe, coordinates cross-channel intelligence, monitors system health, and generates reports.",
+  "channel": "orchestrator",
+  "triggers": [
+    "run scheduler", "morning run", "afternoon run", "evening run",
+    "run BD", "run content", "scan inbox", "check pipeline",
+    "run maintenance", "full block", "daily run", "run everything",
+    "prospect hunt", "inbox clear", "content day", "check status",
+    "weekly report"
+  ],
+
+  "prerequisites": {
+    "connections": [
+      {
+        "name": "state_manager",
+        "type": "local",
+        "required": true,
+        "health_check": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py health-check",
+        "on_unavailable": "abort"
+      },
+      {
+        "name": "telegram",
+        "type": "rube",
+        "required": true,
+        "health_check": "TELEGRAM_SEND_MESSAGE",
+        "on_unavailable": "abort"
+      },
+      {
+        "name": "outlook",
+        "type": "rube",
+        "required": false,
+        "health_check": "OUTLOOK_LIST_MAIL_FOLDERS",
+        "on_unavailable": "skip_dependent_steps"
+      },
+      {
+        "name": "apollo",
+        "type": "rube",
+        "required": false,
+        "health_check": "APOLLO_SEARCH_PEOPLE",
+        "on_unavailable": "skip_dependent_steps"
+      }
+    ],
+    "env_vars": [
+      "FALKORDB_URL",
+      "FALKOR_DB_PASSWORD",
+      "APOLLO_API_KEY",
+      "GEMINI_API_KEY"
+    ],
+    "apollo_ids": {},
+    "key_ids": {
+      "telegram_chat_id": "1778273779"
+    }
+  },
+
+  "rate_limits": {
+    "workflow_dispatch_concurrency": {
+      "max": 2,
+      "per": "session",
+      "enforce": "hard",
+      "current_check": "Count of currently running sub-agent dispatches",
+      "on_breach": "throttle"
+    },
+    "linkedin_connection_requests": {
+      "max": 20,
+      "per": "day",
+      "enforce": "hard",
+      "current_check": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py graph-stats | grep connection_requests_today",
+      "on_breach": "skip_remaining"
+    },
+    "linkedin_messages": {
+      "max": 50,
+      "per": "day",
+      "enforce": "soft",
+      "current_check": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py graph-stats | grep linkedin_messages_today",
+      "on_breach": "warn"
+    },
+    "blocks_per_day": {
+      "max": 8,
+      "per": "day",
+      "enforce": "soft",
+      "on_breach": "warn"
+    }
+  },
+
+  "timeouts": {
+    "workflow_max_ms": 7200000,
+    "step_default_ms": 300000,
+    "api_call_ms": 30000,
+    "approval_wait_ms": 0
+  },
+
+  "shared_references": [
+    { "id": "schedule", "path": "agent_workflows/orchestrator/references/schedule.md", "load_when": "setup", "required": true },
+    { "id": "routing_rules", "path": "agent_workflows/orchestrator/references/routing-rules.md", "load_when": "setup", "required": true },
+    { "id": "cross_channel_intel", "path": "shared_references/cross-channel-intel.md", "load_when": "setup", "required": false },
+    { "id": "cadence_procedures", "path": "shared_references/cadence-procedures.md", "load_when": "setup", "required": false },
+    { "id": "state_management", "path": "shared_references/state-management.md", "load_when": "setup", "required": false },
+    { "id": "context7_docs", "path": "shared_references/context7-documentation.md", "load_when": "setup", "required": false }
+  ],
+
+  "steps": [
+    {
+      "id": "preflight_health_check",
+      "name": "Pre-Flight: Health Check",
+      "phase": 0,
+      "description": "Verify state manager and database connectivity. If stateless, abort entire orchestration. If degraded, warn and continue.",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "actions": [
+        {
+          "id": "run_health_check",
+          "type": "cli",
+          "description": "Run state_manager health-check to verify FalkorDB + SQLite connectivity",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py health-check"
+          },
+          "output_key": "health",
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 3000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "abort_workflow"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "not_stateless",
+            "type": "hard",
+            "check": "health.mode != 'stateless'",
+            "on_fail": "abort",
+            "message": "State manager is stateless — cannot proceed. Sending Telegram alert and aborting all dispatches."
+          },
+          {
+            "id": "degraded_warning",
+            "type": "soft",
+            "check": "health.mode == 'normal'",
+            "on_fail": "warn",
+            "message": "State manager is degraded — SQLite fallback active. Proceeding with caution."
+          }
+        ]
+      },
+      "outputs": {
+        "health_mode": "State manager mode: normal, degraded, or stateless"
+      }
+    },
+
+    {
+      "id": "preflight_sync_backup",
+      "name": "Pre-Flight: Sync Backup Queue",
+      "phase": 0,
+      "description": "Flush any queued offline writes to FalkorDB. Idempotent — takes <100ms when empty. Run every block to keep sync lag under 4 hours.",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "depends_on": ["preflight_health_check"],
+      "actions": [
+        {
+          "id": "sync_backup",
+          "type": "cli",
+          "description": "Sync SQLite backup queue to FalkorDB",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py sync-backup"
+          },
+          "output_key": "sync_result",
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 5000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "sync_success",
+            "type": "hard",
+            "check": "sync_result.status == 'ok' OR sync_result.synced >= 0",
+            "on_fail": "warn",
+            "message": "Sync backup returned unexpected status — proceeding but data may be stale."
+          }
+        ]
+      },
+      "outputs": {
+        "sync_result": "Number of records synced and sync status"
+      }
+    },
+
+    {
+      "id": "preflight_overdue_followups",
+      "name": "Pre-Flight: Check Overdue Follow-Ups",
+      "phase": 0,
+      "description": "Query for follow-ups past their due date. If any exist, send Telegram escalation alert so Omar doesn't miss stale opportunities.",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "depends_on": ["preflight_health_check"],
+      "actions": [
+        {
+          "id": "list_pending_followups",
+          "type": "cli",
+          "description": "List all pending follow-ups from state manager",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py list-followups --status pending"
+          },
+          "output_key": "pending_followups",
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_overdue_followups",
+          "type": "conditional",
+          "description": "Send Telegram alert if any follow-ups are overdue (due_date < today)",
+          "config": {
+            "condition": "pending_followups.overdue_count > 0",
+            "if_true": [
+              {
+                "id": "send_overdue_alert",
+                "type": "rube_tool",
+                "description": "Send Telegram alert listing overdue follow-ups",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "Overdue Follow-Ups\n\n{{pending_followups.overdue_count}} follow-ups past due date:\n{{pending_followups.overdue_summary}}\n\nAction needed before today's block."
+                  }
+                },
+                "on_failure": "warn"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "outputs": {
+        "overdue_count": "Number of overdue follow-ups",
+        "overdue_summary": "Formatted list of overdue follow-ups"
+      }
+    },
+
+    {
+      "id": "preflight_pause_flag",
+      "name": "Pre-Flight: Check Pause Flag",
+      "phase": 0,
+      "description": "Check graph-stats for pause flag. If paused, skip all runs and alert Omar via Telegram.",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["preflight_health_check"],
+      "actions": [
+        {
+          "id": "check_graph_stats",
+          "type": "cli",
+          "description": "Run graph-stats to check pause flag and system state",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py graph-stats"
+          },
+          "output_key": "graph_stats",
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_if_paused",
+          "type": "conditional",
+          "description": "If paused, send Telegram alert and abort",
+          "config": {
+            "condition": "graph_stats.paused == true",
+            "if_true": [
+              {
+                "id": "send_pause_alert",
+                "type": "rube_tool",
+                "description": "Alert Omar that orchestrator is paused",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "Orchestrator PAUSED\n\nAll workflow dispatches are suspended. The pause flag is set in FalkorDB.\n\nTo resume, clear the pause flag and re-run."
+                  }
+                },
+                "on_failure": "warn"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "not_paused",
+            "type": "hard",
+            "check": "graph_stats.paused != true",
+            "on_fail": "abort",
+            "message": "Orchestrator is paused — aborting all dispatches. Omar alerted via Telegram."
+          }
+        ]
+      },
+      "outputs": {
+        "paused": "Boolean pause flag from FalkorDB",
+        "graph_stats": "Full graph statistics object"
+      }
+    },
+
+    {
+      "id": "preflight_read_messages",
+      "name": "Pre-Flight: Read Cross-Channel Messages",
+      "phase": 0,
+      "description": "Read all unread agent messages addressed to the orchestrator for cross-channel intelligence routing.",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["preflight_health_check"],
+      "actions": [
+        {
+          "id": "get_orchestrator_messages",
+          "type": "cli",
+          "description": "Read all pending messages for the orchestrator agent",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py get-messages --agent \"orchestrator\" --mark-read"
+          },
+          "output_key": "agent_messages",
+          "on_failure": "warn"
+        }
+      ],
+      "outputs": {
+        "agent_messages": "Array of cross-channel messages from other agents"
+      }
+    },
+
+    {
+      "id": "route_block",
+      "name": "Step 1: Route — Determine Block",
+      "phase": 1,
+      "description": "Determine which workflow(s) to invoke based on current time (scheduled block) or Omar's intent (ad-hoc). Produces a dispatch_list of workflow IDs and an execution_mode (sequential/parallel).",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "depends_on": ["preflight_health_check", "preflight_sync_backup", "preflight_overdue_followups", "preflight_pause_flag", "preflight_read_messages"],
+      "actions": [
+        {
+          "id": "determine_block",
+          "type": "conditional",
+          "description": "Match current time to a schedule block or classify Omar's ad-hoc intent",
+          "config": {
+            "condition": "trigger.type == 'scheduled'",
+            "if_true": [
+              {
+                "id": "match_schedule",
+                "type": "sub_agent",
+                "description": "Match current time to schedule block and produce dispatch list",
+                "config": {
+                  "subagent_type": "general-purpose",
+                  "prompt": "Given the current time, match to the orchestrator schedule and return a JSON dispatch list. Schedule blocks:\n- 07:30-09:59: Morning BD → [outlook_triage, outlook_bd, linkedin_triage, linkedin_bd] (sequential)\n- 10:00-11:59: Morning Content → [content_creator] (parallel-safe)\n- 13:30-13:59: Afternoon BD → [outlook_triage, linkedin_triage] (sequential)\n- 16:00-17:29: Afternoon Content → [content_creator] (parallel-safe, polish+publish)\n- 17:30-18:30: Evening → [outlook_triage, daily_report] (sequential)\n- Fri 16:30-17:30: Weekly → [weekly_report]\n- Sun 01:30-03:00: Maintenance → [archive, reseed, sync, stats]\nNote: growth_engine is RETIRED — do not dispatch.\nReturn: {\"block_name\": \"...\", \"dispatch_list\": [...], \"execution_mode\": \"sequential|parallel\", \"description\": \"...\"}"
+                },
+                "output_key": "schedule_match",
+                "on_failure": "abort_step"
+              }
+            ],
+            "if_false": [
+              {
+                "id": "classify_intent",
+                "type": "sub_agent",
+                "description": "Classify Omar's ad-hoc request and produce dispatch list using routing rules",
+                "config": {
+                  "subagent_type": "general-purpose",
+                  "prompt": "Classify the user's intent and map to workflow dispatch list using these routing rules:\n- 'scan inbox'/'check email' → [outlook_triage]\n- 'pipeline review'/'BD outreach' → [outlook_bd]\n- 'scan LinkedIn'/'check LinkedIn' → [linkedin_triage]\n- 'LinkedIn outreach'/'find LinkedIn prospects' → [linkedin_bd]\n- 'create content'/'write a post' → [content_creator]\n- 'grow followers'/'LinkedIn strategy' → RETIRED (inform user growth_engine is no longer active)\n- 'morning run'/'run BD' → [outlook_triage, outlook_bd, linkedin_triage, linkedin_bd] (sequential)\n- 'afternoon run' → [outlook_triage, linkedin_triage] (sequential)\n- 'full block'/'run everything' → all BD + content_creator (BD sequential, content parallel)\n- 'prospect hunt' → [outlook_bd, linkedin_bd] (sequential)\n- 'inbox clear' → [outlook_triage, linkedin_triage] (sequential)\nNote: growth_engine is RETIRED — do not dispatch. linkedin_bd is Apollo prospect discovery only (no PhantomBuster).\nIf ambiguous, set needs_clarification=true.\nReturn: {\"block_name\": \"ad_hoc\", \"dispatch_list\": [...], \"execution_mode\": \"sequential|parallel\", \"needs_clarification\": false, \"description\": \"...\"}"
+                },
+                "output_key": "intent_match",
+                "on_failure": "abort_step"
+              }
+            ]
+          },
+          "output_key": "routing_decision",
+          "on_failure": "abort_workflow"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "dispatch_list_not_empty",
+            "type": "hard",
+            "check": "routing_decision.dispatch_list.length > 0",
+            "on_fail": "ask_user",
+            "message": "Could not determine which workflows to dispatch. Asking Omar for clarification."
+          },
+          {
+            "id": "no_clarification_needed",
+            "type": "soft",
+            "check": "routing_decision.needs_clarification != true",
+            "on_fail": "ask_user",
+            "message": "Ambiguous intent — asking Omar which workflows to run."
+          }
+        ]
+      },
+      "outputs": {
+        "block_name": "Name of the matched schedule block or 'ad_hoc'",
+        "dispatch_list": "Array of workflow IDs to dispatch",
+        "execution_mode": "sequential or parallel"
+      }
+    },
+
+    {
+      "id": "register_session",
+      "name": "Register Orchestrator Session",
+      "phase": 1,
+      "description": "Register the orchestrator session in FalkorDB for tracking and auditability.",
+      "execution": "sequential",
+      "timeout_ms": 10000,
+      "depends_on": ["route_block"],
+      "actions": [
+        {
+          "id": "log_orchestrator_session",
+          "type": "cli",
+          "description": "Register orchestrator session with block name and dispatch list",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"orchestrator-{{date}}-{{time}}\" --agent-name \"orchestrator\" --skills-run \"{{routing_decision.dispatch_list}}\" --summary \"Block: {{routing_decision.block_name}}, dispatching: {{routing_decision.dispatch_list}}\""
+          },
+          "on_failure": "warn"
+        }
+      ]
+    },
+
+    {
+      "id": "dispatch_bd_block",
+      "name": "Step 2a: Dispatch BD Block (Sequential)",
+      "phase": 2,
+      "description": "Dispatch BD workflows sequentially: outlook_triage → outlook_bd → linkedin_triage → linkedin_bd. Each sub-agent gets the full SKILL.md for its workflow. If one fails, log error and continue to next.",
+      "execution": "sub_agent",
+      "timeout_ms": 3600000,
+      "depends_on": ["register_session"],
+      "condition": "routing_decision.dispatch_list contains_any ['outlook_triage', 'outlook_bd', 'linkedin_triage', 'linkedin_bd']",
+      "actions": [
+        {
+          "id": "dispatch_outlook_triage",
+          "type": "sub_agent",
+          "description": "Dispatch outlook_triage workflow via sub-agent",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute the Outlook Inbox Triage workflow. Read and follow the full SKILL.md at agent_workflows/outlook/SKILL.md. Run all phases: fetch unread emails from both omar@thegent.uk and albakri.omar@gmail.com, classify, move noise to folders, draft replies, present for approval, send approved drafts, log to FalkorDB. Report results when complete."
+          },
+          "output_key": "outlook_triage_result",
+          "timeout_ms": 900000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_outlook_triage_failure",
+          "type": "conditional",
+          "description": "Send Telegram alert if outlook_triage failed",
+          "config": {
+            "condition": "outlook_triage_result.status == 'failed'",
+            "if_true": [
+              {
+                "id": "telegram_outlook_triage_fail",
+                "type": "rube_tool",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "outlook_triage failed: {{outlook_triage_result.error}}. Continuing with next workflow."
+                  }
+                },
+                "on_failure": "skip"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "dispatch_outlook_bd",
+          "type": "sub_agent",
+          "description": "Dispatch outlook_bd workflow via sub-agent (only if in dispatch list)",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute the Outlook BD via Apollo workflow. Read and follow the full SKILL.md at agent_workflows/outlook_BD_via _hubspot/SKILL.md. Run pipeline review, generate prospect lists via Apollo, draft cold outreach, present for approval, send approved emails, log to Apollo. Report results when complete.",
+            "condition": "routing_decision.dispatch_list contains 'outlook_bd'"
+          },
+          "output_key": "outlook_bd_result",
+          "timeout_ms": 900000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_outlook_bd_failure",
+          "type": "conditional",
+          "description": "Send Telegram alert if outlook_bd failed",
+          "config": {
+            "condition": "outlook_bd_result.status == 'failed'",
+            "if_true": [
+              {
+                "id": "telegram_outlook_bd_fail",
+                "type": "rube_tool",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "outlook_bd failed: {{outlook_bd_result.error}}. Continuing with next workflow."
+                  }
+                },
+                "on_failure": "skip"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "dispatch_linkedin_triage",
+          "type": "sub_agent",
+          "description": "Dispatch linkedin_triage workflow via sub-agent (only if in dispatch list)",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute the LinkedIn Inbox Triage workflow. Read and follow the full SKILL.md at agent_workflows/linkedin/SKILL.md. Scrape LinkedIn inbox, classify messages, draft replies, present for approval, send approved replies, log interactions. Report results when complete.",
+            "condition": "routing_decision.dispatch_list contains 'linkedin_triage'"
+          },
+          "output_key": "linkedin_triage_result",
+          "timeout_ms": 900000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_linkedin_triage_failure",
+          "type": "conditional",
+          "description": "Send Telegram alert if linkedin_triage failed",
+          "config": {
+            "condition": "linkedin_triage_result.status == 'failed'",
+            "if_true": [
+              {
+                "id": "telegram_linkedin_triage_fail",
+                "type": "rube_tool",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "linkedin_triage failed: {{linkedin_triage_result.error}}. Continuing with next workflow."
+                  }
+                },
+                "on_failure": "skip"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "dispatch_linkedin_bd",
+          "type": "sub_agent",
+          "description": "Dispatch linkedin_bd workflow via sub-agent (only if in dispatch list). Apollo prospect discovery only.",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute the LinkedIn BD Prospecting workflow. Read and follow the full SKILL.md at agent_workflows/linkedin_BD/SKILL.md. Run prospect search and enrichment via Apollo, draft follow-up messages, log interactions. Report results when complete.",
+            "condition": "routing_decision.dispatch_list contains 'linkedin_bd'"
+          },
+          "output_key": "linkedin_bd_result",
+          "timeout_ms": 900000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_linkedin_bd_failure",
+          "type": "conditional",
+          "description": "Send Telegram alert if linkedin_bd failed",
+          "config": {
+            "condition": "linkedin_bd_result.status == 'failed'",
+            "if_true": [
+              {
+                "id": "telegram_linkedin_bd_fail",
+                "type": "rube_tool",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "linkedin_bd failed: {{linkedin_bd_result.error}}. Continuing with next workflow."
+                  }
+                },
+                "on_failure": "skip"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "outputs": {
+        "outlook_triage_result": "Result from outlook_triage workflow dispatch",
+        "outlook_bd_result": "Result from outlook_bd workflow dispatch",
+        "linkedin_triage_result": "Result from linkedin_triage workflow dispatch",
+        "linkedin_bd_result": "Result from linkedin_bd workflow dispatch"
+      }
+    },
+
+    {
+      "id": "dispatch_content_block",
+      "name": "Step 2b: Dispatch Content Block (Parallel-Safe with BD)",
+      "phase": 2,
+      "description": "Dispatch content_creator workflow. Safe to run in parallel with BD block — no shared APIs or rate limits.",
+      "execution": "sub_agent",
+      "timeout_ms": 1800000,
+      "depends_on": ["register_session"],
+      "condition": "routing_decision.dispatch_list contains 'content_creator'",
+      "actions": [
+        {
+          "id": "dispatch_content_creator",
+          "type": "sub_agent",
+          "description": "Dispatch content_creator workflow via sub-agent",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute the Content Creator workflow. Read and follow the full SKILL.md at agent_workflows/content_creator/SKILL.md. Run end-to-end: topic research, draft content, apply humanizer + quality gates, generate images via Imagen, publish to LinkedIn/X/blog as appropriate. Report results when complete."
+          },
+          "output_key": "content_creator_result",
+          "timeout_ms": 1800000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_content_failure",
+          "type": "conditional",
+          "description": "Send Telegram alert if content_creator failed",
+          "config": {
+            "condition": "content_creator_result.status == 'failed'",
+            "if_true": [
+              {
+                "id": "telegram_content_fail",
+                "type": "rube_tool",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "content_creator failed: {{content_creator_result.error}}. Continuing with remaining workflows."
+                  }
+                },
+                "on_failure": "skip"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "outputs": {
+        "content_creator_result": "Result from content_creator workflow dispatch"
+      }
+    },
+
+    {
+      "id": "dispatch_growth_engine",
+      "name": "Step 2c: Dispatch Growth Engine (RETIRED)",
+      "phase": 2,
+      "description": "RETIRED: growth_engine workflow is no longer active. This step is kept for reference but will never dispatch.",
+      "execution": "sub_agent",
+      "timeout_ms": 1800000,
+      "depends_on": ["register_session", "dispatch_bd_block"],
+      "condition": "routing_decision.dispatch_list contains 'growth_engine'",
+      "gates": {
+        "pre": [
+          {
+            "id": "growth_engine_retired",
+            "type": "hard",
+            "check": "false",
+            "on_fail": "skip",
+            "message": "growth_engine is RETIRED — skipping dispatch."
+          }
+        ]
+      },
+      "actions": [
+        {
+          "id": "dispatch_growth",
+          "type": "sub_agent",
+          "description": "Dispatch growth_engine workflow via sub-agent",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Execute the 10k Followers LinkedIn Growth Engine workflow. Read and follow the full SKILL.md at agent_workflows/10k_followers/linkedin-growth-engine/SKILL.md. Run the full 7-phase daily cycle: research → create → warm-up → publish → warm-down → outreach → analytics. Report results when complete."
+          },
+          "output_key": "growth_engine_result",
+          "timeout_ms": 1800000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "alert_growth_failure",
+          "type": "conditional",
+          "description": "Send Telegram alert if growth_engine failed",
+          "config": {
+            "condition": "growth_engine_result.status == 'failed'",
+            "if_true": [
+              {
+                "id": "telegram_growth_fail",
+                "type": "rube_tool",
+                "config": {
+                  "tool_slug": "TELEGRAM_SEND_MESSAGE",
+                  "arguments": {
+                    "chat_id": "1778273779",
+                    "text": "growth_engine failed: {{growth_engine_result.error}}. Continuing."
+                  }
+                },
+                "on_failure": "skip"
+              }
+            ],
+            "if_false": []
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "outputs": {
+        "growth_engine_result": "Result from growth_engine workflow dispatch"
+      }
+    },
+
+    {
+      "id": "dispatch_daily_report",
+      "name": "Step 2d: Dispatch Daily Report",
+      "phase": 2,
+      "description": "Generate and send the daily report via Telegram. Runs in evening block (18:15) or on explicit request.",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "depends_on": ["register_session"],
+      "condition": "routing_decision.dispatch_list contains 'daily_report'",
+      "actions": [
+        {
+          "id": "generate_daily_report",
+          "type": "cli",
+          "description": "Generate daily report from state manager",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py generate-report --period daily"
+          },
+          "output_key": "daily_report",
+          "timeout_ms": 45000,
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 5000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "send_daily_report",
+          "type": "rube_tool",
+          "description": "Send daily report via Telegram",
+          "config": {
+            "tool_slug": "TELEGRAM_SEND_MESSAGE",
+            "arguments": {
+              "chat_id": "1778273779",
+              "text": "{{daily_report.formatted_text}}"
+            }
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "outputs": {
+        "daily_report": "Formatted daily report text"
+      }
+    },
+
+    {
+      "id": "dispatch_weekly_report",
+      "name": "Step 2e: Dispatch Weekly Report",
+      "phase": 2,
+      "description": "Generate and send the weekly BD report via Telegram. Runs Friday 17:00 or on explicit request.",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "depends_on": ["register_session"],
+      "condition": "routing_decision.dispatch_list contains 'weekly_report'",
+      "actions": [
+        {
+          "id": "generate_weekly_report",
+          "type": "cli",
+          "description": "Generate weekly report from state manager",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py generate-report --period weekly"
+          },
+          "output_key": "weekly_report",
+          "timeout_ms": 45000,
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 5000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "send_weekly_report",
+          "type": "rube_tool",
+          "description": "Send weekly report via Telegram",
+          "config": {
+            "tool_slug": "TELEGRAM_SEND_MESSAGE",
+            "arguments": {
+              "chat_id": "1778273779",
+              "text": "{{weekly_report.formatted_text}}"
+            }
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "outputs": {
+        "weekly_report": "Formatted weekly report text"
+      }
+    },
+
+    {
+      "id": "dispatch_maintenance",
+      "name": "Step 2f: Dispatch Maintenance Block",
+      "phase": 2,
+      "description": "Run Sunday maintenance: archive old interactions, re-seed knowledge, sync backup queue, graph stats. All sequential.",
+      "execution": "sequential",
+      "timeout_ms": 300000,
+      "depends_on": ["register_session"],
+      "condition": "routing_decision.dispatch_list contains 'maintenance'",
+      "actions": [
+        {
+          "id": "archive_old_interactions",
+          "type": "cli",
+          "description": "Archive interactions older than 90 days",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py archive-old --days 90"
+          },
+          "output_key": "archive_result",
+          "timeout_ms": 60000,
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 5000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "reseed_knowledge",
+          "type": "cli",
+          "description": "Re-seed knowledge base from Helios source if files have changed",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py seed-knowledge --source \"C:/Users/OmarAl-Bakri/Helios/knowledge\" --rename \"Helios:TheGent Ops\" --check-modified"
+          },
+          "output_key": "reseed_result",
+          "timeout_ms": 120000,
+          "retry": {
+            "max_attempts": 1,
+            "delay_ms": 10000,
+            "retry_on": ["timeout"]
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "maintenance_sync_backup",
+          "type": "cli",
+          "description": "Sync backup queue (full flush during maintenance window)",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py sync-backup"
+          },
+          "output_key": "maintenance_sync_result",
+          "timeout_ms": 30000,
+          "on_failure": "warn"
+        },
+        {
+          "id": "maintenance_graph_stats",
+          "type": "cli",
+          "description": "Generate graph stats for maintenance report",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py graph-stats"
+          },
+          "output_key": "maintenance_stats",
+          "timeout_ms": 15000,
+          "on_failure": "warn"
+        },
+        {
+          "id": "send_maintenance_report",
+          "type": "rube_tool",
+          "description": "Send maintenance report via Telegram",
+          "config": {
+            "tool_slug": "TELEGRAM_SEND_MESSAGE",
+            "arguments": {
+              "chat_id": "1778273779",
+              "text": "Maintenance Complete\n\nArchived: {{archive_result.archived_count}} interactions (>90 days)\nKnowledge: {{reseed_result.status}}\nSync: {{maintenance_sync_result.synced}} records flushed\nGraph: {{maintenance_stats.total_nodes}} nodes, {{maintenance_stats.total_edges}} edges\n\nSystem healthy. Next block: Monday 08:00."
+            }
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "outputs": {
+        "archive_result": "Number of archived interactions",
+        "reseed_result": "Knowledge re-seed status",
+        "maintenance_sync_result": "Backup sync result",
+        "maintenance_stats": "Graph statistics snapshot"
+      }
+    },
+
+    {
+      "id": "cross_channel_coordination",
+      "name": "Step 3: Cross-Channel Coordination",
+      "phase": 3,
+      "description": "After all workflow dispatches complete, post a STATUS_UPDATE message for all agents summarizing the block results.",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "depends_on": ["dispatch_bd_block", "dispatch_content_block", "dispatch_growth_engine", "dispatch_daily_report", "dispatch_weekly_report", "dispatch_maintenance"],
+      "actions": [
+        {
+          "id": "collect_results",
+          "type": "sub_agent",
+          "description": "Collect and summarize results from all dispatched workflows",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Collect the results from all dispatched workflows and produce a summary JSON:\n{\n  \"block\": \"{{routing_decision.block_name}}\",\n  \"completed\": [list of workflow IDs that succeeded],\n  \"failed\": [list of workflow IDs that failed],\n  \"skipped\": [list of workflow IDs that were skipped],\n  \"metrics\": {\n    \"emails_processed\": N,\n    \"emails_sent\": N,\n    \"linkedin_messages\": N,\n    \"connections_sent\": N,\n    \"content_published\": N,\n    \"follow_ups_created\": N,\n    \"errors\": N\n  }\n}"
+          },
+          "output_key": "block_summary",
+          "on_failure": "warn"
+        },
+        {
+          "id": "post_status_update",
+          "type": "cli",
+          "description": "Post STATUS_UPDATE message for all agents via FalkorDB",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py post-message --from-agent \"orchestrator\" --to-agent \"all\" --type \"STATUS_UPDATE\" --payload '{{block_summary}}'"
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "outputs": {
+        "block_summary": "Summary of all workflow results for this block"
+      }
+    },
+
+    {
+      "id": "block_summary_telegram",
+      "name": "Step 4: Block Summary via Telegram",
+      "phase": 4,
+      "description": "Send comprehensive block summary to Omar via Telegram after all workflows in a block complete.",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["cross_channel_coordination"],
+      "actions": [
+        {
+          "id": "send_block_summary",
+          "type": "rube_tool",
+          "description": "Send block summary via Telegram",
+          "config": {
+            "tool_slug": "TELEGRAM_SEND_MESSAGE",
+            "arguments": {
+              "chat_id": "1778273779",
+              "text": "Orchestrator {{routing_decision.block_name}} Complete\n\nOutlook Triage: {{outlook_triage_result.status || 'skipped'}}\nOutlook BD: {{outlook_bd_result.status || 'skipped'}}\nLinkedIn Triage: {{linkedin_triage_result.status || 'skipped'}}\nLinkedIn BD: {{linkedin_bd_result.status || 'skipped'}}\nContent Creator: {{content_creator_result.status || 'skipped'}}\nGrowth Engine: {{growth_engine_result.status || 'skipped'}}\n\nHealth: {{health.mode}}\nErrors: {{block_summary.metrics.errors || 0}}\nNext block: {{next_block_time}}"
+            }
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "format_validations": [
+        {
+          "field": "telegram_text",
+          "rule": "not_contains",
+          "value": ["@", ".com", "gmail", "outlook", "hotmail"],
+          "on_fail": "abort",
+          "message": "CRITICAL: Telegram summary contains email addresses — must not send confidential info"
+        },
+        {
+          "field": "telegram_text",
+          "rule": "no_prohibited_phrases",
+          "value": ["password", "API key", "token", "secret", "credential", "private key"],
+          "on_fail": "abort",
+          "message": "CRITICAL: Telegram summary contains credentials — must not send"
+        },
+        {
+          "field": "telegram_text",
+          "rule": "max_chars",
+          "value": 4096,
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Truncate message to 4096 characters (Telegram limit)",
+          "message": "Telegram message exceeds 4096 character limit"
+        }
+      ],
+      "gates": {
+        "pre": [
+          {
+            "id": "no_confidential_in_telegram",
+            "type": "hard",
+            "check": "telegram_text does NOT contain email addresses, sender names, deal values, or confidential information",
+            "on_fail": "abort",
+            "message": "CRITICAL: Telegram block summary contains confidential information — must not send"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "log_orchestrator_session_end",
+      "name": "Step 5: Log Session & Cleanup",
+      "phase": 5,
+      "description": "Log the completed orchestrator session to FalkorDB and clean up temp files.",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["block_summary_telegram"],
+      "actions": [
+        {
+          "id": "log_final_session",
+          "type": "cli",
+          "description": "Log final orchestrator session with full metrics",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"orchestrator-{{date}}-{{time}}\" --agent-name \"orchestrator\" --skills-run \"{{block_summary.completed}}\" --contacts-processed {{block_summary.metrics.emails_processed || 0}} --interactions-logged {{block_summary.metrics.emails_sent || 0}} --follow-ups-created {{block_summary.metrics.follow_ups_created || 0}} --summary \"{{routing_decision.block_name}} block complete. Completed: {{block_summary.completed}}. Failed: {{block_summary.failed}}. Errors: {{block_summary.metrics.errors || 0}}\""
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "cleanup_temp",
+          "type": "cli",
+          "description": "Clean up orchestrator temp files (NOT shared-intel)",
+          "config": {
+            "command": "rm -rf /tmp/orchestrator-ops/"
+          },
+          "on_failure": "skip"
+        }
+      ]
+    }
+  ],
+
+  "quality_gates": [
+    {
+      "id": "dispatch_integrity",
+      "type": "hard",
+      "skill": "orchestrator-dispatch-validator",
+      "applies_to": "dispatch_list",
+      "order": 1,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "abort"
+      }
+    },
+    {
+      "id": "apollo_availability",
+      "type": "soft",
+      "skill": "apollo-connectivity-check",
+      "applies_to": "bd_dispatches",
+      "order": 0,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "skip_dependent_steps"
+      }
+    }
+  ],
+
+  "format_rules": {
+    "telegram_block_summary": {
+      "platform": "telegram",
+      "rules": [
+        { "field": "text", "rule": "max_chars", "value": 4096, "on_fail": "auto_fix", "auto_fix_action": "Truncate to 4096 chars", "message": "Telegram message exceeds 4096 character limit" },
+        { "field": "text", "rule": "not_contains", "value": ["@gmail.com", "@outlook.com", "@hotmail.com", "password", "API key", "token"], "on_fail": "abort", "message": "CRITICAL: Telegram message contains confidential info" },
+        { "field": "text", "rule": "no_prohibited_phrases", "value": ["private key", "secret", "credential", "SSN", "account number", "bank details"], "on_fail": "abort", "message": "CRITICAL: Telegram message contains sensitive data" },
+        { "field": "text", "rule": "is_plain_text", "value": true, "on_fail": "auto_fix", "auto_fix_action": "Strip HTML tags", "message": "Telegram messages must be plain text" }
+      ]
+    },
+    "telegram_alert": {
+      "platform": "telegram",
+      "rules": [
+        { "field": "text", "rule": "max_chars", "value": 4096, "on_fail": "auto_fix", "auto_fix_action": "Truncate to 4096 chars", "message": "Alert exceeds Telegram limit" },
+        { "field": "text", "rule": "not_contains", "value": ["@", "password", "key", "token", "secret"], "on_fail": "abort", "message": "Alert contains confidential data" }
+      ]
+    },
+    "report_output": {
+      "platform": "telegram",
+      "rules": [
+        { "field": "text", "rule": "max_chars", "value": 4096, "on_fail": "auto_fix", "auto_fix_action": "Split into multiple messages or truncate", "message": "Report exceeds Telegram limit" },
+        { "field": "text", "rule": "is_plain_text", "value": true, "on_fail": "auto_fix", "auto_fix_action": "Strip formatting", "message": "Report must be plain text for Telegram" },
+        { "field": "text", "rule": "not_contains", "value": ["@gmail.com", "@outlook.com", "password", "API key"], "on_fail": "abort", "message": "Report contains confidential info" }
+      ]
+    }
+  },
+
+  "error_handling": {
+    "on_step_failure": "log_and_continue",
+    "on_connection_failure": {
+      "state_manager": "abort_workflow",
+      "telegram": "warn",
+      "outlook": "skip_dependent_steps",
+      "apollo": "skip_dependent_steps"
+    },
+    "alert_config": {
+      "channel": "telegram",
+      "chat_id": "1778273779",
+      "on_events": ["step_failure", "gate_failure", "rate_limit_breach", "timeout", "workflow_complete", "workflow_abort"]
+    },
+    "max_consecutive_failures": 3
+  },
+
+  "post_completion": {
+    "log_session": {
+      "enabled": true,
+      "command_template": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"orchestrator-{{date}}-{{time}}\" --agent-name \"orchestrator\" --skills-run \"{{block_summary.completed}}\" --contacts-processed {{block_summary.metrics.emails_processed || 0}} --interactions-logged {{block_summary.metrics.emails_sent || 0}} --follow-ups-created {{block_summary.metrics.follow_ups_created || 0}} --summary \"{{summary}}\""
+    },
+    "telegram_summary": {
+      "enabled": true,
+      "chat_id": "1778273779",
+      "template": "Orchestrator {{block_name}} Complete\n\nCompleted: {{block_summary.completed}}\nFailed: {{block_summary.failed}}\nSkipped: {{block_summary.skipped}}\n\nHealth: {{health.mode}}\nErrors: {{block_summary.metrics.errors}}\nNext block: {{next_block_time}}"
+    },
+    "cross_channel_signals": [
+      {
+        "type": "STATUS_UPDATE",
+        "from_agent": "orchestrator",
+        "to_agent": "all",
+        "payload_template": "{\"block\":\"{{block_name}}\",\"completed\":{{block_summary.completed}},\"failed\":{{block_summary.failed}},\"metrics\":{{block_summary.metrics}}}"
+      }
+    ],
+    "cleanup_paths": ["/tmp/orchestrator-ops/"],
+    "preserve_paths": ["/tmp/shared-intel/"]
+  }
+}

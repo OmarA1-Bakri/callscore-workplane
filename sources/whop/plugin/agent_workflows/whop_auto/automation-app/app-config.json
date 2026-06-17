@@ -1,0 +1,20 @@
+{
+  "name": "Hermes Whop Automation",
+  "appType": "b2b_app",
+  "status": "listed",
+  "baseUrl": "https://automation.call-score.com",
+  "dashboardPath": "/dashboard/[companyId]",
+  "discoverPath": "/discover",
+  "experiencePath": "/experiences/[experienceId]",
+  "oauthClientType": "confidential",
+  "redirectUris": [
+    "https://automation.call-score.com/api/auth/whop/callback"
+  ],
+  "supportedAppViewTypes": [
+    "dashboard",
+    "discover",
+    "hub"
+  ],
+  "description": "Whop operations dashboard for creators who manage app infrastructure, commerce setup, checkout configuration, organic growth planning, reporting, and deployment reconciliation from one audited workspace.",
+  "appStoreDescription": "Hermes Whop Automation helps Whop creators and operators manage business workflows from an audited dashboard. Use it to review app infrastructure, commerce setup, checkout configuration, product and plan verification, organic marketing drafts, reporting, and operational reconciliation. The app gives teams a clear install surface, status cards, and safety checks so public publishing, outreach, spend, pricing, and checkout changes stay deliberate and verifiable."
+}

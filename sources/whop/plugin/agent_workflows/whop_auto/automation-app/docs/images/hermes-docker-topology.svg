@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Hermes Docker Runtime</title>
+  <desc id="desc">Always-on VM, mounted workspace, mounted secrets</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfcf6"/>
+      <stop offset="0.56" stop-color="#edf6f1"/>
+      <stop offset="1" stop-color="#fff4df"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12272b"/>
+      <stop offset="1" stop-color="#081316"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#102027" flood-opacity="0.16"/>
+    </filter>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#102027" stroke-opacity="0.045" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="13" markerHeight="13" orient="auto">
+      <path d="M0 0 12 6 0 12Z" fill="#0b9188"/>
+    </marker>
+  </defs>
+  <style>
+    .title { fill: #0b1b1f; font: 900 92px "Segoe UI", Arial, sans-serif; letter-spacing: -3px; }
+    .subtitle { fill: #52696b; font: 650 36px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .kicker { fill: #0b9188; font: 900 25px "Segoe UI", Arial, sans-serif; letter-spacing: 3px; }
+    .tag { fill: #0b9188; font: 900 24px "Segoe UI", Arial, sans-serif; letter-spacing: 1px; }
+    .h { fill: #0b1b1f; font: 900 50px "Segoe UI", Arial, sans-serif; letter-spacing: -1px; }
+    .hd { fill: #f7fffb; font: 900 50px "Segoe UI", Arial, sans-serif; letter-spacing: -1px; }
+    .s { fill: #31484b; font: 800 31px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .sd { fill: #d8ebe7; font: 800 31px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .m { fill: #0b1b1f; font: 900 38px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .md { fill: #f7fffb; font: 900 38px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .tiny { fill: #52696b; font: 800 22px "Segoe UI", Arial, sans-serif; letter-spacing: 1px; }
+    .card { fill: #ffffff; stroke: #d5e1dc; stroke-width: 3; filter: url(#shadow); }
+    .dark { fill: url(#dark); stroke: #25474d; stroke-width: 3; filter: url(#shadow); }
+    .warm { fill: #fff5df; stroke: #e8d2a2; stroke-width: 3; filter: url(#shadow); }
+    .green { fill: #e8f8ef; stroke: #b8dec6; stroke-width: 3; filter: url(#shadow); }
+    .line { stroke: #0b9188; stroke-width: 12; marker-end: url(#arrow); fill: none; stroke-linecap: round; }
+  </style>
+  <rect width="2400" height="1350" fill="url(#paper)"/>
+  <rect width="2400" height="1350" fill="url(#grid)"/>
+  <path d="M1920 180h360M1980 240h300M2035 300h245" stroke="#0b9188" stroke-width="8" stroke-linecap="round" opacity="0.12"/>
+  <path d="M1900 1160h390M1960 1220h330" stroke="#d89824" stroke-width="8" stroke-linecap="round" opacity="0.16"/>
+  <text class="kicker" x="130" y="126">HERMES / WHOP AUTONOMY</text>
+  <text class="title" x="130" y="235">Hermes Docker Runtime</text>
+  <text class="subtitle" x="130" y="296">Always-on VM, mounted workspace, mounted secrets</text>
+  <g data-card="badge">
+    <rect data-card-rect="true" x="1810" y="94" width="420" height="76" rx="38" fill="#e8f8ef" stroke="#b8dec6" stroke-width="3"/>
+    <circle cx="1857" cy="132" r="13" fill="#37b978"/>
+    <text class="tag" x="1894" y="142">NO SECRET DATA</text>
+  </g>
+  
+  <g data-card="card">
+    <rect data-card-rect="true" class="card" x="180" y="515" width="450" height="430" rx="34"/>
+    
+    <rect x="222" y="557" width="366" height="346" fill="none" stroke="#c9d4cf" stroke-width="2" stroke-dasharray="8 8"/>
+    <text class="h" x="250" y="643">Desktop</text>
+    <circle cx="274" cy="720" r="20" fill="#e8f8ef" stroke="#37b978" stroke-width="4"/>
+    <path d="M262 720l10 11 21-28" stroke="#0b9188" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="s" x="318" y="733">Optional</text><circle cx="274" cy="798" r="20" fill="#e8f8ef" stroke="#37b978" stroke-width="4"/>
+    <path d="M262 798l10 11 21-28" stroke="#0b9188" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text class="s" x="318" y="811">Access</text>
+  
+  </g>
+  <path class="line" d="M630 730H860"/>
+  <g data-card="dark">
+    <rect data-card-rect="true" class="dark" x="860" y="430" width="680" height="600" rx="34"/>
+    
+    <text class="hd" x="914" y="550">Hermes VM</text>
+    <rect x="918" y="593" width="564" height="54" rx="27" fill="#e8f8ef"/>
+    <text class="s" x="952" y="630">Container</text><rect x="918" y="671" width="564" height="54" rx="27" fill="#e8f8ef"/>
+    <text class="s" x="952" y="708">Workspace</text><rect x="918" y="749" width="564" height="54" rx="27" fill="#e8f8ef"/>
+    <text class="s" x="952" y="786">Secrets</text>
+  
+  </g>
+  <path class="line" d="M1540 730H1770"/>
+  <g data-card="green">
+    <rect data-card-rect="true" class="green" x="1770" y="515" width="450" height="430" rx="34"/>
+    
+    <text class="h" x="1828" y="637">APIs</text>
+    <rect x="1828" y="705" width="334" height="62" rx="31" fill="#ffffff" stroke="#bddbd0" stroke-width="3"/>
+    <text class="s" x="1866" y="747">Whop</text><rect x="1828" y="781" width="334" height="62" rx="31" fill="#ffffff" stroke="#bddbd0" stroke-width="3"/>
+    <text class="s" x="1866" y="823">Vercel</text><rect x="1828" y="857" width="334" height="62" rx="31" fill="#ffffff" stroke="#bddbd0" stroke-width="3"/>
+    <text class="s" x="1866" y="899">GitHub</text>
+    <rect x="2030" y="755" width="132" height="18" rx="9" fill="#0b9188" opacity="0.9"/>
+    <rect x="2030" y="795" width="102" height="18" rx="9" fill="#37b978" opacity="0.75"/>
+    <rect x="2030" y="835" width="154" height="18" rx="9" fill="#d89824" opacity="0.8"/>
+  
+  </g>
+  
+</svg>

@@ -1,0 +1,34 @@
+services:
+  # Keep MCP stdio attached by using `docker compose --env-file .env.hetzner -f docker-compose.hetzner.yml run --rm -T whop-auto`.
+  # Do not treat this as a detached daemon path with `up -d`; the runtime is meant to stay connected to the caller.
+  whop-auto:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: "${WHOP_AUTO_UID:-1000}:${WHOP_AUTO_GID:-1000}"
+    working_dir: /workspace
+    stdin_open: true
+    tty: false
+    environment:
+      HOME: /home/node
+      WHOP_PIPELINE_HOME: /var/lib/whop-pipeline
+      WHOP_PIPELINE_SECRET_DIR: /var/lib/whop-pipeline/secrets
+      WHOP_PIPELINE_BOOTSTRAP_SECRET_DIR: /run/secrets
+    volumes:
+      - type: bind
+        source: ${WHOP_AUTO_STATE_DIR:-./.runtime/state}
+        target: /var/lib/whop-pipeline
+      - type: bind
+        source: ${WHOP_AUTO_WORKSPACE_DIR:-./workspace}
+        target: /workspace
+    secrets:
+      - source: whop_company_api_key
+        target: d2hvcC9fX2NvbXBhbnlfXy9hcGkta2V5.secret
+      - source: vercel_team_token
+        target: dmVyY2VsL19fdGVhbV9fL3Rva2Vu.secret
+
+secrets:
+  whop_company_api_key:
+    file: ${WHOP_AUTO_SECRET_DIR:-./docker/secrets}/d2hvcC9fX2NvbXBhbnlfXy9hcGkta2V5.secret
+  vercel_team_token:
+    file: ${WHOP_AUTO_SECRET_DIR:-./docker/secrets}/dmVyY2VsL19fdGVhbV9fL3Rva2Vu.secret

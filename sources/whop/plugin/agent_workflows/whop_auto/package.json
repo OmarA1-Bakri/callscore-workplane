@@ -1,0 +1,28 @@
+{
+  "name": "whop-pipeline",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "node --test --import tsx bin/whop-state-mcp/test/run-tests.ts",
+    "start:mcp": "node --import tsx bin/whop-state-mcp/src/index.ts",
+    "build:automation-app": "node scripts/build-automation-app.mjs",
+    "preview:automation-app": "node scripts/serve-automation-app.mjs",
+    "healthcheck": "node scripts/healthcheck.mjs",
+    "upload:automation-app": "node scripts/upload-automation-app-build.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "@napi-rs/keyring": "^1.1.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.6.0"
+  }
+}

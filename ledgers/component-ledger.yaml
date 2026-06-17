@@ -1,0 +1,13 @@
+components:
+  - id: workplane-core
+    status: copied_for_review
+  - id: ml-loop-engineering
+    status: copied_for_review
+  - id: laptop-transcript-lane
+    status: copied_for_review
+  - id: gtm-registry
+    status: copied_for_review
+  - id: canonical-agent-workflows
+    status: copied_for_review
+  - id: commerce-automation
+    status: copied_for_review

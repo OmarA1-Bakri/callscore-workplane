@@ -1,0 +1,6 @@
+{
+  "name": "whop-pipeline",
+  "version": "0.1.0",
+  "description": "Personal automation for Whop app adopt and deploy pipeline",
+  "author": { "name": "Omar Al-Bakri" }
+}

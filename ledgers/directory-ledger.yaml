@@ -1,0 +1,13 @@
+directories:
+  - id: product-control-extract
+    source: /opt/crypto-tuber-ranked
+    destination: sources/product
+    status: copied
+  - id: agent-workflows-extract
+    source: /srv/agents/repos/Claude_Code_Automations/agent_workflows
+    destination: sources/agents/Claude_Code_Automations/agent_workflows
+    status: copied
+  - id: whop-auto-plugin-extract
+    source: /srv/whop-auto/plugin/agent_workflows/whop_auto
+    destination: sources/whop/plugin/agent_workflows/whop_auto
+    status: copied

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "whop-state": {
+      "command": "node",
+      "args": ["--import", "tsx", "./bin/whop-state-mcp/src/index.ts"]
+    },
+    "whop": {
+      "url": "https://mcp.whop.com/sse"
+    },
+    "vercel": {
+      "url": "https://mcp.vercel.com/sse"
+    }
+  }
+}

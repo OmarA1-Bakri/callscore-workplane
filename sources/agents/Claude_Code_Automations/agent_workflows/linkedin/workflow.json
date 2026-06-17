@@ -1,0 +1,982 @@
+{
+  "$schema": "../workflow-schema.json",
+  "id": "linkedin_triage",
+  "name": "LinkedIn Inbox Triage",
+  "version": "2.0.0",
+  "description": "Triages Omar's LinkedIn messaging inbox — processes LinkedIn inbox messages provided by Omar (copy-paste or export), classifies senders (prospect/inbound/recruiter/spam), drafts intelligent replies aimed at booking qualified ASIAPAC meetings, and presents every draft for approval. Replies are sent manually by Omar on LinkedIn.",
+  "channel": "linkedin",
+  "triggers": [
+    "scan LinkedIn", "check LinkedIn messages", "LinkedIn inbox",
+    "run LinkedIn autopilot", "LinkedIn triage", "what's on LinkedIn",
+    "process LinkedIn messages", "read LinkedIn messages", "respond to LinkedIn messages"
+  ],
+
+  "prerequisites": {
+    "connections": [
+      {
+        "name": "apollo",
+        "type": "rube",
+        "required": false,
+        "health_check": "APOLLO_VIEW_API_USAGE_STATS",
+        "on_unavailable": "warn"
+      },
+      {
+        "name": "telegram",
+        "type": "rube",
+        "required": false,
+        "health_check": "TELEGRAM_SEND_MESSAGE",
+        "on_unavailable": "warn"
+      }
+    ],
+    "env_vars": [],
+    "key_ids": {
+      "telegram_chat_id": "1778273779"
+    }
+  },
+
+  "rate_limits": {
+    "linkedin_messages_per_day": {
+      "max": 50,
+      "per": "day",
+      "enforce": "hard",
+      "current_check": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py count-interactions --channel \"linkedin\" --type \"reply\" --direction \"outbound\" --since \"today\"",
+      "on_breach": "abort"
+    },
+    "drafts_per_session": {
+      "max": 20,
+      "per": "session",
+      "enforce": "soft",
+      "on_breach": "warn"
+    }
+  },
+
+  "timeouts": {
+    "workflow_max_ms": 1800000,
+    "step_default_ms": 300000,
+    "api_call_ms": 30000,
+    "approval_wait_ms": 0
+  },
+
+  "shared_references": [
+    { "id": "thegent_company_info", "path": "shared_references/thegent-company-info.md", "load_when": "before_drafting", "required": true },
+    { "id": "persona_routing", "path": "shared_references/persona-routing.md", "load_when": "before_drafting", "required": true },
+    { "id": "cross_channel_intel", "path": "shared_references/cross-channel-intel.md", "load_when": "setup", "required": false },
+    { "id": "compliance_rules", "path": "shared_references/compliance-rules.md", "load_when": "before_drafting", "required": true },
+    { "id": "state_management", "path": "shared_references/state-management.md", "load_when": "setup", "required": false },
+    { "id": "cadence_procedures", "path": "shared_references/cadence-procedures.md", "load_when": "before_drafting", "required": false },
+    { "id": "context7_docs", "path": "shared_references/context7-documentation.md", "load_when": "setup", "required": true }
+  ],
+
+  "steps": [
+    {
+      "id": "context7_review",
+      "name": "Context7 Documentation Review",
+      "phase": 0,
+      "description": "Review FalkorDB Python client docs via Context7 MCP to ensure current API patterns",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "actions": [
+        {
+          "id": "resolve_falkordb",
+          "type": "cli",
+          "description": "Resolve FalkorDB library ID in Context7",
+          "config": {
+            "command": "resolve-library-id(\"FalkorDB\")"
+          },
+          "output_key": "falkordb_library_id",
+          "on_failure": "warn"
+        },
+        {
+          "id": "query_falkordb_docs",
+          "type": "cli",
+          "description": "Query FalkorDB docs for graph query patterns",
+          "config": {
+            "command": "query-docs(\"/falkordb/falkordb-py\", \"graph queries MERGE upsert contact interaction\")"
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "context7_loaded",
+            "type": "soft",
+            "check": "context7.falkordb_docs_loaded == true",
+            "on_fail": "warn",
+            "message": "Context7 docs not fully loaded -- proceeding with cached knowledge"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "health_check",
+      "name": "Health Check",
+      "phase": 0,
+      "description": "Verify state manager and database connectivity",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "actions": [
+        {
+          "id": "run_health_check",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py health-check"
+          },
+          "output_key": "health",
+          "retry": {
+            "max_attempts": 2,
+            "delay_ms": 3000,
+            "retry_on": ["timeout", "connection_error"]
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "not_stateless",
+            "type": "hard",
+            "check": "health.mode != 'stateless'",
+            "on_fail": "abort",
+            "message": "State manager is stateless -- cannot proceed. Send Telegram alert."
+          },
+          {
+            "id": "degraded_warning",
+            "type": "soft",
+            "check": "health.mode == 'normal'",
+            "on_fail": "warn",
+            "message": "State manager is degraded -- SQLite fallback active. Proceeding with caution."
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "register_agent",
+      "name": "Register Agent",
+      "phase": 0,
+      "description": "Register linkedin_triage agent (idempotent, first run only)",
+      "execution": "sequential",
+      "timeout_ms": 10000,
+      "condition": "first_run == true",
+      "actions": [
+        {
+          "id": "register",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py register-agent --name \"linkedin_triage\" --channels \"linkedin\" --capabilities \"inbox_triage,reply_drafting,message_classification\""
+          },
+          "on_failure": "warn"
+        }
+      ]
+    },
+
+    {
+      "id": "pre_session",
+      "name": "Pre-Session State Load",
+      "phase": 0,
+      "description": "Load session state: recently contacted, pending follow-ups, DNC list, agent messages, memories, knowledge",
+      "execution": "sequential",
+      "timeout_ms": 30000,
+      "depends_on": ["health_check"],
+      "actions": [
+        {
+          "id": "pre_session_check",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py pre-session-check --agent \"linkedin_triage\""
+          },
+          "output_key": "session_state",
+          "on_failure": "warn"
+        },
+        {
+          "id": "get_messages",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py get-messages --agent \"linkedin_triage\""
+          },
+          "output_key": "agent_messages",
+          "on_failure": "warn"
+        },
+        {
+          "id": "recall_memories",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py recall --agent \"linkedin_triage\" --limit 20"
+          },
+          "output_key": "memories",
+          "on_failure": "skip"
+        },
+        {
+          "id": "load_knowledge",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py query-knowledge --category \"outreach\" --tags \"linkedin\""
+          },
+          "output_key": "knowledge",
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "setup_workspace",
+      "name": "Setup Workspace",
+      "phase": 0,
+      "description": "Create working directories and check cross-channel shared intel",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "actions": [
+        {
+          "id": "create_dirs",
+          "type": "cli",
+          "config": {
+            "command": "mkdir -p /tmp/linkedin-ops"
+          },
+          "on_failure": "abort_step"
+        },
+        {
+          "id": "read_shared_intel",
+          "type": "read_file",
+          "description": "Check for prospect signals from Outlook agent (backward compat -- FalkorDB post-message is authoritative)",
+          "config": {
+            "file_path": "/tmp/shared-intel/prospect-signals.json"
+          },
+          "output_key": "outlook_signals",
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "inbox_input",
+      "name": "Phase 1: Inbox Input (Manual)",
+      "phase": 1,
+      "description": "Omar provides LinkedIn inbox data (copy-paste, export file, or screenshot). Parse the provided data and build a conversation index with sender names, headlines, message text, timestamps, and LinkedIn URLs.",
+      "execution": "sequential",
+      "timeout_ms": 300000,
+      "depends_on": ["setup_workspace", "pre_session"],
+      "actions": [
+        {
+          "id": "collect_inbox_data",
+          "type": "input",
+          "description": "Paste LinkedIn inbox messages or provide export file",
+          "config": {
+            "prompt": "Paste your LinkedIn inbox messages, provide a CSV/JSON export, or share a screenshot of your inbox.",
+            "input_types": ["text", "file", "image"]
+          },
+          "output_key": "raw_inbox_data",
+          "on_failure": "abort_workflow"
+        },
+        {
+          "id": "parse_inbox_results",
+          "type": "sub_agent",
+          "description": "Parse the provided inbox data into structured conversation index with sender name, headline, message text, timestamp, and LinkedIn URL",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "Parse the LinkedIn inbox data provided by Omar. For each message, extract: sender_name, sender_headline, sender_linkedin_url (if available), message_text, timestamp (if available), conversation_id (if available). Handle multiple formats: raw text paste, CSV export, JSON export, or screenshot text extraction. Return a JSON array of conversation objects. Write results to /tmp/linkedin-ops/inbox-parsed.json."
+          },
+          "output_key": "inbox_parsed",
+          "on_failure": "abort_workflow"
+        },
+        {
+          "id": "check_contacts_graph",
+          "type": "sub_agent",
+          "description": "For each sender in the parsed inbox, check graph state for existing contact info, DNC status, and recent interactions",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "For each conversation in /tmp/linkedin-ops/inbox-parsed.json, run:\npython C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py check-contact --name \"{{sender_name}}\" --linkedin-url \"{{sender_linkedin_url}}\"\nCollect all results. Flag contacts that appear in the pre-session recently_contacted list. Write enriched conversation index to /tmp/linkedin-ops/inbox-enriched.json."
+          },
+          "output_key": "inbox_enriched",
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "inbox_parsed_valid_json",
+            "type": "hard",
+            "check": "json_valid(inbox_parsed)",
+            "on_fail": "abort",
+            "message": "Parsed inbox results are not valid JSON"
+          },
+          {
+            "id": "inbox_parsed_has_messages",
+            "type": "soft",
+            "check": "inbox_parsed.length > 0",
+            "on_fail": "warn",
+            "message": "No messages found in the provided inbox data -- check the input format"
+          },
+          {
+            "id": "inbox_parsed_has_expected_fields",
+            "type": "hard",
+            "check": "inbox_parsed[0].sender_name AND inbox_parsed[0].message_text",
+            "on_fail": "abort",
+            "message": "Parsed inbox results missing required fields (sender_name, message_text)"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "draft_replies",
+      "name": "Phase 2: Draft Replies (Sub-Agent)",
+      "phase": 2,
+      "description": "Sub-agent classifies all conversations, runs dedup checks, and drafts replies for actionable messages",
+      "execution": "sub_agent",
+      "timeout_ms": 300000,
+      "depends_on": ["inbox_input"],
+      "actions": [
+        {
+          "id": "spawn_draft_agent",
+          "type": "sub_agent",
+          "description": "Spawn sub-agent for classification, dedup, and reply drafting",
+          "config": {
+            "subagent_type": "general-purpose",
+            "prompt": "You are the LinkedIn Inbox Triage drafting sub-agent. You have access to all tools.\n\nINPUTS:\n- Inbox data: /tmp/linkedin-ops/inbox-enriched.json\n- Pre-session state: session_state (recently contacted, DNC list, agent messages)\n- Memories and knowledge from pre-session\n- Shared references: thegent-company-info.md, persona-routing.md, compliance-rules.md, cross-channel-intel.md\n\nSTEPS:\n\n1. CLASSIFY each conversation using:\n   - HOT PROSPECT: Target org (bank, central bank, FMI, payment provider in ASIAPAC) engaged meaningfully\n   - WARM INBOUND: Relevant professional who reached out first or connected recently\n   - EXISTING CONTACT: Ongoing relationship with prior exchanges\n   - COLLEAGUE / INTERNAL: TheGent team member (flag, do NOT draft)\n   - RECRUITER: Ignore\n   - SPAM / IRRELEVANT: Ignore\n   Invoke /sentiment-analysis-tool:analyze-sentiment on each message to gauge intent and urgency.\n\n2. PRE-DRAFT DEDUP CHECK for each actionable conversation:\n   python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py check-contact --linkedin-url \"URL\" --name \"Name\"\n   - DO_NOT_CONTACT: skip entirely\n   - CAUTION: flag for Omar review\n   - CLEAR: proceed to draft\n\n3. PULL RELEVANT KNOWLEDGE:\n   python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py query-knowledge --tags \"linkedin,persona_lane_X\"\n\n4. DRAFT REPLIES for actionable conversations:\n   HOT PROSPECT (under 4 sentences):\n   - Acknowledge their message specifically\n   - One line of relevant value using persona lane angle\n   - Propose specific meeting: 'Would [day] work for a 20-minute call?'\n   - Direct, knowledgeable peer tone -- not a salesperson\n   - Invoke /marketing-skills:sales-enablement for meeting booking language\n\n   WARM INBOUND (under 3 sentences):\n   - Thank them for reaching out\n   - One qualifying question\n   - If relevant, suggest brief call\n   - Invoke /discovery-questionnaire:discovery for qualifying questions\n\n   EXISTING CONTACT:\n   - Read full thread context\n   - Respond naturally\n   - If natural opening to meet, suggest it\n   - Match their tone\n\n5. QUALITY PASSES on every draft:\n   - Invoke /humanizer to strip AI patterns\n   - Invoke /writing-clearly-and-concisely for brevity\n   - Invoke /professional-communication for LinkedIn conversational tone\n\n6. FORMAT RULES (HARD -- every draft must comply):\n   - Plain text only (no HTML)\n   - No email-style salutations or sign-offs\n   - No bullet points\n   - No emojis\n   - Conversational tone (more casual than email)\n   - NEVER reveal AI involvement\n   - HOT PROSPECT: under 4 sentences\n   - WARM INBOUND: under 3 sentences\n\n7. WRITE results to /tmp/linkedin-ops/triage-results.json with structure:\n   {\n     \"generated_at\": \"ISO timestamp\",\n     \"total_processed\": N,\n     \"actionable\": [\n       {\n         \"sender_name\": \"...\",\n         \"sender_headline\": \"...\",\n         \"sender_linkedin_url\": \"...\",\n         \"classification\": \"HOT PROSPECT | WARM INBOUND | EXISTING CONTACT\",\n         \"persona_lane\": \"A | B | C | D | E\",\n         \"their_message\": \"max 3 sentence summary\",\n         \"thread_context\": \"brief history or 'First message'\",\n         \"draft_reply\": \"the reply text\",\n         \"confidence\": \"High | Medium | Low\",\n         \"outlook_crossref\": \"any Outlook activity or 'None'\",\n         \"contact_status\": \"CLEAR | CAUTION\",\n         \"sentiment\": \"positive | negative | neutral\",\n         \"notes\": \"...\"\n       }\n     ],\n     \"skipped\": [\n       {\n         \"sender_name\": \"...\",\n         \"classification\": \"RECRUITER | SPAM / IRRELEVANT | COLLEAGUE / INTERNAL\",\n         \"reason\": \"...\"\n       }\n     ],\n     \"dnc_filtered\": [\n       {\n         \"sender_name\": \"...\",\n         \"reason\": \"DO_NOT_CONTACT\"\n       }\n     ]\n   }"
+          },
+          "output_key": "triage_results",
+          "on_failure": "abort_workflow"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "triage_results_file_exists",
+            "type": "hard",
+            "check": "file_exists('/tmp/linkedin-ops/triage-results.json')",
+            "on_fail": "abort",
+            "message": "Draft sub-agent did not produce triage-results.json"
+          },
+          {
+            "id": "triage_results_valid_json",
+            "type": "hard",
+            "check": "json_valid(triage_results)",
+            "on_fail": "abort",
+            "message": "Triage results are not valid JSON"
+          },
+          {
+            "id": "triage_results_has_required_fields",
+            "type": "hard",
+            "check": "triage_results.generated_at AND triage_results.total_processed >= 0 AND triage_results.actionable is array AND triage_results.skipped is array",
+            "on_fail": "abort",
+            "message": "Triage results missing required fields (generated_at, total_processed, actionable, skipped)"
+          }
+        ]
+      },
+      "format_validations": [
+        {
+          "field": "triage_results.actionable[*].classification",
+          "rule": "in_set",
+          "value": ["HOT PROSPECT", "WARM INBOUND", "EXISTING CONTACT"],
+          "on_fail": "warn",
+          "message": "Actionable conversation has unexpected classification"
+        },
+        {
+          "field": "triage_results.actionable[*].persona_lane",
+          "rule": "in_set",
+          "value": ["A", "B", "C", "D", "E"],
+          "on_fail": "warn",
+          "message": "Persona lane must be A-E"
+        },
+        {
+          "field": "triage_results.actionable[*].confidence",
+          "rule": "in_set",
+          "value": ["High", "Medium", "Low"],
+          "on_fail": "warn",
+          "message": "Confidence must be High, Medium, or Low"
+        }
+      ]
+    },
+
+    {
+      "id": "quality_gates_drafts",
+      "name": "Quality Gates: Draft Review",
+      "phase": 2,
+      "description": "Run humanizer, clarity, professional-communication, and sentiment gates on all drafted replies",
+      "execution": "sequential",
+      "timeout_ms": 180000,
+      "depends_on": ["draft_replies"],
+      "condition": "triage_results.actionable.length > 0",
+      "loop": {
+        "over": "triage_results.actionable",
+        "max_iterations": 20,
+        "per_item_timeout_ms": 30000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "humanizer_pass",
+          "type": "skill",
+          "description": "Remove AI writing patterns from draft",
+          "config": {
+            "skill_name": "humanizer"
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "clarity_pass",
+          "type": "skill",
+          "description": "Trim and sharpen prose for clarity and brevity",
+          "config": {
+            "skill_name": "writing-clearly-and-concisely"
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "professional_comm_pass",
+          "type": "skill",
+          "description": "Ensure appropriate LinkedIn conversational tone",
+          "config": {
+            "skill_name": "professional-communication"
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "sentiment_check",
+          "type": "skill",
+          "description": "Verify reply sentiment matches the context (not overly eager, not cold)",
+          "config": {
+            "skill_name": "sentiment-analysis-tool:analyze-sentiment"
+          },
+          "on_failure": "skip"
+        }
+      ],
+      "format_validations": [
+        {
+          "field": "draft.text",
+          "rule": "is_plain_text",
+          "value": true,
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Strip all HTML tags and formatting from reply",
+          "message": "LinkedIn replies must be plain text (no HTML)"
+        },
+        {
+          "field": "draft.text",
+          "rule": "not_contains",
+          "value": ["Dear ", "Hi there,", "Kind regards", "Best regards", "Sincerely", "Yours truly", "Warm regards", "Regards,", "Best,"],
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Remove email-style salutations and sign-offs -- LinkedIn messages are conversational",
+          "message": "LinkedIn messages must not have email-style salutations or sign-offs"
+        },
+        {
+          "field": "draft.text",
+          "rule": "regex_no_match",
+          "value": "^\\s*[-*\\u2022]\\s",
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Convert bullet points to flowing prose sentences",
+          "message": "LinkedIn messages must not contain bullet points"
+        },
+        {
+          "field": "draft.text",
+          "rule": "regex_no_match",
+          "value": "[\\p{Emoji_Presentation}\\p{Extended_Pictographic}]",
+          "on_fail": "auto_fix",
+          "auto_fix_action": "Remove all emojis from the draft",
+          "message": "LinkedIn messages must not contain emojis"
+        },
+        {
+          "field": "draft.text",
+          "rule": "not_contains",
+          "value": ["I hope this message finds you well", "In today's", "It's worth noting", "leverage", "synergy", "paradigm shift", "landscape", "It's important to mention", "I wanted to reach out"],
+          "on_fail": "retry",
+          "auto_fix_action": "Re-run humanizer to remove prohibited corporate/AI phrases",
+          "message": "Draft contains prohibited AI/corporate phrases"
+        },
+        {
+          "field": "draft.text",
+          "rule": "not_contains",
+          "value": ["Claude", "Anthropic", "OpenAI", "GPT", "AI assistant", "language model", "I'm an AI", "AI-generated", "as an AI"],
+          "on_fail": "abort",
+          "message": "CRITICAL: Draft reveals AI involvement -- must not send"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "all_drafts_pass_humanizer",
+            "type": "hard",
+            "check": "all(drafts, humanizer_score >= 0.8)",
+            "on_fail": "retry",
+            "max_retries": 2,
+            "retry_delay_ms": 0,
+            "retry_action": "Re-run humanizer on failing drafts",
+            "message": "One or more drafts still have AI patterns after humanizer",
+            "escalation": {
+              "after_retries": "flag_for_review",
+              "alert_channel": "telegram"
+            }
+          },
+          {
+            "id": "no_ai_reveal_final_check",
+            "type": "hard",
+            "check": "none(drafts, contains_ai_reveal)",
+            "on_fail": "abort",
+            "message": "CRITICAL: Final check found AI reveal in one or more drafts -- aborting"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "hot_prospect_format_check",
+      "name": "HOT PROSPECT Format Validation",
+      "phase": 2,
+      "description": "Enforce HOT PROSPECT-specific format rules: under 4 sentences, proposes meeting",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "depends_on": ["quality_gates_drafts"],
+      "condition": "triage_results.actionable.filter(c => c.classification == 'HOT PROSPECT').length > 0",
+      "loop": {
+        "over": "triage_results.actionable.filter(c => c.classification == 'HOT PROSPECT')",
+        "max_iterations": 20,
+        "per_item_timeout_ms": 10000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "validate_hot_prospect",
+          "type": "conditional",
+          "description": "Validate HOT PROSPECT drafts meet sentence limit and meeting proposal requirement",
+          "config": {
+            "condition": "item.classification == 'HOT PROSPECT'"
+          }
+        }
+      ],
+      "format_validations": [
+        {
+          "field": "draft.text",
+          "rule": "count_sentences",
+          "value": { "max": 4 },
+          "on_fail": "retry",
+          "auto_fix_action": "Trim HOT PROSPECT reply to under 4 sentences while preserving meeting proposal",
+          "message": "HOT PROSPECT reply must be under 4 sentences"
+        },
+        {
+          "field": "draft.text",
+          "rule": "regex_match",
+          "value": "(call|meeting|chat|connect|walk you through|catch up|20.?minute|quick call)",
+          "on_fail": "warn",
+          "message": "HOT PROSPECT reply should propose a meeting or call"
+        }
+      ]
+    },
+
+    {
+      "id": "warm_inbound_format_check",
+      "name": "WARM INBOUND Format Validation",
+      "phase": 2,
+      "description": "Enforce WARM INBOUND-specific format rules: under 3 sentences, includes qualifying question",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "depends_on": ["quality_gates_drafts"],
+      "condition": "triage_results.actionable.filter(c => c.classification == 'WARM INBOUND').length > 0",
+      "loop": {
+        "over": "triage_results.actionable.filter(c => c.classification == 'WARM INBOUND')",
+        "max_iterations": 20,
+        "per_item_timeout_ms": 10000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "validate_warm_inbound",
+          "type": "conditional",
+          "description": "Validate WARM INBOUND drafts meet sentence limit and qualifying question requirement",
+          "config": {
+            "condition": "item.classification == 'WARM INBOUND'"
+          }
+        }
+      ],
+      "format_validations": [
+        {
+          "field": "draft.text",
+          "rule": "count_sentences",
+          "value": { "max": 3 },
+          "on_fail": "retry",
+          "auto_fix_action": "Trim WARM INBOUND reply to under 3 sentences while preserving qualifying question",
+          "message": "WARM INBOUND reply must be under 3 sentences"
+        },
+        {
+          "field": "draft.text",
+          "rule": "regex_match",
+          "value": "\\?",
+          "on_fail": "warn",
+          "message": "WARM INBOUND reply should include a qualifying question"
+        }
+      ]
+    },
+
+    {
+      "id": "dedup_check",
+      "name": "Pre-Approval Dedup Check",
+      "phase": 2,
+      "description": "Final dedup check against FalkorDB graph for DNC status and recent contacts before presenting to Omar",
+      "execution": "sequential",
+      "timeout_ms": 60000,
+      "depends_on": ["draft_replies"],
+      "condition": "triage_results.actionable.length > 0",
+      "loop": {
+        "over": "triage_results.actionable",
+        "max_iterations": 20,
+        "per_item_timeout_ms": 10000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "check_contact",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py check-contact --linkedin-url \"{{item.sender_linkedin_url}}\" --name \"{{item.sender_name}}\""
+          },
+          "output_key": "contact_status"
+        }
+      ],
+      "gates": {
+        "post": [
+          {
+            "id": "dnc_filter",
+            "type": "hard",
+            "check": "contact_status != 'DO_NOT_CONTACT'",
+            "on_fail": "skip",
+            "message": "Contact is on DNC list -- skipping from approval"
+          },
+          {
+            "id": "caution_flag",
+            "type": "soft",
+            "check": "contact_status != 'CAUTION'",
+            "on_fail": "flag_for_review",
+            "message": "Contact flagged CAUTION -- presenting to Omar with warning"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "approval",
+      "name": "Phase 3: Approval",
+      "phase": 3,
+      "description": "Present all drafts to Omar for approval, editing, or skipping. Approved replies must be sent manually by Omar on LinkedIn.",
+      "execution": "sequential",
+      "timeout_ms": 0,
+      "depends_on": ["quality_gates_drafts", "hot_prospect_format_check", "warm_inbound_format_check", "dedup_check"],
+      "condition": "triage_results.actionable.length > 0",
+      "actions": [
+        {
+          "id": "present_drafts",
+          "type": "approval",
+          "description": "Present each draft card to Omar for approval. Approved reply text is for Omar to copy-paste into LinkedIn.",
+          "config": {
+            "approval_prompt": "For each actionable conversation, present:\n---\nSENDER: [Name] -- [Headline]\nCLASSIFICATION: [HOT PROSPECT / WARM INBOUND / EXISTING CONTACT]\nPERSONA LANE: [A: Treasury | B: Payments | C: Partnerships | D: Technical | E: Compliance]\nTHEIR MESSAGE: [Quote or summary -- max 3 sentences]\nTHREAD CONTEXT: [Brief history if relevant, or 'First message']\nDRAFT REPLY: [Proposed response]\nCONFIDENCE: [High / Medium / Low]\nOUTLOOK: [Any related Outlook activity from graph state, or 'None']\nCONTACT STATUS: [CLEAR / CAUTION]\nSENTIMENT: [positive / negative / neutral]\nNOTE: [Any context Omar should know]\n---\n\nAlso present skipped conversations:\nSKIPPED:\n  - [Name] -- RECRUITER\n  - [Name] -- SPAM / IRRELEVANT\n\nDNC FILTERED:\n  - [Name] -- DO_NOT_CONTACT\n\nNOTE: Approved replies must be sent manually by Omar on LinkedIn. Present the approved reply text for Omar to copy-paste."
+          },
+          "output_key": "approval_decisions"
+        }
+      ],
+      "gates": {
+        "pre": [
+          {
+            "id": "drafts_available",
+            "type": "hard",
+            "check": "triage_results.actionable.length > 0",
+            "on_fail": "skip",
+            "message": "No actionable conversations to present -- skipping approval"
+          }
+        ],
+        "post": [
+          {
+            "id": "at_least_one_decision",
+            "type": "soft",
+            "check": "approval_decisions.length > 0",
+            "on_fail": "warn",
+            "message": "Omar skipped all drafts"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "post_send_logging",
+      "name": "Phase 4: Post-Send Logging",
+      "phase": 4,
+      "description": "After Omar confirms replies were sent on LinkedIn, log each to FalkorDB graph, upsert contacts, sync to Apollo CRM, schedule follow-ups, and post cross-channel signals",
+      "execution": "sequential",
+      "timeout_ms": 180000,
+      "depends_on": ["approval"],
+      "condition": "approval_decisions.approved.length > 0",
+      "loop": {
+        "over": "approval_decisions.approved",
+        "max_iterations": 20,
+        "per_item_timeout_ms": 30000,
+        "continue_on_item_failure": true
+      },
+      "actions": [
+        {
+          "id": "log_interaction",
+          "type": "cli",
+          "description": "Log interaction to FalkorDB graph",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-interaction --linkedin-url \"{{item.sender_linkedin_url}}\" --channel \"linkedin\" --type \"reply\" --direction \"outbound\" --summary \"{{item.summary}}\" --agent-name \"linkedin_triage\" --draft-approved"
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "upsert_contact",
+          "type": "cli",
+          "description": "Upsert contact in graph with LinkedIn data enrichment",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py upsert-contact --linkedin-url \"{{item.sender_linkedin_url}}\" --name \"{{item.sender_name}}\" --title \"{{item.sender_headline}}\" --company-name \"{{item.company}}\" --persona-lane \"{{item.persona_lane}}\""
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "apollo_sync",
+          "type": "rube_tool",
+          "description": "Sync contact to Apollo CRM for this LinkedIn interaction",
+          "config": {
+            "tool_slug": "APOLLO_CREATE_CONTACT",
+            "arguments": {
+              "first_name": "{{item.first_name}}",
+              "last_name": "{{item.last_name}}",
+              "organization_name": "{{item.company}}",
+              "title": "{{item.sender_headline}}",
+              "label_names": ["TheGent-LinkedIn-Triage"]
+            }
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "create_follow_up",
+          "type": "cli",
+          "description": "Schedule follow-up for this contact",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py create-follow-up --linkedin-url \"{{item.sender_linkedin_url}}\" --due-date \"{{item.follow_up_date}}\" --type \"linkedin_follow_up\" --description \"Follow up on LinkedIn reply to {{item.sender_name}}\""
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "cross_channel_signal",
+          "type": "cli",
+          "description": "Post prospect signal for Outlook agent (hot prospects only)",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py post-message --from-agent \"linkedin_triage\" --to-agent \"outlook_triage\" --type \"PROSPECT_SIGNAL\" --payload '{\"contact_linkedin\":\"{{item.sender_linkedin_url}}\",\"signal\":\"Hot prospect on LinkedIn, coordinate email follow-up\"}'"
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "remember_learnings",
+          "type": "cli",
+          "description": "Store notable learnings about this contact for future sessions",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py remember --key \"linkedin_contact_{{item.sender_name}}\" --content \"{{item.learning}}\" --tags \"contact,linkedin\" --agent \"linkedin_triage\" --contact \"{{item.sender_name}}\""
+          },
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "write_shared_intel",
+      "name": "Write Shared Intel",
+      "phase": 4,
+      "description": "Write prospect signals to shared-intel for Outlook agent (DEPRECATED -- FalkorDB post-message is authoritative)",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["post_send_logging"],
+      "actions": [
+        {
+          "id": "write_intel_file",
+          "type": "write_file",
+          "description": "Write prospect signals JSON (backward compat only)",
+          "config": {
+            "file_path": "/tmp/shared-intel/prospect-signals.json"
+          },
+          "on_failure": "skip"
+        }
+      ]
+    },
+
+    {
+      "id": "telegram_summary",
+      "name": "Telegram Alert",
+      "phase": 4,
+      "description": "Send triage summary via Telegram -- NEVER include message content or sender names",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["approval"],
+      "actions": [
+        {
+          "id": "send_telegram",
+          "type": "rube_tool",
+          "config": {
+            "tool_slug": "TELEGRAM_SEND_MESSAGE",
+            "arguments": {
+              "chat_id": "1778273779",
+              "text": "LinkedIn Inbox Triage Complete\n\nActionable: {{counts.actionable}}\nSkipped: {{counts.skipped}}\nReplies drafted: {{counts.drafted}}\nReplies approved: {{counts.approved}}\n\nReady in Cowork."
+            }
+          },
+          "on_failure": "warn"
+        }
+      ],
+      "gates": {
+        "pre": [
+          {
+            "id": "no_confidential_in_telegram",
+            "type": "hard",
+            "check": "telegram_text does NOT contain sender names, message content, LinkedIn URLs, or confidential info",
+            "on_fail": "abort",
+            "message": "CRITICAL: Telegram message contains confidential information -- must not send"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "log_session",
+      "name": "Log Session & Cleanup",
+      "phase": 4,
+      "description": "Log session to state manager and clean up temp files",
+      "execution": "sequential",
+      "timeout_ms": 15000,
+      "depends_on": ["telegram_summary", "write_shared_intel"],
+      "actions": [
+        {
+          "id": "log_session_cmd",
+          "type": "cli",
+          "config": {
+            "command": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"linkedin-triage-{{date}}-{{time}}\" --agent-name \"linkedin_triage\" --skills-run \"inbox_triage\" --contacts-processed {{counts.total}} --interactions-logged {{counts.sent}} --follow-ups-created {{counts.follow_ups}} --summary \"Processed {{counts.total}} LinkedIn messages, drafted {{counts.drafted}} replies, approved {{counts.approved}}\""
+          },
+          "on_failure": "warn"
+        },
+        {
+          "id": "display_summary",
+          "type": "cli",
+          "description": "Display final session summary to console",
+          "config": {
+            "command": "echo '=== LINKEDIN INBOX TRIAGE COMPLETE ===\nTime: {{timestamp}}\nTotal messages processed: {{counts.total}}\n\nACTIONABLE:\n  - HOT PROSPECT: {{counts.hot_prospect}}\n  - WARM INBOUND: {{counts.warm_inbound}}\n  - EXISTING CONTACT: {{counts.existing_contact}}\n\nSKIPPED:\n  - RECRUITER: {{counts.recruiter}}\n  - SPAM / IRRELEVANT: {{counts.spam}}\n\nReplies drafted: {{counts.drafted}}\nReplies approved: {{counts.approved}}\n\nCROSS-CHANNEL:\n  - Outlook signals consumed: {{counts.outlook_signals_consumed}}\n  - Prospect signals posted for Outlook: {{counts.prospect_signals_posted}}\n==='"
+          },
+          "on_failure": "skip"
+        },
+        {
+          "id": "cleanup",
+          "type": "cli",
+          "description": "Remove temp working directory (NOT shared-intel)",
+          "config": {
+            "command": "rm -rf /tmp/linkedin-ops/"
+          },
+          "on_failure": "skip"
+        }
+      ]
+    }
+  ],
+
+  "quality_gates": [
+    {
+      "id": "humanizer",
+      "type": "hard",
+      "skill": "humanizer",
+      "applies_to": "all_drafts",
+      "order": 1,
+      "retry": {
+        "max_attempts": 2,
+        "on_exhausted": "flag_for_review"
+      }
+    },
+    {
+      "id": "clarity",
+      "type": "hard",
+      "skill": "writing-clearly-and-concisely",
+      "applies_to": "all_drafts",
+      "order": 2,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "flag_for_review"
+      }
+    },
+    {
+      "id": "professional_communication",
+      "type": "soft",
+      "skill": "professional-communication",
+      "applies_to": "all_drafts",
+      "order": 3,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "warn"
+      }
+    },
+    {
+      "id": "sentiment_analysis",
+      "type": "soft",
+      "skill": "sentiment-analysis-tool:analyze-sentiment",
+      "applies_to": "inbound_messages",
+      "order": 0,
+      "retry": {
+        "max_attempts": 1,
+        "on_exhausted": "skip"
+      }
+    }
+  ],
+
+  "format_rules": {
+    "linkedin_reply": {
+      "platform": "linkedin",
+      "rules": [
+        { "field": "text", "rule": "is_plain_text", "value": true, "on_fail": "auto_fix", "auto_fix_action": "Strip all HTML tags and formatting", "message": "LinkedIn replies must be plain text (no HTML)" },
+        { "field": "text", "rule": "regex_no_match", "value": "^\\s*[-*\\u2022]\\s", "on_fail": "auto_fix", "auto_fix_action": "Convert bullet points to flowing prose", "message": "LinkedIn messages must not contain bullet points" },
+        { "field": "text", "rule": "regex_no_match", "value": "[\\p{Emoji_Presentation}\\p{Extended_Pictographic}]", "on_fail": "auto_fix", "auto_fix_action": "Remove all emojis", "message": "LinkedIn messages must not contain emojis" },
+        { "field": "text", "rule": "not_contains", "value": ["Dear ", "Hi there,", "Kind regards", "Best regards", "Sincerely", "Yours truly", "Warm regards", "Regards,", "Best,"], "on_fail": "auto_fix", "auto_fix_action": "Remove email-style salutations and sign-offs -- LinkedIn is conversational", "message": "No email-style salutations or sign-offs on LinkedIn" },
+        { "field": "text", "rule": "no_prohibited_phrases", "value": ["I hope this message finds you well", "In today's", "It's worth noting", "leverage", "synergy", "paradigm shift", "landscape", "It's important to mention", "I wanted to reach out"], "on_fail": "retry", "message": "Contains AI/corporate slop phrases" },
+        { "field": "text", "rule": "no_prohibited_phrases", "value": ["Claude", "Anthropic", "OpenAI", "GPT", "AI assistant", "language model", "I'm an AI", "AI-generated", "as an AI"], "on_fail": "abort", "message": "CRITICAL: Reveals AI involvement -- must never send" }
+      ]
+    },
+    "hot_prospect_reply": {
+      "platform": "linkedin",
+      "rules": [
+        { "field": "text", "rule": "count_sentences", "value": { "max": 4 }, "on_fail": "retry", "auto_fix_action": "Trim to under 4 sentences while preserving meeting proposal", "message": "HOT PROSPECT reply must be under 4 sentences" },
+        { "field": "text", "rule": "regex_match", "value": "(call|meeting|chat|connect|walk you through|catch up|20.?minute|quick call)", "on_fail": "warn", "message": "HOT PROSPECT reply should propose a meeting" }
+      ]
+    },
+    "warm_inbound_reply": {
+      "platform": "linkedin",
+      "rules": [
+        { "field": "text", "rule": "count_sentences", "value": { "max": 3 }, "on_fail": "retry", "auto_fix_action": "Trim to under 3 sentences while preserving qualifying question", "message": "WARM INBOUND reply must be under 3 sentences" },
+        { "field": "text", "rule": "regex_match", "value": "\\?", "on_fail": "warn", "message": "WARM INBOUND reply should include a qualifying question" }
+      ]
+    }
+  },
+
+  "error_handling": {
+    "on_step_failure": "log_and_continue",
+    "on_connection_failure": {
+      "apollo": "warn",
+      "telegram": "skip_dependent_steps"
+    },
+    "alert_config": {
+      "channel": "telegram",
+      "chat_id": "1778273779",
+      "on_events": ["gate_failure", "rate_limit_breach", "workflow_abort"]
+    },
+    "max_consecutive_failures": 3
+  },
+
+  "post_completion": {
+    "log_session": {
+      "enabled": true,
+      "command_template": "python C:/Users/OmarAl-Bakri/Claude_Code_Automations/scripts/state_manager.py log-session --session-id \"linkedin-triage-{{date}}-{{time}}\" --agent-name \"linkedin_triage\" --skills-run \"inbox_triage\" --contacts-processed {{counts.total}} --interactions-logged {{counts.sent}} --follow-ups-created {{counts.follow_ups}} --summary \"{{summary}}\""
+    },
+    "telegram_summary": {
+      "enabled": true,
+      "chat_id": "1778273779",
+      "template": "LinkedIn Inbox Triage Complete\n\nActionable: {{counts.actionable}}\nSkipped: {{counts.skipped}}\nReplies drafted: {{counts.drafted}}\nReplies approved: {{counts.approved}}\n\nReady in Cowork."
+    },
+    "cross_channel_signals": [
+      {
+        "type": "PROSPECT_SIGNAL",
+        "from_agent": "linkedin_triage",
+        "to_agent": "outlook_triage",
+        "payload_template": "{\"contact_linkedin\":\"{{linkedin_url}}\",\"signal\":\"Hot prospect on LinkedIn, coordinate email follow-up\"}"
+      }
+    ],
+    "cleanup_paths": ["/tmp/linkedin-ops/"],
+    "preserve_paths": ["/tmp/shared-intel/"]
+  }
+}

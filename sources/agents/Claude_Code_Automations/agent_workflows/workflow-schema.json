@@ -1,0 +1,429 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thegent.uk/schemas/workflow-v1.json",
+  "title": "TheGent Agent Workflow Definition",
+  "description": "Machine-readable workflow definition with hard gates, rate limits, timeouts, format validations, and iterative retry loops. Each workflow JSON replaces the prose execution instructions in SKILL.md.",
+  "type": "object",
+  "required": ["id", "name", "version", "description", "channel", "prerequisites", "timeouts", "steps", "error_handling", "post_completion"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique workflow identifier (snake_case)",
+      "pattern": "^[a-z][a-z0-9_]+$"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable workflow name"
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this workflow definition",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string",
+      "description": "What this workflow does (1-2 sentences)"
+    },
+    "channel": {
+      "type": "string",
+      "enum": ["email", "linkedin", "multi_platform", "orchestrator"],
+      "description": "Primary communication channel"
+    },
+    "triggers": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Phrases that trigger this workflow (used by orchestrator for intent routing)"
+    },
+    "prerequisites": { "$ref": "#/$defs/prerequisites" },
+    "rate_limits": { "$ref": "#/$defs/rate_limits" },
+    "timeouts": { "$ref": "#/$defs/timeouts" },
+    "shared_references": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/shared_reference" },
+      "description": "Reference files to load for domain context"
+    },
+    "steps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/step" },
+      "description": "Ordered array of execution steps"
+    },
+    "quality_gates": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/quality_gate" },
+      "description": "Global quality gates applied to all drafts/content"
+    },
+    "format_rules": {
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/format_rule_set" },
+      "description": "Platform-specific format validation rules keyed by content type"
+    },
+    "error_handling": { "$ref": "#/$defs/error_handling" },
+    "post_completion": { "$ref": "#/$defs/post_completion" }
+  },
+
+  "$defs": {
+    "prerequisites": {
+      "type": "object",
+      "required": ["connections"],
+      "properties": {
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "type", "required"],
+            "properties": {
+              "name": { "type": "string", "description": "Connection name (e.g., 'outlook', 'apollo')" },
+              "type": { "type": "string", "enum": ["rube", "direct_api", "local"], "description": "How this tool is accessed" },
+              "required": { "type": "boolean", "description": "If true, workflow aborts when connection is down" },
+              "health_check": { "type": "string", "description": "Tool slug or command to verify connection is alive" },
+              "on_unavailable": { "type": "string", "enum": ["abort", "skip_dependent_steps", "warn"], "description": "Action when connection is down" }
+            }
+          }
+        },
+        "env_vars": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Required environment variables (checked at startup)"
+        },
+        "apollo_ids": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Apollo configuration IDs keyed by purpose"
+        },
+        "key_ids": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Static IDs (Apollo owner, pipeline, Telegram chat_id, etc.)"
+        }
+      }
+    },
+
+    "rate_limits": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["max", "per", "enforce"],
+        "properties": {
+          "max": { "type": "integer", "description": "Maximum allowed count" },
+          "per": { "type": "string", "enum": ["call", "step", "session", "day", "week"], "description": "Rate limit window" },
+          "enforce": { "type": "string", "enum": ["hard", "soft"], "description": "Hard = abort on breach, Soft = warn and continue" },
+          "current_check": { "type": "string", "description": "CLI command or tool to check current usage against limit" },
+          "on_breach": { "type": "string", "enum": ["abort", "warn", "throttle", "skip_remaining"], "description": "Action when limit is reached" }
+        }
+      },
+      "description": "Rate limits keyed by resource name"
+    },
+
+    "timeouts": {
+      "type": "object",
+      "required": ["workflow_max_ms", "step_default_ms"],
+      "properties": {
+        "workflow_max_ms": { "type": "integer", "description": "Maximum total workflow duration in milliseconds" },
+        "step_default_ms": { "type": "integer", "description": "Default timeout per step (overridden by step-level timeout_ms)" },
+        "api_call_ms": { "type": "integer", "description": "Default timeout for individual API/tool calls" },
+        "apollo_poll_ms": { "type": "integer", "description": "Timeout for Apollo API call cycles" },
+        "approval_wait_ms": { "type": "integer", "description": "Timeout for human approval steps (0 = no timeout)" }
+      }
+    },
+
+    "shared_reference": {
+      "type": "object",
+      "required": ["id", "path"],
+      "properties": {
+        "id": { "type": "string", "description": "Reference identifier for cross-referencing" },
+        "path": { "type": "string", "description": "Relative path from project root" },
+        "load_when": { "type": "string", "description": "When to load this reference (e.g., 'before_drafting', 'setup', 'always')" },
+        "required": { "type": "boolean", "default": false }
+      }
+    },
+
+    "step": {
+      "type": "object",
+      "required": ["id", "name", "phase", "actions"],
+      "properties": {
+        "id": { "type": "string", "description": "Unique step identifier within this workflow" },
+        "name": { "type": "string", "description": "Human-readable step name" },
+        "phase": { "type": "integer", "description": "Phase number (for grouping and display)" },
+        "description": { "type": "string" },
+        "execution": {
+          "type": "string",
+          "enum": ["sequential", "parallel", "sub_agent"],
+          "default": "sequential",
+          "description": "How this step runs relative to its siblings"
+        },
+        "timeout_ms": { "type": "integer", "description": "Step-level timeout (overrides step_default_ms)" },
+        "depends_on": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Step IDs that must complete before this step starts"
+        },
+        "condition": {
+          "type": "string",
+          "description": "JSONPath expression — step only runs if this evaluates to true"
+        },
+        "gates": {
+          "type": "object",
+          "properties": {
+            "pre": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/gate" },
+              "description": "Gates checked BEFORE step actions execute"
+            },
+            "post": {
+              "type": "array",
+              "items": { "$ref": "#/$defs/gate" },
+              "description": "Gates checked AFTER step actions complete"
+            }
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/action" },
+          "description": "Ordered list of actions to perform in this step"
+        },
+        "format_validations": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/format_validation" },
+          "description": "Format checks applied to this step's outputs"
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "Named outputs this step produces (key = name, value = description)"
+        },
+        "loop": { "$ref": "#/$defs/loop_config" }
+      }
+    },
+
+    "action": {
+      "type": "object",
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string", "description": "Unique action identifier within this step" },
+        "type": {
+          "type": "string",
+          "enum": ["cli", "rube_tool", "skill", "read_file", "write_file", "sub_agent", "approval", "conditional"],
+          "description": "Type of action to perform"
+        },
+        "description": { "type": "string" },
+        "config": {
+          "type": "object",
+          "description": "Type-specific configuration",
+          "properties": {
+            "command": { "type": "string", "description": "For cli type: the shell command to execute" },
+            "tool_slug": { "type": "string", "description": "For rube_tool type: the Rube tool slug" },
+            "arguments": { "type": "object", "description": "For rube_tool type: tool arguments (supports {{template}} vars)" },
+            "skill_name": { "type": "string", "description": "For skill type: skill identifier to invoke" },
+            "file_path": { "type": "string", "description": "For read_file/write_file: target path" },
+            "prompt": { "type": "string", "description": "For sub_agent type: the sub-agent prompt" },
+            "subagent_type": { "type": "string", "description": "For sub_agent type: agent type to spawn" },
+            "approval_prompt": { "type": "string", "description": "For approval type: what to present to user" },
+            "condition": { "type": "string", "description": "For conditional type: expression to evaluate" },
+            "if_true": { "type": "array", "items": { "$ref": "#/$defs/action" } },
+            "if_false": { "type": "array", "items": { "$ref": "#/$defs/action" } }
+          }
+        },
+        "retry": {
+          "type": "object",
+          "properties": {
+            "max_attempts": { "type": "integer", "default": 1, "description": "Max retry attempts (1 = no retry)" },
+            "delay_ms": { "type": "integer", "default": 1000, "description": "Delay between retries" },
+            "backoff": { "type": "string", "enum": ["none", "linear", "exponential"], "default": "none" },
+            "retry_on": { "type": "array", "items": { "type": "string" }, "description": "Error types that trigger retry (e.g., 'timeout', 'connection_error', 'rate_limit')" }
+          }
+        },
+        "timeout_ms": { "type": "integer", "description": "Action-level timeout" },
+        "output_key": { "type": "string", "description": "Store this action's result under this key for downstream reference" },
+        "on_failure": { "type": "string", "enum": ["abort_step", "abort_workflow", "skip", "warn", "retry"], "default": "abort_step" }
+      }
+    },
+
+    "gate": {
+      "type": "object",
+      "required": ["id", "type", "check", "on_fail"],
+      "properties": {
+        "id": { "type": "string", "description": "Unique gate identifier" },
+        "type": {
+          "type": "string",
+          "enum": ["hard", "soft", "approval"],
+          "description": "Hard = blocks on fail, Soft = warns, Approval = requires human sign-off"
+        },
+        "check": { "type": "string", "description": "Expression or condition to evaluate (e.g., 'health.mode != stateless', 'draft.char_count <= 300')" },
+        "on_fail": {
+          "type": "string",
+          "enum": ["abort", "warn", "retry", "skip", "ask_user", "flag_for_review"],
+          "description": "Action when gate check fails"
+        },
+        "message": { "type": "string", "description": "Human-readable message on gate failure" },
+        "max_retries": { "type": "integer", "default": 0, "description": "For retry on_fail: max number of retry iterations" },
+        "retry_delay_ms": { "type": "integer", "default": 2000, "description": "Delay between retry attempts" },
+        "retry_action": { "type": "string", "description": "Action to run before each retry (e.g., 're-run humanizer', 'trim content')" },
+        "escalation": {
+          "type": "object",
+          "properties": {
+            "after_retries": { "type": "string", "enum": ["abort", "ask_user", "flag_for_review"], "description": "What to do after all retries exhausted" },
+            "alert_channel": { "type": "string", "description": "Where to send escalation (e.g., 'telegram')" }
+          }
+        }
+      }
+    },
+
+    "format_validation": {
+      "type": "object",
+      "required": ["field", "rule", "on_fail"],
+      "properties": {
+        "field": { "type": "string", "description": "Field or output to validate (e.g., 'draft.text', 'image.dimensions')" },
+        "rule": {
+          "type": "string",
+          "enum": [
+            "max_length", "min_length", "exact_length",
+            "max_chars", "min_chars",
+            "regex_match", "regex_no_match",
+            "equals", "not_equals",
+            "contains", "not_contains",
+            "in_set", "not_in_set",
+            "image_dimensions", "image_aspect_ratio", "image_max_size_bytes",
+            "is_html", "is_plain_text",
+            "json_valid", "json_schema",
+            "count_sentences", "count_words",
+            "no_prohibited_phrases"
+          ],
+          "description": "Validation rule type"
+        },
+        "value": {
+          "description": "Rule parameter — type depends on rule (number for max_length, string for regex, array for prohibited phrases, etc.)"
+        },
+        "on_fail": {
+          "type": "string",
+          "enum": ["abort", "warn", "retry", "auto_fix", "ask_user"],
+          "description": "Action on validation failure"
+        },
+        "auto_fix_action": { "type": "string", "description": "For auto_fix on_fail: action to automatically correct the issue" },
+        "message": { "type": "string", "description": "Human-readable error message" }
+      }
+    },
+
+    "quality_gate": {
+      "type": "object",
+      "required": ["id", "type", "skill", "applies_to"],
+      "properties": {
+        "id": { "type": "string" },
+        "type": { "type": "string", "enum": ["hard", "soft"] },
+        "skill": { "type": "string", "description": "Skill to invoke for this quality check" },
+        "applies_to": { "type": "string", "description": "What content this gate applies to (e.g., 'all_drafts', 'linkedin_posts', 'emails')" },
+        "order": { "type": "integer", "description": "Execution order (lower = first)" },
+        "retry": {
+          "type": "object",
+          "properties": {
+            "max_attempts": { "type": "integer", "default": 2 },
+            "on_exhausted": { "type": "string", "enum": ["abort", "flag_for_review", "ask_user"] }
+          }
+        }
+      }
+    },
+
+    "format_rule_set": {
+      "type": "object",
+      "description": "A set of format rules for a specific content type",
+      "properties": {
+        "platform": { "type": "string" },
+        "rules": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/format_validation" }
+        }
+      }
+    },
+
+    "loop_config": {
+      "type": "object",
+      "description": "Configuration for iterative processing loops (e.g., process each email, each prospect)",
+      "required": ["over", "max_iterations"],
+      "properties": {
+        "over": { "type": "string", "description": "Expression yielding the collection to iterate over (e.g., 'actionable_emails', 'qualified_prospects')" },
+        "max_iterations": { "type": "integer", "description": "Hard cap on iterations (prevents runaway loops)" },
+        "per_item_timeout_ms": { "type": "integer", "description": "Timeout per iteration" },
+        "continue_on_item_failure": { "type": "boolean", "default": true, "description": "If true, skip failed items and continue" },
+        "batch_size": { "type": "integer", "description": "Process items in batches of this size" }
+      }
+    },
+
+    "error_handling": {
+      "type": "object",
+      "required": ["on_step_failure"],
+      "properties": {
+        "on_step_failure": {
+          "type": "string",
+          "enum": ["abort_workflow", "log_and_continue", "retry_step", "ask_user"],
+          "description": "Default behavior when a step fails"
+        },
+        "on_connection_failure": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["abort_workflow", "skip_dependent_steps", "warn", "retry"]
+          },
+          "description": "Per-connection failure behavior (keyed by connection name)"
+        },
+        "alert_config": {
+          "type": "object",
+          "properties": {
+            "channel": { "type": "string", "enum": ["telegram", "email", "none"] },
+            "chat_id": { "type": "string" },
+            "on_events": {
+              "type": "array",
+              "items": { "type": "string", "enum": ["step_failure", "gate_failure", "rate_limit_breach", "timeout", "workflow_complete", "workflow_abort"] }
+            }
+          }
+        },
+        "max_consecutive_failures": {
+          "type": "integer",
+          "default": 3,
+          "description": "Abort workflow after this many consecutive step failures"
+        }
+      }
+    },
+
+    "post_completion": {
+      "type": "object",
+      "properties": {
+        "log_session": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "command_template": { "type": "string", "description": "CLI command template for session logging" }
+          }
+        },
+        "telegram_summary": {
+          "type": "object",
+          "properties": {
+            "enabled": { "type": "boolean", "default": true },
+            "chat_id": { "type": "string" },
+            "template": { "type": "string", "description": "Message template with {{placeholders}}" }
+          }
+        },
+        "cross_channel_signals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": { "type": "string" },
+              "from_agent": { "type": "string" },
+              "to_agent": { "type": "string" },
+              "payload_template": { "type": "string" }
+            }
+          }
+        },
+        "cleanup_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Temp directories to delete after completion"
+        },
+        "preserve_paths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Directories to keep for cross-workflow use"
+        }
+      }
+    }
+  }
+}

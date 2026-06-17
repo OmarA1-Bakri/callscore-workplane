@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1350" role="img" aria-labelledby="title desc">
+  <title id="title">Consent and Risk Model</title>
+  <desc id="desc">Autonomous, gated, and blocked action classes</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbfcf6"/>
+      <stop offset="0.56" stop-color="#edf6f1"/>
+      <stop offset="1" stop-color="#fff4df"/>
+    </linearGradient>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12272b"/>
+      <stop offset="1" stop-color="#081316"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="24" stdDeviation="22" flood-color="#102027" flood-opacity="0.16"/>
+    </filter>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#102027" stroke-opacity="0.045" stroke-width="1.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 12 12" refX="10" refY="6" markerWidth="13" markerHeight="13" orient="auto">
+      <path d="M0 0 12 6 0 12Z" fill="#0b9188"/>
+    </marker>
+  </defs>
+  <style>
+    .title { fill: #0b1b1f; font: 900 92px "Segoe UI", Arial, sans-serif; letter-spacing: -3px; }
+    .subtitle { fill: #52696b; font: 650 36px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .kicker { fill: #0b9188; font: 900 25px "Segoe UI", Arial, sans-serif; letter-spacing: 3px; }
+    .tag { fill: #0b9188; font: 900 24px "Segoe UI", Arial, sans-serif; letter-spacing: 1px; }
+    .h { fill: #0b1b1f; font: 900 50px "Segoe UI", Arial, sans-serif; letter-spacing: -1px; }
+    .hd { fill: #f7fffb; font: 900 50px "Segoe UI", Arial, sans-serif; letter-spacing: -1px; }
+    .s { fill: #31484b; font: 800 31px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .sd { fill: #d8ebe7; font: 800 31px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .m { fill: #0b1b1f; font: 900 38px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .md { fill: #f7fffb; font: 900 38px "Segoe UI", Arial, sans-serif; letter-spacing: 0; }
+    .tiny { fill: #52696b; font: 800 22px "Segoe UI", Arial, sans-serif; letter-spacing: 1px; }
+    .card { fill: #ffffff; stroke: #d5e1dc; stroke-width: 3; filter: url(#shadow); }
+    .dark { fill: url(#dark); stroke: #25474d; stroke-width: 3; filter: url(#shadow); }
+    .warm { fill: #fff5df; stroke: #e8d2a2; stroke-width: 3; filter: url(#shadow); }
+    .green { fill: #e8f8ef; stroke: #b8dec6; stroke-width: 3; filter: url(#shadow); }
+    .line { stroke: #0b9188; stroke-width: 12; marker-end: url(#arrow); fill: none; stroke-linecap: round; }
+  </style>
+  <rect width="2400" height="1350" fill="url(#paper)"/>
+  <rect width="2400" height="1350" fill="url(#grid)"/>
+  <path d="M1920 180h360M1980 240h300M2035 300h245" stroke="#0b9188" stroke-width="8" stroke-linecap="round" opacity="0.12"/>
+  <path d="M1900 1160h390M1960 1220h330" stroke="#d89824" stroke-width="8" stroke-linecap="round" opacity="0.16"/>
+  <text class="kicker" x="130" y="126">HERMES / WHOP AUTONOMY</text>
+  <text class="title" x="130" y="235">Consent and Risk Model</text>
+  <text class="subtitle" x="130" y="296">Autonomous, gated, and blocked action classes</text>
+  <g data-card="badge">
+    <rect data-card-rect="true" x="1810" y="94" width="420" height="76" rx="38" fill="#e8f8ef" stroke="#b8dec6" stroke-width="3"/>
+    <circle cx="1857" cy="132" r="13" fill="#37b978"/>
+    <text class="tag" x="1894" y="142">NO SECRET DATA</text>
+  </g>
+  
+  <g data-card="green">
+    <rect data-card-rect="true" class="green" x="130" y="500" width="620" height="520" rx="34"/>
+    
+    <rect x="130" y="500" width="620" height="18" fill="#0b1b1f"/>
+    <text class="h" x="188" y="620">Autonomous</text>
+    
+      <line x1="188" y1="680" x2="692" y2="680" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="188" y="738">Read</text>
+      <text class="m" text-anchor="end" x="692" y="738">yes</text>
+    
+      <line x1="188" y1="768" x2="692" y2="768" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="188" y="826">Local</text>
+      <text class="m" text-anchor="end" x="692" y="826">yes</text>
+    
+      <line x1="188" y1="856" x2="692" y2="856" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="188" y="914">Report</text>
+      <text class="m" text-anchor="end" x="692" y="914">safe</text>
+    
+  
+  </g>
+  <g data-card="warm">
+    <rect data-card-rect="true" class="warm" x="890" y="500" width="620" height="520" rx="34"/>
+    
+    <rect x="890" y="500" width="620" height="18" fill="#0b1b1f"/>
+    <text class="h" x="948" y="620">Exact Consent</text>
+    
+      <line x1="948" y1="680" x2="1452" y2="680" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="948" y="738">Create</text>
+      <text class="m" text-anchor="end" x="1452" y="738">gate</text>
+    
+      <line x1="948" y1="768" x2="1452" y2="768" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="948" y="826">Publish</text>
+      <text class="m" text-anchor="end" x="1452" y="826">gate</text>
+    
+      <line x1="948" y1="856" x2="1452" y2="856" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="948" y="914">Price</text>
+      <text class="m" text-anchor="end" x="1452" y="914">gate</text>
+    
+  
+  </g>
+  <g data-card="card">
+    <rect data-card-rect="true" class="card" x="1650" y="500" width="620" height="520" rx="34"/>
+    
+    <rect x="1650" y="500" width="620" height="18" fill="#0b1b1f"/>
+    <text class="h" x="1708" y="620">Blocked</text>
+    
+      <line x1="1708" y1="680" x2="2212" y2="680" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="1708" y="738">Delete</text>
+      <text class="m" text-anchor="end" x="2212" y="738">stop</text>
+    
+      <line x1="1708" y1="768" x2="2212" y2="768" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="1708" y="826">Admin</text>
+      <text class="m" text-anchor="end" x="2212" y="826">stop</text>
+    
+      <line x1="1708" y1="856" x2="2212" y2="856" stroke="#d5dedb" stroke-width="3"/>
+      <text class="m" x="1708" y="914">Unknown</text>
+      <text class="m" text-anchor="end" x="2212" y="914">stop</text>
+    
+  
+  </g>
+  
+</svg>
