@@ -23,3 +23,7 @@ workspace/
 *.tar
 *.tar.gz
 *.zip
+
+*.tgz
+protected/env-vault/files/
+protected/env-vault/archives/
