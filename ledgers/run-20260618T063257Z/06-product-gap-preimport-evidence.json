@@ -1,0 +1,14 @@
+{
+  "generated_at_utc": "20260618T063257Z",
+  "policy": {
+    "copy": "no during gap report",
+    "d_drive_writes": "forbidden",
+    "delete": "no"
+  },
+  "product_missing_count_before_import": 536,
+  "product_present_count_before_import": 34,
+  "source_log": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+  "tracked_source_bytes_allowed": 17019837,
+  "tracked_source_files_allowed": 570,
+  "type": "pre_import_gap_evidence"
+}

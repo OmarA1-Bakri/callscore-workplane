@@ -1,0 +1,507 @@
+stamp=20260618T063257Z
+===== RUN 05 scoped dry-run =====
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "env_vault_dry_run_complete",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+  ]
+}
+{
+  "files_found": 96,
+  "free_bytes_before": 28433358848,
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "raw_files_git_tracking": "forbidden",
+    "values_printed": false
+  },
+  "reserve_mb": 4096,
+  "roots": [
+    "/opt/crypto-tuber-ranked",
+    "/srv/whop-auto",
+    "/srv/agents/hermes",
+    "/home/omar/.hermes",
+    "/srv/agents/interop",
+    "/srv/agents/repos/Claude_Code_Automations",
+    "/srv/agents/hh-control-bridge",
+    "/srv/agents/oauth-mcp-gateway",
+    "/srv/agents/infra",
+    "/srv/agents/library",
+    "/srv/agents/vpn-ytdlp",
+    "/srv/agents/repos/composio",
+    "/srv/agents/repos/awesome-hermes-agent",
+    "/home/omar"
+  ],
+  "space_gate_apply_allowed": true,
+  "summary": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+  "total_source_bytes": 308917
+}
+===== OK 05 scoped dry-run =====
+env_files_found 96
+env_total_bytes 308917
+space_gate_apply_allowed True
+===== RUN 05 scoped apply =====
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "env_vault_apply_complete",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+  ]
+}
+{
+  "files_found": 96,
+  "free_bytes_before": 28474380288,
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+  "mode": "apply",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "raw_files_git_tracking": "forbidden",
+    "values_printed": false
+  },
+  "reserve_mb": 4096,
+  "roots": [
+    "/opt/crypto-tuber-ranked",
+    "/srv/whop-auto",
+    "/srv/agents/hermes",
+    "/home/omar/.hermes",
+    "/srv/agents/interop",
+    "/srv/agents/repos/Claude_Code_Automations",
+    "/srv/agents/hh-control-bridge",
+    "/srv/agents/oauth-mcp-gateway",
+    "/srv/agents/infra",
+    "/srv/agents/library",
+    "/srv/agents/vpn-ytdlp",
+    "/srv/agents/repos/composio",
+    "/srv/agents/repos/awesome-hermes-agent",
+    "/home/omar"
+  ],
+  "space_gate_apply_allowed": true,
+  "summary": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+  "total_source_bytes": 308917
+}
+===== OK 05 scoped apply =====
+env_apply_status_counts {'preserved_existing': 93, 'conflict_existing_destination': 3}
+===== RUN 06 gap =====
+# Product coverage gap report
+repo: /srv/agents/repos/callscore-workplane
+product: /opt/crypto-tuber-ranked
+destination: /srv/agents/repos/callscore-workplane/apps/callscore-web
+policy:
+  copy: no
+  delete: no
+  d_drive_writes: forbidden
+{
+  "changed_or_hash_mismatch_count": 0,
+  "destination": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+  "generated_at_utc": "20260618T063257Z",
+  "missing_count": 536,
+  "missing_manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-missing.tsv",
+  "policy": {
+    "copy": "no",
+    "d_drive_writes": "forbidden",
+    "delete": "no"
+  },
+  "present_count": 34,
+  "present_manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-present.tsv",
+  "product": "/opt/crypto-tuber-ranked",
+  "tracked_source_bytes_allowed": 17019837,
+  "tracked_source_files_allowed": 570
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "product_source_gap_reported",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-summary.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-missing.tsv"
+  ]
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-summary.json
+missing: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-missing.tsv
+present: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-present.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-gap.log
+===== OK 06 gap =====
+===== RUN 07 dry-run =====
+# Product source bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+product: /opt/crypto-tuber-ranked
+destination: /srv/agents/repos/callscore-workplane/apps/callscore-web
+apply: 0
+max_bytes: 268435456
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_build_copy: forbidden
+{
+  "destination": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv",
+  "max_bytes": 268435456,
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_build_copy": "forbidden"
+  },
+  "reserve_mb": 4096,
+  "selected_bytes": 17019837,
+  "selected_count": 570,
+  "skipped_count": 2
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.log
+===== OK 07 dry-run =====
+product_selected_count 570
+product_selected_bytes 17019837
+===== RUN 07 apply =====
+# Product source bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+product: /opt/crypto-tuber-ranked
+destination: /srv/agents/repos/callscore-workplane/apps/callscore-web
+apply: 1
+max_bytes: 268435456
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_build_copy: forbidden
+{
+  "destination": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv",
+  "max_bytes": 268435456,
+  "mode": "apply",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_build_copy": "forbidden"
+  },
+  "reserve_mb": 4096,
+  "selected_bytes": 17019837,
+  "selected_count": 570,
+  "skipped_count": 2
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "product_source_batch_imported",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv"
+  ]
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.log
+===== OK 07 apply =====
+===== RUN 08 gap =====
+# Control component gap report
+policy:
+  copy: no
+  delete: no
+  d_drive_writes: forbidden
+component	source	destination	source_exists	source_human	source_bytes	destination_exists	destination_human
+hh-control-bridge	/srv/agents/hh-control-bridge	/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge	yes	110M	93133597	no	0
+oauth-mcp-gateway	/srv/agents/oauth-mcp-gateway	/srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway	yes	80K	34055	no	0
+infra	/srv/agents/infra	/srv/agents/repos/callscore-workplane/infra/source	yes	204K	45664	no	0
+interop	/srv/agents/interop	/srv/agents/repos/callscore-workplane/control-plane/interop	yes	36K	5798	no	0
+library	/srv/agents/library	/srv/agents/repos/callscore-workplane/control-plane/library	yes	2.1M	1930675	no	0
+vpn-ytdlp	/srv/agents/vpn-ytdlp	/srv/agents/repos/callscore-workplane/data-plane/transcript-acquisition/vpn-ytdlp	yes	480K	439083	no	0
+composio	/srv/agents/repos/composio	/srv/agents/repos/callscore-workplane/control-plane/composio	yes	1.5G	1357851112	no	0
+awesome-hermes-agent	/srv/agents/repos/awesome-hermes-agent	/srv/agents/repos/callscore-workplane/control-plane/hermes/awesome-hermes-agent	yes	304K	137803	no	0
+{
+  "components": [
+    {
+      "component": "hh-control-bridge",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/hh-control-bridge",
+      "source_bytes": "93133597",
+      "source_exists": "yes",
+      "source_human": "110M"
+    },
+    {
+      "component": "oauth-mcp-gateway",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/oauth-mcp-gateway",
+      "source_bytes": "34055",
+      "source_exists": "yes",
+      "source_human": "80K"
+    },
+    {
+      "component": "infra",
+      "destination": "/srv/agents/repos/callscore-workplane/infra/source",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/infra",
+      "source_bytes": "45664",
+      "source_exists": "yes",
+      "source_human": "204K"
+    },
+    {
+      "component": "interop",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/interop",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/interop",
+      "source_bytes": "5798",
+      "source_exists": "yes",
+      "source_human": "36K"
+    },
+    {
+      "component": "library",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/library",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/library",
+      "source_bytes": "1930675",
+      "source_exists": "yes",
+      "source_human": "2.1M"
+    },
+    {
+      "component": "vpn-ytdlp",
+      "destination": "/srv/agents/repos/callscore-workplane/data-plane/transcript-acquisition/vpn-ytdlp",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/vpn-ytdlp",
+      "source_bytes": "439083",
+      "source_exists": "yes",
+      "source_human": "480K"
+    },
+    {
+      "component": "composio",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/composio",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/repos/composio",
+      "source_bytes": "1357851112",
+      "source_exists": "yes",
+      "source_human": "1.5G"
+    },
+    {
+      "component": "awesome-hermes-agent",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/hermes/awesome-hermes-agent",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/repos/awesome-hermes-agent",
+      "source_bytes": "137803",
+      "source_exists": "yes",
+      "source_human": "304K"
+    }
+  ],
+  "generated_at_utc": "20260618T063257Z",
+  "missing_destination_count": 8,
+  "missing_destinations": [
+    {
+      "component": "hh-control-bridge",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/hh-control-bridge",
+      "source_bytes": "93133597",
+      "source_exists": "yes",
+      "source_human": "110M"
+    },
+    {
+      "component": "oauth-mcp-gateway",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/oauth-mcp-gateway",
+      "source_bytes": "34055",
+      "source_exists": "yes",
+      "source_human": "80K"
+    },
+    {
+      "component": "infra",
+      "destination": "/srv/agents/repos/callscore-workplane/infra/source",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/infra",
+      "source_bytes": "45664",
+      "source_exists": "yes",
+      "source_human": "204K"
+    },
+    {
+      "component": "interop",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/interop",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/interop",
+      "source_bytes": "5798",
+      "source_exists": "yes",
+      "source_human": "36K"
+    },
+    {
+      "component": "library",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/library",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/library",
+      "source_bytes": "1930675",
+      "source_exists": "yes",
+      "source_human": "2.1M"
+    },
+    {
+      "component": "vpn-ytdlp",
+      "destination": "/srv/agents/repos/callscore-workplane/data-plane/transcript-acquisition/vpn-ytdlp",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/vpn-ytdlp",
+      "source_bytes": "439083",
+      "source_exists": "yes",
+      "source_human": "480K"
+    },
+    {
+      "component": "composio",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/composio",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/repos/composio",
+      "source_bytes": "1357851112",
+      "source_exists": "yes",
+      "source_human": "1.5G"
+    },
+    {
+      "component": "awesome-hermes-agent",
+      "destination": "/srv/agents/repos/callscore-workplane/control-plane/hermes/awesome-hermes-agent",
+      "destination_exists": "no",
+      "destination_human": "0",
+      "source": "/srv/agents/repos/awesome-hermes-agent",
+      "source_bytes": "137803",
+      "source_exists": "yes",
+      "source_human": "304K"
+    }
+  ],
+  "policy": {
+    "copy": "no",
+    "d_drive_writes": "forbidden",
+    "delete": "no"
+  }
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "control_components_gap_reported",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.tsv"
+  ]
+}
+json: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.json
+tsv: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.log
+===== OK 08 gap =====
+===== RUN 09 dry-run =====
+# Control components bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+apply: 0
+max_bytes: 134217728
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_state_copy: forbidden
+{
+  "absent_components": [],
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv",
+  "max_bytes": 134217728,
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_state_copy": "forbidden"
+  },
+  "selected_bytes": 134217634,
+  "selected_count": 6090,
+  "skipped_count": 29
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.log
+===== OK 09 dry-run =====
+control_selected_count 6090
+control_selected_bytes 134217634
+absent_components
+===== RUN 09 apply =====
+# Control components bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+apply: 1
+max_bytes: 134217728
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_state_copy: forbidden
+{
+  "absent_components": [],
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv",
+  "max_bytes": 134217728,
+  "mode": "apply",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_state_copy": "forbidden"
+  },
+  "selected_bytes": 134217634,
+  "selected_count": 6090,
+  "skipped_count": 29
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "control_components_batch_imported",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv"
+  ]
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.log
+===== OK 09 apply =====
+===== RUN 10 docs =====
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "restore_docs_created",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
+    "/srv/agents/repos/callscore-workplane/docs/restore/docker-restore.md",
+    "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md"
+  ]
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "db_restore_plan_created",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md"
+  ]
+}
+restore_docs_created: true
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/10-write-restore-docs-and-ledgers.log
+===== OK 10 docs =====

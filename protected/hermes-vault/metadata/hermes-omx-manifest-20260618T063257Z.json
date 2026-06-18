@@ -1,0 +1,83 @@
+{
+  "generated_at_utc": "20260618T063257Z",
+  "policy": {
+    "archive_creation": "skipped_manifest_only",
+    "d_drive_writes": "forbidden",
+    "deletion": "forbidden",
+    "protected_absolute_paths": true
+  },
+  "roots": [
+    {
+      "bytes": "5385127942",
+      "class": "hermes",
+      "exists": "yes",
+      "group": "omar",
+      "human": "5.4G",
+      "mode": "700",
+      "mtime_epoch": "1781764388",
+      "owner": "omar",
+      "path": "/srv/agents/hermes",
+      "symlink_target": ""
+    },
+    {
+      "bytes": "4546501027",
+      "class": "hermes",
+      "exists": "yes",
+      "group": "omar",
+      "human": "4.8G",
+      "mode": "700",
+      "mtime_epoch": "1781545896",
+      "owner": "omar",
+      "path": "/home/omar/.hermes",
+      "symlink_target": ""
+    },
+    {
+      "bytes": "0",
+      "class": "omx",
+      "exists": "yes",
+      "group": "omar",
+      "human": "4.0K",
+      "mode": "775",
+      "mtime_epoch": "1779029789",
+      "owner": "omar",
+      "path": "/srv/agents/interop/omx-inbox",
+      "symlink_target": ""
+    },
+    {
+      "bytes": "846",
+      "class": "omx",
+      "exists": "yes",
+      "group": "omar",
+      "human": "20K",
+      "mode": "775",
+      "mtime_epoch": "1779015522",
+      "owner": "omar",
+      "path": "/srv/agents/repos/.omx",
+      "symlink_target": ""
+    },
+    {
+      "bytes": "29010",
+      "class": "omx",
+      "exists": "yes",
+      "group": "omar",
+      "human": "88K",
+      "mode": "775",
+      "mtime_epoch": "1779635699",
+      "owner": "omar",
+      "path": "/srv/agents/repos/Claude_Code_Automations/workplane/.omx",
+      "symlink_target": ""
+    },
+    {
+      "bytes": "782700",
+      "class": "omx",
+      "exists": "yes",
+      "group": "omar",
+      "human": "932K",
+      "mode": "775",
+      "mtime_epoch": "1781360707",
+      "owner": "omar",
+      "path": "/opt/crypto-tuber-ranked/.omx",
+      "symlink_target": ""
+    }
+  ]
+}

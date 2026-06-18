@@ -1,0 +1,221 @@
+# Generated MCP graph ledger
+generated_at_utc: 20260618T063257Z
+artifact_root: /srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z
+policy:
+  d_drive_writes: forbidden
+  copy_graph_dbs_into_repo: forbidden
+  delete_graph_artifacts: forbidden
+graphs:
+  - db: opt-crypto-tuber-ranked.db
+    db_path: /srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z/home/.cache/codebase-memory-mcp/opt-crypto-tuber-ranked.db
+    sqlite_ok: true
+    table_counts:
+      edges: 13284
+      file_hashes: 546
+      node_vectors: 1783
+      nodes: 6041
+      nodes_fts: 6041
+      nodes_fts_config: 1
+      nodes_fts_data: 151
+      nodes_fts_docsize: 6041
+      nodes_fts_idx: 96
+      project_summaries: 0
+      projects: 1
+      sqlite_sequence: 2
+      token_vectors: 2189
+    projects:
+      - name: opt-crypto-tuber-ranked
+        root_path: /opt/crypto-tuber-ranked
+    candidate_file_count: 649
+    top_node_labels:
+      - label: Function
+        count: 1780
+      - label: Variable
+        count: 1409
+      - label: Section
+        count: 1064
+      - label: Module
+        count: 541
+      - label: File
+        count: 541
+      - label: Interface
+        count: 415
+      - label: Type
+        count: 128
+      - label: Folder
+        count: 128
+      - label: Route
+        count: 18
+      - label: Class
+        count: 13
+      - label: Method
+        count: 3
+      - label: Project
+        count: 1
+    top_edge_types:
+      - type: DEFINES
+        count: 5353
+      - type: CALLS
+        count: 3310
+      - type: USAGE
+        count: 2154
+      - type: IMPORTS
+        count: 904
+      - type: CONTAINS_FILE
+        count: 541
+      - type: SEMANTICALLY_RELATED
+        count: 308
+      - type: SIMILAR_TO
+        count: 281
+      - type: FILE_CHANGES_WITH
+        count: 173
+      - type: CONTAINS_FOLDER
+        count: 104
+      - type: WRITES
+        count: 55
+      - type: CONFIGURES
+        count: 47
+      - type: RAISES
+        count: 19
+  - db: srv-agents-repos-Claude_Code_Automations.db
+    db_path: /srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z/home/.cache/codebase-memory-mcp/srv-agents-repos-Claude_Code_Automations.db
+    sqlite_ok: true
+    table_counts:
+      edges: 33771
+      file_hashes: 1238
+      node_vectors: 2585
+      nodes: 17961
+      nodes_fts: 17961
+      nodes_fts_config: 1
+      nodes_fts_data: 549
+      nodes_fts_docsize: 17961
+      nodes_fts_idx: 309
+      project_summaries: 0
+      projects: 1
+      sqlite_sequence: 2
+      token_vectors: 3141
+    projects:
+      - name: srv-agents-repos-Claude_Code_Automations
+        root_path: /srv/agents/repos/Claude_Code_Automations
+    candidate_file_count: 1330
+    top_node_labels:
+      - label: Variable
+        count: 7281
+      - label: Section
+        count: 4411
+      - label: Function
+        count: 2263
+      - label: Module
+        count: 1236
+      - label: File
+        count: 1236
+      - label: Folder
+        count: 457
+      - label: Interface
+        count: 339
+      - label: Method
+        count: 322
+      - label: Type
+        count: 178
+      - label: Route
+        count: 158
+      - label: Class
+        count: 71
+      - label: Package
+        count: 5
+    top_edge_types:
+      - type: DEFINES
+        count: 16101
+      - type: CALLS
+        count: 6431
+      - type: USAGE
+        count: 3760
+      - type: CONFIGURES
+        count: 2889
+      - type: IMPORTS
+        count: 1369
+      - type: CONTAINS_FILE
+        count: 1236
+      - type: WRITES
+        count: 541
+      - type: CONTAINS_FOLDER
+        count: 412
+      - type: DEFINES_METHOD
+        count: 322
+      - type: HTTP_CALLS
+        count: 161
+      - type: SEMANTICALLY_RELATED
+        count: 130
+      - type: TESTS_FILE
+        count: 96
+  - db: srv-whop-auto-plugin.db
+    db_path: /srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z/home/.cache/codebase-memory-mcp/srv-whop-auto-plugin.db
+    sqlite_ok: true
+    table_counts:
+      edges: 2880
+      file_hashes: 82
+      node_vectors: 700
+      nodes: 1275
+      nodes_fts: 1275
+      nodes_fts_config: 1
+      nodes_fts_data: 40
+      nodes_fts_docsize: 1275
+      nodes_fts_idx: 26
+      project_summaries: 0
+      projects: 1
+      sqlite_sequence: 2
+      token_vectors: 869
+    projects:
+      - name: srv-whop-auto-plugin
+        root_path: /srv/whop-auto/plugin
+    candidate_file_count: 81
+    top_node_labels:
+      - label: Function
+        count: 679
+      - label: Variable
+        count: 167
+      - label: Module
+        count: 82
+      - label: File
+        count: 82
+      - label: Interface
+        count: 76
+      - label: Type
+        count: 75
+      - label: Section
+        count: 52
+      - label: Method
+        count: 21
+      - label: Class
+        count: 20
+      - label: Folder
+        count: 17
+      - label: Route
+        count: 3
+      - label: Project
+        count: 1
+    top_edge_types:
+      - type: DEFINES
+        count: 1172
+      - type: CALLS
+        count: 1014
+      - type: USAGE
+        count: 284
+      - type: IMPORTS
+        count: 156
+      - type: CONTAINS_FILE
+        count: 82
+      - type: SEMANTICALLY_RELATED
+        count: 60
+      - type: RAISES
+        count: 34
+      - type: SIMILAR_TO
+        count: 22
+      - type: DEFINES_METHOD
+        count: 21
+      - type: INHERITS
+        count: 18
+      - type: CONTAINS_FOLDER
+        count: 13
+      - type: CONFIGURES
+        count: 2

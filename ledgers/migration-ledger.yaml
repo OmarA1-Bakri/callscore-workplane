@@ -1,0 +1,7 @@
+# Migration ledger skeleton.
+generated_at_utc: 20260618T063257Z
+policy:
+  d_drive_writes: forbidden
+  deletion: forbidden
+  production_mutation: forbidden
+current_phase: mcp_artifact_first

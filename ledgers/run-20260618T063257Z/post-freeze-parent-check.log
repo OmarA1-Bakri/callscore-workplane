@@ -1,0 +1,8 @@
+# post-freeze parent check 20260618T074031Z
+complete_items 18 / 18
+validation_suite_passed True
+secret_scan_passed True
+replacement_readiness_report_complete True
+report_final_ref True
+report_stale_refs False
+raw_vault_git_status_entries 0

@@ -1,0 +1,194 @@
+===== RERUN 05 scoped dry-run =====
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "env_vault_dry_run_complete",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+  ]
+}
+{
+  "files_found": 96,
+  "free_bytes_before": 28452134912,
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "raw_files_git_tracking": "forbidden",
+    "values_printed": false
+  },
+  "reserve_mb": 4096,
+  "roots": [
+    "/opt/crypto-tuber-ranked",
+    "/srv/whop-auto",
+    "/srv/agents/hermes",
+    "/home/omar/.hermes",
+    "/srv/agents/interop",
+    "/srv/agents/repos/Claude_Code_Automations",
+    "/srv/agents/hh-control-bridge",
+    "/srv/agents/oauth-mcp-gateway",
+    "/srv/agents/infra",
+    "/srv/agents/library",
+    "/srv/agents/vpn-ytdlp",
+    "/srv/agents/repos/composio",
+    "/srv/agents/repos/awesome-hermes-agent",
+    "/home/omar"
+  ],
+  "space_gate_apply_allowed": true,
+  "summary": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+  "total_source_bytes": 308917
+}
+===== RERUN 05 scoped apply =====
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "env_vault_apply_complete",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+  ]
+}
+{
+  "files_found": 96,
+  "free_bytes_before": 28452028416,
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+  "mode": "apply",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "raw_files_git_tracking": "forbidden",
+    "values_printed": false
+  },
+  "reserve_mb": 4096,
+  "roots": [
+    "/opt/crypto-tuber-ranked",
+    "/srv/whop-auto",
+    "/srv/agents/hermes",
+    "/home/omar/.hermes",
+    "/srv/agents/interop",
+    "/srv/agents/repos/Claude_Code_Automations",
+    "/srv/agents/hh-control-bridge",
+    "/srv/agents/oauth-mcp-gateway",
+    "/srv/agents/infra",
+    "/srv/agents/library",
+    "/srv/agents/vpn-ytdlp",
+    "/srv/agents/repos/composio",
+    "/srv/agents/repos/awesome-hermes-agent",
+    "/home/omar"
+  ],
+  "space_gate_apply_allowed": true,
+  "summary": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+  "total_source_bytes": 308917
+}
+env_apply_status_counts {'preserved': 96}
+env_records 96
+===== CHECK 07 remaining dry-run =====
+# Product source bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+product: /opt/crypto-tuber-ranked
+destination: /srv/agents/repos/callscore-workplane/apps/callscore-web
+apply: 0
+max_bytes: 268435456
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_build_copy: forbidden
+{
+  "destination": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv",
+  "max_bytes": 268435456,
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_build_copy": "forbidden"
+  },
+  "reserve_mb": 4096,
+  "selected_bytes": 0,
+  "selected_count": 0,
+  "skipped_count": 572
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.log
+product_remaining_selected_count 0
+product_remaining_selected_bytes 0
+===== RERUN 09 patched dry-run =====
+# Control components bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+apply: 0
+max_bytes: 134217728
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_state_copy: forbidden
+{
+  "absent_components": [],
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv",
+  "max_bytes": 134217728,
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_state_copy": "forbidden"
+  },
+  "selected_bytes": 52072936,
+  "selected_count": 45,
+  "skipped_count": 2156
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.log
+control_selected_count_after_cleanup 45
+control_selected_bytes_after_cleanup 52072936
+===== RERUN 09 patched apply =====
+# Control components bounded batch import
+repo: /srv/agents/repos/callscore-workplane
+apply: 1
+max_bytes: 134217728
+reserve_mb: 4096
+policy:
+  delete: forbidden
+  d_drive_writes: forbidden
+  env_copy: forbidden
+  runtime_state_copy: forbidden
+{
+  "absent_components": [],
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv",
+  "max_bytes": 134217728,
+  "mode": "apply",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_state_copy": "forbidden"
+  },
+  "selected_bytes": 52072936,
+  "selected_count": 45,
+  "skipped_count": 2156
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "control_components_batch_imported",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv"
+  ]
+}
+summary: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json
+manifest: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.log
+control_applied_count_after_cleanup 45
+control_applied_bytes_after_cleanup 52072936

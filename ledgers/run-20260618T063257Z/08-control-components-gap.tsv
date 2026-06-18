@@ -1,0 +1,9 @@
+component	source	destination	source_exists	source_human	source_bytes	destination_exists	destination_human
+hh-control-bridge	/srv/agents/hh-control-bridge	/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge	yes	110M	93133597	yes	164K
+oauth-mcp-gateway	/srv/agents/oauth-mcp-gateway	/srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway	yes	80K	34055	yes	60K
+infra	/srv/agents/infra	/srv/agents/repos/callscore-workplane/infra/source	yes	204K	45664	yes	20K
+interop	/srv/agents/interop	/srv/agents/repos/callscore-workplane/control-plane/interop	yes	36K	5798	yes	20K
+library	/srv/agents/library	/srv/agents/repos/callscore-workplane/control-plane/library	yes	2.1M	1930675	yes	1.7M
+vpn-ytdlp	/srv/agents/vpn-ytdlp	/srv/agents/repos/callscore-workplane/data-plane/transcript-acquisition/vpn-ytdlp	yes	480K	439083	yes	24K
+composio	/srv/agents/repos/composio	/srv/agents/repos/callscore-workplane/control-plane/composio	yes	1.5G	1357851112	yes	105M
+awesome-hermes-agent	/srv/agents/repos/awesome-hermes-agent	/srv/agents/repos/callscore-workplane/control-plane/hermes/awesome-hermes-agent	yes	304K	137803	yes	68K

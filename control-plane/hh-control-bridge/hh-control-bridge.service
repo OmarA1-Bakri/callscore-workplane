@@ -1,0 +1,23 @@
+[Unit]
+Description=HH Control Bridge MCP Server
+After=network-online.target tailscaled.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=omar
+Group=omar
+WorkingDirectory=/srv/agents/hh-control-bridge
+Environment=HOST=127.0.0.1
+Environment=PORT=8787
+Environment=HH_TIMEOUT=25
+Environment=HH_ENABLE_WRITE=1
+Environment=HH_APPROVAL_CODE=0bb3afeb4fd24492b4a4e19c554f98c0
+ExecStart=/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

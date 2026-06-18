@@ -1,0 +1,17 @@
+{
+  "changed_or_hash_mismatch_count": 0,
+  "destination": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+  "generated_at_utc": "20260618T063257Z",
+  "missing_count": 0,
+  "missing_manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-missing.tsv",
+  "policy": {
+    "copy": "no",
+    "d_drive_writes": "forbidden",
+    "delete": "no"
+  },
+  "present_count": 570,
+  "present_manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-present.tsv",
+  "product": "/opt/crypto-tuber-ranked",
+  "tracked_source_bytes_allowed": 17019837,
+  "tracked_source_files_allowed": 570
+}

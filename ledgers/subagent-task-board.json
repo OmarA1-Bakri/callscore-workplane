@@ -1,0 +1,94 @@
+{
+  "active_rule": "every action must be owned by one subagent and evidenced in migration-index.json",
+  "generated_at_utc": "20260618T063257Z",
+  "subagents": [
+    {
+      "authority": "sequence, ledger, gate enforcement",
+      "forbidden": [
+        "delete",
+        "reset",
+        "restart",
+        "deploy",
+        "provider mutation",
+        "DB write"
+      ],
+      "id": "orchestrator"
+    },
+    {
+      "authority": "read existing codebase-memory artifacts and generate compact ledgers",
+      "forbidden": [
+        "delete graph DBs",
+        "copy graph DBs into repo",
+        "treat graph as approval authority"
+      ],
+      "id": "mcp-indexer"
+    },
+    {
+      "authority": "env vault, secret scan, Hermes/OMX manifests",
+      "forbidden": [
+        "print env values",
+        "push raw vaults",
+        "archive large domains without space gate"
+      ],
+      "id": "security-protection-reviewer"
+    },
+    {
+      "authority": "bounded tracked-source import",
+      "forbidden": [
+        "copy node_modules/build/runtime/secrets",
+        "delete source",
+        "broad rsync without manifest"
+      ],
+      "id": "source-acquisition-agent"
+    },
+    {
+      "authority": "HH bridge/OAuth/Composio/control components",
+      "forbidden": [
+        "provider writes",
+        "tokens in repo",
+        "restart services"
+      ],
+      "id": "mcp-control-bridge-agent"
+    },
+    {
+      "authority": "systemd/docker/tailscale/restore manifests",
+      "forbidden": [
+        "restart services",
+        "modify timers",
+        "touch production infra"
+      ],
+      "id": "infra-restore-agent"
+    },
+    {
+      "authority": "backup/restore docs and staging plan",
+      "forbidden": [
+        "production DB writes",
+        "raw dumps in Git"
+      ],
+      "id": "database-restore-agent"
+    },
+    {
+      "authority": "Whop Auto read-only/dry-run docs",
+      "forbidden": [
+        "pricing/customer/payment/provider mutation"
+      ],
+      "id": "whop-auto-agent"
+    },
+    {
+      "authority": "preserve GTM/campaign engine docs and tests",
+      "forbidden": [
+        "publish/send/spend"
+      ],
+      "id": "art-of-war-gtm-agent"
+    },
+    {
+      "authority": "tests, read-only checks, readiness report",
+      "forbidden": [
+        "deploy",
+        "restart",
+        "approve own unsafe mutations"
+      ],
+      "id": "verification-reviewer"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+class	path	exists	bytes	human	mode	owner	group	mtime_epoch	symlink_target
+hermes	/srv/agents/hermes	yes	5385127942	5.4G	700	omar	omar	1781764388
+hermes	/home/omar/.hermes	yes	4546501027	4.8G	700	omar	omar	1781545896
+omx	/srv/agents/interop/omx-inbox	yes	0	4.0K	775	omar	omar	1779029789
+omx	/srv/agents/repos/.omx	yes	846	20K	775	omar	omar	1779015522
+omx	/srv/agents/repos/Claude_Code_Automations/workplane/.omx	yes	29010	88K	775	omar	omar	1779635699
+omx	/opt/crypto-tuber-ranked/.omx	yes	782700	932K	775	omar	omar	1781360707

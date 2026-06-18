@@ -1,0 +1,24 @@
+# validation final
+stamp=20260618T074014Z
+json_files_checked 23
+json_errors 0
+complete_items 18 / 18
+missing_complete []
+missing_evidence []
+product_source_batch_imported_has_canonical_evidence True
+control_components_batch_imported_has_canonical_evidence True
+product_source_gap_reported_has_canonical_evidence True
+control_components_gap_reported_has_canonical_evidence True
+product_missing_count 0
+product_changed_or_hash_mismatch_count 0
+control_missing_destination_count 0
+cli_projects_count 1
+cli_architecture_nodes 30293
+cli_architecture_edges 76064
+raw_vault_files_present_ignored 96
+raw_vault_tracked_count 0
+raw_vault_unignored_count 0
+forbidden_runtime_dirs_present []
+trackable_new_files_scanned 2765
+secret_findings 0
+report_uses_final_validation True

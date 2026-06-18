@@ -1,0 +1,48 @@
+services:
+  gluetun:
+    image: qmcgaw/gluetun:latest
+    container_name: gluetun
+    cap_add: [NET_ADMIN]
+    environment:
+      VPN_SERVICE_PROVIDER: protonvpn
+      VPN_TYPE: openvpn
+      OPENVPN_USER: ${OPENVPN_USER:?restore from env vault}
+      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD:?restore from env vault}
+      SERVER_COUNTRIES: Switzerland
+    ports: ['8888:8888/tcp','8388:8388/tcp']
+
+  w0:
+    image: node:20-slim
+    container_name: ytdlp-w0
+    network_mode: service:gluetun
+    depends_on: {gluetun: {condition: service_healthy}}
+    entrypoint: ['sleep','infinity']
+    volumes: ['/srv/agents/vpn-ytdlp/work:/work']
+  w1:
+    image: node:20-slim
+    container_name: ytdlp-w1
+    network_mode: service:gluetun
+    depends_on: {gluetun: {condition: service_healthy}}
+    entrypoint: ['sleep','infinity']
+    volumes: ['/srv/agents/vpn-ytdlp/work:/work']
+  w2:
+    image: node:20-slim
+    container_name: ytdlp-w2
+    network_mode: service:gluetun
+    depends_on: {gluetun: {condition: service_healthy}}
+    entrypoint: ['sleep','infinity']
+    volumes: ['/srv/agents/vpn-ytdlp/work:/work']
+  w3:
+    image: node:20-slim
+    container_name: ytdlp-w3
+    network_mode: service:gluetun
+    depends_on: {gluetun: {condition: service_healthy}}
+    entrypoint: ['sleep','infinity']
+    volumes: ['/srv/agents/vpn-ytdlp/work:/work']
+  w4:
+    image: node:20-slim
+    container_name: ytdlp-w4
+    network_mode: service:gluetun
+    depends_on: {gluetun: {condition: service_healthy}}
+    entrypoint: ['sleep','infinity']
+    volumes: ['/srv/agents/vpn-ytdlp/work:/work']

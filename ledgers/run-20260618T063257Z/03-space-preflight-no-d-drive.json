@@ -1,0 +1,35 @@
+{
+  "batch_max_mb": 256,
+  "decisions": {
+    "bounded_batch_import_allowed_by_space": true,
+    "d_drive_write_allowed": false,
+    "env_vault_apply_allowed_by_space": true,
+    "hermes_local_archive_allowed": false,
+    "tracked_source_full_import_allowed_by_space": true
+  },
+  "disk": {
+    "free_bytes": 28492435456,
+    "free_mb": 27172,
+    "total_bytes": 160970244096,
+    "used_bytes": 125878517760
+  },
+  "env_vault_estimate": {
+    "bytes": 16939668,
+    "files": 5708,
+    "mb": 16,
+    "skipped": 0
+  },
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "deletion": "forbidden"
+  },
+  "product": "/opt/crypto-tuber-ranked",
+  "repo": "/srv/agents/repos/callscore-workplane",
+  "reserve_mb": 4096,
+  "tracked_source_estimate": {
+    "bytes": 17019837,
+    "excluded": 2,
+    "files": 570,
+    "mb": 16
+  }
+}

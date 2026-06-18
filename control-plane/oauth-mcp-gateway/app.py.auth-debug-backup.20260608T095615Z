@@ -1,0 +1,153 @@
+import os
+from typing import Optional
+
+import httpx
+from fastapi import FastAPI, Request, Response, Header, HTTPException
+from fastapi.responses import JSONResponse
+
+PUBLIC_RESOURCE_URL = os.environ.get("PUBLIC_RESOURCE_URL", "").rstrip("/")
+AUTH_ISSUER = os.environ.get("AUTH_ISSUER", "").rstrip("/")
+REQUIRED_SCOPE = os.environ.get("REQUIRED_SCOPE", "openid profile email")
+AUTHORIZED_EMAILS = {
+    item.strip().lower()
+    for item in os.environ.get("AUTHORIZED_EMAILS", "").split(",")
+    if item.strip()
+}
+AUTHORIZED_SUBS = {
+    item.strip()
+    for item in os.environ.get("AUTHORIZED_SUBS", "").split(",")
+    if item.strip()
+}
+UPSTREAM_MCP_URL = os.environ.get("UPSTREAM_MCP_URL", "http://127.0.0.1:8787/mcp")
+
+app = FastAPI(title="HH OAuth MCP Gateway")
+
+
+def require_config():
+    missing = []
+    if not PUBLIC_RESOURCE_URL:
+        missing.append("PUBLIC_RESOURCE_URL")
+    if not AUTH_ISSUER:
+        missing.append("AUTH_ISSUER")
+    if not AUTHORIZED_EMAILS and not AUTHORIZED_SUBS:
+        missing.append("AUTHORIZED_EMAILS or AUTHORIZED_SUBS")
+    if missing:
+        raise RuntimeError(f"Missing required config: {', '.join(missing)}")
+
+
+def auth_challenge() -> str:
+    require_config()
+    return (
+        f'Bearer resource_metadata="{PUBLIC_RESOURCE_URL}/.well-known/oauth-protected-resource", '
+        f'scope="{REQUIRED_SCOPE}"'
+    )
+
+
+def unauthorized(message: str = "Authentication required") -> JSONResponse:
+    return JSONResponse(
+        status_code=401,
+        content={"error": message},
+        headers={"WWW-Authenticate": auth_challenge()},
+    )
+
+
+@app.get("/healthz")
+async def healthz():
+    return {
+        "ok": True,
+        "upstream": UPSTREAM_MCP_URL,
+        "auth_issuer_configured": bool(AUTH_ISSUER),
+        "public_resource_url_configured": bool(PUBLIC_RESOURCE_URL),
+        "authorized_email_count": len(AUTHORIZED_EMAILS),
+        "authorized_sub_count": len(AUTHORIZED_SUBS),
+        "mode": "auth0_userinfo_allowlist",
+    }
+
+
+@app.get("/.well-known/oauth-protected-resource")
+async def oauth_protected_resource():
+    require_config()
+    return {
+        "resource": PUBLIC_RESOURCE_URL,
+        "authorization_servers": [AUTH_ISSUER],
+        "scopes_supported": ["openid", "profile", "email"],
+        "resource_documentation": f"{PUBLIC_RESOURCE_URL}/docs",
+    }
+
+
+async def verify_token(authorization: Optional[str]) -> dict:
+    require_config()
+
+    if not authorization or not authorization.lower().startswith("bearer "):
+        raise HTTPException(status_code=401, detail="Missing bearer token")
+
+    token = authorization.split(" ", 1)[1].strip()
+
+    async with httpx.AsyncClient(timeout=10) as client:
+        res = await client.get(
+            f"{AUTH_ISSUER}/userinfo",
+            headers={"Authorization": f"Bearer {token}"},
+        )
+
+    if res.status_code != 200:
+        raise HTTPException(status_code=401, detail="Invalid bearer token")
+
+    userinfo = res.json()
+    email = str(userinfo.get("email", "")).lower()
+    sub = str(userinfo.get("sub", ""))
+
+    if AUTHORIZED_EMAILS and email in AUTHORIZED_EMAILS:
+        return userinfo
+
+    if AUTHORIZED_SUBS and sub in AUTHORIZED_SUBS:
+        return userinfo
+
+    raise HTTPException(status_code=403, detail="User not authorized")
+
+
+@app.api_route("/mcp", methods=["GET", "POST", "OPTIONS"])
+async def mcp_proxy(
+    request: Request,
+    authorization: Optional[str] = Header(default=None),
+):
+    try:
+        await verify_token(authorization)
+    except HTTPException as exc:
+        if exc.status_code == 401:
+            return unauthorized(exc.detail)
+        raise
+
+    headers = {
+        key: value
+        for key, value in request.headers.items()
+        if key.lower() not in {
+            "host",
+            "authorization",
+            "content-length",
+            "connection",
+        }
+    }
+    headers.setdefault("accept", "application/json, text/event-stream")
+
+    body = await request.body()
+
+    async with httpx.AsyncClient(timeout=None) as client:
+        upstream = await client.request(
+            method=request.method,
+            url=UPSTREAM_MCP_URL,
+            headers=headers,
+            content=body,
+        )
+
+    excluded = {"content-encoding", "transfer-encoding", "connection"}
+    response_headers = {
+        key: value for key, value in upstream.headers.items()
+        if key.lower() not in excluded
+    }
+
+    return Response(
+        content=upstream.content,
+        status_code=upstream.status_code,
+        headers=response_headers,
+        media_type=upstream.headers.get("content-type"),
+    )

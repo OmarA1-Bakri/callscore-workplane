@@ -1,0 +1,17 @@
+{
+  "destination": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv",
+  "max_bytes": 268435456,
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_build_copy": "forbidden"
+  },
+  "reserve_mb": 4096,
+  "selected_bytes": 0,
+  "selected_count": 0,
+  "skipped_count": 572
+}

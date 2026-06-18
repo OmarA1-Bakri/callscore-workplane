@@ -1,0 +1,10 @@
+0	2026-06-18T07:32:58.0608187920	/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-existing-clean-ledgers.tsv
+357	2026-06-17T13:16:43.3161845190	/srv/agents/repos/callscore-workplane/ledgers/component-ledger.yaml
+381	2026-06-18T07:32:58.0338185670	/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/00-bootstrap-index-and-subagents.log
+502	2026-06-17T13:15:16.3153784090	/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml
+668	2026-06-18T07:32:58.0548187420	/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifacts.tsv
+668	2026-06-18T07:32:58.0588187750	/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifacts-broader.tsv
+2198	2026-06-18T07:32:58.0598187830	/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifact-discovery.log
+2417	2026-06-18T07:32:58.0148184090	/srv/agents/repos/callscore-workplane/ledgers/subagent-task-board.json
+2882	2026-06-18T07:32:58.0598187830	/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log
+6164	2026-06-18T07:32:58.0148184090	/srv/agents/repos/callscore-workplane/ledgers/migration-index.json

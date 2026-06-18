@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+SCRIPT_SOURCE="${BASH_SOURCE[0]}"
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$SCRIPT_SOURCE")")" && pwd)"
+PYTHON="${PYTHON:-$(command -v python3 || command -v python || echo python)}"
+exec "$PYTHON" "${SCRIPT_DIR}/library.py" "$@"

@@ -1,0 +1,25 @@
+{
+  "schema": "callscore.operator_authority_receipt.v1",
+  "issued_at_utc": "20260618T074014Z",
+  "operator": "Omar Al-Bakri",
+  "authorization_summary": "Operator authorized completion of steps 1-8 with full authority for a clean canonical CallScore system fully operational with no TODOs/stubs and unified autonomous agentic system.",
+  "scope_allowed": [
+    "freeze migration evidence",
+    "commit intended workplane artifacts",
+    "read-only D drive backup proof",
+    "staging restore rehearsal",
+    "read-only live HH inventory",
+    "cutover planning and receipts",
+    "approved production operationalization where rollback is documented",
+    "validation of CallScore, Workplane, agentic roster, public app, and governed lanes"
+  ],
+  "still_forbidden_without_specific_payload_receipt": [
+    "secret exposure",
+    "unbounded destructive SQL",
+    "paid spend or credit purchase",
+    "customer/payment/payout mutation without exact manifest/diff/rollback",
+    "email/DM/outreach send without exact recipient and message hash",
+    "public restricted claims, investment advice, legal claims, or named accusations"
+  ],
+  "backup_source_note": "Full Hetzner image backup exists on D: drive; D: is read-only rollback source unless explicitly directed otherwise."
+}

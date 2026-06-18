@@ -1,0 +1,185 @@
+# Space preflight — no D-drive writes
+repo: /srv/agents/repos/callscore-workplane
+product: /opt/crypto-tuber-ranked
+policy:
+  d_drive_writes: forbidden
+  deletion: forbidden
+  broad_copy: forbidden_until_space_budget_green
+
+=== active repo baseline, read-only ===
+/opt/crypto-tuber-ranked
+master
+5128f06
+ M AGENTS.md
+ M README.md
+ M docs/handovers/2026-06-14-hermes-agent-callscore-activation.md
+ M docs/ops/callscore-gtm-agent-registry.md
+ M src/lib/workplane-jobs.ts
+ M src/lib/workplane-status.ts
+ M src/scripts/ml-idle-improve.ts
+ M src/scripts/workplane-status.ts
+ M tests/workplane-jobs.test.ts
+
+=== clean repo baseline ===
+?? docs/migration/
+?? ledgers/codebase-memory-artifacts.yaml
+?? ledgers/mcp-ledger.yaml
+?? ledgers/migration-index.json
+?? ledgers/run-20260618T063257Z/
+?? ledgers/subagent-task-board.json
+?? protected/env-vault/
+263ca09 Add protected runtime domain policy
+c2cd125 Ignore protected runtime config vault artifacts
+ea1b29d Add Art of War engine extraction
+16f099f Initial CallScore workplane extraction
+
+=== mount/free-space snapshot ===
+Filesystem     Type  Size  Used Avail Use% Mounted on
+/dev/sda1      ext4  150G  118G   27G  82% /
+Filesystem     Type  Size  Used Avail Use% Mounted on
+
+=== D-drive policy check ===
+D-drive / bare-metal backup policy:
+  - do not write to it from this migration
+  - do not use it as an archive target
+  - treat Omar's Hetzner image there as protected raw rollback anchor
+  - do not try copy/to-and-fro with it
+
+=== relevant path sizes ===
+188M	/srv/agents/repos/callscore-workplane
+1.6G	/opt/crypto-tuber-ranked
+56M	/srv/agents/system-index/codebase-memory
+5.4G	/srv/agents/hermes
+4.8G	/home/omar/.hermes
+4.0K	/srv/agents/interop/omx-inbox
+20K	/srv/agents/repos/.omx
+88K	/srv/agents/repos/Claude_Code_Automations/workplane/.omx
+932K	/opt/crypto-tuber-ranked/.omx
+8.6G	/srv/whop-auto
+110M	/srv/agents/hh-control-bridge
+80K	/srv/agents/oauth-mcp-gateway
+204K	/srv/agents/infra
+36K	/srv/agents/interop
+2.1M	/srv/agents/library
+480K	/srv/agents/vpn-ytdlp
+1.5G	/srv/agents/repos/composio
+304K	/srv/agents/repos/awesome-hermes-agent
+
+=== large files over 100 MiB, capped ===
+2334.3 MiB	 /srv/agents/backups/agents-20260617T023000Z.tar.gz
+2331.1 MiB	 /srv/agents/backups/agents-20260616T023001Z.tar.gz
+2312.6 MiB	 /srv/agents/backups/agents-20260615T023001Z.tar.gz
+2272.9 MiB	 /srv/agents/backups/agents-20260618T023000Z.tar.gz
+1070.2 MiB	 /srv/agents/hermes/state.db
+1069.4 MiB	 /srv/agents/hermes/state-snapshots/20260617-175630-pre-update/state.db
+837.4 MiB	 /srv/agents/database-migration/neon-neondb-20260603-084321.dump
+520.3 MiB	 /home/omar/.hermes/state.db
+434.9 MiB	 /home/omar/.cache/ms-playwright/chromium-1217/chrome-linux/chrome
+278.0 MiB	 /home/omar/.cache/ms-playwright/chromium_headless_shell-1217/chrome-linux/headless_shell
+265.6 MiB	 /home/omar/.cache/puppeteer/chrome/linux_arm-149.0.7827.22/chrome-linux64/chrome
+254.6 MiB	 /home/omar/.local/bin/codebase-memory-mcp
+236.0 MiB	 /home/omar/.npm/_npx/43414d9b790239bb/node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64/claude
+236.0 MiB	 /home/omar/.bun/install/cache/@anthropic-ai/claude-agent-sdk-linux-arm64@0.2.121@@@1/claude
+229.1 MiB	 /home/omar/.bun/install/cache/@anthropic-ai/claude-agent-sdk-linux-arm64-musl@0.2.121@@@1/claude
+225.5 MiB	 /home/omar/.npm/_npx/e5076a3e94cfa48e/node_modules/@anthropic-ai/claude-agent-sdk-linux-arm64/claude
+192.5 MiB	 /home/omar/.npm/_npx/43414d9b790239bb/node_modules/@zed-industries/codex-acp-linux-arm64/bin/codex-acp
+188.6 MiB	 /home/omar/.codex/packages/standalone/releases/0.139.0-aarch64-unknown-linux-musl/bin/codex
+186.4 MiB	 /srv/agents/hermes/hermes-agent/node_modules/electron/dist/electron
+186.4 MiB	 /srv/agents/hermes/hermes-agent/apps/desktop/release/linux-arm64-unpacked/Hermes
+186.4 MiB	 /home/omar/.hermes/hermes-agent/node_modules/electron/dist/electron
+180.4 MiB	 /home/omar/.cache/puppeteer/chrome-headless-shell/linux_arm-149.0.7827.22/chrome-headless-shell-linux64/chrome-headless-shell
+169.1 MiB	 /home/omar/.hermes/hermes-agent/.git/objects/pack/pack-d850185b0aeeb8f1db682894022cecf9cda1624b.pack
+167.4 MiB	 /home/omar/.bun/install/cache/@openai/codex@0.125.0-df7cddc2737f1154@@@1/vendor/aarch64-unknown-linux-musl/codex/codex
+137.3 MiB	 /home/omar/.cache/camoufox/libxul.so
+130.7 MiB	 /srv/whop-auto/workspace/crypto-tuber-ranked/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /srv/whop-auto/workspace/callscore-production-launch-master/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /srv/whop-auto/workspace/callscore-post-checkout-ux/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /srv/whop-auto/workspace/callscore-db-portability/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /srv/whop-auto/workspace/callscore-candidate-autonomy/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /srv/agents/repos/callscore-stale-infra-cleanup/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /opt/crypto-tuber-ranked/node_modules/@next/swc-linux-arm64-musl/next-swc.linux-arm64-musl.node
+130.7 MiB	 /home/omar/.bun/install/cache/@next/swc-linux-arm64-musl@15.5.18@@@1/next-swc.linux-arm64-musl.node
+129.3 MiB	 /srv/whop-auto/workspace/crypto-tuber-ranked/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/whop-auto/workspace/callscore-revenue-activation/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/whop-auto/workspace/callscore-production-launch-master/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/whop-auto/workspace/callscore-post-checkout-ux/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/whop-auto/workspace/callscore-db-portability/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/whop-auto/workspace/callscore-candidate-autonomy/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/agents/repos/callscore-stale-infra-cleanup/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /srv/agents/crypto-tuber-ranked/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /opt/crypto-tuber-ranked/node_modules/@next/swc-linux-arm64-gnu/next-swc.linux-arm64-gnu.node
+129.3 MiB	 /home/omar/.bun/install/cache/@next/swc-linux-arm64-gnu@15.5.18@@@1/next-swc.linux-arm64-gnu.node
+119.7 MiB	 /srv/agents/repos/composio/node_modules/.pnpm/@cloudflare+workerd-linux-arm64@1.20260317.1/node_modules/@cloudflare/workerd-linux-arm64/bin/workerd
+119.7 MiB	 /home/omar/.local/share/pnpm/store/v10/files/92/6f0b69c2e425fa30d1b37fb55e0a33e1807f810e70ff83b53fbc01bee17d6c2425c902ce9780965abdf186df53c687ba349fee267a5bc5de0dff5230bdf91e-exec
+115.3 MiB	 /srv/agents/hermes/hermes-agent/.git/objects/pack/pack-0ec42a663552c6643022d5ad76aca8cebfff4cc1.pack
+114.8 MiB	 /srv/agents/repos/composio/node_modules/.pnpm/@cloudflare+workerd-linux-arm64@1.20251011.0/node_modules/@cloudflare/workerd-linux-arm64/bin/workerd
+114.8 MiB	 /home/omar/.local/share/pnpm/store/v10/files/22/a7f249aa51792de1f82c925ff9698f9339c7039d264b20e3ad1cb3540d5137c3c69987047b92b70d57e3fe09661ba49e4b606c8616cd38cceada04d6bdaaba-exec
+114.1 MiB	 /srv/agents/repos/Claude_Code_Automations/Archon/node_modules/.bun/@openai+codex@0.116.0-linux-arm64/node_modules/@openai/codex/vendor/aarch64-unknown-linux-musl/codex/codex
+114.1 MiB	 /home/omar/.bun/install/cache/@openai/codex@0.116.0-df7cddc2737f1154@@@1/vendor/aarch64-unknown-linux-musl/codex/codex
+114.0 MiB	 /srv/whop-auto/workspace/callscore-transparent-centered-favicon/.next/cache/webpack/server-production/0.pack
+113.6 MiB	 /srv/whop-auto/workspace/callscore-favicon-fix/.next/cache/webpack/server-production/0.pack
+113.4 MiB	 /srv/whop-auto/workspace/callscore-production-launch-master/.next/cache/webpack/server-production/0.pack
+111.4 MiB	 /srv/whop-auto/workspace/callscore-post-checkout-ux/.next/cache/webpack/server-production/0.pack
+110.2 MiB	 /home/omar/.cache/electron/767499b12efd3c8320eb6bc407e68a25c389f3970cddbd4e9c9af85a795ac8c7/electron-v40.10.3-linux-arm64.zip
+110.2 MiB	 /home/omar/.cache/electron/electron-v40.9.3-linux-arm64.zip
+110.2 MiB	 /home/omar/.cache/electron/c603513df72c219a7faac87aed80f486458f47ea4382e6b89a975417f71ff9c0/electron-v40.9.3-linux-arm64.zip
+108.1 MiB	 /home/omar/.codex/logs_2.sqlite
+106.8 MiB	 /srv/whop-auto/workspace/callscore-revenue-activation/.next/cache/webpack/server-production/0.pack
+106.0 MiB	 /home/omar/.composio/acp-adapters/codex/linux-x64/codex-acp
+104.0 MiB	 /srv/whop-auto/workspace/crypto-tuber-ranked-phase4e1e/.next/cache/webpack/server-production/0.pack
+100.0 MiB	 /home/omar/.npm/_cacache/content-v2/sha512/6d/63/2051027baa2beaac1f622c9202fe3f38c6064359adc6d1c6aae12ede3fdc9f08da10039d008bdb00b465496da3ef0a8e0bccbb1337cba11daef9e0de1705
+{
+  "batch_max_mb": 256,
+  "decisions": {
+    "bounded_batch_import_allowed_by_space": true,
+    "d_drive_write_allowed": false,
+    "env_vault_apply_allowed_by_space": true,
+    "hermes_local_archive_allowed": false,
+    "tracked_source_full_import_allowed_by_space": true
+  },
+  "disk": {
+    "free_bytes": 28492435456,
+    "free_mb": 27172,
+    "total_bytes": 160970244096,
+    "used_bytes": 125878517760
+  },
+  "env_vault_estimate": {
+    "bytes": 16939668,
+    "files": 5708,
+    "mb": 16,
+    "skipped": 0
+  },
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "deletion": "forbidden"
+  },
+  "product": "/opt/crypto-tuber-ranked",
+  "repo": "/srv/agents/repos/callscore-workplane",
+  "reserve_mb": 4096,
+  "tracked_source_estimate": {
+    "bytes": 17019837,
+    "excluded": 2,
+    "files": 570,
+    "mb": 16
+  }
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "space_budget_recorded",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log"
+  ]
+}
+{
+  "updated": "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+  "item": "baseline_locked",
+  "status": "complete",
+  "evidence": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log"
+  ]
+}
+
+space_preflight_json: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.json
+log: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log

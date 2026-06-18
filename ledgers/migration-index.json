@@ -1,0 +1,722 @@
+{
+  "d_drive_policy": "do_not_write; existing Hetzner image is protected raw rollback anchor only",
+  "delete_policy": "no_delete_until_all_required_boxes_complete_and_operator_approved_exact_target",
+  "generated_at_utc": "20260618T063257Z",
+  "items": [
+    {
+      "blocks_deletion": true,
+      "dependencies": [],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log"
+          ],
+          "note": "active and clean repo baselines recorded without mutation",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:33:11Z"
+        }
+      ],
+      "id": "baseline_locked",
+      "owner_subagent": "orchestrator",
+      "status": "complete",
+      "title": "Confirm clean repo and active product repo state"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "baseline_locked"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifacts.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/codebase-memory-artifacts.yaml"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifacts.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/codebase-memory-artifacts.yaml"
+          ],
+          "note": "existing codebase-memory artifacts discovered and summarized",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:32:58Z"
+        }
+      ],
+      "id": "mcp_artifacts_discovered",
+      "owner_subagent": "mcp-indexer",
+      "status": "complete",
+      "title": "Find existing codebase-memory MCP artifacts"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "mcp_artifacts_discovered"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-graph-ledger.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-file-coverage.tsv",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-dense-files.tsv",
+        "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-index.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-projects.json"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-graph-ledger.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-file-coverage.tsv",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-dense-files.tsv",
+            "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml"
+          ],
+          "note": "compact ledgers extracted from existing codebase-memory MCP graph DBs",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:32:58Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-graph-ledger.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-index.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json"
+          ],
+          "note": "existing MCP graph ledgers extracted and codebase-memory-mcp CLI index/architecture evidence persisted",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:35Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-graph-ledger.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-file-coverage.tsv",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-dense-files.tsv",
+            "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-index.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-projects.json"
+          ],
+          "note": "canonical evidence list normalized after final validation; stale overwritten dry-run paths removed from active evidence",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:58Z"
+        }
+      ],
+      "id": "mcp_graph_ledgers_extracted",
+      "owner_subagent": "mcp-indexer",
+      "status": "complete",
+      "title": "Extract compact graph/file-structure ledgers from existing MCP DBs"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "mcp_artifacts_discovered"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml",
+        "/srv/agents/repos/callscore-workplane/ledgers/component-ledger.yaml",
+        "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-agentic-workplane-full-system.html"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml",
+            "/srv/agents/repos/callscore-workplane/ledgers/component-ledger.yaml",
+            "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-agentic-workplane-full-system.html"
+          ],
+          "note": "directory/component ledgers and provided HTML system map loaded; staged HTML hash matches imported product map",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:45:21Z"
+        }
+      ],
+      "id": "existing_ledgers_loaded",
+      "owner_subagent": "orchestrator",
+      "status": "complete",
+      "title": "Load directory/component/security ledgers and HTML system map"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/subagent-task-board.json",
+        "/srv/agents/repos/callscore-workplane/docs/migration/subagents/README.md"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/subagent-task-board.json",
+            "/srv/agents/repos/callscore-workplane/docs/migration/subagents/README.md"
+          ],
+          "note": "specialist subagent board and work orders created",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:45:21Z"
+        }
+      ],
+      "id": "subagent_board_active",
+      "owner_subagent": "orchestrator",
+      "status": "complete",
+      "title": "Create specialist subagent task board and work orders"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "baseline_locked"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log"
+          ],
+          "note": "space budget captured; D-drive writes explicitly forbidden",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:33:11Z"
+        }
+      ],
+      "id": "space_budget_recorded",
+      "owner_subagent": "infra-restore-agent",
+      "status": "complete",
+      "title": "Record low-space budget without D-drive writes"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "space_budget_recorded"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.tsv"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.tsv"
+          ],
+          "note": "Hermes/OMX manifest-only pass completed; no archives and no D-drive writes",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:33:13Z"
+        }
+      ],
+      "id": "protected_domains_manifested",
+      "owner_subagent": "security-protection-reviewer",
+      "status": "complete",
+      "title": "Manifest Hermes and OMX without archiving or deleting"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "space_budget_recorded"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+          ],
+          "note": "env vault dry-run complete",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:36:37Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+          ],
+          "note": "env vault dry-run complete",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:31Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+          ],
+          "note": "env vault dry-run complete",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:42:17Z"
+        }
+      ],
+      "id": "env_vault_dry_run_complete",
+      "owner_subagent": "security-protection-reviewer",
+      "status": "complete",
+      "title": "Discover all env-like files and write no-value dry-run manifest"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "env_vault_dry_run_complete"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+          ],
+          "note": "env vault apply complete",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:36Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json"
+          ],
+          "note": "env vault apply complete",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:42:22Z"
+        }
+      ],
+      "id": "env_vault_apply_complete",
+      "owner_subagent": "security-protection-reviewer",
+      "status": "complete",
+      "title": "Preserve env files locally only if size gate passes"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "mcp_graph_ledgers_extracted"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-gap-preimport-evidence.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-summary.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-missing.tsv"
+          ],
+          "note": "product tracked-source coverage gap reported without copying",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:36Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-summary.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-missing.tsv"
+          ],
+          "note": "product tracked-source coverage gap reported without copying",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:43:20Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-gap-preimport-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "pre-import product gap preserved from wrapper log; final coverage is zero missing",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:35Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-gap-preimport-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "canonical evidence list normalized after final validation; stale overwritten dry-run paths removed from active evidence",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:58Z"
+        }
+      ],
+      "id": "product_source_gap_reported",
+      "owner_subagent": "source-acquisition-agent",
+      "status": "complete",
+      "title": "Compare MCP product graph and clean repo coverage"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "product_source_gap_reported",
+        "space_budget_recorded"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-import-evidence.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.tsv"
+          ],
+          "note": "bounded product source batch imported without deletes or D-drive writes",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:37Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-import-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "bounded product source import apply evidence preserved; final coverage zero missing/hash mismatch",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:35Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-import-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "canonical evidence list normalized after final validation; stale overwritten dry-run paths removed from active evidence",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:58Z"
+        }
+      ],
+      "id": "product_source_batch_imported",
+      "owner_subagent": "source-acquisition-agent",
+      "status": "complete",
+      "title": "Import product tracked source in bounded batches"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "mcp_graph_ledgers_extracted"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap-preimport-evidence.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.tsv"
+          ],
+          "note": "control component gap reported without copying",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:38Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.tsv"
+          ],
+          "note": "control component gap reported without copying",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:43:21Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap-preimport-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "pre-import control gap preserved from wrapper log; final control coverage is zero missing",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:35Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap-preimport-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "canonical evidence list normalized after final validation; stale overwritten dry-run paths removed from active evidence",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:58Z"
+        }
+      ],
+      "id": "control_components_gap_reported",
+      "owner_subagent": "mcp-control-bridge-agent",
+      "status": "complete",
+      "title": "Report missing HH bridge/OAuth/infra/interop/library/composio/vpn-ytdlp components"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "control_components_gap_reported",
+        "space_budget_recorded"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-import-evidence.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv"
+          ],
+          "note": "bounded control component batch imported without deletes or D-drive writes",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:43Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv"
+          ],
+          "note": "bounded control component batch imported without deletes or D-drive writes",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:42:24Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-import-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "bounded control imports applied; accidental .venv destination removed; OpenVPN literals sanitized; final coverage zero missing",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:35Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-import-evidence.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "canonical evidence list normalized after final validation; stale overwritten dry-run paths removed from active evidence",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:56:58Z"
+        }
+      ],
+      "id": "control_components_batch_imported",
+      "owner_subagent": "mcp-control-bridge-agent",
+      "status": "complete",
+      "title": "Import missing control components in bounded batches"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "control_components_gap_reported"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
+        "/srv/agents/repos/callscore-workplane/docs/restore/docker-restore.md",
+        "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
+            "/srv/agents/repos/callscore-workplane/docs/restore/docker-restore.md",
+            "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md"
+          ],
+          "note": "restore documentation skeletons created",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:43Z"
+        }
+      ],
+      "id": "restore_docs_created",
+      "owner_subagent": "infra-restore-agent",
+      "status": "complete",
+      "title": "Create systemd/docker/tailscale/control/database restore docs"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "restore_docs_created"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md"
+          ],
+          "note": "Postgres restore plan skeleton created; raw dumps forbidden",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:38:43Z"
+        }
+      ],
+      "id": "db_restore_plan_created",
+      "owner_subagent": "database-restore-agent",
+      "status": "complete",
+      "title": "Create PostgreSQL backup/restore/staging rehearsal plan"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "product_source_batch_imported",
+        "restore_docs_created"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v3.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log"
+          ],
+          "note": "final ledger JSON validation, coverage checks, raw vault ignore checks, and runtime-dir checks passed",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:44:53Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v4.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json"
+          ],
+          "note": "v4 validation passed: 18/18 boxes, canonical import evidence, final coverage, durable codebase-memory CLI evidence, raw vault ignored",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:59:00Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v5.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json"
+          ],
+          "note": "v5 validation passed after readiness report refresh",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:10:59Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-architecture.json"
+          ],
+          "note": "stable final validation evidence frozen",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:40:21Z"
+        }
+      ],
+      "id": "validation_suite_passed",
+      "owner_subagent": "verification-reviewer",
+      "status": "complete",
+      "title": "Run read-only validation and tests"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "product_source_batch_imported",
+        "control_components_batch_imported"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v3.log"
+          ],
+          "note": "trackable new files scanned; zero secret findings; raw env vault ignored",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:44:53Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v4.log"
+          ],
+          "note": "v4 trackable secret scan passed; OpenVPN literals sanitized; raw env vault ignored",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:59:00Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v5.log"
+          ],
+          "note": "v5 secret scan passed; trackable findings 0 and raw vault ignored",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:11:00Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log"
+          ],
+          "note": "stable final validation evidence frozen",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:40:21Z"
+        }
+      ],
+      "id": "secret_scan_passed",
+      "owner_subagent": "security-protection-reviewer",
+      "status": "complete",
+      "title": "Run redacted secret scan before push"
+    },
+    {
+      "blocks_deletion": true,
+      "dependencies": [
+        "validation_suite_passed",
+        "secret_scan_passed",
+        "db_restore_plan_created"
+      ],
+      "evidence": [
+        "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+        "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log",
+        "/srv/agents/repos/callscore-workplane/docs/migration/receipts/operator-full-authority-20260618T074014Z.json"
+      ],
+      "history": [
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+            "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json"
+          ],
+          "note": "replacement readiness report written with remaining cutover gates",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:44:53Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+            "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v4.log"
+          ],
+          "note": "replacement readiness report updated after validation remediation",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T06:59:00Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+            "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v4.log"
+          ],
+          "note": "replacement readiness report corrected to v4 validation evidence and 18/18 migration state",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:10:05Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+            "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-and-secret-scan-v5.log"
+          ],
+          "note": "replacement readiness report aligned to v5 validation evidence",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:11:00Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+            "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log",
+            "/srv/agents/repos/callscore-workplane/docs/migration/receipts/operator-full-authority-20260618T074014Z.json"
+          ],
+          "note": "stable final validation evidence frozen",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T07:40:21Z"
+        }
+      ],
+      "id": "replacement_readiness_report_complete",
+      "owner_subagent": "orchestrator",
+      "status": "complete",
+      "title": "Write replacement-readiness report with all gates"
+    }
+  ]
+}

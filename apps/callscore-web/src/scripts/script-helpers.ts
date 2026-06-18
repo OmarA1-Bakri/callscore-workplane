@@ -1,0 +1,217 @@
+import * as fs from "fs";
+import * as path from "path";
+import {
+  executeStatementsInTransaction as executeDbStatementsInTransaction,
+  type SqlExecutor,
+  type SqlStatement,
+  type TransactionOptions,
+} from "../lib/db";
+import type {
+  CallType,
+  Direction,
+  StrategyType,
+} from "../lib/types";
+
+interface PersistedCallInput {
+  readonly symbol: string;
+  readonly direction: Direction;
+  readonly call_type: CallType;
+  readonly entry_price: number | null;
+  readonly target_price: number | null;
+  readonly stop_loss: number | null;
+  readonly timeframe: string | null;
+  readonly confidence: "high" | "medium" | "low";
+  readonly strategy_type: StrategyType;
+  readonly raw_quote: string;
+  readonly extraction_confidence: number;
+  readonly specificity_score: number;
+}
+
+interface ReplaceVideoCallsOptions {
+  readonly creatorId: number;
+  readonly videoId: number;
+  readonly callDate: string | null;
+  readonly calls: readonly PersistedCallInput[];
+  readonly markVideoExtracted?: boolean;
+}
+
+export type { SqlStatement };
+
+const DELETE_VIDEO_CALLS_SQL = "DELETE FROM calls WHERE video_id = $1";
+const INSERT_CALL_SQL = `INSERT INTO calls (
+  creator_id, video_id, symbol, direction, call_type,
+  entry_price, target_price, stop_loss, timeframe,
+  confidence, strategy_type, raw_quote,
+  extraction_confidence, specificity_score, call_date
+) VALUES (
+  $1, $2, $3, $4, $5,
+  $6, $7, $8, $9,
+  $10, $11, $12,
+  $13, $14, $15
+)`;
+const MARK_VIDEO_EXTRACTED_SQL =
+  "UPDATE videos SET calls_extracted = true, extraction_pass = extraction_pass + 1 WHERE id = $1";
+
+export function loadEnv(): void {
+  const root = path.resolve(__dirname, "../..");
+  const envPath = fs.existsSync(path.join(root, ".env.local"))
+    ? path.join(root, ".env.local")
+    : path.join(root, ".env");
+
+  if (!fs.existsSync(envPath)) return;
+
+  const lines = fs.readFileSync(envPath, "utf-8").split("\n");
+  for (const raw of lines) {
+    const line = raw.trim();
+    if (!line || line.startsWith("#")) continue;
+
+    const eqIdx = line.indexOf("=");
+    if (eqIdx < 0) continue;
+
+    const key = line.slice(0, eqIdx).trim();
+    const value = line.slice(eqIdx + 1).trim();
+
+    if (!process.env[key]) {
+      process.env[key] = value;
+    }
+  }
+}
+
+export function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export function timestamp(): string {
+  return new Date().toISOString();
+}
+
+export async function runWithConcurrency<T, R>(
+  items: readonly T[],
+  concurrency: number,
+  worker: (item: T, index: number) => Promise<R>,
+  shouldStop: (result: R) => boolean = () => false,
+): Promise<readonly R[]> {
+  const limit = Math.max(1, Math.floor(concurrency) || 1);
+  const results: R[] = [];
+  let active = 0;
+  let nextIndex = 0;
+  let stopped = false;
+
+  return await new Promise<readonly R[]>((resolve, reject) => {
+    const launch = () => {
+      if ((stopped || nextIndex >= items.length) && active === 0) {
+        resolve(results.filter((_, index) => index in results));
+        return;
+      }
+
+      while (!stopped && active < limit && nextIndex < items.length) {
+        const index = nextIndex;
+        nextIndex += 1;
+        active += 1;
+
+        const item = items[index];
+        if (item === undefined) {
+          active -= 1;
+          launch();
+          continue;
+        }
+
+        worker(item, index)
+          .then((result) => {
+            results[index] = result;
+            if (shouldStop(result)) stopped = true;
+          })
+          .then(
+            () => {
+              active -= 1;
+              launch();
+            },
+            (error: unknown) => {
+              reject(error);
+            },
+          );
+      }
+    };
+
+    launch();
+  });
+}
+
+export function buildReplaceStoredCallsStatements({
+  creatorId,
+  videoId,
+  callDate,
+  calls,
+  markVideoExtracted = false,
+}: ReplaceVideoCallsOptions): SqlStatement[] {
+  return [
+    { sql: DELETE_VIDEO_CALLS_SQL, params: [videoId] },
+    ...calls.map((call) => ({
+      sql: INSERT_CALL_SQL,
+      params: [
+        creatorId,
+        videoId,
+        call.symbol,
+        call.direction,
+        call.call_type,
+        call.entry_price,
+        call.target_price,
+        call.stop_loss,
+        call.timeframe,
+        call.confidence,
+        call.strategy_type,
+        call.raw_quote,
+        call.extraction_confidence,
+        call.specificity_score,
+        callDate,
+      ],
+    })),
+    ...(markVideoExtracted
+      ? [{ sql: MARK_VIDEO_EXTRACTED_SQL, params: [videoId] }]
+      : []),
+  ];
+}
+
+interface TransactionCapableDb {
+  transaction<T>(
+    callback: (txn: SqlExecutor) => readonly Promise<T>[],
+  ): Promise<readonly T[]>;
+}
+
+function isTransactionCapableDb(db: unknown): db is TransactionCapableDb {
+  return Boolean(
+    db &&
+      (typeof db === "object" || typeof db === "function") &&
+      "transaction" in db &&
+      typeof (db as { transaction?: unknown }).transaction === "function",
+  );
+}
+
+export async function executeStatementsInTransaction(
+  dbOrStatements: TransactionCapableDb | readonly SqlStatement[],
+  statementsOrOptions?: readonly SqlStatement[] | TransactionOptions,
+): Promise<void> {
+  if (isTransactionCapableDb(dbOrStatements)) {
+    const statements = statementsOrOptions as readonly SqlStatement[] | undefined;
+    if (!statements) throw new Error("SQL statements are required");
+    await dbOrStatements.transaction((txn) =>
+      statements.map((statement) => txn(statement.sql, statement.params)),
+    );
+    return;
+  }
+
+  await executeDbStatementsInTransaction(
+    dbOrStatements,
+    statementsOrOptions as TransactionOptions | undefined,
+  );
+}
+
+export async function replaceStoredCallsForVideo(
+  options: ReplaceVideoCallsOptions,
+  transactionOptions?: TransactionOptions,
+): Promise<void> {
+  await executeDbStatementsInTransaction(
+    buildReplaceStoredCallsStatements(options),
+    transactionOptions,
+  );
+}

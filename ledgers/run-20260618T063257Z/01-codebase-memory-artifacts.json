@@ -1,0 +1,507 @@
+{
+  "dbs": [
+    {
+      "edge_type_counts": [
+        {
+          "count": 1172,
+          "type": "DEFINES"
+        },
+        {
+          "count": 1014,
+          "type": "CALLS"
+        },
+        {
+          "count": 284,
+          "type": "USAGE"
+        },
+        {
+          "count": 156,
+          "type": "IMPORTS"
+        },
+        {
+          "count": 82,
+          "type": "CONTAINS_FILE"
+        },
+        {
+          "count": 60,
+          "type": "SEMANTICALLY_RELATED"
+        },
+        {
+          "count": 34,
+          "type": "RAISES"
+        },
+        {
+          "count": 22,
+          "type": "SIMILAR_TO"
+        },
+        {
+          "count": 21,
+          "type": "DEFINES_METHOD"
+        },
+        {
+          "count": 18,
+          "type": "INHERITS"
+        },
+        {
+          "count": 13,
+          "type": "CONTAINS_FOLDER"
+        },
+        {
+          "count": 2,
+          "type": "CONFIGURES"
+        },
+        {
+          "count": 1,
+          "type": "WRITES"
+        },
+        {
+          "count": 1,
+          "type": "TESTS_FILE"
+        }
+      ],
+      "node_label_counts": [
+        {
+          "count": 679,
+          "label": "Function"
+        },
+        {
+          "count": 167,
+          "label": "Variable"
+        },
+        {
+          "count": 82,
+          "label": "Module"
+        },
+        {
+          "count": 82,
+          "label": "File"
+        },
+        {
+          "count": 76,
+          "label": "Interface"
+        },
+        {
+          "count": 75,
+          "label": "Type"
+        },
+        {
+          "count": 52,
+          "label": "Section"
+        },
+        {
+          "count": 21,
+          "label": "Method"
+        },
+        {
+          "count": 20,
+          "label": "Class"
+        },
+        {
+          "count": 17,
+          "label": "Folder"
+        },
+        {
+          "count": 3,
+          "label": "Route"
+        },
+        {
+          "count": 1,
+          "label": "Project"
+        }
+      ],
+      "path": "/srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z/home/.cache/codebase-memory-mcp/srv-whop-auto-plugin.db",
+      "projects": [
+        {
+          "name": "srv-whop-auto-plugin",
+          "root_path": "/srv/whop-auto/plugin"
+        }
+      ],
+      "size_bytes": 5308416,
+      "sqlite_ok": true,
+      "table_counts": {
+        "edges": 2880,
+        "file_hashes": 82,
+        "node_vectors": 700,
+        "nodes": 1275,
+        "nodes_fts": 1275,
+        "nodes_fts_config": 1,
+        "nodes_fts_data": 40,
+        "nodes_fts_docsize": 1275,
+        "nodes_fts_idx": 26,
+        "project_summaries": 0,
+        "projects": 1,
+        "sqlite_sequence": 2,
+        "token_vectors": 869
+      },
+      "tables": [
+        "edges",
+        "file_hashes",
+        "node_vectors",
+        "nodes",
+        "nodes_fts",
+        "nodes_fts_config",
+        "nodes_fts_data",
+        "nodes_fts_docsize",
+        "nodes_fts_idx",
+        "project_summaries",
+        "projects",
+        "sqlite_sequence",
+        "token_vectors"
+      ]
+    },
+    {
+      "edge_type_counts": [
+        {
+          "count": 16101,
+          "type": "DEFINES"
+        },
+        {
+          "count": 6431,
+          "type": "CALLS"
+        },
+        {
+          "count": 3760,
+          "type": "USAGE"
+        },
+        {
+          "count": 2889,
+          "type": "CONFIGURES"
+        },
+        {
+          "count": 1369,
+          "type": "IMPORTS"
+        },
+        {
+          "count": 1236,
+          "type": "CONTAINS_FILE"
+        },
+        {
+          "count": 541,
+          "type": "WRITES"
+        },
+        {
+          "count": 412,
+          "type": "CONTAINS_FOLDER"
+        },
+        {
+          "count": 322,
+          "type": "DEFINES_METHOD"
+        },
+        {
+          "count": 161,
+          "type": "HTTP_CALLS"
+        },
+        {
+          "count": 130,
+          "type": "SEMANTICALLY_RELATED"
+        },
+        {
+          "count": 96,
+          "type": "TESTS_FILE"
+        },
+        {
+          "count": 90,
+          "type": "SIMILAR_TO"
+        },
+        {
+          "count": 72,
+          "type": "RAISES"
+        },
+        {
+          "count": 59,
+          "type": "INHERITS"
+        },
+        {
+          "count": 55,
+          "type": "FILE_CHANGES_WITH"
+        },
+        {
+          "count": 20,
+          "type": "THROWS"
+        },
+        {
+          "count": 18,
+          "type": "TESTS"
+        },
+        {
+          "count": 5,
+          "type": "DEPENDS_ON"
+        },
+        {
+          "count": 2,
+          "type": "LISTENS_ON"
+        },
+        {
+          "count": 1,
+          "type": "EMITS"
+        },
+        {
+          "count": 1,
+          "type": "DECORATES"
+        }
+      ],
+      "node_label_counts": [
+        {
+          "count": 7281,
+          "label": "Variable"
+        },
+        {
+          "count": 4411,
+          "label": "Section"
+        },
+        {
+          "count": 2263,
+          "label": "Function"
+        },
+        {
+          "count": 1236,
+          "label": "Module"
+        },
+        {
+          "count": 1236,
+          "label": "File"
+        },
+        {
+          "count": 457,
+          "label": "Folder"
+        },
+        {
+          "count": 339,
+          "label": "Interface"
+        },
+        {
+          "count": 322,
+          "label": "Method"
+        },
+        {
+          "count": 178,
+          "label": "Type"
+        },
+        {
+          "count": 158,
+          "label": "Route"
+        },
+        {
+          "count": 71,
+          "label": "Class"
+        },
+        {
+          "count": 5,
+          "label": "Package"
+        },
+        {
+          "count": 2,
+          "label": "Channel"
+        },
+        {
+          "count": 1,
+          "label": "Project"
+        },
+        {
+          "count": 1,
+          "label": "Decorator"
+        }
+      ],
+      "path": "/srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z/home/.cache/codebase-memory-mcp/srv-agents-repos-Claude_Code_Automations.db",
+      "projects": [
+        {
+          "name": "srv-agents-repos-Claude_Code_Automations",
+          "root_path": "/srv/agents/repos/Claude_Code_Automations"
+        }
+      ],
+      "size_bytes": 37945344,
+      "sqlite_ok": true,
+      "table_counts": {
+        "edges": 33771,
+        "file_hashes": 1238,
+        "node_vectors": 2585,
+        "nodes": 17961,
+        "nodes_fts": 17961,
+        "nodes_fts_config": 1,
+        "nodes_fts_data": 549,
+        "nodes_fts_docsize": 17961,
+        "nodes_fts_idx": 309,
+        "project_summaries": 0,
+        "projects": 1,
+        "sqlite_sequence": 2,
+        "token_vectors": 3141
+      },
+      "tables": [
+        "edges",
+        "file_hashes",
+        "node_vectors",
+        "nodes",
+        "nodes_fts",
+        "nodes_fts_config",
+        "nodes_fts_data",
+        "nodes_fts_docsize",
+        "nodes_fts_idx",
+        "project_summaries",
+        "projects",
+        "sqlite_sequence",
+        "token_vectors"
+      ]
+    },
+    {
+      "edge_type_counts": [
+        {
+          "count": 5353,
+          "type": "DEFINES"
+        },
+        {
+          "count": 3310,
+          "type": "CALLS"
+        },
+        {
+          "count": 2154,
+          "type": "USAGE"
+        },
+        {
+          "count": 904,
+          "type": "IMPORTS"
+        },
+        {
+          "count": 541,
+          "type": "CONTAINS_FILE"
+        },
+        {
+          "count": 308,
+          "type": "SEMANTICALLY_RELATED"
+        },
+        {
+          "count": 281,
+          "type": "SIMILAR_TO"
+        },
+        {
+          "count": 173,
+          "type": "FILE_CHANGES_WITH"
+        },
+        {
+          "count": 104,
+          "type": "CONTAINS_FOLDER"
+        },
+        {
+          "count": 55,
+          "type": "WRITES"
+        },
+        {
+          "count": 47,
+          "type": "CONFIGURES"
+        },
+        {
+          "count": 19,
+          "type": "RAISES"
+        },
+        {
+          "count": 17,
+          "type": "HTTP_CALLS"
+        },
+        {
+          "count": 15,
+          "type": "INHERITS"
+        },
+        {
+          "count": 3,
+          "type": "DEFINES_METHOD"
+        }
+      ],
+      "node_label_counts": [
+        {
+          "count": 1780,
+          "label": "Function"
+        },
+        {
+          "count": 1409,
+          "label": "Variable"
+        },
+        {
+          "count": 1064,
+          "label": "Section"
+        },
+        {
+          "count": 541,
+          "label": "Module"
+        },
+        {
+          "count": 541,
+          "label": "File"
+        },
+        {
+          "count": 415,
+          "label": "Interface"
+        },
+        {
+          "count": 128,
+          "label": "Type"
+        },
+        {
+          "count": 128,
+          "label": "Folder"
+        },
+        {
+          "count": 18,
+          "label": "Route"
+        },
+        {
+          "count": 13,
+          "label": "Class"
+        },
+        {
+          "count": 3,
+          "label": "Method"
+        },
+        {
+          "count": 1,
+          "label": "Project"
+        }
+      ],
+      "path": "/srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z/home/.cache/codebase-memory-mcp/opt-crypto-tuber-ranked.db",
+      "projects": [
+        {
+          "name": "opt-crypto-tuber-ranked",
+          "root_path": "/opt/crypto-tuber-ranked"
+        }
+      ],
+      "size_bytes": 15007744,
+      "sqlite_ok": true,
+      "table_counts": {
+        "edges": 13284,
+        "file_hashes": 546,
+        "node_vectors": 1783,
+        "nodes": 6041,
+        "nodes_fts": 6041,
+        "nodes_fts_config": 1,
+        "nodes_fts_data": 151,
+        "nodes_fts_docsize": 6041,
+        "nodes_fts_idx": 96,
+        "project_summaries": 0,
+        "projects": 1,
+        "sqlite_sequence": 2,
+        "token_vectors": 2189
+      },
+      "tables": [
+        "edges",
+        "file_hashes",
+        "node_vectors",
+        "nodes",
+        "nodes_fts",
+        "nodes_fts_config",
+        "nodes_fts_data",
+        "nodes_fts_docsize",
+        "nodes_fts_idx",
+        "project_summaries",
+        "projects",
+        "sqlite_sequence",
+        "token_vectors"
+      ]
+    }
+  ],
+  "expected_run": "/srv/agents/system-index/codebase-memory/callscore-index-20260617T101728Z",
+  "generated_at_utc": "20260618T063257Z",
+  "policy": {
+    "copy_graph_dbs_into_repo": "forbidden",
+    "d_drive_writes": "forbidden",
+    "delete_graph_artifacts": "forbidden"
+  },
+  "root": "/srv/agents/system-index/codebase-memory"
+}

@@ -1,0 +1,16 @@
+{
+  "apply_selected_bytes": 17019837,
+  "apply_selected_count": 570,
+  "final_coverage_log": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+  "final_product_changed_or_hash_mismatch_count": 0,
+  "final_product_missing_count": 0,
+  "generated_at_utc": "20260618T063257Z",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_build_copy": "forbidden"
+  },
+  "source_log": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+  "type": "apply_import_evidence"
+}

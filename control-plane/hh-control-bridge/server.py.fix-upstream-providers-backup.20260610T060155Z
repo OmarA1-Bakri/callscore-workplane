@@ -1,0 +1,684 @@
+from __future__ import annotations
+
+import os
+import re
+import shlex
+import shutil
+import subprocess
+import time
+from typing import Any
+
+from fastmcp import FastMCP
+from starlette.requests import Request
+from starlette.responses import JSONResponse, PlainTextResponse
+
+
+WRITE_ENABLED = os.getenv("HH_ENABLE_WRITE", "0") == "1"
+APPROVAL = os.getenv("HH_APPROVAL_CODE", "")
+TIMEOUT = int(os.getenv("HH_TIMEOUT", "25"))
+HH_ROOT = os.getenv("HH_ROOT", "/srv")
+
+REPOS = {
+    "crypto_tuber_ranked": "/srv/agents/repos/crypto-tuber-ranked",
+    "career_ops": "/srv/agents/repos/career-ops",
+    "awesome_hermes_agent": "/srv/agents/repos/awesome-hermes-agent",
+    "composio": "/srv/agents/repos/composio",
+    "claude_code_automations": "/srv/agents/repos/Claude_Code_Automations",
+}
+
+SAFE_PREFIXES = (
+    "hostname", "whoami", "pwd", "uptime", "date", "df", "free", "ls", "find", "du",
+    "ps", "top", "pgrep", "ss", "head", "tail", "wc", "stat", "file",
+    "git status", "git branch", "git log", "git diff", "git remote", "git rev-parse", "git ls-files",
+    "systemctl status", "journalctl",
+    "docker ps", "docker logs", "docker compose ps",
+    "cat", "sed -n", "grep", "rg",
+    "python3 -m py_compile", "python -m py_compile",
+    "tailscale version", "tailscale status", "tailscale serve status", "tailscale funnel status",
+    "tmux ls", "tmux list-sessions",
+)
+
+SENSITIVE = (
+    ".ssh", "id_ed25519", "id_rsa", "authorized_keys", ".env",
+    "secret", "token", "password", "credentials",
+)
+
+mcp = FastMCP(
+    "HH Control Bridge",
+    instructions=(
+        "Permanent HH VM bridge. Use read-only tools first. "
+        "Write execution requires HH_ENABLE_WRITE=1 and the approval code."
+    ),
+)
+
+
+def add_upstream_mcp_providers() -> None:
+    """Expose upstream MCP servers through HH Control Tunnel as first-class namespaced tools."""
+    try:
+        from fastmcp.server.providers.proxy import ProxyProvider, ProxyClient
+
+        smithery_key = os.getenv("HH_SMITHERY_TOOLBOX_API_KEY", "").strip()
+        if smithery_key.lower().startswith("bearer "):
+            smithery_key = smithery_key[7:].strip()
+
+        if smithery_key:
+            toolbox_backend = {
+                "mcpServers": {
+                    "toolbox": {
+                        "type": "http",
+                        "url": "https://mcp.smithery.run/albakri-omar?mode=smart",
+                        "headers": {
+                            "Authorization": f"Bearer {smithery_key}",
+                        },
+                    }
+                }
+            }
+
+            toolbox_provider = ProxyProvider(
+                lambda: ProxyClient(toolbox_backend),
+                cache_ttl=120,
+            ).with_namespace("toolbox")
+
+            mcp.add_provider(toolbox_provider)
+
+        desktop_backend = {
+            "mcpServers": {
+                "desktop-commander": {
+                    "command": "npx",
+                    "args": ["-y", "@wonderwhy-er/desktop-commander@latest"],
+                }
+            }
+        }
+
+        desktop_provider = ProxyProvider(
+            lambda: ProxyClient(desktop_backend),
+            cache_ttl=120,
+        ).with_namespace("desktop_commander")
+
+        mcp.add_provider(desktop_provider)
+
+        print("HH_UPSTREAM_MCP_PROVIDERS=loaded", flush=True)
+
+    except Exception as exc:
+        print(f"HH_UPSTREAM_MCP_PROVIDER_ERROR={type(exc).__name__}: {exc}", flush=True)
+
+
+add_upstream_mcp_providers()
+
+
+def add_upstream_mcp_providers() -> None:
+    """Expose upstream MCP servers through HH Control Tunnel as first-class namespaced tools."""
+    try:
+        from fastmcp.server.providers.proxy import ProxyProvider, ProxyClient
+
+        smithery_key = os.getenv("HH_SMITHERY_TOOLBOX_API_KEY", "").strip()
+        if smithery_key.lower().startswith("bearer "):
+            smithery_key = smithery_key[7:].strip()
+
+        if smithery_key:
+            toolbox_backend = {
+                "mcpServers": {
+                    "toolbox": {
+                        "type": "http",
+                        "url": "https://mcp.smithery.run/albakri-omar?mode=smart",
+                        "headers": {
+                            "Authorization": f"Bearer {smithery_key}",
+                        },
+                    }
+                }
+            }
+
+            toolbox_provider = ProxyProvider(
+                lambda: ProxyClient(toolbox_backend),
+                cache_ttl=120,
+            ).with_namespace("toolbox")
+
+            mcp.add_provider(toolbox_provider)
+
+        desktop_backend = {
+            "mcpServers": {
+                "desktop-commander": {
+                    "command": "npx",
+                    "args": ["-y", "@wonderwhy-er/desktop-commander@latest"],
+                }
+            }
+        }
+
+        desktop_provider = ProxyProvider(
+            lambda: ProxyClient(desktop_backend),
+            cache_ttl=120,
+        ).with_namespace("desktop_commander")
+
+        mcp.add_provider(desktop_provider)
+
+        print("HH_UPSTREAM_MCP_PROVIDERS=loaded", flush=True)
+
+    except Exception as exc:
+        print(f"HH_UPSTREAM_MCP_PROVIDER_ERROR={type(exc).__name__}: {exc}", flush=True)
+
+
+add_upstream_mcp_providers()
+
+
+def compact(x: str | bytes | None, n: int = 12000) -> str:
+    if x is None:
+        return ""
+    if isinstance(x, bytes):
+        x = x.decode(errors="replace")
+    if len(x) <= n:
+        return x
+    return x[:n] + f"\n\n[truncated: {len(x) - n} chars omitted]"
+
+
+def run(cmd: str, timeout: int = TIMEOUT) -> dict[str, Any]:
+    start = time.time()
+    try:
+        proc = subprocess.run(
+            cmd,
+            shell=True,
+            executable="/bin/bash",
+            text=True,
+            capture_output=True,
+            timeout=timeout,
+            cwd=HH_ROOT,
+        )
+        return {
+            "ok": proc.returncode == 0,
+            "exit_code": proc.returncode,
+            "elapsed_seconds": round(time.time() - start, 3),
+            "command": cmd,
+            "stdout": compact(proc.stdout),
+            "stderr": compact(proc.stderr),
+        }
+    except subprocess.TimeoutExpired as exc:
+        return {
+            "ok": False,
+            "exit_code": 124,
+            "elapsed_seconds": round(time.time() - start, 3),
+            "command": cmd,
+            "stdout": compact(exc.stdout),
+            "stderr": f"Command timed out after {timeout}s",
+        }
+
+
+def norm(cmd: str) -> str:
+    return re.sub(r"\s+", " ", cmd.strip()).lower()
+
+
+def repo_path(repo: str) -> str:
+    key = repo.strip().lower()
+    if key not in REPOS:
+        raise ValueError(f"Unknown repo '{repo}'. Allowed: {', '.join(REPOS)}")
+    return REPOS[key]
+
+
+def readonly_ok(cmd: str) -> tuple[bool, str]:
+    n = norm(cmd)
+    if not n:
+        return False, "empty command"
+    if any(s in n for s in SENSITIVE):
+        return False, "sensitive target rejected"
+    if ">" in n or ";" in n:
+        return False, "redirection or semicolon rejected"
+    if not any(n == p or n.startswith(p + " ") for p in SAFE_PREFIXES):
+        return False, "command prefix not allowlisted"
+    return True, "ok"
+
+
+@mcp.custom_route("/", methods=["GET"])
+async def root(request: Request):
+    return PlainTextResponse("HH Control Bridge is running. MCP endpoint: /mcp. Health: /health")
+
+
+@mcp.custom_route("/health", methods=["GET"])
+async def health_route(request: Request):
+    probe = run("hostname && whoami && pwd && uptime", 10)
+    return JSONResponse({
+        "bridge": "hh-control-bridge",
+        "runtime": "hh-vm-systemd",
+        "root": HH_ROOT,
+        "status": "ok" if probe["ok"] else "degraded",
+        "write_enabled": WRITE_ENABLED,
+        "time_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "probe": probe,
+    })
+
+
+@mcp.tool
+def hh_health() -> dict[str, Any]:
+    """Check HH VM identity, uptime, disk, memory, and current load."""
+    return run(
+        "hostname && whoami && pwd && uptime && "
+        "printf '\\n--- disk ---\\n' && df -h / /srv 2>/dev/null || df -h / && "
+        "printf '\\n--- memory ---\\n' && free -h",
+        20,
+    )
+
+
+@mcp.tool
+def hh_top_processes(lines: int = 25) -> dict[str, Any]:
+    """Show top CPU-consuming processes on HH VM."""
+    lines = max(5, min(int(lines), 120))
+    return run(
+        "ps -eo pid,ppid,user,stat,pcpu,pmem,comm,args --sort=-pcpu | head -n " + str(lines),
+        20,
+    )
+
+
+@mcp.tool
+def hh_list_repos() -> dict[str, Any]:
+    """List known repository aliases available to the HH bridge."""
+    return {"ok": True, "repos": REPOS}
+
+
+@mcp.tool
+def hh_git_status(repo: str = "hermes") -> dict[str, Any]:
+    """Run git branch, git status, and latest commit for an allowlisted repo."""
+    try:
+        path = shlex.quote(repo_path(repo))
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+    return run(
+        f"cd {path} && "
+        "printf 'repo_path=' && pwd && "
+        "printf '\\nbranch=' && git branch --show-current && "
+        "printf '\\n--- status --short ---\\n' && git status --short && "
+        "printf '\\n--- latest commit ---\\n' && git log -1 --oneline",
+        25,
+    )
+
+
+@mcp.tool
+def hh_git_diff_stat(repo: str = "hermes") -> dict[str, Any]:
+    """Show git diff summary for an allowlisted repo."""
+    try:
+        path = shlex.quote(repo_path(repo))
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+    return run(
+        f"cd {path} && "
+        "printf 'repo_path=' && pwd && "
+        "printf '\\n--- git diff --stat ---\\n' && git diff --stat && "
+        "printf '\\n--- git status --short ---\\n' && git status --short",
+        25,
+    )
+
+
+@mcp.tool
+def hh_systemctl_status(service: str) -> dict[str, Any]:
+    """Read systemd status for a named service."""
+    service = service.strip()
+    if not re.fullmatch(r"[A-Za-z0-9_.@-]{1,100}", service):
+        return {"ok": False, "error": "invalid service name"}
+    return run(f"systemctl status {shlex.quote(service)} --no-pager", 20)
+
+
+@mcp.tool
+def hh_journal_tail(service: str, lines: int = 120) -> dict[str, Any]:
+    """Read recent journal lines for a named service."""
+    service = service.strip()
+    lines = max(20, min(int(lines), 500))
+    if not re.fullmatch(r"[A-Za-z0-9_.@-]{1,100}", service):
+        return {"ok": False, "error": "invalid service name"}
+    return run(f"journalctl -u {shlex.quote(service)} -n {lines} --no-pager", 25)
+
+
+@mcp.tool
+def hh_tailscale_status() -> dict[str, Any]:
+    """Read Tailscale version, device status, Serve status, and Funnel status."""
+    return run(
+        "printf '%s\\n' '--- version ---' && tailscale version && "
+        "printf '%s\\n' '--- self/status ---' && tailscale status --self && "
+        "printf '%s\\n' '--- serve ---' && tailscale serve status 2>&1 || true && "
+        "printf '%s\\n' '--- funnel ---' && tailscale funnel status 2>&1 || true",
+        30,
+    )
+
+
+@mcp.tool
+def hh_run_readonly(command: str, timeout_seconds: int = 25) -> dict[str, Any]:
+    """Run a single allowlisted read-only shell command."""
+    ok, why = readonly_ok(command)
+    if not ok:
+        return {"ok": False, "rejected": True, "reason": why, "command": command}
+    return run(command, max(5, min(int(timeout_seconds), 90)))
+
+
+@mcp.tool
+def hh_run_approved_shell(
+    command: str,
+    approval_code: str,
+    timeout_seconds: int = 60,
+) -> dict[str, Any]:
+    """Run an approved shell command on HH VM."""
+    if not WRITE_ENABLED:
+        return {"ok": False, "rejected": True, "reason": "write execution disabled"}
+    if not APPROVAL or approval_code.strip() != APPROVAL:
+        return {"ok": False, "rejected": True, "reason": "invalid approval code"}
+    return run(command, max(5, min(int(timeout_seconds), 240)))
+
+
+def srv_path(user_path: str = ".") -> str:
+    base = os.path.realpath(HH_ROOT)
+    raw = (user_path or ".").strip()
+    if raw == "/srv":
+        raw = "."
+    elif raw.startswith("/srv/"):
+        raw = raw[len("/srv/"):]
+    elif raw.startswith("/"):
+        raise ValueError("absolute paths outside /srv are rejected")
+    path = os.path.realpath(os.path.join(base, raw))
+    if path != base and not path.startswith(base + os.sep):
+        raise ValueError("path escapes /srv")
+    return path
+
+
+def reject_sensitive_path(path: str) -> None:
+    n = path.lower()
+    if any(part in n for part in SENSITIVE):
+        raise ValueError("sensitive path rejected")
+
+
+@mcp.tool
+def hh_srv_pwd() -> dict[str, Any]:
+    """Return the HH bridge root directory."""
+    return {"ok": True, "root": HH_ROOT}
+
+
+@mcp.tool
+def hh_srv_list(path: str = ".", depth: int = 2) -> dict[str, Any]:
+    """List files/directories under /srv."""
+    try:
+        target = srv_path(path)
+        reject_sensitive_path(target)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    depth = max(1, min(int(depth), 6))
+    return run(f"find {shlex.quote(target)} -maxdepth {depth} -mindepth 1 -printf '%y %p\\n' | sort | head -800", 30)
+
+
+@mcp.tool
+def hh_srv_read_file(path: str, lines: int = 300) -> dict[str, Any]:
+    """Read a non-sensitive text file under /srv."""
+    try:
+        target = srv_path(path)
+        reject_sensitive_path(target)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    lines = max(1, min(int(lines), 1500))
+    return run(f"sed -n '1,{lines}p' {shlex.quote(target)}", 30)
+
+
+@mcp.tool
+def hh_srv_find(name_pattern: str, path: str = ".", max_results: int = 300) -> dict[str, Any]:
+    """Find files/directories under /srv by name pattern."""
+    try:
+        target = srv_path(path)
+        reject_sensitive_path(target)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    pattern = name_pattern.strip() or "*"
+    if any(x in pattern.lower() for x in SENSITIVE):
+        return {"ok": False, "error": "sensitive pattern rejected"}
+    max_results = max(20, min(int(max_results), 1000))
+    return run(f"find {shlex.quote(target)} -iname {shlex.quote(pattern)} -not -path '*/.git/*' | head -{max_results}", 30)
+
+
+@mcp.tool
+def hh_srv_grep(pattern: str, path: str = ".", max_results: int = 300) -> dict[str, Any]:
+    """Search non-sensitive files under /srv."""
+    try:
+        target = srv_path(path)
+        reject_sensitive_path(target)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    pat = pattern.strip()
+    if not pat:
+        return {"ok": False, "error": "empty pattern"}
+    if any(x in pat.lower() for x in SENSITIVE):
+        return {"ok": False, "error": "sensitive pattern rejected"}
+    max_results = max(20, min(int(max_results), 1000))
+    return run(
+        "rg -n --hidden --glob '!**/.git/**' --glob '!**/.env*' "
+        "--glob '!**/*secret*' --glob '!**/*token*' --glob '!**/*credential*' "
+        f"{shlex.quote(pat)} {shlex.quote(target)} | head -{max_results}",
+        45,
+    )
+
+
+@mcp.tool
+def hh_srv_git_repos(path: str = ".", max_results: int = 300) -> dict[str, Any]:
+    """Discover git repositories under /srv."""
+    try:
+        target = srv_path(path)
+        reject_sensitive_path(target)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    max_results = max(20, min(int(max_results), 1000))
+    return run(f"find {shlex.quote(target)} -type d -name .git -prune -printf '%h\\n' | sort | head -{max_results}", 30)
+
+
+@mcp.tool
+def hh_srv_git_status(path: str) -> dict[str, Any]:
+    """Run git status for any repo under /srv."""
+    try:
+        target = srv_path(path)
+        reject_sensitive_path(target)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+    return run(
+        f"cd {shlex.quote(target)} && "
+        "printf 'repo_path=' && pwd && "
+        "printf '\\nbranch=' && git branch --show-current && "
+        "printf '\\n--- status --short ---\\n' && git status --short && "
+        "printf '\\n--- latest commit ---\\n' && git log -1 --oneline",
+        30,
+    )
+
+
+@mcp.tool
+def hh_run_srv_readonly(command: str, timeout_seconds: int = 45) -> dict[str, Any]:
+    """Run a broader read-only shell command from /srv."""
+    n = norm(command)
+    if not n:
+        return {"ok": False, "rejected": True, "reason": "empty command", "command": command}
+    if any(sens in n for sens in SENSITIVE):
+        return {"ok": False, "rejected": True, "reason": "sensitive target rejected", "command": command}
+    blocked = [">", " rm ", " mv ", " chmod ", " chown ", " sudo ", " git commit", " git push", " docker compose up", " docker restart"]
+    if any(x in f" {n} " for x in blocked):
+        return {"ok": False, "rejected": True, "reason": "mutation-like command rejected", "command": command}
+    return run(command, max(5, min(int(timeout_seconds), 120)))
+
+
+def write_target_path(user_path: str) -> str:
+    target = srv_path(user_path)
+    reject_sensitive_path(target)
+    if "/.git/" in target or target.endswith("/.git"):
+        raise ValueError("refusing to write inside .git")
+    return target
+
+
+def backup_file(path: str) -> str | None:
+    if not os.path.exists(path):
+        return None
+    stamp = time.strftime("%Y%m%dT%H%M%SZ", time.gmtime())
+    backup = f"{path}.bak.{stamp}"
+    shutil.copy2(path, backup)
+    return backup
+
+
+@mcp.tool
+def hh_write_text_file(
+    path: str,
+    content: str,
+    create_dirs: bool = True,
+    backup_existing: bool = True,
+) -> dict[str, Any]:
+    """Write a text file under /srv, with optional parent creation and backup."""
+    try:
+        target = write_target_path(path)
+        if os.path.isdir(target):
+            return {"ok": False, "error": "target is a directory"}
+        if len(content.encode("utf-8")) > 750_000:
+            return {"ok": False, "error": "content too large"}
+        if create_dirs:
+            os.makedirs(os.path.dirname(target), exist_ok=True)
+        backup = backup_file(target) if backup_existing else None
+        with open(target, "w", encoding="utf-8") as f:
+            f.write(content)
+        return {"ok": True, "path": target, "bytes": os.path.getsize(target), "backup": backup}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@mcp.tool
+def hh_append_text_file(path: str, content: str) -> dict[str, Any]:
+    """Append text to a file under /srv."""
+    try:
+        target = write_target_path(path)
+        if len(content.encode("utf-8")) > 250_000:
+            return {"ok": False, "error": "content too large"}
+        os.makedirs(os.path.dirname(target), exist_ok=True)
+        with open(target, "a", encoding="utf-8") as f:
+            f.write(content)
+        return {"ok": True, "path": target, "bytes": os.path.getsize(target)}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@mcp.tool
+def hh_replace_in_file(
+    path: str,
+    old_text: str,
+    new_text: str,
+    expected_replacements: int = 1,
+) -> dict[str, Any]:
+    """Replace text inside a file under /srv, with backup."""
+    try:
+        target = write_target_path(path)
+        if not os.path.isfile(target):
+            return {"ok": False, "error": "target is not a file"}
+        data = open(target, "r", encoding="utf-8").read()
+        count = data.count(old_text)
+        if count == 0:
+            return {"ok": False, "error": "old_text not found"}
+        if expected_replacements > 0 and count != expected_replacements:
+            return {"ok": False, "error": f"replacement count mismatch: found {count}"}
+        backup = backup_file(target)
+        data = data.replace(old_text, new_text)
+        with open(target, "w", encoding="utf-8") as f:
+            f.write(data)
+        return {"ok": True, "path": target, "replacements": count, "backup": backup}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@mcp.tool
+def hh_make_directory(path: str) -> dict[str, Any]:
+    """Create a directory under /srv."""
+    try:
+        target = write_target_path(path)
+        os.makedirs(target, exist_ok=True)
+        return {"ok": True, "path": target}
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@mcp.tool
+def hh_operator_git_apply_patch(repo_path: str, patch_text: str) -> dict[str, Any]:
+    """Apply a unified git patch inside a repo under /srv after git apply --check."""
+    try:
+        repo = srv_path(repo_path)
+        reject_sensitive_path(repo)
+        if not os.path.isdir(os.path.join(repo, ".git")):
+            return {"ok": False, "error": "not a git repo"}
+        if len(patch_text.encode("utf-8")) > 750_000:
+            return {"ok": False, "error": "patch too large"}
+        patch_file = f"/tmp/hh_patch_{int(time.time())}.diff"
+        with open(patch_file, "w", encoding="utf-8") as f:
+            f.write(patch_text)
+        os.chmod(patch_file, 0o600)
+        return run(
+            f"cd {shlex.quote(repo)} && "
+            f"git apply --check {shlex.quote(patch_file)} && "
+            f"git apply {shlex.quote(patch_file)} && "
+            "git status --short",
+            60,
+        )
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@mcp.tool
+def hh_operator_docker_compose(project_path: str, action: str = "ps") -> dict[str, Any]:
+    """Run selected docker compose actions inside a project under /srv."""
+    try:
+        project = srv_path(project_path)
+        reject_sensitive_path(project)
+        if not os.path.exists(os.path.join(project, "docker-compose.yml")) and not os.path.exists(os.path.join(project, "compose.yml")):
+            return {"ok": False, "error": "no compose file found"}
+        actions = {
+            "ps": "docker compose ps",
+            "build": "docker compose build",
+            "up": "docker compose up -d",
+            "up_build": "docker compose up -d --build",
+            "restart": "docker compose restart",
+            "logs": "docker compose logs --tail 160",
+        }
+        if action not in actions:
+            return {"ok": False, "error": f"invalid action: {action}", "allowed": sorted(actions)}
+        return run(f"cd {shlex.quote(project)} && {actions[action]}", 180)
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+@mcp.tool
+def hh_operator_run_repo_command(
+    repo_path: str,
+    command: str,
+    timeout_seconds: int = 120,
+) -> dict[str, Any]:
+    """Run a bounded operator command inside a repo under /srv."""
+    try:
+        repo = srv_path(repo_path)
+        reject_sensitive_path(repo)
+        if not os.path.isdir(repo):
+            return {"ok": False, "error": "repo_path is not a directory"}
+
+        n = norm(command)
+        blocked = (
+            " rm ", " rmdir ", " shred ", " wipefs ", " mkfs", " dd ",
+            " sudo ", " su ", " chmod ", " chown ", " chgrp ",
+            " git push", " git commit", " git reset", " git clean",
+            " netlify deploy", " netlify env:set", " tailscale funnel",
+            " psql ", " prisma migrate deploy", " prisma migrate reset",
+            " curl -x post", " curl -x put", " curl -x patch", " curl -x delete",
+        )
+        if any(x in f" {n} " for x in blocked):
+            return {"ok": False, "error": "blocked operator command"}
+        if any(x in n for x in SENSITIVE):
+            return {"ok": False, "error": "sensitive command rejected"}
+
+        allowed_prefixes = (
+            "npm run", "pnpm run", "yarn run",
+            "python3 -m", "python -m",
+            "pytest", "ruff", "mypy", "npx", "node",
+            "git status", "git diff", "git log",
+            "docker compose ps", "docker compose logs", "docker compose build", "docker compose up -d",
+        )
+        if not any(n == p or n.startswith(p + " ") for p in allowed_prefixes):
+            return {"ok": False, "error": "command prefix not allowed", "allowed_prefixes": allowed_prefixes}
+
+        return run(f"cd {shlex.quote(repo)} && {command}", max(10, min(int(timeout_seconds), 300)))
+    except Exception as exc:
+        return {"ok": False, "error": str(exc)}
+
+
+if __name__ == "__main__":
+    mcp.run(
+        transport="http",
+        host=os.getenv("HOST", "127.0.0.1"),
+        port=int(os.getenv("PORT", "8787")),
+    )

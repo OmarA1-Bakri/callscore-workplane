@@ -1,0 +1,8 @@
+services:
+  oauth-mcp-gateway:
+    build: .
+    container_name: hh-oauth-mcp-gateway
+    restart: unless-stopped
+    network_mode: host
+    env_file:
+      - .env

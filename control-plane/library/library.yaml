@@ -1,0 +1,2963 @@
+version: '1.0'
+deploy_targets:
+  skill:
+  - default: ~/.hermes/skills/
+  - global: ~/.hermes/skills/
+  agent:
+  - default: ~/.hermes/agents/
+  - global: ~/.hermes/agents/
+  prompt:
+  - default: ~/.hermes/prompts/
+  - global: ~/.hermes/prompts/
+  workflow:
+  - default: ~/.hermes/workflows/
+  - global: ~/.hermes/workflows/
+  plugin:
+  - global: ~/.hermes/plugins/
+  reference:
+  - default: ~/.hermes/references/
+  - global: ~/.hermes/references/
+scan_roots:
+- type: skill
+  runtime: hermes
+  path: ~/.hermes/skills
+  deploy_scope: global
+  recursive: true
+- type: workflow
+  runtime: hermes
+  path: ~/.hermes/workflows
+  deploy_scope: global
+  recursive: true
+- type: prompt
+  runtime: hermes
+  path: ~/.hermes/prompts
+  deploy_scope: global
+  recursive: true
+- type: reference
+  runtime: hermes
+  path: ~/.hermes/references
+  deploy_scope: global
+  recursive: true
+library:
+  skills:
+  - name: codex
+    description: Delegate coding to OpenAI Codex CLI (features, PRs).
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/autonomous-ai-agents/autonomous-ai-agents/codex
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: accelerate
+    description: Simplest distributed training API. 4 lines to add distributed support
+      to any PyTorch script. Unified
+    source: /home/omar/.hermes/skills/mlops/accelerate
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: adversarial-ux-test
+    description: Roleplay the most difficult, tech-resistant user for your product.
+      Browse the app as that persona, f
+    source: /home/omar/.hermes/skills/dogfood/adversarial-ux-test
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: agent-memory-vault
+    description: 'Set up a protected, persistent long-term memory vault for an agent
+      using an existing Obsidian vault '
+    source: /home/omar/.hermes/skills/note-taking/agent-memory-vault
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: agent-state-relocation
+    description: Relocate Hermes agent state (memories, vault, caches, logs) to a
+      protected or external drive using d
+    source: /home/omar/.hermes/skills/agent-state-relocation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: agentmail
+    description: Give the agent its own dedicated email inbox via AgentMail. Send,
+      receive, and manage email autonomo
+    source: /home/omar/.hermes/skills/email/agentmail
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: airtable
+    description: Airtable REST API via curl. Records CRUD, filters, upserts.
+    source: /home/omar/.hermes/skills/productivity/airtable
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: apple-notes
+    description: 'Manage Apple Notes via memo CLI: create, search, edit.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/apple/apple-notes
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: apple-reminders
+    description: 'Apple Reminders via remindctl: add, list, complete.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/apple/apple-reminders
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: architecture-diagram
+    description: Dark-themed SVG architecture/cloud/infra diagrams as HTML.
+    source: /home/omar/.hermes/skills/creative/architecture-diagram
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: arxiv
+    description: Search arXiv papers by keyword, author, category, or ID.
+    source: /home/omar/.hermes/skills/research/arxiv
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ascii-art
+    description: 'ASCII art: pyfiglet, cowsay, boxes, image-to-ascii.'
+    source: /home/omar/.hermes/skills/creative/ascii-art
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ascii-video
+    description: 'ASCII video: convert video/audio to colored ASCII MP4/GIF.'
+    source: /home/omar/.hermes/skills/creative/ascii-video
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: audiocraft
+    description: 'AudioCraft: MusicGen text-to-music, AudioGen text-to-sound.'
+    source: /home/omar/.hermes/skills/mlops/models/audiocraft
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: axolotl
+    description: 'Axolotl: YAML LLM fine-tuning (LoRA, DPO, GRPO).'
+    source: /home/omar/.hermes/skills/mlops/training/axolotl
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: baoyu-comic
+    description: 'Knowledge comics (知识漫画): educational, biography, tutorial.'
+    source: /home/omar/.hermes/skills/creative/baoyu-comic
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: baoyu-infographic
+    description: 'Infographics: 21 layouts x 21 styles (信息图, 可视化).'
+    source: /home/omar/.hermes/skills/creative/baoyu-infographic
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: blogwatcher
+    description: Monitor blogs and RSS/Atom feeds via blogwatcher-cli tool.
+    source: /home/omar/.hermes/skills/research/blogwatcher
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: brand-pioneer
+    description: A brand development specialist, thought leader, brand strategy super-genius,
+      and brand visionary. Br
+    source: /home/omar/.hermes/skills/brand-pioneer
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: bun-test-module-isolation
+    description: Prevent order-dependent Bun test failures caused by mock.module()
+      leaking through shared module cach
+    source: /home/omar/.hermes/skills/software-development/bun-test-module-isolation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: claude-code
+    description: Delegate coding to Claude Code CLI (features, PRs).
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/autonomous-ai-agents/autonomous-ai-agents/claude-code
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: claude-code-wsl-worktree-paths
+    description: Prevent Claude Code tmux sessions on WSL from "fixing" healthy git
+      worktrees when /mnt/c and /c path
+    source: /home/omar/.hermes/skills/autonomous-ai-agents/claude-code-wsl-worktree-paths
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: claude-design
+    description: Design one-off HTML artifacts (landing, deck, prototype).
+    source: /home/omar/.hermes/skills/creative/claude-design
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: clip
+    description: OpenAI's model connecting vision and language. Enables zero-shot
+      image classification, image-text ma
+    source: /home/omar/.hermes/skills/mlops/clip
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: codebase-inspection
+    description: 'Inspect codebases w/ pygount: LOC, languages, ratios.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/github/codebase-inspection
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: comfyui
+    description: Generate images, video, and audio with ComfyUI — install, launch,
+      manage nodes/models, run workflows
+    source: /home/omar/.hermes/skills/creative/comfyui
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: committing-user-work-safely
+    description: How to handle "commit this for me" or dirty-working-tree situations
+      safely when starting work on a u
+    source: /home/omar/.hermes/skills/github/committing-user-work-safely
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: composio-apify-mcp
+    description: 'Use Apify through Composio''s apify_mcp toolkit safely: inspect
+      MCP tool schemas first, handle separa'
+    source: /home/omar/.hermes/skills/mcp/composio-apify-mcp
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: composio-native-action-integration
+    description: Design and verify Composio-backed native runtime actions with correct
+      persistence, failure semantics
+    source: /home/omar/.hermes/skills/software-development/composio-native-action-integration
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: creative-ideation
+    description: Generate project ideas via creative constraints.
+    source: /home/omar/.hermes/skills/creative/creative-ideation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: crypto-tuber-ranked-creator-pipeline
+    description: Expand the tracked creator universe in crypto-tuber-ranked and run
+      the ingestion pipeline safely, in
+    source: /home/omar/.hermes/skills/software-development/crypto-tuber-ranked-creator-pipeline
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: debugging-hermes-tui-commands
+    description: 'Debug Hermes TUI slash commands: Python, gateway, Ink UI.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/software-development/debugging-hermes-tui-commands
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-artifact-phase-review
+    description: Review iterative design artifacts (static HTML/spec pages/screens)
+      by separating component/system qu
+    source: /home/omar/.hermes/skills/software-development/design-artifact-phase-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-md
+    description: Author/validate/export Google's DESIGN.md token spec files.
+    source: /home/omar/.hermes/skills/creative/design-md
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: dogfood
+    description: Systematic exploratory QA testing of web applications — find bugs,
+      capture evidence, and generate st
+    source: /home/omar/.hermes/skills/dogfood
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: dogfood-uis-with-agent-browser
+    description: When auditing, reviewing, or critiquing a web UI, do not rely on
+      code-reading alone. Capture real sc
+    source: /home/omar/.hermes/skills/software-development/dogfood-uis-with-agent-browser
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: dspy
+    description: 'DSPy: declarative LM programs, auto-optimize prompts, RAG.'
+    source: /home/omar/.hermes/skills/mlops/research/dspy
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: durable-agent-state
+    description: Use when relocating, protecting, backing up, or recovering durable
+      agent/application state across He
+    source: /home/omar/.hermes/skills/devops/durable-agent-state
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: epoch-ai
+    description: Expert in YouTube script analysis and summarization
+    source: /home/omar/.hermes/skills/epoch-ai
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: excalidraw
+    description: Hand-drawn Excalidraw JSON diagrams (arch, flow, seq).
+    source: /home/omar/.hermes/skills/creative/excalidraw
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: faiss
+    description: Facebook's library for efficient similarity search and clustering
+      of dense vectors. Supports billion
+    source: /home/omar/.hermes/skills/mlops/faiss
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: find-nearby
+    description: Find nearby places (restaurants, cafes, bars, pharmacies, etc.) using
+      OpenStreetMap. Works with coor
+    source: /home/omar/.hermes/skills/leisure/find-nearby
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: findmy
+    description: Track Apple devices/AirTags via FindMy.app on macOS.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/apple/findmy
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: gguf
+    description: GGUF format and llama.cpp quantization for efficient CPU/GPU inference.
+      Use when deploying models on
+    source: /home/omar/.hermes/skills/mlops/inference/gguf
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ghostwriter-pro-ai
+    description: A sophisticated AI-powered ghostwriting agent designed to craft high-quality
+      content across a divers
+    source: /home/omar/.hermes/skills/ghostwriter-pro-ai
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: gif-search
+    description: Search/download GIFs from Tenor via curl + jq.
+    source: /home/omar/.hermes/skills/media/gif-search
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: git-remote-auth
+    description: Diagnose and fix git authentication failures against any remote (GitHub,
+      GitLab, Bitbucket, self-hos
+    source: /home/omar/.hermes/skills/github/git-remote-auth
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: git-worktree-swarm-management
+    description: 'Create and manage clean parallel git worktrees for multi-slice implementation
+      without contaminating '
+    source: /home/omar/.hermes/skills/github/git-worktree-swarm-management
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: github-auth
+    description: 'GitHub auth setup: HTTPS tokens, SSH keys, gh CLI login.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/github/github-auth
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: github-code-review
+    description: 'Review PRs: diffs, inline comments via gh or REST.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/github/github-code-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: github-issues
+    description: Create, triage, label, assign GitHub issues via gh or REST.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/github/github-issues
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: github-pr-workflow
+    description: 'GitHub PR lifecycle: branch, commit, open, CI, merge.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/github/github-pr-workflow
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: github-repo-management
+    description: Clone/create/fork repos; manage remotes, releases.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/github/github-repo-management
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: godmode
+    description: 'Jailbreak LLMs: Parseltongue, GODMODE, ULTRAPLINIAN.'
+    source: /home/omar/.hermes/skills/red-teaming/godmode
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: google-workspace
+    description: Gmail, Calendar, Drive, Docs, Sheets via gws CLI or Python.
+    source: /home/omar/.hermes/skills/productivity/google-workspace
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: grpo-rl-training
+    description: Expert guidance for GRPO/RL fine-tuning with TRL for reasoning and
+      task-specific model training
+    source: /home/omar/.hermes/skills/mlops/training/grpo-rl-training
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: guidance
+    description: Control LLM output with regex and grammars, guarantee valid JSON/XML/code
+      generation, enforce struct
+    source: /home/omar/.hermes/skills/mlops/guidance
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: heartmula
+    description: 'HeartMuLa: Suno-like song generation from lyrics + tags.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/media/heartmula
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: hermes-agent
+    description: Configure, extend, or contribute to Hermes Agent.
+    source: /home/omar/.hermes/skills/autonomous-ai-agents/autonomous-ai-agents/hermes-agent
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: hermes-agent-skill-authoring
+    description: 'Author in-repo SKILL.md: frontmatter, validator, structure.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/software-development/hermes-agent-skill-authoring
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: himalaya
+    description: 'Himalaya CLI: IMAP/SMTP email from terminal.'
+    source: /home/omar/.hermes/skills/email/himalaya
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: honcho
+    description: Configure and use Honcho memory with Hermes -- cross-session user
+      modeling, multi-profile peer isola
+    source: /home/omar/.hermes/skills/autonomous-ai-agents/autonomous-ai-agents/honcho
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: huggingface-hub
+    description: 'HuggingFace hf CLI: search/download/upload models, datasets.'
+    source: /home/omar/.hermes/skills/mlops/huggingface-hub
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: huggingface-tokenizers
+    description: Fast tokenizers optimized for research and production. Rust-based
+      implementation tokenizes 1GB in <2
+    source: /home/omar/.hermes/skills/mlops/huggingface-tokenizers
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: humanizer
+    description: 'Humanize text: strip AI-isms and add real voice.'
+    source: /home/omar/.hermes/skills/creative/humanizer
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: imessage
+    description: Send and receive iMessages/SMS via the imsg CLI on macOS.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/apple/imessage
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: inspect-before-acting-on-behalf
+    description: Before offering to perform an action "on behalf of" the user (commit,
+      merge, delete, move, overwrite
+    source: /home/omar/.hermes/skills/software-development/inspect-before-acting-on-behalf
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: installing-mcp-servers-in-hermes
+    description: Install an external MCP server so its tools appear as native mcp_<server>_<tool>
+      functions in Hermes
+    source: /home/omar/.hermes/skills/mcp/installing-mcp-servers-in-hermes
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: instructor
+    description: Extract structured data from LLM responses with Pydantic validation,
+      retry failed extractions automa
+    source: /home/omar/.hermes/skills/mlops/instructor
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: jupyter-live-kernel
+    description: Iterative Python via live Jupyter kernel (hamelnb).
+    source: /home/omar/.hermes/skills/data-science/jupyter-live-kernel
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kanban-orchestrator
+    description: Decomposition playbook + specialist-roster conventions + anti-temptation
+      rules for an orchestrator p
+    source: /home/omar/.hermes/skills/devops/kanban-orchestrator
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kanban-worker
+    description: 'Pitfalls, examples, and edge cases for Hermes Kanban workers. The
+      lifecycle itself is auto-injected '
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/devops/kanban-worker
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: linear
+    description: 'Linear: manage issues, projects, teams via GraphQL + curl.'
+    source: /home/omar/.hermes/skills/productivity/linear
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: llama-cpp
+    description: llama.cpp local GGUF inference + HF Hub model discovery.
+    source: /home/omar/.hermes/skills/mlops/inference/llama-cpp
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: llm-wiki
+    description: 'Karpathy''s LLM Wiki: build/query interlinked markdown KB.'
+    source: /home/omar/.hermes/skills/research/llm-wiki
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: lm-evaluation-harness
+    description: 'lm-eval-harness: benchmark LLMs (MMLU, GSM8K, etc.).'
+    source: /home/omar/.hermes/skills/mlops/evaluation/lm-evaluation-harness
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: machine-learning-pro
+    description: AI Assistant specializing in machine learning and deep learning.
+    source: /home/omar/.hermes/skills/machine-learning-pro
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: manim-video
+    description: 'Manim CE animations: 3Blue1Brown math/algo videos.'
+    source: /home/omar/.hermes/skills/creative/manim-video
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: maps
+    description: Geocode, POIs, routes, timezones via OpenStreetMap/OSRM.
+    source: /home/omar/.hermes/skills/productivity/maps
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: mcp-server-operations
+    description: 'Use when discovering, installing, configuring, authenticating, or
+      directly invoking MCP servers and '
+    source: /home/omar/.hermes/skills/mcp/mcp-server-operations
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: mcporter
+    description: 'Use the mcporter CLI to list, configure, auth, and call MCP servers/tools
+      directly (HTTP or stdio), '
+    source: /home/omar/.hermes/skills/mcp/mcporter
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: minecraft-modpack-server
+    description: Host modded Minecraft servers (CurseForge, Modrinth).
+    source: /home/omar/.hermes/skills/gaming/minecraft-modpack-server
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: minimum-diff-integration
+    description: Before planning code changes to integrate X into system Y, verify
+      whether Y is data-driven, config-d
+    source: /home/omar/.hermes/skills/software-development/minimum-diff-integration
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: modal
+    description: Serverless GPU cloud platform for running ML workloads. Use when
+      you need on-demand GPU access witho
+    source: /home/omar/.hermes/skills/mlops/cloud/modal
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: nano-pdf
+    description: Edit PDF text/typos/titles via nano-pdf CLI (NL prompts).
+    source: /home/omar/.hermes/skills/productivity/nano-pdf
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: native-mcp
+    description: 'MCP client: connect servers, register tools (stdio/HTTP).'
+    source: /home/omar/.hermes/skills/mcp/native-mcp
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: node-inspect-debugger
+    description: Debug Node.js via --inspect + Chrome DevTools Protocol CLI.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/software-development/node-inspect-debugger
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: notion
+    description: 'Notion API via curl: pages, databases, blocks, search.'
+    source: /home/omar/.hermes/skills/productivity/notion
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: obliteratus
+    description: 'OBLITERATUS: abliterate LLM refusals (diff-in-means).'
+    source: /home/omar/.hermes/skills/mlops/inference/obliteratus
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: obsidian
+    description: Read, search, and create notes in the Obsidian vault.
+    source: /home/omar/.hermes/skills/note-taking/obsidian
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ocr-and-documents
+    description: Extract text from PDFs/scans (pymupdf, marker-pdf).
+    source: /home/omar/.hermes/skills/productivity/ocr-and-documents
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ollama-wsl-troubleshooting
+    description: Diagnose and fix local Ollama on WSL/Linux when the CLI, service,
+      model store, or localhost API is f
+    source: /home/omar/.hermes/skills/mlops/ollama-wsl-troubleshooting
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: opencode
+    description: Delegate coding to OpenCode CLI (features, PR review).
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/autonomous-ai-agents/opencode
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: openhue
+    description: Control Philips Hue lights, scenes, rooms via OpenHue CLI.
+    source: /home/omar/.hermes/skills/smart-home/openhue
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: oss-forensics
+    description: '|'
+    source: /home/omar/.hermes/skills/security/oss-forensics
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: outlines
+    description: 'Outlines: structured JSON/regex/Pydantic LLM generation.'
+    source: /home/omar/.hermes/skills/mlops/inference/outlines
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: p5js
+    description: 'p5.js sketches: gen art, shaders, interactive, 3D.'
+    source: /home/omar/.hermes/skills/creative/p5js
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: parallel-cli
+    description: Optional vendor skill for Parallel CLI — agent-native web search,
+      extraction, deep research, enrichm
+    source: /home/omar/.hermes/skills/research/parallel-cli
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: parent-verification-of-agent-output
+    description: Verify worker output directly in the parent session before accepting
+      success. Use after any delegate
+    source: /home/omar/.hermes/skills/software-development/parent-verification-of-agent-output
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: peft
+    description: Parameter-efficient fine-tuning for LLMs using LoRA, QLoRA, and 25+
+      methods. Use when fine-tuning la
+    source: /home/omar/.hermes/skills/mlops/training/peft
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: persistent-background-orchestration
+    description: Run durable multi-agent coding work in the background under Hermes-owned
+      control-plane state while k
+    source: /home/omar/.hermes/skills/software-development/persistent-background-orchestration
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pixel-art
+    description: Pixel art w/ era palettes (NES, Game Boy, PICO-8).
+    source: /home/omar/.hermes/skills/creative/pixel-art
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan
+    description: Restate requirements, assess risks, and create step-by-step implementation
+      plan. WAIT for user CONFI
+    source: /home/omar/.hermes/prompts/plan.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pokemon-player
+    description: Play Pokemon via headless emulator + RAM reads.
+    source: /home/omar/.hermes/skills/gaming/pokemon-player
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: polymarket
+    description: 'Query Polymarket: markets, prices, orderbooks, history.'
+    source: /home/omar/.hermes/skills/research/polymarket
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: popular-web-designs
+    description: 54 real design systems (Stripe, Linear, Vercel) as HTML/CSS.
+    source: /home/omar/.hermes/skills/creative/popular-web-designs
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: powerpoint
+    description: Create, read, edit .pptx decks, slides, notes, templates.
+    source: /home/omar/.hermes/skills/productivity/powerpoint
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pretext
+    description: Use when building creative browser demos with @chenglou/pretext —
+      DOM-free text layout for ASCII art
+    source: /home/omar/.hermes/skills/creative/pretext
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: prompt-master-ai
+    description: Transforming your creative concepts into detailed, context-rich prompts
+      that inspire stunning and re
+    source: /home/omar/.hermes/skills/prompt-master-ai
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: python-debugpy
+    description: 'Debug Python: pdb REPL + debugpy remote (DAP).'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/software-development/python-debugpy
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pytorch-fsdp
+    description: Expert guidance for Fully Sharded Data Parallel training with PyTorch
+      FSDP - parameter sharding, mix
+    source: /home/omar/.hermes/skills/mlops/training/pytorch-fsdp
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: react-hooks-in-tree-walker-tests
+    description: 'Diagnose and fix "Invalid hook call" errors triggered by tests that
+      traverse React element trees by '
+    source: /home/omar/.hermes/skills/software-development/react-hooks-in-tree-walker-tests
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: recovering-from-corrupted-session
+    description: 'Recover working context after a Hermes session is truncated, corrupted,
+      or summarized inaccurately. '
+    source: /home/omar/.hermes/skills/software-development/recovering-from-corrupted-session
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: requesting-code-review
+    description: '>'
+    source: /home/omar/.hermes/skills/software-development/requesting-code-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: research-paper-writing
+    description: 'Write ML papers for NeurIPS/ICML/ICLR: design→submit.'
+    source: /home/omar/.hermes/skills/research/research-paper-writing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: resume-analyzer
+    description: 分析简历内容并提供深度审计报告，包括评分、优缺点分析和改进建议。当用户需要分析简历、获取简历优化建议或进行简历评估时调用。
+    source: /home/omar/.hermes/skills/resume-analyzer
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: safe-git-worktree-operations
+    description: Use when protecting user work, creating or bootstrapping git worktrees,
+      launching coding agents in w
+    source: /home/omar/.hermes/skills/github/safe-git-worktree-operations
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: scrapling
+    description: Web scraping with Scrapling - HTTP fetching, stealth browser automation,
+      Cloudflare bypass, and spid
+    source: /home/omar/.hermes/skills/research/scrapling
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: segment-anything
+    description: 'SAM: zero-shot image segmentation via points, boxes, masks.'
+    source: /home/omar/.hermes/skills/mlops/models/segment-anything
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: shadcn-cli-safety
+    description: 'Use whenever invoking the shadcn CLI to add, list, or check components.
+      The CLI has no real dry-run '
+    source: /home/omar/.hermes/skills/software-development/shadcn-cli-safety
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: shared-deps-across-worktrees
+    description: 'Make fresh git worktrees usable in Bun/Node repos when tests fail
+      because dependencies are missing. '
+    source: /home/omar/.hermes/skills/software-development/shared-deps-across-worktrees
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: sketch
+    description: 'Throwaway HTML mockups: 2-3 design variants to compare.'
+    source: /home/omar/.hermes/skills/creative/sketch
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: songsee
+    description: Audio spectrograms/features (mel, chroma, MFCC) via CLI.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/media/songsee
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: songwriting-and-ai-music
+    description: Songwriting craft and Suno AI music prompts.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/creative/songwriting-and-ai-music
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: spike
+    description: Throwaway experiments to validate an idea before build.
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/software-development/spike
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: spotify
+    description: 'Spotify: play, search, queue, manage playlists and devices.'
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/media/spotify
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: stable-diffusion
+    description: State-of-the-art text-to-image generation with Stable Diffusion models
+      via HuggingFace Diffusers. Us
+    source: /home/omar/.hermes/skills/mlops/stable-diffusion
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: stash-pop-safety
+    description: Never `git stash pop` blindly when there is unrelated in-flight work
+      on the branch or in sibling wor
+    source: /home/omar/.hermes/skills/github/stash-pop-safety
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: strategic-collaboration
+    description: How to partner with Omar on strategic ideas, campaigns, and competitive
+      concepts. Avoids research-fi
+    source: /home/omar/.hermes/skills/productivity/strategic-collaboration
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: subagent-driven-development
+    description: Use when executing implementation plans with independent tasks. Dispatches
+      fresh delegate_task per t
+    source: /home/omar/.hermes/skills/software-development/subagent-driven-development
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: systematic-debugging
+    description: Use when encountering any bug, test failure, or unexpected behavior.
+      4-phase root cause investigatio
+    source: /home/omar/.hermes/skills/software-development/systematic-debugging
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: test-driven-development
+    description: 'TDD: enforce RED-GREEN-REFACTOR, tests before code.'
+    source: /home/omar/.hermes/skills/software-development/test-driven-development
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: thredos-browser-proof-testing
+    description: Verify thredOS runtime-adjacent UI behavior in the live browser with
+      screenshots, DOM checks, and ev
+    source: /home/omar/.hermes/skills/software-development/thredos-browser-proof-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: thredos-pack-authoring
+    description: Author and evolve thredOS workflow packs from external workflow definitions
+      (like CCA workflow.json)
+    source: /home/omar/.hermes/skills/software-development/thredos-pack-authoring
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: thredos-runtime-slice-rollout
+    description: 'Roll out a new native thredOS runtime capability across CLI and
+      API with hard-gated parity reviews, '
+    source: /home/omar/.hermes/skills/software-development/thredos-runtime-slice-rollout
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: thredos-runtime-triage
+    description: Classify thredOS runtime issues into the correct narrow category
+      before implementation starts. Use f
+    source: /home/omar/.hermes/skills/software-development/thredos-runtime-triage
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: torchtitan
+    description: Provides PyTorch-native distributed LLM pretraining using torchtitan
+      with 4D parallelism (FSDP2, TP,
+    source: /home/omar/.hermes/skills/mlops/torchtitan
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: touchdesigner-mcp
+    description: Control a running TouchDesigner instance via twozero MCP — create
+      operators, set parameters, wire co
+    source: /home/omar/.hermes/skills/creative/touchdesigner-mcp
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: trl-fine-tuning
+    description: 'TRL: SFT, DPO, PPO, GRPO, reward modeling for LLM RLHF.'
+    source: /home/omar/.hermes/skills/mlops/training/trl-fine-tuning
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: unsloth
+    description: 'Unsloth: 2-5x faster LoRA/QLoRA fine-tuning, less VRAM.'
+    source: /home/omar/.hermes/skills/mlops/training/unsloth
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: verify-before-dismissing
+    description: When a user references a tool, product, library, skill, or project
+      by name that you don't immediatel
+    source: /home/omar/.hermes/skills/research/verify-before-dismissing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vllm
+    description: 'vLLM: high-throughput LLM serving, OpenAI API, quantization.'
+    source: /home/omar/.hermes/skills/mlops/inference/vllm
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: web-artifacts-builder
+    description: Suite of tools for creating elaborate, multi-component claude.ai
+      HTML artifacts using modern fronten
+    source: /home/omar/.hermes/skills/web-artifacts-builder
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: webapp-testing
+    description: Toolkit for interacting with and testing local web applications using
+      Playwright. Supports verifying
+    source: /home/omar/.hermes/skills/webapp-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: webhook-subscriptions
+    description: 'Webhook subscriptions: event-driven agent runs.'
+    source: /home/omar/.hermes/skills/devops/webhook-subscriptions
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: weights-and-biases
+    description: 'W&B: log ML experiments, sweeps, model registry, dashboards.'
+    source: /home/omar/.hermes/skills/mlops/evaluation/weights-and-biases
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: whisper
+    description: OpenAI's general-purpose speech recognition model. Supports 99 languages,
+      transcription, translation
+    source: /home/omar/.hermes/skills/mlops/models/whisper
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: worktree-environment-bootstrap
+    description: Bootstrap a fresh worktree into an executable environment before
+      launching workers. Use when fresh w
+    source: /home/omar/.hermes/skills/devops/worktree-environment-bootstrap
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: writing-plans
+    description: 'Write implementation plans: bite-sized tasks, paths, code.'
+    source: /home/omar/.hermes/skills/software-development/writing-plans
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: wsl-chrome-devtools-mcp
+    description: 'Run chrome-devtools-mcp (Lighthouse + CDP) from WSL2 against a local
+      dev server. WSL has no display '
+    source: /home/omar/.hermes/skills/devops/wsl-chrome-devtools-mcp
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: wsl-persistent-state
+    description: Store agent/application live state reliably under WSL2 when the target
+      disk is a Windows drive (/mnt
+    source: /home/omar/.hermes/skills/devops/wsl-persistent-state
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: xitter
+    description: Interact with X/Twitter via the x-cli terminal client using official
+      X API credentials. Use for post
+    source: /home/omar/.hermes/skills/social-media/xitter
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: xurl
+    description: 'X/Twitter via xurl CLI: post, search, DM, media, v2 API.'
+    source: /home/omar/.hermes/skills/social-media/xurl
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: xyflow-controlled-graph-drag
+    description: Diagnose and fix "rigid" @xyflow/react graphs where nodes refuse
+      to drag. The usual cause is control
+    source: /home/omar/.hermes/skills/software-development/xyflow-controlled-graph-drag
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: youtube-content
+    description: YouTube transcripts to summaries, threads, blogs.
+    source: /home/omar/.hermes/skills/media/youtube-content
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: yuanbao
+    description: 'Yuanbao (元宝) groups: @mention users, query info/members.'
+    source: /home/omar/.hermes/skills/yuanbao
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: agent-browser
+    description: Browser automation CLI for AI agents. Use when the user needs to
+      interact with websites, including n
+    source: /home/omar/.hermes/skills/agent-browser
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: agent-tools
+    description: 'Run 150+ AI apps via inference.sh CLI - image generation, video
+      creation, LLMs, search, 3D, Twitter '
+    source: /home/omar/.hermes/skills/agent-tools
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ai-regression-testing
+    description: Regression testing strategies for AI-assisted development. Sandbox-mode
+      API testing without database
+    source: /home/omar/.hermes/skills/ai-regression-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: android-clean-architecture
+    description: Clean Architecture patterns for Android and Kotlin Multiplatform
+      projects — module structure, depend
+    source: /home/omar/.hermes/skills/android-clean-architecture
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: api-design
+    description: REST API design patterns including resource naming, status codes,
+      pagination, filtering, error respo
+    source: /home/omar/.hermes/skills/api-design
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: audit-website
+    description: Audit websites for SEO, performance, security, technical, content,
+      and 15 other issue cateories with
+    source: /home/omar/.hermes/skills/audit-website
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: autoplan
+    description: '|'
+    source: /home/omar/.hermes/skills/autoplan
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: backend-patterns
+    description: Backend architecture patterns, API design, database optimization,
+      and server-side best practices for
+    source: /home/omar/.hermes/skills/backend-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: benchmark
+    description: '|'
+    source: /home/omar/.hermes/skills/benchmark
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: benchmark-models
+    description: '|'
+    source: /home/omar/.hermes/skills/benchmark-models
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: browse
+    description: '|'
+    source: /home/omar/.hermes/skills/browse
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: canary
+    description: '|'
+    source: /home/omar/.hermes/skills/canary
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: capacity
+    description: 'Discovers available Azure OpenAI model capacity across regions and
+      projects. Analyzes quota limits, '
+    source: /home/omar/.hermes/skills/microsoft-foundry/models/deploy-model/capacity
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: careful
+    description: '|'
+    source: /home/omar/.hermes/skills/careful
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: claude-md-plug
+    description: 'Generate situationally-correct CLAUDE.md files (project or user-global)
+      and detect drift over time. '
+    source: /home/omar/.hermes/skills/claude-md-plug
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: coding-standards
+    description: Universal coding standards, best practices, and patterns for TypeScript,
+      JavaScript, React, and Node
+    source: /home/omar/.hermes/skills/coding-standards
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: compose-multiplatform-patterns
+    description: 'Compose Multiplatform and Jetpack Compose patterns for KMP projects
+      — state management, navigation, '
+    source: /home/omar/.hermes/skills/compose-multiplatform-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: configure-ecc
+    description: Interactive installer for Everything Claude Code — guides users through
+      selecting and installing ski
+    source: /home/omar/.hermes/skills/configure-ecc
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: connect-chrome
+    description: '|'
+    source: /home/omar/.hermes/skills/connect-chrome
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: context-restore
+    description: '|'
+    source: /home/omar/.hermes/skills/context-restore
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: context-save
+    description: '|'
+    source: /home/omar/.hermes/skills/context-save
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: continuous-learning
+    description: Automatically extract reusable patterns from Claude Code sessions
+      and save them as learned skills fo
+    source: /home/omar/.hermes/skills/continuous-learning
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: continuous-learning-v2
+    description: Instinct-based learning system that observes sessions via hooks,
+      creates atomic instincts with confi
+    source: /home/omar/.hermes/skills/continuous-learning-v2
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cpp-coding-standards
+    description: C++ coding standards based on the C++ Core Guidelines (isocpp.github.io).
+      Use when writing, reviewin
+    source: /home/omar/.hermes/skills/cpp-coding-standards
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cpp-testing
+    description: Use only when writing/updating/fixing C++ tests, configuring GoogleTest/CTest,
+      diagnosing failing or
+    source: /home/omar/.hermes/skills/cpp-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cso
+    description: '|'
+    source: /home/omar/.hermes/skills/cso
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: customize
+    description: Interactive guided deployment flow for Azure OpenAI models with full
+      customization control. Step-by-
+    source: /home/omar/.hermes/skills/microsoft-foundry/models/deploy-model/customize
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: deploy-model
+    description: Unified Azure OpenAI model deployment skill with intelligent intent-based
+      routing. Handles quick pre
+    source: /home/omar/.hermes/skills/microsoft-foundry/models/deploy-model
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-consultation
+    description: '|'
+    source: /home/omar/.hermes/skills/design-consultation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-html
+    description: '|'
+    source: /home/omar/.hermes/skills/design-html
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-review
+    description: '|'
+    source: /home/omar/.hermes/skills/design-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-shotgun
+    description: '|'
+    source: /home/omar/.hermes/skills/design-shotgun
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: design-taste-frontend
+    description: Senior UI/UX Engineer. Architect digital interfaces overriding default
+      LLM biases. Enforces metric-b
+    source: /home/omar/.hermes/skills/design-taste-frontend
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: devex-review
+    description: '|'
+    source: /home/omar/.hermes/skills/devex-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: django-patterns
+    description: Django architecture patterns, REST API design with DRF, ORM best
+      practices, caching, signals, middle
+    source: /home/omar/.hermes/skills/django-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: django-tdd
+    description: Django testing strategies with pytest-django, TDD methodology, factory_boy,
+      mocking, coverage, and t
+    source: /home/omar/.hermes/skills/django-tdd
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: django-verification
+    description: 'Verification loop for Django projects: migrations, linting, tests
+      with coverage, security scans, and'
+    source: /home/omar/.hermes/skills/django-verification
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: document-release
+    description: '|'
+    source: /home/omar/.hermes/skills/document-release
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: e2e-testing
+    description: Playwright E2E testing patterns, Page Object Model, configuration,
+      CI/CD integration, artifact manag
+    source: /home/omar/.hermes/skills/e2e-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: eval-harness
+    description: Formal evaluation framework for Claude Code sessions implementing
+      eval-driven development (EDD) prin
+    source: /home/omar/.hermes/skills/eval-harness
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: extract-design-system
+    description: Extract design primitives from a public website and generate starter
+      token files for your project.
+    source: /home/omar/.hermes/skills/extract-design-system
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: find-skills
+    description: 'Helps users discover and install agent skills when they ask questions
+      like "how do I do X", "find a '
+    source: /home/omar/.hermes/skills/find-skills
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: framer-motion
+    description: Expert guidelines for building performant animations with Framer
+      Motion/Motion library in React appl
+    source: /home/omar/.hermes/skills/framer-motion
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: freeze
+    description: '|'
+    source: /home/omar/.hermes/skills/freeze
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: frontend-backend-integration
+    description: Wires a frontend to a backend end-to-end using a contract-first,
+      gated workflow. Use this skill when
+    source: /home/omar/.hermes/skills/frontend-backend-integration
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: frontend-design
+    description: Create distinctive, production-grade frontend interfaces with high
+      design quality. Use this skill wh
+    source: /home/omar/.hermes/skills/frontend-design
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: frontend-patterns
+    description: Frontend development patterns for React, Next.js, state management,
+      performance optimization, and UI
+    source: /home/omar/.hermes/skills/frontend-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: frontend-slides
+    description: Create stunning, animation-rich HTML presentations from scratch or
+      by converting PowerPoint files. U
+    source: /home/omar/.hermes/skills/frontend-slides
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: golang-patterns
+    description: Idiomatic Go patterns, best practices, and conventions for building
+      robust, efficient, and maintaina
+    source: /home/omar/.hermes/skills/golang-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: golang-testing
+    description: 'Go testing patterns including table-driven tests, subtests, benchmarks,
+      fuzzing, and test coverage. '
+    source: /home/omar/.hermes/skills/golang-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: gsap-framer-scroll-animation
+    description: '>-'
+    source: /home/omar/.hermes/skills/gsap-framer-scroll-animation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: gstack-upgrade
+    description: '|'
+    source: /home/omar/.hermes/skills/gstack-upgrade
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: guard
+    description: '|'
+    source: /home/omar/.hermes/skills/guard
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: health
+    description: '|'
+    source: /home/omar/.hermes/skills/health
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: hormozi-business-builder
+    description: Transform any business idea or early-stage business into a revenue-generating
+      machine using Alex Hor
+    source: /home/omar/.hermes/skills/hormozi-business-builder
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: investigate
+    description: '|'
+    source: /home/omar/.hermes/skills/investigate
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: iterative-retrieval
+    description: Pattern for progressively refining context retrieval to solve the
+      subagent context problem
+    source: /home/omar/.hermes/skills/iterative-retrieval
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: java-coding-standards
+    description: 'Java coding standards for Spring Boot services: naming, immutability,
+      Optional usage, streams, excep'
+    source: /home/omar/.hermes/skills/java-coding-standards
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-coroutines-flows
+    description: Kotlin Coroutines and Flow patterns for Android and KMP — structured
+      concurrency, Flow operators, St
+    source: /home/omar/.hermes/skills/kotlin-coroutines-flows
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-exposed-patterns
+    description: JetBrains Exposed ORM patterns including DSL queries, DAO pattern,
+      transactions, HikariCP connection
+    source: /home/omar/.hermes/skills/kotlin-exposed-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-ktor-patterns
+    description: Ktor server patterns including routing DSL, plugins, authentication,
+      Koin DI, kotlinx.serialization,
+    source: /home/omar/.hermes/skills/kotlin-ktor-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-patterns
+    description: Idiomatic Kotlin patterns, best practices, and conventions for building
+      robust, efficient, and maint
+    source: /home/omar/.hermes/skills/kotlin-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-testing
+    description: Kotlin testing patterns with Kotest, MockK, coroutine testing, property-based
+      testing, and Kover cov
+    source: /home/omar/.hermes/skills/kotlin-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: land-and-deploy
+    description: '|'
+    source: /home/omar/.hermes/skills/land-and-deploy
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: laravel-patterns
+    description: Laravel architecture patterns, routing/controllers, Eloquent ORM,
+      service layers, queues, events, ca
+    source: /home/omar/.hermes/skills/laravel-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: laravel-tdd
+    description: Test-driven development for Laravel with PHPUnit and Pest, factories,
+      database testing, fakes, and c
+    source: /home/omar/.hermes/skills/laravel-tdd
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: laravel-verification
+    description: 'Verification loop for Laravel projects: env checks, linting, static
+      analysis, tests with coverage, s'
+    source: /home/omar/.hermes/skills/laravel-verification
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: make-pdf
+    description: '|'
+    source: /home/omar/.hermes/skills/make-pdf
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: mcp-server-patterns
+    description: Build MCP servers with Node/TypeScript SDK — tools, resources, prompts,
+      Zod validation, stdio vs Str
+    source: /home/omar/.hermes/skills/mcp-server-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: microsoft-foundry
+    description: 'Deploy, evaluate, and manage Foundry agents end-to-end: Docker build,
+      ACR push, hosted/prompt agent '
+    source: /home/omar/.hermes/skills/microsoft-foundry
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: office-hours
+    description: '|'
+    source: /home/omar/.hermes/skills/office-hours
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: open-gstack-browser
+    description: '|'
+    source: /home/omar/.hermes/skills/open-gstack-browser
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pair-agent
+    description: '|'
+    source: /home/omar/.hermes/skills/pair-agent
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: perl-patterns
+    description: Modern Perl 5.36+ idioms, best practices, and conventions for building
+      robust, maintainable Perl app
+    source: /home/omar/.hermes/skills/perl-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: perl-testing
+    description: Perl testing patterns using Test2::V0, Test::More, prove runner,
+      mocking, coverage with Devel::Cover
+    source: /home/omar/.hermes/skills/perl-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan-ceo-review
+    description: '|'
+    source: /home/omar/.hermes/skills/plan-ceo-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan-design-review
+    description: '|'
+    source: /home/omar/.hermes/skills/plan-design-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan-devex-review
+    description: '|'
+    source: /home/omar/.hermes/skills/plan-devex-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan-eng-review
+    description: '|'
+    source: /home/omar/.hermes/skills/plan-eng-review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan-tune
+    description: '|'
+    source: /home/omar/.hermes/skills/plan-tune
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plankton-code-quality
+    description: Write-time code quality enforcement using Plankton — auto-formatting,
+      linting, and Claude-powered fi
+    source: /home/omar/.hermes/skills/plankton-code-quality
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: preset
+    description: Intelligently deploys Azure OpenAI models to optimal regions by analyzing
+      capacity across all availa
+    source: /home/omar/.hermes/skills/microsoft-foundry/models/deploy-model/preset
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: project-guidelines-example
+    description: Example project-specific skill template based on a real production
+      application.
+    source: /home/omar/.hermes/skills/project-guidelines-example
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: python-patterns
+    description: Pythonic idioms, PEP 8 standards, type hints, and best practices
+      for building robust, efficient, and
+    source: /home/omar/.hermes/skills/python-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: python-testing
+    description: Python testing strategies using pytest, TDD methodology, fixtures,
+      mocking, parametrization, and cov
+    source: /home/omar/.hermes/skills/python-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: qa
+    description: '|'
+    source: /home/omar/.hermes/skills/qa
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: qa-only
+    description: '|'
+    source: /home/omar/.hermes/skills/qa-only
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: remotion-best-practices
+    description: Best practices for Remotion - Video creation in React
+    source: /home/omar/.hermes/skills/remotion-best-practices
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: retro
+    description: '|'
+    source: /home/omar/.hermes/skills/retro
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: review
+    description: '|'
+    source: /home/omar/.hermes/skills/review
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rust-patterns
+    description: Idiomatic Rust patterns, ownership, error handling, traits, concurrency,
+      and best practices for buil
+    source: /home/omar/.hermes/skills/rust-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rust-testing
+    description: Rust testing patterns including unit tests, integration tests, async
+      testing, property-based testing
+    source: /home/omar/.hermes/skills/rust-testing
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: seo-audit
+    description: When the user wants to audit, review, or diagnose SEO issues on their
+      site. Also use when the user m
+    source: /home/omar/.hermes/skills/seo-audit
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: setup-browser-cookies
+    description: '|'
+    source: /home/omar/.hermes/skills/setup-browser-cookies
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: setup-deploy
+    description: '|'
+    source: /home/omar/.hermes/skills/setup-deploy
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ship
+    description: '|'
+    source: /home/omar/.hermes/skills/ship
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: skill-stocktake
+    description: 'Use when auditing Claude skills and commands for quality. Supports
+      Quick Scan (changed skills only) '
+    source: /home/omar/.hermes/skills/skill-stocktake
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: smithery-ai-cli
+    description: Find, connect, and use MCP tools and skills via the Smithery CLI.
+      Use when the user searches for new
+    source: /home/omar/.hermes/skills/smithery-ai-cli
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: social-content
+    description: When the user wants help creating, scheduling, or optimizing social
+      media content for LinkedIn, Twit
+    source: /home/omar/.hermes/skills/social-content
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: springboot-patterns
+    description: Spring Boot architecture patterns, REST API design, layered services,
+      data access, caching, async pr
+    source: /home/omar/.hermes/skills/springboot-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: springboot-tdd
+    description: Test-driven development for Spring Boot using JUnit 5, Mockito, MockMvc,
+      Testcontainers, and JaCoCo.
+    source: /home/omar/.hermes/skills/springboot-tdd
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: springboot-verification
+    description: 'Verification loop for Spring Boot projects: build, static analysis,
+      tests with coverage, security sc'
+    source: /home/omar/.hermes/skills/springboot-verification
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: strategic-compact
+    description: Suggests manual context compaction at logical intervals to preserve
+      context through task phases rath
+    source: /home/omar/.hermes/skills/strategic-compact
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: tdd-workflow
+    description: Use this skill when writing new features, fixing bugs, or refactoring
+      code. Enforces test-driven dev
+    source: /home/omar/.hermes/skills/tdd-workflow
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ui-audit
+    description: UI Audit & Validation Protocol
+    source: /home/omar/.hermes/skills/ui-audit
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ui-ux-pro-max
+    description: UI/UX design intelligence. 50 styles, 21 palettes, 50 font pairings,
+      20 charts, 9 stacks (React, Nex
+    source: /home/omar/.hermes/skills/ui-ux-pro-max
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: unfreeze
+    description: '|'
+    source: /home/omar/.hermes/skills/unfreeze
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vercel-composition-patterns
+    description: React Composition Patterns
+    source: /home/omar/.hermes/skills/vercel-composition-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vercel-react-best-practices
+    description: 'React and Next.js performance optimization guidelines from Vercel
+      Engineering. This skill should be '
+    source: /home/omar/.hermes/skills/vercel-react-best-practices
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vercel-react-native-skills
+    description: React Native Skills
+    source: /home/omar/.hermes/skills/vercel-react-native-skills
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: verification-loop
+    description: A comprehensive verification system for Claude Code sessions.
+    source: /home/omar/.hermes/skills/verification-loop
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: web-design-guidelines
+    description: Review UI code for Web Interface Guidelines compliance. Use when
+      asked to "review my UI", "check acc
+    source: /home/omar/.hermes/skills/web-design-guidelines
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: youtubescrape
+    description: Extract transcripts from YouTube videos. Use when the user asks for
+      a transcript, subtitles, or capt
+    source: /home/omar/.hermes/skills/youtubescrape
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: crawl4ai-skill
+    description: Web crawling and scraping tool with LLM-optimized output. 网页爬虫爬取工具
+      | Web crawler, web scraper, spide
+    source: /home/omar/.hermes/skills/crawl4ai-skill
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: data-pipeline
+    description: Data pipeline and ETL automation - extract, transform, load workflows
+      for data integration and analy
+    source: /home/omar/.hermes/skills/data-pipeline
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: everything-search
+    description: (Windows Only) Search the local filesystem using the Everything Search
+      Engine. REQUIRES 'Everything.
+    source: /home/omar/.hermes/skills/everything-search
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: llm-evaluation
+    description: Implement comprehensive evaluation strategies for LLM applications
+      using automated metrics, human fe
+    source: /home/omar/.hermes/skills/llm-evaluation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ml-pipeline-workflow
+    description: Build end-to-end MLOps pipelines from data preparation through model
+      training, validation, and produ
+    source: /home/omar/.hermes/skills/ml-pipeline-workflow
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: prompt-engineering-patterns
+    description: Master advanced prompt engineering techniques to maximize LLM performance,
+      reliability, and controll
+    source: /home/omar/.hermes/skills/prompt-engineering-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rag-implementation
+    description: Retrieval-Augmented Generation patterns including chunking, embeddings,
+      vector stores, and retrieval
+    source: /home/omar/.hermes/skills/rag-implementation
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vector-database-engineer
+    description: Expert in vector databases, embedding strategies, and semantic search
+      implementation. Masters Pineco
+    source: /home/omar/.hermes/skills/vector-database-engineer
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: workflow-orchestration-patterns
+    description: Design durable workflows with Temporal for distributed systems. Covers
+      workflow vs activity separati
+    source: /home/omar/.hermes/skills/workflow-orchestration-patterns
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: task-router
+    description: '|'
+    source: /home/omar/.hermes/skills/task-router
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: agent-environment
+    description: '|'
+    source: /home/omar/.hermes/skills/devops/devops/agent-environment
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: code-health-audits
+    description: '|'
+    source: /home/omar/.hermes/skills/software-development/software-development/code-health-audits
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cross-platform-tool-deployment
+    description: Deploy CLI tools and binaries across machines with different architectures,
+      OSes, and privilege leve
+    source: /home/omar/.hermes/skills/devops/devops/cross-platform-tool-deployment
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kanban-codex-lane
+    description: Use when a Hermes Kanban worker wants to run Codex CLI as an isolated
+      implementation lane while Herm
+    source: /home/omar/.hermes/skills/.archive/curator-umbrella-20260605/autonomous-ai-agents/autonomous-ai-agents/kanban-codex-lane
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: wsl-hetzner-bridge
+    description: Operate the bidirectional SSH bridge between local WSL and remote
+      Hetzner VM over Tailscale.
+    source: /home/omar/.hermes/skills/devops/devops/wsl-hetzner-bridge
+    type: skill
+    tags: []
+    requires: []
+    deploy_scope: global
+  agents: []
+  prompts:
+  - name: aside
+    description: Answer a quick side question without interrupting or losing context
+      from the current task. Resume wo
+    source: /home/omar/.hermes/prompts/aside.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: build-fix
+    description: Build and Fix
+    source: /home/omar/.hermes/prompts/build-fix.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cancel
+    description: Cancel an active task harness session
+    source: /home/omar/.hermes/prompts/cancel.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: checkpoint
+    description: Checkpoint Command
+    source: /home/omar/.hermes/prompts/checkpoint.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: claw
+    description: Start NanoClaw v2 — ECC's persistent, zero-dependency REPL with model
+      routing, skill hot-load, branc
+    source: /home/omar/.hermes/prompts/claw.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: code-review
+    description: Code Review
+    source: /home/omar/.hermes/prompts/code-review.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: commit-changes
+    description: Commit Changes
+    source: /home/omar/.hermes/prompts/commit-changes.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: context-budget
+    description: Analyze context window usage across agents, skills, MCP servers,
+      and rules to find optimization oppo
+    source: /home/omar/.hermes/prompts/context-budget.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cpp-build
+    description: Fix C++ build errors, CMake issues, and linker problems incrementally.
+      Invokes the cpp-build-resolve
+    source: /home/omar/.hermes/prompts/cpp-build.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cpp-review
+    description: Comprehensive C++ code review for memory safety, modern C++ idioms,
+      concurrency, and security. Invok
+    source: /home/omar/.hermes/prompts/cpp-review.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: cpp-test
+    description: Enforce TDD workflow for C++. Write GoogleTest tests first, then
+      implement. Verify coverage with gco
+    source: /home/omar/.hermes/prompts/cpp-test.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: db-migrate
+    description: Database Migration
+    source: /home/omar/.hermes/prompts/db-migrate.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: debug-issue
+    description: Debug Issue
+    source: /home/omar/.hermes/prompts/debug-issue.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: dev-start
+    description: Start Development Environment
+    source: /home/omar/.hermes/prompts/dev-start.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: dev-stop
+    description: Stop Development Environment
+    source: /home/omar/.hermes/prompts/dev-stop.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: devfleet
+    description: Orchestrate parallel Claude Code agents via Claude DevFleet — plan
+      projects from natural language, d
+    source: /home/omar/.hermes/prompts/devfleet.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: docs
+    description: Look up current documentation for a library or topic via Context7.
+    source: /home/omar/.hermes/prompts/docs.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: e2e
+    description: Generate and run end-to-end tests with Playwright. Creates test journeys,
+      runs tests, captures scree
+    source: /home/omar/.hermes/prompts/e2e.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: eval
+    description: Eval Command
+    source: /home/omar/.hermes/prompts/eval.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: evolve
+    description: Analyze instincts and suggest or generate evolved structures
+    source: /home/omar/.hermes/prompts/evolve.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: explore-feature
+    description: Explore Feature
+    source: /home/omar/.hermes/prompts/explore-feature.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: go-build
+    description: Fix Go build errors, go vet warnings, and linter issues incrementally.
+      Invokes the go-build-resolver
+    source: /home/omar/.hermes/prompts/go-build.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: go-review
+    description: Comprehensive Go code review for idiomatic patterns, concurrency
+      safety, error handling, and securit
+    source: /home/omar/.hermes/prompts/go-review.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: go-test
+    description: Enforce TDD workflow for Go. Write table-driven tests first, then
+      implement. Verify 80%+ coverage wi
+    source: /home/omar/.hermes/prompts/go-test.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: gradle-build
+    description: Fix Gradle build errors for Android and KMP projects
+    source: /home/omar/.hermes/prompts/gradle-build.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: harness-audit
+    description: Harness Audit Command
+    source: /home/omar/.hermes/prompts/harness-audit.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: instinct-export
+    description: Export instincts from project/global scope to a file
+    source: /home/omar/.hermes/prompts/instinct-export.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: instinct-import
+    description: Import instincts from file or URL into project/global scope
+    source: /home/omar/.hermes/prompts/instinct-import.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: instinct-status
+    description: Show learned instincts (project + global) with confidence
+    source: /home/omar/.hermes/prompts/instinct-status.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-build
+    description: 'Fix Kotlin/Gradle build errors, compiler warnings, and dependency
+      issues incrementally. Invokes the '
+    source: /home/omar/.hermes/prompts/kotlin-build.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-review
+    description: Comprehensive Kotlin code review for idiomatic patterns, null safety,
+      coroutine safety, and security
+    source: /home/omar/.hermes/prompts/kotlin-review.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-test
+    description: Enforce TDD workflow for Kotlin. Write Kotest tests first, then implement.
+      Verify 80%+ coverage with
+    source: /home/omar/.hermes/prompts/kotlin-test.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: learn
+    description: /learn - Extract Reusable Patterns
+    source: /home/omar/.hermes/prompts/learn.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: learn-eval
+    description: Extract reusable patterns from the session, self-evaluate quality
+      before saving, and determine the r
+    source: /home/omar/.hermes/prompts/learn-eval.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: lint-check
+    description: Lint and Type Check
+    source: /home/omar/.hermes/prompts/lint-check.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: loop-start
+    description: Loop Start Command
+    source: /home/omar/.hermes/prompts/loop-start.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: loop-status
+    description: Loop Status Command
+    source: /home/omar/.hermes/prompts/loop-status.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: model-route
+    description: Model Route Command
+    source: /home/omar/.hermes/prompts/model-route.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: multi-backend
+    description: Backend - Backend-Focused Development
+    source: /home/omar/.hermes/prompts/multi-backend.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: multi-execute
+    description: Execute - Multi-Model Collaborative Execution
+    source: /home/omar/.hermes/prompts/multi-execute.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: multi-frontend
+    description: Frontend - Frontend-Focused Development
+    source: /home/omar/.hermes/prompts/multi-frontend.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: multi-plan
+    description: Plan - Multi-Model Collaborative Planning
+    source: /home/omar/.hermes/prompts/multi-plan.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: multi-workflow
+    description: Workflow - Multi-Model Collaborative Development
+    source: /home/omar/.hermes/prompts/multi-workflow.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: orchestrate
+    description: Sequential and tmux/worktree orchestration guidance for multi-agent
+      workflows.
+    source: /home/omar/.hermes/prompts/orchestrate.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: plan-and-execute
+    description: Orchestrates task-router, plan breakdown, multi-agent critique, then
+      execution
+    source: /home/omar/.hermes/prompts/plan-and-execute.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pm2
+    description: PM2 Init
+    source: /home/omar/.hermes/prompts/pm2.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: project-status
+    description: Project Status Check
+    source: /home/omar/.hermes/prompts/project-status.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: projects
+    description: List known projects and their instinct statistics
+    source: /home/omar/.hermes/prompts/projects.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: promote
+    description: Promote project-scoped instincts to global scope
+    source: /home/omar/.hermes/prompts/promote.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: prompt-optimize
+    description: Analyze a draft prompt and output an optimized, ECC-enriched version
+      ready to paste and run. Does NO
+    source: /home/omar/.hermes/prompts/prompt-optimize.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: prune
+    description: Delete pending instincts older than 30 days that were never promoted
+    source: /home/omar/.hermes/prompts/prune.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: python-review
+    description: Comprehensive Python code review for PEP 8 compliance, type hints,
+      security, and Pythonic idioms. In
+    source: /home/omar/.hermes/prompts/python-review.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: quality-gate
+    description: Quality Gate Command
+    source: /home/omar/.hermes/prompts/quality-gate.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: refactor-clean
+    description: Refactor Clean
+    source: /home/omar/.hermes/prompts/refactor-clean.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: resume
+    description: Resume a cancelled, failed, or blocked task harness session
+    source: /home/omar/.hermes/prompts/resume.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: resume-session
+    description: Load the most recent session file from ~/.claude/session-data/ and
+      resume work with full context fro
+    source: /home/omar/.hermes/prompts/resume-session.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: review-changes
+    description: Review Changes
+    source: /home/omar/.hermes/prompts/review-changes.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rules-distill
+    description: Scan skills to extract cross-cutting principles and distill them
+      into rules
+    source: /home/omar/.hermes/prompts/rules-distill.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: run-tests
+    description: Run Tests
+    source: /home/omar/.hermes/prompts/run-tests.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rust-build
+    description: Fix Rust build errors, borrow checker issues, and dependency problems
+      incrementally. Invokes the rus
+    source: /home/omar/.hermes/prompts/rust-build.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rust-review
+    description: Comprehensive Rust code review for ownership, lifetimes, error handling,
+      unsafe usage, and idiomatic
+    source: /home/omar/.hermes/prompts/rust-review.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rust-test
+    description: Enforce TDD workflow for Rust. Write tests first, then implement.
+      Verify 80%+ coverage with cargo-ll
+    source: /home/omar/.hermes/prompts/rust-test.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: save-session
+    description: Save current session state to a dated file in ~/.claude/session-data/
+      so work can be resumed in a fu
+    source: /home/omar/.hermes/prompts/save-session.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: security-scan
+    description: Security Scan
+    source: /home/omar/.hermes/prompts/security-scan.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: session-reset
+    description: Session Reset
+    source: /home/omar/.hermes/prompts/session-reset.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: sessions
+    description: Manage Claude Code session history, aliases, and session metadata.
+    source: /home/omar/.hermes/prompts/sessions.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: setup-pm
+    description: Configure your preferred package manager (npm/pnpm/yarn/bun)
+    source: /home/omar/.hermes/prompts/setup-pm.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: skill-create
+    description: Analyze local git history to extract coding patterns and generate
+      SKILL.md files. Local version of t
+    source: /home/omar/.hermes/prompts/skill-create.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: skill-health
+    description: Show skill portfolio health dashboard with charts and analytics
+    source: /home/omar/.hermes/prompts/skill-health.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: start
+    description: Start a task harness session to execute sequential development tasks
+      from a YAML file
+    source: /home/omar/.hermes/prompts/start.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: status
+    description: Check status of active or recent task harness sessions
+    source: /home/omar/.hermes/prompts/status.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: tdd
+    description: 'Enforce test-driven development workflow. Scaffold interfaces, generate
+      tests FIRST, then implement '
+    source: /home/omar/.hermes/prompts/tdd.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: test-coverage
+    description: Test Coverage
+    source: /home/omar/.hermes/prompts/test-coverage.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: update-codemaps
+    description: Update Codemaps
+    source: /home/omar/.hermes/prompts/update-codemaps.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: update-docs
+    description: Update Documentation
+    source: /home/omar/.hermes/prompts/update-docs.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: verify
+    description: Verification Command
+    source: /home/omar/.hermes/prompts/verify.md
+    type: prompt
+    tags: []
+    requires: []
+    deploy_scope: global
+  workflows: []
+  plugins:
+  - name: ada-language-server
+    description: Ada/SPARK and GPR language server
+    source: /home/omar/.hermes/plugins/ada-language-server
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: basedpyright
+    description: Python language server using basedpyright with stricter type checking
+    source: /home/omar/.hermes/plugins/basedpyright
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: bsl-lsp
+    description: BSL Language Server for 1C:Enterprise and OneScript
+    source: /home/omar/.hermes/plugins/bsl-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: clangd
+    description: LLVM-based language server for C and C++
+    source: /home/omar/.hermes/plugins/clangd
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: claude-mem
+    description: Persistent memory system for Claude Code - seamlessly preserve context
+      across sessions
+    source: /home/omar/.hermes/plugins/claude-mem
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: dart
+    description: Dart language server for Claude Code, providing code intelligence
+      for Dart and Flutter projects
+    source: /home/omar/.hermes/plugins/dart
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: gopls
+    description: Official Go language server
+    source: /home/omar/.hermes/plugins/gopls
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: graphql-lsp
+    description: GraphQL language server for schema and operation intelligence
+    source: /home/omar/.hermes/plugins/graphql-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: haskell-language-server
+    description: Haskell language server with completion, references, type info, and
+      document symbols
+    source: /home/omar/.hermes/plugins/haskell-language-server
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: jdtls
+    description: Eclipse JDT Language Server for Java
+    source: /home/omar/.hermes/plugins/jdtls
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: julia-lsp
+    description: Julia language server using LanguageServer.jl
+    source: /home/omar/.hermes/plugins/julia-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: kotlin-lsp
+    description: Kotlin language server by JetBrains
+    source: /home/omar/.hermes/plugins/kotlin-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: lean4-lake-lsp
+    description: 'Lean 4 language server via Lake — for Lake projects with dependencies
+      (e.g., Mathlib). Replaces the '
+    source: /home/omar/.hermes/plugins/lean4-lake-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: lean4-lean-lsp
+    description: Lean 4 language server via the lean binary — for standalone .lean
+      files outside Lake projects. Repla
+    source: /home/omar/.hermes/plugins/lean4-lean-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: mdbase-lsp
+    description: Language server for mdbase markdown collections
+    source: /home/omar/.hermes/plugins/mdbase-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: metals
+    description: Scala language server with rich IDE features
+    source: /home/omar/.hermes/plugins/metals
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ocaml-lsp
+    description: OCaml language server (ocaml-lsp-server)
+    source: /home/omar/.hermes/plugins/ocaml-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: omnisharp
+    description: Official .NET language server with rich C# support
+    source: /home/omar/.hermes/plugins/omnisharp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: php-lsp
+    description: Full-featured PHP language server written in Rust — semantic diagnostics,
+      code actions, refactoring,
+    source: /home/omar/.hermes/plugins/php-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: phpactor
+    description: Intelligent PHP completion and refactoring language server
+    source: /home/omar/.hermes/plugins/phpactor
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: powershell-editor-services
+    description: Official PowerShell language server by Microsoft
+    source: /home/omar/.hermes/plugins/powershell-editor-services
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: pyright
+    description: Python language server with excellent type checking
+    source: /home/omar/.hermes/plugins/pyright
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: ruby-lsp
+    description: Modern Ruby language server by Shopify
+    source: /home/omar/.hermes/plugins/ruby-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: rust-analyzer
+    description: Rust language server
+    source: /home/omar/.hermes/plugins/rust-analyzer
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: solidity-language-server
+    description: Fast Solidity language server powered by Foundry and solc
+    source: /home/omar/.hermes/plugins/solidity-language-server
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: svelte-lsp
+    description: Svelte language server integration
+    source: /home/omar/.hermes/plugins/svelte-lsp
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: texlab
+    description: LaTeX language server with completion, references, and document symbols
+    source: /home/omar/.hermes/plugins/texlab
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vscode-langservers
+    description: HTML, CSS, and ESLint language servers from VS Code
+    source: /home/omar/.hermes/plugins/vscode-langservers
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vtsls
+    description: TypeScript and JavaScript language server integration (using vtsls)
+    source: /home/omar/.hermes/plugins/vtsls
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  - name: vue-volar
+    description: Vue.js language server integration (Volar)
+    source: /home/omar/.hermes/plugins/vue-volar
+    type: plugin
+    tags: []
+    requires: []
+    deploy_scope: global
+  references: []

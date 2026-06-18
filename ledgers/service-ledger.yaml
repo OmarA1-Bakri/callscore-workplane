@@ -1,0 +1,18 @@
+# Service ledger skeleton. Fill from HHVM inventory; do not restart services.
+services:
+  - name: callscore-daily-pipeline.service
+    status: pending_inventory
+  - name: callscore-daily-pipeline.timer
+    status: pending_inventory
+  - name: callscore-enqueue.service
+    status: pending_inventory
+  - name: callscore-read-api.service
+    status: pending_inventory
+  - name: hh-control-bridge.service
+    status: pending_inventory
+  - name: hermes-worker.service
+    status: pending_inventory
+  - name: agent-snapshot.service
+    status: pending_inventory
+  - name: agent-snapshot.timer
+    status: pending_inventory

@@ -1,0 +1,39 @@
+{
+  "apply_batches": [
+    {
+      "note": "initial bounded apply; later generated .venv destination removed and excluded",
+      "selected_bytes": 134217634,
+      "selected_count": 6090
+    },
+    {
+      "note": "patched rerun after .venv exclusion",
+      "selected_bytes": 52072936,
+      "selected_count": 45
+    }
+  ],
+  "credential_sanitization": {
+    "file": "data-plane/transcript-acquisition/vpn-ytdlp/docker-compose.yml",
+    "openvpn_values": "replaced_with_env_vault_placeholders"
+  },
+  "final_control_missing_destination_count": 0,
+  "final_coverage_log": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+  "generated_at_utc": "20260618T063257Z",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden for source/protected roots",
+    "env_copy": "forbidden",
+    "generated_destination_cleanup": "scoped to accidental untracked runtime copy",
+    "runtime_state_copy": "forbidden"
+  },
+  "runtime_dir_cleanup": {
+    "removed_generated_destinations": [
+      "control-plane/hh-control-bridge/.venv"
+    ],
+    "source_roots_untouched": true
+  },
+  "source_logs": [
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log"
+  ],
+  "type": "apply_import_evidence"
+}

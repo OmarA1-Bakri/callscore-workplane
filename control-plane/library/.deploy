@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")"
+PAT=$(grep "GITHUB_PAT_HERMES_VAULT" /srv/agents/hermes/.clone-protected/.env | cut -d= -f2-)
+git remote remove origin 2>/dev/null || true
+git remote add origin "https://OmarA1-Bakri:${PAT}@github.com/OmarA1-Bakri/hermes-library.git"
+git push origin main
+git remote remove origin 2>/dev/null || true
+git remote add origin https://github.com/OmarA1-Bakri/hermes-library.git

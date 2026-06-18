@@ -1,0 +1,9 @@
+# Verification ledger skeleton.
+verification:
+  product_tests: pending
+  workplane_status: pending
+  public_verify: pending
+  freshness_check: pending
+  pipeline_audit: pending
+  gtm_registry_json_validation: pending
+  secret_scan: pending

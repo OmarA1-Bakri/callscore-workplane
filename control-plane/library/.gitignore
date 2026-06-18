@@ -1,0 +1,13 @@
+# Backups are generated artifacts - catalog.yml is source of truth
+library-claude-backup.yaml
+library-canonical-*.yaml
+library-final-merged-*.yaml
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS
+.DS_Store
+Thumbs.db

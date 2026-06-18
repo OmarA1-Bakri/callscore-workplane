@@ -1,0 +1,16 @@
+{
+  "absent_components": [],
+  "generated_at_utc": "20260618T063257Z",
+  "manifest": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.tsv",
+  "max_bytes": 134217728,
+  "mode": "dry_run",
+  "policy": {
+    "d_drive_writes": "forbidden",
+    "delete": "forbidden",
+    "env_copy": "forbidden",
+    "runtime_state_copy": "forbidden"
+  },
+  "selected_bytes": 0,
+  "selected_count": 0,
+  "skipped_count": 2201
+}

@@ -1,0 +1,251 @@
+%% Diagram A — Full operational system map
+flowchart LR
+  Operator[Operator]
+  subgraph HERMES[Hermes Control Plane]
+    HG[Hermes gateway\nstate redacted; rotation review]
+    HW[Hermes worker\ncanonical /opt repo]
+    HCron[Hermes cron/jobs\ncanonicalized]
+    Sup[Marketing supervisor\nfail-closed private dry-run only]
+  end
+  subgraph WORKPLANE[Workplane]
+    WQ[pipeline_jobs]
+    Specs[Workplane job specs]
+    Receipts[workflow receipt helper\n.tmp/workflow-receipts]
+  end
+  subgraph WHOPAUTO[Whop Auto]
+    WAR[/srv/whop-auto registry\nCANONICALIZED -> /opt manifest]
+    WAW[stale workspaces\ninventory only]
+    WAG[provider mutation\nmanifest+diff+rollback+receipt gate]
+  end
+  subgraph REPO[CallScore Repo]
+    Repo[/opt/crypto-tuber-ranked\nCANONICAL]
+    Scripts[npm scripts\nworkplane/freshness/audit/verify]
+    Docs[audit + masterplan]
+  end
+  subgraph PROD[CallScore Production]
+    Site[call-score.com]
+    Health[/api/health OK]
+    Creator93[/api/creator/93\ntarget leak fixed]
+    Netlify[Netlify call-score]
+    ReadAPI[HH Read API]
+    DB[(HH PostgreSQL)]
+  end
+  subgraph MARKETING[Marketing Orchestrators]
+    Content[content-agent\nenv-only draft]
+    Dist[distribution-agent\napproval-gated]
+    Growth[growth-agent\nzero-cost private]
+    Sentinel[marketing sentinel\nread-only]
+    AoW[Art of War dry-runs\nprivate hold: audience mismatch]
+  end
+  subgraph PIPE[Transcript + Gemma]
+    Worklist[transcript worklist\nPASS limit 5]
+    Media[transcript waterfall\nBLOCKED: bot verification / ASR absent]
+    Laptop[laptop collector\nREADY_WITH_GATES: Tailscale/residential cookies]
+    Gemma[Gemma/Qwen shadow\nREADY_WITH_GATES: schema pass; diff/write canary proven]
+  end
+  subgraph MCP[MCP / Toolbox]
+    Composio[Composio\nDEFERRED: not essential unless future workflow requires]
+    HHBridge[HH bridge\nPARTIAL wrapper issue]
+    UseAgents[UseAgents\nneeds verification]
+    Context7[Context7\nneeds verification]
+    PostgREST[PostgREST\nno proof]
+  end
+  subgraph GATES[Approval Gates]
+    DeployGate[Production deploy]
+    DBGate[Production DB mutation]
+    WhopGate[Whop product/customer/payment mutation]
+    PubGate[Public publish/outreach]
+    SpendGate[Paid spend]
+    RotationGate[Credential rotation]
+    InfraGate[Destructive infra]
+    OpenGate[Open-ended scrape/extract/LLM]
+  end
+  subgraph BLOCKERS[Remaining Blockers]
+    B1[Composio ready after restart/reload if first-class tools needed]
+    B2[HH-only fallback: bot verification / ASR absent; laptop lane proven]
+    B3[Production promotion remains receipt/approval-gated]
+    B4[Public count source drift resolved by --source live]
+    B5[External rotation review]
+    B6[Whop Auto provider mutations gated; checkout auth proof recorded]
+  end
+
+  Operator -->|manual trigger| HG
+  HG -->|controls/observes| HCron
+  HCron -->|scheduled trigger| HW
+  HW -->|polls| WQ
+  Specs -->|defines safe jobs| WQ
+  WQ -->|writes receipt| Receipts
+  Sup -->|requires approval file| Receipts
+  Repo -->|source| Netlify
+  Netlify -->|serves| Site
+  Site --> Health
+  Site --> Creator93
+  Health -->|read-only| ReadAPI
+  Creator93 -->|read-only| ReadAPI
+  ReadAPI -->|read-only| DB
+  Scripts -->|read-only checks| Site
+  Scripts -->|approved helpers| DB
+  Content -->|private draft only| Receipts
+  Dist -->|requires approval| PubGate
+  Growth -->|zero-cost only| SpendGate
+  Sentinel -->|observes| ReadAPI
+  AoW -->|dry-run receipt| Receipts
+  Worklist -->|receipt pass| Receipts
+  Media -->|fallback blocked by| B2
+  Laptop -->|bounded write cadence| Receipts
+  Gemma -->|schema-pass receipt| Receipts
+  Gemma -->|promotion blocked by| B3
+  WAR -->|uses manifest| Repo
+  WAW -->|do not patch as source| WAR
+  WAR -->|writes receipt before mutation| Receipts
+  WAG -->|blocked unless all gates pass| WhopGate
+  WAG -->|mutation gate remains| B6
+  Composio -->|reload if needed| B1
+  Scripts -->|verify public --source live passed| B4
+  HG -->|rotation review| B5
+  DeployGate -->|requires approval| Netlify
+  DBGate -->|requires approval| DB
+  WhopGate -->|requires approval| Receipts
+  PubGate -->|requires approval| Receipts
+  SpendGate -->|requires approval| Receipts
+  RotationGate -->|requires approval| B5
+  InfraGate -->|requires approval| HW
+  OpenGate -->|requires approval| Worklist
+
+%% Diagram B — Hermes control-boundary map
+flowchart TD
+  subgraph FULL_HERMES_CONTROL
+    F0[None for production/revenue/public/provider mutations]
+  end
+  subgraph SCHEDULE_CONTROLLED
+    S1[Hermes cron/jobs canonicalized]
+    S2[daily pipeline timer observed]
+  end
+  subgraph SCRIPT_CONTROLLED
+    C1[Hermes worker]
+    C2[Workplane report-only jobs]
+    C3[workflow:receipt]
+    C4[freshness/audit/local verify]
+    C5[Art of War dry-run]
+    C6[Whop dry-run/read specs]
+  end
+  subgraph MANUAL_TRIGGER
+    M1[Netlify deploy]
+    M2[laptop transcript collector]
+    M3[service restart]
+    M4[provider auth repair]
+  end
+  subgraph OBSERVED_ONLY
+    O1[HH PostgreSQL]
+    O2[HH Read API]
+    O3[call-score.com]
+    O4[Whop state]
+    O5[Docker/systemd]
+  end
+  subgraph NO_CONTROL
+    N1[Composio write/outbound tools without gate]
+    N2[Public social/email channels]
+    N3[Paid marketing tools]
+    N4[Whop mutations]
+  end
+  subgraph APPROVAL_REQUIRED
+    A1[production deploy]
+    A2[DB mutation outside approved path]
+    A3[Whop mutation]
+    A4[public publish/outreach]
+    A5[paid spend]
+    A6[credential rotation]
+    A7[destructive infra]
+    A8[open-ended jobs]
+  end
+  subgraph UNSAFE_BLOCKED
+    U1[public/spend action without receipt]
+    U2[Whop mutation without receipt]
+    U3[DB mutation without receipt]
+  end
+  subgraph UNKNOWN_NEEDS_VERIFICATION
+    X1[UseAgents]
+    X2[Context7]
+    X3[PostGREST]
+  end
+
+%% Diagram C — Approval-gate map
+flowchart LR
+  subgraph SAFE[Safe autonomous lanes]
+    RO[Read-only health checks]
+    PV[Public API leak verification]
+    HY[Secret hygiene scan]
+    DRY[Dry-run marketing drafts]
+    ZC[Zero-cost content preparation]
+    REC[Receipt generation]
+    WP[Workplane status]
+    AUD[Pipeline/freshness audit]
+  end
+  subgraph NEEDS[Requires operator approval]
+    DEP[Production deploy]
+    WH[Whop mutation]
+    DBM[Production DB mutation]
+    PUB[Public marketing publication]
+    OUT[Outbound email/DM/social]
+    PAID[Paid marketing spend]
+    ROT[Credential rotation]
+    INFRA[Destructive infra action]
+    OPEN[Open-ended scraping/extraction/LLM]
+  end
+  SAFE -->|writes receipt| REC
+  DEP -->|approval gate| REC
+  WH -->|approval gate| REC
+  DBM -->|approval gate| REC
+  PUB -->|approval gate| REC
+  OUT -->|approval gate| REC
+  PAID -->|approval gate| REC
+  ROT -->|approval gate| REC
+  INFRA -->|approval gate| REC
+  OPEN -->|approval gate| REC
+
+
+%% 2026-06-13 readiness recheck note
+%% 2026-06-13 latest: Composio read-only SDK probe passed via local venv; public verify --source live passed; Gemma eval+production schemas pass 10/10; bounded 5-row full-transcript shadow sample rows=5 schema=5/5 accepted=1 diff removed=2 changed=1 no_accepted=2 manual_review=0; transcript remains degraded by bot verification / ASR absence; no public/spend/Whop/DB mutation.
+
+%% 2026-06-13 transcript classification update
+%% HH yt-dlp bounded canary => bot_verification_required. Waterfall dry-run => pending_handoff / external_handoff_required / laptop_ytdlp with previous_failure_reason=bot_verification_required. HH media fallback => asr_unavailable. Composio configured locally but read-only SDK discovery blocked by auth_invalid_or_expired. Whop gates and Art of War private dry-run remain fail-closed. No production DB writes, deploys, Whop mutation, public action, paid provider, cookie print, or spend.
+
+%% 2026-06-13 laptop transcript reactivation: canonical path is Omar laptop over Tailscale. HH -> laptop WSL works via bridge key; Windows collector uses explicit WSL ssh to hermes-agent-box. Limit-1 dry-run and write passed for KQNpABBLxzs; receipt laptop-canonical-write1-20260613T173047Z. FULL still needs repeated limit-5 cadence plus approved downstream extraction/match/score.
+
+%% 2026-06-13 full-production operation push update
+%% Canonical laptop transcript cadence: PASS limit=5 via Omar laptop/Tailscale/residential cookies; videos=iUCCAQYntNw,OpGyIwR0rzA,X9gvhAEMuQ4,Y4irJGDZdLM,8nKIOo5CeEc; receipt=.tmp/workflow-receipts/transcript_laptop_cadence/laptop-limit5-20260613T1806Z.json.
+%% Workplane transcript_collector now trusts latest successful transcript_laptop_cadence receipt over stale HH-local collector state.
+%% Fresh-batch Gemma shadow: rows=5 valid=5 failed=0 accepted=0; diff manual_review=5; extraction dry-run processed=5 failed=0 calls=0; no promotion/write/match/score was run.
+%% Live verify --source live passed; full tests 636/636; typecheck/lint/build/hygiene passed.
+%% Remaining PARTIAL blockers: downstream accepted fresh calls not yet proven, Composio MCP auth/SDK/CLI wiring, Art of War audience_mismatch/public publish gate, audit pipeline completeness.
+%% 2026-06-13 second laptop/write-canary update
+%% Second laptop batch: attempted=5, available=4, failed_no_content=1; receipt=.tmp/workflow-receipts/transcript_laptop_cadence/laptop-limit5-20260613T183717Z.json.
+%% Gemma second-batch shadow: records=4 accepted=1 failed=0; diff=new_calls:1,manual_review:2,no_accepted_calls:1.
+%% Write canary: one reviewed new_calls video 20290 promoted with --write --allow-statuses new_calls --video-ids 20290 --limit 1 --mark-video-extracted; receipt=.tmp/workflow-receipts/gemma_write_canary/gemma-laptop-batch2-20260613T184350Z.json.
+%% Safety fix: compute-scores now rejects unsupported --limit canary flags; use no args or --confirm-full-recompute for the established full recompute path. Dedicated bounded scoring canary remains P1.
+%% 2026-06-13 bounded scoring canary update
+%% compute-scores now supports scoped --call-id/--call-ids/--video-id canaries with --limit<=5 and rejects unsupported misleading flags.
+%% Score canary: npm run score -- --video-id 20290 --limit 1 => considered_calls=1 scored_calls=0, receipt=.tmp/workflow-receipts/pipeline_score_canary/score-video20290-20260613T190556Z.json.
+%% Core data path proven at canary scale: laptop transcript -> Gemma shadow/diff -> one-video write canary -> match canary -> score canary. Remaining PARTIAL blockers are audit completeness, Composio auth/tooling, and Art of War audience/public gate.
+
+%% 2026-06-14 production-readiness update
+%% Website live health and verify: PASS via https://call-score.com with HH-read source; public target-price leak remains fixed for known targets 1700/60/55000.
+%% Canonical laptop transcript lane: PASS limit=5 via Tailscale to omarslaptop-1, attempted=5, available=5; receipt=.tmp/workflow-receipts/transcript_laptop_cadence/laptop-limit5-20260614T035559Z.json.
+%% Fresh Gemma/Qwen shadow over new laptop batch: records=5 accepted=1 failed=0; shadow diff statuses no_accepted_calls=4 manual_review=1; receipts under gemma_shadow_sample/gemma_shadow_diff.
+%% Workplane gemma_shadow_extraction now treats successful bounded shadow sample receipts/clean artifacts as READY while production promotion remains gated.
+%% audit:pipeline remains PARTIAL due missing_transcripts_or_terminal_reasons only; missing_publication_dates is now covered by terminal-publication-dates audit records. Fresh laptop batch on 2026-06-14 reduced missing transcript creator count 99 -> 98 and terminal transcript coverage to 3860.
+%% Third-party apps essential now: Netlify, HH PostgreSQL/read API, Tailscale/SSH laptop collector, Omar laptop browser cookies, YouTube/yt-dlp laptop lane, local Ollama models. Revenue requires Whop setup/auth/gated manifest. Marketing owned-channel apps remain operator-selected/gated. Composio is optional/deferred unless future repo evidence makes it essential.
+%% 2026-06-14 Whop Auto canonicalization update
+%% /srv/whop-auto registry now points crypto-tuber-ranked to /opt/crypto-tuber-ranked/.whop-pipeline.json and records canonicalSource=/opt/crypto-tuber-ranked. Stale /srv/whop-auto/workspace/* mirrors remain inventory only; no provider/customer/payment mutation, deploy, secret print, or cleanup/delete occurred. Live Whop Auto mutation remains manifest+diff+rollback+receipt+local-auth gated.
+
+%% 2026-06-14 activation refresh
+%% Website live verify --source live passed via HH Read API; local verify passed; canonical laptop/Tailscale Firefox/laptop-side yt-dlp wrote 5/5 fresh transcripts at 2026-06-14T09:43-09:47Z; receipt=.tmp/workflow-receipts/transcript_laptop_cadence/laptop-limit5-activation-20260614T094841Z.json.
+%% Gemma local Ollama shadow run gemma-activation-shadow-20260614T094949Z processed 5/5 videos, accepted=2, failed=0; diff manual_review=5; receipts under gemma_shadow_sample and gemma_shadow_diff. No promotion/write.
+%% Composio MCP live probe READY: initialize HTTP 200 SSE, session id present, tools/list returned 7 tools; current Codex may need restart/reload for first-class tool exposure.
+%% Whop discounted/tokenized Pro renewal remains checkout/payment authorization proof; no Whop mutation. Art of War dry-run held with audience_mismatch and no public action/spend.
+%% Validation passed: typecheck, lint, build, hygiene, workplane status OK/PARTIAL, freshness WARN blockers=[], audit blocker missing_transcripts_or_terminal_reasons, verify public local+live, full tests 643 pass.
+%% 2026-06-14T11:10Z: Workplane next-action now trusts passed transcript_laptop_cadence receipt over stale HH-local collector state; Composio active connections inventoried for Attio, Gmail/email, Twitter/X, PostHog, LinkedIn, Discord; Hugging Face authenticated via plugin and needs Composio surfacing/reload if used through Composio.
+
+%% 2026-06-14 controlled-full update: Workplane distinguishes MONITORED gates from BLOCKED/PARTIAL production failures. Transcript backlog/cooldown, Gemma diff review, Whop mutation approval, Art of War publish approval, and Composio app inventory are monitored/fail-closed unless a core readiness failure appears.
+
+%% 2026-06-14 canonical diagram supersession: use docs/architecture/callscore-agentic-platform.mmd as the current full-platform diagram. This historical audit map remains supporting context.
