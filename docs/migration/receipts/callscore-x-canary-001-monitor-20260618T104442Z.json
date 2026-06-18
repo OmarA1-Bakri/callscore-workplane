@@ -1,0 +1,32 @@
+{
+  "schema": "callscore.artofwar_owned_public_monitor_receipt.v1",
+  "run_id": "callscore-x-canary-001-monitor-20260618T104442Z",
+  "created_at_utc": "2026-06-18T10:44:42Z",
+  "post_id": "2067557086796398667",
+  "post_url": "https://x.com/0marbakri/status/2067557086796398667",
+  "channel": "X / Twitter",
+  "source": "Composio TWITTER_RECENT_SEARCH parent verification",
+  "metrics": {
+    "impression_count": 6,
+    "like_count": 1,
+    "reply_count": 0,
+    "retweet_count": 0,
+    "quote_count": 0,
+    "bookmark_count": 0
+  },
+  "site_health_latest": "live public verify passed earlier in session: ok=true, source=hh_read_api, leaderboard rows match API",
+  "posture": "continue_monitoring; no additional public post until 24h throttle clears; no paid spend/outreach/provider mutation",
+  "next_checks": [
+    "1h monitor cron scheduled",
+    "6h autonomous CMO loop scheduled but publish-throttled for 24h",
+    "watch replies/quotes/compliance complaints",
+    "prepare LinkedIn/follow-up drafts as packets only until throttle clears"
+  ],
+  "kill_switch_triggers": [
+    "paid spend attempt",
+    "DM/email/outreach attempt",
+    "Whop/provider/customer/payment mutation",
+    "unsafe investment advice/guarantee/named accusation",
+    "unexpected negative compliance replies/quotes"
+  ]
+}
