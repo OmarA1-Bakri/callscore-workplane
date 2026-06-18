@@ -1,0 +1,81 @@
+{
+  "schema": "callscore.autonomous_next_step_receipt.v1",
+  "created_at_utc": "2026-06-18T10:54:25Z",
+  "operator_instruction": "Continue toward full autonomous system for users and revenue; take next concrete step.",
+  "status": "next_step_completed",
+  "actions_taken": [
+    {
+      "action": "control_plane_preflight",
+      "result": "pass",
+      "evidence": [
+        "git clean against origin/master",
+        "Workplane status=OK",
+        "automation_readiness=CONTROLLED_FULL",
+        "public verify ok=true source=live; homepage raw=16317 public=8031 ranked=42",
+        "GTM registry JSON valid",
+        "gtm-agent-registry tests 6/6 pass"
+      ]
+    },
+    {
+      "action": "x_canary_metric_refresh",
+      "result": "pass",
+      "post_id": "2067557086796398667",
+      "metrics": {
+        "impression_count": 7,
+        "like_count": 1,
+        "reply_count": 0,
+        "retweet_count": 0,
+        "quote_count": 0,
+        "bookmark_count": 0,
+        "possibly_sensitive": false
+      }
+    },
+    {
+      "action": "posthog_analytics_discovery",
+      "result": "external_tool_degraded",
+      "detail": "Composio PostHog org/project endpoints returned HTML/non-JSON despite active connection; no analytics mutation performed."
+    },
+    {
+      "action": "whop_status_cron_repair",
+      "result": "pass",
+      "script": "/srv/agents/hermes/scripts/whop-status-collect.sh",
+      "detail": "Created missing script for existing no_agent whop-daily-status job; read-only enqueues only; logs to callscore scheduler log; no stdout on success."
+    },
+    {
+      "action": "whop_read_only_jobs",
+      "result": "pass",
+      "jobs": [
+        {
+          "id": 1844,
+          "type": "whop_provider_health",
+          "status": "succeeded"
+        },
+        {
+          "id": 1845,
+          "type": "whop_plan_inventory_check",
+          "status": "succeeded"
+        },
+        {
+          "id": 1846,
+          "type": "whop_activation_review",
+          "status": "succeeded"
+        }
+      ]
+    }
+  ],
+  "forbidden_actions_not_performed": [
+    "paid spend",
+    "ads/boosts",
+    "DM/email/newsletter/outreach",
+    "Whop pricing/product/customer/payment/entitlement/provider mutation",
+    "DB broad writes",
+    "deploy/infra/webhook/credential mutation",
+    "unsafe investment advice or guarantees"
+  ],
+  "operating_posture": "CONTROLLED_FULL autonomous CMO active; first 24h after X canary remains monitor/prepare-first, no scaled follow-up until throttle/duplicate checks pass.",
+  "next_autonomous_move": "prepare next safe owned-public LinkedIn/X follow-up packet and revenue conversion copy while monitoring X canary and Whop status; CMO cron continues every 6h.",
+  "artifacts": {
+    "whop_script": "/srv/agents/hermes/scripts/whop-status-collect.sh",
+    "previous_activation_receipt": "/srv/agents/repos/callscore-workplane/docs/migration/receipts/callscore-autonomous-orchestrator-activation-20260618T1048Z.json"
+  }
+}
