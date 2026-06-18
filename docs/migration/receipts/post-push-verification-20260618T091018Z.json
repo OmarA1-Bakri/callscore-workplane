@@ -1,0 +1,46 @@
+{
+  "schema": "callscore.post_push_verification.v1",
+  "generated_at_utc": "2026-06-18T09:10:24Z",
+  "app_head": "cc4371c8663ca30dea34706b4064e520ef8b3acb",
+  "origin_master": "cc4371c8663ca30dea34706b4064e520ef8b3acb\trefs/heads/master",
+  "git_status": {
+    "exit_code": 0,
+    "stdout": "## master...origin/master\n",
+    "stderr": ""
+  },
+  "github_commit_status": {
+    "exit_code": 0,
+    "stdout": "{\"state\":\"pending\",\"statuses\":[],\"total_count\":0}\n",
+    "stderr": ""
+  },
+  "live_public_verify": {
+    "exit_code": 0,
+    "stdout": "\n> crypto-tuber-ranked@0.1.0 verify:public\n> node --import tsx src/scripts/verify-public-surface.ts --source live --base-url https://call-score.com\n\n{\n  \"generated_at\": \"2026-06-18T09:10:23.299Z\",\n  \"base_url\": \"https://call-score.com\",\n  \"source\": \"live\",\n  \"publicCounts\": null,\n  \"checks\": [\n    {\n      \"name\": \"live_health_ok\",\n      \"ok\": true,\n      \"detail\": \"ok=true, source=hh_read_api\"\n    },\n    {\n      \"name\": \"live_leaderboard_meta_matches_rows\",\n      \"ok\": true,\n      \"detail\": \"api=36, rows=36\"\n    },\n    {\n      \"name\": \"live_homepage_contains_nonzero_funnel_counts\",\n      \"ok\": true,\n      \"detail\": \"raw=16317, public=8031, ranked=42\"\n    }\n  ],\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  "live_http_checks": [
+    {
+      "url": "https://call-score.com/api/health",
+      "status": 200,
+      "bytes": 44,
+      "content_type": "application/json",
+      "json_ok": true,
+      "ok": true,
+      "source": "hh_read_api",
+      "row_count": 0
+    },
+    {
+      "url": "https://call-score.com/api/leaderboard",
+      "status": 200,
+      "bytes": 64724,
+      "content_type": "application/json",
+      "json_ok": true,
+      "ok": null,
+      "source": null,
+      "row_count": null
+    }
+  ],
+  "push_performed": "git push origin master",
+  "production_mutation_note": "GitHub push performed after full local validation; no direct DB write, service restart, Whop/provider/customer/payment mutation, or D: write performed.",
+  "overall_pass": true
+}
