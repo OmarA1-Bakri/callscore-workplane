@@ -1,18 +1,114 @@
-# Service ledger skeleton. Fill from HHVM inventory; do not restart services.
+# CallScore live HH service ledger
+generated_at_utc: 20260618T081229Z
+evidence_run: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z
+policy: read_only_inventory; no service restarts performed
 services:
   - name: callscore-daily-pipeline.service
-    status: pending_inventory
+    load_state: loaded
+    active_state: inactive
+    sub_state: dead
+    unit_file_state: static
+    fragment_path: /etc/systemd/system/callscore-daily-pipeline.service
+    working_directory: /opt/crypto-tuber-ranked
+    main_pid: 0
+    result: success
+    exec_start: '{ path=/usr/bin/npm ; argv[]=/usr/bin/npm run pipeline:daily -- --write --read-api-base https://ops-bridge.call-score.com/api/read --transcript-limit 25 --transcript-concurrency 1 …'
   - name: callscore-daily-pipeline.timer
-    status: pending_inventory
+    load_state: loaded
+    active_state: active
+    sub_state: waiting
+    unit_file_state: enabled
+    fragment_path: /etc/systemd/system/callscore-daily-pipeline.timer
+    working_directory: ''
+    main_pid: None
+    result: success
+    exec_start: ''
   - name: callscore-enqueue.service
-    status: pending_inventory
+    load_state: loaded
+    active_state: active
+    sub_state: running
+    unit_file_state: enabled
+    fragment_path: /etc/systemd/system/callscore-enqueue.service
+    working_directory: /opt/crypto-tuber-ranked
+    main_pid: 1267907
+    result: success
+    exec_start: '{ path=/usr/bin/node ; argv[]=/usr/bin/node --import tsx src/scripts/callscore-enqueue-server.ts ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; sta…'
   - name: callscore-read-api.service
-    status: pending_inventory
+    load_state: loaded
+    active_state: active
+    sub_state: running
+    unit_file_state: enabled
+    fragment_path: /etc/systemd/system/callscore-read-api.service
+    working_directory: /opt/crypto-tuber-ranked
+    main_pid: 1267903
+    result: success
+    exec_start: '{ path=/usr/bin/node ; argv[]=/usr/bin/node src/scripts/callscore-read-api-server.mjs ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }'
   - name: hh-control-bridge.service
-    status: pending_inventory
+    load_state: loaded
+    active_state: active
+    sub_state: running
+    unit_file_state: enabled
+    fragment_path: /etc/systemd/system/hh-control-bridge.service
+    working_directory: /srv
+    main_pid: 1354458
+    result: success
+    exec_start: '{ path=/srv/agents/hh-control-bridge/.venv/bin/python ; argv[]=/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py ; ignore_errors=no ; start_tim…'
   - name: hermes-worker.service
-    status: pending_inventory
+    load_state: loaded
+    active_state: active
+    sub_state: exited
+    unit_file_state: enabled
+    fragment_path: /etc/systemd/system/hermes-worker.service
+    working_directory: /opt/crypto-tuber-ranked
+    main_pid: 0
+    result: success
+    exec_start: '{ path=/usr/bin/docker ; argv[]=/usr/bin/docker compose up -d hermes-worker ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }'
   - name: agent-snapshot.service
-    status: pending_inventory
+    load_state: loaded
+    active_state: inactive
+    sub_state: dead
+    unit_file_state: static
+    fragment_path: /etc/systemd/system/agent-snapshot.service
+    working_directory: ''
+    main_pid: 0
+    result: success
+    exec_start: '{ path=/usr/local/bin/agent-snapshot ; argv[]=/usr/local/bin/agent-snapshot ; ignore_errors=no ; start_time=[Thu 2026-06-18 03:30:00 BST] ; stop_time=[Thu 2026-06-18 04:08:30 BST] …'
   - name: agent-snapshot.timer
-    status: pending_inventory
+    load_state: loaded
+    active_state: active
+    sub_state: waiting
+    unit_file_state: enabled
+    fragment_path: /etc/systemd/system/agent-snapshot.timer
+    working_directory: ''
+    main_pid: None
+    result: success
+    exec_start: ''
+containers:
+  - name: crypto-tuber-ranked-hermes-worker-1
+    state: running
+    image: crypto-tuber-ranked-hermes-worker:latest
+    network_mode: host
+    restart_policy: {'Name': 'unless-stopped', 'MaximumRetryCount': 0}
+    binds: ['/opt/callscore/secrets/youtube-cookies.txt:/run/secrets/youtube-cookies.txt:ro']
+    mounts: 1
+  - name: crypto-tuber-ranked-ytdlp-pot-provider-1
+    state: running
+    image: brainicism/bgutil-ytdlp-pot-provider:1.3.1-node
+    network_mode: host
+    restart_policy: {'Name': 'unless-stopped', 'MaximumRetryCount': 0}
+    binds: []
+    mounts: 0
+  - name: hh-oauth-mcp-gateway
+    state: running
+    image: oauth-mcp-gateway-oauth-mcp-gateway
+    network_mode: host
+    restart_policy: {'Name': 'unless-stopped', 'MaximumRetryCount': 0}
+    binds: []
+    mounts: 0
+  - name: hermes-whop-automation-tunnel
+    state: running
+    image: cloudflare/cloudflared:latest
+    network_mode: host
+    restart_policy: {'Name': 'unless-stopped', 'MaximumRetryCount': 0}
+    binds: ['/home/omar/.cloudflared/hermes-whop-automation.token:/etc/cloudflared/token:ro']
+    mounts: 1

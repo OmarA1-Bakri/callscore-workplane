@@ -1,7 +1,35 @@
-# Migration ledger skeleton.
-generated_at_utc: 20260618T063257Z
-policy:
-  d_drive_writes: forbidden
-  deletion: forbidden
-  production_mutation: forbidden
-current_phase: mcp_artifact_first
+# CallScore migration/full-operation ledger
+generated_at_utc: 20260618T081400Z
+status: controlled_full_operationalized
+policy: no D-drive writes; no secrets in Git; raw env vault ignored; production mutations only with scoped receipt
+primary_evidence:
+  migration_index: /srv/agents/repos/callscore-workplane/ledgers/migration-index.json
+  final_validation: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/validation-final.log
+  backup_proof: /srv/agents/repos/callscore-workplane/docs/migration/receipts/backup-proof-20260618T080540Z.json
+  restore_rehearsal: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json
+  live_inventory: /srv/agents/repos/callscore-workplane/docs/migration/receipts/full-operation-inventory-20260618T081229Z.json
+  cutover_plan: /srv/agents/repos/callscore-workplane/docs/migration/receipts/cutover-plan-20260618T081339Z.json
+  approval_gates: /srv/agents/repos/callscore-workplane/docs/migration/receipts/approval-gates-20260618T081353Z.json
+  final_operationalization: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/cutover-operationalization-final.json
+milestones:
+  - id: migration_pack_frozen
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md
+  - id: backup_proof_verified
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/docs/migration/receipts/backup-proof-20260618T080540Z.json
+  - id: staging_restore_rehearsed
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json
+  - id: live_inventory_reconciled
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/ledgers/service-ledger.yaml
+  - id: controlled_full_cutover_planned
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/docs/restore/cutover-runbook.md
+  - id: restricted_gates_scoped
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/docs/migration/receipts/approval-gates-20260618T081353Z.json
+  - id: final_cutover_operationalized
+    status: complete
+    evidence: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/cutover-operationalization-final.json

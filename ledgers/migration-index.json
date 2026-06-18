@@ -501,7 +501,9 @@
       "evidence": [
         "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
         "/srv/agents/repos/callscore-workplane/docs/restore/docker-restore.md",
-        "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md"
+        "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json",
+        "/srv/agents/repos/callscore-workplane/docs/restore/cutover-runbook.md"
       ],
       "history": [
         {
@@ -510,9 +512,18 @@
             "/srv/agents/repos/callscore-workplane/docs/restore/docker-restore.md",
             "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md"
           ],
-          "note": "restore documentation skeletons created",
+          "note": "restore documentation created; superseded by live-inventory-backed operational restore docs in full-operation run",
           "status": "complete",
           "timestamp_utc": "2026-06-18T06:38:43Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json",
+            "/srv/agents/repos/callscore-workplane/docs/restore/cutover-runbook.md"
+          ],
+          "note": "restore docs operationalized with passing staging rehearsal and cutover rollback runbook",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T08:19:12Z"
         }
       ],
       "id": "restore_docs_created",
@@ -526,16 +537,27 @@
         "restore_docs_created"
       ],
       "evidence": [
-        "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md"
+        "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-postgres-inventory.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json"
       ],
       "history": [
         {
           "evidence": [
             "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md"
           ],
-          "note": "Postgres restore plan skeleton created; raw dumps forbidden",
+          "note": "Postgres restore plan created; raw dumps forbidden; superseded by live read-only inventory and schema-only rehearsal",
           "status": "complete",
           "timestamp_utc": "2026-06-18T06:38:43Z"
+        },
+        {
+          "evidence": [
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-postgres-inventory.json",
+            "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json"
+          ],
+          "note": "Postgres plan operationalized with read-only row probes and schema-only dump rehearsal; no raw dump in Git",
+          "status": "complete",
+          "timestamp_utc": "2026-06-18T08:19:12Z"
         }
       ],
       "id": "db_restore_plan_created",

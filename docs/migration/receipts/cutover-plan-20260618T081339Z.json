@@ -1,0 +1,58 @@
+{
+  "schema": "callscore.cutover_plan.v1",
+  "created_at_utc": "20260618T081339Z",
+  "operator_authority": "Omar authorized completing steps 1-8 with full authority for clean canonical CallScore system.",
+  "mode": "controlled_full_noop_cutover_unless_health_requires_remediation",
+  "current_system_verdict": "Live HH production already satisfies operational cutover gates; no service restart, DB write, deploy, provider/payment mutation, or public send is required for this pass.",
+  "evidence": {
+    "backup_proof": "/srv/agents/repos/callscore-workplane/docs/migration/receipts/backup-proof-20260618T080540Z.json",
+    "inventory_receipt": "/srv/agents/repos/callscore-workplane/docs/migration/receipts/full-operation-inventory-20260618T081229Z.json",
+    "restore_rehearsal": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json",
+    "app_validation": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-app-validation.json",
+    "postgres_inventory": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-postgres-inventory.json",
+    "systemd_inventory": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-systemd-inventory.json",
+    "docker_inventory": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-docker-summary.json"
+  },
+  "rollback_anchor": {
+    "primary": "Hetzner snapshot/image 398616103",
+    "status": "available/delete-protected when checked through hcloud",
+    "server_id": "128888849",
+    "disk_size": "160GB",
+    "description": "callscore-hhvm-preclean-20260617T172855Z"
+  },
+  "cutover_steps": [
+    "Freeze repo/workplane evidence and receipts.",
+    "Confirm D/snapshot rollback proof.",
+    "Confirm restore rehearsal passes without production mutation.",
+    "Confirm systemd, Docker, PostgreSQL, public app, Workplane, GTM registry validations pass.",
+    "If all pass, declare current HH/CallScore state canonical without restart/deploy/DB write.",
+    "Commit resulting docs/ledgers/receipts."
+  ],
+  "rollback_triggers": [
+    "call-score.com live public verify fails",
+    "HH Read API health fails or source is not hh_read_api",
+    "Workplane status exits nonzero or loses CONTROLLED_FULL/OK equivalent readiness",
+    "callscore-read-api.service or callscore-enqueue.service inactive/failed",
+    "hermes-worker container stopped unexpectedly",
+    "PostgreSQL read-only probe fails or core row counts unexpectedly zero",
+    "secret scan finds trackable live secret material",
+    "operator issues STOP or rollback instruction"
+  ],
+  "rollback_sequence": [
+    "Stop new mutations/actions immediately.",
+    "Do not write to D:; keep D as receipt/evidence source.",
+    "Use Hetzner snapshot 398616103 to restore/rebuild HH server if host-level rollback required.",
+    "For repo-only issues, revert the latest CallScore/workplane commit(s) rather than touching snapshot.",
+    "Restore env files from protected env vault or snapshot, verify sha256, never print values.",
+    "Start/enable services according to service-ledger.yaml only after verification.",
+    "Run public verify, Workplane status, DB read-only row probes, and GTM registry tests before re-opening autonomous lanes."
+  ],
+  "mutation_policy": {
+    "production_db_writes": "not_needed_not_performed",
+    "deploy": "not_needed_not_performed",
+    "service_restart": "not_needed_not_performed",
+    "provider_payment_customer_mutation": "forbidden_not_invoked",
+    "public_send_or_post": "not_in_scope_for_cutover",
+    "paid_spend": "forbidden_not_invoked"
+  }
+}

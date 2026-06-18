@@ -1,0 +1,184 @@
+{
+  "verified_at_utc": "2026-06-18T08:07:09.864Z",
+  "mode": "read_only",
+  "tables": {
+    "alerts_queue": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "alerts_unsubscribes": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "allocations": {
+      "schema": "public",
+      "estimated_rows": "3"
+    },
+    "alpha_api_key_requests": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "alpha_api_keys": {
+      "schema": "public",
+      "estimated_rows": "1"
+    },
+    "alpha_webhook_deliveries": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "alpha_webhooks": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "call_revisions": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "calls": {
+      "schema": "public",
+      "estimated_rows": "16317"
+    },
+    "candles": {
+      "schema": "public",
+      "estimated_rows": "35598512",
+      "exact_rows": 35631855
+    },
+    "consensus_signals": {
+      "schema": "public",
+      "estimated_rows": "25"
+    },
+    "creator_stats": {
+      "schema": "public",
+      "estimated_rows": "788"
+    },
+    "creators": {
+      "schema": "public",
+      "estimated_rows": "197",
+      "exact_rows": 197
+    },
+    "feedback_reports": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "llm_gold_examples": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "ml_model_versions": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "ml_promotion_audit": {
+      "schema": "public",
+      "estimated_rows": "2"
+    },
+    "ml_training_examples": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "ml_verification_reason_codes": {
+      "schema": "public",
+      "estimated_rows": "11"
+    },
+    "ml_verification_runs": {
+      "schema": "public",
+      "estimated_rows": "3336"
+    },
+    "pipeline_job_events": {
+      "schema": "public",
+      "estimated_rows": "2448",
+      "exact_rows": 2571
+    },
+    "pipeline_jobs": {
+      "schema": "public",
+      "estimated_rows": "420",
+      "exact_rows": 430
+    },
+    "pipeline_runs": {
+      "schema": "public",
+      "estimated_rows": "414",
+      "exact_rows": 439
+    },
+    "positions": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "regime_history": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "seasonality_dow": {
+      "schema": "public",
+      "estimated_rows": "70"
+    },
+    "seasonality_hourly": {
+      "schema": "public",
+      "estimated_rows": "240"
+    },
+    "seasonality_monthly": {
+      "schema": "public",
+      "estimated_rows": "70"
+    },
+    "strategies": {
+      "schema": "public",
+      "estimated_rows": "4"
+    },
+    "ticks": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "trade_log": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "trade_signals": {
+      "schema": "public",
+      "estimated_rows": "-1"
+    },
+    "videos": {
+      "schema": "public",
+      "estimated_rows": "16088",
+      "exact_rows": 16371
+    },
+    "watchlists": {
+      "schema": "public",
+      "estimated_rows": "-1",
+      "exact_rows": 0
+    }
+  },
+  "extensions": [
+    "plpgsql"
+  ],
+  "version": "PostgreSQL 16.14 (Ubuntu 16.14-1.pgdg24.04+1) on aarch64-unknown-linux-gnu, compiled by gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0, 64-bit",
+  "database": {
+    "db": "callscore",
+    "usr": "callscore_app",
+    "addr": "::1/128",
+    "port": 5432,
+    "current_user": "[REDACTED_ROLE]"
+  },
+  "schema_source": "schema.sql plus migrations/*.sql in /opt/crypto-tuber-ranked",
+  "migration_files": [
+    "001-watchlists.sql",
+    "002-call-revisions.sql",
+    "003-call-revisions-revised-id.sql",
+    "004-alert-unsubscribes.sql",
+    "005-alpha-platform.sql",
+    "006-autonomous-ml-pipeline.sql",
+    "007-product-surface-observability.sql",
+    "008-candles-guardrails.sql",
+    "009-validate-candles-open-time.sql",
+    "010-pipeline-heartbeats.sql",
+    "011-candle-daily-closes.sql",
+    "012-video-transcript-status.sql",
+    "013-llm-gold-examples.sql",
+    "014-ml-promotion-audit.sql",
+    "015-candles-symbol-open-time.sql",
+    "016-ml-verifier-missing-evidence.sql",
+    "017-pipeline-job-metrics.sql",
+    "018-add-pipeline-phase.sql",
+    "019-ml-verifier-reason-code-lookup.sql",
+    "020-pipeline-job-lease-expiry.sql",
+    "021-launch-pipeline-ops.sql"
+  ]
+}

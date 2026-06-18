@@ -1,0 +1,165 @@
+{
+  "verified_at_utc": "2026-06-18T08:06:41Z",
+  "units": {
+    "callscore-daily-pipeline.service": {
+      "show": {
+        "command": "systemctl show callscore-daily-pipeline.service -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "Restart=no\nRestartUSec=100ms\nMainPID=0\nResult=success\nExecMainPID=1263862\nExecMainCode=1\nExecMainStatus=0\nExecStart={ path=/usr/bin/npm ; argv[]=/usr/bin/npm run pipeline:daily -- --write --read-api-base https://ops-bridge.call-score.com/api/read --transcript-limit 25 --transcript-concurrency 1 --transcript-gap-ms 20000 --limit-creators 250 --limit-videos 10 --since-days 45 --extract-limit 50 --match-limit 500 --match-batch-size 100 ; ignore_errors=no ; start_time=[Thu 2026-06-18 03:40:09 BST] ; stop_time=[Thu 2026-06-18 04:17:29 BST] ; pid=1263862 ; code=exited ; status=0 }\nEnvironmentFiles=/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=yes)\nWorkingDirectory=/opt/crypto-tuber-ranked\nUser=\nGroup=\nId=callscore-daily-pipeline.service\nNames=callscore-daily-pipeline.service\nRequires=sysinit.target -.mount system.slice\nWants=network-online.target\nWantedBy=\nBefore=shutdown.target\nAfter=[REDACTED]\nDescription=CallScore daily slow transcript/data pipeline\nLoadState=loaded\nActiveState=inactive\nSubState=dead\nFragmentPath=/etc/systemd/system/callscore-daily-pipeline.service\nSourcePath=\nDropInPaths=\nUnitFileState=static",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status callscore-daily-pipeline.service --no-pager -l",
+        "exit_code": 3,
+        "stdout": "\u25cb callscore-daily-pipeline.service - CallScore daily slow transcript/data pipeline\n     Loaded: loaded (/etc/systemd/system/callscore-daily-pipeline.service; static)\n     Active: inactive (dead) since Thu 2026-06-18 04:17:29 BST; 4h 49min ago\nTriggeredBy: \u25cf callscore-daily-pipeline.timer\n    Process: 1263862 ExecStart=/usr/bin/npm run pipeline:daily -- --write --read-api-base https://ops-bridge.call-score.com/api/read --transcript-limit 25 --transcript-concurrency 1 --transcript-gap-ms 20000 --limit-creators 250 --limit-videos 10 --since-days 45 --extract-limit 50 --match-limit 500 --match-batch-size 100 (code=exited, status=0/SUCCESS)\n   Main PID: 1263862 (code=exited, status=0/SUCCESS)\n        CPU: 1min 41.836s\n\nJun 18 04:17:29 hermes-agent-box npm[1263877]: [2026-06-18T03:17:29.813Z] daily:freshness-check: exit=0\nJun 18 04:17:29 hermes-agent-box npm[1263877]: [2026-06-18T03:17:29.813Z] callscore daily pipeline complete: status=completed auditDir=.tmp/callscore-daily/2026-06-18T02-40-10-688Z\nJun 18 04:17:29 hermes-agent-box npm[1263862]: npm notice\nJun 18 04:17:29 hermes-agent-box npm[1263862]: npm notice New major version of npm available! 10.9.8 -> 11.17.0\nJun 18 04:17:29 hermes-agent-box npm[1263862]: npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.17.0\nJun 18 04:17:29 hermes-agent-box npm[1263862]: npm notice To update run: npm install -g npm@11.17.0\nJun 18 04:17:29 hermes-agent-box npm[1263862]: npm notice\nJun 18 04:17:29 hermes-agent-box systemd[1]: callscore-daily-pipeline.service: Deactivated successfully.\nJun 18 04:17:29 hermes-agent-box systemd[1]: Finished callscore-daily-pipeline.service - CallScore daily slow transcript/data pipeline.\nJun 18 04:17:29 hermes-agent-box systemd[1]: callscore-daily-pipeline.service: Consumed 1min 41.836s CPU time.",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat callscore-daily-pipeline.service --no-pager",
+        "exit_code": 0,
+        "stdout": "# /etc/systemd/system/callscore-daily-pipeline.service\n[Unit]\nDescription=CallScore daily slow transcript/data pipeline\nAfter=[REDACTED]\nWants=network-online.target\n\n[Service]\nType=oneshot\nWorkingDirectory=/opt/crypto-tuber-ranked\nEnvironment=[REDACTED]\nEnvironment=NODE_ENV=production\nEnvironment=HH_READ_API_BASE=https://ops-bridge.call-score.com/api/read\nEnvironmentFile=-/opt/crypto-tuber-ranked/.env.hermes\nExecStart=/usr/bin/npm run pipeline:daily -- --write --read-api-base https://ops-bridge.call-score.com/api/read --transcript-limit 25 --transcript-concurrency 1 --transcript-gap-ms 20000 --limit-creators 250 --limit-videos 10 --since-days 45 --extract-limit 50 --match-limit 500 --match-batch-size 100\nNice=10\nIOSchedulingClass=best-effort\nIOSchedulingPriority=7",
+        "stderr": ""
+      }
+    },
+    "callscore-daily-pipeline.timer": {
+      "show": {
+        "command": "systemctl show callscore-daily-pipeline.timer -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "NextElapseUSecRealtime=Fri 2026-06-19 03:26:52 BST\nLastTriggerUSec=Thu 2026-06-18 03:40:09 BST\nResult=success\nId=callscore-daily-pipeline.timer\nNames=callscore-daily-pipeline.timer\nRequires=sysinit.target -.mount\nWants=\nWantedBy=timers.target\nBefore=callscore-daily-pipeline.service shutdown.target timers.target\nAfter=time-set.target -.mount time-sync.target sysinit.target\nDescription=Run CallScore daily slow transcript/data pipeline\nLoadState=loaded\nActiveState=active\nSubState=waiting\nFragmentPath=/etc/systemd/system/callscore-daily-pipeline.timer\nSourcePath=\nDropInPaths=\nUnitFileState=enabled",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status callscore-daily-pipeline.timer --no-pager -l",
+        "exit_code": 0,
+        "stdout": "\u25cf callscore-daily-pipeline.timer - Run CallScore daily slow transcript/data pipeline\n     Loaded: loaded (/etc/systemd/system/callscore-daily-pipeline.timer; enabled; preset: enabled)\n     Active: active (waiting) since Thu 2026-06-11 10:52:42 BST; 6 days ago\n    Trigger: Fri 2026-06-19 03:26:52 BST; 18h left\n   Triggers: \u25cf callscore-daily-pipeline.service\n\nJun 11 10:52:42 hermes-agent-box systemd[1]: Started callscore-daily-pipeline.timer - Run CallScore daily slow transcript/data pipeline.",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat callscore-daily-pipeline.timer --no-pager",
+        "exit_code": 0,
+        "stdout": "# /etc/systemd/system/callscore-daily-pipeline.timer\n[Unit]\nDescription=Run CallScore daily slow transcript/data pipeline\n\n[Timer]\nOnCalendar=*-*-* 03:20:00\nRandomizedDelaySec=30m\nPersistent=true\nUnit=callscore-daily-pipeline.service\n\n[Install]\nWantedBy=timers.target",
+        "stderr": ""
+      }
+    },
+    "callscore-enqueue.service": {
+      "show": {
+        "command": "systemctl show callscore-enqueue.service -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "Restart=on-failure\nRestartUSec=5s\nMainPID=1267907\nResult=success\nExecMainPID=1267907\nExecMainCode=0\nExecMainStatus=0\nExecStart={ path=/usr/bin/node ; argv[]=/usr/bin/node --import tsx src/scripts/callscore-enqueue-server.ts ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }\nEnvironmentFiles=/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=no)\nWorkingDirectory=/opt/crypto-tuber-ranked\nUser=omar\nGroup=omar\nId=callscore-enqueue.service\nNames=callscore-enqueue.service\nRequires=sysinit.target -.mount system.slice\nWants=tmp.mount\nWantedBy=multi-user.target\nBefore=shutdown.target multi-user.target\nAfter=[REDACTED]\nDescription=CallScore HH enqueue endpoint\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/callscore-enqueue.service\nSourcePath=\nDropInPaths=\nUnitFileState=enabled",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status callscore-enqueue.service --no-pager -l",
+        "exit_code": 0,
+        "stdout": "\u25cf callscore-enqueue.service - CallScore HH enqueue endpoint\n     Loaded: loaded (/etc/systemd/system/callscore-enqueue.service; enabled; preset: enabled)\n     Active: active (running) since Sat 2026-06-13 06:26:52 BST; 5 days ago\n   Main PID: 1267907 (node)\n      Tasks: 33 (limit: 18606)\n     Memory: 79.4M (peak: 85.1M)\n        CPU: 16min 28.448s\n     CGroup: /system.slice/callscore-enqueue.service\n             \u251c\u25001267907 /usr/bin/node --import tsx src/scripts/callscore-enqueue-server.ts\n             \u251c\u25001267974 /opt/crypto-tuber-ranked/node_modules/@esbuild/linux-arm64/bin/esbuild --service=0.27.7 --ping\n             \u2514\u25001267985 /opt/crypto-tuber-ranked/node_modules/@esbuild/linux-arm64/bin/esbuild --service=0.27.7 --ping\n\nJun 13 06:26:52 hermes-agent-box systemd[1]: Started callscore-enqueue.service - CallScore HH enqueue endpoint.\nJun 13 06:26:52 hermes-agent-box node[1267907]: {\"ts\":\"2026-06-13T05:26:52.611Z\",\"component\":\"callscore-enqueue\",\"event\":\"server_start\",\"host\":\"127.0.0.1\",\"port\":8788,\"path\":\"/internal/callscore/enqueue\",\"supported_types\":[\"candle_refresh\",\"match_prices_batch\",\"compute_scores\",\"ml_verifier_batch\",\"transcript_collect_laptop\",\"transcript_ingest_result\",\"gemma_shadow_extract\",\"ml_extraction_eval\",\"ml_idle_improve\",\"extraction_promotion_review\",\"whop_provider_health\",\"whop_plan_inventory_check\",\"whop_entitlement_sync_dry_run\",\"whop_webhook_replay_safe\",\"whop_customer_status_check\",\"whop_activation_review\",\"artofwar_strategy_brief\",\"artofwar_content_queue_dry_run\",\"artofwar_campaign_plan_generate\",\"artofwar_audience_research_dry_run\",\"artofwar_outreach_queue_prepare\",\"artofwar_publish_approval_review\",\"artofwar_spend_approval_review\",\"artofwar_campaign_preflight\",\"artofwar_campaign_iteration\",\"artofwar_campaign_verify\",\"artofwar_campaign_persona_test\",\"artofwar_campaign_dry_run\",\"artofwar_campaign_gemma_eval\",\"artofwar_campaign_receipt\",\"artofwar_campaign_dossier\",\"artofwar_campaign_approval_review\",\"automation_registry_refresh\",\"automation_dry_run\",\"automation_health_check\",\"automation_activation_review\"]}",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat callscore-enqueue.service --no-pager",
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Failed to cat /etc/systemd/system/callscore-enqueue.service: Permission denied"
+      }
+    },
+    "callscore-read-api.service": {
+      "show": {
+        "command": "systemctl show callscore-read-api.service -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "Restart=on-failure\nRestartUSec=5s\nMainPID=1267903\nResult=success\nExecMainPID=1267903\nExecMainCode=0\nExecMainStatus=0\nExecStart={ path=/usr/bin/node ; argv[]=/usr/bin/node src/scripts/callscore-read-api-server.mjs ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }\nEnvironmentFiles=/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=no)\nWorkingDirectory=/opt/crypto-tuber-ranked\nUser=omar\nGroup=omar\nId=callscore-read-api.service\nNames=callscore-read-api.service\nRequires=sysinit.target system.slice -.mount\nWants=tmp.mount\nWantedBy=multi-user.target\nBefore=shutdown.target multi-user.target\nAfter=[REDACTED]\nDescription=CallScore HH read API\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/callscore-read-api.service\nSourcePath=\nDropInPaths=\nUnitFileState=enabled",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status callscore-read-api.service --no-pager -l",
+        "exit_code": 0,
+        "stdout": "\u25cf callscore-read-api.service - CallScore HH read API\n     Loaded: loaded (/etc/systemd/system/callscore-read-api.service; enabled; preset: enabled)\n     Active: active (running) since Sat 2026-06-13 06:26:52 BST; 5 days ago\n   Main PID: 1267903 (node)\n      Tasks: 11 (limit: 18606)\n     Memory: 40.5M (peak: 45.7M)\n        CPU: 23.765s\n     CGroup: /system.slice/callscore-read-api.service\n             \u2514\u25001267903 /usr/bin/node src/scripts/callscore-read-api-server.mjs\n\nJun 13 06:26:52 hermes-agent-box systemd[1]: Started callscore-read-api.service - CallScore HH read API.\nJun 13 06:26:52 hermes-agent-box node[1267903]: {\"ts\":\"2026-06-13T05:26:52.126Z\",\"component\":\"callscore-read-api\",\"event\":\"server_start\",\"host\":\"127.0.0.1\",\"port\":8789}",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat callscore-read-api.service --no-pager",
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": "Failed to cat /etc/systemd/system/callscore-read-api.service: Permission denied"
+      }
+    },
+    "hh-control-bridge.service": {
+      "show": {
+        "command": "systemctl show hh-control-bridge.service -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "Restart=always\nRestartUSec=5s\nMainPID=1354458\nResult=success\nExecMainPID=1354458\nExecMainCode=0\nExecMainStatus=0\nExecStart={ path=/srv/agents/hh-control-bridge/.venv/bin/python ; argv[]=/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py ; ignore_errors=no ; start_time=[Thu 2026-06-18 06:22:45 BST] ; stop_time=[n/a] ; pid=1354458 ; code=(null) ; status=0/0 }\nEnvironmentFiles=/etc/hh-control-bridge/smithery.env (ignore_errors=yes)\nWorkingDirectory=/srv\nUser=omar\nGroup=omar\nId=hh-control-bridge.service\nNames=hh-control-bridge.service\nRequires=system.slice sysinit.target -.mount\nWants=network-online.target tmp.mount\nWantedBy=multi-user.target\nBefore=shutdown.target multi-user.target\nAfter=tailscaled.service -.mount system.slice basic.target systemd-tmpfiles-setup.service network-online.target systemd-journald.socket sysinit.target tmp.mount\nDescription=HH Control Bridge MCP Server\nLoadState=loaded\nActiveState=active\nSubState=running\nFragmentPath=/etc/systemd/system/hh-control-bridge.service\nSourcePath=\nDropInPaths=\nUnitFileState=enabled",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status hh-control-bridge.service --no-pager -l",
+        "exit_code": 0,
+        "stdout": "\u25cf hh-control-bridge.service - HH Control Bridge MCP Server\n     Loaded: loaded (/etc/systemd/system/hh-control-bridge.service; enabled; preset: enabled)\n     Active: active (running) since Thu 2026-06-18 06:22:45 BST; 2h 43min ago\n   Main PID: 1354458 (python)\n      Tasks: 1 (limit: 18606)\n     Memory: 67.6M (peak: 76.7M)\n        CPU: 21.953s\n     CGroup: /system.slice/hh-control-bridge.service\n             \u2514\u25001354458 /srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py\n\nJun 18 06:22:47 hermes-agent-box python[1354458]: \u2502                  \ud83d\ude80 Deploy free: https://horizon.prefect.io                  \u2502\nJun 18 06:22:47 hermes-agent-box python[1354458]: \u2502                                                                              \u2502\nJun 18 06:22:47 hermes-agent-box python[1354458]: \u2570\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u256f\nJun 18 06:22:47 hermes-agent-box python[1354458]: [06/18/26 06:22:47] INFO     Starting MCP server 'HH Control    transport.py:304\nJun 18 06:22:47 hermes-agent-box python[1354458]:                              Bridge' with transport 'http' on\nJun 18 06:22:47 hermes-agent-box python[1354458]:                              http://127.0.0.1:8787/mcp\nJun 18 06:22:47 hermes-agent-box python[1354458]: INFO:     Started server process [1354458]\nJun 18 06:22:47 hermes-agent-box python[1354458]: INFO:     Waiting for application startup.\nJun 18 06:22:47 hermes-agent-box python[1354458]: INFO:     Application startup complete.\nJun 18 06:22:47 hermes-agent-box python[1354458]: INFO:     Uvicorn running on http://127.0.0.1:8787 (Press CTRL+C to quit)",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat hh-control-bridge.service --no-pager",
+        "exit_code": 0,
+        "stdout": "# /etc/systemd/system/hh-control-bridge.service\n[Unit]\nDescription=HH Control Bridge MCP Server\nAfter=network-online.target tailscaled.service\nWants=network-online.target\n\n[Service]\nType=simple\nUser=omar\nGroup=omar\nWorkingDirectory=/srv\nEnvironment=HOST=127.0.0.1\nEnvironment=PORT=8787\nEnvironment=HH_TIMEOUT=25\nEnvironmentFile=-/etc/hh-control-bridge/smithery.env\nEnvironment=HH_ROOT=/srv\nEnvironment=HH_ENABLE_WRITE=1\nEnvironment=HH_APPROVAL_CODE=0bb3afeb4fd24492b4a4e19c554f98c0\nExecStart=/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py\nRestart=always\nRestartSec=5\nNoNewPrivileges=true\nPrivateTmp=true\n\n[Install]\nWantedBy=multi-user.target",
+        "stderr": ""
+      }
+    },
+    "hermes-worker.service": {
+      "show": {
+        "command": "systemctl show hermes-worker.service -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "Restart=no\nRestartUSec=100ms\nMainPID=0\nResult=success\nExecMainPID=1643047\nExecMainCode=1\nExecMainStatus=0\nExecStart={ path=/usr/bin/docker ; argv[]=/usr/bin/docker compose up -d hermes-worker ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }\nExecStop={ path=/usr/bin/docker ; argv[]=/usr/bin/docker compose down ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }\nWorkingDirectory=/opt/crypto-tuber-ranked\nUser=\nGroup=\nId=hermes-worker.service\nNames=hermes-worker.service\nRequires=system.slice docker.service sysinit.target -.mount\nWants=network-online.target\nWantedBy=multi-user.target\nBefore=shutdown.target multi-user.target\nAfter=systemd-journald.socket basic.target system.slice network-online.target docker.service sysinit.target -.mount\nDescription=Crypto Tuber Ranked Hermes worker\nLoadState=loaded\nActiveState=active\nSubState=exited\nFragmentPath=/etc/systemd/system/hermes-worker.service\nSourcePath=\nDropInPaths=\nUnitFileState=enabled",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status hermes-worker.service --no-pager -l",
+        "exit_code": 0,
+        "stdout": "\u25cf hermes-worker.service - Crypto Tuber Ranked Hermes worker\n     Loaded: loaded (/etc/systemd/system/hermes-worker.service; enabled; preset: enabled)\n     Active: active (exited) since Tue 2026-06-09 11:54:22 BST; 1 week 1 day ago\n   Main PID: 1643047 (code=exited, status=0/SUCCESS)\n        CPU: 260ms\n\nJun 09 11:54:22 hermes-agent-box systemd[1]: Starting hermes-worker.service - Crypto Tuber Ranked Hermes worker...\nJun 09 11:54:22 hermes-agent-box docker[1643064]:  Container crypto-tuber-ranked-hermes-worker-1 Creating\nJun 09 11:54:22 hermes-agent-box docker[1643064]:  Container crypto-tuber-ranked-hermes-worker-1 Created\nJun 09 11:54:22 hermes-agent-box docker[1643064]:  Container crypto-tuber-ranked-hermes-worker-1 Starting\nJun 09 11:54:22 hermes-agent-box docker[1643064]:  Container crypto-tuber-ranked-hermes-worker-1 Started\nJun 09 11:54:22 hermes-agent-box systemd[1]: Finished hermes-worker.service - Crypto Tuber Ranked Hermes worker.",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat hermes-worker.service --no-pager",
+        "exit_code": 0,
+        "stdout": "# /etc/systemd/system/hermes-worker.service\n[Unit]\nDescription=Crypto Tuber Ranked Hermes worker\nRequires=docker.service\nAfter=docker.service network-online.target\nWants=network-online.target\n\n[Service]\nType=oneshot\nWorkingDirectory=/opt/crypto-tuber-ranked\nRemainAfterExit=yes\nExecStart=/usr/bin/docker compose up -d hermes-worker\nExecStop=/usr/bin/docker compose down\nTimeoutStartSec=0\n\n[Install]\nWantedBy=multi-user.target",
+        "stderr": ""
+      }
+    },
+    "agent-snapshot.service": {
+      "show": {
+        "command": "systemctl show agent-snapshot.service -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "Restart=no\nRestartUSec=100ms\nMainPID=0\nResult=success\nExecMainPID=1258184\nExecMainCode=1\nExecMainStatus=0\nExecStart={ path=/usr/local/bin/agent-snapshot ; argv[]=/usr/local/bin/agent-snapshot ; ignore_errors=no ; start_time=[Thu 2026-06-18 03:30:00 BST] ; stop_time=[Thu 2026-06-18 04:08:30 BST] ; pid=1258184 ; code=exited ; status=0 }\nWorkingDirectory=\nUser=\nGroup=\nId=agent-snapshot.service\nNames=agent-snapshot.service\nRequires=sysinit.target system.slice\nWants=\nWantedBy=\nBefore=shutdown.target\nAfter=systemd-journald.socket agent-snapshot.timer sysinit.target basic.target system.slice\nDescription=Snapshot Hermes/agent workspace\nLoadState=loaded\nActiveState=inactive\nSubState=dead\nFragmentPath=/etc/systemd/system/agent-snapshot.service\nSourcePath=\nDropInPaths=\nUnitFileState=static",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status agent-snapshot.service --no-pager -l",
+        "exit_code": 3,
+        "stdout": "\u25cb agent-snapshot.service - Snapshot Hermes/agent workspace\n     Loaded: loaded (/etc/systemd/system/agent-snapshot.service; static)\n     Active: inactive (dead) since Thu 2026-06-18 04:08:30 BST; 4h 58min ago\nTriggeredBy: \u25cf agent-snapshot.timer\n    Process: 1258184 ExecStart=/usr/local/bin/agent-snapshot (code=exited, status=0/SUCCESS)\n   Main PID: 1258184 (code=exited, status=0/SUCCESS)\n        CPU: 38min 27.406s\n\nJun 18 03:30:00 hermes-agent-box systemd[1]: Starting agent-snapshot.service - Snapshot Hermes/agent workspace...\nJun 18 04:08:30 hermes-agent-box agent-snapshot[1258184]: agents-20260618T023000Z.tar.gz\nJun 18 04:08:30 hermes-agent-box systemd[1]: agent-snapshot.service: Deactivated successfully.\nJun 18 04:08:30 hermes-agent-box systemd[1]: Finished agent-snapshot.service - Snapshot Hermes/agent workspace.\nJun 18 04:08:30 hermes-agent-box systemd[1]: agent-snapshot.service: Consumed 38min 27.406s CPU time.",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat agent-snapshot.service --no-pager",
+        "exit_code": 0,
+        "stdout": "# /etc/systemd/system/agent-snapshot.service\n[Unit]\nDescription=Snapshot Hermes/agent workspace\n\n[Service]\nType=oneshot\nExecStart=/usr/local/bin/agent-snapshot",
+        "stderr": ""
+      }
+    },
+    "agent-snapshot.timer": {
+      "show": {
+        "command": "systemctl show agent-snapshot.timer -p Id,Names,LoadState,ActiveState,SubState,UnitFileState,FragmentPath,SourcePath,DropInPaths,Description,MainPID,ExecMainPID,ExecMainStatus,ExecMainCode,Result,User,Group,WorkingDirectory,ExecStart,ExecReload,ExecStop,Restart,RestartUSec,EnvironmentFiles,WantedBy,Wants,Requires,After,Before,NextElapseUSecRealtime,LastTriggerUSec --no-pager",
+        "exit_code": 0,
+        "stdout": "NextElapseUSecRealtime=Fri 2026-06-19 03:30:00 BST\nLastTriggerUSec=Thu 2026-06-18 03:30:00 BST\nResult=success\nId=agent-snapshot.timer\nNames=agent-snapshot.timer\nRequires=sysinit.target -.mount\nWants=\nWantedBy=timers.target\nBefore=agent-snapshot.service shutdown.target timers.target\nAfter=time-sync.target time-set.target sysinit.target -.mount\nDescription=Daily snapshot of Hermes/agent workspace\nLoadState=loaded\nActiveState=active\nSubState=waiting\nFragmentPath=/etc/systemd/system/agent-snapshot.timer\nSourcePath=\nDropInPaths=\nUnitFileState=enabled",
+        "stderr": ""
+      },
+      "status": {
+        "command": "systemctl status agent-snapshot.timer --no-pager -l",
+        "exit_code": 0,
+        "stdout": "\u25cf agent-snapshot.timer - Daily snapshot of Hermes/agent workspace\n     Loaded: loaded (/etc/systemd/system/agent-snapshot.timer; enabled; preset: enabled)\n     Active: active (waiting) since Fri 2026-05-29 07:51:34 BST; 2 weeks 6 days ago\n    Trigger: Fri 2026-06-19 03:30:00 BST; 18h left\n   Triggers: \u25cf agent-snapshot.service\n\nMay 29 07:51:34 hermes-agent-box systemd[1]: Started agent-snapshot.timer - Daily snapshot of Hermes/agent workspace.",
+        "stderr": ""
+      },
+      "cat_redacted": {
+        "command": "systemctl cat agent-snapshot.timer --no-pager",
+        "exit_code": 0,
+        "stdout": "# /etc/systemd/system/agent-snapshot.timer\n[Unit]\nDescription=Daily snapshot of Hermes/agent workspace\n\n[Timer]\nOnCalendar=*-*-* 03:30:00\nPersistent=true\n\n[Install]\nWantedBy=timers.target",
+        "stderr": ""
+      }
+    }
+  }
+}

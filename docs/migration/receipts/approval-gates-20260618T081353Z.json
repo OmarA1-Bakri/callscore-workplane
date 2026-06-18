@@ -1,0 +1,71 @@
+{
+  "schema": "callscore.operator_approval_gates.v1",
+  "created_at_utc": "20260618T081353Z",
+  "source_user_message_hash_sha256": "ebfee08e625fc0c18552a80088f701812b6647b1991062df2660d34628dd962f",
+  "operator": "Omar Al-Bakri",
+  "authorization_interpretation": "Full authority for CallScore clean canonical operationalization, evidence freeze, restore rehearsal, read-only inventory, no-op controlled-full cutover declaration, validation, and commits.",
+  "approved_now": [
+    {
+      "gate": "EVIDENCE_GATE",
+      "scope": "freeze ledgers/docs/receipts and commit intended artifacts",
+      "status": "approved"
+    },
+    {
+      "gate": "BACKUP_PROOF_GATE",
+      "scope": "read-only verification of D: receipts and Hetzner snapshot; no D writes",
+      "status": "approved"
+    },
+    {
+      "gate": "RESTORE_REHEARSAL_GATE",
+      "scope": "temporary staging restore rehearsal under /tmp; no production writes",
+      "status": "approved"
+    },
+    {
+      "gate": "INVENTORY_GATE",
+      "scope": "read-only systemd/docker/postgres/app inventory with redaction",
+      "status": "approved"
+    },
+    {
+      "gate": "CONTROLLED_FULL_NOOP_CUTOVER_GATE",
+      "scope": "declare current HH production canonical if validations pass; no restart/deploy/DB write",
+      "status": "approved"
+    },
+    {
+      "gate": "COMMIT_GATE",
+      "scope": "commit CallScore workplane/app documentation and operational receipts after validation",
+      "status": "approved"
+    }
+  ],
+  "restricted_not_approved_by_this_receipt": [
+    {
+      "gate": "SECRET_GATE",
+      "blocked_actions": "printing/exposing secrets, raw env values, tokens, cookies, DB URLs, private keys"
+    },
+    {
+      "gate": "FINANCIAL_GATE",
+      "blocked_actions": "Whop pricing/product/customer/payment/entitlement/payout/provider mutation"
+    },
+    {
+      "gate": "SPEND_GATE",
+      "blocked_actions": "paid API credits, ads, boosts, paid LLM/SaaS spend"
+    },
+    {
+      "gate": "SEND_GATE",
+      "blocked_actions": "email, DM, newsletter, named outreach"
+    },
+    {
+      "gate": "PUBLISH_GATE_RESTRICTED",
+      "blocked_actions": "non-owned public posting, public corrections, legal/investment/performance/private-data claims"
+    },
+    {
+      "gate": "DESTRUCTIVE_GATE",
+      "blocked_actions": "queue purge, broad DB rewrite/backfill, credential rotation, host rebuild unless rollback trigger fires"
+    }
+  ],
+  "public_owned_gtm_policy": "Safe owned organic public GTM remains governed by CallScore GTM registry; not invoked by this cutover receipt.",
+  "production_mutations_performed_when_created": false,
+  "evidence_paths": [
+    "/srv/agents/repos/callscore-workplane/docs/migration/receipts/cutover-plan-20260618T081339Z.json",
+    "/srv/agents/repos/callscore-workplane/docs/restore/cutover-runbook.md"
+  ]
+}

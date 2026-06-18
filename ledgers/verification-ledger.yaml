@@ -1,9 +1,32 @@
-# Verification ledger skeleton.
+# CallScore full-operation verification ledger
+generated_at_utc: 20260618T081229Z
+evidence_run: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z
+backup_proof: /srv/agents/repos/callscore-workplane/docs/migration/receipts/backup-proof-20260618T080540Z.json
+restore_rehearsal: /srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json
 verification:
-  product_tests: pending
-  workplane_status: pending
-  public_verify: pending
-  freshness_check: pending
-  pipeline_audit: pending
-  gtm_registry_json_validation: pending
-  secret_scan: pending
+  workplane_status: passed
+  freshness_check: passed
+  pipeline_audit_allow_partial_shadow: passed
+  public_verify_local: passed
+  public_verify_live_call_score_com: passed
+  gtm_registry_json_validation: passed
+  gtm_registry_tests: passed
+  restore_rehearsal_env_vault: passed
+  restore_rehearsal_systemd_verify: passed
+  restore_rehearsal_docker_compose: passed
+  restore_rehearsal_postgres_schema: passed
+  restore_rehearsal_no_d_writes: passed
+postgres:
+  database: callscore
+  version: 'PostgreSQL 16.14 (Ubuntu 16.14-1.pgdg24.04+1) on aarch64-unknown-linux-gnu'
+  exact_rows:
+    creators: 197
+    videos: 16371
+    candles: 35631855
+    pipeline_runs: 439
+    pipeline_jobs: 430
+    pipeline_job_events: 2571
+notes:
+  - Live public verify passed against https://call-score.com with HH Read API source.
+  - Production DB inventory was read-only BEGIN READ ONLY; no writes or migrations.
+  - D-drive backup proof verified snapshot 398616103 as primary rollback source.

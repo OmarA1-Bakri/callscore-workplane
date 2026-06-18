@@ -36,3 +36,6 @@ protected/omx-vault/archives/
 *.tgz
 *.tar.zst
 *.tar.gz
+
+# local convenience symlink; canonical run directories are committed explicitly
+ledgers/run-latest-full-operation

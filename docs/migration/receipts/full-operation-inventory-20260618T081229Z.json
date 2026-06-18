@@ -1,0 +1,95 @@
+{
+  "schema": "callscore.full_operation_inventory_receipt.v1",
+  "generated_at_utc": "20260618T081229Z",
+  "evidence_run": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z",
+  "backup_proof": "/srv/agents/repos/callscore-workplane/docs/migration/receipts/backup-proof-20260618T080540Z.json",
+  "restore_rehearsal": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json",
+  "systemd_units": {
+    "callscore-daily-pipeline.service": {
+      "active": "inactive",
+      "sub": "dead",
+      "enabled": "static"
+    },
+    "callscore-daily-pipeline.timer": {
+      "active": "active",
+      "sub": "waiting",
+      "enabled": "enabled"
+    },
+    "callscore-enqueue.service": {
+      "active": "active",
+      "sub": "running",
+      "enabled": "enabled"
+    },
+    "callscore-read-api.service": {
+      "active": "active",
+      "sub": "running",
+      "enabled": "enabled"
+    },
+    "hh-control-bridge.service": {
+      "active": "active",
+      "sub": "running",
+      "enabled": "enabled"
+    },
+    "hermes-worker.service": {
+      "active": "active",
+      "sub": "exited",
+      "enabled": "enabled"
+    },
+    "agent-snapshot.service": {
+      "active": "inactive",
+      "sub": "dead",
+      "enabled": "static"
+    },
+    "agent-snapshot.timer": {
+      "active": "active",
+      "sub": "waiting",
+      "enabled": "enabled"
+    }
+  },
+  "containers": [
+    {
+      "name": "crypto-tuber-ranked-hermes-worker-1",
+      "config_image": "crypto-tuber-ranked-hermes-worker:latest",
+      "network_mode": "host",
+      "state": "running"
+    },
+    {
+      "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+      "config_image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "network_mode": "host",
+      "state": "running"
+    },
+    {
+      "name": "hh-oauth-mcp-gateway",
+      "config_image": "oauth-mcp-gateway-oauth-mcp-gateway",
+      "network_mode": "host",
+      "state": "running"
+    },
+    {
+      "name": "hermes-whop-automation-tunnel",
+      "config_image": "cloudflare/cloudflared:latest",
+      "network_mode": "host",
+      "state": "running"
+    }
+  ],
+  "app_validation_exit_codes": {
+    "workplane_status": 0,
+    "freshness_check": 0,
+    "pipeline_audit": 0,
+    "public_verify_local": 0,
+    "public_verify_live": 0,
+    "gtm_registry_json": 0,
+    "gtm_registry_test": 0
+  },
+  "postgres_exact_rows": {
+    "creators": 197,
+    "videos": 16371,
+    "candles": 35631855,
+    "pipeline_runs": 439,
+    "pipeline_jobs": 430,
+    "pipeline_job_events": 2571,
+    "watchlists": 0
+  },
+  "production_mutations_performed": false,
+  "d_drive_writes_performed": false
+}

@@ -1,0 +1,129 @@
+{
+  "schema": "callscore.restore_rehearsal.v1",
+  "started_at_utc": "2026-06-18T08:10:10Z",
+  "stage_dir": "/tmp/callscore-restore-rehearsal-20260618T081010Z",
+  "mode": "staging_readonly_production_no_d_writes",
+  "checks": {
+    "restore_docs_present": {
+      "docs/restore/systemd-restore.md": true,
+      "docs/restore/docker-restore.md": true,
+      "docs/restore/env-vault-restore.md": true,
+      "docs/restore/hermes-omx-restore.md": true,
+      "docs/restore/postgres-backup-restore.md": true
+    },
+    "env_vault_restore_rehearsal": {
+      "manifest_records_total": 6145,
+      "raw_files_present_rehearsed": 188,
+      "restored_to_tmp": 93,
+      "sha256_verified": 93,
+      "missing_raw_files": 0,
+      "errors": [],
+      "tmp_removed": true
+    },
+    "systemd_analyze_verify": {
+      "callscore-daily-pipeline.service": {
+        "command": "sudo -n systemd-analyze verify callscore-daily-pipeline.service",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "callscore-daily-pipeline.timer": {
+        "command": "sudo -n systemd-analyze verify callscore-daily-pipeline.timer",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "callscore-enqueue.service": {
+        "command": "sudo -n systemd-analyze verify callscore-enqueue.service",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "callscore-read-api.service": {
+        "command": "sudo -n systemd-analyze verify callscore-read-api.service",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "hh-control-bridge.service": {
+        "command": "sudo -n systemd-analyze verify hh-control-bridge.service",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "hermes-worker.service": {
+        "command": "sudo -n systemd-analyze verify hermes-worker.service",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "agent-snapshot.service": {
+        "command": "sudo -n systemd-analyze verify agent-snapshot.service",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      },
+      "agent-snapshot.timer": {
+        "command": "sudo -n systemd-analyze verify agent-snapshot.timer",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": "Configuration file /etc/systemd/system/hermes-worker.service is marked executable. Please remove executable permission bits. Proceeding anyway."
+      }
+    },
+    "docker_compose_config": {
+      "apps/callscore-web/docker-compose.yml": {
+        "command": "docker compose -f /srv/agents/repos/callscore-workplane/apps/callscore-web/docker-compose.yml config --no-interpolate",
+        "exit_code": 0,
+        "stdout": "name: whop-auto\nnetworks:\n  default:\n    name: whop-auto_default\nservices:\n  data-pipeline-continuous:\n    build:\n      context: /srv/agents/repos/callscore-workplane/apps/callscore-web\n      dockerfile: Dockerfile.hermes\n    command:\n      - npm\n      - run\n      - pipeline:data:continuous\n      - --\n      - --write\n      - --interval-minutes\n      - \"30\"\n      - --\n      - --limit-low-confidence-validations\n      - \"500\"\n      - --limit-price-repairs\n      - \"1000\"\n      - --limit-price-matches\n      - \"1000\"\n      - --limit-ready-extract-videos\n      - \"239\"\n      - --limit-llm-videos\n      - \"100\"\n    depends_on:\n      ytdlp-pot-provider:\n        condition: service_started\n        required: true\n    env_file:\n      - path: /srv/agents/repos/callscore-workplane/apps/callscore-web/.env.hermes\n        required: true\n    environment:\n      YTDLP_BIN: yt-dlp\n      YTDLP_JS_RUNTIMES: node\n      YTDLP_PLAYER_CLIENT: web\n      YTDLP_PO_TOKEN_BROWSER_PATH: /usr/bin/chromium\n      YTDLP_PO_TOKEN_PROVIDER: wpc\n      YTDLP_REMOTE_COMPONENTS: \"1\"\n    image: crypto-tuber-ranked-hermes-worker:latest\n    networks:\n      default: null\n    restart: unless-stopped\n  data-pipeline-continuous-once:\n    build:\n      context: /srv/agents/repos/callscore-workplane/apps/callscore-web\n      dockerfile: Dockerfile.hermes\n    command:\n      - --once\n      - --dry-run\n      - --\n      - --limit-low-confidence-validations\n      - \"50\"\n      - --limit-price-repairs\n      - \"100\"\n      - --limit-price-matches\n      - \"100\"\n      - --limit-ready-extract-videos\n      - \"5\"\n      - --limit-llm-videos\n      - \"5\"\n    depends_on:\n      ytdlp-pot-provider:\n        condition: service_started\n        required: true\n    entrypoint:\n      - npm\n      - run\n      - pipeline:data:continuous\n      - --\n    env_file:\n      - path: /srv/agents/repos/callscore-workplane/apps/callscore-web/.env.hermes\n        required: true\n    environment:\n      YTDLP_BIN: yt-dlp\n      YTDLP_JS_RUNTIMES: node\n      YTDLP_PLAYER_CLIENT: web\n      YTDLP_PO_TOKEN_BROWSER_PATH: /usr/bin/chromium\n      YTDLP_PO_TOKEN_PROVIDER: wpc\n      YTDLP_REMOTE_COMPONENTS: \"1\"\n    image: crypto-tuber-ranked-hermes-worker:latest\n    networks:\n      default: null\n    profiles:\n      - debug\n  hermes-worker:\n    build:\n      context: /srv/agents/repos/callscore-workplane/apps/callscore-web\n      dockerfile: Dockerfile.hermes\n    command:\n      - npm\n      - run\n      - pipeline:worker\n      - --\n      - --poll-ms\n      - \"15000\"\n    depends_on:\n      ytdlp-pot-provider:\n        condition: service_started\n        required: true\n    env_file:\n      - path: /srv/agents/repos/callscore-workplane/apps/callscore-web/.env.hermes\n        required: true\n    environment:\n      ML_VERIFIER_MODEL: qwen2.5:3b\n      ML_VERIFIER_PROVIDER: ollama\n      OLLAMA_HOST: http://127.0.0.1:11434\n      YTDLP_BIN: yt-dlp\n      YTDLP_COOKIES_PATH: /run/secrets/youtube-cookies.txt\n      YTDLP_JS_RUNTIMES: node\n      YTDLP_PLAYER_CLIENT: web\n      YTDLP_PO_TOKEN_BROWSER_PATH: /usr/bin/chromium\n      YTDLP_PO_TOKEN_PROVIDER: wpc\n      YTDLP_REMOTE_COMPONENTS: \"1\"\n    image: crypto-tuber-ranked-hermes-worker:latest\n    network_mode: host\n    restart: unless-stopped\n    volumes:\n      - bind:\n          create_host_path: true\n        read_only: true\n        source: /opt/callscore/secrets/youtube-cookies.txt\n        target: /run/secrets/youtube-cookies.txt\n        type: bind\n  hermes-worker-once:\n    build:\n      context: /srv/agents/repos/callscore-workplane/apps/callscore-web\n      dockerfile: Dockerfile.hermes\n    command:\n      - --dry-run\n    depends_on:\n      ytdlp-pot-provider:\n        condition: service_started\n        required: true\n    entrypoint:\n      - npm\n      - run\n      - pipeline:worker:once\n      - --\n    env_file:\n      - path: /srv/agents/repos/callscore-workplane/apps/callscore-web/.env.hermes\n        required: true\n    environment:\n      ML_VERIFIER_MODEL: qwen2.5:3b\n      ML_VERIFIER_PROVIDER: ollama\n      OLLAMA_HOST: http://127.0.0.1:11434\n      YTDLP_BIN: yt-dlp\n      YTDLP_JS_RUNTIMES: node\n      YTDLP_PLAYER_CLIENT: web\n      YTDLP_PO_TOKEN_BROWSER_PATH: /usr/bin/chromium\n      YTDLP_PO_TOKEN_PROVIDER: wpc\n      YTDLP_REMOTE_COMPONENTS: \"1\"\n    image: crypto-tuber-ranked-hermes-worker:latest\n    networks:\n      default: null\n    profiles:\n      - debug\n  ytdlp-pot-provider:\n    healthcheck:\n      interval: 30s\n      retries: 3\n      test:\n        - CMD-SHELL\n        - node -e \"fetch('http://127.0.0.1:4416/ping').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\"\n      timeout: 5s\n    image: brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\n    init: true\n    network_mode: host\n    restart: unless-stopped",
+        "stderr": ""
+      },
+      "data-plane/transcript-acquisition/vpn-ytdlp/docker-compose.yml": {
+        "command": "docker compose -f /srv/agents/repos/callscore-workplane/data-plane/transcript-acquisition/vpn-ytdlp/docker-compose.yml config --no-interpolate",
+        "exit_code": 0,
+        "stdout": "name: whop-auto\nnetworks:\n  default:\n    name: whop-auto_default\nservices:\n  gluetun:\n    cap_add:\n      - NET_ADMIN\n    container_name: gluetun\n    environment:\n      OPENVPN_PASSWORD: ${OPENVPN_PASSWORD:?restore from env vault}\n      OPENVPN_USER: ${OPENVPN_USER:?restore from env vault}\n      SERVER_COUNTRIES: Switzerland\n      VPN_SERVICE_PROVIDER: protonvpn\n      VPN_TYPE: openvpn\n    image: qmcgaw/gluetun:latest\n    networks:\n      default: null\n    ports:\n      - mode: ingress\n        protocol: tcp\n        published: \"8888\"\n        target: 8888\n      - mode: ingress\n        protocol: tcp\n        published: \"8388\"\n        target: 8388\n  w0:\n    container_name: ytdlp-w0\n    depends_on:\n      gluetun:\n        condition: service_healthy\n        required: true\n    entrypoint:\n      - sleep\n      - infinity\n    image: node:20-slim\n    network_mode: service:gluetun\n    volumes:\n      - bind:\n          create_host_path: true\n        source: /srv/agents/vpn-ytdlp/work\n        target: /work\n        type: bind\n  w1:\n    container_name: ytdlp-w1\n    depends_on:\n      gluetun:\n        condition: service_healthy\n        required: true\n    entrypoint:\n      - sleep\n      - infinity\n    image: node:20-slim\n    network_mode: service:gluetun\n    volumes:\n      - bind:\n          create_host_path: true\n        source: /srv/agents/vpn-ytdlp/work\n        target: /work\n        type: bind\n  w2:\n    container_name: ytdlp-w2\n    depends_on:\n      gluetun:\n        condition: service_healthy\n        required: true\n    entrypoint:\n      - sleep\n      - infinity\n    image: node:20-slim\n    network_mode: service:gluetun\n    volumes:\n      - bind:\n          create_host_path: true\n        source: /srv/agents/vpn-ytdlp/work\n        target: /work\n        type: bind\n  w3:\n    container_name: ytdlp-w3\n    depends_on:\n      gluetun:\n        condition: service_healthy\n        required: true\n    entrypoint:\n      - sleep\n      - infinity\n    image: node:20-slim\n    network_mode: service:gluetun\n    volumes:\n      - bind:\n          create_host_path: true\n        source: /srv/agents/vpn-ytdlp/work\n        target: /work\n        type: bind\n  w4:\n    container_name: ytdlp-w4\n    depends_on:\n      gluetun:\n        condition: service_healthy\n        required: true\n    entrypoint:\n      - sleep\n      - infinity\n    image: node:20-slim\n    network_mode: service:gluetun\n    volumes:\n      - bind:\n          create_host_path: true\n        source: /srv/agents/vpn-ytdlp/work\n        target: /work\n        type: bind",
+        "stderr": ""
+      },
+      "control-plane/oauth-mcp-gateway/docker-compose.yml": {
+        "command": "docker compose -f /srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway/docker-compose.yml config --no-interpolate",
+        "exit_code": 0,
+        "stdout": "name: whop-auto\nservices:\n  oauth-mcp-gateway:\n    build:\n      context: /srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway\n      dockerfile: Dockerfile\n    container_name: hh-oauth-mcp-gateway\n    env_file:\n      - path: /srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway/.env\n        required: true\n    network_mode: host\n    restart: unless-stopped",
+        "stderr": ""
+      }
+    },
+    "postgres_schema_rehearsal": {
+      "dump_command": {
+        "command": "pg_dump --schema-only --schema=public --no-owner --no-privileges --file /tmp/callscore-restore-rehearsal-20260618T081010Z/callscore-public-schema-only.sql \"$DATABASE_URL\"",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "schema_file_exists": true,
+      "schema_file_bytes": 71569,
+      "contains_create_table": true,
+      "contains_data_copy_or_insert": false,
+      "schema_file_removed": true
+    },
+    "d_drive_write_policy": {
+      "performed_d_writes": false,
+      "stage_under_tmp": "/tmp/callscore-restore-rehearsal-20260618T081010Z"
+    },
+    "env_vault_restore_rehearsal_actual_files": {
+      "actual_raw_files": 96,
+      "restored_to_tmp": 96,
+      "sha256_verified_from_manifest": 93,
+      "files_without_manifest_record": 3,
+      "errors": [],
+      "tmp_removed": true,
+      "completed_at_utc": "2026-06-18T08:10:46Z"
+    }
+  },
+  "result": {
+    "env_vault_ok": true,
+    "docker_compose_ok": true,
+    "postgres_schema_ok": true,
+    "systemd_verify_ok": true,
+    "no_d_writes": true,
+    "env_vault_manifest_note": "93/96 present raw files have direct manifest hash records; 3 additional present raw .env.example cache files were restored/removed but not represented in the committed manifest records."
+  },
+  "completed_at_utc": "2026-06-18T08:10:12Z"
+}

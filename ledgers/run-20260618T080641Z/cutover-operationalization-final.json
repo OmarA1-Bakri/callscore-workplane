@@ -1,0 +1,348 @@
+{
+  "schema": "callscore.cutover_operationalization_final.v1",
+  "generated_at_utc": "2026-06-18T09:06:15Z",
+  "mode": "controlled_full_noop_cutover_current_live_state_canonical",
+  "app_repo": "/opt/crypto-tuber-ranked",
+  "workplane_repo": "/srv/agents/repos/callscore-workplane",
+  "evidence_run": "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z",
+  "production_mutations_performed": false,
+  "deploy_performed": false,
+  "db_writes_performed": false,
+  "service_restarts_performed": false,
+  "provider_payment_customer_mutations_performed": false,
+  "d_drive_writes_performed": false,
+  "command_passes": {
+    "app_git_diff_check": true,
+    "workplane_git_diff_check": true,
+    "typecheck": true,
+    "lint": true,
+    "build": true,
+    "hygiene_secrets": true,
+    "workplane_status": true,
+    "freshness_check": true,
+    "pipeline_audit": true,
+    "public_verify_local": true,
+    "public_verify_live": true,
+    "gtm_registry_json": true,
+    "gtm_registry_test": true,
+    "whop_webhook_test": true,
+    "full_test_suite": true,
+    "live_http_probes": true,
+    "html_surface_probe": true,
+    "production_todo_stub_scan": true
+  },
+  "workplane_status_summary": {
+    "status": "OK",
+    "automation_readiness": "CONTROLLED_FULL",
+    "next_action_id": "wait_for_laptop_collector_rate_limit_cooldown",
+    "next_action_allowed": false
+  },
+  "unit_ok": true,
+  "docker_ok": true,
+  "workplane_ok": true,
+  "overall_pass": true,
+  "systemd": {
+    "callscore-daily-pipeline.timer": {
+      "exit_code": 0,
+      "Result": "success",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "waiting",
+      "UnitFileState": "enabled"
+    },
+    "callscore-enqueue.service": {
+      "exit_code": 0,
+      "MainPID": "1267907",
+      "Result": "success",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "enabled"
+    },
+    "callscore-read-api.service": {
+      "exit_code": 0,
+      "MainPID": "1267903",
+      "Result": "success",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "enabled"
+    },
+    "hh-control-bridge.service": {
+      "exit_code": 0,
+      "MainPID": "1354458",
+      "Result": "success",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "running",
+      "UnitFileState": "enabled"
+    },
+    "hermes-worker.service": {
+      "exit_code": 0,
+      "MainPID": "0",
+      "Result": "success",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "exited",
+      "UnitFileState": "enabled"
+    },
+    "agent-snapshot.timer": {
+      "exit_code": 0,
+      "Result": "success",
+      "LoadState": "loaded",
+      "ActiveState": "active",
+      "SubState": "waiting",
+      "UnitFileState": "enabled"
+    }
+  },
+  "docker": {
+    "crypto-tuber-ranked-hermes-worker-1": {
+      "exit_code": 0,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 1269748,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-06-13T05:28:19.927956812Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    "crypto-tuber-ranked-ytdlp-pot-provider-1": {
+      "exit_code": 0,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 43696,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-06-12T05:35:45.986872824Z",
+        "FinishedAt": "0001-01-01T00:00:00Z",
+        "Health": {
+          "Status": "healthy",
+          "FailingStreak": 0,
+          "Log": [
+            {
+              "Start": "2026-06-18T10:04:07.885986653+01:00",
+              "End": "2026-06-18T10:04:08.037970972+01:00",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-06-18T10:04:38.040018663+01:00",
+              "End": "2026-06-18T10:04:38.30555412+01:00",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-06-18T10:05:08.308031544+01:00",
+              "End": "2026-06-18T10:05:08.461421137+01:00",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-06-18T10:05:38.462694604+01:00",
+              "End": "2026-06-18T10:05:38.614702621+01:00",
+              "ExitCode": 0,
+              "Output": ""
+            },
+            {
+              "Start": "2026-06-18T10:06:08.616285983+01:00",
+              "End": "2026-06-18T10:06:08.758122017+01:00",
+              "ExitCode": 0,
+              "Output": ""
+            }
+          ]
+        }
+      }
+    },
+    "hh-oauth-mcp-gateway": {
+      "exit_code": 0,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 1528941,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-06-09T05:04:07.935806352Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      }
+    },
+    "hermes-whop-automation-tunnel": {
+      "exit_code": 0,
+      "state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 1110197,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-06-03T23:08:25.857325841Z",
+        "FinishedAt": "2026-06-03T23:08:14.685269085Z"
+      }
+    }
+  },
+  "results": [
+    {
+      "name": "app_git_diff_check",
+      "cmd_sha256": "466c2f308b48c7661d646fdd068fbecea974c665fe65dbf8ed508f224180ce0b",
+      "exit_code": 0,
+      "elapsed_seconds": 0.032,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "workplane_git_diff_check",
+      "cmd_sha256": "8bb05bfc752b17b72dc9fbbae930703acc6914cc1a26e54a6851bedfca2cbef6",
+      "exit_code": 0,
+      "elapsed_seconds": 0.022,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "typecheck",
+      "cmd_sha256": "982c1455e5e73c8ccab2d70a550c972e2841a0582596e26a7fcc53b80e14aa14",
+      "exit_code": 0,
+      "elapsed_seconds": 13.581,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 typecheck\n> tsc --noEmit\n",
+      "stderr_tail": ""
+    },
+    {
+      "name": "lint",
+      "cmd_sha256": "326d9800e732eb9d5a5eb56384a547a097ed84be317cb2852cea5bb574831812",
+      "exit_code": 0,
+      "elapsed_seconds": 3.572,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 lint\n> next lint\n\n\u2714 No ESLint warnings or errors",
+      "stderr_tail": "`next lint` is deprecated and will be removed in Next.js 16.\nFor new projects, use create-next-app to choose your preferred linter.\nFor existing projects, migrate to the ESLint CLI:\nnpx @next/codemod@canary next-lint-to-eslint-cli .\n"
+    },
+    {
+      "name": "build",
+      "cmd_sha256": "16c0e4305ac213dff39fc82b69b6e08aeeb8758e33cd72d7c409752a70e9f054",
+      "exit_code": 0,
+      "elapsed_seconds": 84.09,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 build\n> next build\n\n   \u25b2 Next.js 15.5.18\n\n   Creating an optimized production build ...\n \u2713 Compiled successfully in 21.9s\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/39) ...\n   Generating static pages (9/39) \n   Generating static pages (19/39) \n   Generating static pages (29/39) \n \u2713 Generating static pages (39/39)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                                 Size  First Load JS\n\u250c \u0192 /                                    4.86 kB         110 kB\n\u251c \u0192 /_not-found                             1 kB         103 kB\n\u251c \u0192 /about                                 206 B         106 kB\n\u251c \u0192 /alerts                                206 B         106 kB\n\u251c \u0192 /api/alerts/list                       236 B         102 kB\n\u251c \u0192 /api/alerts/unsubscribe                236 B         102 kB\n\u251c \u0192 /api/alerts/watch                      236 B         102 kB\n\u251c \u0192 /api/api-keys                          236 B         102 kB\n\u251c \u0192 /api/auth/login                        236 B         102 kB\n\u251c \u0192 /api/auth/logout                       236 B         102 kB\n\u251c \u0192 /api/auth/review                       236 B         102 kB\n\u251c \u0192 /api/auth/session                      236 B         102 kB\n\u251c \u0192 /api/auth/whop                         236 B         102 kB\n\u251c \u0192 /api/auth/whop/callback                236 B         102 kB\n\u251c \u0192 /api/backtest                          236 B         102 kB\n\u251c \u0192 /api/backtest/[handle]                 236 B         102 kB\n\u251c \u0192 /api/checkout/[tier]                   236 B         102 kB\n\u251c \u0192 /api/consensus                         236 B         102 kB\n\u251c \u0192 /api/creator/[id]                      236 B         102 kB\n\u251c \u0192 /api/cron/alerts/scan                  236 B         102 kB\n\u251c \u0192 /api/cron/alerts/send                  236 B         102 kB\n\u251c \u0192 /api/cron/audit/dispatch               236 B         102 kB\n\u251c \u0192 /api/cron/candles/enqueue              236 B         102 kB\n\u251c \u0192 /api/cron/match/enqueue                236 B         102 kB\n\u251c \u0192 /api/cron/ml/enqueue                   236 B         102 kB\n\u251c \u0192 /api/cron/scores/enqueue               236 B         102 kB\n\u251c \u0192 /api/cron/weekly                       236 B         102 kB\n\u251c \u0192 /api/export/calls                      236 B         102 kB\n\u251c \u0192 /api/feedback                          236 B         102 kB\n\u251c \u0192 /api/health                            236 B         102 kB\n\u251c \u0192 /api/leaderboard                       236 B         102 kB\n\u251c \u0192 /api/pipeline/blockers                 236 B         102 kB\n\u251c \u0192 /api/pipeline/stats                    236 B         102 kB\n\u251c \u0192 /api/pipeline/status                   236 B         102 kB\n\u251c \u0192 /api/v1/backtests                      236 B         102 kB\n\u251c \u0192 /api/v1/calls                          236 B         102 kB\n\u251c \u0192 /api/v1/consensus                      236 B         102 kB\n\u251c \u0192 /api/v1/creators                       236 B         102 kB\n\u251c \u0192 /api/v1/creators/[id]                  236 B         102 kB\n\u251c \u0192 /api/v1/leaderboard                    236 B         102 kB\n\u251c \u0192 /api/webhooks                          236 B         102 kB\n\u251c \u0192 /api/whop/webhook                      236 B         102 kB\n\u251c \u0192 /backtest                            8.82 kB         218 kB\n\u251c \u0192 /call/[id]                             206 B         106 kB\n\u251c \u0192 /checkout/cancelled                    206 B         106 kB\n\u251c \u0192 /checkout/success                      206 B         106 kB\n\u251c \u0192 /creator/[handle]                    3.67 kB         213 kB\n\u251c \u0192 /creator/[handle]/backtest             176 B         106 kB\n\u251c \u0192 /dashboard/[companyId]                 176 B         106 kB\n\u251c \u0192 /experiences/[experienceId]            176 B         106 kB\n\u251c \u0192 /feedback                            2.54 kB         108 kB\n\u251c \u0192 /login                                 945 B         103 kB\n\u251c \u0192 /methodology                           206 B         106 kB\n\u251c \u0192 /opengraph-image                       236 B         102 kB\n\u251c \u0192 /pricing                               206 B         106 kB\n\u251c \u0192 /privacy                               828 B         106 kB\n\u251c \u0192 /settings                              236 B         102 kB\n\u251c \u0192 /settings/account                      206 B         106 kB\n\u251c \u0192 /settings/alerts                       206 B         106 kB\n\u251c \u0192 /settings/api                        2.96 kB         109 kB\n\u251c \u0192 /settings/billing                      206 B         106 kB\n\u251c \u0192 /settings/notifications                206 B         106 kB\n\u251c \u0192 /settings/team                         206 B         106 kB\n\u251c \u0192 /settings/webhooks                   3.32 kB         109 kB\n\u251c \u25cb /sitemap.xml                           236 B         102 kB\n\u251c \u0192 /terms                                 828 B         106 kB\n\u251c \u0192 /transparency                          176 B         106 kB\n\u2514 \u0192 /webhooks                              206 B         106 kB\n+ First Load JS shared by all             102 kB\n  \u251c chunks/1255-eae4096fb21f1304.js        46 kB\n  \u251c chunks/4bd1b696-100b9d70ed4e49c1.js  54.2 kB\n  \u2514 other shared chunks (total)          1.98 kB\n\n\n\u25cb  (Static)   prerendered as static content\n\u0192  (Dynamic)  server-rendered on demand\n",
+      "stderr_tail": " \u26a0 Using edge runtime on a page currently disables static generation for that page"
+    },
+    {
+      "name": "hygiene_secrets",
+      "cmd_sha256": "45fb7eca26ff71f6f4194350698014d1d54e2d9d4275382804438162923ca437",
+      "exit_code": 0,
+      "elapsed_seconds": 0.586,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 hygiene:secrets\n> node --import tsx src/scripts/check-secret-hygiene.ts\n\nSecret hygiene: ok",
+      "stderr_tail": ""
+    },
+    {
+      "name": "workplane_status",
+      "cmd_sha256": "e48cf14dd63cd3287966695b71f87d92fc3d8a54ee445f74290343a6c194662f",
+      "exit_code": 0,
+      "elapsed_seconds": 11.434,
+      "stdout_tail": "h\",\n        \"cta_mismatch\",\n        \"whop_dependency_blocked\",\n        \"no_progress\",\n        \"safety_gate_blocked\",\n        \"approval_missing\"\n      ],\n      \"default_safe_command\": \"cd /srv/agents/repos/Claude_Code_Automations && python3 scripts/art_of_war.py campaign-loop --dry-run --campaign-id callscore-receipts-proof --output /tmp/callscore-art-of-war-campaign-loop-latest.json\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"artofwar_campaign_receipt\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 1,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 120,\n      \"retry_policy\": \"idempotent receipt regeneration only\",\n      \"cooldown_policy\": \"none\",\n      \"output_artifact\": \"docs/plans/artifacts/art-of-war/campaign-receipts/<campaign-id>-iter-<n>.json\",\n      \"success_criteria\": [\n        \"machine-readable receipt persists objective/evidence/persona/dry-run/Gemma/verifier decision\",\n        \"post-execution public receipt is required when public_action_performed=true\"\n      ],\n      \"failure_classification\": [\n        \"insufficient_evidence\",\n        \"forbidden_claim\",\n        \"unsupported_creator_claim\",\n        \"stale_data\",\n        \"trust_gate_required\",\n        \"publish_gate_required\",\n        \"audience_mismatch\",\n        \"cta_mismatch\",\n        \"whop_dependency_blocked\",\n        \"no_progress\",\n        \"safety_gate_blocked\",\n        \"approval_missing\"\n      ],\n      \"default_safe_command\": \"cd /srv/agents/repos/Claude_Code_Automations && python3 scripts/art_of_war.py campaign-loop --dry-run --campaign-id callscore-receipts-proof --output /tmp/callscore-art-of-war-campaign-loop-latest.json\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"artofwar_campaign_dossier\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 1,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 180,\n      \"retry_policy\": \"report-only; approval packet can be regenerated\",\n      \"cooldown_policy\": \"none\",\n      \"output_artifact\": \"docs/plans/artifacts/art-of-war/campaign-dossiers/<campaign-id>-<run-id>.md\",\n      \"success_criteria\": [\n        \"campaign dossier summarizes evidence, gates, risks, receipts\",\n        \"owned public promotion allowed only under READY_PUBLIC_OWNED\"\n      ],\n      \"failure_classification\": [\n        \"insufficient_evidence\",\n        \"forbidden_claim\",\n        \"unsupported_creator_claim\",\n        \"stale_data\",\n        \"trust_gate_required\",\n        \"publish_gate_required\",\n        \"audience_mismatch\",\n        \"cta_mismatch\",\n        \"whop_dependency_blocked\",\n        \"no_progress\",\n        \"safety_gate_blocked\",\n        \"approval_missing\"\n      ],\n      \"default_safe_command\": \"cd /srv/agents/repos/Claude_Code_Automations && python3 scripts/art_of_war.py campaign-loop --dry-run --campaign-id callscore-receipts-proof --output /tmp/callscore-art-of-war-campaign-loop-latest.json\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"artofwar_campaign_approval_review\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 1,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 120,\n      \"retry_policy\": \"review-only for restricted lanes; owned public implementation uses READY_PUBLIC_OWNED\",\n      \"cooldown_policy\": \"not applicable\",\n      \"output_artifact\": \".tmp/workplane-jobs/artofwar_campaign_approval_review-<run-id>.json\",\n      \"success_criteria\": [\n        \"promotion requirements checked\",\n        \"owned public publish allowed by default when safe\",\n        \"approval_missing blocks outreach/spend/provider/Whop/production mutation\"\n      ],\n      \"failure_classification\": [\n        \"insufficient_evidence\",\n        \"forbidden_claim\",\n        \"unsupported_creator_claim\",\n        \"stale_data\",\n        \"trust_gate_required\",\n        \"publish_gate_required\",\n        \"audience_mismatch\",\n        \"cta_mismatch\",\n        \"whop_dependency_blocked\",\n        \"no_progress\",\n        \"safety_gate_blocked\",\n        \"approval_missing\"\n      ],\n      \"default_safe_command\": \"npm run workplane:status\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"automation_registry_refresh\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 100,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 180,\n      \"retry_policy\": \"read-only scan retry only\",\n      \"cooldown_policy\": \"none\",\n      \"output_artifact\": \".tmp/workplane-jobs/automation_registry_refresh-<run-id>.json\",\n      \"success_criteria\": [\n        \"automation registry refreshed from safe metadata\",\n        \"risky automations classified\"\n      ],\n      \"failure_classification\": [\n        \"repo_not_found\",\n        \"malformed_registry\",\n        \"unsafe_execution_requested\"\n      ],\n      \"default_safe_command\": \"npm run workplane:status\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"automation_dry_run\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 1,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 180,\n      \"retry_policy\": \"dry-run only\",\n      \"cooldown_policy\": \"none\",\n      \"output_artifact\": \".tmp/workplane-jobs/automation_dry_run-<run-id>.json\",\n      \"success_criteria\": [\n        \"selected automation supports dry-run\",\n        \"no provider/public/spend/destructive action\"\n      ],\n      \"failure_classification\": [\n        \"automation_missing\",\n        \"dry_run_missing\",\n        \"approval_required\"\n      ],\n      \"default_safe_command\": \"npm run workplane:status\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"automation_health_check\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 1,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 120,\n      \"retry_policy\": \"read-only health retry only\",\n      \"cooldown_policy\": \"none\",\n      \"output_artifact\": \".tmp/workplane-jobs/automation_health_check-<run-id>.json\",\n      \"success_criteria\": [\n        \"automation repo exists\",\n        \"safe commands inventoried\"\n      ],\n      \"failure_classification\": [\n        \"repo_not_found\",\n        \"test_failed\",\n        \"unsafe_execution_requested\"\n      ],\n      \"default_safe_command\": \"cd /srv/agents/repos/Claude_Code_Automations/workplane && npm run status\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    },\n    {\n      \"type\": \"automation_activation_review\",\n      \"execution_location\": \"HH\",\n      \"max_batch_size\": 1,\n      \"concurrency\": 1,\n      \"timeout_seconds\": 120,\n      \"retry_policy\": \"review-only\",\n      \"cooldown_policy\": \"not applicable\",\n      \"output_artifact\": \".tmp/workplane-jobs/automation_activation_review-<run-id>.json\",\n      \"success_criteria\": [\n        \"automation activation evidence summarized\",\n        \"approval-gated classes remain blocked\"\n      ],\n      \"failure_classification\": [\n        \"missing_registry\",\n        \"approval_missing\"\n      ],\n      \"default_safe_command\": \"npm run workplane:status\",\n      \"production_db_writes_allowed\": false,\n      \"production_call_writes_allowed\": false,\n      \"public_ranking_impact_allowed\": false\n    }\n  ],\n  \"next_recommended_autonomous_action\": {\n    \"action\": \"wait_for_laptop_collector_rate_limit_cooldown\",\n    \"reason\": \"latest bounded laptop transcript receipt stopped on provider rate-limit; avoid blind retry and resume with smaller bounded batch after cooldown\",\n    \"job_type\": \"transcript_collect_laptop\",\n    \"allowed\": false\n  }\n}",
+      "stderr_tail": ""
+    },
+    {
+      "name": "freshness_check",
+      "cmd_sha256": "94b8fab673fbeb40bcfa76c1b7f1c6d20ab646787933a704ad8aa93227300d09",
+      "exit_code": 0,
+      "elapsed_seconds": 11.373,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 freshness:check\n> node --import tsx src/scripts/callscore-freshness-check.ts\n\n{\n  \"generatedAt\": \"2026-06-18T09:05:27.056Z\",\n  \"status\": \"WARN\",\n  \"blockers\": [],\n  \"warnings\": [\n    \"transcript provider credential missing failures=2\",\n    \"yt-dlp bot verification failures=9\"\n  ],\n  \"db\": {\n    \"current_user\": \"callscore_app\",\n    \"current_database\": \"callscore\",\n    \"server_addr\": \"::1/128\",\n    \"server_port\": 5432\n  },\n  \"thresholds\": {\n    \"official\": {\n      \"all_time\": 24,\n      \"12m\": 12,\n      \"90d\": 3,\n      \"30d\": null\n    },\n    \"certified\": {\n      \"all_time\": 50,\n      \"12m\": 25,\n      \"90d\": 10,\n      \"30d\": null\n    },\n    \"provisional\": {\n      \"all_time\": 6,\n      \"12m\": 6,\n      \"90d\": 1,\n      \"30d\": null\n    }\n  },\n  \"sourceBuckets\": [\n    {\n      \"period\": \"12m\",\n      \"rows\": 197,\n      \"official\": 43,\n      \"certified\": 33,\n      \"provisional\": 13\n    },\n    {\n      \"period\": \"30d\",\n      \"rows\": 197,\n      \"official\": 0,\n      \"certified\": 0,\n      \"provisional\": 0\n    },\n    {\n      \"period\": \"90d\",\n      \"rows\": 197,\n      \"official\": 52,\n      \"certified\": 29,\n      \"provisional\": 13\n    },\n    {\n      \"period\": \"all_time\",\n      \"rows\": 197,\n      \"official\": 37,\n      \"certified\": 25,\n      \"provisional\": 22\n    }\n  ],\n  \"ytdlpCookieState\": {\n    \"YTDLP_COOKIES_PATH\": true,\n    \"YTDLP_COOKIES\": false,\n    \"YTDLP_COOKIES_FROM_BROWSER\": false\n  },\n  \"ytdlpPoTokenState\": {\n    \"provider\": \"wpc\",\n    \"providerBaseUrl\": false,\n    \"providerHome\": false,\n    \"browserPath\": true,\n    \"playerClient\": true\n  },\n  \"timestamps\": {\n    \"latestJobCreated\": \"2026-06-13 05:12:56.380974+01\",\n    \"latestJobCompleted\": \"2026-06-13 05:12:56.424892+01\",\n    \"latestNonSmokeJobCreated\": \"2026-06-12 19:11:40.664383+01\",\n    \"latestNonSmokeJobCompleted\": \"2026-06-12 19:20:38.990167+01\",\n    \"latestComputeScoresCompleted\": \"2026-06-11 10:11:14.503363+01\",\n    \"latestVideoInserted\": \"2026-06-18 03:41:16.918751+01\",\n    \"latestTranscriptAttempt\": \"2026-06-18 04:16:21.86937+01\",\n    \"latestTranscriptSuccess\": \"2026-06-18 04:16:21.86937+01\",\n    \"latestCallInserted\": \"2026-06-18 04:16:32.513101+01\",\n    \"latestScoringUpdate\": \"2026-06-18 04:17:08.204101+01\",\n    \"latestCreatorStatsUpdate\": \"2026-06-18 04:17:08.204101+01\"\n  },\n  \"ageHours\": {\n    \"latestJobCreated\": 124.9,\n    \"latestJobCompleted\": 124.9,\n    \"latestNonSmokeJobCreated\": 134.9,\n    \"latestNonSmokeJobCompleted\": 134.7,\n    \"latestComputeScoresCompleted\": 167.9,\n    \"latestVideoInserted\": 6.4,\n    \"latestTranscriptAttempt\": 5.8,\n    \"latestTranscriptSuccess\": 5.8,\n    \"latestCallInserted\": 5.8,\n    \"latestScoringUpdate\": 5.8,\n    \"latestCreatorStatsUpdate\": 5.8\n  },\n  \"unsafeSourceRanks\": 0,\n  \"transcriptProviderMissingFailures\": 2,\n  \"transcriptBotVerificationFailures\": 9,\n  \"transcriptCookieInvalidFailures\": 0,\n  \"transcriptPoTokenRequiredFailures\": 0,\n  \"transcriptJsRuntimeMissingFailures\": 0,\n  \"transcriptRateLimitedFailures\": 0,\n  \"transcriptBacklog\": [\n    {\n      \"status\": \"failed\",\n      \"error\": \"transcript_disabled\",\n      \"count\": 3701,\n      \"recent30d\": 399,\n      \"recent90d\": 401\n    },\n    {\n      \"status\": \"pending\",\n      \"error\": \"none\",\n      \"count\": 2122,\n      \"recent30d\": 1651,\n      \"recent90d\": 2122\n    },\n    {\n      \"status\": \"failed\",\n      \"error\": \"legacy_youtube_rate_or_captcha\",\n      \"count\": 872,\n      \"recent30d\": 500,\n      \"recent90d\": 500\n    },\n    {\n      \"status\": \"failed\",\n      \"error\": \"other_failed\",\n      \"count\": 168,\n      \"recent30d\": 90,\n      \"recent90d\": 90\n    },\n    {\n      \"status\": \"failed\",\n      \"error\": \"transcript_unavailable\",\n      \"count\": 37,\n      \"recent30d\": 0,\n      \"recent90d\": 37\n    },\n    {\n      \"status\": \"failed\",\n      \"error\": \"bot_verification_required\",\n      \"count\": 9,\n      \"recent30d\": 9,\n      \"recent90d\": 9\n    },\n    {\n      \"status\": \"failed\",\n      \"error\": \"provider_credentials_missing\",\n      \"count\": 2,\n      \"recent30d\": 2,\n      \"recent90d\": 2\n    }\n  ],\n  \"dailyTimer\": {\n    \"unit\": \"callscore-daily-pipeline.timer\",\n    \"active\": true,\n    \"state\": \"active\"\n  },\n  \"grants\": [\n    {\n      \"table_name\": \"calls\",\n      \"privilege_type\": \"DELETE\"\n    },\n    {\n      \"table_name\": \"calls\",\n      \"privilege_type\": \"INSERT\"\n    },\n    {\n      \"table_name\": \"calls\",\n      \"privilege_type\": \"SELECT\"\n    },\n    {\n      \"table_name\": \"calls\",\n      \"privilege_type\": \"UPDATE\"\n    },\n    {\n      \"table_name\": \"creator_stats\",\n      \"privilege_type\": \"DELETE\"\n    },\n    {\n      \"table_name\": \"creator_stats\",\n      \"privilege_type\": \"INSERT\"\n    },\n    {\n      \"table_name\": \"creator_stats\",\n      \"privilege_type\": \"SELECT\"\n    },\n    {\n      \"table_name\": \"creator_stats\",\n      \"privilege_type\": \"UPDATE\"\n    },\n    {\n      \"table_name\": \"pipeline_job_events\",\n      \"privilege_type\": \"INSERT\"\n    },\n    {\n      \"table_name\": \"pipeline_job_events\",\n      \"privilege_type\": \"SELECT\"\n    },\n    {\n      \"table_name\": \"pipeline_jobs\",\n      \"privilege_type\": \"INSERT\"\n    },\n    {\n      \"table_name\": \"pipeline_jobs\",\n      \"privilege_type\": \"SELECT\"\n    },\n    {\n      \"table_name\": \"pipeline_jobs\",\n      \"privilege_type\": \"UPDATE\"\n    },\n    {\n      \"table_name\": \"videos\",\n      \"privilege_type\": \"INSERT\"\n    },\n    {\n      \"table_name\": \"videos\",\n      \"privilege_type\": \"SELECT\"\n    },\n    {\n      \"table_name\": \"videos\",\n      \"privilege_type\": \"UPDATE\"\n    }\n  ],\n  \"readApi\": null\n}",
+      "stderr_tail": ""
+    },
+    {
+      "name": "pipeline_audit",
+      "cmd_sha256": "01594ebfb5066e69112f844fd8d5fa8ce8f6e6297305c513908115fe6ffa2698",
+      "exit_code": 0,
+      "elapsed_seconds": 12.853,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 audit:pipeline\n> node --import tsx src/scripts/audit-pipeline-readiness.ts --summary --allow-partial-shadow\n\n{\n  \"generated_at\": \"2026-06-18T09:05:37.552Z\",\n  \"creatorCompleteness\": {\n    \"creators\": 197,\n    \"byStatus\": {\n      \"no_videos\": 18,\n      \"missing_publication_dates\": 0,\n      \"missing_transcripts\": 101,\n      \"pending_shadow\": 77,\n      \"shadow_complete\": 1\n    },\n    \"incomplete\": 196\n  },\n  \"funnel\": {\n    \"trackedCalls\": 5365,\n    \"shadowAcceptedCalls\": 0,\n    \"promotedVideos\": 0,\n    \"llmValidatedCalls\": 3347,\n    \"confidencePassCalls\": 3347,\n    \"publicScoredCalls\": 2837,\n    \"pendingPublicScoringCalls\": 510,\n    \"liveOpenCalls\": 1,\n    \"pendingHorizonCalls\": 510,\n    \"pending30dCalls\": 1,\n    \"pendingTarget90dCalls\": 509,\n    \"missingPriceCalls\": 0,\n    \"missing30dCalls\": 0,\n    \"missingTargetCalls\": 0,\n    \"targetPendingCalls\": 509,\n    \"excludedLowConfidenceCalls\": 2018\n  },\n  \"shadow\": {\n    \"extractionRecords\": 0,\n    \"shadowVideos\": 0,\n    \"acceptedCalls\": 0,\n    \"failedExtractions\": 0,\n    \"diffRecords\": 0,\n    \"diffStatuses\": {}\n  },\n  \"promotion\": {\n    \"records\": 0,\n    \"dryRunPromotions\": 0,\n    \"writtenPromotions\": 0,\n    \"skipped\": 0,\n    \"promotedVideos\": 0\n  },\n  \"terminalCoverage\": {\n    \"publicationDateVideos\": 4,\n    \"transcriptVideos\": 3890\n  },\n  \"blockers\": [\n    \"missing_transcripts_or_terminal_reasons\"\n  ]\n}",
+      "stderr_tail": ""
+    },
+    {
+      "name": "public_verify_local",
+      "cmd_sha256": "465941be1e43e0c55e0af1edc34273de4ea08c2204eb95f6c213cb3632908cb4",
+      "exit_code": 0,
+      "elapsed_seconds": 10.623,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 verify:public\n> node --import tsx src/scripts/verify-public-surface.ts\n\n{\n  \"generated_at\": \"2026-06-18T09:05:50.523Z\",\n  \"base_url\": null,\n  \"source\": \"local\",\n  \"publicCounts\": {\n    \"trackedCreators\": 123,\n    \"rankedCreators\": 40,\n    \"trackedCalls\": 5365,\n    \"scoredCalls\": 2837,\n    \"publicScoredCalls\": 2837,\n    \"beatBtcCreators\": 9,\n    \"llmValidatedCalls\": 3347,\n    \"confidencePassCalls\": 3347,\n    \"pendingPublicScoringCalls\": 510,\n    \"liveOpenCalls\": 1,\n    \"pendingHorizonCalls\": 510,\n    \"pending30dCalls\": 1,\n    \"pendingTarget90dCalls\": 509,\n    \"missingPriceCalls\": 0,\n    \"missing30dCalls\": 0,\n    \"missingTargetCalls\": 0,\n    \"targetPendingCalls\": 509,\n    \"excludedLowConfidenceCalls\": 2018\n  },\n  \"checks\": [\n    {\n      \"name\": \"public_ranked_creators_match_creator_stats\",\n      \"ok\": true,\n      \"detail\": \"counts ranked=40/40\"\n    },\n    {\n      \"name\": \"public_scored_calls_match_live_judgment_window\",\n      \"ok\": true,\n      \"detail\": \"publicScored=2837/2837, liveCreators=85\"\n    },\n    {\n      \"name\": \"external_api_ui_fetch\",\n      \"ok\": true,\n      \"detail\": \"skipped because --base-url/NEXT_PUBLIC_BASE_URL was not provided\"\n    }\n  ],\n  \"ok\": true\n}",
+      "stderr_tail": ""
+    },
+    {
+      "name": "public_verify_live",
+      "cmd_sha256": "df64c1689378deefe276c580f6f1627de7e442fed3f4a5a947ccfcc94cc2d16b",
+      "exit_code": 0,
+      "elapsed_seconds": 3.529,
+      "stdout_tail": "\n> crypto-tuber-ranked@0.1.0 verify:public\n> node --import tsx src/scripts/verify-public-surface.ts --source live --base-url https://call-score.com\n\n{\n  \"generated_at\": \"2026-06-18T09:06:04.044Z\",\n  \"base_url\": \"https://call-score.com\",\n  \"source\": \"live\",\n  \"publicCounts\": null,\n  \"checks\": [\n    {\n      \"name\": \"live_health_ok\",\n      \"ok\": true,\n      \"detail\": \"ok=true, source=hh_read_api\"\n    },\n    {\n      \"name\": \"live_leaderboard_meta_matches_rows\",\n      \"ok\": true,\n      \"detail\": \"api=36, rows=36\"\n    },\n    {\n      \"name\": \"live_homepage_contains_nonzero_funnel_counts\",\n      \"ok\": true,\n      \"detail\": \"raw=16317, public=8031, ranked=42\"\n    }\n  ],\n  \"ok\": true\n}",
+      "stderr_tail": ""
+    },
+    {
+      "name": "gtm_registry_json",
+      "cmd_sha256": "a5aee39756a2621521079b69aa41f38ca6caf06d5d12ec77764dd10cedd442f1",
+      "exit_code": 0,
+      "elapsed_seconds": 0.057,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "name": "gtm_registry_test",
+      "cmd_sha256": "2eeccc37d2f635f581aa5b0daa773d6e639e018025b8a5a212cfbf44709fc5fc",
+      "exit_code": 0,
+      "elapsed_seconds": 0.371,
+      "stdout_tail": "TAP version 13\n# Subtest: registry contains every required GTM channel\nok 1 - registry contains every required GTM channel\n  ---\n  duration_ms: 1.564768\n  type: 'test'\n  ...\n# Subtest: every registry row has owner, gate, receipt, rollback, and evidence\nok 2 - every registry row has owner, gate, receipt, rollback, and evidence\n  ---\n  duration_ms: 0.338442\n  type: 'test'\n  ...\n# Subtest: owned public channels are READY_PUBLIC_OWNED while outreach channels require send gates\nok 3 - owned public channels are READY_PUBLIC_OWNED while outreach channels require send gates\n  ---\n  duration_ms: 0.473122\n  type: 'test'\n  ...\n# Subtest: Whop financial/provider mutation stays fail-closed\nok 4 - Whop financial/provider mutation stays fail-closed\n  ---\n  duration_ms: 0.366482\n  type: 'test'\n  ...\n# Subtest: registry allows safe owned posts but keeps restricted sends, spend, and mutations gated\nok 5 - registry allows safe owned posts but keeps restricted sends, spend, and mutations gated\n  ---\n  duration_ms: 1.354007\n  type: 'test'\n  ...\n# Subtest: canonical paths use CallScore, Whop Auto, and Art of War sources\nok 6 - canonical paths use CallScore, Whop Auto, and Art of War sources\n  ---\n  duration_ms: 0.260482\n  type: 'test'\n  ...\n1..6\n# tests 6\n# suites 0\n# pass 6\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 319.861243",
+      "stderr_tail": ""
+    },
+    {
+      "name": "whop_webhook_test",
+      "cmd_sha256": "e3721d930f3fa7bf91c873403cd9e86ad1b15ef447e5efdae5cc1919e8f084cb",
+      "exit_code": 0,
+      "elapsed_seconds": 0.513,
+      "stdout_tail": "TAP version 13\n# Subtest: Whop webhook rejects unsigned events when a signing key is configured\nok 1 - Whop webhook rejects unsigned events when a signing key is configured\n  ---\n  duration_ms: 9.176086\n  type: 'test'\n  ...\n# Subtest: Whop webhook accepts signed JSON events without mutating entitlement state\nok 2 - Whop webhook accepts signed JSON events without mutating entitlement state\n  ---\n  duration_ms: 2.614973\n  type: 'test'\n  ...\n# Subtest: Whop webhook rejects invalid JSON before acknowledging events\nok 3 - Whop webhook rejects invalid JSON before acknowledging events\n  ---\n  duration_ms: 2.11309\n  type: 'test'\n  ...\n1..3\n# tests 3\n# suites 0\n# pass 3\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 460.526468",
+      "stderr_tail": ""
+    },
+    {
+      "name": "full_test_suite",
+      "cmd_sha256": "dfb9233ac7dd65ed048f4a25cc5b6764bd6322f862c77b783e3dfa854cd0e764",
+      "exit_code": 0,
+      "elapsed_seconds": 6.541,
+      "stdout_tail": "  type: 'test'\n  ...\n# Subtest: external transcript methods produce non-terminal handoff signals\nok 639 - external transcript methods produce non-terminal handoff signals\n  ---\n  duration_ms: 0.679884\n  type: 'test'\n  ...\n# Subtest: getUserTier checks Whop product IDs before legacy plan IDs\nok 640 - getUserTier checks Whop product IDs before legacy plan IDs\n  ---\n  duration_ms: 38.324114\n  type: 'test'\n  ...\n# Subtest: getUserTier returns alpha when product access is granted\nok 641 - getUserTier returns alpha when product access is granted\n  ---\n  duration_ms: 1.492207\n  type: 'test'\n  ...\n# Subtest: getUserTier keeps legacy plan fallback only when product IDs are absent\nok 642 - getUserTier keeps legacy plan fallback only when product IDs are absent\n  ---\n  duration_ms: 1.851569\n  type: 'test'\n  ...\n# Subtest: getUserTier denies free/no-access users\nok 643 - getUserTier denies free/no-access users\n  ---\n  duration_ms: 1.751968\n  type: 'test'\n  ...\n# Subtest: Whop certification pack anchors all commerce-live proof points\nok 644 - Whop certification pack anchors all commerce-live proof points\n  ---\n  duration_ms: 5.352467\n  type: 'test'\n  ...\n# Subtest: Whop OAuth production callback defaults to canonical apex URL\nok 645 - Whop OAuth production callback defaults to canonical apex URL\n  ---\n  duration_ms: 1.81457\n  type: 'test'\n  ...\n# Subtest: Whop OAuth route redirects non-canonical production hosts before setting state\nok 646 - Whop OAuth route redirects non-canonical production hosts before setting state\n  ---\n  duration_ms: 5.281386\n  type: 'test'\n  ...\n# Subtest: Whop OAuth route emits canonical callback when public base URL is custom domain\nok 647 - Whop OAuth route emits canonical callback when public base URL is custom domain\n  ---\n  duration_ms: 3.97574\n  type: 'test'\n  ...\n# Subtest: Whop OAuth route accepts canonical host even when request origin protocol differs\nok 648 - Whop OAuth route accepts canonical host even when request origin protocol differs\n  ---\n  duration_ms: 1.774849\n  type: 'test'\n  ...\n# Subtest: Whop OAuth route trusts canonical Host header behind Netlify\nok 649 - Whop OAuth route trusts canonical Host header behind Netlify\n  ---\n  duration_ms: 2.16781\n  type: 'test'\n  ...\n# Subtest: Whop webhook rejects unsigned events when a signing key is configured\nok 650 - Whop webhook rejects unsigned events when a signing key is configured\n  ---\n  duration_ms: 10.493853\n  type: 'test'\n  ...\n# Subtest: Whop webhook accepts signed JSON events without mutating entitlement state\nok 651 - Whop webhook accepts signed JSON events without mutating entitlement state\n  ---\n  duration_ms: 3.369937\n  type: 'test'\n  ...\n# Subtest: Whop webhook rejects invalid JSON before acknowledging events\nok 652 - Whop webhook rejects invalid JSON before acknowledging events\n  ---\n  duration_ms: 2.898454\n  type: 'test'\n  ...\n# Subtest: workflow receipts write deterministic JSON artifacts\nok 653 - workflow receipts write deterministic JSON artifacts\n  ---\n  duration_ms: 4.398422\n  type: 'test'\n  ...\n# Subtest: workflow receipt paths reject traversal\nok 654 - workflow receipt paths reject traversal\n  ---\n  duration_ms: 0.814124\n  type: 'test'\n  ...\n# Subtest: public spend and provider mutation workflows fail closed without approval evidence\nok 655 - public spend and provider mutation workflows fail closed without approval evidence\n  ---\n  duration_ms: 0.758484\n  type: 'test'\n  ...\n# Subtest: read-only receipts do not trip paid-ad approval gate\nok 656 - read-only receipts do not trip paid-ad approval gate\n  ---\n  duration_ms: 0.486643\n  type: 'test'\n  ...\n# Subtest: receipt CLI parser keeps required schema fields\nok 657 - receipt CLI parser keeps required schema fields\n  ---\n  duration_ms: 1.244646\n  type: 'test'\n  ...\n# Subtest: workplane dispatcher routes status aliases to status JSON\nok 658 - workplane dispatcher routes status aliases to status JSON\n  ---\n  duration_ms: 2.103411\n  type: 'test'\n  ...\n# Subtest: workplane dispatcher routes laptop claim and complete commands\nok 659 - workplane dispatcher routes laptop claim and complete commands\n  ---\n  duration_ms: 0.542003\n  type: 'test'\n  ...\n# Subtest: workplane dispatcher rejects unsupported commands with useful error\nok 660 - workplane dispatcher rejects unsupported commands with useful error\n  ---\n  duration_ms: 0.611563\n  type: 'test'\n  ...\n# Subtest: workplane job specs cover required Hermes surfaces with safe defaults\nok 661 - workplane job specs cover required Hermes surfaces with safe defaults\n  ---\n  duration_ms: 2.407692\n  type: 'test'\n  ...\n# Subtest: workplane status exposes all job specs as JSON-friendly records\nok 662 - workplane status exposes all job specs as JSON-friendly records\n  ---\n  duration_ms: 0.923165\n  type: 'test'\n  ...\n# Subtest: collector cooldown state handles missing, active, clear, and malformed files\nok 663 - collector cooldown state handles missing, active, clear, and malformed files\n  ---\n  duration_ms: 2.541013\n  type: 'test'\n  ...\n# Subtest: artifact readers summarize Gemma shadow and ML reports without throwing on malformed files\nok 664 - artifact readers summarize Gemma shadow and ML reports without throwing on malformed files\n  ---\n  duration_ms: 2.288852\n  type: 'test'\n  ...\n# Subtest: Gemma readiness trusts bounded shadow sample receipts and clean artifacts\nok 665 - Gemma readiness trusts bounded shadow sample receipts and clean artifacts\n  ---\n  duration_ms: 4.354302\n  type: 'test'\n  ...\n# Subtest: next autonomous action blocks unsafe/cooldown and otherwise chooses safe work\nok 666 - next autonomous action blocks unsafe/cooldown and otherwise chooses safe work\n  ---\n  duration_ms: 0.449002\n  type: 'test'\n  ...\n# Subtest: transcript readiness trusts latest successful cadence receipt over stale collector state\nok 667 - transcript readiness trusts latest successful cadence receipt over stale collector state\n  ---\n  duration_ms: 1.207126\n  type: 'test'\n  ...\n# Subtest: pipeline readiness recognizes latest Gemma write and score canary receipts\nok 668 - pipeline readiness recognizes latest Gemma write and score canary receipts\n  ---\n  duration_ms: 1.676968\n  type: 'test'\n  ...\n# Subtest: readiness domains cover all activation surfaces with mutation gates\nok 669 - readiness domains cover all activation surfaces with mutation gates\n  ---\n  duration_ms: 22.167992\n  type: 'test'\n  ...\n# Subtest: rate-limited laptop cadence receipts become monitored cooldown rather than hard partial\nok 670 - rate-limited laptop cadence receipts become monitored cooldown rather than hard partial\n  ---\n  duration_ms: 2.903895\n  type: 'test'\n  ...\n# Subtest: workplane status exposes executable report-only job commands\nok 671 - workplane status exposes executable report-only job commands\n  ---\n  duration_ms: 0.306122\n  type: 'test'\n  ...\n# Subtest: Art of War campaign loop supports owned public execution while restricted lanes stay gated\nok 672 - Art of War campaign loop supports owned public execution while restricted lanes stay gated\n  ---\n  duration_ms: 0.616403\n  type: 'test'\n  ...\n# Subtest: Gemma Ollama Modelfile is aligned to production shadow extraction schema\nok 673 - Gemma Ollama Modelfile is aligned to production shadow extraction schema\n  ---\n  duration_ms: 1.139726\n  type: 'test'\n  ...\n# Subtest: existing enqueue script can safely enqueue bounded workplane jobs\nok 674 - existing enqueue script can safely enqueue bounded workplane jobs\n  ---\n  duration_ms: 0.282882\n  type: 'test'\n  ...\n# Subtest: latest Art of War campaign receipt summarizes operational loop safely\nok 675 - latest Art of War campaign receipt summarizes operational loop safely\n  ---\n  duration_ms: 0.850004\n  type: 'test'\n  ...\n# Subtest: Whop workplane jobs stay read-only or dry-run by default\nok 676 - Whop workplane jobs stay read-only or dry-run by default\n  ---\n  duration_ms: 0.632524\n  type: 'test'\n  ...\n1..676\n# tests 679\n# suites 2\n# pass 679\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 6467.187116",
+      "stderr_tail": ""
+    },
+    {
+      "name": "live_http_probes",
+      "cmd_sha256": "4dd658823b311ca486f6c85adf0f5b822b02d578a049637b8bbb5268c87d46ca",
+      "exit_code": 0,
+      "elapsed_seconds": 2.361,
+      "stdout_tail": "[{\"bytes\": 230082, \"content_type\": \"text/html; charset=utf-8\", \"status\": 200, \"url\": \"https://call-score.com\"}, {\"bytes\": 44, \"content_type\": \"application/json\", \"json_ok\": true, \"keys\": [\"ok\", \"db\", \"source\"], \"ok\": true, \"source\": \"hh_read_api\", \"status\": 200, \"status_value\": null, \"url\": \"https://call-score.com/api/health\"}, {\"bytes\": 64724, \"content_type\": \"application/json\", \"json_ok\": true, \"ok\": null, \"row_count\": 2, \"source\": null, \"status\": 200, \"url\": \"https://call-score.com/api/leaderboard\"}]",
+      "stderr_tail": ""
+    },
+    {
+      "name": "html_surface_probe",
+      "cmd_sha256": "456fdcb2a2c3f151335c0f8d91abea2b1f8c0d69a40a65f9449699f2b1905295",
+      "exit_code": 0,
+      "elapsed_seconds": 0.699,
+      "stdout_tail": "{\"has_callscore_text\": true, \"html_bytes\": 230082, \"link_count\": 61, \"title\": \"Crypto Market Calls Tracker | Score Alpha. Find Edge \\u2014 CallScore\"}",
+      "stderr_tail": ""
+    },
+    {
+      "name": "production_todo_stub_scan",
+      "cmd_sha256": "4a5713638e2a5c0fb3d5b57c2e97c4520ea9b8d674997a34e212b1e43d78869b",
+      "exit_code": 0,
+      "elapsed_seconds": 0.247,
+      "stdout_tail": "{\n  \"count\": 0,\n  \"findings\": []\n}",
+      "stderr_tail": ""
+    }
+  ],
+  "app_commit_after_operationalization": "cc4371c8663ca30dea34706b4064e520ef8b3acb",
+  "app_commit_subject_after_operationalization": "feat(workplane): operationalize CallScore controlled autonomy"
+}

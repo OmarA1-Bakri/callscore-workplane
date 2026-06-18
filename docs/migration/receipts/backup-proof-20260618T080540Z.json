@@ -1,0 +1,78 @@
+{
+  "schema": "callscore.backup_proof.v1",
+  "verified_at_utc": "20260618T080540Z",
+  "mode": "read_only_verification",
+  "verified_from": {
+    "hh_host": "hermes-agent-box",
+    "laptop_host": "OmarsLaptop",
+    "tailscale_laptop_ip": "100.118.20.40",
+    "d_drive_mount": "/mnt/d on laptop WSL",
+    "d_drive_capacity": "932G",
+    "d_drive_used": "151G",
+    "d_drive_available": "782G"
+  },
+  "primary_full_rollback_source": {
+    "type": "hetzner_cloud_snapshot",
+    "snapshot_image_id": "398616103",
+    "server_id": "128888849",
+    "server_name": "ubuntu-16gb-hel1-1",
+    "server_ipv4": "89.167.81.13",
+    "description": "callscore-hhvm-preclean-20260617T172855Z",
+    "status": "available",
+    "delete_protection": true,
+    "created": "2026-06-18 00:28:56 +07",
+    "image_size": "62.56 GB",
+    "disk_size": "160 GB",
+    "os": "ubuntu 24.04 arm",
+    "live_checked_with": "ssh to laptop WSL then hcloud image describe 398616103",
+    "receipt_files_on_d": [
+      {
+        "path": "D:\\CallScore-VM-backups\\hetzner-snapshots\\snapshot-398616103-20260617T173415Z.txt",
+        "size_bytes": 2265,
+        "mtime_utc": "2026-06-17T17:34:16Z",
+        "sha256": "63a226678f15af29df8ea12ca8d18b18450aeef4a1aea4c38e4075a0f12fb0ae"
+      },
+      {
+        "path": "D:\\CallScore-VM-backups\\hetzner-snapshots\\snapshot-398616103-20260617T173502Z.txt",
+        "size_bytes": 2265,
+        "mtime_utc": "2026-06-17T17:35:04Z",
+        "sha256": "2f691e9edfd78c1330e5b81fb95bf72cd9b9f2218f26e1531e7fb5200144c4e4"
+      }
+    ]
+  },
+  "secondary_local_d_artifacts": [
+    {
+      "path": "D:\\callscore-backup-20260608-053311\\srv-backup.tar.gz",
+      "size_bytes": 13209260303,
+      "mtime_utc": "2026-06-08T07:10:57Z",
+      "classification": "older srv tarball; checksum deferred because 12.3GiB and primary full snapshot is live-verified"
+    },
+    {
+      "path": "D:\\CallScore-VM-backups\\hhvm-root-rsync-20260617-220614\\",
+      "classification": "partial rsync/root probe; readable /etc and /boot samples, but /opt and /srv are absent; not treated as full rollback source"
+    },
+    {
+      "path": "D:\\CallScore-VM-backups\\hhvm-root-20260617-200810\\hhvm-root-20260617-200810.tar",
+      "size_bytes": 171384832,
+      "mtime_utc": "2026-06-17T15:04:44Z",
+      "sha256": "85e47cf60d59d26f1f88a861682c95430b288f417629afd3b2d156574b042d79",
+      "readability": "tar listed initial entries but reported Unexpected EOF; not treated as full rollback source"
+    },
+    {
+      "path": "D:\\CallScore-VM-backups\\hhvm-disk-20260617-235153\\hhvm-sda-20260617-235153.img",
+      "size_bytes": 152076176,
+      "mtime_utc": "2026-06-17T16:54:17Z",
+      "sha256": "d61b784c643746138c1b9f1dfb7c0416335f20b02efa4c59b3a9afb790c392e0",
+      "classification": "small local image artifact; not full 160GB disk image"
+    },
+    {
+      "path": "D:\\CallScore-VM-backups\\hhvm-disk-20260617-235719\\hhvm-sda-20260617-235719.img",
+      "size_bytes": 104628170,
+      "mtime_utc": "2026-06-17T17:01:09Z",
+      "sha256": "75691777624559bb7625ba0eb03e082de9c7d4252ba691d247ec28b6f4cdb9bc",
+      "classification": "small local image artifact; not full 160GB disk image"
+    }
+  ],
+  "conclusion": "Rollback is covered by live Hetzner cloud snapshot 398616103, whose receipt is stored on D: and whose current status was live-checked as available/delete-protected. D: local tar/img artifacts are secondary/incomplete evidence and must not be treated as the primary full rollback source.",
+  "write_scope": "No writes to D: performed. Receipt written only in callscore-workplane."
+}
