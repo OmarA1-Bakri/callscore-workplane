@@ -1,0 +1,76 @@
+{
+  "schema": "callscore.autonomous_orchestrator_activation.v1",
+  "created_at_utc": "2026-06-18T10:47:31Z",
+  "status": "ACTIVE_CONTROLLED_FULL",
+  "operator_authorization": "Omar explicitly granted full authority to run the full system autonomously as orchestrator for users and revenue; restricted lanes remain fail-closed.",
+  "orchestrator": "Hermes session-level system orchestrator + scheduled autonomous CMO loop",
+  "public_action": {
+    "x_canary_published": true,
+    "post_id": "2067557086796398667",
+    "post_url": "https://x.com/0marbakri/status/2067557086796398667",
+    "receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/artofwar_owned_public_execution/callscore-x-canary-001-published-20260618T103702Z.json",
+    "monitor_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/artofwar_owned_public_monitor/callscore-x-canary-001-monitor-20260618T104442Z.json",
+    "latest_parent_verified_metrics": {
+      "impression_count": 6,
+      "like_count": 1,
+      "reply_count": 0,
+      "retweet_count": 0,
+      "quote_count": 0,
+      "bookmark_count": 0
+    }
+  },
+  "scheduled_loops": [
+    {
+      "job_id": "9c03a6eea969",
+      "name": "CallScore CONTROLLED_FULL autonomous CMO revenue loop",
+      "schedule": "every 6h",
+      "deliver": "origin",
+      "mode": "monitor+safe-owned-public-GTM; max one post per 24h"
+    },
+    {
+      "job_id": "f9866c72bff3",
+      "name": "CallScore X canary 1h monitor",
+      "schedule": "once in 1h",
+      "deliver": "origin",
+      "mode": "read-only monitor receipt"
+    }
+  ],
+  "workplane_jobs_enqueued_and_succeeded": [
+    1834,
+    1835,
+    1836,
+    1837,
+    1838,
+    1839,
+    1840
+  ],
+  "core_pipeline_probe_jobs_succeeded": [
+    1841,
+    1842,
+    1843
+  ],
+  "agent_reviews": {
+    "marketing_channel_growth": "completed next 24h owned-public battle plan",
+    "whop_revenue_theatre": "completed safe revenue moves plan; no Whop mutation",
+    "trust_compliance": "PASS conditional on 24h monitor/no-scale guardrails"
+  },
+  "scheduler_repair": {
+    "script": "/srv/agents/hermes/scripts/callscore-enqueue-common.sh",
+    "change": "prefers /opt/crypto-tuber-ranked/.env.hermes over stale legacy DSN file; no secrets printed",
+    "verification": "candles/match/scores probe enqueue succeeded and worker completed jobs 1841-1843"
+  },
+  "forbidden_actions_not_performed": [
+    "paid spend",
+    "DM/email/newsletter/outreach",
+    "Whop pricing/product/customer/payment/entitlement/provider mutation",
+    "DB broad backfill",
+    "deploy/infra mutation",
+    "secret exposure"
+  ],
+  "next_autonomous_moves": [
+    "1h monitor receipt",
+    "6h CMO loop monitor-only until 24h throttle clears",
+    "prepare LinkedIn/follow-up packets",
+    "continue read-only Whop revenue theatre copy/checkout clarity prep"
+  ]
+}
