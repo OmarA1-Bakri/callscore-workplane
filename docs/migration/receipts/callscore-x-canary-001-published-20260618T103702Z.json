@@ -1,0 +1,41 @@
+{
+  "schema": "callscore.artofwar_owned_public_execution_receipt.v1",
+  "run_id": "callscore-x-canary-001-published-20260618T103702Z",
+  "created_at_utc": "2026-06-18T10:37:02Z",
+  "status": "published",
+  "channel": "X / Twitter",
+  "destination_account": {
+    "username": "0marbakri",
+    "display_name": "BinaryBaron"
+  },
+  "safety_classification": "READY_PUBLIC_OWNED",
+  "operator_authorization": "Omar granted full authority for autonomous CONTROLLED_FULL revenue activation in the current session; restricted actions remain fail-closed.",
+  "external_mutation_performed": true,
+  "mutation_type": "owned_public_organic_x_post",
+  "post_id": "2067557086796398667",
+  "post_url": "https://x.com/0marbakri/status/2067557086796398667",
+  "provider_response": {
+    "id": "2067557086796398667",
+    "edit_history_tweet_ids": [
+      "2067557086796398667"
+    ]
+  },
+  "exact_post_text": "Crypto creator calls should come with receipts.\n\nCallScore ranks public crypto calls with source evidence, benchmark-relative outcomes, confidence checks, and audit trail.\n\nFirst leaderboard is live:\nhttps://call-score.com/?utm_source=x&utm_campaign=canary1\n\nNot financial advice.",
+  "payload_sha256": "1b2e4e8372eba0b3f36c8b542bb9c99573e7499d38c66559d4e44c1e640ce8f1",
+  "approval_packet": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/artofwar_owned_public_execution/callscore-x-canary-001-20260618T101844Z-approval-packet.json",
+  "rollback_path": "Delete/retract the X post using stored post ID if needed, record rollback receipt, and draft correction only if material confusion occurred.",
+  "monitoring_plan": [
+    "Verify tweet exists via read-only X lookup/search.",
+    "Monitor read-only engagement after ~1h and ~24h if accessible.",
+    "Do not buy boosts, use paid APIs, DM/email outreach, mutate Whop/provider/customer/payment state, deploy, or write DB rows without required gates.",
+    "Use next safe owned public iteration only after duplicate/spam check and receipt."
+  ],
+  "forbidden_actions_not_performed": [
+    "paid spend",
+    "DM/outreach/email/newsletter send",
+    "Whop pricing/product/customer/payment/provider mutation",
+    "DB write",
+    "deploy",
+    "secret exposure"
+  ]
+}
