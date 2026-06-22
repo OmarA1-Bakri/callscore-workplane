@@ -1,0 +1,38 @@
+--- active/src/lib/shadow-extraction.ts
++++ pre-canonical-20260526T063909Z/src/lib/shadow-extraction.ts
+@@ -27,12 +27,6 @@
+     readonly chunk_agents?: number;
+     readonly video_agents?: number;
+     readonly low_confidence_ready?: boolean;
+-    readonly chunk_chars?: number;
+-    readonly chunk_overlap?: number;
+-    readonly max_chunks?: number;
+-    readonly request_timeout_ms?: number;
+-    readonly num_predict?: number;
+-    readonly prompt_profile?: string;
+   };
+ }
+ 
+@@ -57,22 +51,6 @@
+   readonly video: ShadowVideoMetadata;
+   readonly transcript_sha256: string;
+   readonly transcript_length: number;
+-  readonly prompt_version?: string;
+-  readonly schema_valid?: boolean;
+-  readonly confidence_distribution?: {
+-    readonly min: number | null;
+-    readonly max: number | null;
+-    readonly average: number | null;
+-    readonly high_confidence_count: number;
+-    readonly medium_confidence_count: number;
+-    readonly low_confidence_count: number;
+-  };
+-  readonly parser_errors?: readonly string[];
+-  readonly latency_ms?: number | null;
+-  readonly comparison_to_rule_extractor?: {
+-    readonly status: "pending_shadow_diff";
+-    readonly note: string;
+-  };
+   readonly candidate_count: number;
+   readonly accepted_count: number;
+   readonly accepted_calls: readonly NormalizedExtractedCall[];

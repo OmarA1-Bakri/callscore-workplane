@@ -1,0 +1,214 @@
+- generic [active] [ref=e1]:
+  - link "Skip to content":
+    - /url: "#geist-skip-nav"
+  - main [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - generic [ref=e9]:
+            - link [ref=e10] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects
+            - button [ref=e14] [cursor=pointer]:
+              - img [ref=e16]
+          - button "Find… F" [ref=e19]:
+            - generic [ref=e21]:
+              - img [ref=e23]
+              - generic [ref=e25]: Find…
+              - generic [ref=e27]: F
+        - navigation [ref=e29]:
+          - generic [ref=e32]:
+            - link "Overview" [ref=e33] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked
+              - generic [ref=e36]: Overview
+            - link "Deployments" [ref=e37] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/deployments
+              - img [ref=e39]
+              - generic [ref=e42]: Deployments
+            - link "Logs" [ref=e43] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/logs
+              - img [ref=e45]
+              - generic [ref=e48]: Logs
+            - link "Analytics" [ref=e49] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/analytics
+              - img [ref=e51]
+              - generic [ref=e54]: Analytics
+            - link "Speed Insights" [ref=e55] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/speed-insights
+              - img [ref=e57]
+              - generic [ref=e60]: Speed Insights
+            - link "Observability" [ref=e61] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/observability
+              - img [ref=e63]
+              - generic [ref=e66]: Observability
+              - img [ref=e68]
+            - link "Firewall" [ref=e70] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/firewall
+              - img [ref=e72]
+              - generic [ref=e76]: Firewall
+              - img [ref=e78]
+            - link "CDN" [ref=e80] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/cdn
+              - img [ref=e82]
+              - generic [ref=e85]: CDN
+              - img [ref=e87]
+            - separator [ref=e89]
+            - link "Environment Variables" [ref=e90] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/settings/environment-variables
+              - img [ref=e92]
+              - generic [ref=e95]: Environment Variables
+            - link "Domains" [ref=e96] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/settings/domains
+              - img [ref=e98]
+              - generic [ref=e101]: Domains
+            - link "Integrations" [ref=e102] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/settings/integrations
+              - img [ref=e104]
+              - generic [ref=e107]: Integrations
+            - link "Storage" [ref=e108] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/stores
+              - img [ref=e110]
+              - generic [ref=e113]: Storage
+            - link "Flags" [ref=e114] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/flags
+              - img [ref=e116]
+              - generic [ref=e119]: Flags
+              - img [ref=e121]
+            - link "Agent" [ref=e123] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/agent
+              - img [ref=e125]
+              - generic [ref=e128]: Agent
+              - img [ref=e130]
+            - link "AI Gateway" [ref=e132] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/ai-gateway
+              - img [ref=e134]
+              - generic [ref=e137]: AI Gateway
+              - img [ref=e139]
+            - link "Sandboxes" [ref=e141] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/sandboxes
+              - img [ref=e143]
+              - generic [ref=e146]: Sandboxes
+            - link "Workflows" [ref=e147] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/workflows
+              - img [ref=e149]
+              - generic [ref=e152]: Workflows
+            - separator [ref=e153]
+            - link "Usage" [ref=e154] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/usage
+              - img [ref=e156]
+              - generic [ref=e159]: Usage
+            - link "Support" [ref=e160] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/support
+              - img [ref=e162]
+              - generic [ref=e165]: Support
+            - link "Settings" [ref=e166] [cursor=pointer]:
+              - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/settings
+              - img [ref=e168]
+              - generic [ref=e171]: Settings
+              - img [ref=e173]
+        - generic [ref=e177]:
+          - button [disabled]:
+            - img
+            - generic:
+              - img
+          - img [ref=e180]
+      - button [ref=e183] [cursor=pointer]:
+        - img [ref=e184]
+    - generic [ref=e187]:
+      - generic [ref=e188]:
+        - generic [ref=e191]:
+          - link [ref=e192] [cursor=pointer]:
+            - /url: /oabtrading-9545s-projects/crypto-tuber-ranked
+          - button [ref=e194] [cursor=pointer]:
+            - img [ref=e196]
+          - link "Back to team view" [ref=e200] [cursor=pointer]:
+            - /url: /oabtrading-9545s-projects
+            - img [ref=e202]
+        - generic [ref=e206]: Overview
+        - button "Open page actions menu" [ref=e208] [cursor=pointer]:
+          - img [ref=e210]
+      - generic [ref=e214]:
+        - generic [ref=e219]:
+          - heading "Production Deployment" [level=3] [ref=e221]
+          - generic [ref=e235]:
+            - generic [ref=e238]:
+              - term [ref=e239]: Deployment
+              - definition [ref=e240]
+            - generic [ref=e245]:
+              - term [ref=e246]:
+                - generic [ref=e248]:
+                  - text: Domains
+                  - link [ref=e249] [cursor=pointer]:
+                    - /url: /oabtrading-9545s-projects/crypto-tuber-ranked/settings/domains
+                    - img [ref=e250]
+              - definition [ref=e252]
+            - generic [ref=e254]:
+              - generic [ref=e255]:
+                - term [ref=e256]: Status
+                - definition [ref=e257]
+              - generic [ref=e260]:
+                - term [ref=e261]: Created
+                - definition [ref=e262]
+            - generic [ref=e265]:
+              - term [ref=e266]: Source
+              - definition [ref=e267]
+          - button "Deployment Settings" [disabled] [ref=e273]:
+            - generic [ref=e274]:
+              - img [ref=e275]
+              - generic [ref=e278]: Deployment Settings
+        - generic [ref=e287]:
+          - generic [ref=e288]:
+            - generic [ref=e289]:
+              - generic [ref=e290]:
+                - paragraph [ref=e291]:
+                  - strong [ref=e292]: Production Checklist
+                - generic [ref=e294]: 0/5
+              - button "Go to page" [ref=e295] [cursor=pointer]:
+                - img [ref=e297]
+              - button [ref=e299] [cursor=pointer]
+            - generic [ref=e303]:
+              - button "Connect Git Repository" [ref=e304] [cursor=pointer]:
+                - img [ref=e305]
+                - generic [ref=e307]: Connect Git Repository
+              - button "Add Custom Domain" [ref=e308] [cursor=pointer]:
+                - img [ref=e309]
+                - generic [ref=e311]: Add Custom Domain
+              - button "Preview Deployment" [ref=e312] [cursor=pointer]:
+                - img [ref=e313]
+                - generic [ref=e315]: Preview Deployment
+              - button "Enable Web Analytics" [ref=e316] [cursor=pointer]:
+                - img [ref=e317]
+                - generic [ref=e319]: Enable Web Analytics
+              - button "Enable Speed Insights" [ref=e320] [cursor=pointer]:
+                - img [ref=e321]
+                - generic [ref=e323]: Enable Speed Insights
+          - generic [ref=e324]:
+            - generic [ref=e325]:
+              - generic [ref=e326]:
+                - paragraph [ref=e327]:
+                  - strong [ref=e328]: Observability
+                - time [ref=e329]: 6h
+              - link "Go to page" [ref=e330] [cursor=pointer]:
+                - /url: "#"
+                - img [ref=e332]
+              - link [ref=e334] [cursor=pointer]:
+                - /url: "#"
+            - generic [ref=e336]:
+              - generic [ref=e338]: Edge Requests
+              - generic [ref=e343]: Function Invocations
+              - generic [ref=e348]: Error Rate
+          - generic [ref=e354]:
+            - paragraph [ref=e355]:
+              - strong [ref=e356]: Analytics
+            - time [ref=e357]: 1w
+        - generic [ref=e371]:
+          - img [ref=e374]
+          - img [ref=e385]
+          - img [ref=e396]
+          - img [ref=e407]
+          - generic [ref=e416]:
+            - img [ref=e419]
+            - img [ref=e430]
+            - img [ref=e441]
+            - img [ref=e452]
+            - img [ref=e463]
+            - img [ref=e474]

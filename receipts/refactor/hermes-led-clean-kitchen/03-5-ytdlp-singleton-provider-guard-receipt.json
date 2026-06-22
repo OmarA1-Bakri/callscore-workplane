@@ -1,0 +1,257 @@
+{
+  "timestamp_utc": "2026-06-21T20:16:48Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard",
+  "mission": "prompt35-ytdlp-singleton-provider-guard",
+  "implemented_option": "B_wrapper_plus_docs_tests",
+  "files_created_or_modified": [
+    "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+    "/opt/crypto-tuber-ranked/docs/ops/ytdlp-singleton-provider.md",
+    "/opt/crypto-tuber-ranked/tests/ytdlp-singleton-wrapper.test.ts",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-5-ytdlp-singleton-provider-guard.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/ytdlp-singleton-startup-routes.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/ytdlp-singleton-implementation-report.md"
+  ],
+  "forbidden_actions": {
+    "docker_compose_down_used": false,
+    "full_stack_restart": false,
+    "healthy_container_stopped": false,
+    "deploy": false,
+    "db_mutation": false,
+    "secrets_printed": "raw_discovery_artifact_initially_contained_unredacted_value; artifact redacted; no value included in final response",
+    "compose_base_semantics_changed": false,
+    "compose_override_created": false
+  },
+  "commands": {
+    "syntax": {
+      "args": [
+        "bash",
+        "-n",
+        "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh"
+      ],
+      "cwd": null,
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "unit_test": {
+      "args": [
+        "node",
+        "--import",
+        "tsx",
+        "--test",
+        "/opt/crypto-tuber-ranked/tests/ytdlp-singleton-wrapper.test.ts"
+      ],
+      "cwd": "/opt/crypto-tuber-ranked",
+      "rc": 0,
+      "stdout": "TAP version 13\n# Subtest: whop-auto worker startup wrapper enforces ytdlp singleton guard\nok 1 - whop-auto worker startup wrapper enforces ytdlp singleton guard\n  ---\n  duration_ms: 1.951859\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 323.867773\n",
+      "stderr": ""
+    },
+    "check_mode": {
+      "args": [
+        "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+        "--check"
+      ],
+      "cwd": null,
+      "rc": 0,
+      "stdout": "OK: singleton provider healthy; whop-auto duplicate absent.\n",
+      "stderr": ""
+    },
+    "print_command": {
+      "args": [
+        "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+        "--print-command"
+      ],
+      "cwd": null,
+      "rc": 0,
+      "stdout": "cd /opt/crypto-tuber-ranked && docker compose -f /opt/crypto-tuber-ranked/docker-compose.yml -p whop-auto up -d --no-deps --no-recreate hermes-worker channel-agent-worker\n",
+      "stderr": ""
+    },
+    "compose_services_dry_run": {
+      "args": [
+        "docker",
+        "compose",
+        "-f",
+        "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "config",
+        "--services"
+      ],
+      "cwd": null,
+      "rc": 0,
+      "stdout": "ytdlp-pot-provider\nchannel-agent-worker\ndata-pipeline-continuous\nhermes-worker\n",
+      "stderr": ""
+    }
+  },
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 130988634112,
+    "free_bytes": 29981609984,
+    "used_percent": 81.37,
+    "inode_total": 9732496,
+    "inode_used": 2566392,
+    "inode_free": 7166104,
+    "inode_used_percent": 26.37
+  },
+  "disk_after": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 131002626048,
+    "free_bytes": 29967618048,
+    "used_percent": 81.38,
+    "inode_total": 9732496,
+    "inode_used": 2566488,
+    "inode_free": 7166008,
+    "inode_used_percent": 26.37
+  },
+  "post_checks_before_state_update": {
+    "whop_auto_ytdlp_absent": true,
+    "crypto_provider_running_healthy": true,
+    "ping_4416_http_200": true,
+    "whop_auto_hermes_worker_running": true,
+    "whop_auto_channel_agent_worker_running": true,
+    "crypto_hermes_worker_running": true,
+    "no_new_restart_loops": true,
+    "protected_paths_exist": true,
+    "disk_inodes_safe": true,
+    "master_state_updated": true,
+    "wrapper_exists_executable": true,
+    "wrapper_syntax_ok": true,
+    "wrapper_test_passed": true,
+    "wrapper_check_mode_passed": true,
+    "wrapper_print_command_safe": true,
+    "compose_config_services_dry_run_ok": true,
+    "all_success_pre_state_update": true,
+    "all_success": true
+  },
+  "docker_ps": {
+    "cmd": "docker ps --format 'table {{.Names}}\t{{.State}}\t{{.Status}}'",
+    "cwd": null,
+    "rc": 0,
+    "stdout": "NAMES                                      STATE     STATUS\nwhop-auto-hermes-worker-1                  running   Up 21 hours\nwhop-auto-channel-agent-worker-1           running   Up 21 hours\ncrypto-tuber-ranked-hermes-worker-1        running   Up 21 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   running   Up 21 hours (healthy)\nhh-oauth-mcp-gateway                       running   Up 12 days\nhermes-whop-automation-tunnel              running   Up 2 weeks\n",
+    "stderr": ""
+  },
+  "docker_inspect": {
+    "crypto-tuber-ranked-ytdlp-pot-provider-1": {
+      "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+      "exists": true,
+      "state": "running",
+      "running": true,
+      "health": "healthy",
+      "restart_count": 0,
+      "compose_project": "crypto-tuber-ranked",
+      "compose_service": "ytdlp-pot-provider",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "env_omitted": true
+    },
+    "whop-auto-hermes-worker-1": {
+      "name": "whop-auto-hermes-worker-1",
+      "exists": true,
+      "state": "running",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "compose_project": "whop-auto",
+      "compose_service": "hermes-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "env_omitted": true
+    },
+    "whop-auto-channel-agent-worker-1": {
+      "name": "whop-auto-channel-agent-worker-1",
+      "exists": true,
+      "state": "running",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "compose_project": "whop-auto",
+      "compose_service": "channel-agent-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "env_omitted": true
+    },
+    "crypto-tuber-ranked-hermes-worker-1": {
+      "name": "crypto-tuber-ranked-hermes-worker-1",
+      "exists": true,
+      "state": "running",
+      "running": true,
+      "health": null,
+      "restart_count": 0,
+      "compose_project": "crypto-tuber-ranked",
+      "compose_service": "hermes-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "env_omitted": true
+    }
+  },
+  "broken_duplicate": {
+    "name": "whop-auto-ytdlp-pot-provider-1",
+    "exists": false,
+    "inspect_rc": 1
+  },
+  "ping_4416": {
+    "rc": 0,
+    "stdout_snippet": "{\"server_uptime\":76064.001994219,\"version\":\"1.3.1\"}\nHTTP_STATUS:200\n",
+    "stderr": ""
+  },
+  "git_status": {
+    "cmd": "git status --short scripts/start-whop-auto-workers.sh tests/ytdlp-singleton-wrapper.test.ts docs/ops/ytdlp-singleton-provider.md",
+    "cwd": "/opt/crypto-tuber-ranked",
+    "rc": 0,
+    "stdout": "?? docs/ops/ytdlp-singleton-provider.md\n?? scripts/start-whop-auto-workers.sh\n?? tests/ytdlp-singleton-wrapper.test.ts\n",
+    "stderr": ""
+  },
+  "git_diffstat": {
+    "cmd": "git diff --stat -- scripts/start-whop-auto-workers.sh tests/ytdlp-singleton-wrapper.test.ts docs/ops/ytdlp-singleton-provider.md",
+    "cwd": "/opt/crypto-tuber-ranked",
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "startup_routes_doc": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/ytdlp-singleton-startup-routes.json",
+  "false_positive_emergency_log": {
+    "path": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+    "preserved": true,
+    "classification": "FALSE_POSITIVE_VERIFICATION_BUG",
+    "corrected_receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-runtime-simplification-receipt.json"
+  },
+  "post_checks": {
+    "whop_auto_ytdlp_absent": true,
+    "crypto_provider_running_healthy": true,
+    "ping_4416_http_200": true,
+    "whop_auto_hermes_worker_running": true,
+    "whop_auto_channel_agent_worker_running": true,
+    "crypto_hermes_worker_running": true,
+    "no_new_restart_loops": true,
+    "protected_paths_exist": true,
+    "disk_inodes_safe": true,
+    "master_state_updated": true,
+    "wrapper_exists_executable": true,
+    "wrapper_syntax_ok": true,
+    "wrapper_test_passed": true,
+    "wrapper_check_mode_passed": true,
+    "wrapper_print_command_safe": true,
+    "compose_config_services_dry_run_ok": true,
+    "all_success_pre_state_update": true,
+    "all_success": true,
+    "raw_discovery_artifacts_redacted": true,
+    "legacy_capture_artifacts_redacted": true
+  },
+  "security_remediation": {
+    "raw_discovery_secret_redaction": {
+      "performed": true,
+      "emergency_log": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T202048Z.json",
+      "redacted_files": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits-focused.json"
+      ],
+      "remaining_unredacted_session_secret_assignments": [],
+      "status": "complete"
+    },
+    "legacy_capture_secret_redaction": {
+      "performed": true,
+      "redacted_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/audit-output/research/codex-review-w1.md",
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__self-correction.test.ts.diff"
+      ],
+      "remaining_unredacted_session_secret_assignments_in_clean_kitchen_docs": [],
+      "emergency_log": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T202048Z.json"
+    }
+  }
+}

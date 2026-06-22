@@ -1,0 +1,57 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/transcript-canary",
+  "classification": "TEMPORARY_RUNTIME_OUTPUT_PHASE_A_CANDIDATE",
+  "phase_a_bucket": "safe_batch_1",
+  "status": "deleted",
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/transcript-canary",
+    "exists": true,
+    "is_file": false,
+    "is_dir": true,
+    "is_symlink": false,
+    "mode_octal": "0o775",
+    "size_lstat_bytes": 4096,
+    "recursive_size_bytes": 7206,
+    "file_count": 11,
+    "mtime_utc": "2026-06-13T11:29:52Z",
+    "sha256": null
+  },
+  "refs": {
+    "process_refs": [],
+    "docker_mount_refs": [],
+    "findmnt": {
+      "cmd": "findmnt -T \"/opt/crypto-tuber-ranked/.tmp/transcript-canary\" -o TARGET,SOURCE,FSTYPE -n 2>/dev/null || true",
+      "rc": 0,
+      "stdout": "/      /dev/sda1 ext4\n",
+      "stderr": ""
+    }
+  },
+  "command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/transcript-canary\"",
+  "command_rc": 0,
+  "stderr": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/transcript-canary",
+    "exists": false
+  },
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131517280256,
+    "free_bytes": 29452963840,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571499,
+    "inode_free": 7160997,
+    "inode_used_percent": 26.42
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131517247488,
+    "free_bytes": 29452996608,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571487,
+    "inode_free": 7161009,
+    "inode_used_percent": 26.42
+  },
+  "recovered_bytes": 32768
+}

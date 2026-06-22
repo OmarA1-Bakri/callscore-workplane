@@ -1,0 +1,33 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:26Z",
+  "providers": {
+    "ytdlp_pot_provider": {
+      "status": {
+        "status": "ok",
+        "http_status": 200
+      },
+      "owner": "crypto-tuber-ranked singleton",
+      "mutation": false
+    },
+    "composio": {
+      "classification": "canonical_bridge_for_provider_automation",
+      "status": "not_called_in_prompt_6_to_avoid_secret_use"
+    },
+    "netlify": {
+      "classification": "approved_direct_backup_route_for_website_hosting",
+      "mutation": false
+    },
+    "whop": {
+      "classification": "runtime auth/webhooks/entitlements may remain direct; automation via Composio unless approved",
+      "mutation": false
+    },
+    "attio": {
+      "classification": "provider automation via Composio; no direct mutation",
+      "mutation": false
+    },
+    "posthog": {
+      "classification": "analytics/front-end classification pending; no mutation",
+      "mutation": false
+    }
+  }
+}

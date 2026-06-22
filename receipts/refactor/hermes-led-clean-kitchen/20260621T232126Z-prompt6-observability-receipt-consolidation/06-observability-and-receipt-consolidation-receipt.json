@@ -1,0 +1,180 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:32Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T232126Z-prompt6-observability-receipt-consolidation",
+  "phase": "prompt_6_observability_and_receipt_consolidation",
+  "status": "completed",
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/06-observability-and-receipt-consolidation.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/agent-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/db-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/disk-cleanup-status.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/docker-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/last-known-good.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/pipeline-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/prompt6-verification.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/provider-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/receipt-index.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/repo-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/scheduler-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/service-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/receipt-consolidation-report.md"
+  ],
+  "no_env_contents_read": true,
+  "no_env_files_modified": true,
+  "no_db_mutation": true,
+  "db_read_only_status": "ok",
+  "no_docker_restart": true,
+  "no_provider_mutation": true,
+  "verification": {
+    "timestamp_utc": "2026-06-21T23:21:32Z",
+    "json_validation": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/scheduler-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/service-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/repo-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/agent-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/docker-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/last-known-good.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/disk-cleanup-status.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/provider-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/db-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/receipt-index.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/pipeline-health.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-inventory.json",
+        "valid": true
+      }
+    ],
+    "runtime": {
+      "docker_ps": {
+        "args": [
+          "docker",
+          "ps",
+          "--format",
+          "table {{.Names}}\t{{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 24 hours\nwhop-auto-channel-agent-worker-1           Up 24 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 24 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 24 hours (healthy)\nhh-oauth-mcp-gateway                       Up 12 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+        "stderr": ""
+      },
+      "provider_ping_4416": {
+        "status": "ok",
+        "http_status": 200
+      },
+      "disk": {
+        "df_B1": {
+          "args": [
+            "df",
+            "-B1",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 124942172160 29428781056  81% /\n",
+          "stderr": ""
+        },
+        "df_h": {
+          "args": [
+            "df",
+            "-h",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  117G   28G  81% /\n",
+          "stderr": ""
+        },
+        "df_i": {
+          "args": [
+            "df",
+            "-i",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2572401 7160095   27% /\n",
+          "stderr": ""
+        },
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 124942172160,
+        "free_bytes": 29428781056,
+        "used_percent": 81,
+        "inode_total": 9732496,
+        "inode_used": 2572401,
+        "inode_free": 7160095,
+        "inode_used_percent": 27
+      },
+      "protected_paths": [
+        {
+          "path": "/opt/crypto-tuber-ranked",
+          "exists": true,
+          "is_file": false,
+          "is_dir": true,
+          "size_bytes": 3044869044,
+          "file_count": 49231,
+          "mode": "0o775",
+          "mtime_utc": "2026-06-21T22:34:16Z"
+        },
+        {
+          "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 4382,
+          "file_count": 1,
+          "mode": "0o664",
+          "mtime_utc": "2026-06-20T23:37:30Z"
+        },
+        {
+          "path": "/opt/callscore/secrets/youtube-cookies.txt",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 22892,
+          "file_count": 1,
+          "mode": "0o600",
+          "mtime_utc": "2026-06-21T03:21:02Z"
+        }
+      ]
+    },
+    "artifact_safety_scan": {
+      "unsafe_raw_secret_assignment_files": [],
+      "safe_redacted_placeholder_files_count": 4
+    },
+    "db_mutation": false,
+    "docker_restart": false,
+    "provider_mutation": false,
+    "env_files_touched": false,
+    "status": "pass"
+  }
+}

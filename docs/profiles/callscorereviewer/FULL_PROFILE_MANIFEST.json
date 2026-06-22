@@ -1,0 +1,27 @@
+{
+  "profile_id": "callscorereviewer",
+  "runtime_profile": "callscorereviewer",
+  "mission": "Review claims, state, receipts, tests, and runtime evidence before phase completion.",
+  "agents": [
+    "callscore-reviewer-head",
+    "callscore-trust-head"
+  ],
+  "tools": [
+    "receipt diff",
+    "test logs",
+    "runtime health",
+    "master-state review",
+    "evidence packets"
+  ],
+  "gates": [
+    "no_rubber_stamp",
+    "evidence_required",
+    "state_consistency_required"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-reviewer-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-trust-head"
+  ]
+}

@@ -1,0 +1,5 @@
+timestamp_quarantined_utc=2026-06-22T10:03:04Z
+quarantine_sizes:
+7.3G	/tmp/cleanup-rollback-chunk3/srv/whop-auto/workspace
+1.7G	/tmp/cleanup-rollback-chunk3/opt/crypto-tuber-ranked/.tmp/prod-rollout
+df_after_quarantine=/dev/sda1       150G   97G   48G  68% /

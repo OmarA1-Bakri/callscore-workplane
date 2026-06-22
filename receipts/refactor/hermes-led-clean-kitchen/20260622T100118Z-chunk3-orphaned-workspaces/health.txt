@@ -1,0 +1,20 @@
+timestamp_health_utc=2026-06-22T10:03:31Z
+ytdlp_ping:
+OK 200
+docker_ps:
+NAMES                                      STATUS
+whop-auto-hermes-worker-1                  Up 34 hours
+whop-auto-channel-agent-worker-1           Up 34 hours
+crypto-tuber-ranked-hermes-worker-1        Up 35 hours
+crypto-tuber-ranked-ytdlp-pot-provider-1   Up 35 hours (healthy)
+hh-oauth-mcp-gateway                       Up 13 days
+hermes-whop-automation-tunnel              Up 2 weeks
+ytdlp_inspect:
+state=running health=healthy
+expected_container_names:
+crypto-tuber-ranked-hermes-worker-1
+crypto-tuber-ranked-ytdlp-pot-provider-1
+hermes-whop-automation-tunnel
+hh-oauth-mcp-gateway
+whop-auto-channel-agent-worker-1
+whop-auto-hermes-worker-1

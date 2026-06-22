@@ -1,0 +1,115 @@
+{
+  "timestamp_utc": "2026-06-21T19:58:41Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification",
+  "mission": "prompt3-active-runtime-simplification-remove-duplicate-ytdlp-provider",
+  "forbidden_commands_used": {
+    "docker_compose_down": false,
+    "compose_edit": false,
+    "db_mutation": false,
+    "deploy": false
+  },
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 130988052480,
+    "free_bytes": 29982191616,
+    "used_percent": 81.37,
+    "inode_total": 9732496,
+    "inode_used": 2566394,
+    "inode_free": 7166102,
+    "inode_used_percent": 26.37
+  },
+  "disk_after": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 130987823104,
+    "free_bytes": 29982420992,
+    "used_percent": 81.37,
+    "inode_total": 9732496,
+    "inode_used": 2566371,
+    "inode_free": 7166125,
+    "inode_used_percent": 26.37
+  },
+  "inode_before": {
+    "inode_total": 9732496,
+    "inode_used": 2566394,
+    "inode_free": 7166102,
+    "inode_used_percent": 26.37
+  },
+  "inode_after": {
+    "inode_total": 9732496,
+    "inode_used": 2566371,
+    "inode_free": 7166125,
+    "inode_used_percent": 26.37
+  },
+  "required_proof": {
+    "proof": {
+      "broken_exists": true,
+      "broken_restarting_or_unhealthy": true,
+      "broken_project_whop_auto": true,
+      "broken_service_ytdlp": true,
+      "broken_config_file": true,
+      "healthy_exists": true,
+      "healthy_running_healthy": true,
+      "healthy_project_crypto": true,
+      "healthy_service_ytdlp": true,
+      "healthy_config_file": true,
+      "port_4416_reachable": true,
+      "no_healthy_container_depends_on_broken_instance": true,
+      "dependency_findings": [],
+      "emergency_halt_checks_clear": true
+    },
+    "passed": true,
+    "failed": []
+  },
+  "removal": {
+    "attempted": true,
+    "commands": [
+      {
+        "command_used": "docker stop whop-auto-ytdlp-pot-provider-1",
+        "return_code": 0,
+        "stdout": "whop-auto-ytdlp-pot-provider-1\n",
+        "stderr": ""
+      },
+      {
+        "command_used": "docker rm whop-auto-ytdlp-pot-provider-1",
+        "return_code": 0,
+        "stdout": "whop-auto-ytdlp-pot-provider-1\n",
+        "stderr": ""
+      }
+    ],
+    "reason": null
+  },
+  "post_checks": {
+    "broken_absent": true,
+    "healthy_provider_running_healthy": true,
+    "whop_auto_hermes_worker_running": true,
+    "whop_auto_channel_agent_worker_running": true,
+    "crypto_hermes_worker_running": true,
+    "ping_4416_ok": true,
+    "runtime_secret_exists": true,
+    "active_compose_exists": true,
+    "disk_inode_safe": true,
+    "no_new_restart_loops": true,
+    "inspection_bug_corrected": true,
+    "initial_emergency_log_false_positive": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+    "false_positive_reason": "post-removal script used docker inspect with the intentionally removed container; docker inspect returned non-zero for the whole batch, causing existing healthy containers to be treated as missing",
+    "all_success": true
+  },
+  "baseline_artifact": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/baseline-before.json",
+  "post_verification_artifact": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/post-removal-verification-corrected.json",
+  "initial_emergency_log": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+  "initial_emergency_log_resolution": "false_positive_verification_bug_corrected; direct docker ps/inspect confirms no actual emergency halt condition",
+  "emergency_halt_status": {
+    "halted": false,
+    "false_positive_log_created": true
+  },
+  "protected_paths_touched": false,
+  "active_runtime_cache_deleted": false,
+  "follow_up_architecture_fix_required": true,
+  "follow_up_options": [
+    "split compose project services",
+    "add whop-auto override that excludes ytdlp-pot-provider",
+    "ensure only one compose project owns singleton port-4416 provider"
+  ]
+}

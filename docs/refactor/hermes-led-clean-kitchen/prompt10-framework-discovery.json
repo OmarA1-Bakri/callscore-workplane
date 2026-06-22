@@ -1,0 +1,509 @@
+{
+  "timestamp_utc": "2026-06-22T16:50:15Z",
+  "root": "/opt/crypto-tuber-ranked",
+  "package_framework_deps": {
+    "zod": "^4.4.3"
+  },
+  "python_framework_deps": [],
+  "zod_matches": [
+    {
+      "path": "/opt/crypto-tuber-ranked/package.json",
+      "rel": "package.json",
+      "matches": [
+        {
+          "line": 92,
+          "text": "\"zod\": \"^4.4.3\""
+        }
+      ],
+      "bytes": 6526
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/package-lock.json",
+      "rel": "package-lock.json",
+      "matches": [
+        {
+          "line": 25,
+          "text": "\"zod\": \"^4.4.3\""
+        },
+        {
+          "line": 7397,
+          "text": "\"node_modules/zod\": {"
+        },
+        {
+          "line": 7399,
+          "text": "\"resolved\": \"https://registry.npmjs.org/zod/-/zod-4.4.3.tgz\","
+        }
+      ],
+      "bytes": 270394
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.netlify/functions-internal/___netlify-server-handler/package.json",
+      "rel": ".netlify/functions-internal/___netlify-server-handler/package.json",
+      "matches": [
+        {
+          "line": 85,
+          "text": "\"zod\": \"^4.4.3\""
+        }
+      ],
+      "bytes": 5854
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/tests/autonomy-contracts.test.ts",
+      "rel": "tests/autonomy-contracts.test.ts",
+      "matches": [
+        {
+          "line": 270,
+          "text": "test(\"autonomy Zod schemas validate canonical good fixtures\", () => {"
+        }
+      ],
+      "bytes": 15560
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/tests/api-routes.test.ts",
+      "rel": "tests/api-routes.test.ts",
+      "matches": [
+        {
+          "line": 139,
+          "text": "test(\"mutable API inputs use Zod safeParse validation\", () => {"
+        },
+        {
+          "line": 143,
+          "text": "assert.match(feedbackRoute, /from [\"']zod[\"']/);"
+        },
+        {
+          "line": 145,
+          "text": "assert.match(backtestRoute, /from [\"']zod[\"']/);"
+        }
+      ],
+      "bytes": 8272
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/src/app/api/feedback/route.ts",
+      "rel": "src/app/api/feedback/route.ts",
+      "matches": [
+        {
+          "line": 2,
+          "text": "import { z } from \"zod\";"
+        },
+        {
+          "line": 33,
+          "text": "const feedbackPayloadSchema = z.object({"
+        }
+      ],
+      "bytes": 3819
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/src/app/api/backtest/route.ts",
+      "rel": "src/app/api/backtest/route.ts",
+      "matches": [
+        {
+          "line": 3,
+          "text": "import { z } from \"zod\";"
+        },
+        {
+          "line": 32,
+          "text": "const portfolioQuerySchema = z.object({"
+        },
+        {
+          "line": 33,
+          "text": "creatorIds: z.array(z.number().int().positive()).min(1),"
+        },
+        {
+          "line": 37,
+          "text": "strategy: z.preprocess((value) => (value === \"\" ? null : value), z.enum(BACKTEST_STRATEGIES).nullable()),"
+        },
+        {
+          "line": 40,
+          "text": "z.enum([\"equal_call\", \"equal_creator\", \"alpha_score\", \"rank_tier\"]).nullable(),"
+        },
+        {
+          "line": 44,
+          "text": "z.enum([\"btc\", \"eth\", \"btc_eth_50\"]).nullable(),"
+        }
+      ],
+      "bytes": 6175
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/src/lib/api-schemas.ts",
+      "rel": "src/lib/api-schemas.ts",
+      "matches": [
+        {
+          "line": 1,
+          "text": "import { z } from \"zod\";"
+        },
+        {
+          "line": 17,
+          "text": "export const tierSchema = z.enum([\"free\", \"pro\", \"alpha\"]) satisfies z.ZodType<Tier>;"
+        },
+        {
+          "line": 18,
+          "text": "export const periodSchema = z.enum([\"all_time\", \"12m\", \"90d\", \"30d\"]) satisfies z.ZodType<Period>;"
+        },
+        {
+          "line": 19,
+          "text": "export const directionSchema = z.enum([\"bullish\", \"bearish\", \"neutral\"]) satisfies z.ZodType<Direction>;"
+        },
+        {
+          "line": 22,
+          "text": "export const creatorRowSchema = z.object({"
+        },
+        {
+          "line": 39,
+          "text": "export const creatorStatsRowSchema = z.object({"
+        },
+        {
+          "line": 66,
+          "text": "export const callRowSchema = z.object({"
+        },
+        {
+          "line": 105,
+          "text": "export const consensusSignalRowSchema = z.object({"
+        }
+      ],
+      "bytes": 5831
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/src/lib/autonomy/contracts.ts",
+      "rel": "src/lib/autonomy/contracts.ts",
+      "matches": [
+        {
+          "line": 1,
+          "text": "import { z } from \"zod\";"
+        },
+        {
+          "line": 8,
+          "text": "export const RestrictedGateSchema = z.enum(["
+        },
+        {
+          "line": 18,
+          "text": "export const RiskClassSchema = z.enum(["
+        },
+        {
+          "line": 28,
+          "text": "export const ChannelHeadDecisionValueSchema = z.enum(["
+        },
+        {
+          "line": 36,
+          "text": "export const ChannelHeadActionTypeSchema = z.enum(["
+        },
+        {
+          "line": 50,
+          "text": "export const TrustDecisionValueSchema = z.enum([\"publish\", \"suppress\", \"review\"]);"
+        },
+        {
+          "line": 51,
+          "text": "export const EvidenceLevelSchema = z.enum([\"E0\", \"E1\", \"E2\", \"E3\", \"E4\", \"E5\"]);"
+        },
+        {
+          "line": 68,
+          "text": "export const ChannelHeadInputSnapshotSchema = z.object({"
+        }
+      ],
+      "bytes": 22034
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/frontend-design-spec.md",
+      "rel": "docs/frontend-design-spec.md",
+      "matches": [
+        {
+          "line": 14,
+          "text": "<REDACTED_SECRETISH_LINE>"
+        },
+        {
+          "line": 16,
+          "text": "<REDACTED_SECRETISH_LINE>"
+        },
+        {
+          "line": 2446,
+          "text": "| `zod` | Schema validation at API + URL boundaries | Required by global TS rules; canonical home for the URL-state schemas in \u00a712.11 and the API-layer types. |"
+        },
+        {
+          "line": 2467,
+          "text": "Build a typed `src/lib/api.ts` layer with Zod schemas (using the `zod` dep above) that the App Router routes call. Server components render skeletons; data flows via Suspense per \u00a712.13."
+        },
+        {
+          "line": 2546,
+          "text": "1. Add the new deps (\u00a712.4 deps list): `@radix-ui/react-popover`, `@radix-ui/react-dialog`, `@floating-ui/react`, `zod`, `clsx`. Optional: `nuqs` (URL state \u2014 see \u00a712.11)."
+        },
+        {
+          "line": 2603,
+          "text": "const tf = parseTimeframe(searchParams.tf); // Zod-validated"
+        },
+        {
+          "line": 2617,
+          "text": "import { z } from \"zod\";"
+        },
+        {
+          "line": 2622,
+          "text": "const tf = z.enum([\"7d\",\"30d\",\"90d\",\"YTD\",\"All\"]).default(\"90d\").catch(\"90d\");"
+        }
+      ],
+      "bytes": 214741
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/frontend-build-agent-prompt.md",
+      "rel": "docs/frontend-build-agent-prompt.md",
+      "matches": [
+        {
+          "line": 38,
+          "text": "zod"
+        },
+        {
+          "line": 60,
+          "text": "- \u00a712.11 URL state schema \u2014 Zod schemas with `.catch()` chains so invalid params don't throw"
+        },
+        {
+          "line": 257,
+          "text": "Build `src/lib/url-state.ts` with the Zod schemas + `parseParams` helper (\u00a712.11)."
+        },
+        {
+          "line": 333,
+          "text": "- **Do NOT hand-roll URL parsing.** Use `parseParams` + Zod schemas from `src/lib/url-state.ts`."
+        }
+      ],
+      "bytes": 20944
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+      "rel": "docs/hermes/DISCOVERY_REPORT.md",
+      "matches": [
+        {
+          "line": 224,
+          "text": "- Zod is present as a dependency."
+        }
+      ],
+      "bytes": 27878
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/ops/callscore-framework-boundary-spike.md",
+      "rel": "docs/ops/callscore-framework-boundary-spike.md",
+      "matches": [
+        {
+          "line": 1,
+          "text": "# CallScore Framework Boundary Spike: LangGraph, Zod, Pydantic/Instructor"
+        },
+        {
+          "line": 10,
+          "text": "Do not adopt LangGraph as a production CallScore control plane now. The production boundary should remain a native TypeScript state machine plus canonical Zod contracts, backed by the existing Workplane, Hermes, Kanban, "
+        },
+        {
+          "line": 12,
+          "text": "A LangGraph spike is acceptable only as an isolated agent-loop prototype when the question is specifically: can a graph-shaped loop improve channel-head reasoning, branching, or human-in-the-loop prototype ergonomics wit"
+        },
+        {
+          "line": 17,
+          "text": "- `package.json` uses Node 20, TypeScript, and `zod`; no `@langchain/langgraph`, `instructor`, or Python runtime dependency is present."
+        },
+        {
+          "line": 18,
+          "text": "- `tsconfig.json` has `strict: true`, matching Zod's TypeScript-first operating model."
+        },
+        {
+          "line": 19,
+          "text": "- `src/lib/autonomy/contracts.ts` now contains canonical Zod schemas for channel-head snapshots, actions, decisions, sentinel receipts, trust decisions, review items, and autonomy receipts."
+        },
+        {
+          "line": 21,
+          "text": "- `src/lib/api-schemas.ts` already uses Zod at API/data row boundaries."
+        },
+        {
+          "line": 22,
+          "text": "- `docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md` explicitly says Zod is canonical; Pydantic/Instructor is optional only at Python verifier/LLM sidecar boundaries; LangGraph is spike-"
+        }
+      ],
+      "bytes": 13458
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+      "rel": "docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+      "matches": [
+        {
+          "line": 7,
+          "text": "**Architecture:** Reuse the existing CallScore substrate first: Workplane gates, `pipeline_*`, workflow/artifact ledgers, migration `024-agent-autonomy-ledger.sql`, channel tasks, receipts, and the GTM registry. Add cano"
+        },
+        {
+          "line": 9,
+          "text": "**Tech stack:** TypeScript, Node 20, Zod v4, node:test, existing PostgreSQL-backed ledgers, existing Workplane/Hermes/channel task rails. Pydantic/Instructor is optional only at Python verifier/LLM sidecar boundaries; Ty"
+        },
+        {
+          "line": 35,
+          "text": "1. Zod is canonical for all TypeScript runtime contracts."
+        },
+        {
+          "line": 36,
+          "text": "2. Pydantic/Instructor may be used only inside Python verifier or LLM sidecar boundaries. Any sidecar output must be revalidated by TypeScript Zod before persistence, scoring, public visibility, or dispatch."
+        },
+        {
+          "line": 47,
+          "text": "- `src/lib/autonomy/contracts.ts` \u2014 canonical Zod schemas and inferred TypeScript types."
+        },
+        {
+          "line": 73,
+          "text": "## 3. Canonical Zod schemas to add"
+        },
+        {
+          "line": 78,
+          "text": "import { z } from \"zod\";"
+        },
+        {
+          "line": 85,
+          "text": "export const RestrictedGateSchema = z.enum(["
+        }
+      ],
+      "bytes": 38753
+    }
+  ],
+  "pydantic_matches": [
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/specialist-extraction-model-research.md",
+      "rel": "docs/specialist-extraction-model-research.md",
+      "matches": [
+        {
+          "line": 37,
+          "text": "- Pydantic-schema extraction"
+        },
+        {
+          "line": 50,
+          "text": "- pydantic: 2.13.3"
+        },
+        {
+          "line": 205,
+          "text": "Build `scripts/extract_calls_llamaindex.py` using Pydantic models:"
+        },
+        {
+          "line": 261,
+          "text": "2. LlamaIndex Pydantic extraction with strict evidence quotes."
+        }
+      ],
+      "bytes": 8376
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/ops/callscore-framework-boundary-spike.md",
+      "rel": "docs/ops/callscore-framework-boundary-spike.md",
+      "matches": [
+        {
+          "line": 1,
+          "text": "# CallScore Framework Boundary Spike: LangGraph, Zod, Pydantic/Instructor"
+        },
+        {
+          "line": 22,
+          "text": "- `docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md` explicitly says Zod is canonical; Pydantic/Instructor is optional only at Python verifier/LLM sidecar boundaries; LangGraph is spike-"
+        },
+        {
+          "line": 30,
+          "text": "- Instructor docs describe Python structured LLM outputs using Pydantic `response_model`, validation, retries, nested models, and provider abstraction."
+        },
+        {
+          "line": 39,
+          "text": "| Python Pydantic/Instructor sidecar | NOT BUILT for autonomy; RESEARCHED for extraction | Allowed for LLM extraction/verifier sidecars. Sidecar output is untrusted until TypeScript Zod revalidates it. |"
+        },
+        {
+          "line": 48,
+          "text": "| Python Pydantic/Instructor sidecar | LLM extraction, verifier research, model-quality experiments | Strong for structured LLM outputs; Pydantic response models, validation, retries, provider abstraction; fits existing "
+        },
+        {
+          "line": 109,
+          "text": "## Python Pydantic/Instructor sidecar boundary"
+        },
+        {
+          "line": 111,
+          "text": "Pydantic/Instructor is a good fit when the problem is structured LLM extraction or verifier research, not TypeScript runtime authority."
+        },
+        {
+          "line": 127,
+          "text": "- Pydantic can improve model-facing schema quality."
+        }
+      ],
+      "bytes": 13458
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+      "rel": "docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+      "matches": [
+        {
+          "line": 9,
+          "text": "**Tech stack:** TypeScript, Node 20, Zod v4, node:test, existing PostgreSQL-backed ledgers, existing Workplane/Hermes/channel task rails. Pydantic/Instructor is optional only at Python verifier/LLM sidecar boundaries; Ty"
+        },
+        {
+          "line": 36,
+          "text": "2. Pydantic/Instructor may be used only inside Python verifier or LLM sidecar boundaries. Any sidecar output must be revalidated by TypeScript Zod before persistence, scoring, public visibility, or dispatch."
+        }
+      ],
+      "bytes": 38753
+    }
+  ],
+  "langgraph_matches": [
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/ops/callscore-framework-boundary-spike.md",
+      "rel": "docs/ops/callscore-framework-boundary-spike.md",
+      "matches": [
+        {
+          "line": 1,
+          "text": "# CallScore Framework Boundary Spike: LangGraph, Zod, Pydantic/Instructor"
+        },
+        {
+          "line": 8,
+          "text": "Recommendation: use LangGraph only for agent-loop prototype."
+        },
+        {
+          "line": 10,
+          "text": "Do not adopt LangGraph as a production CallScore control plane now. The production boundary should remain a native TypeScript state machine plus canonical Zod contracts, backed by the existing Workplane, Hermes, Kanban, "
+        },
+        {
+          "line": 12,
+          "text": "A LangGraph spike is acceptable only as an isolated agent-loop prototype when the question is specifically: can a graph-shaped loop improve channel-head reasoning, branching, or human-in-the-loop prototype ergonomics wit"
+        },
+        {
+          "line": 17,
+          "text": "- `package.json` uses Node 20, TypeScript, and `zod`; no `@langchain/langgraph`, `instructor`, or Python runtime dependency is present."
+        },
+        {
+          "line": 22,
+          "text": "- `docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md` explicitly says Zod is canonical; Pydantic/Instructor is optional only at Python verifier/LLM sidecar boundaries; LangGraph is spike-"
+        },
+        {
+          "line": 28,
+          "text": "- LangGraph docs describe LangGraph as a low-level orchestration framework/runtime for long-running stateful agents with graphs, nodes, edges, durable execution, persistence, human-in-the-loop support, checkpointers, sto"
+        },
+        {
+          "line": 29,
+          "text": "- LangGraph docs also note node re-execution/idempotency considerations when checkpointed execution resumes."
+        }
+      ],
+      "bytes": 13458
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+      "rel": "docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+      "matches": [
+        {
+          "line": 30,
+          "text": "| LangGraph control plane | NOT BUILT / SPIKE ONLY | N/A | LangGraph is not canonical. It may be spiked only if it reduces node orchestration complexity without creating a second control plane or bypassing Workplane/ledg"
+        },
+        {
+          "line": 37,
+          "text": "3. LangGraph is spike-only unless a short proof shows it improves orchestration without creating a second control plane, second event ledger, second gate system, or bypass around Workplane/Hermes."
+        }
+      ],
+      "bytes": 38753
+    }
+  ],
+  "framework_experiment_candidates": [
+    {
+      "path": "/opt/crypto-tuber-ranked/.netlify/static/_next/static/chunks/framework-e9384f6a6720bcd2.js",
+      "type": "file",
+      "bytes": 189787
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/ops/callscore-framework-boundary-spike.md",
+      "type": "file",
+      "bytes": 13458
+    }
+  ],
+  "counts": {
+    "zod_files": 14,
+    "pydantic_files": 3,
+    "langgraph_files": 2,
+    "experiment_candidates": 2
+  }
+}

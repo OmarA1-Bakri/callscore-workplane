@@ -1,0 +1,13 @@
+--- active/src/app/api/feedback/route.ts
++++ pre-canonical-20260526T063909Z/src/app/api/feedback/route.ts
+@@ -109,10 +109,6 @@
+       );
+     } catch (error: unknown) {
+       void captureApiException(error, "/api/feedback", { stage: "persist" });
+-      return NextResponse.json(
+-        { success: false, error: "Failed to persist feedback." },
+-        { status: 500 },
+-      );
+     }
+ 
+     return NextResponse.json({ success: true });

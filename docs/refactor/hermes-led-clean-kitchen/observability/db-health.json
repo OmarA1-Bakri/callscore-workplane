@@ -1,0 +1,442 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:26Z",
+  "status": "ok",
+  "tables": {
+    "agent_heartbeats": {
+      "exists": true,
+      "count": 696,
+      "columns": [
+        "id",
+        "heartbeat_id",
+        "agent_id",
+        "schema_version",
+        "mode",
+        "autonomy_mode",
+        "soul_version",
+        "policy_version",
+        "lease_expires_at",
+        "inputs_read",
+        "decisions",
+        "actions_taken",
+        "receipts",
+        "memory_delta",
+        "blockers",
+        "metrics",
+        "next_wake_at",
+        "stop_state",
+        "created_at"
+      ],
+      "groups": [
+        {
+          "agent_id": "callscore-artofwar-strategist",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-compliance-linter-head",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-email-partnership-drafts-head",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-x-linkedin-growth-head",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-whop-commerce-head",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-opportunity-research-head",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-data-pipeline-sentinel",
+          "count": 87
+        },
+        {
+          "agent_id": "callscore-community-drops-head",
+          "count": 87
+        }
+      ]
+    },
+    "channel_tasks": {
+      "exists": true,
+      "count": 600,
+      "columns": [
+        "id",
+        "agent_id",
+        "channel_id",
+        "task_type",
+        "status",
+        "priority",
+        "run_after",
+        "attempts",
+        "max_attempts",
+        "payload_hash",
+        "payload",
+        "receipt_uri",
+        "blocker",
+        "created_at",
+        "updated_at"
+      ],
+      "groups": [
+        {
+          "agent_id": "callscore-artofwar-strategist",
+          "task_type": "artofwar_campaign_dossier",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-whop-commerce-head",
+          "task_type": "whop_copy_asset_and_read_only_health",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-compliance-linter-head",
+          "task_type": "compliance_lint_gate",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-data-pipeline-sentinel",
+          "task_type": "data_pipeline_freshness_sentinel",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-x-linkedin-growth-head",
+          "task_type": "owned_social_draft_and_monitor",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-email-partnership-drafts-head",
+          "task_type": "email_partnership_draft_packet_only",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-opportunity-research-head",
+          "task_type": "opportunity_research_brief",
+          "count": 75
+        },
+        {
+          "agent_id": "callscore-community-drops-head",
+          "task_type": "owned_community_draft_and_monitor",
+          "count": 75
+        }
+      ]
+    },
+    "pipeline_jobs": {
+      "exists": true,
+      "count": 831,
+      "columns": [
+        "id",
+        "run_id",
+        "type",
+        "status",
+        "priority",
+        "payload",
+        "attempts",
+        "max_attempts",
+        "locked_by",
+        "locked_at",
+        "run_after",
+        "error",
+        "created_at",
+        "updated_at",
+        "heartbeat_at",
+        "lease_expires_at",
+        "phase",
+        "metrics"
+      ],
+      "groups": [
+        {
+          "type": "candle_refresh",
+          "status": "succeeded",
+          "count": 744
+        },
+        {
+          "type": "match_prices_batch",
+          "status": "succeeded",
+          "count": 17
+        },
+        {
+          "type": "compute_scores",
+          "status": "succeeded",
+          "count": 16
+        },
+        {
+          "type": "transcript_collect_laptop",
+          "status": "failed",
+          "count": 6
+        },
+        {
+          "type": "whop_provider_health",
+          "status": "succeeded",
+          "count": 6
+        },
+        {
+          "type": "whop_plan_inventory_check",
+          "status": "succeeded",
+          "count": 5
+        },
+        {
+          "type": "artofwar_content_queue_dry_run",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "artofwar_campaign_plan_generate",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "automation_activation_review",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "whop_activation_review",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "artofwar_strategy_brief",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "artofwar_campaign_receipt",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "automation_health_check",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "transcript_collect_laptop",
+          "status": "succeeded",
+          "count": 3
+        },
+        {
+          "type": "ml_verifier_batch",
+          "status": "succeeded",
+          "count": 3
+        },
+        {
+          "type": "hermes_smoke_test",
+          "status": "succeeded",
+          "count": 2
+        },
+        {
+          "type": "ml_verifier_batch",
+          "status": "failed",
+          "count": 1
+        }
+      ]
+    },
+    "pipeline_runs": {
+      "exists": true,
+      "count": 852,
+      "columns": [
+        "id",
+        "type",
+        "status",
+        "started_at",
+        "finished_at",
+        "metrics",
+        "created_at",
+        "updated_at"
+      ],
+      "groups": [
+        {
+          "type": "candle-refresh",
+          "status": "succeeded",
+          "count": 744
+        },
+        {
+          "type": "leaderboard_sentinel",
+          "status": "succeeded",
+          "count": 21
+        },
+        {
+          "type": "match-prices-batch",
+          "status": "succeeded",
+          "count": 16
+        },
+        {
+          "type": "compute-scores",
+          "status": "succeeded",
+          "count": 16
+        },
+        {
+          "type": "workplane-whop_provider_health",
+          "status": "succeeded",
+          "count": 6
+        },
+        {
+          "type": "workplane-transcript_collect_laptop",
+          "status": "failed",
+          "count": 6
+        },
+        {
+          "type": "workplane-whop_plan_inventory_check",
+          "status": "succeeded",
+          "count": 5
+        },
+        {
+          "type": "workplane-whop_activation_review",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-artofwar_strategy_brief",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-artofwar_content_queue_dry_run",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-artofwar_campaign_plan_generate",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-automation_activation_review",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-artofwar_campaign_receipt",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-automation_health_check",
+          "status": "succeeded",
+          "count": 4
+        },
+        {
+          "type": "workplane-transcript_collect_laptop",
+          "status": "succeeded",
+          "count": 3
+        },
+        {
+          "type": "ml-verifier-quality-gate",
+          "status": "succeeded",
+          "count": 2
+        },
+        {
+          "type": "hermes-smoke-test",
+          "status": "succeeded",
+          "count": 2
+        },
+        {
+          "type": "manual-recovery-match-prices",
+          "status": "succeeded",
+          "count": 1
+        },
+        {
+          "type": "ml-verifier-quality-gate",
+          "status": "running",
+          "count": 1
+        },
+        {
+          "type": "nightly-ml-verifier",
+          "status": "succeeded",
+          "count": 1
+        }
+      ]
+    },
+    "workflow_runs": {
+      "exists": true,
+      "count": 7,
+      "columns": [
+        "id",
+        "workflow_name",
+        "entity_type",
+        "entity_id",
+        "status",
+        "started_at",
+        "completed_at",
+        "triggered_by",
+        "total_cost_usd",
+        "pipeline_run_id",
+        "metadata",
+        "created_at",
+        "updated_at"
+      ],
+      "groups": [
+        {
+          "status": "completed",
+          "count": 6
+        },
+        {
+          "status": "failed",
+          "count": 1
+        }
+      ]
+    },
+    "workflow_events": {
+      "exists": true,
+      "count": 162,
+      "columns": [
+        "id",
+        "workflow_run_id",
+        "node_run_id",
+        "event_type",
+        "detail",
+        "created_at"
+      ]
+    },
+    "autonomy_events": {
+      "exists": true,
+      "count": 1896,
+      "columns": [
+        "id",
+        "agent_id",
+        "event_type",
+        "detail",
+        "created_at"
+      ],
+      "groups": [
+        {
+          "agent_id": "callscore-artofwar-strategist",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-compliance-linter-head",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-email-partnership-drafts-head",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-x-linkedin-growth-head",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-whop-commerce-head",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-opportunity-research-head",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-data-pipeline-sentinel",
+          "count": 237
+        },
+        {
+          "agent_id": "callscore-community-drops-head",
+          "count": 237
+        }
+      ]
+    }
+  },
+  "policy": "read-only counts and safe columns only"
+}

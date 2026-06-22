@@ -1,0 +1,106 @@
+--- active/src/lib/public-serializer.ts
++++ pre-canonical-20260526T063909Z/src/lib/public-serializer.ts
+@@ -1,6 +1,5 @@
+ import { auditExtraction } from "./extraction-validation";
+ import { computeAlpha, computeReturn } from "./scoring";
+-import { hasAccess, normalizeTier } from "./whop";
+ import {
+   computePublicScoreComponents,
+   getCallScoreStatus,
+@@ -10,14 +9,13 @@
+   type PublicScoreComponents,
+ } from "./public-methodology";
+ import type { LiveCallPricingFields } from "./live-call-pricing";
+-import type { Call, Tier } from "./types";
++import type { Call } from "./types";
+ 
+ export type SerializableCallInput = Call & LiveCallPricingFields;
+ 
+ export interface SerializedCall extends Call {
+   readonly extraction_valid: boolean;
+   readonly extraction_notes: readonly string[];
+-  readonly validated_target_price: number | null;
+   readonly score_status: CallScoreStatus;
+   readonly public_score: number | null;
+   readonly public_score_components: PublicScoreComponents | null;
+@@ -25,8 +23,6 @@
+   readonly horizon_status_30d: HorizonStatus;
+   readonly horizon_status_90d: HorizonStatus;
+   readonly target_status: HorizonStatus;
+-  readonly target_required_tier: "pro" | null;
+-  readonly can_view_target_price: boolean;
+   readonly is_live_open: boolean;
+   readonly live_price: number | null;
+   readonly live_price_at: string | null;
+@@ -34,23 +30,6 @@
+   readonly live_alpha: number | null;
+   readonly btc_live_price: number | null;
+   readonly btc_live_price_at: string | null;
+-}
+-
+-export interface SerializeCallOptions {
+-  readonly now?: Date;
+-  readonly userTier?: Tier;
+-}
+-
+-function normalizeSerializeOptions(
+-  optionsOrNow: Date | SerializeCallOptions = {},
+-): Required<SerializeCallOptions> {
+-  if (optionsOrNow instanceof Date) {
+-    return { now: optionsOrNow, userTier: "free" };
+-  }
+-  return {
+-    now: optionsOrNow.now ?? new Date(),
+-    userTier: normalizeTier(optionsOrNow.userTier),
+-  };
+ }
+ 
+ export interface CreatorScoreAverages {
+@@ -65,13 +44,9 @@
+ 
+ export function serializeCall(
+   call: SerializableCallInput,
+-  optionsOrNow: Date | SerializeCallOptions = {},
++  now: Date = new Date(),
+ ): SerializedCall {
+-  const { now, userTier } = normalizeSerializeOptions(optionsOrNow);
+   const extraction = auditExtraction(call);
+-  const targetRequiredTier = call.target_price !== null ? "pro" : null;
+-  const canViewTargetPrice = hasAccess(userTier, "pro");
+-  const shouldHideTargetPrice = targetRequiredTier !== null && !canViewTargetPrice;
+   const scoreStatus = getCallScoreStatus(
+     {
+       extraction_confidence: call.extraction_confidence,
+@@ -110,11 +85,8 @@
+ 
+   return {
+     ...call,
+-    target_price: shouldHideTargetPrice ? null : call.target_price,
+-    raw_quote: shouldHideTargetPrice ? null : call.raw_quote,
+     extraction_valid: extraction.isValid,
+     extraction_notes: extraction.reasons,
+-    validated_target_price: shouldHideTargetPrice ? null : extraction.targetPrice,
+     score_status: scoreStatus,
+     public_score: components?.total ?? null,
+     public_score_components: components,
+@@ -137,8 +109,6 @@
+       call.target_price === null || call.hit_target !== null,
+       now,
+     ),
+-    target_required_tier: targetRequiredTier,
+-    can_view_target_price: canViewTargetPrice,
+     is_live_open:
+       scoreStatus === "pending_horizon" &&
+       call.price_at_call !== null &&
+@@ -154,9 +124,9 @@
+ 
+ export function serializeCalls(
+   calls: readonly SerializableCallInput[],
+-  optionsOrNow: Date | SerializeCallOptions = {},
++  now: Date = new Date(),
+ ): SerializedCall[] {
+-  return calls.map((call) => serializeCall(call, optionsOrNow));
++  return calls.map((call) => serializeCall(call, now));
+ }
+ 
+ export function getScoredCalls(

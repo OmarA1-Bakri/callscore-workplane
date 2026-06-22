@@ -1,0 +1,8 @@
+diff --git a/.serena/.gitignore b/.serena/.gitignore
+deleted file mode 100644
+index 32a4ef9..0000000
+--- a/.serena/.gitignore
++++ /dev/null
+@@ -1,2 +0,0 @@
+-/cache
+-/project.local.yml

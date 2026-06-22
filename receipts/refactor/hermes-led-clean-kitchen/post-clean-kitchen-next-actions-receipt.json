@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-06-22T18:12:23Z",
+  "phase": "post_clean_kitchen_canonical_next_actions",
+  "status": "completed_runtime_maintenance_and_verification_pending_git_commit",
+  "cmo_maintenance": {
+    "stopped_gateway": "callscorecmo stopped cleanly before duplicate replacement",
+    "replaced_exact_duplicate_skill_dirs": 49,
+    "blocked_count": 0,
+    "logical_duplicate_bytes_replaced": 2088737,
+    "result_file": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/post-clean-cmo-skill-maintenance-results.json",
+    "restarted_gateway_pid": 898027,
+    "composio_test": "connected in 2798ms; 7 tools discovered"
+  },
+  "runtime_verification": {
+    "heartbeat": "ok; agent_count=16; heartbeat_count=16; db_write_performed=false",
+    "targeted_tests": "82/82 passed",
+    "test_command": "npm run agents:heartbeat -- --dry-run && node --import tsx --test tests/callscore-agent-heartbeat.test.ts tests/autonomy-contracts.test.ts tests/channel-head-decision.test.ts tests/cmo-channel-head-integration.test.ts tests/ml-verifier.test.ts tests/video-intelligence-workflow.test.ts tests/ytdlp-singleton-wrapper.test.ts"
+  },
+  "backup_cleanup": {
+    "source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml.pre-full-agents-20260622T1607Z",
+    "capture": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/callscore-channel-head-souls-pre-full-agents-20260622T1607Z.captured.yaml",
+    "status": "captured_to_receipts_and_removed_from_runtime_repo"
+  },
+  "next_steps_remaining": [
+    "commit workplane artefacts",
+    "commit runtime checkpoint"
+  ]
+}

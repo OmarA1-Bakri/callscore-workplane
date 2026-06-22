@@ -1,0 +1,99 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "Methodology" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "Sign In" [ref=e12] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "Get Access" [ref=e13] [cursor=pointer]:
+            - /url: /pricing
+      - button "Open menu" [ref=e15]:
+        - img [ref=e16]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - generic [ref=e21]:
+        - paragraph [ref=e22]: Settings
+        - heading "Alerts" [level=1] [ref=e23]
+        - paragraph [ref=e24]: Watch ranked creators and inspect the outbound delivery queue.
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Session
+          - paragraph [ref=e28]: Locked
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: Plan
+          - paragraph [ref=e31]: Upgrade
+        - generic [ref=e32]:
+          - paragraph [ref=e33]: Surfaces
+          - paragraph [ref=e34]: Account / Billing / Delivery
+      - generic [ref=e35]:
+        - complementary "Settings navigation" [ref=e36]:
+          - navigation [ref=e37]:
+            - link "AccountBase" [ref=e38] [cursor=pointer]:
+              - /url: /settings/account
+            - link "BillingWhop" [ref=e39] [cursor=pointer]:
+              - /url: /settings/billing
+            - link "AlertsPro" [ref=e40] [cursor=pointer]:
+              - /url: /settings/alerts
+            - link "API KeysAlpha" [ref=e41] [cursor=pointer]:
+              - /url: /settings/api
+            - link "WebhooksAlpha" [ref=e42] [cursor=pointer]:
+              - /url: /settings/webhooks
+            - link "NotificationsPlanned" [ref=e43] [cursor=pointer]:
+              - /url: /settings/notifications
+            - link "TeamPlanned" [ref=e44] [cursor=pointer]:
+              - /url: /settings/team
+        - generic [ref=e46]:
+          - paragraph [ref=e47]: Sign in first to manage creator watchlists and alert delivery.
+          - link "Sign in" [ref=e48] [cursor=pointer]:
+            - /url: /api/auth/whop
+  - contentinfo [ref=e49]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - img "CallScore - Market calls, measured." [ref=e54]
+          - paragraph [ref=e55]: Market calls, measured.
+        - generic [ref=e56]:
+          - heading "Navigate" [level=2] [ref=e57]
+          - list [ref=e58]:
+            - listitem [ref=e59]:
+              - link "Leaderboard" [ref=e60] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e61]:
+              - link "Methodology" [ref=e62] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e63]:
+              - link "Pricing" [ref=e64] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e65]:
+              - link "Give Feedback" [ref=e66] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e67]:
+              - link "About" [ref=e68] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e69]:
+          - heading "Legal" [level=2] [ref=e70]
+          - list [ref=e71]:
+            - listitem [ref=e72]:
+              - link "Terms of Service" [ref=e73] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e74]:
+              - link "Privacy Policy" [ref=e75] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e76]:
+        - group [ref=e77]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e78]':
+            - strong [ref=e79]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e80]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e81] [cursor=pointer]:
+    - /url: /feedback
+    - text: "?Feedback"

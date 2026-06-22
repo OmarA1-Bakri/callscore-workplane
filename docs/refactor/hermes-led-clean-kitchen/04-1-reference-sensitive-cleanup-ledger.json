@@ -1,0 +1,189 @@
+{
+  "timestamp_utc": "2026-06-21T22:45:42Z",
+  "phase": "prompt_4_1_deferred_reference_sensitive_execution",
+  "policy": "small reference-sensitive temp paths acknowledged before deletion; no source/runtime/env files included",
+  "pretest": "npm test passed before execution; see prompt41-pretests log",
+  "candidates": [
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+      "original_reference_count": 2,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes-pipeline.md",
+        "/opt/crypto-tuber-ranked/tests/data-pipeline.test.ts"
+      ],
+      "size_bytes_current": 184379,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-slow-ytdlp-canary",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/freshness-certification.md"
+      ],
+      "size_bytes_current": 272,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md"
+      ],
+      "size_bytes_current": 144885,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-final",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md"
+      ],
+      "size_bytes_current": 156352,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase2",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_2_CONTROL_PLANE_REPORT.md"
+      ],
+      "size_bytes_current": 147359,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase3",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_3_ARTIFACT_CHAIN_REPORT.md"
+      ],
+      "size_bytes_current": 148114,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase4",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_4_WORKFLOW_RUNTIME_REPORT.md"
+      ],
+      "size_bytes_current": 151054,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase5",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_5_VIDEO_INTELLIGENCE_REPORT.md"
+      ],
+      "size_bytes_current": 14877,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase6",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_6_SCORING_BOUNDARY_REPORT.md"
+      ],
+      "size_bytes_current": 2062,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase7",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_7_OBSERVABILITY_REPORT.md"
+      ],
+      "size_bytes_current": 1609,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase8",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md"
+      ],
+      "size_bytes_current": 3296,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+      "original_reference_count": 2,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+        "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts"
+      ],
+      "size_bytes_current": 13255,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ml-idle-improve",
+      "original_reference_count": 6,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-loop-engineering-contract.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-controlled-autonomous-runtime-review.md",
+        "/opt/crypto-tuber-ranked/docs/system-index/pipeline-ledger.yaml",
+        "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts",
+        "/opt/crypto-tuber-ranked/tests/ml-idle-improve.test.ts"
+      ],
+      "size_bytes_current": 33072,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pipeline-audit",
+      "original_reference_count": 2,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+      ],
+      "size_bytes_current": 844,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/private-evidence",
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/whop-auto-certification.md"
+      ],
+      "size_bytes_current": 66479,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/reviews",
+      "original_reference_count": 8,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/current-pipeline-entrypoints.md",
+        "/opt/crypto-tuber-ranked/docs/frontend-design-spec.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-agentic-workplane-full-system.html",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-full-autonomy-heartbeat-contract.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-callscore-growth-intelligence-pack.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-controlled-autonomous-runtime-review.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-18-callscore-full-autonomy-channel-heads.md"
+      ],
+      "size_bytes_current": 311967,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultragoal",
+      "original_reference_count": 3,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+      ],
+      "size_bytes_current": 4281,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+      "original_reference_count": 3,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+      ],
+      "size_bytes_current": 3367,
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE"
+    }
+  ]
+}

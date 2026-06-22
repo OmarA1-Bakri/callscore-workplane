@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>a note from the maintainer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Caveat:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --base: #0E0E10;
+      --text: #E8E4DB;
+      --muted: #7A7468;
+      --accent: #C06438;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      background: var(--base);
+      color: var(--text);
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 22px;
+      line-height: 1.55;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+        monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: lowercase;
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ---------- Viewport 1: Hero ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      padding: 40px 56px 56px 56px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .stamp {
+      color: var(--accent);
+      opacity: 0.85;
+    }
+
+    .nav-mini {
+      color: var(--muted);
+      display: flex;
+      gap: 14px;
+    }
+
+    .nav-mini a {
+      transition: color 200ms ease;
+    }
+
+    .nav-mini a:hover {
+      color: var(--text);
+    }
+
+    .hero-body {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding-left: 2px;
+    }
+
+    .hero-line {
+      font-family: "Fraunces", Georgia, serif;
+      font-variation-settings: "opsz" 144;
+      font-weight: 400;
+      font-size: 120px;
+      line-height: 1.02;
+      letter-spacing: -0.035em;
+      color: var(--text);
+      max-width: 55vw;
+      text-align: left;
+    }
+
+    .hero-line .underline {
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .hero-line .underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0.04em;
+      height: 3px;
+      background: var(--accent);
+      opacity: 0.95;
+    }
+
+    .hero-foot {
+      display: flex;
+      justify-content: flex-end;
+      color: var(--muted);
+    }
+
+    /* ---------- Viewports 2+: Narrative ---------- */
+    .section {
+      padding: 160px 56px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .section h2 {
+      font-family: "Fraunces", Georgia, serif;
+      font-variation-settings: "opsz" 144;
+      font-weight: 400;
+      font-size: 56px;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      color: var(--text);
+      margin-bottom: 56px;
+    }
+
+    .section p {
+      margin-bottom: 28px;
+      color: var(--text);
+    }
+
+    .section p + p {
+      margin-top: 0;
+    }
+
+    .section p .mark {
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 1px;
+    }
+
+    /* ---------- Creed ---------- */
+    .creed {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .creed li {
+      font-family: "Fraunces", Georgia, serif;
+      font-variation-settings: "opsz" 72;
+      font-weight: 400;
+      font-size: 34px;
+      line-height: 1.3;
+      letter-spacing: -0.015em;
+      color: var(--text);
+      padding: 18px 0 18px 40px;
+      position: relative;
+      border-bottom: 1px solid rgba(122, 116, 104, 0.18);
+    }
+
+    .creed li:last-child {
+      border-bottom: none;
+    }
+
+    .creed li::before {
+      content: "\00b7";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-54%);
+      color: var(--accent);
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    /* ---------- Close ---------- */
+    .close {
+      padding: 180px 56px 220px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .close .tagline {
+      color: var(--text);
+      font-family: "Newsreader", Georgia, serif;
+      font-weight: 300;
+      font-size: 24px;
+      line-height: 1.5;
+      margin-bottom: 96px;
+      max-width: 620px;
+    }
+
+    .signature {
+      font-family: "Caveat", cursive;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .sig-date {
+      color: var(--muted);
+      margin-bottom: 80px;
+    }
+
+    .cta {
+      display: inline-block;
+      color: var(--text);
+      font-family: "Newsreader", Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      border-bottom: 1.5px solid var(--accent);
+      padding-bottom: 3px;
+      transition: color 200ms ease, border-color 200ms ease;
+    }
+
+    .cta:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .hero {
+        padding: 28px 22px 36px;
+      }
+      .hero-line {
+        font-size: 56px;
+        max-width: 100%;
+        letter-spacing: -0.03em;
+      }
+      .hero-top {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .nav-mini {
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .section {
+        padding: 90px 22px;
+      }
+      .section h2 {
+        font-size: 36px;
+        margin-bottom: 36px;
+      }
+      .section p {
+        font-size: 19px;
+      }
+      html,
+      body {
+        font-size: 19px;
+      }
+      .creed li {
+        font-size: 22px;
+        padding: 14px 0 14px 28px;
+      }
+      .creed li::before {
+        font-size: 34px;
+      }
+      .close {
+        padding: 100px 22px 140px;
+      }
+      .close .tagline {
+        font-size: 20px;
+        margin-bottom: 60px;
+      }
+      .signature {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- VIEWPORT 1: HERO -->
+  <section class="hero" aria-label="Opening">
+    <div class="hero-top">
+      <div class="mono stamp">a note from the maintainer &middot; apr 2026</div>
+      <nav class="mono nav-mini" aria-label="Primary">
+        <a href="#">rankings</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="#">sources</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="#">github</a>
+      </nav>
+    </div>
+
+    <div class="hero-body">
+      <h1 class="hero-line">
+        I lost <span class="underline">$11,400</span><br />
+        the month I started<br />
+        trusting YouTube.
+      </h1>
+    </div>
+
+    <div class="hero-foot">
+      <div class="mono">&darr; keep reading</div>
+    </div>
+  </section>
+
+  <!-- VIEWPORT 2: NARRATIVE -->
+  <section class="section" aria-label="What happened">
+    <h2>Here is what happened to me.</h2>
+    <p>
+      In October 2024 a creator I had been watching for months called a coin
+      he said was &ldquo;the asymmetric bet of the cycle.&rdquo; I did what the
+      comments section was doing. I bought at <span class="mark">$0.084</span>,
+      averaged up at $0.11, and told myself I was being disciplined by setting
+      a mental stop.
+    </p>
+    <p>
+      Four days later the chart did the thing charts do when someone paid for
+      a pump: straight up, flat, then a single red candle that ate the whole
+      move. I sold at $0.019. By the time I closed the position I was down
+      <span class="mark">$11,400</span> &mdash; most of what I had put aside
+      that year to pay estimated taxes.
+    </p>
+    <p>
+      The creator never mentioned the call again. The video stayed up. The
+      comments praising his &ldquo;conviction&rdquo; stayed up. I went looking
+      for a site that tracked this sort of thing and realized no such site
+      existed in a form I could trust. So I started building one, mostly out of
+      spite.
+    </p>
+  </section>
+
+  <!-- VIEWPORT 3: CREED -->
+  <section class="section" aria-label="Creed">
+    <h2>Here is what I will not do.</h2>
+    <ul class="creed">
+      <li>I will not charge creators.</li>
+      <li>I will not take sponsorships from tracked creators.</li>
+      <li>I will not hide methodology.</li>
+      <li>I will not hide my mistakes.</li>
+    </ul>
+  </section>
+
+  <!-- VIEWPORT 4: SIGN-OFF -->
+  <section class="close" aria-label="Sign-off">
+    <p class="tagline">
+      If I ever stop updating this, assume I sold out.
+    </p>
+    <div class="signature">&mdash; Alex</div>
+    <div class="mono sig-date">april 2026</div>
+    <a class="cta" href="#">see the rankings &rarr;</a>
+  </section>
+</body>
+</html>

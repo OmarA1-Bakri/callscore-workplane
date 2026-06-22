@@ -1,0 +1,37 @@
+{
+  "timestamp_utc": "2026-06-22T10:15:00Z",
+  "phase": "chunk5_hermes_caches",
+  "status": "completed",
+  "final_action": "quarantine_removed_after_health_pass",
+  "blacklist": "/srv/agents/repos/Claude_Code_Automations",
+  "blacklist_touched": false,
+  "targets": [
+    "/srv/agents/hermes/state-snapshots",
+    "/srv/agents/hermes/sessions"
+  ],
+  "rollback_dir": "/tmp/cleanup-rollback-chunk5",
+  "rollback_dir_exists_after_final_action": false,
+  "sizes_before_final_action": [
+    "1.4G /tmp/cleanup-rollback-chunk5/srv/agents/hermes/state-snapshots",
+    "541M /tmp/cleanup-rollback-chunk5/srv/agents/hermes/sessions"
+  ],
+  "estimated_size": "approximately 1.93G by du -sh entries",
+  "df_before": "150G total, 85G used, 59G free, 60% used",
+  "df_after": "150G total, 84G used, 61G free, 58% used",
+  "estimated_df_delta": "approximately 2G by df -h",
+  "health": {
+    "ping": "HTTP/1.1 200 OK",
+    "docker_runtime_containers": "all expected containers present",
+    "ytdlp_provider": "healthy",
+    "pass": true
+  },
+  "post_state": {
+    "/srv/agents/hermes/state-snapshots": "absent",
+    "/srv/agents/hermes/sessions": "recreated_as_4K_runtime_directory"
+  },
+  "transition_prepared": {
+    "primary_disk_cleanup_phase": "complete",
+    "next_stage": "state_model_update_for_hermes_side_composio_tooling",
+    "executed": false
+  }
+}

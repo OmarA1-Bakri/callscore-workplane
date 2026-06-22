@@ -1,0 +1,47 @@
+- generic [ref=e1] [box=0,0,380,6024]:
+  - banner [ref=e2] [box=0,0,380,85]:
+    - generic [ref=e4] [box=14,0,352,84]:
+      - link "CallScore home" [ref=e5] [cursor=pointer] [box=14,4,76,76]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6] [box=14,4,76,76]
+      - button "Close menu" [expanded] [active] [ref=e718] [cursor=pointer] [box=170,32,21,21]:
+        - img [ref=e719] [box=170,32,21,21]
+      - navigation "Mobile navigation" [ref=e722] [box=272,-58,94,200]:
+        - link "Leaderboard" [ref=e723] [cursor=pointer] [box=272,-58,94,32]:
+          - /url: /
+        - link "Methodology" [ref=e724] [cursor=pointer] [box=272,-19,94,32]:
+          - /url: /methodology
+        - link "Pricing" [ref=e725] [cursor=pointer] [box=272,19,94,32]:
+          - /url: /pricing
+        - link "Sign In" [ref=e726] [cursor=pointer] [box=272,58,94,32]:
+          - /url: /api/auth/whop
+        - link "Get Access" [ref=e727] [cursor=pointer] [box=272,96,94,32]:
+          - /url: /pricing
+  - main [ref=e14] [box=0,85,380,5250]:
+    - generic [ref=e15] [box=0,85,380,5250]:
+      - generic [ref=e16] [box=14,85,352,2251]:
+        - generic [ref=e17] [box=14,85,352,1480]
+        - generic [ref=e153] [box=15,1600,350,706]
+      - generic [ref=e190] [box=14,2336,352,610]:
+        - generic [ref=e191] [box=14,2379,352,150]
+        - list [ref=e197] [box=14,2557,352,348]
+      - generic [ref=e211] [box=14,2947,352,1969]:
+        - generic [ref=e212] [box=14,2990,352,150]
+        - generic [ref=e217] [box=14,3167,352,1706]
+      - generic [ref=e667] [box=14,4915,352,420]:
+        - generic [ref=e668] [box=14,4958,352,126]
+        - generic [ref=e673] [box=14,5112,352,181]
+  - contentinfo [ref=e681] [box=0,5335,380,688]:
+    - generic [ref=e682] [box=0,5336,380,688]:
+      - generic [ref=e683] [box=14,5378,352,406]:
+        - generic [ref=e684] [box=14,5378,352,112]
+        - generic [ref=e688] [box=14,5518,352,161]
+        - generic [ref=e701] [box=14,5707,352,77]
+      - generic [ref=e708] [box=14,5812,352,169]:
+        - paragraph [ref=e709] [box=14,5834,352,119]
+        - paragraph [ref=e711] [box=14,5968,352,14]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e712] [cursor=pointer] [box=261,789,98,34]:
+    - /url: /feedback
+    - generic [ref=e713] [box=273,797,8,18]: "?"
+    - generic [ref=e714] [box=287,797,60,18]: Feedback
+  - alert [ref=e715] [box=-1,-1,1,1]

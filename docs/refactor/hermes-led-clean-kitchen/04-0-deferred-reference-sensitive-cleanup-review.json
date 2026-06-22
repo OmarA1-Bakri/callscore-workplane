@@ -1,0 +1,794 @@
+{
+  "timestamp_utc": "2026-06-21T22:40:26Z",
+  "phase": "prompt_4_0_deferred_reference_sensitive_cleanup_review",
+  "status": "completed_review_only_no_deletion",
+  "baseline": {
+    "timestamp_utc": "2026-06-21T22:40:26Z",
+    "df_h": {
+      "args": [
+        "df",
+        "-h",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  117G   28G  81% /\n",
+      "stderr": ""
+    },
+    "df_i": {
+      "args": [
+        "df",
+        "-i",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2571498 7160998   27% /\n",
+      "stderr": ""
+    },
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 23 hours\nwhop-auto-channel-agent-worker-1           Up 23 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 24 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 24 hours (healthy)\nhh-oauth-mcp-gateway                       Up 12 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+      "stderr": ""
+    },
+    "provider_ping": {
+      "status": "ok",
+      "http_status": 200
+    },
+    "protected_paths": [
+      {
+        "path": "/opt/crypto-tuber-ranked",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "size_bytes": 3045354122,
+        "file_count": 49287,
+        "mtime_utc": "2026-06-21T22:34:16Z",
+        "mode_octal": "0o775"
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "size_bytes": 4382,
+        "file_count": 1,
+        "mtime_utc": "2026-06-20T23:37:30Z",
+        "mode_octal": "0o664"
+      },
+      {
+        "path": "/opt/callscore/secrets/youtube-cookies.txt",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "size_bytes": 22892,
+        "file_count": 1,
+        "mtime_utc": "2026-06-21T03:21:02Z",
+        "mode_octal": "0o600"
+      }
+    ],
+    "git_status": {
+      "args": [
+        "bash",
+        "-lc",
+        "cd /opt/crypto-tuber-ranked && git status --short"
+      ],
+      "rc": 0,
+      "stdout": " M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/ops/ytdlp-singleton-provider.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? scripts/start-whop-auto-workers.sh\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n?? tests/ytdlp-singleton-wrapper.test.ts\n",
+      "stderr": ""
+    }
+  },
+  "deferred_candidate_count": 25,
+  "classification_summary": {
+    "REFERENCE_SENSITIVE_DEFERRED": 1,
+    "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE": 18,
+    "DEFER_TO_GEMMA_TRANSCRIPT_PHASE": 2,
+    "BLOCKED_ACTIVE_REFERENCE": 3,
+    "DEFER_TO_OBSERVABILITY_PHASE": 1
+  },
+  "deferred_candidates": [
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily",
+      "exists_now": true,
+      "size_bytes_current": 2273469,
+      "file_count_current": 70,
+      "original_reference_count": 8,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/ops/freshness-certification.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-18-callscore-system-stabilization.md",
+        "/opt/crypto-tuber-ranked/docs/system-index/directory-ledger.yaml",
+        "/opt/crypto-tuber-ranked/docs/system-index/pipeline-ledger.yaml",
+        "/opt/crypto-tuber-ranked/docs/system-index/service-ledger.yaml",
+        "/opt/crypto-tuber-ranked/docs/system-index/system-map.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "REFERENCE_SENSITIVE_DEFERRED",
+      "recommendation": "manual_review_or_specialist_phase",
+      "rationale": [
+        "referenced or nontrivial size"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+      "exists_now": true,
+      "size_bytes_current": 184379,
+      "file_count_current": 20,
+      "original_reference_count": 2,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes-pipeline.md",
+        "/opt/crypto-tuber-ranked/tests/data-pipeline.test.ts"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-slow-ytdlp-canary",
+      "exists_now": true,
+      "size_bytes_current": 272,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/freshness-certification.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-slow-ytdlp-canary",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+      "exists_now": true,
+      "size_bytes_current": 144885,
+      "file_count_current": 2,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-final",
+      "exists_now": true,
+      "size_bytes_current": 156352,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-final",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase2",
+      "exists_now": true,
+      "size_bytes_current": 147359,
+      "file_count_current": 2,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_2_CONTROL_PLANE_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase2",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase3",
+      "exists_now": true,
+      "size_bytes_current": 148114,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_3_ARTIFACT_CHAIN_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase3",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase4",
+      "exists_now": true,
+      "size_bytes_current": 151054,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_4_WORKFLOW_RUNTIME_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase4",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase5",
+      "exists_now": true,
+      "size_bytes_current": 14877,
+      "file_count_current": 3,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_5_VIDEO_INTELLIGENCE_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase5",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase6",
+      "exists_now": true,
+      "size_bytes_current": 2062,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_6_SCORING_BOUNDARY_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase6",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase7",
+      "exists_now": true,
+      "size_bytes_current": 1609,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_7_OBSERVABILITY_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase7",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase8",
+      "exists_now": true,
+      "size_bytes_current": 3296,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase8",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/laptop-collector",
+      "exists_now": true,
+      "size_bytes_current": 5148,
+      "file_count_current": 1,
+      "original_reference_count": 11,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-fresh-call-sentinel.md",
+        "/opt/crypto-tuber-ranked/docs/ops/laptop-transcript-collector.md",
+        "/opt/crypto-tuber-ranked/docs/ops/workplane-readiness-audit.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-18-callscore-system-stabilization.md",
+        "/opt/crypto-tuber-ranked/docs/system-index/pipeline-ledger.yaml",
+        "/opt/crypto-tuber-ranked/docs/system-index/verification-ledger.yaml",
+        "/opt/crypto-tuber-ranked/scripts/windows/run-transcript-collector.ps1",
+        "/opt/crypto-tuber-ranked/tests/laptop-collector-script.test.ts",
+        "/opt/crypto-tuber-ranked/tests/workplane-jobs.test.ts"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/laptop-collector",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DEFER_TO_GEMMA_TRANSCRIPT_PHASE",
+      "recommendation": "review_in_gemma_pipeline_phase",
+      "rationale": [
+        "Gemma/transcript/local-backup sensitive"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/last30days",
+      "exists_now": true,
+      "size_bytes_current": 69925,
+      "file_count_current": 5,
+      "original_reference_count": 3,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-15-callscore-skill-gap-analysis.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-skill-register.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/last30days",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-19_17-10-14.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_16-28-33.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_19-19-08.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_21-18-18.md"
+        ]
+      },
+      "classification": "BLOCKED_ACTIVE_REFERENCE",
+      "recommendation": "do_not_delete",
+      "rationale": [
+        "active/system reference exists"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+      "exists_now": true,
+      "size_bytes_current": 13255,
+      "file_count_current": 3,
+      "original_reference_count": 2,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+        "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ml-idle-improve",
+      "exists_now": true,
+      "size_bytes_current": 33072,
+      "file_count_current": 9,
+      "original_reference_count": 6,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-loop-engineering-contract.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-controlled-autonomous-runtime-review.md",
+        "/opt/crypto-tuber-ranked/docs/system-index/pipeline-ledger.yaml",
+        "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts",
+        "/opt/crypto-tuber-ranked/tests/ml-idle-improve.test.ts"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/ml-idle-improve",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/observability",
+      "exists_now": true,
+      "size_bytes_current": 313658,
+      "file_count_current": 8,
+      "original_reference_count": 15,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/diagrams/pipeline-flow.excalidraw",
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_2_CONTROL_PLANE_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_3_ARTIFACT_CHAIN_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/PHASE_7_OBSERVABILITY_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/PRODUCTION_CONTROL_PLANE_ROLLOUT_RECEIPT.md",
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-15-callscore-skill-gap-analysis.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-framework-boundary-spike.md",
+        "/opt/crypto-tuber-ranked/docs/ops/whop-auto-certification.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-art-of-war-internal-planning.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/observability",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [
+          "/srv/agents/hermes/cron/jobs.json",
+          "/srv/agents/hermes/cron/output/ce8f8df11e3e/2026-06-21_06-06-13.md",
+          "/srv/agents/hermes/cron/output/ce8f8df11e3e/2026-06-21_12-15-04.md",
+          "/srv/agents/hermes/cron/output/ce8f8df11e3e/2026-06-21_00-04-29.md",
+          "/srv/agents/hermes/cron/output/ce8f8df11e3e/2026-06-21_18-01-09.md"
+        ]
+      },
+      "classification": "BLOCKED_ACTIVE_REFERENCE",
+      "recommendation": "do_not_delete",
+      "rationale": [
+        "active/system reference exists"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pipeline-audit",
+      "exists_now": true,
+      "size_bytes_current": 844,
+      "file_count_current": 1,
+      "original_reference_count": 2,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/pipeline-audit",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/private-evidence",
+      "exists_now": true,
+      "size_bytes_current": 66479,
+      "file_count_current": 1,
+      "original_reference_count": 1,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/ops/whop-auto-certification.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/private-evidence",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/reviews",
+      "exists_now": true,
+      "size_bytes_current": 311967,
+      "file_count_current": 19,
+      "original_reference_count": 8,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/current-pipeline-entrypoints.md",
+        "/opt/crypto-tuber-ranked/docs/frontend-design-spec.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-agentic-workplane-full-system.html",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-full-autonomy-heartbeat-contract.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-callscore-growth-intelligence-pack.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-controlled-autonomous-runtime-review.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-18-callscore-full-autonomy-channel-heads.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/reviews",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/shadow-extraction",
+      "exists_now": true,
+      "size_bytes_current": 168262,
+      "file_count_current": 57,
+      "original_reference_count": 13,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/gemma-production-shadow-sample-fullcover-20260613T155241Z.summary.json",
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/ml/call-extraction-eval.md",
+        "/opt/crypto-tuber-ranked/docs/ml/local-extractor-benchmark.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/system-index/pipeline-ledger.yaml",
+        "/opt/crypto-tuber-ranked/tests/data-pipeline.test.ts",
+        "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline-readiness.test.ts",
+        "/opt/crypto-tuber-ranked/tests/shadow-extraction.test.ts",
+        "/opt/crypto-tuber-ranked/tests/shadow-scripts.test.ts"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/shadow-extraction",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DEFER_TO_GEMMA_TRANSCRIPT_PHASE",
+      "recommendation": "review_in_gemma_pipeline_phase",
+      "rationale": [
+        "Gemma/transcript/local-backup sensitive"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultragoal",
+      "exists_now": true,
+      "size_bytes_current": 4281,
+      "file_count_current": 4,
+      "original_reference_count": 3,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/ultragoal",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+      "exists_now": true,
+      "size_bytes_current": 3367,
+      "file_count_current": 2,
+      "original_reference_count": 3,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+      "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+      "rationale": [
+        "small temp output; no active refs; references appear historical docs/tests"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts",
+      "exists_now": true,
+      "size_bytes_current": 2017603,
+      "file_count_current": 535,
+      "original_reference_count": 28,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/architecture/callscore-agentic-platform.mmd",
+        "/opt/crypto-tuber-ranked/docs/audits/gemma-production-shadow-sample-fullcover-20260613T155241Z.summary.json",
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-system-map.mmd",
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/FULL_AUTONOMOUS_BOUNDED_OWNED_GTM_RECEIPT.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/PRODUCTION_CONTROL_PLANE_ROLLOUT_RECEIPT.md",
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-14-full-system-live-canary-gate-decisions.md",
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-15-x-twitter-public-canary-approval-packet.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-agentic-workplane-full-system.html",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-fresh-call-sentinel.md"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [
+          "/srv/agents/hermes/cron/jobs.json",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_16-55-58.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_16-46-56.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-19_17-10-14.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_17-13-28.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-18_19-21-03.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_16-28-33.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_19-19-08.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-20_17-06-32.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_21-18-18.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_12-10-56.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_17-20-03.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-20_09-09-11.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_20-17-20.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_17-05-04.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-20_23-10-04.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_09-06-26.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-19_04-15-56.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-18_13-16-40.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_15-55-17.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-21_21-11-54.md",
+          "/srv/agents/hermes/cron/output/9c03a6eea969/2026-06-19_09-07-17.md",
+          "/srv/agents/hermes/cron/output/adf0644c9e8a/2026-06-18_21-32-22.md",
+          "/srv/agents/hermes/cron/output/144c3a9cc860/2026-06-21_17-05-17.md",
+          "/srv/agents/hermes/cron/output/144c3a9cc860/2026-06-21_17-13-31.md"
+        ]
+      },
+      "classification": "BLOCKED_ACTIVE_REFERENCE",
+      "recommendation": "do_not_delete",
+      "rationale": [
+        "active/system reference exists"
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/workplane-jobs",
+      "exists_now": true,
+      "size_bytes_current": 17580,
+      "file_count_current": 16,
+      "original_reference_count": 14,
+      "reference_sample": [
+        "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+        "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-15-x-twitter-public-canary-approval-packet.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-gtm-agent-registry.json",
+        "/opt/crypto-tuber-ranked/docs/ops/workplane-readiness-audit.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-12-controlled-autonomous-runtime-review.md",
+        "/opt/crypto-tuber-ranked/docs/plans/2026-06-18-callscore-system-stabilization.md",
+        "/opt/crypto-tuber-ranked/docs/system-index/pipeline-ledger.yaml",
+        "/opt/crypto-tuber-ranked/docs/system-index/verification-ledger.yaml",
+        "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts"
+      ],
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked/.tmp/workplane-jobs",
+        "process_refs": [],
+        "docker_mount_refs": [],
+        "systemd_refs": [],
+        "cron_refs": []
+      },
+      "classification": "DEFER_TO_OBSERVABILITY_PHASE",
+      "recommendation": "review_in_observability_phase",
+      "rationale": [
+        "observability/workplane sensitive"
+      ]
+    }
+  ],
+  "prod_rollout_review": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+    "current": {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "size_bytes": 1759976233,
+      "file_count": 38,
+      "mtime_utc": "2026-06-18T20:41:41Z",
+      "mode_octal": "0o775"
+    },
+    "active_reference_check": {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "process_refs": [
+        {
+          "pid": "349928",
+          "comm": "bash"
+        }
+      ],
+      "docker_mount_refs": [],
+      "systemd_refs": [],
+      "cron_refs": []
+    },
+    "classification": "EXCLUDED_PROD_ROLLOUT_STILL_DEFERRED",
+    "recommendation": "prod_rollout_staging_plan_only_no_delete"
+  },
+  "deletions_performed": [],
+  "files_modified_outside_clean_kitchen": [],
+  "next_phase_recommendation": "prompt_4_1_deferred_reference_sensitive_execution_or_prompt_5_agent_workplane_separation"
+}

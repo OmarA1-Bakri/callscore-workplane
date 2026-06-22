@@ -1,0 +1,11 @@
+--- active/tests/page-home-shape.test.ts
++++ pre-canonical-20260526T063909Z/tests/page-home-shape.test.ts
+@@ -34,8 +34,3 @@
+   assert.match(src, /live\/open/);
+   assert.doesNotMatch(src, /LLM validated/);
+ });
+-
+-test("home leaderboard display ranks are sequential after public filtering", () => {
+-  assert.match(src, /const rank = index \+ 1;/);
+-  assert.doesNotMatch(src, /const rank = row\.accuracy_rank \?\? index \+ 1;/);
+-});

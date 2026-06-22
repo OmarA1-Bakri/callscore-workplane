@@ -1,0 +1,153 @@
+{
+  "timestamp_utc": "2026-06-21T23:17:50Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T231746Z-prompt5-agent-workplane-separation",
+  "phase": "prompt_5_agent_workplane_separation",
+  "status": "completed",
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/05-agent-workplane-separation.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-bloat-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-gate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-verification-report.json"
+  ],
+  "agents_mapped": 16,
+  "profiles_inspected": 7,
+  "no_env_contents_read": true,
+  "no_db_mutation": true,
+  "no_docker_restart": true,
+  "no_provider_mutation": true,
+  "verification": {
+    "timestamp_utc": "2026-06-21T23:17:50Z",
+    "json_validation": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-inventory.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-map.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-gate-matrix.json",
+        "valid": true
+      }
+    ],
+    "deliverable_existence": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/05-agent-workplane-separation.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-bloat-report.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-implementation-plan.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-inventory.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-map.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-gate-matrix.json",
+        "exists": true
+      }
+    ],
+    "runtime": {
+      "df": {
+        "df_B1": {
+          "args": [
+            "df",
+            "-B1",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 124940685312 29430267904  81% /\n",
+          "stderr": ""
+        },
+        "df_i": {
+          "args": [
+            "df",
+            "-i",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2572243 7160253   27% /\n",
+          "stderr": ""
+        },
+        "total_bytes": 160970244096,
+        "used_bytes": 124940685312,
+        "free_bytes": 29430267904,
+        "used_percent": 81,
+        "inode_total": 9732496,
+        "inode_used": 2572243,
+        "inode_free": 7160253,
+        "inode_used_percent": 27
+      },
+      "docker_ps": {
+        "args": [
+          "docker",
+          "ps",
+          "--format",
+          "table {{.Names}}\t{{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 24 hours\nwhop-auto-channel-agent-worker-1           Up 24 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 24 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 24 hours (healthy)\nhh-oauth-mcp-gateway                       Up 12 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+        "stderr": ""
+      },
+      "provider_ping_4416": {
+        "status": "ok",
+        "http_status": 200
+      },
+      "protected_paths": [
+        {
+          "path": "/opt/crypto-tuber-ranked",
+          "exists": true,
+          "is_file": false,
+          "is_dir": true,
+          "size_bytes": 3044869044,
+          "file_count": 49231,
+          "mode": "0o775",
+          "mtime_utc": "2026-06-21T22:34:16Z"
+        },
+        {
+          "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 4382,
+          "file_count": 1,
+          "mode": "0o664",
+          "mtime_utc": "2026-06-20T23:37:30Z"
+        },
+        {
+          "path": "/opt/callscore/secrets/youtube-cookies.txt",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 22892,
+          "file_count": 1,
+          "mode": "0o600",
+          "mtime_utc": "2026-06-21T03:21:02Z"
+        }
+      ]
+    },
+    "artifact_safety_scan": {
+      "unsafe_raw_secret_assignment_files": [],
+      "safe_redacted_placeholder_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/enqueue-local.js",
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/audit-output/research/codex-review-w1.md",
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__self-correction.test.ts.diff",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json"
+      ]
+    },
+    "status": "pass"
+  }
+}

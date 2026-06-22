@@ -1,0 +1,28 @@
+--- active/src/app/privacy/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/privacy/page.tsx
+@@ -1,12 +1,12 @@
+ import Link from "next/link";
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import { ArrowLeft } from "lucide-react";
+ 
+ export const metadata: Metadata = {
+-  title: "Privacy Policy — CallScore",
++  title: "Privacy Policy - CallScore",
+   description:
+     "Privacy policy for CallScore. Learn how we handle your data, what we collect, and how we protect your privacy.",
+-  alternates: { canonical: "/privacy" },
+ };
+ 
+ /* ------------------------------------------------------------------ */
+@@ -57,8 +57,8 @@
+     title: "Third-Party Services",
+     content: [
+       "We use the following third-party services to operate the platform:",
+-      "Netlify: Hosting and deployment. Subject to Netlify's privacy policy.",
+-      "HH VM PostgreSQL/pgsql: Primary database for creator scores and call data. Neon may be retained only as backup/legacy compatibility. No personal user data is stored in this database.",
++      "Vercel: Hosting and deployment. Subject to Vercel's privacy policy.",
++      "Neon: PostgreSQL database hosting for storing creator scores and call data. No personal user data is stored in this database.",
+       "Whop: Payment processing for premium subscriptions. Subject to Whop's privacy policy.",
+     ],
+   },

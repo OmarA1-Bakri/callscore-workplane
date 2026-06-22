@@ -1,0 +1,106 @@
+{
+  "timestamp_utc": "2026-06-22T15:49:37Z",
+  "source": "operator_supplied_prompt_0_11_masterplan",
+  "source_file": "/mnt/data/Pasted text.txt",
+  "rule": "Prompt 0-11 list is canonical; prior point9 CMO activation is not Prompt 9",
+  "prompts": [
+    {
+      "prompt": 0,
+      "name": "Master Control Law",
+      "status": "CANONICALIZED_NOW",
+      "classification": "PROVEN_FROM_OPERATOR_FILE",
+      "adjustment": "Use as global law for all future phases."
+    },
+    {
+      "prompt": 1,
+      "name": "Runtime Routing, Canonical Capture & Immediate Disk Recovery",
+      "status": "COMPLETE",
+      "classification": "PROVEN_FULL_VM",
+      "adjustment": "Map existing prompt1/runtime cleanup outputs to Prompt 1."
+    },
+    {
+      "prompt": 2,
+      "name": "Canonical Code Capture & Legacy Repo Deletion",
+      "status": "COMPLETE_WITH_BLACKLIST_EXCEPTION",
+      "classification": "PROVEN_FULL_VM",
+      "adjustment": "Legacy deletion executed where safe; Claude_Code_Automations remains preserved by operator blacklist."
+    },
+    {
+      "prompt": 3,
+      "name": "Active Runtime Simplification",
+      "status": "COMPLETE",
+      "classification": "PROVEN_FULL_VM",
+      "adjustment": "Duplicate ytdlp provider resolved; healthy singleton retained."
+    },
+    {
+      "prompt": 4,
+      "name": "Clean Architecture Directory Plan & Immediate Structural Cleanup",
+      "status": "SUBSTANTIALLY_COMPLETE_NEEDS_DELIVERABLE_NAME_RECONCILIATION",
+      "classification": "PROVEN_FULL_VM",
+      "adjustment": "Existing 03-7/03-8/03-9/04-0/04-1 and disk purge receipts must be consolidated into Prompt 4 deliverable names."
+    },
+    {
+      "prompt": 5,
+      "name": "Agent Workplane Separation & Profile Cleanup",
+      "status": "PARTIAL",
+      "classification": "PROVEN_WORKPLANE_UNPROVEN_PROFILE_CLEANUP",
+      "adjustment": "Agent workplanes mapped; profile-local cleanup and lean profile replacement not complete. Do not count accidental CMO gateway activation as Prompt 5 or Prompt 9."
+    },
+    {
+      "prompt": 6,
+      "name": "Observability Implementation & Receipt Consolidation",
+      "status": "COMPLETE_NEEDS_DELIVERABLE_NAME_RECONCILIATION",
+      "classification": "PROVEN_FULL_VM",
+      "adjustment": "Observability contracts exist; map existing names to Prompt 6 required names."
+    },
+    {
+      "prompt": 7,
+      "name": "Third-Party Integration Routing & Cleanup",
+      "status": "CORRECTED_COMPLETE_FOR_ROUTING_PARTIAL_FOR_CLEANUP",
+      "classification": "PROVEN_FULL_VM_AFTER_HERMES_MCP_VALIDATION",
+      "adjustment": "Composio validated via hermes mcp test composio; provider cleanup report still needs exact Prompt 7 consolidation."
+    },
+    {
+      "prompt": 8,
+      "name": "Gemma Transcript Pipeline Map & Stale Artefact Cleanup",
+      "status": "NEXT_FORMAL_EXECUTION_TARGET_AFTER_PROMPT5_CLOSURE",
+      "classification": "PARTIAL_UNPROVEN_AS_PROMPT8",
+      "adjustment": "Gemma architecture exists, but exact Prompt 8 deliverables and stale transcript artefact pass are not formally complete."
+    },
+    {
+      "prompt": 9,
+      "name": "Prompt Deduplication & Lean Profile Implementation",
+      "status": "NOT_EXECUTED",
+      "classification": "UNPROVEN",
+      "adjustment": "Actual Prompt 9 is prompt dedupe and CMO-lite. The prior callscorecmo gateway deployment is out-of-plan and must not be counted."
+    },
+    {
+      "prompt": 10,
+      "name": "Framework Integration Plan After Cleanup",
+      "status": "NOT_EXECUTED",
+      "classification": "UNPROVEN",
+      "adjustment": "No framework integration deliverables yet."
+    },
+    {
+      "prompt": 11,
+      "name": "Final Clean Kitchen Verification & Remaining Deletion Pass",
+      "status": "NOT_EXECUTED",
+      "classification": "UNPROVEN",
+      "adjustment": "Cannot declare final clean kitchen complete."
+    }
+  ],
+  "out_of_plan_actions": [
+    {
+      "action": "callscorecmo_gateway_activation",
+      "status": "real_but_not_masterplan_prompt9",
+      "note": "Leave running unless operator requests stop; do not use as Prompt 9 evidence."
+    }
+  ],
+  "corrected_next_step": "Prompt 5 remainder: Agent Workplane Separation & Profile Cleanup closure, then Prompt 8 formal execution.",
+  "do_not_count_complete": [
+    "Prompt 8",
+    "Prompt 9",
+    "Prompt 10",
+    "Prompt 11"
+  ]
+}

@@ -1,0 +1,1273 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "LEADERBOARD" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "METHODOLOGY" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "PRICING" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "SIGN IN" [ref=e12] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "GET ACCESS" [ref=e13] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - generic [ref=e18]:
+            - paragraph [ref=e19]: The standard for crypto calls
+            - heading "Market calls, measured." [level=1] [ref=e21]:
+              - text: Market calls,
+              - emphasis [ref=e22]: measured.
+            - paragraph [ref=e23]: Track crypto creators' market calls against real price data. Score every eligible call. Rank signal, not noise.
+            - generic [ref=e24]:
+              - link "View leaderboard" [ref=e25] [cursor=pointer]:
+                - /url: "#leaderboard"
+                - text: View leaderboard
+                - generic [ref=e26]: →
+              - link "Explore methodology" [ref=e27] [cursor=pointer]:
+                - /url: /methodology
+            - generic [ref=e28]:
+              - generic [ref=e29]:
+                - generic [ref=e30]: ✓
+                - text: Transparent
+              - generic [ref=e31]:
+                - generic [ref=e32]: ✓
+                - text: Evidence-based
+              - generic [ref=e33]:
+                - generic [ref=e34]: ✓
+                - text: Unbiased
+            - paragraph [ref=e35]: Every eligible score ties back to source calls, timestamped evidence, and the published price-window methodology.
+            - generic "Section metadata" [ref=e36]:
+              - generic [ref=e37]:
+                - term [ref=e38]: raw calls
+                - definition [ref=e39]: 16,749
+              - generic [ref=e40]:
+                - term [ref=e41]: LLM validated
+                - definition [ref=e42]: 8,122
+              - generic [ref=e43]:
+                - term [ref=e44]: public scored
+                - definition [ref=e45]: 5,722
+              - generic [ref=e46]:
+                - term [ref=e47]: low-conf excluded
+                - definition [ref=e48]: 8,627
+          - generic "CallScore product preview" [ref=e49]:
+            - generic [ref=e50]:
+              - paragraph [ref=e51]: Call Summary
+              - generic [ref=e52]:
+                - generic [ref=e53]:
+                  - paragraph [ref=e54]: creators tracked
+                  - paragraph [ref=e55]: "123"
+                - generic [ref=e56]:
+                  - paragraph [ref=e57]: ranked creators
+                  - paragraph [ref=e58]: "53"
+                - generic [ref=e59]:
+                  - paragraph [ref=e60]: public-scored
+                  - paragraph [ref=e61]: "1808"
+                - generic [ref=e62]:
+                  - paragraph [ref=e63]: beating BTC
+                  - paragraph [ref=e64]: 17/53
+              - generic [ref=e65]:
+                - generic [ref=e66]:
+                  - paragraph [ref=e67]: LLM validated
+                  - paragraph [ref=e68]: "8122"
+                - generic [ref=e69]:
+                  - paragraph [ref=e70]: pending horizon
+                  - paragraph [ref=e71]: "1343"
+                - generic [ref=e72]:
+                  - paragraph [ref=e73]: low-conf excluded
+                  - paragraph [ref=e74]: "8627"
+            - generic [ref=e75]:
+              - generic [ref=e76]:
+                - paragraph [ref=e77]: Score Distribution
+                - generic [ref=e82]:
+                  - generic [ref=e83]:
+                    - generic [ref=e84]: 35%
+                    - text: Missed
+                  - generic [ref=e85]:
+                    - generic [ref=e86]: 0%
+                    - text: Neutral
+                  - generic [ref=e87]:
+                    - generic [ref=e88]: 65%
+                    - text: Hit
+              - generic [ref=e89]:
+                - paragraph [ref=e90]: Avg 30d Delta
+                - paragraph [ref=e91]: "+0.4"
+                - paragraph [ref=e92]: 30d vs BTC
+            - generic [ref=e93]:
+              - generic [ref=e94]:
+                - paragraph [ref=e95]: Top Creators
+                - generic [ref=e96]:
+                  - generic [ref=e97]: All Time
+                  - generic [ref=e98]: 90 Days
+                  - generic [ref=e99]: 30 Days
+              - generic [ref=e101]:
+                - generic [ref=e102]:
+                  - generic [ref=e103]: rank
+                  - generic [ref=e104]: creator
+                  - generic [ref=e105]: alpha
+                  - generic [ref=e106]: 30d Δ
+                  - generic [ref=e107]: win %
+                  - generic [ref=e108]: last call
+                - generic [ref=e109]:
+                  - generic [ref=e110]: "01"
+                  - generic [ref=e111]:
+                    - generic [ref=e112]: AB
+                    - generic [ref=e113]:
+                      - generic [ref=e114]: Alex Becker
+                      - generic [ref=e115]: "@AlexBeckersChannel"
+                  - generic [ref=e116]: 43.8α
+                  - generic [ref=e117]: "+6.2"
+                  - generic [ref=e118]: 66.7%
+                  - generic [ref=e119]: TAO
+                - generic [ref=e120]:
+                  - generic [ref=e121]: "02"
+                  - generic [ref=e122]:
+                    - generic [ref=e123]: JC
+                    - generic [ref=e124]:
+                      - generic [ref=e125]: Jacob Crypto Bury
+                      - generic [ref=e126]: "@JacobCryptoBury"
+                  - generic [ref=e127]: 37.2α
+                  - generic [ref=e128]: "+3.1"
+                  - generic [ref=e129]: 68.8%
+                  - generic [ref=e130]: RENDER
+                - generic [ref=e131]:
+                  - generic [ref=e132]: "03"
+                  - generic [ref=e133]:
+                    - generic [ref=e134]: CR
+                    - generic [ref=e135]:
+                      - generic [ref=e136]: Crypto Rover
+                      - generic [ref=e137]: "@CryptoRover"
+                  - generic [ref=e138]: 37.0α
+                  - generic [ref=e139]: "+1.8"
+                  - generic [ref=e140]: 69.4%
+                  - generic [ref=e141]: ETH
+                - generic [ref=e142]:
+                  - generic [ref=e143]: "04"
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: C
+                    - generic [ref=e146]:
+                      - generic [ref=e147]: CoinsKid
+                      - generic [ref=e148]: channel/UCeBbEvlSOeJMwSVYOdXOvvw
+                  - generic [ref=e149]: 35.7α
+                  - generic [ref=e150]: "-9.0"
+                  - generic [ref=e151]: 71.4%
+                  - generic [ref=e152]: XRP
+                - generic [ref=e153]:
+                  - generic [ref=e154]: "05"
+                  - generic [ref=e155]:
+                    - generic [ref=e156]: BC
+                    - generic [ref=e157]:
+                      - generic [ref=e158]: BitBoy Crypto
+                      - generic [ref=e159]: "@BitBoyCryptoChannel"
+                  - generic [ref=e160]: 34.0α
+                  - generic [ref=e161]: "+0.1"
+                  - generic [ref=e162]: 50.0%
+                  - generic [ref=e163]: XRP
+        - generic [ref=e167]:
+          - generic [ref=e168]:
+            - paragraph [ref=e169]: "01"
+            - heading "Track Every Eligible Call" [level=2] [ref=e170]
+            - paragraph [ref=e171]: We extract market calls from creator videos.
+          - generic [ref=e172]:
+            - paragraph [ref=e173]: "02"
+            - heading "Score with Evidence" [level=2] [ref=e174]
+            - paragraph [ref=e175]: Objective scoring based on real market outcomes.
+          - generic [ref=e176]:
+            - paragraph [ref=e177]: "03"
+            - heading "Rank by Signal, Not Noise" [level=2] [ref=e178]
+            - paragraph [ref=e179]: Creators ranked by alpha, consistency and accuracy.
+          - generic [ref=e180]:
+            - paragraph [ref=e181]: "04"
+            - heading "See Who Adapts" [level=2] [ref=e182]
+            - paragraph [ref=e183]: We score corrections and course changes.
+          - generic [ref=e184]:
+            - paragraph [ref=e185]: "05"
+            - heading "Unlock More Power" [level=2] [ref=e186]
+            - paragraph [ref=e187]: Alerts, exports, backtests, API access and webhooks.
+      - generic [ref=e188]:
+        - generic [ref=e189]:
+          - generic [ref=e190]: "01"
+          - heading "The premise, sourced." [level=2] [ref=e191]:
+            - text: The
+            - emphasis [ref=e192]: premise
+            - text: ", sourced."
+          - generic [ref=e193]:
+            - text: three claims · peer-reviewed
+            - text: one signature signal · self-correction
+        - list [ref=e195]:
+          - listitem [ref=e196]:
+            - generic [ref=e197]: 76% of influencer-endorsed tokens fail to deliver.
+            - generic [ref=e198]: "[Arkham · Mar 2025]"
+          - listitem [ref=e199]:
+            - generic [ref=e200]: Top crypto YouTubers are directionally correct ~22% of the time.
+            - generic [ref=e201]: "[Finance Research Letters · 2024]"
+          - listitem [ref=e202]:
+            - generic [ref=e203]: Influencer-tweeted tokens returned −19% over 3 months.
+            - generic [ref=e204]: "[HBS · Pacelli]"
+          - listitem [ref=e205]:
+            - generic [ref=e206]:
+              - text: We also score who admits when they're wrong.
+              - emphasis [ref=e207]: No other tracker does.
+            - generic [ref=e208]: "[self-correction index]"
+      - generic [ref=e209]:
+        - generic [ref=e210]:
+          - generic [ref=e211]: "02"
+          - heading "The ranking, by alpha." [level=2] [ref=e212]:
+            - text: The ranking,
+            - emphasis [ref=e213]: by alpha
+            - text: .
+          - generic [ref=e214]:
+            - text: 53 ranked creators · 1808 public-scored calls
+            - text: tier S/A/B/C · low-N flagged
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - paragraph [ref=e217]: Sorted by alpha; ties broken by Wilson lower bound.
+            - tablist "Period filter" [ref=e218]:
+              - tab "All time" [selected] [ref=e219] [cursor=pointer]
+              - tab "90 days" [ref=e220] [cursor=pointer]
+              - tab "30 days" [ref=e221] [cursor=pointer]
+          - table [ref=e224]:
+            - rowgroup [ref=e225]:
+              - row "Rank Creator Alpha 30d Δ Win % N Tier Last call" [ref=e226]:
+                - columnheader "Rank" [ref=e227]
+                - columnheader "Creator" [ref=e228]
+                - columnheader "Alpha" [ref=e229]
+                - columnheader "30d Δ" [ref=e230]
+                - columnheader "Win %" [ref=e231]
+                - columnheader "N" [ref=e232]
+                - columnheader "Tier" [ref=e233]
+                - columnheader "Last call" [ref=e234]
+            - rowgroup [ref=e235]:
+              - row "01 Alex Becker @AlexBeckersChannel 43.8α +6.2 66.7% 27 T1 Low N TAO" [ref=e236]:
+                - cell "01" [ref=e237]
+                - cell "Alex Becker @AlexBeckersChannel" [ref=e238]:
+                  - link "Alex Becker @AlexBeckersChannel" [ref=e239] [cursor=pointer]:
+                    - /url: /creator/@AlexBeckersChannel
+                    - generic [ref=e240]: AB
+                    - generic [ref=e241]:
+                      - generic [ref=e242]: Alex Becker
+                      - generic [ref=e243]: "@AlexBeckersChannel"
+                - cell "43.8α" [ref=e244]
+                - cell "+6.2" [ref=e245]:
+                  - generic [ref=e246]: "+6.2"
+                - cell "66.7%" [ref=e247]
+                - cell "27" [ref=e248]
+                - cell "T1 Low N" [ref=e249]:
+                  - generic [ref=e250]:
+                    - generic [ref=e251]: T1
+                    - generic "Only 27 scored calls — ranking may shift with more data" [ref=e252]: Low N
+                - cell "TAO" [ref=e253]
+              - row "02 Jacob Crypto Bury @JacobCryptoBury 37.2α +3.1 68.8% 16 T1 Low N RENDER" [ref=e254]:
+                - cell "02" [ref=e255]
+                - cell "Jacob Crypto Bury @JacobCryptoBury" [ref=e256]:
+                  - link "Jacob Crypto Bury @JacobCryptoBury" [ref=e257] [cursor=pointer]:
+                    - /url: /creator/@JacobCryptoBury
+                    - generic [ref=e258]: JC
+                    - generic [ref=e259]:
+                      - generic [ref=e260]: Jacob Crypto Bury
+                      - generic [ref=e261]: "@JacobCryptoBury"
+                - cell "37.2α" [ref=e262]
+                - cell "+3.1" [ref=e263]:
+                  - generic [ref=e264]: "+3.1"
+                - cell "68.8%" [ref=e265]
+                - cell "16" [ref=e266]
+                - cell "T1 Low N" [ref=e267]:
+                  - generic [ref=e268]:
+                    - generic [ref=e269]: T1
+                    - generic "Only 16 scored calls — ranking may shift with more data" [ref=e270]: Low N
+                - cell "RENDER" [ref=e271]
+              - row "03 Crypto Rover @CryptoRover 37.0α +1.8 69.4% 49 T1 Low N ETH" [ref=e272]:
+                - cell "03" [ref=e273]
+                - cell "Crypto Rover @CryptoRover" [ref=e274]:
+                  - link "Crypto Rover @CryptoRover" [ref=e275] [cursor=pointer]:
+                    - /url: /creator/@CryptoRover
+                    - generic [ref=e276]: CR
+                    - generic [ref=e277]:
+                      - generic [ref=e278]: Crypto Rover
+                      - generic [ref=e279]: "@CryptoRover"
+                - cell "37.0α" [ref=e280]
+                - cell "+1.8" [ref=e281]:
+                  - generic [ref=e282]: "+1.8"
+                - cell "69.4%" [ref=e283]
+                - cell "49" [ref=e284]
+                - cell "T1 Low N" [ref=e285]:
+                  - generic [ref=e286]:
+                    - generic [ref=e287]: T1
+                    - generic "Only 49 scored calls — ranking may shift with more data" [ref=e288]: Low N
+                - cell "ETH" [ref=e289]
+              - row "04 CoinsKid channel/UCeBbEvlSOeJMwSVYOdXOvvw 35.7α -9.0 71.4% 7 T1 Low N XRP" [ref=e290]:
+                - cell "04" [ref=e291]
+                - cell "CoinsKid channel/UCeBbEvlSOeJMwSVYOdXOvvw" [ref=e292]:
+                  - link "CoinsKid channel/UCeBbEvlSOeJMwSVYOdXOvvw" [ref=e293] [cursor=pointer]:
+                    - /url: /creator/channel/UCeBbEvlSOeJMwSVYOdXOvvw
+                    - generic [ref=e294]: C
+                    - generic [ref=e295]:
+                      - generic [ref=e296]: CoinsKid
+                      - generic [ref=e297]: channel/UCeBbEvlSOeJMwSVYOdXOvvw
+                - cell "35.7α" [ref=e298]
+                - cell "-9.0" [ref=e299]
+                - cell "71.4%" [ref=e300]
+                - cell "7" [ref=e301]
+                - cell "T1 Low N" [ref=e302]:
+                  - generic [ref=e303]:
+                    - generic [ref=e304]: T1
+                    - generic "Only 7 scored calls — ranking may shift with more data" [ref=e305]: Low N
+                - cell "XRP" [ref=e306]
+              - row "05 BitBoy Crypto @BitBoyCryptoChannel 34.0α +0.1 50.0% 26 T1 Low N XRP" [ref=e307]:
+                - cell "05" [ref=e308]
+                - cell "BitBoy Crypto @BitBoyCryptoChannel" [ref=e309]:
+                  - link "BitBoy Crypto @BitBoyCryptoChannel" [ref=e310] [cursor=pointer]:
+                    - /url: /creator/@BitBoyCryptoChannel
+                    - generic [ref=e311]: BC
+                    - generic [ref=e312]:
+                      - generic [ref=e313]: BitBoy Crypto
+                      - generic [ref=e314]: "@BitBoyCryptoChannel"
+                - cell "34.0α" [ref=e315]
+                - cell "+0.1" [ref=e316]:
+                  - generic [ref=e317]: "+0.1"
+                - cell "50.0%" [ref=e318]
+                - cell "26" [ref=e319]
+                - cell "T1 Low N" [ref=e320]:
+                  - generic [ref=e321]:
+                    - generic [ref=e322]: T1
+                    - generic "Only 26 scored calls — ranking may shift with more data" [ref=e323]: Low N
+                - cell "XRP" [ref=e324]
+              - row "06 Altcoin Buzz @AltcoinBuzz 33.9α +2.9 42.9% 7 T2 Low N FET" [ref=e325]:
+                - cell "06" [ref=e326]
+                - cell "Altcoin Buzz @AltcoinBuzz" [ref=e327]:
+                  - link "Altcoin Buzz @AltcoinBuzz" [ref=e328] [cursor=pointer]:
+                    - /url: /creator/@AltcoinBuzz
+                    - generic [ref=e329]: AB
+                    - generic [ref=e330]:
+                      - generic [ref=e331]: Altcoin Buzz
+                      - generic [ref=e332]: "@AltcoinBuzz"
+                - cell "33.9α" [ref=e333]
+                - cell "+2.9" [ref=e334]:
+                  - generic [ref=e335]: "+2.9"
+                - cell "42.9%" [ref=e336]
+                - cell "7" [ref=e337]
+                - cell "T2 Low N" [ref=e338]:
+                  - generic [ref=e339]:
+                    - generic [ref=e340]: T2
+                    - generic "Only 7 scored calls — ranking may shift with more data" [ref=e341]: Low N
+                - cell "FET" [ref=e342]
+              - row "07 Crypto Zombie @CryptoZombie 30.1α +4.1 40.9% 22 T2 Low N ETH" [ref=e343]:
+                - cell "07" [ref=e344]
+                - cell "Crypto Zombie @CryptoZombie" [ref=e345]:
+                  - link "Crypto Zombie @CryptoZombie" [ref=e346] [cursor=pointer]:
+                    - /url: /creator/@CryptoZombie
+                    - generic [ref=e347]: CZ
+                    - generic [ref=e348]:
+                      - generic [ref=e349]: Crypto Zombie
+                      - generic [ref=e350]: "@CryptoZombie"
+                - cell "30.1α" [ref=e351]
+                - cell "+4.1" [ref=e352]:
+                  - generic [ref=e353]: "+4.1"
+                - cell "40.9%" [ref=e354]
+                - cell "22" [ref=e355]
+                - cell "T2 Low N" [ref=e356]:
+                  - generic [ref=e357]:
+                    - generic [ref=e358]: T2
+                    - generic "Only 22 scored calls — ranking may shift with more data" [ref=e359]: Low N
+                - cell "ETH" [ref=e360]
+              - row "08 Altcoin Daily @AltcoinDaily 28.6α +0.9 43.1% 459 T2 ETH" [ref=e361]:
+                - cell "08" [ref=e362]
+                - cell "Altcoin Daily @AltcoinDaily" [ref=e363]:
+                  - link "Altcoin Daily @AltcoinDaily" [ref=e364] [cursor=pointer]:
+                    - /url: /creator/@AltcoinDaily
+                    - generic [ref=e365]: AD
+                    - generic [ref=e366]:
+                      - generic [ref=e367]: Altcoin Daily
+                      - generic [ref=e368]: "@AltcoinDaily"
+                - cell "28.6α" [ref=e369]
+                - cell "+0.9" [ref=e370]:
+                  - generic [ref=e371]: "+0.9"
+                - cell "43.1%" [ref=e372]
+                - cell "459" [ref=e373]
+                - cell "T2" [ref=e374]:
+                  - generic [ref=e376]: T2
+                - cell "ETH" [ref=e377]
+              - row "09 CryptosRUs @CryptosRUs 28.0α -2.7 44.4% 90 T2 BNB" [ref=e378]:
+                - cell "09" [ref=e379]
+                - cell "CryptosRUs @CryptosRUs" [ref=e380]:
+                  - link "CryptosRUs @CryptosRUs" [ref=e381] [cursor=pointer]:
+                    - /url: /creator/@CryptosRUs
+                    - generic [ref=e382]: C
+                    - generic [ref=e383]:
+                      - generic [ref=e384]: CryptosRUs
+                      - generic [ref=e385]: "@CryptosRUs"
+                - cell "28.0α" [ref=e386]
+                - cell "-2.7" [ref=e387]
+                - cell "44.4%" [ref=e388]
+                - cell "90" [ref=e389]
+                - cell "T2" [ref=e390]:
+                  - generic [ref=e392]: T2
+                - cell "BNB" [ref=e393]
+              - row "10 Lark Davis @TheCryptoLark 27.8α -0.5 51.4% 37 T2 Low N ETH" [ref=e394]:
+                - cell "10" [ref=e395]
+                - cell "Lark Davis @TheCryptoLark" [ref=e396]:
+                  - link "Lark Davis @TheCryptoLark" [ref=e397] [cursor=pointer]:
+                    - /url: /creator/@TheCryptoLark
+                    - generic [ref=e398]: LD
+                    - generic [ref=e399]:
+                      - generic [ref=e400]: Lark Davis
+                      - generic [ref=e401]: "@TheCryptoLark"
+                - cell "27.8α" [ref=e402]
+                - cell "-0.5" [ref=e403]
+                - cell "51.4%" [ref=e404]
+                - cell "37" [ref=e405]
+                - cell "T2 Low N" [ref=e406]:
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: T2
+                    - generic "Only 37 scored calls — ranking may shift with more data" [ref=e409]: Low N
+                - cell "ETH" [ref=e410]
+              - row "11 Andrei Jikh @andreijikh 27.0α -0.0 50.0% 10 T2 Low N BTC" [ref=e411]:
+                - cell "11" [ref=e412]
+                - cell "Andrei Jikh @andreijikh" [ref=e413]:
+                  - link "Andrei Jikh @andreijikh" [ref=e414] [cursor=pointer]:
+                    - /url: /creator/@andreijikh
+                    - generic [ref=e415]: AJ
+                    - generic [ref=e416]:
+                      - generic [ref=e417]: Andrei Jikh
+                      - generic [ref=e418]: "@andreijikh"
+                - cell "27.0α" [ref=e419]
+                - cell "-0.0" [ref=e420]
+                - cell "50.0%" [ref=e421]
+                - cell "10" [ref=e422]
+                - cell "T2 Low N" [ref=e423]:
+                  - generic [ref=e424]:
+                    - generic [ref=e425]: T2
+                    - generic "Only 10 scored calls — ranking may shift with more data" [ref=e426]: Low N
+                - cell "BTC" [ref=e427]
+              - row "12 Crypto Banter @CryptoBanterGroup 27.0α -0.5 40.5% 148 T2 ADA" [ref=e428]:
+                - cell "12" [ref=e429]
+                - cell "Crypto Banter @CryptoBanterGroup" [ref=e430]:
+                  - link "Crypto Banter @CryptoBanterGroup" [ref=e431] [cursor=pointer]:
+                    - /url: /creator/@CryptoBanterGroup
+                    - generic [ref=e432]: CB
+                    - generic [ref=e433]:
+                      - generic [ref=e434]: Crypto Banter
+                      - generic [ref=e435]: "@CryptoBanterGroup"
+                - cell "27.0α" [ref=e436]
+                - cell "-0.5" [ref=e437]
+                - cell "40.5%" [ref=e438]
+                - cell "148" [ref=e439]
+                - cell "T2" [ref=e440]:
+                  - generic [ref=e442]: T2
+                - cell "ADA" [ref=e443]
+              - row "13 Discover Crypto @DiscoverCrypto_ 26.9α +0.9 36.1% 319 T3 ETH" [ref=e444]:
+                - cell "13" [ref=e445]
+                - cell "Discover Crypto @DiscoverCrypto_" [ref=e446]:
+                  - link "Discover Crypto @DiscoverCrypto_" [ref=e447] [cursor=pointer]:
+                    - /url: /creator/@DiscoverCrypto_
+                    - generic [ref=e448]: DC
+                    - generic [ref=e449]:
+                      - generic [ref=e450]: Discover Crypto
+                      - generic [ref=e451]: "@DiscoverCrypto_"
+                - cell "26.9α" [ref=e452]
+                - cell "+0.9" [ref=e453]:
+                  - generic [ref=e454]: "+0.9"
+                - cell "36.1%" [ref=e455]
+                - cell "319" [ref=e456]
+                - cell "T3" [ref=e457]:
+                  - generic [ref=e459]: T3
+                - cell "ETH" [ref=e460]
+              - row "14 Satoshi Stacker @StackerSatoshi 26.7α -1.3 45.8% 72 T3 ETH" [ref=e461]:
+                - cell "14" [ref=e462]
+                - cell "Satoshi Stacker @StackerSatoshi" [ref=e463]:
+                  - link "Satoshi Stacker @StackerSatoshi" [ref=e464] [cursor=pointer]:
+                    - /url: /creator/@StackerSatoshi
+                    - generic [ref=e465]: SS
+                    - generic [ref=e466]:
+                      - generic [ref=e467]: Satoshi Stacker
+                      - generic [ref=e468]: "@StackerSatoshi"
+                - cell "26.7α" [ref=e469]
+                - cell "-1.3" [ref=e470]
+                - cell "45.8%" [ref=e471]
+                - cell "72" [ref=e472]
+                - cell "T3" [ref=e473]:
+                  - generic [ref=e475]: T3
+                - cell "ETH" [ref=e476]
+              - row "15 DataDash @DataDash 23.3α -1.7 31.0% 58 T3 ETH" [ref=e477]:
+                - cell "15" [ref=e478]
+                - cell "DataDash @DataDash" [ref=e479]:
+                  - link "DataDash @DataDash" [ref=e480] [cursor=pointer]:
+                    - /url: /creator/@DataDash
+                    - generic [ref=e481]: D
+                    - generic [ref=e482]:
+                      - generic [ref=e483]: DataDash
+                      - generic [ref=e484]: "@DataDash"
+                - cell "23.3α" [ref=e485]
+                - cell "-1.7" [ref=e486]
+                - cell "31.0%" [ref=e487]
+                - cell "58" [ref=e488]
+                - cell "T3" [ref=e489]:
+                  - generic [ref=e491]: T3
+                - cell "ETH" [ref=e492]
+              - row "16 Benjamin Cowen @intothecryptoverse 22.7α +0.2 45.0% 20 T3 Low N BTC" [ref=e493]:
+                - cell "16" [ref=e494]
+                - cell "Benjamin Cowen @intothecryptoverse" [ref=e495]:
+                  - link "Benjamin Cowen @intothecryptoverse" [ref=e496] [cursor=pointer]:
+                    - /url: /creator/@intothecryptoverse
+                    - generic [ref=e497]: BC
+                    - generic [ref=e498]:
+                      - generic [ref=e499]: Benjamin Cowen
+                      - generic [ref=e500]: "@intothecryptoverse"
+                - cell "22.7α" [ref=e501]
+                - cell "+0.2" [ref=e502]:
+                  - generic [ref=e503]: "+0.2"
+                - cell "45.0%" [ref=e504]
+                - cell "20" [ref=e505]
+                - cell "T3 Low N" [ref=e506]:
+                  - generic [ref=e507]:
+                    - generic [ref=e508]: T3
+                    - generic "Only 20 scored calls — ranking may shift with more data" [ref=e509]: Low N
+                - cell "BTC" [ref=e510]
+              - row "17 Coin Bureau @CoinBureau 21.5α -2.7 28.6% 7 T3 Low N BTC" [ref=e511]:
+                - cell "17" [ref=e512]
+                - cell "Coin Bureau @CoinBureau" [ref=e513]:
+                  - link "Coin Bureau @CoinBureau" [ref=e514] [cursor=pointer]:
+                    - /url: /creator/@CoinBureau
+                    - generic [ref=e515]: CB
+                    - generic [ref=e516]:
+                      - generic [ref=e517]: Coin Bureau
+                      - generic [ref=e518]: "@CoinBureau"
+                - cell "21.5α" [ref=e519]
+                - cell "-2.7" [ref=e520]
+                - cell "28.6%" [ref=e521]
+                - cell "7" [ref=e522]
+                - cell "T3 Low N" [ref=e523]:
+                  - generic [ref=e524]:
+                    - generic [ref=e525]: T3
+                    - generic "Only 7 scored calls — ranking may shift with more data" [ref=e526]: Low N
+                - cell "BTC" [ref=e527]
+              - row "18 Austin Hilton @AustinHilton 20.8α -4.7 39.0% 41 T3 Low N ETH" [ref=e528]:
+                - cell "18" [ref=e529]
+                - cell "Austin Hilton @AustinHilton" [ref=e530]:
+                  - link "Austin Hilton @AustinHilton" [ref=e531] [cursor=pointer]:
+                    - /url: /creator/@AustinHilton
+                    - generic [ref=e532]: AH
+                    - generic [ref=e533]:
+                      - generic [ref=e534]: Austin Hilton
+                      - generic [ref=e535]: "@AustinHilton"
+                - cell "20.8α" [ref=e536]
+                - cell "-4.7" [ref=e537]
+                - cell "39.0%" [ref=e538]
+                - cell "41" [ref=e539]
+                - cell "T3 Low N" [ref=e540]:
+                  - generic [ref=e541]:
+                    - generic [ref=e542]: T3
+                    - generic "Only 41 scored calls — ranking may shift with more data" [ref=e543]: Low N
+                - cell "ETH" [ref=e544]
+              - row "19 Crypto Jebb @CryptoJebb 20.4α -0.8 28.9% 38 T3 Low N BTC" [ref=e545]:
+                - cell "19" [ref=e546]
+                - cell "Crypto Jebb @CryptoJebb" [ref=e547]:
+                  - link "Crypto Jebb @CryptoJebb" [ref=e548] [cursor=pointer]:
+                    - /url: /creator/@CryptoJebb
+                    - generic [ref=e549]: CJ
+                    - generic [ref=e550]:
+                      - generic [ref=e551]: Crypto Jebb
+                      - generic [ref=e552]: "@CryptoJebb"
+                - cell "20.4α" [ref=e553]
+                - cell "-0.8" [ref=e554]
+                - cell "28.9%" [ref=e555]
+                - cell "38" [ref=e556]
+                - cell "T3 Low N" [ref=e557]:
+                  - generic [ref=e558]:
+                    - generic [ref=e559]: T3
+                    - generic "Only 38 scored calls — ranking may shift with more data" [ref=e560]: Low N
+                - cell "BTC" [ref=e561]
+              - row "20 Crypto Capital Venture @CryptoCapitalVenture 19.6α -2.7 29.8% 57 T3 ETH" [ref=e562]:
+                - cell "20" [ref=e563]
+                - cell "Crypto Capital Venture @CryptoCapitalVenture" [ref=e564]:
+                  - link "Crypto Capital Venture @CryptoCapitalVenture" [ref=e565] [cursor=pointer]:
+                    - /url: /creator/@CryptoCapitalVenture
+                    - generic [ref=e566]: CC
+                    - generic [ref=e567]:
+                      - generic [ref=e568]: Crypto Capital Venture
+                      - generic [ref=e569]: "@CryptoCapitalVenture"
+                - cell "19.6α" [ref=e570]
+                - cell "-2.7" [ref=e571]
+                - cell "29.8%" [ref=e572]
+                - cell "57" [ref=e573]
+                - cell "T3" [ref=e574]:
+                  - generic [ref=e576]: T3
+                - cell "ETH" [ref=e577]
+              - row "21 The Moon Carl @TheMoon 17.4α -0.9 23.9% 71 T3 SOL" [ref=e578]:
+                - cell "21" [ref=e579]
+                - cell "The Moon Carl @TheMoon" [ref=e580]:
+                  - link "The Moon Carl @TheMoon" [ref=e581] [cursor=pointer]:
+                    - /url: /creator/@TheMoon
+                    - generic [ref=e582]: TM
+                    - generic [ref=e583]:
+                      - generic [ref=e584]: The Moon Carl
+                      - generic [ref=e585]: "@TheMoon"
+                - cell "17.4α" [ref=e586]
+                - cell "-0.9" [ref=e587]
+                - cell "23.9%" [ref=e588]
+                - cell "71" [ref=e589]
+                - cell "T3" [ref=e590]:
+                  - generic [ref=e592]: T3
+                - cell "SOL" [ref=e593]
+              - row "22 Miles Deutscher @milesdeutscher1357 17.0α -3.5 22.3% 103 T3 ETH" [ref=e594]:
+                - cell "22" [ref=e595]
+                - cell "Miles Deutscher @milesdeutscher1357" [ref=e596]:
+                  - link "Miles Deutscher @milesdeutscher1357" [ref=e597] [cursor=pointer]:
+                    - /url: /creator/@milesdeutscher1357
+                    - generic [ref=e598]: MD
+                    - generic [ref=e599]:
+                      - generic [ref=e600]: Miles Deutscher
+                      - generic [ref=e601]: "@milesdeutscher1357"
+                - cell "17.0α" [ref=e602]
+                - cell "-3.5" [ref=e603]
+                - cell "22.3%" [ref=e604]
+                - cell "103" [ref=e605]
+                - cell "T3" [ref=e606]:
+                  - generic [ref=e608]: T3
+                - cell "ETH" [ref=e609]
+              - row "23 Kevin Svenson @KevinSvenson 16.1α -4.3 25.0% 16 T3 Low N ETH" [ref=e610]:
+                - cell "23" [ref=e611]
+                - cell "Kevin Svenson @KevinSvenson" [ref=e612]:
+                  - link "Kevin Svenson @KevinSvenson" [ref=e613] [cursor=pointer]:
+                    - /url: /creator/@KevinSvenson
+                    - generic [ref=e614]: KS
+                    - generic [ref=e615]:
+                      - generic [ref=e616]: Kevin Svenson
+                      - generic [ref=e617]: "@KevinSvenson"
+                - cell "16.1α" [ref=e618]
+                - cell "-4.3" [ref=e619]
+                - cell "25.0%" [ref=e620]
+                - cell "16" [ref=e621]
+                - cell "T3 Low N" [ref=e622]:
+                  - generic [ref=e623]:
+                    - generic [ref=e624]: T3
+                    - generic "Only 16 scored calls — ranking may shift with more data" [ref=e625]: Low N
+                - cell "ETH" [ref=e626]
+              - row "24 Michael Wrubel @MichaelWrubel 12.4α -3.2 9.1% 55 T3 ADA" [ref=e627]:
+                - cell "24" [ref=e628]
+                - cell "Michael Wrubel @MichaelWrubel" [ref=e629]:
+                  - link "Michael Wrubel @MichaelWrubel" [ref=e630] [cursor=pointer]:
+                    - /url: /creator/@MichaelWrubel
+                    - generic [ref=e631]: MW
+                    - generic [ref=e632]:
+                      - generic [ref=e633]: Michael Wrubel
+                      - generic [ref=e634]: "@MichaelWrubel"
+                - cell "12.4α" [ref=e635]
+                - cell "-3.2" [ref=e636]
+                - cell "9.1%" [ref=e637]
+                - cell "55" [ref=e638]
+                - cell "T3" [ref=e639]:
+                  - generic [ref=e641]: T3
+                - cell "ADA" [ref=e642]
+              - row "25 Earn With Sapna @earnwithsapna 48.8α -3.8 100.0% 2 T3 Low N BTC" [ref=e643]:
+                - cell "25" [ref=e644]
+                - cell "Earn With Sapna @earnwithsapna" [ref=e645]:
+                  - link "Earn With Sapna @earnwithsapna" [ref=e646] [cursor=pointer]:
+                    - /url: /creator/@earnwithsapna
+                    - generic [ref=e647]: EW
+                    - generic [ref=e648]:
+                      - generic [ref=e649]: Earn With Sapna
+                      - generic [ref=e650]: "@earnwithsapna"
+                - cell "48.8α" [ref=e651]
+                - cell "-3.8" [ref=e652]
+                - cell "100.0%" [ref=e653]
+                - cell "2" [ref=e654]
+                - cell "T3 Low N" [ref=e655]:
+                  - generic [ref=e656]:
+                    - generic [ref=e657]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e658]: Low N
+                - cell "BTC" [ref=e659]
+              - row "26 EZC - Trading channel/UCaEmEcGngLdmOTeyirL4j6w 13.8α +0.0 0.0% 1 T3 Low N BTC" [ref=e660]:
+                - cell "26" [ref=e661]
+                - cell "EZC - Trading channel/UCaEmEcGngLdmOTeyirL4j6w" [ref=e662]:
+                  - link "EZC - Trading channel/UCaEmEcGngLdmOTeyirL4j6w" [ref=e663] [cursor=pointer]:
+                    - /url: /creator/channel/UCaEmEcGngLdmOTeyirL4j6w
+                    - generic [ref=e664]: E-
+                    - generic [ref=e665]:
+                      - generic [ref=e666]: EZC - Trading
+                      - generic [ref=e667]: channel/UCaEmEcGngLdmOTeyirL4j6w
+                - cell "13.8α" [ref=e668]
+                - cell "+0.0" [ref=e669]:
+                  - generic [ref=e670]: "+0.0"
+                - cell "0.0%" [ref=e671]
+                - cell "1" [ref=e672]
+                - cell "T3 Low N" [ref=e673]:
+                  - generic [ref=e674]:
+                    - generic [ref=e675]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e676]: Low N
+                - cell "BTC" [ref=e677]
+              - row "27 Kitco News @kitco 44.8α +0.0 100.0% 1 T3 Low N BTC" [ref=e678]:
+                - cell "27" [ref=e679]
+                - cell "Kitco News @kitco" [ref=e680]:
+                  - link "Kitco News @kitco" [ref=e681] [cursor=pointer]:
+                    - /url: /creator/@kitco
+                    - generic [ref=e682]: KN
+                    - generic [ref=e683]:
+                      - generic [ref=e684]: Kitco News
+                      - generic [ref=e685]: "@kitco"
+                - cell "44.8α" [ref=e686]
+                - cell "+0.0" [ref=e687]:
+                  - generic [ref=e688]: "+0.0"
+                - cell "100.0%" [ref=e689]
+                - cell "1" [ref=e690]
+                - cell "T3 Low N" [ref=e691]:
+                  - generic [ref=e692]:
+                    - generic [ref=e693]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e694]: Low N
+                - cell "BTC" [ref=e695]
+              - row "28 Joe Parys Crypto channel/UCRukJuuBAdoHMTBIsFJAgvw 45.8α +0.0 100.0% 1 T3 Low N BTC" [ref=e696]:
+                - cell "28" [ref=e697]
+                - cell "Joe Parys Crypto channel/UCRukJuuBAdoHMTBIsFJAgvw" [ref=e698]:
+                  - link "Joe Parys Crypto channel/UCRukJuuBAdoHMTBIsFJAgvw" [ref=e699] [cursor=pointer]:
+                    - /url: /creator/channel/UCRukJuuBAdoHMTBIsFJAgvw
+                    - generic [ref=e700]: JP
+                    - generic [ref=e701]:
+                      - generic [ref=e702]: Joe Parys Crypto
+                      - generic [ref=e703]: channel/UCRukJuuBAdoHMTBIsFJAgvw
+                - cell "45.8α" [ref=e704]
+                - cell "+0.0" [ref=e705]:
+                  - generic [ref=e706]: "+0.0"
+                - cell "100.0%" [ref=e707]
+                - cell "1" [ref=e708]
+                - cell "T3 Low N" [ref=e709]:
+                  - generic [ref=e710]:
+                    - generic [ref=e711]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e712]: Low N
+                - cell "BTC" [ref=e713]
+              - row "29 JRNY Crypto channel/UC188KLMYLLGqVJZdYq7mYFw 22.5α +0.0 0.0% 2 T3 Low N BTC" [ref=e714]:
+                - cell "29" [ref=e715]
+                - cell "JRNY Crypto channel/UC188KLMYLLGqVJZdYq7mYFw" [ref=e716]:
+                  - link "JRNY Crypto channel/UC188KLMYLLGqVJZdYq7mYFw" [ref=e717] [cursor=pointer]:
+                    - /url: /creator/channel/UC188KLMYLLGqVJZdYq7mYFw
+                    - generic [ref=e718]: JC
+                    - generic [ref=e719]:
+                      - generic [ref=e720]: JRNY Crypto
+                      - generic [ref=e721]: channel/UC188KLMYLLGqVJZdYq7mYFw
+                - cell "22.5α" [ref=e722]
+                - cell "+0.0" [ref=e723]:
+                  - generic [ref=e724]: "+0.0"
+                - cell "0.0%" [ref=e725]
+                - cell "2" [ref=e726]
+                - cell "T3 Low N" [ref=e727]:
+                  - generic [ref=e728]:
+                    - generic [ref=e729]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e730]: Low N
+                - cell "BTC" [ref=e731]
+              - row "30 Jesse Eckel channel/UCPFMk8WxX3SJKy1jh61xxGw 4.8α +0.0 0.0% 1 T3 Low N BTC" [ref=e732]:
+                - cell "30" [ref=e733]
+                - cell "Jesse Eckel channel/UCPFMk8WxX3SJKy1jh61xxGw" [ref=e734]:
+                  - link "Jesse Eckel channel/UCPFMk8WxX3SJKy1jh61xxGw" [ref=e735] [cursor=pointer]:
+                    - /url: /creator/channel/UCPFMk8WxX3SJKy1jh61xxGw
+                    - generic [ref=e736]: JE
+                    - generic [ref=e737]:
+                      - generic [ref=e738]: Jesse Eckel
+                      - generic [ref=e739]: channel/UCPFMk8WxX3SJKy1jh61xxGw
+                - cell "4.8α" [ref=e740]
+                - cell "+0.0" [ref=e741]:
+                  - generic [ref=e742]: "+0.0"
+                - cell "0.0%" [ref=e743]
+                - cell "1" [ref=e744]
+                - cell "T3 Low N" [ref=e745]:
+                  - generic [ref=e746]:
+                    - generic [ref=e747]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e748]: Low N
+                - cell "BTC" [ref=e749]
+              - row "31 MMCrypto @MMCryptoTube 12.2α -3.5 0.0% 4 T3 Low N BTC" [ref=e750]:
+                - cell "31" [ref=e751]
+                - cell "MMCrypto @MMCryptoTube" [ref=e752]:
+                  - link "MMCrypto @MMCryptoTube" [ref=e753] [cursor=pointer]:
+                    - /url: /creator/@MMCryptoTube
+                    - generic [ref=e754]: M
+                    - generic [ref=e755]:
+                      - generic [ref=e756]: MMCrypto
+                      - generic [ref=e757]: "@MMCryptoTube"
+                - cell "12.2α" [ref=e758]
+                - cell "-3.5" [ref=e759]
+                - cell "0.0%" [ref=e760]
+                - cell "4" [ref=e761]
+                - cell "T3 Low N" [ref=e762]:
+                  - generic [ref=e763]:
+                    - generic [ref=e764]: T3
+                    - generic "Only 4 scored calls — ranking may shift with more data" [ref=e765]: Low N
+                - cell "BTC" [ref=e766]
+              - row "32 Paul Barron Network @PaulBarronNetwork 33.2α +3.3 50.0% 2 T3 Low N ETH" [ref=e767]:
+                - cell "32" [ref=e768]
+                - cell "Paul Barron Network @PaulBarronNetwork" [ref=e769]:
+                  - link "Paul Barron Network @PaulBarronNetwork" [ref=e770] [cursor=pointer]:
+                    - /url: /creator/@PaulBarronNetwork
+                    - generic [ref=e771]: PB
+                    - generic [ref=e772]:
+                      - generic [ref=e773]: Paul Barron Network
+                      - generic [ref=e774]: "@PaulBarronNetwork"
+                - cell "33.2α" [ref=e775]
+                - cell "+3.3" [ref=e776]:
+                  - generic [ref=e777]: "+3.3"
+                - cell "50.0%" [ref=e778]
+                - cell "2" [ref=e779]
+                - cell "T3 Low N" [ref=e780]:
+                  - generic [ref=e781]:
+                    - generic [ref=e782]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e783]: Low N
+                - cell "ETH" [ref=e784]
+              - row "33 Anthony Pompliano @AnthonyPompliano 23.8α +0.0 25.0% 4 T3 Low N BTC" [ref=e785]:
+                - cell "33" [ref=e786]
+                - cell "Anthony Pompliano @AnthonyPompliano" [ref=e787]:
+                  - link "Anthony Pompliano @AnthonyPompliano" [ref=e788] [cursor=pointer]:
+                    - /url: /creator/@AnthonyPompliano
+                    - generic [ref=e789]: AP
+                    - generic [ref=e790]:
+                      - generic [ref=e791]: Anthony Pompliano
+                      - generic [ref=e792]: "@AnthonyPompliano"
+                - cell "23.8α" [ref=e793]
+                - cell "+0.0" [ref=e794]:
+                  - generic [ref=e795]: "+0.0"
+                - cell "25.0%" [ref=e796]
+                - cell "4" [ref=e797]
+                - cell "T3 Low N" [ref=e798]:
+                  - generic [ref=e799]:
+                    - generic [ref=e800]: T3
+                    - generic "Only 4 scored calls — ranking may shift with more data" [ref=e801]: Low N
+                - cell "BTC" [ref=e802]
+              - row "34 Blockworks Macro @BlockworksMacro 49.0α +0.0 100.0% 1 T3 Low N BTC" [ref=e803]:
+                - cell "34" [ref=e804]
+                - cell "Blockworks Macro @BlockworksMacro" [ref=e805]:
+                  - link "Blockworks Macro @BlockworksMacro" [ref=e806] [cursor=pointer]:
+                    - /url: /creator/@BlockworksMacro
+                    - generic [ref=e807]: BM
+                    - generic [ref=e808]:
+                      - generic [ref=e809]: Blockworks Macro
+                      - generic [ref=e810]: "@BlockworksMacro"
+                - cell "49.0α" [ref=e811]
+                - cell "+0.0" [ref=e812]:
+                  - generic [ref=e813]: "+0.0"
+                - cell "100.0%" [ref=e814]
+                - cell "1" [ref=e815]
+                - cell "T3 Low N" [ref=e816]:
+                  - generic [ref=e817]:
+                    - generic [ref=e818]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e819]: Low N
+                - cell "BTC" [ref=e820]
+              - row "35 Wolf of All Streets @scottmelker 47.0α +0.0 100.0% 1 T3 Low N BTC" [ref=e821]:
+                - cell "35" [ref=e822]
+                - cell "Wolf of All Streets @scottmelker" [ref=e823]:
+                  - link "Wolf of All Streets @scottmelker" [ref=e824] [cursor=pointer]:
+                    - /url: /creator/@scottmelker
+                    - generic [ref=e825]: WO
+                    - generic [ref=e826]:
+                      - generic [ref=e827]: Wolf of All Streets
+                      - generic [ref=e828]: "@scottmelker"
+                - cell "47.0α" [ref=e829]
+                - cell "+0.0" [ref=e830]:
+                  - generic [ref=e831]: "+0.0"
+                - cell "100.0%" [ref=e832]
+                - cell "1" [ref=e833]
+                - cell "T3 Low N" [ref=e834]:
+                  - generic [ref=e835]:
+                    - generic [ref=e836]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e837]: Low N
+                - cell "BTC" [ref=e838]
+              - row "36 Taiki Maeda @TaikiMaeda2 26.9α -2.3 50.0% 2 T3 Low N ETH" [ref=e839]:
+                - cell "36" [ref=e840]
+                - cell "Taiki Maeda @TaikiMaeda2" [ref=e841]:
+                  - link "Taiki Maeda @TaikiMaeda2" [ref=e842] [cursor=pointer]:
+                    - /url: /creator/@TaikiMaeda2
+                    - generic [ref=e843]: TM
+                    - generic [ref=e844]:
+                      - generic [ref=e845]: Taiki Maeda
+                      - generic [ref=e846]: "@TaikiMaeda2"
+                - cell "26.9α" [ref=e847]
+                - cell "-2.3" [ref=e848]
+                - cell "50.0%" [ref=e849]
+                - cell "2" [ref=e850]
+                - cell "T3 Low N" [ref=e851]:
+                  - generic [ref=e852]:
+                    - generic [ref=e853]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e854]: Low N
+                - cell "ETH" [ref=e855]
+              - row "37 ReadySetCrypto @ReadySetCrypto 22.8α +0.0 0.0% 1 T3 Low N BTC" [ref=e856]:
+                - cell "37" [ref=e857]
+                - cell "ReadySetCrypto @ReadySetCrypto" [ref=e858]:
+                  - link "ReadySetCrypto @ReadySetCrypto" [ref=e859] [cursor=pointer]:
+                    - /url: /creator/@ReadySetCrypto
+                    - generic [ref=e860]: R
+                    - generic [ref=e861]:
+                      - generic [ref=e862]: ReadySetCrypto
+                      - generic [ref=e863]: "@ReadySetCrypto"
+                - cell "22.8α" [ref=e864]
+                - cell "+0.0" [ref=e865]:
+                  - generic [ref=e866]: "+0.0"
+                - cell "0.0%" [ref=e867]
+                - cell "1" [ref=e868]
+                - cell "T3 Low N" [ref=e869]:
+                  - generic [ref=e870]:
+                    - generic [ref=e871]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e872]: Low N
+                - cell "BTC" [ref=e873]
+              - row "38 Angga Andinata @AnggaAndinata 1.0α +0.0 0.0% 1 T3 Low N BTC" [ref=e874]:
+                - cell "38" [ref=e875]
+                - cell "Angga Andinata @AnggaAndinata" [ref=e876]:
+                  - link "Angga Andinata @AnggaAndinata" [ref=e877] [cursor=pointer]:
+                    - /url: /creator/@AnggaAndinata
+                    - generic [ref=e878]: AA
+                    - generic [ref=e879]:
+                      - generic [ref=e880]: Angga Andinata
+                      - generic [ref=e881]: "@AnggaAndinata"
+                - cell "1.0α" [ref=e882]
+                - cell "+0.0" [ref=e883]:
+                  - generic [ref=e884]: "+0.0"
+                - cell "0.0%" [ref=e885]
+                - cell "1" [ref=e886]
+                - cell "T3 Low N" [ref=e887]:
+                  - generic [ref=e888]:
+                    - generic [ref=e889]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e890]: Low N
+                - cell "BTC" [ref=e891]
+              - row "39 Bitcoin Expert India @BitcoinExpertIndia 52.1α +0.6 100.0% 3 T3 Low N ETH" [ref=e892]:
+                - cell "39" [ref=e893]
+                - cell "Bitcoin Expert India @BitcoinExpertIndia" [ref=e894]:
+                  - link "Bitcoin Expert India @BitcoinExpertIndia" [ref=e895] [cursor=pointer]:
+                    - /url: /creator/@BitcoinExpertIndia
+                    - generic [ref=e896]: BE
+                    - generic [ref=e897]:
+                      - generic [ref=e898]: Bitcoin Expert India
+                      - generic [ref=e899]: "@BitcoinExpertIndia"
+                - cell "52.1α" [ref=e900]
+                - cell "+0.6" [ref=e901]:
+                  - generic [ref=e902]: "+0.6"
+                - cell "100.0%" [ref=e903]
+                - cell "3" [ref=e904]
+                - cell "T3 Low N" [ref=e905]:
+                  - generic [ref=e906]:
+                    - generic [ref=e907]: T3
+                    - generic "Only 3 scored calls — ranking may shift with more data" [ref=e908]: Low N
+                - cell "ETH" [ref=e909]
+              - row "40 Blockchain Backer channel/UCia6oYbLKo8fLOguATpACmA 28.8α +2.4 50.0% 2 T3 Low N ETH" [ref=e910]:
+                - cell "40" [ref=e911]
+                - cell "Blockchain Backer channel/UCia6oYbLKo8fLOguATpACmA" [ref=e912]:
+                  - link "Blockchain Backer channel/UCia6oYbLKo8fLOguATpACmA" [ref=e913] [cursor=pointer]:
+                    - /url: /creator/channel/UCia6oYbLKo8fLOguATpACmA
+                    - generic [ref=e914]: BB
+                    - generic [ref=e915]:
+                      - generic [ref=e916]: Blockchain Backer
+                      - generic [ref=e917]: channel/UCia6oYbLKo8fLOguATpACmA
+                - cell "28.8α" [ref=e918]
+                - cell "+2.4" [ref=e919]:
+                  - generic [ref=e920]: "+2.4"
+                - cell "50.0%" [ref=e921]
+                - cell "2" [ref=e922]
+                - cell "T3 Low N" [ref=e923]:
+                  - generic [ref=e924]:
+                    - generic [ref=e925]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e926]: Low N
+                - cell "ETH" [ref=e927]
+              - row "41 Crypto Flash France channel/UC7t8V-dJPWfmAXEK2tvma1A 12.5α +0.3 0.0% 2 T3 Low N ETH" [ref=e928]:
+                - cell "41" [ref=e929]
+                - cell "Crypto Flash France channel/UC7t8V-dJPWfmAXEK2tvma1A" [ref=e930]:
+                  - link "Crypto Flash France channel/UC7t8V-dJPWfmAXEK2tvma1A" [ref=e931] [cursor=pointer]:
+                    - /url: /creator/channel/UC7t8V-dJPWfmAXEK2tvma1A
+                    - generic [ref=e932]: CF
+                    - generic [ref=e933]:
+                      - generic [ref=e934]: Crypto Flash France
+                      - generic [ref=e935]: channel/UC7t8V-dJPWfmAXEK2tvma1A
+                - cell "12.5α" [ref=e936]
+                - cell "+0.3" [ref=e937]:
+                  - generic [ref=e938]: "+0.3"
+                - cell "0.0%" [ref=e939]
+                - cell "2" [ref=e940]
+                - cell "T3 Low N" [ref=e941]:
+                  - generic [ref=e942]:
+                    - generic [ref=e943]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e944]: Low N
+                - cell "ETH" [ref=e945]
+              - row "42 Crypto Le Trone channel/UC5kh_CumIL_usjg3pW5J9Qw 20.8α -7.4 33.3% 3 T3 Low N ETH" [ref=e946]:
+                - cell "42" [ref=e947]
+                - cell "Crypto Le Trone channel/UC5kh_CumIL_usjg3pW5J9Qw" [ref=e948]:
+                  - link "Crypto Le Trone channel/UC5kh_CumIL_usjg3pW5J9Qw" [ref=e949] [cursor=pointer]:
+                    - /url: /creator/channel/UC5kh_CumIL_usjg3pW5J9Qw
+                    - generic [ref=e950]: CL
+                    - generic [ref=e951]:
+                      - generic [ref=e952]: Crypto Le Trone
+                      - generic [ref=e953]: channel/UC5kh_CumIL_usjg3pW5J9Qw
+                - cell "20.8α" [ref=e954]
+                - cell "-7.4" [ref=e955]
+                - cell "33.3%" [ref=e956]
+                - cell "3" [ref=e957]
+                - cell "T3 Low N" [ref=e958]:
+                  - generic [ref=e959]:
+                    - generic [ref=e960]: T3
+                    - generic "Only 3 scored calls — ranking may shift with more data" [ref=e961]: Low N
+                - cell "ETH" [ref=e962]
+              - row "43 Les Rois du Bitcoin channel/UCv9sIj-mKR4qEr_yYAywR1A 11.3α +0.5 0.0% 1 T3 Low N ETH" [ref=e963]:
+                - cell "43" [ref=e964]
+                - cell "Les Rois du Bitcoin channel/UCv9sIj-mKR4qEr_yYAywR1A" [ref=e965]:
+                  - link "Les Rois du Bitcoin channel/UCv9sIj-mKR4qEr_yYAywR1A" [ref=e966] [cursor=pointer]:
+                    - /url: /creator/channel/UCv9sIj-mKR4qEr_yYAywR1A
+                    - generic [ref=e967]: LR
+                    - generic [ref=e968]:
+                      - generic [ref=e969]: Les Rois du Bitcoin
+                      - generic [ref=e970]: channel/UCv9sIj-mKR4qEr_yYAywR1A
+                - cell "11.3α" [ref=e971]
+                - cell "+0.5" [ref=e972]:
+                  - generic [ref=e973]: "+0.5"
+                - cell "0.0%" [ref=e974]
+                - cell "1" [ref=e975]
+                - cell "T3 Low N" [ref=e976]:
+                  - generic [ref=e977]:
+                    - generic [ref=e978]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e979]: Low N
+                - cell "ETH" [ref=e980]
+              - row "44 MoneyZG channel/UCIEvlRpHBVFthrF6pZzBEXw 41.0α +0.0 75.0% 4 T3 Low N BTC" [ref=e981]:
+                - cell "44" [ref=e982]
+                - cell "MoneyZG channel/UCIEvlRpHBVFthrF6pZzBEXw" [ref=e983]:
+                  - link "MoneyZG channel/UCIEvlRpHBVFthrF6pZzBEXw" [ref=e984] [cursor=pointer]:
+                    - /url: /creator/channel/UCIEvlRpHBVFthrF6pZzBEXw
+                    - generic [ref=e985]: M
+                    - generic [ref=e986]:
+                      - generic [ref=e987]: MoneyZG
+                      - generic [ref=e988]: channel/UCIEvlRpHBVFthrF6pZzBEXw
+                - cell "41.0α" [ref=e989]
+                - cell "+0.0" [ref=e990]:
+                  - generic [ref=e991]: "+0.0"
+                - cell "75.0%" [ref=e992]
+                - cell "4" [ref=e993]
+                - cell "T3 Low N" [ref=e994]:
+                  - generic [ref=e995]:
+                    - generic [ref=e996]: T3
+                    - generic "Only 4 scored calls — ranking may shift with more data" [ref=e997]: Low N
+                - cell "BTC" [ref=e998]
+              - row "45 SwissCryptoJay channel/UCWM1uBxzGpNb4RyxtFc3A8g 10.0α +0.0 0.0% 1 T3 Low N BTC" [ref=e999]:
+                - cell "45" [ref=e1000]
+                - cell "SwissCryptoJay channel/UCWM1uBxzGpNb4RyxtFc3A8g" [ref=e1001]:
+                  - link "SwissCryptoJay channel/UCWM1uBxzGpNb4RyxtFc3A8g" [ref=e1002] [cursor=pointer]:
+                    - /url: /creator/channel/UCWM1uBxzGpNb4RyxtFc3A8g
+                    - generic [ref=e1003]: S
+                    - generic [ref=e1004]:
+                      - generic [ref=e1005]: SwissCryptoJay
+                      - generic [ref=e1006]: channel/UCWM1uBxzGpNb4RyxtFc3A8g
+                - cell "10.0α" [ref=e1007]
+                - cell "+0.0" [ref=e1008]:
+                  - generic [ref=e1009]: "+0.0"
+                - cell "0.0%" [ref=e1010]
+                - cell "1" [ref=e1011]
+                - cell "T3 Low N" [ref=e1012]:
+                  - generic [ref=e1013]:
+                    - generic [ref=e1014]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e1015]: Low N
+                - cell "BTC" [ref=e1016]
+              - row "46 Tabraiz Shams @Tabraizshams 10.0α +0.0 0.0% 1 T3 Low N BTC" [ref=e1017]:
+                - cell "46" [ref=e1018]
+                - cell "Tabraiz Shams @Tabraizshams" [ref=e1019]:
+                  - link "Tabraiz Shams @Tabraizshams" [ref=e1020] [cursor=pointer]:
+                    - /url: /creator/@Tabraizshams
+                    - generic [ref=e1021]: TS
+                    - generic [ref=e1022]:
+                      - generic [ref=e1023]: Tabraiz Shams
+                      - generic [ref=e1024]: "@Tabraizshams"
+                - cell "10.0α" [ref=e1025]
+                - cell "+0.0" [ref=e1026]:
+                  - generic [ref=e1027]: "+0.0"
+                - cell "0.0%" [ref=e1028]
+                - cell "1" [ref=e1029]
+                - cell "T3 Low N" [ref=e1030]:
+                  - generic [ref=e1031]:
+                    - generic [ref=e1032]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e1033]: Low N
+                - cell "BTC" [ref=e1034]
+              - row "47 VoskCoin channel/UCT44w6854K62cSiwA1aiXfw 50.8α +0.0 100.0% 1 T3 Low N BTC" [ref=e1035]:
+                - cell "47" [ref=e1036]
+                - cell "VoskCoin channel/UCT44w6854K62cSiwA1aiXfw" [ref=e1037]:
+                  - link "VoskCoin channel/UCT44w6854K62cSiwA1aiXfw" [ref=e1038] [cursor=pointer]:
+                    - /url: /creator/channel/UCT44w6854K62cSiwA1aiXfw
+                    - generic [ref=e1039]: V
+                    - generic [ref=e1040]:
+                      - generic [ref=e1041]: VoskCoin
+                      - generic [ref=e1042]: channel/UCT44w6854K62cSiwA1aiXfw
+                - cell "50.8α" [ref=e1043]
+                - cell "+0.0" [ref=e1044]:
+                  - generic [ref=e1045]: "+0.0"
+                - cell "100.0%" [ref=e1046]
+                - cell "1" [ref=e1047]
+                - cell "T3 Low N" [ref=e1048]:
+                  - generic [ref=e1049]:
+                    - generic [ref=e1050]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e1051]: Low N
+                - cell "BTC" [ref=e1052]
+              - row "48 Brandon Kelly Crypto Trader channel/UC-f5nPBEDyUBZz_jOPBwAfQ 45.3α +11.0 50.0% 2 T3 Low N ETH" [ref=e1053]:
+                - cell "48" [ref=e1054]
+                - cell "Brandon Kelly Crypto Trader channel/UC-f5nPBEDyUBZz_jOPBwAfQ" [ref=e1055]:
+                  - link "Brandon Kelly Crypto Trader channel/UC-f5nPBEDyUBZz_jOPBwAfQ" [ref=e1056] [cursor=pointer]:
+                    - /url: /creator/channel/UC-f5nPBEDyUBZz_jOPBwAfQ
+                    - generic [ref=e1057]: BK
+                    - generic [ref=e1058]:
+                      - generic [ref=e1059]: Brandon Kelly Crypto Trader
+                      - generic [ref=e1060]: channel/UC-f5nPBEDyUBZz_jOPBwAfQ
+                - cell "45.3α" [ref=e1061]
+                - cell "+11.0" [ref=e1062]:
+                  - generic [ref=e1063]: "+11.0"
+                - cell "50.0%" [ref=e1064]
+                - cell "2" [ref=e1065]
+                - cell "T3 Low N" [ref=e1066]:
+                  - generic [ref=e1067]:
+                    - generic [ref=e1068]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e1069]: Low N
+                - cell "ETH" [ref=e1070]
+              - row "49 Crypto Kaiba channel/UCx9Z8LQWzCehWv5GqqPUPjw 23.8α -9.0 33.3% 3 T3 Low N BTC" [ref=e1071]:
+                - cell "49" [ref=e1072]
+                - cell "Crypto Kaiba channel/UCx9Z8LQWzCehWv5GqqPUPjw" [ref=e1073]:
+                  - link "Crypto Kaiba channel/UCx9Z8LQWzCehWv5GqqPUPjw" [ref=e1074] [cursor=pointer]:
+                    - /url: /creator/channel/UCx9Z8LQWzCehWv5GqqPUPjw
+                    - generic [ref=e1075]: CK
+                    - generic [ref=e1076]:
+                      - generic [ref=e1077]: Crypto Kaiba
+                      - generic [ref=e1078]: channel/UCx9Z8LQWzCehWv5GqqPUPjw
+                - cell "23.8α" [ref=e1079]
+                - cell "-9.0" [ref=e1080]
+                - cell "33.3%" [ref=e1081]
+                - cell "3" [ref=e1082]
+                - cell "T3 Low N" [ref=e1083]:
+                  - generic [ref=e1084]:
+                    - generic [ref=e1085]: T3
+                    - generic "Only 3 scored calls — ranking may shift with more data" [ref=e1086]: Low N
+                - cell "BTC" [ref=e1087]
+              - row "50 Crypto Shubhrant chaudhary @cryptoshubhrantchaudhary8012 13.0α +4.0 0.0% 1 T3 Low N ETH" [ref=e1088]:
+                - cell "50" [ref=e1089]
+                - cell "Crypto Shubhrant chaudhary @cryptoshubhrantchaudhary8012" [ref=e1090]:
+                  - link "Crypto Shubhrant chaudhary @cryptoshubhrantchaudhary8012" [ref=e1091] [cursor=pointer]:
+                    - /url: /creator/@cryptoshubhrantchaudhary8012
+                    - generic [ref=e1092]: CS
+                    - generic [ref=e1093]:
+                      - generic [ref=e1094]: Crypto Shubhrant chaudhary
+                      - generic [ref=e1095]: "@cryptoshubhrantchaudhary8012"
+                - cell "13.0α" [ref=e1096]
+                - cell "+4.0" [ref=e1097]:
+                  - generic [ref=e1098]: "+4.0"
+                - cell "0.0%" [ref=e1099]
+                - cell "1" [ref=e1100]
+                - cell "T3 Low N" [ref=e1101]:
+                  - generic [ref=e1102]:
+                    - generic [ref=e1103]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e1104]: Low N
+                - cell "ETH" [ref=e1105]
+              - row "51 CryptoJack channel/UCBjrrP9frGRuRwoAJ4RQdag 6.8α +0.0 0.0% 1 T3 Low N BTC" [ref=e1106]:
+                - cell "51" [ref=e1107]
+                - cell "CryptoJack channel/UCBjrrP9frGRuRwoAJ4RQdag" [ref=e1108]:
+                  - link "CryptoJack channel/UCBjrrP9frGRuRwoAJ4RQdag" [ref=e1109] [cursor=pointer]:
+                    - /url: /creator/channel/UCBjrrP9frGRuRwoAJ4RQdag
+                    - generic [ref=e1110]: C
+                    - generic [ref=e1111]:
+                      - generic [ref=e1112]: CryptoJack
+                      - generic [ref=e1113]: channel/UCBjrrP9frGRuRwoAJ4RQdag
+                - cell "6.8α" [ref=e1114]
+                - cell "+0.0" [ref=e1115]:
+                  - generic [ref=e1116]: "+0.0"
+                - cell "0.0%" [ref=e1117]
+                - cell "1" [ref=e1118]
+                - cell "T3 Low N" [ref=e1119]:
+                  - generic [ref=e1120]:
+                    - generic [ref=e1121]: T3
+                    - generic "Only 1 scored calls — ranking may shift with more data" [ref=e1122]: Low N
+                - cell "BTC" [ref=e1123]
+              - row "52 Didi Random channel/UCoMc0zniPatlGpR6OQiM-Qg 27.5α +0.0 50.0% 2 T3 Low N BTC" [ref=e1124]:
+                - cell "52" [ref=e1125]
+                - cell "Didi Random channel/UCoMc0zniPatlGpR6OQiM-Qg" [ref=e1126]:
+                  - link "Didi Random channel/UCoMc0zniPatlGpR6OQiM-Qg" [ref=e1127] [cursor=pointer]:
+                    - /url: /creator/channel/UCoMc0zniPatlGpR6OQiM-Qg
+                    - generic [ref=e1128]: DR
+                    - generic [ref=e1129]:
+                      - generic [ref=e1130]: Didi Random
+                      - generic [ref=e1131]: channel/UCoMc0zniPatlGpR6OQiM-Qg
+                - cell "27.5α" [ref=e1132]
+                - cell "+0.0" [ref=e1133]:
+                  - generic [ref=e1134]: "+0.0"
+                - cell "50.0%" [ref=e1135]
+                - cell "2" [ref=e1136]
+                - cell "T3 Low N" [ref=e1137]:
+                  - generic [ref=e1138]:
+                    - generic [ref=e1139]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e1140]: Low N
+                - cell "BTC" [ref=e1141]
+              - row "53 Earn With Rk @EarnWithRK 18.7α +3.2 0.0% 2 T3 Low N ETH" [ref=e1142]:
+                - cell "53" [ref=e1143]
+                - cell "Earn With Rk @EarnWithRK" [ref=e1144]:
+                  - link "Earn With Rk @EarnWithRK" [ref=e1145] [cursor=pointer]:
+                    - /url: /creator/@EarnWithRK
+                    - generic [ref=e1146]: EW
+                    - generic [ref=e1147]:
+                      - generic [ref=e1148]: Earn With Rk
+                      - generic [ref=e1149]: "@EarnWithRK"
+                - cell "18.7α" [ref=e1150]
+                - cell "+3.2" [ref=e1151]:
+                  - generic [ref=e1152]: "+3.2"
+                - cell "0.0%" [ref=e1153]
+                - cell "2" [ref=e1154]
+                - cell "T3 Low N" [ref=e1155]:
+                  - generic [ref=e1156]:
+                    - generic [ref=e1157]: T3
+                    - generic "Only 2 scored calls — ranking may shift with more data" [ref=e1158]: Low N
+                - cell "ETH" [ref=e1159]
+      - generic [ref=e1160]:
+        - generic [ref=e1161]:
+          - generic [ref=e1162]: "03"
+          - heading "What's forming across creators." [level=2] [ref=e1163]:
+            - text: What's
+            - emphasis [ref=e1164]: forming
+            - text: across creators.
+        - generic [ref=e1166]:
+          - generic [ref=e1167]:
+            - generic [ref=e1168]: ★
+            - heading "Consensus Signals" [level=3] [ref=e1169]
+            - generic [ref=e1170]: Alpha
+          - generic [ref=e1171]:
+            - paragraph [ref=e1172]: Alpha unlocks live convergence and anti-consensus signals.
+            - link "Upgrade to Alpha" [ref=e1173] [cursor=pointer]:
+              - /url: /pricing
+  - contentinfo [ref=e1174]:
+    - generic [ref=e1175]:
+      - generic [ref=e1176]:
+        - generic [ref=e1177]:
+          - img "CallScore - Market calls, measured." [ref=e1179]
+          - paragraph [ref=e1180]: Market calls, measured.
+        - generic [ref=e1181]:
+          - heading "Navigate" [level=2] [ref=e1182]
+          - list [ref=e1183]:
+            - listitem [ref=e1184]:
+              - link "Leaderboard" [ref=e1185] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e1186]:
+              - link "Methodology" [ref=e1187] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e1188]:
+              - link "Pricing" [ref=e1189] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e1190]:
+              - link "Give Feedback" [ref=e1191] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e1192]:
+              - link "About" [ref=e1193] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e1194]:
+          - heading "Legal" [level=2] [ref=e1195]
+          - list [ref=e1196]:
+            - listitem [ref=e1197]:
+              - link "Terms of Service" [ref=e1198] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e1199]:
+              - link "Privacy Policy" [ref=e1200] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e1201]:
+        - group [ref=e1202]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e1203] [cursor=pointer]':
+            - strong [ref=e1204]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e1205]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e1206] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e1207]: "?"
+    - generic [ref=e1208]: Feedback

@@ -1,0 +1,11 @@
+--- active/tests/premium.test.ts
++++ pre-canonical-20260526T063909Z/tests/premium.test.ts
+@@ -5,8 +5,6 @@
+ 
+ test("normalizeTier maps legacy elite sessions to alpha", () => {
+   assert.equal(normalizeTier("elite"), "alpha");
+-  assert.equal(normalizeTier("Alpha"), "alpha");
+-  assert.equal(normalizeTier(" PRO "), "pro");
+   assert.equal(normalizeTier("alpha"), "alpha");
+   assert.equal(normalizeTier("pro"), "pro");
+   assert.equal(normalizeTier("unknown"), "free");

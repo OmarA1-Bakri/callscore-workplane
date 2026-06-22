@@ -1,0 +1,31 @@
+{
+  "profile_id": "callscoredata",
+  "runtime_profile": "callscoredata",
+  "mission": "Own data truth, transcript/Gemma pipeline visibility, scoring freshness, ML verifier gates, and evidence freshness.",
+  "agents": [
+    "callscore-data-pipeline-sentinel",
+    "callscore-gemma-transcript-head",
+    "callscore-channel-agent-worker-head"
+  ],
+  "tools": [
+    "PostgreSQL read path",
+    "pipeline_jobs",
+    "transcript scripts",
+    "Gemma/Ollama shadow tools",
+    "ml verifier quality gate",
+    "Docker worker health"
+  ],
+  "gates": [
+    "DB_MUTATION_GATE",
+    "shadow_promotion_gate",
+    "provider_cooldown_gate",
+    "secret_gate"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-data-pipeline-sentinel",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-gemma-transcript-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-channel-agent-worker-head"
+  ]
+}

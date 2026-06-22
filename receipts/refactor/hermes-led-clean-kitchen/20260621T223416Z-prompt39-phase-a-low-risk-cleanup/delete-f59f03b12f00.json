@@ -1,0 +1,57 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/visual-proof",
+  "classification": "TEMPORARY_RUNTIME_OUTPUT_PHASE_A_CANDIDATE",
+  "phase_a_bucket": "safe_batch_1",
+  "status": "deleted",
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/visual-proof",
+    "exists": true,
+    "is_file": false,
+    "is_dir": true,
+    "is_symlink": false,
+    "mode_octal": "0o775",
+    "size_lstat_bytes": 4096,
+    "recursive_size_bytes": 421368,
+    "file_count": 2,
+    "mtime_utc": "2026-06-19T10:53:00Z",
+    "sha256": null
+  },
+  "refs": {
+    "process_refs": [],
+    "docker_mount_refs": [],
+    "findmnt": {
+      "cmd": "findmnt -T \"/opt/crypto-tuber-ranked/.tmp/visual-proof\" -o TARGET,SOURCE,FSTYPE -n 2>/dev/null || true",
+      "rc": 0,
+      "stdout": "/      /dev/sda1 ext4\n",
+      "stderr": ""
+    }
+  },
+  "command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/visual-proof\"",
+  "command_rc": 0,
+  "stderr": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/visual-proof",
+    "exists": false
+  },
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131517251584,
+    "free_bytes": 29452992512,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571488,
+    "inode_free": 7161008,
+    "inode_used_percent": 26.42
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131516821504,
+    "free_bytes": 29453422592,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571484,
+    "inode_free": 7161012,
+    "inode_used_percent": 26.42
+  },
+  "recovered_bytes": 430080
+}

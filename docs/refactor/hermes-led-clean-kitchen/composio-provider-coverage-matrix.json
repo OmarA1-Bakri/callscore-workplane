@@ -1,0 +1,86 @@
+{
+  "timestamp_utc": "2026-06-22T08:55:15Z",
+  "coverage": [
+    {
+      "provider_id": "attio",
+      "display_name": "Attio",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "posthog",
+      "display_name": "PostHog",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "gmail",
+      "display_name": "Gmail",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "discord",
+      "display_name": "Discord",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "telegram",
+      "display_name": "Telegram",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "x_twitter",
+      "display_name": "X / Twitter",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "linkedin",
+      "display_name": "LinkedIn",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "display_name": "Google Calendar / Contacts",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    },
+    {
+      "provider_id": "whop",
+      "display_name": "Whop",
+      "should_route_through_composio": true,
+      "composio_route_visible_now": false,
+      "status": "blocked_until_composio_visible",
+      "allowed_now": "documentation_only",
+      "future_read_probe": "after Composio repair/verification only"
+    }
+  ]
+}

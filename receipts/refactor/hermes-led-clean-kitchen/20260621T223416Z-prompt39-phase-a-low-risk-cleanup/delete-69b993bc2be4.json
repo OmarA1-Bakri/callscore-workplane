@@ -1,0 +1,57 @@
+{
+  "path": "/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo",
+  "classification": "GENERATED_CACHE_PHASE_A_CANDIDATE",
+  "phase_a_bucket": "safe_batch_1",
+  "status": "deleted",
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo",
+    "exists": true,
+    "is_file": true,
+    "is_dir": false,
+    "is_symlink": false,
+    "mode_octal": "0o664",
+    "size_lstat_bytes": 425208,
+    "recursive_size_bytes": 425208,
+    "file_count": 1,
+    "mtime_utc": "2026-06-21T14:25:35Z",
+    "sha256": "53936236e2a15ae703408842ebbfb9b1f24b265c4da606c9ef13e981a7f59212"
+  },
+  "refs": {
+    "process_refs": [],
+    "docker_mount_refs": [],
+    "findmnt": {
+      "cmd": "findmnt -T \"/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo\" -o TARGET,SOURCE,FSTYPE -n 2>/dev/null || true",
+      "rc": 0,
+      "stdout": "/      /dev/sda1 ext4\n",
+      "stderr": ""
+    }
+  },
+  "command": "rm -f -- \"/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo\"",
+  "command_rc": 0,
+  "stderr": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo",
+    "exists": false
+  },
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593793536,
+    "free_bytes": 29376450560,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577129,
+    "inode_free": 7155367,
+    "inode_used_percent": 26.48
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593367552,
+    "free_bytes": 29376876544,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577128,
+    "inode_free": 7155368,
+    "inode_used_percent": 26.48
+  },
+  "recovered_bytes": 425984
+}

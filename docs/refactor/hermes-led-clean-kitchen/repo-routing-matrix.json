@@ -1,0 +1,801 @@
+{
+  "timestamp_utc": "20260621T182522Z",
+  "runtime_routing": [
+    {
+      "container": "whop-auto-hermes-worker-1",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": "whop-auto",
+      "compose_service": "hermes-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "whop-auto-channel-agent-worker-1",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": "whop-auto",
+      "compose_service": "channel-agent-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "whop-auto-ytdlp-pot-provider-1",
+      "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "state": "restarting",
+      "health": "unhealthy",
+      "compose_project": "whop-auto",
+      "compose_service": "ytdlp-pot-provider",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "crypto-tuber-ranked-hermes-worker-1",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": "crypto-tuber-ranked",
+      "compose_service": "hermes-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+      "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "state": "running",
+      "health": "healthy",
+      "compose_project": "crypto-tuber-ranked",
+      "compose_service": "ytdlp-pot-provider",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "hh-oauth-mcp-gateway",
+      "image": "oauth-mcp-gateway-oauth-mcp-gateway",
+      "state": "running",
+      "health": null,
+      "compose_project": "oauth-mcp-gateway",
+      "compose_service": "oauth-mcp-gateway",
+      "compose_config_files": "/srv/agents/oauth-mcp-gateway/docker-compose.yml",
+      "compose_working_dir": "/srv/agents/oauth-mcp-gateway",
+      "classification": "UNKNOWN_BLOCKED"
+    },
+    {
+      "container": "hermes-whop-automation-tunnel",
+      "image": "cloudflare/cloudflared:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": null,
+      "compose_service": null,
+      "compose_config_files": null,
+      "compose_working_dir": null,
+      "classification": "UNKNOWN_BLOCKED"
+    }
+  ],
+  "repos": [
+    {
+      "path": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": true,
+        "branch": {
+          "rc": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "rc": 0,
+          "stdout": "## master...origin/master [ahead 3]\n M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/.hermes-tmp.UR6IXl\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n",
+          "stderr": ""
+        },
+        "remote": {
+          "rc": 0,
+          "stdout": "origin\thttps://github.com/OmarA1-Bakri/CallScore.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/CallScore.git (push)\n",
+          "stderr": ""
+        },
+        "head": {
+          "rc": 0,
+          "stdout": "67f01f2ca8b5536da7876372e6cdc7e8d4926133\n",
+          "stderr": ""
+        }
+      },
+      "runtime_references": {
+        "active_process_check": [
+          {
+            "pid": 1267974,
+            "user": "omar",
+            "comm": "esbuild",
+            "cmdline": "/opt/crypto-tuber-ranked/node_modules/@esbuild/linux-arm64/bin/esbuild --service=0.27.7 --ping"
+          },
+          {
+            "pid": 1267985,
+            "user": "omar",
+            "comm": "esbuild",
+            "cmdline": "/opt/crypto-tuber-ranked/node_modules/@esbuild/linux-arm64/bin/esbuild --service=0.27.7 --ping"
+          }
+        ],
+        "docker_mount_check": [],
+        "compose_reference_check": [
+          {
+            "name": "whop-auto-hermes-worker-1",
+            "id": "da4d0e928c00",
+            "image": "crypto-tuber-ranked-hermes-worker:latest",
+            "state": "running",
+            "health": null,
+            "compose_labels": {
+              "com.docker.compose.config-hash": "9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf",
+              "com.docker.compose.container-number": "1",
+              "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+              "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+              "com.docker.compose.oneoff": "False",
+              "com.docker.compose.project": "whop-auto",
+              "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+              "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+              "com.docker.compose.replace": "hermes-worker-1",
+              "com.docker.compose.service": "hermes-worker",
+              "com.docker.compose.version": "5.1.4"
+            }
+          },
+          {
+            "name": "whop-auto-channel-agent-worker-1",
+            "id": "8787903a1ad5",
+            "image": "crypto-tuber-ranked-hermes-worker:latest",
+            "state": "running",
+            "health": null,
+            "compose_labels": {
+              "com.docker.compose.config-hash": "b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08",
+              "com.docker.compose.container-number": "1",
+              "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+              "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+              "com.docker.compose.oneoff": "False",
+              "com.docker.compose.project": "whop-auto",
+              "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+              "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+              "com.docker.compose.replace": "channel-agent-worker-1",
+              "com.docker.compose.service": "channel-agent-worker",
+              "com.docker.compose.version": "5.1.4"
+            }
+          },
+          {
+            "name": "whop-auto-ytdlp-pot-provider-1",
+            "id": "d352f6a7217c",
+            "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+            "state": "restarting",
+            "health": "unhealthy",
+            "compose_labels": {
+              "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+              "com.docker.compose.container-number": "1",
+              "com.docker.compose.depends_on": "",
+              "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+              "com.docker.compose.oneoff": "False",
+              "com.docker.compose.project": "whop-auto",
+              "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+              "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+              "com.docker.compose.service": "ytdlp-pot-provider",
+              "com.docker.compose.version": "5.1.4"
+            }
+          },
+          {
+            "name": "crypto-tuber-ranked-hermes-worker-1",
+            "id": "70e98d9f9b52",
+            "image": "crypto-tuber-ranked-hermes-worker:latest",
+            "state": "running",
+            "health": null,
+            "compose_labels": {
+              "com.docker.compose.config-hash": "0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e",
+              "com.docker.compose.container-number": "1",
+              "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+              "com.docker.compose.image": "sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3",
+              "com.docker.compose.oneoff": "False",
+              "com.docker.compose.project": "crypto-tuber-ranked",
+              "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+              "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+              "com.docker.compose.service": "hermes-worker",
+              "com.docker.compose.version": "5.1.4"
+            }
+          },
+          {
+            "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+            "id": "362901a5fca0",
+            "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+            "state": "running",
+            "health": "healthy",
+            "compose_labels": {
+              "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+              "com.docker.compose.container-number": "1",
+              "com.docker.compose.depends_on": "",
+              "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+              "com.docker.compose.oneoff": "False",
+              "com.docker.compose.project": "crypto-tuber-ranked",
+              "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+              "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+              "com.docker.compose.service": "ytdlp-pot-provider",
+              "com.docker.compose.version": "5.1.4"
+            }
+          },
+          "/srv/agents/repos/callscore-workplane/ledgers/codebase-memory-artifacts.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/service-ledger.yaml"
+        ],
+        "cron_reference_check": [],
+        "systemd_reference_check": [
+          "/etc/systemd/system/callscore-control-plane-canary.service",
+          "/etc/systemd/system/callscore-daily-pipeline.service",
+          "/etc/systemd/system/hermes-gateway.service.d/20-callscore-env.conf",
+          "/etc/systemd/system/hermes-worker.service",
+          "/etc/systemd/system/multi-user.target.wants/hermes-worker.service",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/ops/systemd/hermes-worker.service",
+          "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-systemd-inventory.json"
+        ],
+        "all_reference_files": [
+          "/etc/systemd/system/callscore-control-plane-canary.service",
+          "/etc/systemd/system/callscore-daily-pipeline.service",
+          "/etc/systemd/system/hermes-gateway.service.d/20-callscore-env.conf",
+          "/etc/systemd/system/hermes-worker.service",
+          "/etc/systemd/system/multi-user.target.wants/hermes-worker.service",
+          "/srv/agents/repos/callscore-workplane/README.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/AGENTS.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/README.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/agentic-architecture/clean-go-forward-state.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/audits/hermes-agentic-system-map.mmd",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/audits/hermes-agentic-workflow-audit.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/2026-06-15-x-twitter-public-canary-approval-packet.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/callscore-canonical-env-manifest.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/callscore-gtm-agent-registry.json",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/callscore-gtm-agent-registry.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/freshness-certification.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/hermes-skill-canonicalization-audit.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/hh-media-fallback.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/laptop-transcript-collector.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/whop-auto-certification.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/ops/systemd/hermes-worker.service",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/scripts/hermes-worker-wrapper.py",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/scripts/hermes-worker-wrapper.sh",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/scripts/validate-hermes-env.ts",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/scripts/windows/run-transcript-collector.ps1",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/tests/gtm-agent-registry.test.ts",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/tests/infrastructure-canonical.test.ts",
+          "/srv/agents/repos/callscore-workplane/docs/contracts/migration-policy.md",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/callscore-autonomous-orchestrator-activation-20260618T1048Z.json",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/callscore-cmo-monitor-20260618T182018Z.md",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/callscore-x-canary-001-published-20260618T103702Z.json",
+          "/srv/agents/repos/callscore-workplane/docs/migration/subagents/source-acquisition-agent.md",
+          "/srv/agents/repos/callscore-workplane/docs/protection/hermes-omx-manifest.md",
+          "/srv/agents/repos/callscore-workplane/docs/protection/hermes-omx-protection-policy.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/active-runtime-map.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/execution-plan.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-paths.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-classification.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/hermes-omx-restore.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
+          "/srv/agents/repos/callscore-workplane/ledgers/codebase-memory-artifacts.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifact-discovery.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifacts.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-graph-ledger.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest-only.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.tsv",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-gap.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-summary.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/cutover-operationalization-final.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/final-app-validation.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-docker-inventory.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-host-inventory.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-postgres-inventory.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-systemd-inventory.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/service-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/protected/env-vault/metadata/env-vault-summary-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/protected/hermes-vault/metadata/hermes-omx-manifest-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/protected/hermes-vault/metadata/hermes-omx-manifest-20260618T063257Z.tsv",
+          "/srv/agents/repos/callscore-workplane/protected/omx-vault/metadata/hermes-omx-manifest-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/protected/omx-vault/metadata/hermes-omx-manifest-20260618T063257Z.tsv",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json",
+          "/srv/agents/repos/callscore-workplane/scripts/restore/hermes-omx-restore-plan.sh",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-agentic-workplane-full-system.html",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-canonical-env-manifest.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-canonical-session-startup.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-canonical-skill-register.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-canonical-subagent-roster.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-gtm-agent-registry.json",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-gtm-agent-registry.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-loop-engineering-contract.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-loop-failure-taxonomy.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/laptop-transcript-collector.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/whop-auto-certification.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/root/AGENTS.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/root/README.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/scripts/windows/run-transcript-collector.ps1",
+          "/srv/agents/repos/callscore-workplane/sources/product/tests/gtm-agent-registry.test.ts",
+          "/srv/agents/repos/callscore-workplane/sources/whop/plugin/agent_workflows/whop_auto/README.md"
+        ]
+      },
+      "size_bytes": 3102807350
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": true,
+        "branch": {
+          "rc": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "rc": 0,
+          "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+          "stderr": ""
+        },
+        "remote": {
+          "rc": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "head": {
+          "rc": 128,
+          "stdout": "HEAD\n",
+          "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+        }
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/agentic-architecture/clean-go-forward-state.md",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json"
+        ]
+      },
+      "size_bytes": 782783713
+    },
+    {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "classification": "UNKNOWN_BLOCKED",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": true,
+        "branch": {
+          "rc": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "rc": 0,
+          "stdout": "## master...origin/master\n?? pipeline-enqueue.sh\n",
+          "stderr": ""
+        },
+        "remote": {
+          "rc": 0,
+          "stdout": "origin\thttps://x-access-token:<REDACTED> (fetch)\norigin\thttps://x-access-token:<REDACTED> (push)\n",
+          "stderr": ""
+        },
+        "head": {
+          "rc": 0,
+          "stdout": "03df7f07e98ba43e8cdd580783aab3307b929882\n",
+          "stderr": ""
+        }
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/audits/hermes-agentic-workflow-audit.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/active-runtime-map.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/execution-plan.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-paths.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-classification.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json"
+        ]
+      },
+      "size_bytes": 519758591
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "classification": "UNKNOWN_BLOCKED",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": true,
+        "branch": {
+          "rc": 0,
+          "stdout": "chore/callscore-launch-domain-sweep\n",
+          "stderr": ""
+        },
+        "status": {
+          "rc": 0,
+          "stdout": "## chore/callscore-launch-domain-sweep...origin/chore/callscore-artofwar-autonomy-rails-20260618\n M art-of-war/live/channel-activation-preflight.json\n M art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md\n M art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md\n M art-of-war/live/channels/social_posting/social-posting-candidate-queue.json\n M art-of-war/live/channels/social_posting/social-posting-dry-run-output.json\n M art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json\n M art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json\n M art-of-war/live/dashboard/dashboard-preflight.json\n M art-of-war/live/dashboard/system-dashboard.json\n M art-of-war/live/phase-10a-preflight.json\n?? .netlify/\n?? .serena/\n?? Archon/\n?? art-of-war/campaign-loop/\n?? workplane/.hermes/\n?? workplane/.state/\n",
+          "stderr": ""
+        },
+        "remote": {
+          "rc": 0,
+          "stdout": "origin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (push)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (fetch)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (push)\n",
+          "stderr": ""
+        },
+        "head": {
+          "rc": 0,
+          "stdout": "8d69b406408deaa1f462373fbb4318027104cc38\n",
+          "stderr": ""
+        }
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [
+          "/srv/agents/repos/callscore-workplane/ledgers/codebase-memory-artifacts.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml"
+        ],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/README.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/README.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/architecture/callscore-agentic-platform.mmd",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/audits/hermes-agentic-workflow-audit.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/callscore-gtm-agent-registry.json",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/ops/workplane-readiness-audit.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/plans/2026-06-12-art-of-war-internal-planning.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/plans/2026-06-12-callscore-growth-intelligence-pack.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/plans/2026-06-12-controlled-autonomous-runtime-review.md",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/src/lib/workplane-jobs.ts",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/src/lib/workplane-status.ts",
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/tests/gtm-agent-registry.test.ts",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.fix-upstream-providers-backup.20260610T060155Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.proxy-mcps-backup.20260610T055839Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.proxy-mcps-backup.20260610T055918Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.remove-bad-tools-backup.20260610T063651Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.srv-root-backup.20260609T054856Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.srv-tools-backup.20260609T115123Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.write-tools-backup.20260610T052656Z",
+          "/srv/agents/repos/callscore-workplane/docs/protection/hermes-omx-manifest.md",
+          "/srv/agents/repos/callscore-workplane/docs/protection/hermes-omx-protection-policy.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/hermes-omx-restore.md",
+          "/srv/agents/repos/callscore-workplane/ledgers/codebase-memory-artifacts.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/directory-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/mcp-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifact-discovery.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifacts.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/02-mcp-graph-ledger.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest-only.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest.tsv",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/cutover-operationalization-final.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/cutover-operationalization-final.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/final-app-validation.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-app-validation.json",
+          "/srv/agents/repos/callscore-workplane/protected/env-vault/metadata/env-vault-summary-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/protected/hermes-vault/metadata/hermes-omx-manifest-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/protected/hermes-vault/metadata/hermes-omx-manifest-20260618T063257Z.tsv",
+          "/srv/agents/repos/callscore-workplane/protected/omx-vault/metadata/hermes-omx-manifest-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/protected/omx-vault/metadata/hermes-omx-manifest-20260618T063257Z.tsv",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+          "/srv/agents/repos/callscore-workplane/scripts/restore/hermes-omx-restore-plan.sh",
+          "/srv/agents/repos/callscore-workplane/sources/agents/Claude_Code_Automations/art-of-war/live/audits/canonical-full-automation-audit-and-plan.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-agentic-workplane-full-system.html",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-canonical-subagent-roster.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/callscore-gtm-agent-registry.json",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/ops/workplane-readiness-audit.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/docs/plans/2026-06-11-callscore-canonical-master-plan.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/root/README.md",
+          "/srv/agents/repos/callscore-workplane/sources/product/src/lib/workplane-jobs.ts",
+          "/srv/agents/repos/callscore-workplane/sources/product/src/lib/workplane-status.ts",
+          "/srv/agents/repos/callscore-workplane/sources/product/tests/gtm-agent-registry.test.ts"
+        ]
+      },
+      "size_bytes": 1068102956
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "classification": "UNKNOWN_BLOCKED",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": false
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json"
+        ]
+      },
+      "size_bytes": 99153990
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+      "classification": "UNKNOWN_BLOCKED",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": false
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json"
+        ]
+      },
+      "size_bytes": 5835442
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+      "classification": "UNKNOWN_BLOCKED",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": false
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json"
+        ]
+      },
+      "size_bytes": 5830998
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": false
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-classification.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json"
+        ]
+      },
+      "size_bytes": 1148994431
+    },
+    {
+      "path": "/srv/agents/repos/callscore-workplane",
+      "classification": "CONTROL_PLANE_ACTIVE",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": true,
+        "branch": {
+          "rc": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "rc": 0,
+          "stdout": "## master\n?? docs/migration/receipts/callscore-cmo-monitor-20260618T182018Z.md\n?? docs/migration/receipts/callscore-owned-public-next-draft-20260618T121352Z.json\n?? docs/refactor/\n?? receipts/\n",
+          "stderr": ""
+        },
+        "remote": {
+          "rc": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        "head": {
+          "rc": 0,
+          "stdout": "5ec9afa681771852dae0fca46fe9627afd420121\n",
+          "stderr": ""
+        }
+      },
+      "runtime_references": {
+        "active_process_check": [
+          {
+            "pid": 203351,
+            "user": "omar",
+            "comm": "bash",
+            "cmdline": "/usr/bin/bash -c source /tmp/hermes-snap-f084424ca2c3.sh >/dev/null 2>&1 || true\nbuiltin cd -- /srv/agents/repos/callscore-workplane || exit 126\neval 'python3 - <<'\\''PY'\\''\nimport os, subprocess, json, shlex\nroots=['\\''/srv'\\'','\\''/opt'\\'','\\''/home'\\'','\\''/var'\\'','\\''/usr'\\'','\\''/tmp'\\'']\nfor root in roots:\n    if not os.path.exists(root):\n        continue\n    print(f'\\''### DU {root}'\\'')\n    p=subprocess.run(['\\''du'\\'','\\''-x'\\'','\\''-B1'\\'','\\''--max-depth=2'\\'',root],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=240)\n    rows=[]\n    for line in p.stdout.splitlines():\n        try:\n            size,path=line.split('\\''\\t'\\'',1)\n            rows.append((int(size),path))\n        except ValueError:\n            pass\n    for size,path in sorted(rows, reverse=True)[:25]:\n        print(f'\\''{size}\\t{path}'\\'')\n    if p.stderr.strip():\n        print('\\''stderr_first_lines:'\\'', '\\''\\n'\\''.join(p.stderr.splitlines()[:5]))\nPY'\n__hermes_ec=$?\nexport -p > /tmp/hermes-sna"
+          }
+        ],
+        "docker_mount_check": [],
+        "compose_reference_check": [
+          "/srv/agents/repos/callscore-workplane/ledgers/migration-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/service-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/verification-ledger.yaml"
+        ],
+        "cron_reference_check": [],
+        "systemd_reference_check": [
+          "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md"
+        ],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/docs/migration/migration-index.md",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/approval-gates-20260618T081353Z.json",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/callscore-autonomous-next-step-20260618T1054Z.json",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/cutover-plan-20260618T081339Z.json",
+          "/srv/agents/repos/callscore-workplane/docs/migration/receipts/full-operation-inventory-20260618T081229Z.json",
+          "/srv/agents/repos/callscore-workplane/docs/migration/replacement-readiness-report-20260618T063257Z.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/active-runtime-map.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/execution-plan.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-paths.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-classification.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/cutover-runbook.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/docker-restore.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/env-vault-restore.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/hermes-omx-restore.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/postgres-backup-restore.md",
+          "/srv/agents/repos/callscore-workplane/docs/restore/systemd-restore.md",
+          "/srv/agents/repos/callscore-workplane/ledgers/migration-index.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/migration-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/00-bootstrap-index-and-subagents.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-codebase-memory-artifact-discovery.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-existing-clean-ledgers.tsv",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/01-existing-html-maps.tsv",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/04-protected-domains-manifest-only.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-manifest-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/05-env-vault-summary-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-gap.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-coverage-summary.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-gap-preimport-evidence.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/06-product-tracked-files-present.tsv",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-batch-import.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/07-product-source-import-evidence.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap-preimport-evidence.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/08-control-components-gap.tsv",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-batch-import.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/09-control-components-import-evidence.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/10-write-restore-docs-and-ledgers.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-index.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/codebase-memory-cli-projects.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/final-coverage-checks.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper-2.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remaining-command-packet-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/remediation-rerun-wrapper.log",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/cutover-operationalization-final.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/live-host-inventory.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T080641Z/restore-rehearsal.json",
+          "/srv/agents/repos/callscore-workplane/ledgers/service-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/ledgers/verification-ledger.yaml",
+          "/srv/agents/repos/callscore-workplane/protected/env-vault/metadata/env-vault-summary-20260618T063257Z.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json"
+        ]
+      },
+      "size_bytes": 347634608
+    },
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "classification": "UNKNOWN_BLOCKED",
+      "exists": true,
+      "git": {
+        "exists": true,
+        "is_git": true,
+        "branch": {
+          "rc": 0,
+          "stdout": "master\n",
+          "stderr": ""
+        },
+        "status": {
+          "rc": 0,
+          "stdout": "## master\n",
+          "stderr": ""
+        },
+        "remote": {
+          "rc": 0,
+          "stdout": "origin\tgit@github.com:OmarA1-Bakri/crypto-tuber-ranked.git (fetch)\norigin\tgit@github.com:OmarA1-Bakri/crypto-tuber-ranked.git (push)\n",
+          "stderr": ""
+        },
+        "head": {
+          "rc": 0,
+          "stdout": "00718711526c02a3b1ff7173bea896de7023ea58\n",
+          "stderr": ""
+        }
+      },
+      "runtime_references": {
+        "active_process_check": [],
+        "docker_mount_check": [],
+        "compose_reference_check": [],
+        "cron_reference_check": [],
+        "systemd_reference_check": [],
+        "all_reference_files": [
+          "/srv/agents/repos/callscore-workplane/apps/callscore-web/docs/audits/hermes-agentic-workflow-audit.md",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.fix-upstream-providers-backup.20260610T060155Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.proxy-mcps-backup.20260610T055839Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.proxy-mcps-backup.20260610T055918Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.remove-bad-tools-backup.20260610T063651Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.srv-root-backup.20260609T054856Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.srv-tools-backup.20260609T115123Z",
+          "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/server.py.write-tools-backup.20260610T052656Z",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/active-runtime-map.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/execution-plan.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-paths.md",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-classification.json",
+          "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+          "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json"
+        ]
+      },
+      "size_bytes": 11649870
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+--- active/src/lib/cron.ts
++++ pre-canonical-20260526T063909Z/src/lib/cron.ts
+@@ -1,7 +1,7 @@
+ import { NextRequest, NextResponse } from "next/server";
+ 
+ export function verifyCronSecret(request: NextRequest): boolean {
+-  const cronSecret = process.env.CRON_SECRET?.trim();
++  const cronSecret = process.env.CRON_SECRET;
+   if (!cronSecret) return false;
+   const authHeader = request.headers.get("authorization");
+   if (!authHeader?.startsWith("Bearer ")) return false;

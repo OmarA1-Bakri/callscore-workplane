@@ -1,0 +1,108 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "Methodology" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "Sign In" [ref=e12] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "Get Access" [ref=e13] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: Settings
+        - heading "API Access" [level=1] [ref=e20]
+        - paragraph [ref=e21]: Create read-only keys for programmatic access.
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: Session
+          - paragraph [ref=e25]: Locked
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Plan
+          - paragraph [ref=e28]: Upgrade
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: Surfaces
+          - paragraph [ref=e31]: Alerts / API / Webhooks
+      - generic [ref=e32]:
+        - complementary "Settings navigation" [ref=e33]:
+          - navigation [ref=e34]:
+            - generic [ref=e35]:
+              - generic [ref=e36]: Account
+              - generic [ref=e37]: Base
+            - generic [ref=e38]:
+              - generic [ref=e39]: Billing
+              - generic [ref=e40]: Whop
+            - link "Alerts Pro" [ref=e41] [cursor=pointer]:
+              - /url: /settings/alerts
+              - generic [ref=e42]: Alerts
+              - generic [ref=e43]: Pro
+            - link "API Keys Alpha" [ref=e44] [cursor=pointer]:
+              - /url: /settings/api
+              - generic [ref=e45]: API Keys
+              - generic [ref=e46]: Alpha
+            - link "Webhooks Alpha" [ref=e47] [cursor=pointer]:
+              - /url: /settings/webhooks
+              - generic [ref=e48]: Webhooks
+              - generic [ref=e49]: Alpha
+            - generic [ref=e50]:
+              - generic [ref=e51]: Notifications
+              - generic [ref=e52]: Planned
+            - generic [ref=e53]:
+              - generic [ref=e54]: Team
+              - generic [ref=e55]: Later
+        - generic [ref=e57]:
+          - paragraph [ref=e58]: Alpha unlocks read-only API keys and Backtest Lab endpoints.
+          - link "Upgrade to Alpha" [ref=e59] [cursor=pointer]:
+            - /url: /pricing
+  - contentinfo [ref=e60]:
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - img "CallScore - Market calls, measured." [ref=e65]
+          - paragraph [ref=e66]: Market calls, measured.
+        - generic [ref=e67]:
+          - heading "Navigate" [level=2] [ref=e68]
+          - list [ref=e69]:
+            - listitem [ref=e70]:
+              - link "Leaderboard" [ref=e71] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e72]:
+              - link "Methodology" [ref=e73] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e74]:
+              - link "Pricing" [ref=e75] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e76]:
+              - link "Give Feedback" [ref=e77] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e78]:
+              - link "About" [ref=e79] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e80]:
+          - heading "Legal" [level=2] [ref=e81]
+          - list [ref=e82]:
+            - listitem [ref=e83]:
+              - link "Terms of Service" [ref=e84] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e85]:
+              - link "Privacy Policy" [ref=e86] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e87]:
+        - group [ref=e88]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e89] [cursor=pointer]':
+            - strong [ref=e90]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e91]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e92] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e93]: "?"
+    - generic [ref=e94]: Feedback

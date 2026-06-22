@@ -1,0 +1,11 @@
+--- active/src/app/api/alerts/watch/route.ts
++++ pre-canonical-20260526T063909Z/src/app/api/alerts/watch/route.ts
+@@ -4,6 +4,8 @@
+ import { addWatch, removeWatch } from "@/lib/alerts";
+ import { withNoStore } from "@/lib/http-cache";
+ import { parseCreatorId, isForeignKeyViolation } from "./helpers";
++
++export const dynamic = "force-dynamic";
+ 
+ interface WatchPayload {
+   readonly creatorId?: unknown;

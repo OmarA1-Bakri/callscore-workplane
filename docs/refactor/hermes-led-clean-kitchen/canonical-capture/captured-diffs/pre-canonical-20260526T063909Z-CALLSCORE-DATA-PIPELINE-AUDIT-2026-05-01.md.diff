@@ -1,0 +1,16 @@
+--- active/CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md
++++ pre-canonical-20260526T063909Z/CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md
+@@ -1,12 +1,7 @@
+ # CallScore Data Pipeline Audit — 2026-05-01
+ 
+-> Superseded infrastructure note (2026-06-07): this audit is historical evidence
+-> from the May 2026 Neon-era pipeline. Current canonical production storage is
+-> HH VM PostgreSQL/pgsql; Neon is backup/legacy compatibility only. See
+-> `docs/legacy-infra-superseded.md`.
+-
+ Generated: 2026-05-01 19:10 UTC
+-Database at time of audit: Neon `neondb` (legacy; no longer canonical)
++Database: Neon `neondb`
+ Production checked: `https://www.call-score.com`
+ 
+ ## Executive summary

@@ -1,0 +1,82 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+  "candidate": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+    "exists_now": true,
+    "size_bytes_current": 3367,
+    "file_count_current": 2,
+    "original_reference_count": 3,
+    "reference_sample": [
+      "/opt/crypto-tuber-ranked/docs/audits/hermes-agentic-workflow-audit.md",
+      "/opt/crypto-tuber-ranked/docs/handovers/2026-06-14-hermes-agent-callscore-activation.md",
+      "/opt/crypto-tuber-ranked/docs/plans/2026-06-11-callscore-canonical-master-plan.md"
+    ],
+    "active_reference_check": {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+      "process_refs": [],
+      "docker_mount_refs": [],
+      "systemd_refs": [],
+      "cron_refs": []
+    },
+    "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+    "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+    "rationale": [
+      "small temp output; no active refs; references appear historical docs/tests"
+    ]
+  },
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "size_bytes": 3367,
+    "file_count": 2,
+    "mtime_utc": "2026-06-13T13:45:00Z",
+    "mode_octal": "0o775"
+  },
+  "active_reference_check": {
+    "process_refs": [],
+    "docker_mount_refs": []
+  },
+  "status": "deleted",
+  "delete_method": "python_exact_path_unlink_or_rmtree",
+  "manifest_sample": [
+    {
+      "rel": "gemma-schema-scenario-matrix.md",
+      "size": 2037,
+      "mode": "0o664"
+    },
+    {
+      "rel": "readiness-scenario-matrix.md",
+      "size": 1330,
+      "mode": "0o664"
+    }
+  ],
+  "delete_ok": true,
+  "delete_error": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+    "exists": false
+  },
+  "disk_before_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124921667584,
+    "free_bytes": 29449285632,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571902,
+    "inode_free": 7160594,
+    "inode_used_percent": 27
+  },
+  "disk_after_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124921655296,
+    "free_bytes": 29449297920,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571899,
+    "inode_free": 7160597,
+    "inode_used_percent": 27
+  },
+  "recovered_bytes": 12288
+}

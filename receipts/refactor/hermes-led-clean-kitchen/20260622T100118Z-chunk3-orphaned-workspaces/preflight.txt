@@ -1,0 +1,12 @@
+timestamp_start_utc=2026-06-22T10:01:18Z
+run_dir=/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T100118Z-chunk3-orphaned-workspaces
+rollback_dir=/tmp/cleanup-rollback-chunk3
+blacklist_not_touched=/srv/agents/repos/Claude_Code_Automations
+df_before=/dev/sda1       150G   97G   48G  68% /
+sizes_before:
+7.3G	/srv/whop-auto/workspace
+1.7G	/opt/crypto-tuber-ranked/.tmp/prod-rollout
+process_refs_before:
+--- /srv/whop-auto/workspace
+--- /opt/crypto-tuber-ranked/.tmp/prod-rollout
+docker_mount_refs_before:

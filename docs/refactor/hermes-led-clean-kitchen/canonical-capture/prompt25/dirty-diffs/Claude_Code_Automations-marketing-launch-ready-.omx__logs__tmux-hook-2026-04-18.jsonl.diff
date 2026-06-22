@@ -1,0 +1,8 @@
+diff --git a/.omx/logs/tmux-hook-2026-04-18.jsonl b/.omx/logs/tmux-hook-2026-04-18.jsonl
+deleted file mode 100644
+index 20f62a7..0000000
+--- a/.omx/logs/tmux-hook-2026-04-18.jsonl
++++ /dev/null
+@@ -1,2 +0,0 @@
+-{"timestamp":"2026-04-18T08:03:03.614Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-04-18T08:12:58.799Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}

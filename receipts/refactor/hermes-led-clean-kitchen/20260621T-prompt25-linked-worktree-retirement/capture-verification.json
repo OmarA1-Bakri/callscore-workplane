@@ -1,0 +1,12 @@
+{
+  "pipeline_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/legacy-scripts/pipeline-enqueue.sh",
+  "pipeline_capture_ok": true,
+  "pre_canonical_remaining_manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/manifests/pre-canonical-remaining-file-manifest.json",
+  "pre_canonical_source_capture": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/manifests/pre-canonical-source-doc-capture.json",
+  "pre_capture_ok": true,
+  "pre_capture_counts": {
+    "same_count": 187,
+    "changed_count": 147,
+    "unique_count": 333
+  }
+}

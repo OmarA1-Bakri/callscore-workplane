@@ -1,0 +1,154 @@
+{
+  "timestamp_utc": "2026-06-22T17:40:44Z",
+  "phase": "prompt_11_final_clean_kitchen_verification_and_remaining_deletion_pass",
+  "status": "completed_with_remaining_blockers",
+  "completed_phases": [
+    "Prompt 0 canonicalized",
+    "Prompt 1 complete",
+    "Prompt 2 complete with blacklist exception",
+    "Prompt 3 complete",
+    "Prompt 4 substantially complete/consolidated",
+    "Prompt 5 complete full canonical agents",
+    "Prompt 6 complete",
+    "Prompt 7 corrected complete",
+    "Prompt 8 complete with cleanup blocker",
+    "Prompt 9 complete with active CMO duplicate cleanup deferred",
+    "Prompt 10 complete",
+    "Prompt 11 complete"
+  ],
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593781248,
+    "free_bytes": 29376462848,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577128,
+    "inode_free": 7155368,
+    "inode_used_percent": 26.48
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 89237012480,
+    "free_bytes": 65133940736,
+    "used_percent": 58.0
+  },
+  "inode_before": {
+    "inode_total": 9732496,
+    "inode_used": 2577128,
+    "inode_free": 7155368,
+    "inode_used_percent": 26.48
+  },
+  "inode_after": {
+    "inode_total": 9732496,
+    "inode_used": 1537652,
+    "inode_free": 8194844,
+    "inode_used_percent": 16.0
+  },
+  "disk_level_recovered_bytes": 42356768768,
+  "receipt_accounted_recovered_bytes": 10708398080,
+  "deleted_paths_count": 59,
+  "prompt11_deleted_paths": [],
+  "runtime_map": {
+    "canonical_runtime_repo": "/opt/crypto-tuber-ranked",
+    "canonical_compose": "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "control_workplane_repo": "/srv/agents/repos/callscore-workplane",
+    "receipts_root": "/srv/agents/repos/callscore-workplane/receipts/",
+    "clean_kitchen_docs": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/",
+    "protected_secrets_root": "/opt/callscore/secrets",
+    "youtube_cookie": "/opt/callscore/secrets/youtube-cookies.txt root:root 600; mounted read-only into active Hermes workers",
+    "containers": [
+      {
+        "name": "whop-auto-hermes-worker-1",
+        "project": "whop-auto",
+        "service": "hermes-worker",
+        "status": "running",
+        "cookie_mount": "/opt/callscore/secrets/youtube-cookies.txt -> /run/secrets/youtube-cookies.txt readonly=true"
+      },
+      {
+        "name": "whop-auto-channel-agent-worker-1",
+        "project": "whop-auto",
+        "service": "channel-agent-worker",
+        "status": "running"
+      },
+      {
+        "name": "crypto-tuber-ranked-hermes-worker-1",
+        "project": "crypto-tuber-ranked",
+        "service": "hermes-worker",
+        "status": "running",
+        "cookie_mount": "/opt/callscore/secrets/youtube-cookies.txt -> /run/secrets/youtube-cookies.txt readonly=true"
+      },
+      {
+        "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "project": "crypto-tuber-ranked",
+        "service": "ytdlp-pot-provider",
+        "status": "running healthy"
+      },
+      {
+        "name": "hh-oauth-mcp-gateway",
+        "status": "running"
+      },
+      {
+        "name": "hermes-whop-automation-tunnel",
+        "status": "running"
+      }
+    ],
+    "db_readonly_check": {
+      "videos": "16861",
+      "pipeline_jobs": "909"
+    },
+    "agents": "16 full canonical agents manifested with heartbeat proof",
+    "profiles": "8 full canonical profiles manifested",
+    "composio": "Hermes MCP Composio connected; 7 tools discovered",
+    "netlify_exception": "documented direct backup exception",
+    "whop_exception": "runtime auth/webhook/entitlement direct exception documented; automation uses Composio"
+  },
+  "remaining_blockers": [
+    {
+      "blocker": "/srv/agents/repos/crypto-tuber-ranked remains as common git repo / blocker",
+      "action": "Review later only if operator wants deeper repo consolidation; not active runtime."
+    },
+    {
+      "blocker": "/srv/agents/repos/Claude_Code_Automations preserved per operator blacklist",
+      "action": "Do not touch unless explicit future approval overrides blacklist."
+    },
+    {
+      "blocker": "/srv/agents/database-migration protected/blocked",
+      "action": "Needs explicit DB/migration-state approval before cleanup."
+    },
+    {
+      "blocker": "Prompt 8 old .tmp/callscore-daily dirs root-owned",
+      "action": "Can be cleaned only with proper privilege path; small size, not urgent."
+    },
+    {
+      "blocker": "49 active callscorecmo duplicate local skill dirs",
+      "action": "Maintenance window: stop/restart profile or leave intact; tools remain full."
+    },
+    {
+      "blocker": "84 drifted same-name profile-local skills",
+      "action": "Manual merge/review before any replacement."
+    },
+    {
+      "blocker": "Active runtime repo dirty",
+      "action": "Review, commit, or isolate authorized changes and pre-existing work."
+    },
+    {
+      "blocker": "Workplane repo untracked docs/receipts",
+      "action": "Commit final clean-kitchen artefacts."
+    }
+  ],
+  "highest_risks": [
+    "dirty active runtime repo",
+    "uncommitted workplane artefacts",
+    "active CMO duplicate skills deferred",
+    "root-owned stale tmp dirs blocked",
+    "protected leftover repos/state require explicit approval"
+  ],
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_CLEAN_KITCHEN_HANDOVER.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_VERIFICATION_REPORT.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/HH_CONTINUITY_RUNBOOK.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/NEXT_ACTIONS.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_DELETION_REPORT.md"
+  ],
+  "master_state_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json"
+}

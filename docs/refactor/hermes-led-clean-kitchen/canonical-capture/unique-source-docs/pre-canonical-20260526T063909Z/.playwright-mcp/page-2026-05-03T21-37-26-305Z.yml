@@ -1,0 +1,79 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "Methodology" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "Sign In" [ref=e12] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "Get Access" [ref=e13] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - link "Back to Jacob Crypto Bury" [ref=e16] [cursor=pointer]:
+        - /url: /creator/jacobcryptobury
+        - generic [ref=e17]: ←
+        - text: Back to Jacob Crypto Bury
+      - generic [ref=e18]:
+        - paragraph [ref=e19]: Alpha lab required
+        - heading "Historical backtests are an Alpha feature." [level=1] [ref=e21]:
+          - text: Historical backtests are an
+          - emphasis [ref=e22]: Alpha
+          - text: feature.
+        - paragraph [ref=e23]: Single-creator simulations use the same scored-call engine as the Backtest Lab, then compare resolved calls against BTC.
+        - generic [ref=e24]:
+          - link "Upgrade to Alpha" [ref=e25] [cursor=pointer]:
+            - /url: /pricing
+          - link "View Lab" [ref=e26] [cursor=pointer]:
+            - /url: /backtest
+  - contentinfo [ref=e27]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - img "CallScore - Market calls, measured." [ref=e32]
+          - paragraph [ref=e33]: Market calls, measured.
+        - generic [ref=e34]:
+          - heading "Navigate" [level=2] [ref=e35]
+          - list [ref=e36]:
+            - listitem [ref=e37]:
+              - link "Leaderboard" [ref=e38] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e39]:
+              - link "Methodology" [ref=e40] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e41]:
+              - link "Pricing" [ref=e42] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e43]:
+              - link "Give Feedback" [ref=e44] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e45]:
+              - link "About" [ref=e46] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e47]:
+          - heading "Legal" [level=2] [ref=e48]
+          - list [ref=e49]:
+            - listitem [ref=e50]:
+              - link "Terms of Service" [ref=e51] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e52]:
+              - link "Privacy Policy" [ref=e53] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e54]:
+        - group [ref=e55]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e56] [cursor=pointer]':
+            - strong [ref=e57]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e58]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e59] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e60]: "?"
+    - generic [ref=e61]: Feedback

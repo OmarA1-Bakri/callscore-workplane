@@ -1,0 +1,85 @@
+{
+  "timestamp_utc": "2026-06-21T22:00:00Z",
+  "phase": "prompt_3_8_clean_architecture_staging_plan",
+  "mission": "Create clean architecture staging plan for Phase A safe cleanup",
+  "status": "PASS",
+  "operator_attestation": "operator_attested_no_external_exposure_rotation_deferred_non_blocking",
+  "hard_gates_observed": {
+    "no_live_env_files_read": true,
+    "no_live_env_files_modified": true,
+    "no_files_deleted": true,
+    "no_files_moved": true,
+    "no_runtime_files_modified": true,
+    "no_application_code_modified": true,
+    "docker_compose_not_modified": true,
+    "containers_not_restarted_or_stopped": true,
+    "protected_runtime_credential_path_not_touched": true,
+    "no_sensitive_values_printed": true,
+    "json_artifacts_valid": true
+  },
+  "files_inspected": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-7-clean-architecture-directory-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/clean-architecture-directory-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/clean-architecture-risk-register.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/clean-architecture-migration-sequence.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-7-parent-verification-after-glm-rate-limit.md",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-parent-verification-after-glm-rate-limit-receipt.json"
+  ],
+  "runtime_metadata_checked": [
+    "/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl",
+    "/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo",
+    "/opt/crypto-tuber-ranked/.tmp",
+    "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+    "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+    "/opt/crypto-tuber-ranked/tests/ytdlp-singleton-wrapper.test.ts"
+  ],
+  "files_written": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-8-clean-architecture-staging-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-candidate-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-readiness-check.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-execution-prompt.md",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-8-clean-architecture-staging-plan-receipt.json"
+  ],
+  "files_modified": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json"
+  ],
+  "files_deleted": [],
+  "files_moved": [],
+  "phase_a_summary": {
+    "safe_batch_1_candidate_count": 19,
+    "safe_batch_1_bytes": 83940637,
+    "safe_batch_1_files": 5196,
+    "deferred_reference_sensitive_count": 25,
+    "deferred_reference_sensitive_bytes": 6208383,
+    "deferred_reference_sensitive_files": 758,
+    "prod_rollout_excluded_bytes": 1759976233,
+    "prod_rollout_excluded_files": 38
+  },
+  "checks": {
+    "active_process_refs_to_safe_batch_1": 0,
+    "docker_mount_refs_to_safe_batch_1": 0,
+    "script_test_doc_refs_to_safe_batch_1": 0,
+    "script_test_doc_refs_to_deferred_batch": true
+  },
+  "docker_state": {
+    "canonical_provider_running_and_healthy": true,
+    "duplicate_provider_absent": true,
+    "containers_not_restarted_or_stopped": true
+  },
+  "disk": {
+    "used_percent": "81%",
+    "inode_used_percent": "27%"
+  },
+  "final_scan_status": "pass",
+  "next_phase_allowed": "phase_a_low_risk_cleanup_execution",
+  "final_safety_scan": {
+    "status": "PASS",
+    "files_scanned": 5,
+    "unsafe_raw_assignment_pattern_files": 0,
+    "json_invalid": [],
+    "env_files_accessed": false,
+    "values_printed": false
+  }
+}

@@ -1,0 +1,32 @@
+--- active/src/app/api/auth/whop/callback/route.ts
++++ pre-canonical-20260526T063909Z/src/app/api/auth/whop/callback/route.ts
+@@ -1,7 +1,6 @@
+ import { NextRequest, NextResponse } from "next/server";
+ import { createSession } from "@/lib/auth";
+ import { getUserTier } from "@/lib/whop-access";
+-import { getWhopOAuthBaseUrl, getWhopOAuthCallbackUrl } from "@/lib/whop-oauth";
+ 
+ const OAUTH_STATE_COOKIE_NAME = "ctr_oauth_state";
+ 
+@@ -18,7 +17,11 @@
+   const state = searchParams.get("state");
+   const storedState = request.cookies.get(OAUTH_STATE_COOKIE_NAME)?.value;
+ 
+-  const baseUrl = getWhopOAuthBaseUrl();
++  const baseUrl =
++    process.env.NEXT_PUBLIC_BASE_URL ??
++    (process.env.NODE_ENV === "production"
++      ? "https://call-score.com"
++      : "http://localhost:3000");
+ 
+   const redirectWithStateClear = (path: string): NextResponse => {
+     const response = NextResponse.redirect(`${baseUrl}${path}`);
+@@ -108,7 +111,7 @@
+       code,
+       client_id: clientId,
+       client_secret: clientSecret,
+-      redirect_uri: getWhopOAuthCallbackUrl(),
++      redirect_uri: `${baseUrl}/api/auth/whop/callback`,
+     }),
+   });
+ 

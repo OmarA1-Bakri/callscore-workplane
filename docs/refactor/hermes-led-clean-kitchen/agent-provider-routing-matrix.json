@@ -1,0 +1,1060 @@
+{
+  "timestamp_utc": "2026-06-22T08:24:04Z",
+  "agents": [
+    {
+      "agent_id": "orchestrator",
+      "providers_needed": [
+        "github",
+        "composio",
+        "netlify",
+        "whop"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "github",
+        "composio",
+        "netlify",
+        "whop"
+      ],
+      "canonical_provider_route": {
+        "github": "manual_only",
+        "composio": "composio",
+        "netlify": "direct_api_backup_exception",
+        "whop": "direct_runtime_code"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "whop": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/workplane-status.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/workplane-laptop-job.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/workplane.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-autonomy-upgrade-status.md",
+          "/opt/crypto-tuber-ranked/docs/ops/workplane-readiness-audit.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-full-autonomy-heartbeat-contract.md"
+        ]
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "cmo",
+      "providers_needed": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog",
+        "gmail"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog",
+        "gmail"
+      ],
+      "canonical_provider_route": {
+        "composio": "composio",
+        "x_twitter": "composio",
+        "linkedin": "composio",
+        "posthog": "composio",
+        "gmail": "composio"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "posthog": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "gmail": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/callscore-cmo-response-monitor.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/hermes/FULL_AUTONOMOUS_BOUNDED_OWNED_GTM_RECEIPT.md"
+        ]
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "data",
+      "providers_needed": [
+        "youtube_ytdlp",
+        "netlify",
+        "github"
+      ],
+      "providers_read_only": [
+        "youtube_ytdlp"
+      ],
+      "providers_write_capable": [
+        "netlify",
+        "github"
+      ],
+      "canonical_provider_route": {
+        "youtube_ytdlp": "local_service",
+        "netlify": "direct_api_backup_exception",
+        "github": "manual_only"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/callscore-freshness-check.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/match-stats.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/run-daily-pipeline.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/rescore-derived.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/pipeline-monitor.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/hermes-worker.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/audit-pipeline-readiness.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/pipeline-state-check.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/callscore-enqueue-server.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/run-continuous-data-pipeline.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-loop-failure-taxonomy.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-env-manifest.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-anti-over-governance-audit.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-subagent-roster.md",
+          "/opt/crypto-tuber-ranked/docs/ops/freshness-certification.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-gtm-agent-registry.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-autonomy-upgrade-status.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-session-startup.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-non-founder-review.md"
+        ]
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "trust",
+      "providers_needed": [
+        "github",
+        "posthog"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "github",
+        "posthog"
+      ],
+      "canonical_provider_route": {
+        "github": "manual_only",
+        "posthog": "composio"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "posthog": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-non-founder-review.md"
+        ]
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "compliance-linter",
+      "providers_needed": [
+        "github"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "github"
+      ],
+      "canonical_provider_route": {
+        "github": "manual_only"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/ml-verifier-quality-gate.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/check-secret-hygiene.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/2026-06-14-full-system-live-canary-gate-decisions.md",
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-headroom-swarm-policy.md"
+        ]
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "reviewer",
+      "providers_needed": [
+        "github",
+        "netlify"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "github",
+        "netlify"
+      ],
+      "canonical_provider_route": {
+        "github": "manual_only",
+        "netlify": "direct_api_backup_exception"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/verify-local-postgres-provider.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/verify-public-surface.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-non-founder-review.md",
+          "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md"
+        ]
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "implementer",
+      "providers_needed": [
+        "github",
+        "netlify"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "github",
+        "netlify"
+      ],
+      "canonical_provider_route": {
+        "github": "manual_only",
+        "netlify": "direct_api_backup_exception"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "safety",
+      "providers_needed": [
+        "github",
+        "cloudflare_tunnel"
+      ],
+      "providers_read_only": [
+        "cloudflare_tunnel"
+      ],
+      "providers_write_capable": [
+        "github"
+      ],
+      "canonical_provider_route": {
+        "github": "manual_only",
+        "cloudflare_tunnel": "direct_runtime_code"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "cloudflare_tunnel": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/check-secret-hygiene.ts"
+        ],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "opportunity-research",
+      "providers_needed": [
+        "composio",
+        "youtube_ytdlp",
+        "x_twitter",
+        "linkedin"
+      ],
+      "providers_read_only": [
+        "youtube_ytdlp"
+      ],
+      "providers_write_capable": [
+        "composio",
+        "x_twitter",
+        "linkedin"
+      ],
+      "canonical_provider_route": {
+        "composio": "composio",
+        "youtube_ytdlp": "local_service",
+        "x_twitter": "composio",
+        "linkedin": "composio"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/ml-autoresearch.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/simulate-creator-eligibility.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/insert-discovered-creators.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/sync-creator-youtube-metrics.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/validate-creators.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/promote-creator-candidates.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/discover-crypto-creators.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/seed-creators.ts"
+        ],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "providers_needed": [
+        "composio",
+        "gmail"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "composio",
+        "gmail"
+      ],
+      "canonical_provider_route": {
+        "composio": "composio",
+        "gmail": "composio"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "gmail": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "community",
+      "providers_needed": [
+        "composio",
+        "discord",
+        "telegram",
+        "x_twitter",
+        "linkedin"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "composio",
+        "discord",
+        "telegram",
+        "x_twitter",
+        "linkedin"
+      ],
+      "canonical_provider_route": {
+        "composio": "composio",
+        "discord": "composio",
+        "telegram": "composio",
+        "x_twitter": "composio",
+        "linkedin": "composio"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "discord": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "telegram": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "whop-commerce",
+      "providers_needed": [
+        "whop",
+        "composio"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "whop",
+        "composio"
+      ],
+      "canonical_provider_route": {
+        "whop": "direct_runtime_code",
+        "composio": "composio"
+      },
+      "gates_required": {
+        "whop": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/bootstrap-whop.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/whop-auto-certification.md"
+        ]
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "art-of-war",
+      "providers_needed": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog"
+      ],
+      "providers_read_only": [],
+      "providers_write_capable": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog"
+      ],
+      "canonical_provider_route": {
+        "composio": "composio",
+        "x_twitter": "composio",
+        "linkedin": "composio",
+        "posthog": "composio"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "posthog": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "providers_needed": [
+        "youtube_ytdlp"
+      ],
+      "providers_read_only": [
+        "youtube_ytdlp"
+      ],
+      "providers_write_capable": [],
+      "canonical_provider_route": {
+        "youtube_ytdlp": "local_service"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/gemma-capacity-preflight.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/backfill-transcripts.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/transcript-worklist.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/shadow-diff-extractions.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/validate-shadow-extractions.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/scrape-transcripts.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/promote-shadow-extractions.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/workplane-laptop-job.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/scrape-transcripts-v2.ts",
+          "/opt/crypto-tuber-ranked/src/scripts/ingest-transcript-result.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/transcript-extraction-waterfall.md",
+          "/opt/crypto-tuber-ranked/docs/ops/laptop-transcript-collector.md"
+        ]
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "providers_needed": [
+        "youtube_ytdlp",
+        "whop",
+        "composio"
+      ],
+      "providers_read_only": [
+        "youtube_ytdlp"
+      ],
+      "providers_write_capable": [
+        "whop",
+        "composio"
+      ],
+      "canonical_provider_route": {
+        "youtube_ytdlp": "local_service",
+        "whop": "direct_runtime_code",
+        "composio": "composio"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "whop": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/backfill-publication-dates.ts"
+        ],
+        "docs": [
+          "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml"
+        ]
+      },
+      "missing_auth_or_tooling": [
+        "Composio bridge not visible in HH toolbox status"
+      ],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "providers_needed": [
+        "youtube_ytdlp",
+        "github"
+      ],
+      "providers_read_only": [
+        "youtube_ytdlp"
+      ],
+      "providers_write_capable": [
+        "github"
+      ],
+      "canonical_provider_route": {
+        "youtube_ytdlp": "local_service",
+        "github": "manual_only"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "current_evidence": {
+        "scripts": [
+          "/opt/crypto-tuber-ranked/src/scripts/hermes-worker.ts"
+        ],
+        "docs": []
+      },
+      "missing_auth_or_tooling": [],
+      "next_migration_step": "documented_route_only_now; wrappers/gates in later phase"
+    }
+  ]
+}

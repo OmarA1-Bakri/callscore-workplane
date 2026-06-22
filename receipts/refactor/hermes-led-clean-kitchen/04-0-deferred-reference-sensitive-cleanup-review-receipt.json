@@ -1,0 +1,93 @@
+{
+  "timestamp_utc": "2026-06-21T22:40:26Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224026Z-prompt40-deferred-reference-sensitive-review",
+  "phase": "prompt_4_0_deferred_reference_sensitive_cleanup_review",
+  "status": "completed",
+  "deletions": [],
+  "runtime_healthy": true,
+  "baseline": {
+    "timestamp_utc": "2026-06-21T22:40:26Z",
+    "df_h": {
+      "args": [
+        "df",
+        "-h",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  117G   28G  81% /\n",
+      "stderr": ""
+    },
+    "df_i": {
+      "args": [
+        "df",
+        "-i",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2571498 7160998   27% /\n",
+      "stderr": ""
+    },
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 23 hours\nwhop-auto-channel-agent-worker-1           Up 23 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 24 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 24 hours (healthy)\nhh-oauth-mcp-gateway                       Up 12 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+      "stderr": ""
+    },
+    "provider_ping": {
+      "status": "ok",
+      "http_status": 200
+    },
+    "protected_paths": [
+      {
+        "path": "/opt/crypto-tuber-ranked",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "size_bytes": 3045354122,
+        "file_count": 49287,
+        "mtime_utc": "2026-06-21T22:34:16Z",
+        "mode_octal": "0o775"
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "size_bytes": 4382,
+        "file_count": 1,
+        "mtime_utc": "2026-06-20T23:37:30Z",
+        "mode_octal": "0o664"
+      },
+      {
+        "path": "/opt/callscore/secrets/youtube-cookies.txt",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "size_bytes": 22892,
+        "file_count": 1,
+        "mtime_utc": "2026-06-21T03:21:02Z",
+        "mode_octal": "0o600"
+      }
+    ],
+    "git_status": {
+      "args": [
+        "bash",
+        "-lc",
+        "cd /opt/crypto-tuber-ranked && git status --short"
+      ],
+      "rc": 0,
+      "stdout": " M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/ops/ytdlp-singleton-provider.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? scripts/start-whop-auto-workers.sh\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n?? tests/ytdlp-singleton-wrapper.test.ts\n",
+      "stderr": ""
+    }
+  },
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deferred-reference-sensitive-execution-candidates.json"
+  ]
+}

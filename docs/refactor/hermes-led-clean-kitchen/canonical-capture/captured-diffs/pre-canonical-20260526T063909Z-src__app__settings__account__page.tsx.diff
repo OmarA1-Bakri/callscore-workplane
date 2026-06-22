@@ -1,0 +1,17 @@
+--- active/src/app/settings/account/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/settings/account/page.tsx
+@@ -1,6 +1,14 @@
+ import Link from "next/link";
+ import SettingsShell from "@/components/SettingsShell";
+ import { getSession } from "@/lib/auth";
++
++import { SITE_URL } from "@/lib/site";
++
++export const metadata = {
++  title: "Account — CallScore",
++  robots: { index: false, follow: false },
++  alternates: { canonical: SITE_URL + "/settings/account" },
++};
+ 
+ function formatExpiry(exp: number): string {
+   const value = new Date(exp);

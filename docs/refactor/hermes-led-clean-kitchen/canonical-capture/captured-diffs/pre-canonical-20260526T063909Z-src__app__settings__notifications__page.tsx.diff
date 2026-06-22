@@ -1,0 +1,26 @@
+--- active/src/app/settings/notifications/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/settings/notifications/page.tsx
+@@ -7,6 +7,14 @@
+   listWatchesWithCreators,
+ } from "@/lib/alerts";
+ import { requireSessionAccess } from "@/lib/premium";
++
++import { SITE_URL } from "@/lib/site";
++
++export const metadata = {
++  title: "Notifications — CallScore",
++  robots: { index: false, follow: false },
++  alternates: { canonical: SITE_URL + "/settings/notifications" },
++};
+ 
+ export default async function NotificationsSettingsPage() {
+   const session = await getSession();
+@@ -24,7 +32,7 @@
+       >
+         <section className="border border-ink-250 bg-ink-50 p-5">
+           <p className="font-serif text-[19px] leading-relaxed text-ink-700">
+-            After signing in and upgrading to Pro or Alpha, launch this app from your Whop dashboard to enable alerts.
++            Notifications require a Pro or Alpha plan. View plans to get access.
+           </p>
+           <Link
+             href="/pricing"

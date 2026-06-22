@@ -1,0 +1,119 @@
+--- active/src/components/CallHistory.tsx
++++ pre-canonical-20260526T063909Z/src/components/CallHistory.tsx
+@@ -2,6 +2,7 @@
+ 
+ import { useState, useMemo } from "react";
+ import Link from "next/link";
++import { X } from "lucide-react";
+ import { SYMBOL_TICKERS } from "@/lib/constants";
+ import type { SerializedCall } from "@/lib/public-serializer";
+ 
+@@ -22,32 +23,11 @@
+   }
+   if (call.score_status === "excluded_confidence") return "Unscored";
+   if (call.score_status === "invalid_extraction") return "Invalid";
+-  if (call.horizon_status_30d === "pending") return "Pending 30d";
+-  if (call.target_status === "pending" || call.horizon_status_90d === "pending") return "Pending 90d";
+   return "Pending";
+ }
+ 
+ function formatSignedPercent(value: number): string {
+   return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+-}
+-
+-function formatTargetPrice(value: number): string {
+-  return new Intl.NumberFormat("en-US", {
+-    maximumFractionDigits: Number.isInteger(value) ? 0 : 2,
+-  }).format(value);
+-}
+-
+-function getTargetOutcomeLabel(call: SerializedCall): string {
+-  if (call.hit_target === true) return "✓";
+-  if (call.hit_target === false) return "✕";
+-  if (call.target_status === "pending") return "Pending 90d";
+-  return "—";
+-}
+-
+-function getTargetOutcomeClass(call: SerializedCall): string {
+-  if (call.hit_target === true) return "text-pos";
+-  if (call.hit_target === false) return "text-neg";
+-  return "text-ink-600";
+ }
+ 
+ export default function CallHistory({
+@@ -110,13 +90,12 @@
+   return (
+     <div className="border border-ink-200 overflow-hidden">
+       <div className="p-4 border-b border-ink-200">
+-        <h2 className="text-ink-900 font-semibold text-sm">Recent call history</h2>
++        <h2 className="text-ink-900 font-semibold text-sm">Call History</h2>
+         <p className="text-ink-500 text-xs mt-1">
+-          {totalCount !== undefined
++          {totalCount !== undefined && totalCount > calls.length
+             ? `Showing ${calls.length} of ${totalCount} tracked calls`
+-            : `Showing ${calls.length} tracked calls`}
+-          {scoredCount !== undefined ? ` · ${scoredCount} public-scored` : ""}
+-          {" · Last 12 months"}
++            : `${calls.length} tracked calls`}
++          {scoredCount !== undefined ? ` · ${scoredCount} scored` : ""}
+         </p>
+       </div>
+ 
+@@ -217,12 +196,12 @@
+                       >
+                         {formatSignedPercent(call.live_return)}
+                         <span className="ml-1 text-[10px] uppercase tracking-wider text-ink-600">
+-                          Live 30d
++                          live
+                         </span>
+                       </span>
+                     ) : call.horizon_status_30d === "pending" ? (
+                       <span className="text-xs uppercase tracking-wider text-ink-600">
+-                        Pending 30d
++                        Pending
+                       </span>
+                     ) : call.return_30d !== null ? (
+                       <span
+@@ -249,12 +228,12 @@
+                       >
+                         {formatSignedPercent(call.live_alpha)}
+                         <span className="ml-1 text-[10px] uppercase tracking-wider text-ink-600">
+-                          Live 30d
++                          live
+                         </span>
+                       </span>
+                     ) : call.horizon_status_30d === "pending" ? (
+                       <span className="text-xs uppercase tracking-wider text-ink-600">
+-                        Pending 30d
++                        Pending
+                       </span>
+                     ) : call.alpha_30d !== null ? (
+                       <span
+@@ -271,18 +250,16 @@
+                     )}
+                   </td>
+                   <td className="px-4 py-3 text-center hidden md:table-cell">
+-                    {call.target_required_tier === null ? (
+-                      <span className="text-ink-600">—</span>
+-                    ) : call.can_view_target_price === false ? (
+-                      <span className={getTargetOutcomeClass(call)}>
+-                        Pro {getTargetOutcomeLabel(call)}
+-                      </span>
+-                    ) : call.target_price !== null ? (
+-                      <span className={getTargetOutcomeClass(call)}>
+-                        {formatTargetPrice(call.target_price)} {getTargetOutcomeLabel(call)}
+-                      </span>
++                    {call.target_status === "pending" ? (
++                      <span className="text-xs uppercase tracking-wider text-ink-600">
++                        Pending
++                      </span>
++                    ) : call.hit_target === true ? (
++                      <span aria-hidden="true" className="text-pos">✓</span>
++                    ) : call.hit_target === false ? (
++                      <X className="w-4 h-4 text-neg mx-auto" />
+                     ) : (
+-                      <span className="text-ink-600">—</span>
++                      <span className="text-ink-600">--</span>
+                     )}
+                   </td>
+                 </tr>

@@ -1,0 +1,63 @@
+{
+  "agent_id": "callscore-orchestrator-head",
+  "class": "orchestrator",
+  "owner_surface": "Hermes Workplane, Kanban, receipts, and master-state",
+  "identity": "Full canonical CallScore orchestration agent.",
+  "mission": "Coordinate agents, enforce Prompt 0 gates, maintain receipts, and keep master-state truthful.",
+  "heartbeat_cadence": "hourly_light_daily_deep_after_major_phase",
+  "can_do_independently": [
+    "read_workplane_state",
+    "route_tasks",
+    "verify_receipts",
+    "update_non_secret_control_docs",
+    "propose_next_actions"
+  ],
+  "gated_actions": [
+    "destructive_cleanup",
+    "provider_mutation",
+    "DB_mutation",
+    "deploys"
+  ],
+  "forbidden_actions": [
+    "secret_exposure",
+    "false_completion_claims"
+  ],
+  "heartbeat_reads": [],
+  "independent_outputs": [],
+  "stop_conditions": [],
+  "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "heartbeat_schema": "callscore_agent_heartbeat.v1",
+  "latest_heartbeat_id": "callscore-orchestrator-head-2026-06-22T16:09:06.427Z",
+  "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+  "latest_proposed_task": {
+    "agent_id": "callscore-orchestrator-head",
+    "channel_id": "general",
+    "task_type": "agent_observe",
+    "status": "pending",
+    "priority": 50,
+    "run_after": "2026-06-22T16:09:06.427Z",
+    "max_attempts": 1,
+    "idempotency_key": "callscore-orchestrator-head:agent_observe:2026-06-22T16",
+    "payload_hash": "sha256:633a44282257626e82dbda445f76e38aba6668bcec32507f159efc1c82172011",
+    "payload": {
+      "agent_id": "callscore-orchestrator-head",
+      "channel_id": "general",
+      "task_type": "agent_observe",
+      "mode": "observe_or_draft",
+      "hermes_orchestrator": "default-profile",
+      "allowed_external_mutation": false
+    }
+  },
+  "tools": [
+    "Hermes profile/workplane",
+    "HH Control Tunnel continuity",
+    "filesystem receipts",
+    "master-state.json",
+    "observability contracts",
+    "git read/status",
+    "Docker read/status"
+  ],
+  "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+  "log_root": "/srv/agents/hermes/logs",
+  "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+}

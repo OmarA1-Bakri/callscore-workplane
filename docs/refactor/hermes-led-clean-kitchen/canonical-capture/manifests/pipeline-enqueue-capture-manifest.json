@@ -1,0 +1,17 @@
+{
+  "original_path": "/srv/agents/crypto-tuber-ranked/pipeline-enqueue.sh",
+  "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/legacy-scripts/pipeline-enqueue.sh",
+  "file_size": 1049,
+  "sha256": "99198786bf6e66cd20ae5c2a52009beb3730b2e450514af51ed12842faaa6778",
+  "why_captured": "unique untracked legacy enqueue script before stale clone deletion",
+  "active_references_exist": false,
+  "reference_check": {
+    "process_refs": [],
+    "docker_refs": [],
+    "systemd_refs": [],
+    "cron_refs": [],
+    "compose_refs": [],
+    "active_ref_files": []
+  },
+  "why_not_executed": "stale repo script writes pipeline_jobs / uses DATABASE_URL; cleanup mandate forbids running stale scripts or DB mutation"
+}

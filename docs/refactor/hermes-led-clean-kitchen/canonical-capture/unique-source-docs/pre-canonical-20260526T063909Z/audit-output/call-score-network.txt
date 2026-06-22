@@ -1,0 +1,6 @@
+13. [POST] https://www.call-score.com/cdn-cgi/rum? => [204] 
+14. [GET] https://www.call-score.com/methodology?_rsc=1wtp7 => [200] 
+15. [GET] https://www.call-score.com/pricing?_rsc=1wtp7 => [200] 
+16. [GET] https://www.call-score.com/feedback?_rsc=1wtp7 => [200] 
+
+Note: 12 static requests not shown, run with "static" option to see them.

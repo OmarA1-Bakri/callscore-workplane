@@ -1,0 +1,49 @@
+{
+  "agent_id": "callscore-implementer-head",
+  "class": "implementer",
+  "owner_surface": "bounded implementation and tests",
+  "identity": "Full canonical CallScore implementation agent.",
+  "mission": "Make small, tested, receipt-backed changes without damaging active runtime.",
+  "heartbeat_cadence": "per_task_plus_daily",
+  "can_do_independently": [],
+  "gated_actions": [],
+  "forbidden_actions": [],
+  "heartbeat_reads": [],
+  "independent_outputs": [],
+  "stop_conditions": [],
+  "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "heartbeat_schema": "callscore_agent_heartbeat.v1",
+  "latest_heartbeat_id": "callscore-implementer-head-2026-06-22T16:09:06.427Z",
+  "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+  "latest_proposed_task": {
+    "agent_id": "callscore-implementer-head",
+    "channel_id": "general",
+    "task_type": "agent_observe",
+    "status": "pending",
+    "priority": 50,
+    "run_after": "2026-06-22T16:09:06.427Z",
+    "max_attempts": 1,
+    "idempotency_key": "callscore-implementer-head:agent_observe:2026-06-22T16",
+    "payload_hash": "sha256:8b07a2da5535f77c3f71c65d1a8812c5a8dd193eb53345999be35a3c85e600b0",
+    "payload": {
+      "agent_id": "callscore-implementer-head",
+      "channel_id": "general",
+      "task_type": "agent_observe",
+      "mode": "observe_or_draft",
+      "hermes_orchestrator": "default-profile",
+      "allowed_external_mutation": false
+    }
+  },
+  "tools": [
+    "Hermes profile/workplane",
+    "HH Control Tunnel continuity",
+    "filesystem receipts",
+    "master-state.json",
+    "observability contracts",
+    "git read/status",
+    "Docker read/status"
+  ],
+  "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+  "log_root": "/srv/agents/hermes/logs",
+  "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+}

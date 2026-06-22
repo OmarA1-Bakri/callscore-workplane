@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-06-21T18:18:46Z",
+  "command": "hermes kanban dispatch --dry-run --max 2 && hermes kanban dispatch --max 2 --json",
+  "result": {
+    "reclaimed": 0,
+    "crashed": [],
+    "timed_out": [],
+    "stale": [],
+    "auto_blocked": [],
+    "promoted": 0,
+    "spawned": [],
+    "skipped_unassigned": [],
+    "skipped_nonspawnable": [],
+    "skipped_per_profile_capped": [],
+    "auto_assigned_default": []
+  },
+  "interpretation": "No tasks spawned during this parent prompt; task graph exists and remains available for dispatcher/next phase."
+}

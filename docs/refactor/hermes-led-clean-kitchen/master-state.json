@@ -1,0 +1,1292 @@
+{
+  "schema_version": 1,
+  "program": "callscore-clean-kitchen-refactor",
+  "last_updated_utc": "2026-06-22T18:12:23Z",
+  "current_phase": "post_clean_kitchen_commit_and_blocker_resolution",
+  "phase_status": "cmo_duplicate_skill_maintenance_complete_runtime_verified_commits_pending",
+  "completed_phases": [
+    "phase_1_prompt1_baseline_control_artifacts",
+    "runtime_discovery_immediate_disk_recovery",
+    "prompt_2_canonical_capture_current_candidate_refresh_safe_legacy_deletion",
+    "prompt_2_5_linked_worktree_retirement_protected_state_cleanup",
+    "prompt_3_active_runtime_simplification_duplicate_provider_removal",
+    "prompt_3_5_ytdlp_singleton_provider_guard",
+    "prompt_3_6_secret_artifact_scrub_incident_closure",
+    "prompt_3_7_clean_architecture_directory_plan",
+    "prompt_3_8_clean_architecture_staging_plan",
+    "prompt_4_0_deferred_reference_sensitive_cleanup_review",
+    "prompt_4_1_deferred_reference_sensitive_execution",
+    "prompt_5_agent_workplane_separation",
+    "prompt_6_observability_and_receipt_consolidation",
+    "prompt_7a_prompt_profile_deduplication_review",
+    "prompt_7b_third_party_integration_routing",
+    "prompt_8_provider_route_hardening"
+  ],
+  "blocked_phases": [],
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593781248,
+    "free_bytes": 29376462848,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577128,
+    "inode_free": 7155368,
+    "inode_used_percent": 26.48
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 89237012480,
+    "free_bytes": 65133940736,
+    "used_percent": 58.0
+  },
+  "inode_before": {
+    "inode_total": 9732496,
+    "inode_used": 2577128,
+    "inode_free": 7155368,
+    "inode_used_percent": 26.48
+  },
+  "inode_after": {
+    "inode_total": 9732496,
+    "inode_used": 1537652,
+    "inode_free": 8194844,
+    "inode_used_percent": 16.0
+  },
+  "recovered_bytes_total": 10708398080,
+  "recovered_bytes_by_phase": {
+    "phase_1_prompt1_baseline_control_artifacts": 0,
+    "runtime_discovery_immediate_disk_recovery": 7170871296,
+    "prompt_2_canonical_capture_current_candidate_refresh_safe_legacy_deletion": 0,
+    "prompt_2_5_linked_worktree_retirement_protected_state_cleanup": 3459031040,
+    "prompt_3_5_ytdlp_singleton_provider_guard": 0,
+    "prompt_3_6_secret_artifact_scrub_incident_closure": 0,
+    "prompt_3_7_clean_architecture_directory_plan": 0,
+    "prompt_3_9_phase_a_low_risk_cleanup_execution": 76845056,
+    "prompt_4_1_deferred_reference_sensitive_execution": 1650688,
+    "prompt_9_prompt_deduplication_and_full_profile_implementation": 12532422
+  },
+  "backup_baseline": {
+    "operator_attested_block_image": "/mnt/d/CallScore-VM-backups/hhvm-disk-$Stamp/hhvm-sda-$Stamp.img",
+    "visible_from_hh": false,
+    "visible_candidates": [],
+    "checksum_status": "not_attempted_in_prompt_1_to_avoid_large_disk_io_under_pressure; operator-attested backup accepted if path not visible or checksum infeasible"
+  },
+  "canonical_paths": [
+    "/srv/agents/repos/callscore-workplane",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen",
+    "/opt/crypto-tuber-ranked",
+    "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+    "/opt/crypto-tuber-ranked/docs/ops/ytdlp-singleton-provider.md",
+    "/opt/crypto-tuber-ranked/tests/ytdlp-singleton-wrapper.test.ts"
+  ],
+  "protected_paths": [
+    "/opt/callscore/secrets",
+    "/opt/callscore/secrets/youtube-cookies.txt",
+    "live .env files (inventory pending; never print contents)",
+    "production DB files and Docker volumes",
+    "active container mounted paths",
+    "/opt/callscore",
+    "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "production DB files",
+    "Docker volumes",
+    "live .env files",
+    "DB files"
+  ],
+  "active_runtime_paths": [
+    "/opt/crypto-tuber-ranked",
+    "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "/opt/callscore/secrets/youtube-cookies.txt"
+  ],
+  "active_docker_summary": {
+    "container_count": 7,
+    "containers": [
+      {
+        "name": "whop-auto-hermes-worker-1",
+        "state": "running",
+        "status": "Up 18 hours",
+        "image": "crypto-tuber-ranked-hermes-worker:latest"
+      },
+      {
+        "name": "whop-auto-channel-agent-worker-1",
+        "state": "running",
+        "status": "Up 18 hours",
+        "image": "crypto-tuber-ranked-hermes-worker:latest"
+      },
+      {
+        "name": "whop-auto-ytdlp-pot-provider-1",
+        "state": "restarting",
+        "status": "Restarting (0) 58 seconds ago",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node"
+      },
+      {
+        "name": "crypto-tuber-ranked-hermes-worker-1",
+        "state": "running",
+        "status": "Up 19 hours",
+        "image": "b1369860652d"
+      },
+      {
+        "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "state": "running",
+        "status": "Up 19 hours (healthy)",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node"
+      },
+      {
+        "name": "hh-oauth-mcp-gateway",
+        "state": "running",
+        "status": "Up 12 days",
+        "image": "oauth-mcp-gateway-oauth-mcp-gateway"
+      },
+      {
+        "name": "hermes-whop-automation-tunnel",
+        "state": "running",
+        "status": "Up 2 weeks",
+        "image": "cloudflare/cloudflared:latest"
+      }
+    ],
+    "mounts": [
+      {
+        "name": "whop-auto-hermes-worker-1",
+        "id": "da4d0e928c00",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "state": "running",
+        "health": null,
+        "mounts": [
+          {
+            "source": "/opt/callscore/secrets/youtube-cookies.txt",
+            "destination": "/run/secrets/youtube-cookies.txt",
+            "type": "bind",
+            "rw": false
+          }
+        ]
+      },
+      {
+        "name": "whop-auto-channel-agent-worker-1",
+        "id": "8787903a1ad5",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "state": "running",
+        "health": null,
+        "mounts": []
+      },
+      {
+        "name": "whop-auto-ytdlp-pot-provider-1",
+        "id": "d352f6a7217c",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "state": "restarting",
+        "health": "unhealthy",
+        "mounts": []
+      },
+      {
+        "name": "crypto-tuber-ranked-hermes-worker-1",
+        "id": "70e98d9f9b52",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "state": "running",
+        "health": null,
+        "mounts": [
+          {
+            "source": "/opt/callscore/secrets/youtube-cookies.txt",
+            "destination": "/run/secrets/youtube-cookies.txt",
+            "type": "bind",
+            "rw": false
+          }
+        ]
+      },
+      {
+        "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "id": "362901a5fca0",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "state": "running",
+        "health": "healthy",
+        "mounts": []
+      },
+      {
+        "name": "hh-oauth-mcp-gateway",
+        "id": "1635003474d8",
+        "image": "oauth-mcp-gateway-oauth-mcp-gateway",
+        "state": "running",
+        "health": null,
+        "mounts": []
+      },
+      {
+        "name": "hermes-whop-automation-tunnel",
+        "id": "996b7342b827",
+        "image": "cloudflare/cloudflared:latest",
+        "state": "running",
+        "health": null,
+        "mounts": [
+          {
+            "source": "/home/omar/.cloudflared/hermes-whop-automation.token",
+            "destination": "/etc/cloudflared/token",
+            "type": "bind",
+            "rw": false
+          }
+        ]
+      }
+    ]
+  },
+  "deleted_paths": [
+    {
+      "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+      "classification": "DELETE_NOW_STALE_BACKUP",
+      "size_before_bytes": 2683500081,
+      "recovered_bytes": 2683506688,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-001.json"
+    },
+    {
+      "path": "/srv/agents/backups/agents-20260618T023000Z.tar.gz",
+      "classification": "DELETE_NOW_STALE_BACKUP",
+      "size_before_bytes": 2383291489,
+      "recovered_bytes": 2383298560,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-002.json"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+      "classification": "DELETE_NOW_CACHE",
+      "size_before_bytes": 862059940,
+      "recovered_bytes": 998350848,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-003.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/node_modules",
+      "classification": "DELETE_NOW_CACHE",
+      "size_before_bytes": 532203001,
+      "recovered_bytes": 635580416,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-004.json"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+      "classification": "DELETE_NOW_CACHE",
+      "size_before_bytes": 270899287,
+      "recovered_bytes": 273018880,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-005.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.omx",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "size_before_bytes": 116515370,
+      "recovered_bytes": 117260288,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-006.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+      "classification": "DELETE_NOW_CACHE",
+      "size_before_bytes": 42524676,
+      "recovered_bytes": 44560384,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-007.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.vercel",
+      "classification": "DELETE_NOW_CACHE",
+      "size_before_bytes": 15640503,
+      "recovered_bytes": 16076800,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-008.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.claude",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "size_before_bytes": 14051214,
+      "recovered_bytes": 16302080,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-009.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "size_before_bytes": 2922008,
+      "recovered_bytes": 2949120,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-010.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "size_before_bytes": 149435,
+      "recovered_bytes": 217088,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-011.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.serena",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "size_before_bytes": 17564,
+      "recovered_bytes": 36864,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-012.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.claude",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "size_before_bytes": 1479,
+      "recovered_bytes": 16384,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-013.json"
+    },
+    {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "deletion_type": "raw exact path deletion",
+      "pre_delete_size": 519758591,
+      "recovered_bytes": 650731520,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__crypto-tuber-ranked.json"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 16035204,
+      "recovered_bytes": 17833984,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__callscore-stale-infra-cleanup.json"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 1176057987,
+      "recovered_bytes": 1318494208,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__whop-auto__workspace__callscore-db-portability.json"
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 1137963880,
+      "recovered_bytes": 1278242816,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/tmp__callscore-pr38-build.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 98985512,
+      "recovered_bytes": 109883392,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-marketing-launch-ready.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 5835442,
+      "recovered_bytes": 7467008,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-measurement-pack-001.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 5830998,
+      "recovered_bytes": 7454720,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-pr10-master-clean.json"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "deletion_type": "git worktree removal",
+      "pre_delete_size": 5834284,
+      "recovered_bytes": 7471104,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations_callscore_launch_sweep_clean.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "deletion_type": "raw exact path deletion with sudo supplemental after permission-denied partial delete",
+      "pre_delete_size": 58926941,
+      "recovered_bytes": 61575168,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/opt__crypto-tuber-ranked.pre-canonical-20260526T063909Z.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/last30days-research",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 40960,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-02e48a301801.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 32768,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-1a6de99e3c8a.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/transcript-canary",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 32768,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-1ea8d5761c7a.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-final-drafts",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 36864,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-22e4d9bb9ab1.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/cmo-corrections",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 167936,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-2c2eb8c0c288.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-runs",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 98304,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-4429aed5ba04.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/full-system-activation",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 249856,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-65bfbbf3ffed.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 425984,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-69b993bc2be4.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-drafts",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 118784,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-6d27acb77895.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pipeline-canary",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 12288,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-7c71119244dc.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 0,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-91e66df6a4cc.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-assets",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 18575360,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-967cea4fd937.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pr-audit",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 188416,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-988eb7002182.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/cron-score-refresh",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 8192,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-ab665f776c96.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe-venv",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 56369152,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-c173e80caec0.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily-canary",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 139264,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-d4b316bc8d08.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/live-checks",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 69632,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-d8a6442147ef.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/last30days-cron",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 45056,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-edf44f05414b.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/visual-proof",
+      "classification": "PHASE_A_SAFE_BATCH_1",
+      "recovered_bytes": 430080,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-f59f03b12f00.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 241664,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-3557cf2e9bf5.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-slow-ytdlp-canary",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 8192,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-6ddd31f004c0.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 151552,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-45f88ef2d9aa.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-final",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 163840,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-c021c1c8ccf1.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase2",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 155648,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-8f3bfa3e48d7.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase3",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 155648,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-d216c7133c47.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase4",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 155648,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-511022a4599c.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase5",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 24576,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-781605f3d649.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase6",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 8192,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-1644d36a8449.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase7",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 8192,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-01fa6c6a45b0.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-phase8",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 8192,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-05f6e6b4bfdb.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 28672,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-eae90850813e.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ml-idle-improve",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 57344,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-3488c3b2ceab.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pipeline-audit",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 8192,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-af3d9b3c68ad.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/private-evidence",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 77824,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-3d1fe98a3145.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/reviews",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 364544,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-dd1df0602f9f.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultragoal",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 20480,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-0d8bd1164673.json"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/ultraqa",
+      "classification": "PROMPT_4_1_REFERENCE_SENSITIVE_TMP",
+      "recovered_bytes": 12288,
+      "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/delete-c1c4db90114f.json"
+    }
+  ],
+  "quarantined_paths": [],
+  "unknown_blockers": [
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "classification": "BLOCKED_COMMON_GIT_RISK",
+      "reason": "common repo not deleted in Prompt 2.5; common .git preservation rule; deletion/classification can be separate later phase after worktree retirement verification",
+      "remaining_worktrees": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        }
+      ],
+      "worktree_prune": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "worktree",
+          "prune"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "active_reference_check": {
+        "path": "/srv/agents/repos/crypto-tuber-ranked",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "size_bytes": 11488186,
+      "exists_after": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "classification": "BLOCKED_COMMON_GIT_RISK",
+      "reason": "common repo explicitly not approved for deletion in Prompt 2.5",
+      "remaining_worktrees": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        }
+      ],
+      "worktree_prune": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations",
+          "worktree",
+          "prune"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "active_reference_check": {
+        "path": "/srv/agents/repos/Claude_Code_Automations",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "size_bytes": 1067520068,
+      "exists_after": true
+    },
+    {
+      "path": "/srv/agents/database-migration",
+      "classification": "BLOCKED_NEEDS_OPERATOR_APPROVAL",
+      "reason": "DB/migration protected data; no explicit operator approval to delete in current prompt",
+      "size_bytes": 878132059,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "active_reference_check": {
+        "path": "/srv/agents/database-migration",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "exists_after": true
+    },
+    "Prompt 8 stale .tmp/callscore-daily cleanup blocked by root-owned permissions; no forced deletion attempted."
+  ],
+  "latest_receipts": [
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-kanban-tasks-20260621T181700Z.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-dispatch-check-20260621T181900Z.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-receipt-before-deletion.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T190926Z-prompt2-canonical-capture/current-safety-baseline-before.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T190926Z-prompt2-canonical-capture/post-prompt2-verification.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/02-canonical-capture-deletion-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/02-5-linked-worktree-retirement-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/baseline-before.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/post-verification.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-runtime-simplification-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/baseline-before.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/post-removal-verification-corrected.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-5-ytdlp-singleton-provider-guard-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/baseline-before.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6-secret-artifact-scrub-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-clean-architecture-directory-plan-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-8-clean-architecture-staging-plan-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T222835Z-prompt36b-residual-secret-artifact-scrub/03-6b-residual-secret-artifact-scrub-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6b-residual-secret-artifact-scrub-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/03-9-phase-a-low-risk-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-9-phase-a-low-risk-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224026Z-prompt40-deferred-reference-sensitive-review/04-0-deferred-reference-sensitive-cleanup-review-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224542Z-prompt41-deferred-reference-sensitive-execution/04-1-deferred-reference-sensitive-execution-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-1-deferred-reference-sensitive-execution-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T231746Z-prompt5-agent-workplane-separation/05-agent-workplane-separation-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/05-agent-workplane-separation-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T232126Z-prompt6-observability-receipt-consolidation/06-observability-and-receipt-consolidation-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/06-observability-and-receipt-consolidation-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T080813Z-prompt7a-prompt-profile-deduplication-review/07a-prompt-profile-deduplication-review-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/07a-prompt-profile-deduplication-review-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T082404Z-prompt7b-third-party-integration-routing/07b-third-party-integration-routing-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/07b-third-party-integration-routing-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T085515Z-prompt8-provider-route-hardening/08-provider-route-hardening-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/08-provider-route-hardening-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/canonical-deployment-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T091534Z-canonical-cmo-deployment-attempt/canonical-deployment-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T092001Z-composio-layer-correction/composio-layer-correction-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/composio-layer-correction-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/05-agent-workplane-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/05-full-canonical-agents-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/08-gemma-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/09-prompt-deduplication-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/10-framework-plan-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/final-verification-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/post-clean-kitchen-next-actions-receipt.json"
+  ],
+  "latest_deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/execution-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-kanban-tasks-20260621T181700Z.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-dispatch-check-20260621T181900Z.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/01-runtime-routing-and-cleanup-audit.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-routing-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/immediate-disk-recovery-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/02-canonical-code-capture.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/current-deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-code-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/legacy-repo-deletion-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/database-migration-classification.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/manifests/legacy-capture-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/02-5-linked-worktree-retirement.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/worktree-retirement-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt25-deletion-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-active-runtime-simplification.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/docker-runtime-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/ytdlp-provider-conflict-resolution.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/runtime-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-5-ytdlp-singleton-provider-guard.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/ytdlp-singleton-startup-routes.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/ytdlp-singleton-implementation-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-6-secret-artifact-scrub.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/secret-artifact-scan-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/secret-artifact-redaction-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/session-secret-rotation-required.md",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6-secret-artifact-scrub-receipt.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-7-clean-architecture-directory-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/clean-architecture-directory-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/clean-architecture-risk-register.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/clean-architecture-migration-sequence.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-8-clean-architecture-staging-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-candidate-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-readiness-check.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-execution-prompt.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-6b-residual-secret-artifact-scrub.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/residual-secret-artifact-scan-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/residual-secret-artifact-redaction-report.md",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6b-residual-secret-artifact-scrub-receipt.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/03-9-phase-a-low-risk-cleanup-execution.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-execution-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/phase-a-cleanup-post-verification.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-9-phase-a-low-risk-cleanup-receipt.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deferred-reference-sensitive-execution-candidates.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-1-reference-sensitive-cleanup-ledger.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-1-deferred-reference-sensitive-execution-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-1-deferred-reference-sensitive-execution-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/04-1-reference-sensitive-cleanup-post-verification.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/05-agent-workplane-separation.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-bloat-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-gate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-workplane-verification-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/06-observability-and-receipt-consolidation.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/agent-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/db-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/disk-cleanup-status.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/docker-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/last-known-good.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/pipeline-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/prompt6-verification.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/provider-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/receipt-index.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/repo-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/scheduler-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/observability/service-health.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/receipt-consolidation-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/07a-prompt-profile-deduplication-review.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/cmo-lite-profile-spec.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-deduplication-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-profile-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-duplication-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-manifest-schema.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-routing-plan.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-dependencies-for-next-phase.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-profile-deduplication-verification-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/07b-third-party-integration-routing.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-risk-register.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/whop-runtime-direct-exception.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/netlify-direct-backup-exception.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/composio-canonical-provider-routing.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-mutation-gate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-provider-routing-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/third-party-routing-verification-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/08-provider-route-hardening.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/composio-route-hardening-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/composio-repair-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/netlify-route-hardening-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/whop-route-hardening-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/youtube-ytdlp-route-hardening-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/public-outreach-provider-hardening-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-read-only-probe-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-route-hardening-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-route-hardening-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/composio-provider-coverage-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-provider-hardening-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-execution-gate-spec.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-route-hardening-verification-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/05-agent-workplane-map.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-cleanup-report.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FULL_CANONICAL_AGENTS.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-agent-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/08-gemma-transcript-pipeline-map.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/gemma-transcript-pipeline-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/gemma-shadow-promotion-gates.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/transcript-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/09-prompt-deduplication-audit.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-hash-summary.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/lean-profile-strategy.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/callscorecmo-lite-spec.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-profile-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-profile-strategy.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/10-framework-integration-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/zod-pydantic-schema-strategy.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/langgraph-suitability-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/framework-decision-record.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/framework-experiment-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt10-framework-discovery.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_CLEAN_KITCHEN_HANDOVER.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_VERIFICATION_REPORT.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/HH_CONTINUITY_RUNBOOK.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/NEXT_ACTIONS.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_DELETION_REPORT.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/post-clean-cmo-skill-maintenance-results.json"
+  ],
+  "emergency_halt_status": {
+    "halted": false,
+    "reason": null
+  },
+  "next_phase_allowed": "git_commit_checkpoint_then_optional_push_or_root_cleanup",
+  "mandatory_skills_loaded": [
+    "task-router",
+    "kanban-orchestrator",
+    "writing-plans",
+    "subagent-driven-development",
+    "test-driven-development"
+  ],
+  "kanban_profiles_observed": {
+    "rc": 0,
+    "out": "Profile          Model                        Gateway      Alias        Distribution\n \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n \u25c6default         gpt-5.5                      running      \u2014            \u2014\n  callscorearchitect gpt-5.5                      stopped      \u2014            \u2014\n  callscorecmo    gpt-5.5                      stopped      \u2014            \u2014\n  callscoredata   gpt-5.5                      stopped      \u2014            \u2014\n  callscoreimplementer gpt-5.5                      stopped      \u2014            \u2014\n  callscorereviewer gpt-5.5                      stopped      \u2014            \u2014\n  callscoresafety gpt-5.5                      stopped      \u2014            \u2014\n  callscoretrust  gpt-5.5                      stopped      \u2014            \u2014",
+    "err": ""
+  },
+  "kanban_assignees_observed": {
+    "rc": 0,
+    "out": "NAME                  ON DISK   COUNTS\ncallscorearchitect    yes       done=6\ncallscorecmo          yes       done=1\ncallscoredata         yes       done=4\ncallscoreimplementer  yes       done=5\ncallscorereviewer     yes       done=6\ncallscoresafety       yes       done=3\ncallscoretrust        yes       done=4\ndefault               yes       (idle)\ndefault-orchestrator  no        done=1",
+    "err": ""
+  },
+  "pre_session_checks": {
+    "tailscale_self": {
+      "rc": 0,
+      "out": "hermes-agent-box.taila4fb77.ts.net.",
+      "err": ""
+    },
+    "h_mount": {
+      "exists": false,
+      "path": "/mnt/h"
+    }
+  },
+  "git_status_snapshot": {
+    "/srv/agents/repos/callscore-workplane": {
+      "rc": 0,
+      "out": "## master\n?? docs/migration/receipts/callscore-cmo-monitor-20260618T182018Z.md\n?? docs/migration/receipts/callscore-owned-public-next-draft-20260618T121352Z.json\n?? receipts/\n",
+      "err": ""
+    },
+    "/srv/agents/repos/crypto-tuber-ranked": {
+      "rc": 0,
+      "out": "## master\n",
+      "err": ""
+    },
+    "/srv/agents/crypto-tuber-ranked": {
+      "rc": 0,
+      "out": "## master...origin/master\n?? pipeline-enqueue.sh\n",
+      "err": ""
+    },
+    "/opt/crypto-tuber-ranked": {
+      "rc": 0,
+      "out": "## master...origin/master [ahead 3]\n M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/.hermes-tmp.UR6IXl\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n",
+      "err": ""
+    }
+  },
+  "protected_path_stats": [
+    {
+      "exists": true,
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 22892,
+      "mtime_utc": "2026-06-21T03:21:02Z",
+      "mode_octal": "0o600"
+    },
+    {
+      "exists": true,
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 4382,
+      "mtime_utc": "2026-06-20T23:37:30Z",
+      "mode_octal": "0o664"
+    },
+    {
+      "exists": true,
+      "path": "/srv/agents/repos/callscore-workplane",
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mtime_utc": "2026-06-18T09:07:27Z",
+      "mode_octal": "0o755"
+    },
+    {
+      "exists": true,
+      "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mtime_utc": "2026-06-18T06:38:36Z",
+      "mode_octal": "0o700"
+    },
+    {
+      "exists": true,
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mtime_utc": "2026-05-17T07:20:24Z",
+      "mode_octal": "0o775"
+    },
+    {
+      "exists": true,
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mtime_utc": "2026-05-18T03:46:18Z",
+      "mode_octal": "0o775"
+    },
+    {
+      "exists": true,
+      "path": "/opt/crypto-tuber-ranked",
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mtime_utc": "2026-06-21T10:27:40Z",
+      "mode_octal": "0o775"
+    }
+  ],
+  "protected_readability": {
+    "/opt/callscore/secrets/youtube-cookies.txt": false,
+    "/opt/crypto-tuber-ranked/docker-compose.yml": true,
+    "/srv/agents/repos/callscore-workplane": true,
+    "/srv/agents/repos/callscore-workplane/apps/callscore-web": true,
+    "/srv/agents/repos/crypto-tuber-ranked": true,
+    "/srv/agents/crypto-tuber-ranked": true,
+    "/opt/crypto-tuber-ranked": true
+  },
+  "kanban_task_graph": {
+    "created_utc": "2026-06-21T18:17:44Z",
+    "tasks": {
+      "phase_2_runtime_map": "t_ea1d3582",
+      "phase_3_repo_classification": "t_b4b5c45d",
+      "phase_4_disk_census": "t_a878e1de",
+      "phase_5_controlled_deletion_planning": "t_ed698e09",
+      "phase_6_runtime_stabilisation": "t_b6cab860",
+      "phase_7_final_validation": "t_a63130ac"
+    },
+    "dependency_shape": "P2 and P3 parallel; P4 depends on P2+P3; P5 blocked and depends on P4; P6 depends on P5; P7 depends on P6",
+    "dispatch_status": "not_dispatched_by_parent_in_prompt_1; ready tasks exist for specialist pickup if board dispatcher is active",
+    "deletion_guard": "P5 is blocked and worker body forbids rm commands; parent/default controls actual deletion receipts."
+  },
+  "kanban_dispatch_check": {
+    "timestamp_utc": "2026-06-21T18:18:46Z",
+    "command": "hermes kanban dispatch --dry-run --max 2 && hermes kanban dispatch --max 2 --json",
+    "result": {
+      "reclaimed": 0,
+      "crashed": [],
+      "timed_out": [],
+      "stale": [],
+      "auto_blocked": [],
+      "promoted": 0,
+      "spawned": [],
+      "skipped_unassigned": [],
+      "skipped_nonspawnable": [],
+      "skipped_per_profile_capped": [],
+      "auto_assigned_default": []
+    },
+    "interpretation": "No tasks spawned during this parent prompt; task graph exists and remains available for dispatcher/next phase."
+  },
+  "canonical_product_runtime_repo": "/opt/crypto-tuber-ranked",
+  "canonical_control_workplane_repo": "/srv/agents/repos/callscore-workplane",
+  "active_compose_file": "/opt/crypto-tuber-ranked/docker-compose.yml",
+  "protected_runtime_secret": "/opt/callscore/secrets/youtube-cookies.txt",
+  "active_docker_summary_prompt3": {
+    "removed_duplicate_provider": true,
+    "healthy_provider": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+    "broken_duplicate_provider": "whop-auto-ytdlp-pot-provider-1",
+    "workers_preserved": [
+      "whop-auto-hermes-worker-1",
+      "whop-auto-channel-agent-worker-1",
+      "crypto-tuber-ranked-hermes-worker-1"
+    ],
+    "port_4416_ok": true,
+    "false_positive_emergency_log": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json"
+  },
+  "prompt3_false_positive_emergency_log": {
+    "path": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+    "status": "FALSE_POSITIVE_PRESERVED",
+    "corrected_receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-runtime-simplification-receipt.json",
+    "cause": "mixed docker inspect batch included expected-absent whop-auto-ytdlp-pot-provider-1",
+    "prevention": "Prompt 3.5 guard/verification inspects expected-absent target separately from expected-present containers"
+  },
+  "ytdlp_singleton_guard": {
+    "owner_project": "crypto-tuber-ranked",
+    "singleton_container": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+    "forbidden_duplicate": "whop-auto-ytdlp-pot-provider-1",
+    "safe_wrapper": "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+    "safe_command": "docker compose -f /opt/crypto-tuber-ranked/docker-compose.yml -p whop-auto up -d --no-deps --no-recreate hermes-worker channel-agent-worker",
+    "reason_no_deps_required": "workers depend_on ytdlp-pot-provider in shared compose file"
+  },
+  "prompt35_secret_artifact_remediation": {
+    "affected_artifacts": [
+      "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json",
+      "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits-focused.json"
+    ],
+    "emergency_log": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T202048Z.json",
+    "remaining_unredacted_session_secret_assignments": [],
+    "note": "No secret values stored in master-state; route-hit artifacts redacted in place.",
+    "additional_legacy_redacted_files": [
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/audit-output/research/codex-review-w1.md",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__self-correction.test.ts.diff"
+    ],
+    "remaining_unredacted_session_secret_assignments_in_clean_kitchen_docs": []
+  },
+  "security_incidents": [
+    {
+      "id": "prompt35-session-secret-artifact-capture",
+      "status": "redacted_rotation_required",
+      "affected_secret": "SESSION_SECRET",
+      "raw_values_printed": false,
+      "artefacts_redacted": true,
+      "final_scan_status": "pass",
+      "rotation_required": true,
+      "rotation_status": "pending_controlled_maintenance",
+      "residual_scrub_required": false,
+      "residual_scrub_completed": true
+    }
+  ],
+  "prompt36_post_deliverable_final_scan": {
+    "status": "pass",
+    "total_files_scanned": 616,
+    "unsafe_paths": [],
+    "deliverables_included_in_scan": true
+  },
+  "prompt36_validation_notes": {
+    "initial_three_agent_review": "spec reviewer found post-deliverable scan coverage gap; implementation reviewer passed; security reviewer inspected out-of-scope /srv/whop-auto and was excluded from scoped acceptance",
+    "remediation": "added post_deliverable_final_scan to scan report, receipt, docs, and master-state; parent final path-only scan passed with zero unsafe raw secret patterns",
+    "final_three_agent_rerun": "attempted; delegate_task returned HTTP 429 usage limit before review execution",
+    "parent_final_verification": "passed; case-sensitive scoped scan reported zero unsafe raw secret assignment patterns and no secret values printed"
+  },
+  "prompt38_clean_architecture_staging_plan": {
+    "status": "PASS",
+    "timestamp_utc": "2026-06-21T22:11:16Z",
+    "safe_batch_1_candidate_count": 19,
+    "safe_batch_1_bytes": 83940637,
+    "deferred_reference_sensitive_count": 25,
+    "final_scan_status": "pass",
+    "no_live_env_files_read": true,
+    "no_live_env_files_modified": true,
+    "files_deleted": [],
+    "files_moved": []
+  },
+  "composio_route_status": "active_hermes_mcp_connected_tools_discovered",
+  "canonical_cmo_agent": "deployed_and_active",
+  "composio_policy_status": "canonical_for_callscore_agent_provider_automation",
+  "composio_hermes_config_status": "configured_in_active_hermes_config_yaml",
+  "composio_hermes_invocation_status": "callscorecmo_profile_mcp_test_connected_3093ms_tools_discovered_7",
+  "state_model_purge": {
+    "timestamp_utc": "2026-06-22T12:23:42Z",
+    "hh_toolbox_blocker_assumption_removed": true,
+    "authoritative_layer": "hermes_mcp_runtime",
+    "config_path": "/srv/agents/hermes/config.yaml",
+    "config_evidence": "mcp_servers.composio.url=https://connect.composio.dev/mcp",
+    "active_process_evidence": "PID 309776 hermes gateway run cwd=/srv/agents/hermes",
+    "native_hermes_mcp_probe": "hermes mcp test composio connected in 3570ms and discovered 7 tools",
+    "discovered_tools": [
+      "COMPOSIO_MANAGE_CONNECTIONS",
+      "COMPOSIO_MULTI_EXECUTE_TOOL",
+      "COMPOSIO_REMOTE_BASH_TOOL",
+      "COMPOSIO_REMOTE_WORKBENCH",
+      "COMPOSIO_SEARCH_TOOLS",
+      "COMPOSIO_WAIT_FOR_CONNECTIONS",
+      "COMPOSIO_GET_TOOL_SCHEMAS"
+    ],
+    "point_9_allowed": true,
+    "point_9_blocker": null
+  },
+  "canonical_cmo_profile": "callscorecmo",
+  "canonical_cmo_gateway_pid": 820326,
+  "point_9_canonical_cmo_deployment": {
+    "timestamp_utc": "2026-06-22T15:31:55Z",
+    "profile": "callscorecmo",
+    "profile_path": "/srv/agents/hermes/profiles/callscorecmo",
+    "profile_description": "CallScore CMO/channel-growth specialist. Owns X/LinkedIn/Reddit owned-public growth mechanics, originality/cooldown/media gates, and CMO receipts.",
+    "gateway_status": "running",
+    "gateway_pid": 820326,
+    "gateway_command": "/srv/agents/hermes/hermes-agent/venv/bin/hermes -p callscorecmo gateway run",
+    "launch_method": "tmux session callscorecmo-gateway",
+    "composio_validation": "hermes -p callscorecmo mcp test composio connected in 3093ms and discovered 7 tools",
+    "composio_tools": [
+      "COMPOSIO_MANAGE_CONNECTIONS",
+      "COMPOSIO_MULTI_EXECUTE_TOOL",
+      "COMPOSIO_REMOTE_BASH_TOOL",
+      "COMPOSIO_REMOTE_WORKBENCH",
+      "COMPOSIO_SEARCH_TOOLS",
+      "COMPOSIO_WAIT_FOR_CONNECTIONS",
+      "COMPOSIO_GET_TOOL_SCHEMAS"
+    ],
+    "runtime_health": "docker containers up; ytdlp provider healthy; local ping 200 OK",
+    "public_posting_executed": false,
+    "outreach_executed": false,
+    "spend_executed": false,
+    "provider_mutation_executed": false
+  },
+  "masterplan_v3_status_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/masterplan-v3-status.json",
+  "masterplan_v3_alignment_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/MASTERPLAN_V3_ALIGNMENT.md",
+  "canonical_masterplan_prompts_0_11": "operator_supplied_2026_06_22",
+  "actual_prompt_9_status": "not_executed_prompt_deduplication_and_lean_profile_implementation_pending",
+  "out_of_plan_cmo_activation": {
+    "status": "real_but_not_masterplan_prompt9",
+    "gateway_pid": 820326,
+    "profile": "callscorecmo"
+  },
+  "prompt_5_status": "complete_full_canonical_agents_manifested_16_heartbeat_agents_proven_dry_run",
+  "lean_lite_agent_strategy": "rejected_by_operator_full_canonical_agents_required",
+  "full_canonical_agents": {
+    "status": "complete",
+    "agent_count": 16,
+    "heartbeat_agent_count": 16,
+    "heartbeat_count": 16,
+    "db_write_performed": false,
+    "manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-agent-manifest.json",
+    "report": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FULL_CANONICAL_AGENTS.md"
+  },
+  "prompt_8_status": "complete_with_cleanup_blocker",
+  "gemma_transcript_pipeline": {
+    "status": "mapped",
+    "map": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/gemma-transcript-pipeline-map.json",
+    "promotion_gates": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/gemma-shadow-promotion-gates.md",
+    "tests_passed": "26/26",
+    "cleanup": "blocked_root_owned_old_tmp_daily_runs",
+    "deleted_paths": []
+  },
+  "prompt_9_status": "complete_with_active_cmo_duplicate_skill_cleanup_deferred",
+  "prompt_deduplication": {
+    "hash_summary": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-hash-summary.json",
+    "files_hashed": 8218,
+    "unique_hashes": 2359,
+    "duplicate_hash_groups": 987,
+    "duplicate_files": 6846,
+    "skill_exact_duplicates_replaced": 294,
+    "logical_duplicate_bytes_replaced": 12532422,
+    "active_cmo_duplicate_dirs_blocked": 49,
+    "drift_dirs_preserved": 84
+  },
+  "full_canonical_profiles": {
+    "status": "implemented",
+    "manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-profile-manifest.json",
+    "profile_doc_root": "/srv/agents/repos/callscore-workplane/docs/profiles",
+    "lite_strategy": "rejected"
+  },
+  "prompt_10_status": "complete",
+  "framework_integration": {
+    "status": "planned",
+    "zod": "canonical",
+    "pydantic": "sidecar_only_generated_or_aligned_to_zod",
+    "langgraph": "spike_only_not_production_control_plane",
+    "matrix": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/langgraph-suitability-matrix.json",
+    "decision_record": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/framework-decision-record.md",
+    "cleanup": "no deletion"
+  },
+  "prompt_11_status": "complete_with_remaining_blockers",
+  "final_verification": {
+    "status": "complete_with_remaining_blockers",
+    "disk_level_recovered_bytes": 42356768768,
+    "receipt_accounted_recovered_bytes": 10708398080,
+    "current_disk": {
+      "total_bytes": 160970244096,
+      "used_bytes": 89237012480,
+      "free_bytes": 65133940736,
+      "used_percent": 58.0
+    },
+    "current_inode": {
+      "inode_total": 9732496,
+      "inode_used": 1537652,
+      "inode_free": 8194844,
+      "inode_used_percent": 16.0
+    },
+    "deleted_paths_count": 59,
+    "prompt11_deleted_paths": [],
+    "deliverables": [
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_CLEAN_KITCHEN_HANDOVER.md",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_VERIFICATION_REPORT.md",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/HH_CONTINUITY_RUNBOOK.md",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/NEXT_ACTIONS.md",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FINAL_DELETION_REPORT.md"
+    ]
+  },
+  "post_clean_next_actions": {
+    "cmo_maintenance": "complete",
+    "cmo_duplicate_skill_dirs_replaced": 49,
+    "runtime_heartbeat": "16 agents / 16 heartbeats / no DB writes",
+    "runtime_tests": "82/82 passed",
+    "backup_cleanup": {
+      "source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml.pre-full-agents-20260622T1607Z",
+      "capture": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/callscore-channel-head-souls-pre-full-agents-20260622T1607Z.captured.yaml",
+      "status": "captured_to_receipts_and_removed_from_runtime_repo"
+    },
+    "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/post-clean-kitchen-next-actions-receipt.json"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "timestamp_utc": "2026-06-22T16:39:32Z",
+  "phase": "prompt_9_prompt_deduplication_and_full_profile_implementation",
+  "status": "completed_with_active_cmo_duplicates_deferred",
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/09-prompt-deduplication-audit.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-hash-summary.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/lean-profile-strategy.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/callscorecmo-lite-spec.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-profile-manifest.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-profile-strategy.md"
+  ],
+  "hash_summary": {
+    "file_count": 8218,
+    "unique_hash_count": 2359,
+    "duplicate_hash_count": 987,
+    "duplicate_file_count": 6846
+  },
+  "skill_dedupe": {
+    "same_name_records": 427,
+    "exact_duplicate_count": 343,
+    "replaced_count": 294,
+    "blocked_running_cmo_duplicates": 49,
+    "drift_preserved": 84,
+    "logical_duplicate_bytes_replaced": 12532422
+  },
+  "deleted_profile_dirs": [],
+  "active_profile_deleted_paths": [],
+  "symlink_replacements": 294,
+  "next_phase_allowed": "prompt_10_framework_integration_plan_after_cleanup"
+}

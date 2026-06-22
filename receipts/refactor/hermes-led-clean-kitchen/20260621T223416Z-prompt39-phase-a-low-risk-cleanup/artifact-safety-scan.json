@@ -1,0 +1,9 @@
+{
+  "unsafe_raw_session_assignment_files": [],
+  "redacted_placeholder_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/audit-output/research/codex-review-w1.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__self-correction.test.ts.diff",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json"
+  ],
+  "status": "pass"
+}

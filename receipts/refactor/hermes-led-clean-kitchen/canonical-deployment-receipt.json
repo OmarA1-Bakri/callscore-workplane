@@ -1,0 +1,105 @@
+{
+  "timestamp_utc": "2026-06-22T09:15:34Z",
+  "requested_action": "unrestricted_canonical_cmo_deployment_and_composio_repair",
+  "status": "blocked_not_deployed",
+  "reason": "Composio bridge is not visible in HH toolbox status or toolbox search, so it cannot be repaired, bound, pinged, or used from the available tool registry in this session.",
+  "truthfulness_guard": "Receipt does not claim active_and_bound because no Composio route is visible and no Composio tool call can be made.",
+  "composio_route_status": "not_visible",
+  "canonical_cmo_agent": "not_deployed_unrestricted_provider_rights_blocked",
+  "provider_automation_status": "blocked_until_composio_route_is_visible_and_verified",
+  "toolbox_status": {
+    "servers": [
+      {
+        "server": "aparajithn-agent-utils",
+        "name": "Developer Utilities",
+        "state": "connected"
+      },
+      {
+        "server": "elbpr-thinking-toolkit",
+        "name": "thinking-toolkit",
+        "state": "connected"
+      },
+      {
+        "server": "linxule-lotus-wisdom-mcp",
+        "name": "Lotus Wisdom",
+        "state": "connected"
+      },
+      {
+        "server": "node2flow-postgrest",
+        "name": "PostgREST",
+        "state": "connected"
+      },
+      {
+        "server": "salrad-code-sentinel",
+        "name": "Code Sentinel",
+        "state": "connected"
+      },
+      {
+        "server": "upstash-context7-mcp",
+        "name": "Context7",
+        "state": "connected"
+      },
+      {
+        "server": "useagents-useagents",
+        "name": "UseAgents",
+        "state": "connected"
+      },
+      {
+        "server": "waldzellai-clear-thought",
+        "name": "Clear Thought 1.5",
+        "state": "connected"
+      }
+    ],
+    "composio_search_matches": [],
+    "composio_visible": false
+  },
+  "runtime_health": {
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 33 hours\nwhop-auto-channel-agent-worker-1           Up 33 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 34 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 34 hours (healthy)\nhh-oauth-mcp-gateway                       Up 13 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+      "stderr": ""
+    },
+    "df_h": {
+      "args": [
+        "df",
+        "-h",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  121G   24G  84% /\n",
+      "stderr": ""
+    },
+    "df_i": {
+      "args": [
+        "df",
+        "-i",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2573195 7159301   27% /\n",
+      "stderr": ""
+    },
+    "ytdlp_ping": {
+      "status": "ok",
+      "http_status": 200
+    }
+  },
+  "mutations_performed": {
+    "provider_mutation": false,
+    "oauth_change": false,
+    "credential_rotation": false,
+    "env_file_read": false,
+    "db_mutation": false,
+    "docker_restart": false,
+    "deploy": false,
+    "scheduler_profile_mutation": false,
+    "master_state_truth_update": true
+  },
+  "next_required_action": "Establish or authorize a visible Composio MCP/server connection in the HH toolbox, then run a controlled Composio route verification. Do not mark active_and_bound until a real Composio tool route is present."
+}

@@ -1,0 +1,912 @@
+{
+  "timestamp_utc": "20260621T190926Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T190926Z-prompt2-canonical-capture",
+  "read_inputs": {
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json": {
+      "exists": true,
+      "size_bytes": 21996
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/01-runtime-routing-and-cleanup-audit.md": {
+      "exists": true,
+      "size_bytes": 2024
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/repo-routing-matrix.json": {
+      "exists": true,
+      "size_bytes": 53988
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/immediate-disk-recovery-report.md": {
+      "exists": true,
+      "size_bytes": 3660
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md": {
+      "exists": true,
+      "size_bytes": 9446
+    }
+  },
+  "host": {
+    "hostname": "hermes-agent-box",
+    "whoami": {
+      "cmd": "whoami",
+      "rc": 0,
+      "stdout": "omar\n",
+      "stderr": ""
+    },
+    "date_Is": {
+      "cmd": "date -Is",
+      "rc": 0,
+      "stdout": "2026-06-21T20:09:26+01:00\n",
+      "stderr": ""
+    },
+    "uptime": {
+      "cmd": "uptime",
+      "rc": 0,
+      "stdout": " 20:09:26 up 23 days, 12:18,  8 users,  load average: 0.15, 0.17, 0.18\n",
+      "stderr": ""
+    }
+  },
+  "df_h_root": {
+    "cmd": "df -h /",
+    "rc": 0,
+    "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  120G   25G  83% /\n",
+    "stderr": ""
+  },
+  "df_i_root": {
+    "cmd": "df -i /",
+    "rc": 0,
+    "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2710723 7021773   28% /\n",
+    "stderr": ""
+  },
+  "df_root": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134420852736,
+    "free_bytes": 26549391360,
+    "used_percent": 83.51,
+    "inode_total": 9732496,
+    "inode_used": 2710723,
+    "inode_free": 7021773,
+    "inode_used_percent": 27.85
+  },
+  "docker_ps": {
+    "cmd": "docker ps --format '{{json .}}'",
+    "rc": 0,
+    "stdout": "{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"da4d0e928c00\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=hermes-worker-1,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"whop-auto-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"19 hours ago\",\"Size\":\"561kB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 19 hours\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"8787903a1ad5\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=channel-agent-worker-1,com.docker.compose.service=channel-agent-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-channel-agent-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"19 hours ago\",\"Size\":\"2.37MB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 19 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:39:54 +0100 BST\",\"HealthStatus\":\"unhealthy\",\"ID\":\"d352f6a7217c\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"19 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"restarting\",\"Status\":\"Restarting (0) 21 seconds ago\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"70e98d9f9b52\",\"Image\":\"b1369860652d\",\"Labels\":\"com.docker.compose.config-hash=0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"crypto-tuber-ranked-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"492kB (virtual 2.46GB)\",\"State\":\"running\",\"Status\":\"Up 20 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"healthy\",\"ID\":\"362901a5fca0\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"crypto-tuber-ranked-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"running\",\"Status\":\"Up 20 hours (healthy)\"}\n{\"Command\":\"\\\"uvicorn app:app --h\u2026\\\"\",\"CreatedAt\":\"2026-06-09 06:04:07 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"1635003474d8\",\"Image\":\"oauth-mcp-gateway-oauth-mcp-gateway\",\"Labels\":\"com.docker.compose.config-hash=3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/srv/agents/oauth-mcp-gateway/docker-compose.yml,com.docker.compose.project.working_dir=/srv/agents/oauth-mcp-gateway,com.docker.compose.project=oauth-mcp-gateway,com.docker.compose.replace=hh-oauth-mcp-gateway,com.docker.compose.service=oauth-mcp-gateway,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"hh-oauth-mcp-gateway\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"12 days ago\",\"Size\":\"4.1kB (virtual 223MB)\",\"State\":\"running\",\"Status\":\"Up 12 days\"}\n{\"Command\":\"\\\"cloudflared --no-au\u2026\\\"\",\"CreatedAt\":\"2026-05-07 07:57:43 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"996b7342b827\",\"Image\":\"cloudflare/cloudflared:latest\",\"Labels\":\"CI_BUILD_DATE=2026-03-09 14:24:30.312423,CI_DOCKER_FROM=gcr.io/distroless/base-debian13:nonroot-arm64,CI_DOCKER_VERSION={\\\"Platform\\\": {\\\"Name\\\": \\\"Docker Engine - Community\\\"}, \\\"Components\\\": [{\\\"Name\\\": \\\"Engine\\\", \\\"Version\\\": \\\"28.5.2\\\", \\\"Details\\\": {\\\"ApiVersion\\\": \\\"1.51\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\", \\\"Experimental\\\": \\\"false\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"Os\\\": \\\"linux\\\"}}, {\\\"Name\\\": \\\"containerd\\\", \\\"Version\\\": \\\"v2.1.5\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"fcd43222d6b07379a4be9786bda52438f0dd16a1\\\"}}, {\\\"Name\\\": \\\"runc\\\", \\\"Version\\\": \\\"1.3.3\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"v1.3.3-0-gd842d771\\\"}}, {\\\"Name\\\": \\\"docker-init\\\", \\\"Version\\\": \\\"0.19.0\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"de40ad0\\\"}}], \\\"Version\\\": \\\"28.5.2\\\", \\\"ApiVersion\\\": \\\"1.51\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"Os\\\": \\\"linux\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\"},CI_GIT_COMMIT=d2a87e9b93456ad7f82417400f4209d513668487,CI_GIT_REMOTE=https://gitlab.cfdata.org/cloudflare/tun/cloudflared.git,CI_TEAMCITY_BUILDCONF=,CI_TEAMCITY_BUILD_NUMBER=,IMAGE_TYPE=distroless,org.opencontainers.image.source=https://github.com/cloudflare/cloudflared\",\"LocalVolumes\":\"0\",\"Mounts\":\"/home/omar/.cl\u2026\",\"Names\":\"hermes-whop-automation-tunnel\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"6 weeks ago\",\"Size\":\"12.3kB (virtual 76.5MB)\",\"State\":\"running\",\"Status\":\"Up 2 weeks\"}\n",
+    "stderr": ""
+  },
+  "docker_ps_a": {
+    "cmd": "docker ps -a --format '{{json .}}'",
+    "rc": 0,
+    "stdout": "{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"da4d0e928c00\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=hermes-worker-1,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"whop-auto-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"19 hours ago\",\"Size\":\"561kB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 19 hours\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"8787903a1ad5\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=channel-agent-worker-1,com.docker.compose.service=channel-agent-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-channel-agent-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"19 hours ago\",\"Size\":\"2.37MB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 19 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:39:54 +0100 BST\",\"HealthStatus\":\"unhealthy\",\"ID\":\"d352f6a7217c\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"19 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"restarting\",\"Status\":\"Restarting (0) 22 seconds ago\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"70e98d9f9b52\",\"Image\":\"b1369860652d\",\"Labels\":\"com.docker.compose.config-hash=0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"crypto-tuber-ranked-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"492kB (virtual 2.46GB)\",\"State\":\"running\",\"Status\":\"Up 20 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"healthy\",\"ID\":\"362901a5fca0\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"crypto-tuber-ranked-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"running\",\"Status\":\"Up 20 hours (healthy)\"}\n{\"Command\":\"\\\"uvicorn app:app --h\u2026\\\"\",\"CreatedAt\":\"2026-06-09 06:04:07 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"1635003474d8\",\"Image\":\"oauth-mcp-gateway-oauth-mcp-gateway\",\"Labels\":\"com.docker.compose.config-hash=3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/srv/agents/oauth-mcp-gateway/docker-compose.yml,com.docker.compose.project.working_dir=/srv/agents/oauth-mcp-gateway,com.docker.compose.project=oauth-mcp-gateway,com.docker.compose.replace=hh-oauth-mcp-gateway,com.docker.compose.service=oauth-mcp-gateway,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"hh-oauth-mcp-gateway\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"12 days ago\",\"Size\":\"4.1kB (virtual 223MB)\",\"State\":\"running\",\"Status\":\"Up 12 days\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-03 10:01:13 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"b518c0e35938\",\"Image\":\"79476f33a1dc\",\"Labels\":\"com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.3\",\"LocalVolumes\":\"0\",\"Mounts\":\"/srv/whop-auto\u2026\",\"Names\":\"crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"2 weeks ago\",\"Size\":\"262kB (virtual 1.01GB)\",\"State\":\"exited\",\"Status\":\"Exited (0) 2 weeks ago\"}\n{\"Command\":\"\\\"cloudflared --no-au\u2026\\\"\",\"CreatedAt\":\"2026-05-07 07:57:43 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"996b7342b827\",\"Image\":\"cloudflare/cloudflared:latest\",\"Labels\":\"CI_BUILD_DATE=2026-03-09 14:24:30.312423,CI_DOCKER_FROM=gcr.io/distroless/base-debian13:nonroot-arm64,CI_DOCKER_VERSION={\\\"Platform\\\": {\\\"Name\\\": \\\"Docker Engine - Community\\\"}, \\\"Components\\\": [{\\\"Name\\\": \\\"Engine\\\", \\\"Version\\\": \\\"28.5.2\\\", \\\"Details\\\": {\\\"ApiVersion\\\": \\\"1.51\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\", \\\"Experimental\\\": \\\"false\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"Os\\\": \\\"linux\\\"}}, {\\\"Name\\\": \\\"containerd\\\", \\\"Version\\\": \\\"v2.1.5\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"fcd43222d6b07379a4be9786bda52438f0dd16a1\\\"}}, {\\\"Name\\\": \\\"runc\\\", \\\"Version\\\": \\\"1.3.3\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"v1.3.3-0-gd842d771\\\"}}, {\\\"Name\\\": \\\"docker-init\\\", \\\"Version\\\": \\\"0.19.0\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"de40ad0\\\"}}], \\\"Version\\\": \\\"28.5.2\\\", \\\"ApiVersion\\\": \\\"1.51\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"Os\\\": \\\"linux\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\"},CI_GIT_COMMIT=d2a87e9b93456ad7f82417400f4209d513668487,CI_GIT_REMOTE=https://gitlab.cfdata.org/cloudflare/tun/cloudflared.git,CI_TEAMCITY_BUILDCONF=,CI_TEAMCITY_BUILD_NUMBER=,IMAGE_TYPE=distroless,org.opencontainers.image.source=https://github.com/cloudflare/cloudflared\",\"LocalVolumes\":\"0\",\"Mounts\":\"/home/omar/.cl\u2026\",\"Names\":\"hermes-whop-automation-tunnel\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"6 weeks ago\",\"Size\":\"12.3kB (virtual 76.5MB)\",\"State\":\"running\",\"Status\":\"Up 2 weeks\"}\n",
+    "stderr": ""
+  },
+  "docker_compose_labels": [
+    {
+      "name": "whop-auto-hermes-worker-1",
+      "id": "da4d0e928c00",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_labels": {
+        "com.docker.compose.config-hash": "9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+        "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "whop-auto",
+        "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+        "com.docker.compose.replace": "hermes-worker-1",
+        "com.docker.compose.service": "hermes-worker",
+        "com.docker.compose.version": "5.1.4"
+      }
+    },
+    {
+      "name": "whop-auto-channel-agent-worker-1",
+      "id": "8787903a1ad5",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_labels": {
+        "com.docker.compose.config-hash": "b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+        "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "whop-auto",
+        "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+        "com.docker.compose.replace": "channel-agent-worker-1",
+        "com.docker.compose.service": "channel-agent-worker",
+        "com.docker.compose.version": "5.1.4"
+      }
+    },
+    {
+      "name": "whop-auto-ytdlp-pot-provider-1",
+      "id": "d352f6a7217c",
+      "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "state": "restarting",
+      "health": "unhealthy",
+      "compose_labels": {
+        "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "whop-auto",
+        "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+        "com.docker.compose.service": "ytdlp-pot-provider",
+        "com.docker.compose.version": "5.1.4"
+      }
+    },
+    {
+      "name": "crypto-tuber-ranked-hermes-worker-1",
+      "id": "70e98d9f9b52",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_labels": {
+        "com.docker.compose.config-hash": "0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+        "com.docker.compose.image": "sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "crypto-tuber-ranked",
+        "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+        "com.docker.compose.service": "hermes-worker",
+        "com.docker.compose.version": "5.1.4"
+      }
+    },
+    {
+      "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+      "id": "362901a5fca0",
+      "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "state": "running",
+      "health": "healthy",
+      "compose_labels": {
+        "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "crypto-tuber-ranked",
+        "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+        "com.docker.compose.service": "ytdlp-pot-provider",
+        "com.docker.compose.version": "5.1.4"
+      }
+    },
+    {
+      "name": "hh-oauth-mcp-gateway",
+      "id": "1635003474d8",
+      "image": "oauth-mcp-gateway-oauth-mcp-gateway",
+      "state": "running",
+      "health": null,
+      "compose_labels": {
+        "com.docker.compose.config-hash": "3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "oauth-mcp-gateway",
+        "com.docker.compose.project.config_files": "/srv/agents/oauth-mcp-gateway/docker-compose.yml",
+        "com.docker.compose.project.working_dir": "/srv/agents/oauth-mcp-gateway",
+        "com.docker.compose.replace": "hh-oauth-mcp-gateway",
+        "com.docker.compose.service": "oauth-mcp-gateway",
+        "com.docker.compose.version": "5.1.4"
+      }
+    },
+    {
+      "name": "hermes-whop-automation-tunnel",
+      "id": "996b7342b827",
+      "image": "cloudflare/cloudflared:latest",
+      "state": "running",
+      "health": null,
+      "compose_labels": {}
+    }
+  ],
+  "git_status": {
+    "/opt/crypto-tuber-ranked": {
+      "path": "/opt/crypto-tuber-ranked",
+      "info": {
+        "path": "/opt/crypto-tuber-ranked",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-21T10:27:40Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## master...origin/master [ahead 3]\n M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/.hermes-tmp.UR6IXl\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "67f01f2ca8b5536da7876372e6cdc7e8d4926133\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\thttps://github.com/OmarA1-Bakri/CallScore.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/CallScore.git (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /opt/crypto-tuber-ranked\nHEAD 67f01f2ca8b5536da7876372e6cdc7e8d4926133\nbranch refs/heads/master\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/callscore-workplane": {
+      "path": "/srv/agents/repos/callscore-workplane",
+      "info": {
+        "path": "/srv/agents/repos/callscore-workplane",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-18T09:07:27Z",
+        "mode": "0o755"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-workplane",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## master\n?? docs/migration/receipts/callscore-cmo-monitor-20260618T182018Z.md\n?? docs/migration/receipts/callscore-owned-public-next-draft-20260618T121352Z.json\n?? docs/refactor/\n?? receipts/\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-workplane",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "5ec9afa681771852dae0fca46fe9627afd420121\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-workplane",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-workplane",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/callscore-workplane\nHEAD 5ec9afa681771852dae0fca46fe9627afd420121\nbranch refs/heads/master\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/crypto-tuber-ranked": {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "info": {
+        "path": "/srv/agents/crypto-tuber-ranked",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-05-18T03:46:18Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/crypto-tuber-ranked",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## master...origin/master\n?? pipeline-enqueue.sh\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/crypto-tuber-ranked",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "03df7f07e98ba43e8cdd580783aab3307b929882\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/crypto-tuber-ranked",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\thttps://x-access-token:<REDACTED> (fetch)\norigin\thttps://x-access-token:<REDACTED> (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/crypto-tuber-ranked",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/crypto-tuber-ranked\nHEAD 03df7f07e98ba43e8cdd580783aab3307b929882\nbranch refs/heads/master\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/crypto-tuber-ranked": {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "info": {
+        "path": "/srv/agents/repos/crypto-tuber-ranked",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-05-17T07:20:24Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## master\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "00718711526c02a3b1ff7173bea896de7023ea58\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\tgit@github.com:OmarA1-Bakri/crypto-tuber-ranked.git (fetch)\norigin\tgit@github.com:OmarA1-Bakri/crypto-tuber-ranked.git (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/crypto-tuber-ranked\nHEAD 00718711526c02a3b1ff7173bea896de7023ea58\nbranch refs/heads/master\n\nworktree /srv/agents/repos/callscore-stale-infra-cleanup\nHEAD 4bacabce35bc354a0ab3c2c924e34271e60cae3d\nbranch refs/heads/callscore/stale-infra-cleanup\n\nworktree /srv/whop-auto/workspace/callscore-db-portability\nHEAD 541510ea9532db40814bc78a25032a915b90535c\nbranch refs/heads/callscore/db-provider-portability\n\nworktree /tmp/callscore-pr38-build\nHEAD f8ba404c9fddf482bfcd81bac8e0c77700dcbd88\nbranch refs/heads/thread2/pr39-homepage-readonlymap-typefix\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/callscore-stale-infra-cleanup": {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "info": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-21T18:25:37Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/stale-infra-cleanup...origin/master [behind 36]\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "4bacabce35bc354a0ab3c2c924e34271e60cae3d\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\tgit@github.com:OmarA1-Bakri/crypto-tuber-ranked.git (fetch)\norigin\tgit@github.com:OmarA1-Bakri/crypto-tuber-ranked.git (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/crypto-tuber-ranked\nHEAD 00718711526c02a3b1ff7173bea896de7023ea58\nbranch refs/heads/master\n\nworktree /srv/agents/repos/callscore-stale-infra-cleanup\nHEAD 4bacabce35bc354a0ab3c2c924e34271e60cae3d\nbranch refs/heads/callscore/stale-infra-cleanup\n\nworktree /srv/whop-auto/workspace/callscore-db-portability\nHEAD 541510ea9532db40814bc78a25032a915b90535c\nbranch refs/heads/callscore/db-provider-portability\n\nworktree /tmp/callscore-pr38-build\nHEAD f8ba404c9fddf482bfcd81bac8e0c77700dcbd88\nbranch refs/heads/thread2/pr39-homepage-readonlymap-typefix\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready": {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-21T18:25:41Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/marketing-dispatch-pack-001...origin/callscore/marketing-dispatch-pack-001\n D .claude/checkpoints.log\n D .claude/settings.json\n D .claude/settings.local.json\n D .omx/logs/notify-hook-2026-05-03.jsonl\n D .omx/logs/tmux-hook-2026-04-18.jsonl\n D .omx/logs/tmux-hook-2026-05-02.jsonl\n D .omx/logs/tmux-hook-2026-05-03.jsonl\n D .omx/logs/turns-2026-04-18.jsonl\n D .omx/logs/turns-2026-05-02.jsonl\n D .omx/logs/turns-2026-05-03.jsonl\n D .omx/metrics.json\n D .omx/plans/plan-whop-skill-execution-integration.md\n D .omx/plans/prd-whop-skill-execution-integration.md\n D .omx/plans/workplane-runtime-full-implementation-plan.md\n D .omx/project-memory.json\n D .omx/state/current-task-baseline.json\n D .omx/state/hud-state.json\n D .omx/state/notify-hook-state.json\n D .omx/state/skill-active-state.json\n D .omx/state/team-leader-nudge.json\n D .omx/state/tmux-hook-state.json\n D .serena/.gitignore\n D .serena/ghost_publisher/README.md\n D .serena/ghost_publisher/publish_to_ghost.py\n D .serena/project.yml\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (push)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (fetch)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/Claude_Code_Automations\nHEAD 8d69b406408deaa1f462373fbb4318027104cc38\nbranch refs/heads/chore/callscore-launch-domain-sweep\n\nworktree /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready\nHEAD 7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13\nbranch refs/heads/callscore/marketing-dispatch-pack-001\n\nworktree /srv/agents/repos/Claude_Code_Automations-measurement-pack-001\nHEAD 78944f60081f1a3994fe1689147841cf579798e3\nbranch refs/heads/callscore/asset-pack-001-measurement-packet\n\nworktree /srv/agents/repos/Claude_Code_Automations-pr10-master-clean\nHEAD 5846e233aa45f017bb1e9ea279c5efd59a27c318\nbranch refs/heads/callscore/marketing-dispatch-pack-001-master\n\nworktree /srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean\nHEAD e890f5b27ca36afb941e18be7e44b627ffed93ac\nbranch refs/heads/chore/callscore-launch-domain-sweep-clean\n\nworktree C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/.claude/worktrees/cranky-albattani-bdcecf\nHEAD 6542afa1e02d666000c6c540ad7a10d7711d0e84\nbranch refs/heads/claude/cranky-albattani-bdcecf\nprunable gitdir file points to non-existent location\n\nworktree C:/Users/albak/xdev/worktrees/Claude_Code_Automations-whop-phase2\nHEAD 4ca899971fa61cdd6e0047874d309dc18deed55b\nbranch refs/heads/codex/whop-phase2-runner\nprunable gitdir file points to non-existent location\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001": {
+      "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+      "info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T11:14:47Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/asset-pack-001-measurement-packet...origin/callscore/asset-pack-001-measurement-packet\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "78944f60081f1a3994fe1689147841cf579798e3\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (push)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (fetch)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/Claude_Code_Automations\nHEAD 8d69b406408deaa1f462373fbb4318027104cc38\nbranch refs/heads/chore/callscore-launch-domain-sweep\n\nworktree /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready\nHEAD 7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13\nbranch refs/heads/callscore/marketing-dispatch-pack-001\n\nworktree /srv/agents/repos/Claude_Code_Automations-measurement-pack-001\nHEAD 78944f60081f1a3994fe1689147841cf579798e3\nbranch refs/heads/callscore/asset-pack-001-measurement-packet\n\nworktree /srv/agents/repos/Claude_Code_Automations-pr10-master-clean\nHEAD 5846e233aa45f017bb1e9ea279c5efd59a27c318\nbranch refs/heads/callscore/marketing-dispatch-pack-001-master\n\nworktree /srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean\nHEAD e890f5b27ca36afb941e18be7e44b627ffed93ac\nbranch refs/heads/chore/callscore-launch-domain-sweep-clean\n\nworktree C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/.claude/worktrees/cranky-albattani-bdcecf\nHEAD 6542afa1e02d666000c6c540ad7a10d7711d0e84\nbranch refs/heads/claude/cranky-albattani-bdcecf\nprunable gitdir file points to non-existent location\n\nworktree C:/Users/albak/xdev/worktrees/Claude_Code_Automations-whop-phase2\nHEAD 4ca899971fa61cdd6e0047874d309dc18deed55b\nbranch refs/heads/codex/whop-phase2-runner\nprunable gitdir file points to non-existent location\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean": {
+      "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+      "info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T10:08:48Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/marketing-dispatch-pack-001-master...origin/callscore/marketing-dispatch-pack-001-master\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "5846e233aa45f017bb1e9ea279c5efd59a27c318\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (push)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (fetch)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/Claude_Code_Automations\nHEAD 8d69b406408deaa1f462373fbb4318027104cc38\nbranch refs/heads/chore/callscore-launch-domain-sweep\n\nworktree /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready\nHEAD 7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13\nbranch refs/heads/callscore/marketing-dispatch-pack-001\n\nworktree /srv/agents/repos/Claude_Code_Automations-measurement-pack-001\nHEAD 78944f60081f1a3994fe1689147841cf579798e3\nbranch refs/heads/callscore/asset-pack-001-measurement-packet\n\nworktree /srv/agents/repos/Claude_Code_Automations-pr10-master-clean\nHEAD 5846e233aa45f017bb1e9ea279c5efd59a27c318\nbranch refs/heads/callscore/marketing-dispatch-pack-001-master\n\nworktree /srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean\nHEAD e890f5b27ca36afb941e18be7e44b627ffed93ac\nbranch refs/heads/chore/callscore-launch-domain-sweep-clean\n\nworktree C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/.claude/worktrees/cranky-albattani-bdcecf\nHEAD 6542afa1e02d666000c6c540ad7a10d7711d0e84\nbranch refs/heads/claude/cranky-albattani-bdcecf\nprunable gitdir file points to non-existent location\n\nworktree C:/Users/albak/xdev/worktrees/Claude_Code_Automations-whop-phase2\nHEAD 4ca899971fa61cdd6e0047874d309dc18deed55b\nbranch refs/heads/codex/whop-phase2-runner\nprunable gitdir file points to non-existent location\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean": {
+      "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+      "info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-07T12:43:24Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## chore/callscore-launch-domain-sweep-clean...origin/master [ahead 1]\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 0,
+        "stdout": "e890f5b27ca36afb941e18be7e44b627ffed93ac\n",
+        "stderr": ""
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "origin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (fetch)\norigin\thttps://github.com/OmarA1-Bakri/Claude_Code_Automations.git (push)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (fetch)\nwsl\tssh://omar@100.118.20.40:/mnt/c/Users/albak/xdev/Claude_Code_Automations (push)\n",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /srv/agents/repos/Claude_Code_Automations\nHEAD 8d69b406408deaa1f462373fbb4318027104cc38\nbranch refs/heads/chore/callscore-launch-domain-sweep\n\nworktree /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready\nHEAD 7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13\nbranch refs/heads/callscore/marketing-dispatch-pack-001\n\nworktree /srv/agents/repos/Claude_Code_Automations-measurement-pack-001\nHEAD 78944f60081f1a3994fe1689147841cf579798e3\nbranch refs/heads/callscore/asset-pack-001-measurement-packet\n\nworktree /srv/agents/repos/Claude_Code_Automations-pr10-master-clean\nHEAD 5846e233aa45f017bb1e9ea279c5efd59a27c318\nbranch refs/heads/callscore/marketing-dispatch-pack-001-master\n\nworktree /srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean\nHEAD e890f5b27ca36afb941e18be7e44b627ffed93ac\nbranch refs/heads/chore/callscore-launch-domain-sweep-clean\n\nworktree C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/.claude/worktrees/cranky-albattani-bdcecf\nHEAD 6542afa1e02d666000c6c540ad7a10d7711d0e84\nbranch refs/heads/claude/cranky-albattani-bdcecf\nprunable gitdir file points to non-existent location\n\nworktree C:/Users/albak/xdev/worktrees/Claude_Code_Automations-whop-phase2\nHEAD 4ca899971fa61cdd6e0047874d309dc18deed55b\nbranch refs/heads/codex/whop-phase2-runner\nprunable gitdir file points to non-existent location\n\n",
+        "stderr": ""
+      }
+    },
+    "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z": {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-21T18:25:40Z",
+        "mode": "0o777"
+      },
+      "status": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+        "stderr": ""
+      },
+      "head": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+          "rev-parse",
+          "HEAD"
+        ],
+        "rc": 128,
+        "stdout": "HEAD\n",
+        "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+      },
+      "remote": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+          "remote",
+          "-v"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "worktrees": {
+        "args": [
+          "git",
+          "-C",
+          "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+          "worktree",
+          "list",
+          "--porcelain"
+        ],
+        "rc": 0,
+        "stdout": "worktree /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z\nHEAD 0000000000000000000000000000000000000000\nbranch refs/heads/master\n\n",
+        "stderr": ""
+      }
+    },
+    "/srv/agents/database-migration": {
+      "path": "/srv/agents/database-migration",
+      "info": {
+        "path": "/srv/agents/database-migration",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-03T16:24:42Z",
+        "mode": "0o775"
+      },
+      "status": {
+        "exists": true,
+        "is_git": false
+      },
+      "head": {
+        "exists": true,
+        "is_git": false
+      },
+      "remote": {
+        "exists": true,
+        "is_git": false
+      },
+      "worktrees": {
+        "exists": true,
+        "is_git": false
+      }
+    }
+  },
+  "protected_path_check": {
+    "/opt/crypto-tuber-ranked": {
+      "path": "/opt/crypto-tuber-ranked",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_lstat_bytes": 4096,
+      "mtime_utc": "2026-06-21T10:27:40Z",
+      "mode": "0o775"
+    },
+    "/opt/crypto-tuber-ranked/docker-compose.yml": {
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_lstat_bytes": 4382,
+      "mtime_utc": "2026-06-20T23:37:30Z",
+      "mode": "0o664"
+    },
+    "/opt/callscore/secrets": {
+      "path": "/opt/callscore/secrets",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_lstat_bytes": 4096,
+      "mtime_utc": "2026-06-12T04:18:19Z",
+      "mode": "0o755"
+    },
+    "/opt/callscore/secrets/youtube-cookies.txt": {
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_lstat_bytes": 22892,
+      "mtime_utc": "2026-06-21T03:21:02Z",
+      "mode": "0o600"
+    }
+  }
+}

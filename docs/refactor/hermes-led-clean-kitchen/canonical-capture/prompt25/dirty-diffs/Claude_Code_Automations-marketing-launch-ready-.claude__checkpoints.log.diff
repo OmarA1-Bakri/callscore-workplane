@@ -1,0 +1,7 @@
+diff --git a/.claude/checkpoints.log b/.claude/checkpoints.log
+deleted file mode 100644
+index bb8b183..0000000
+--- a/.claude/checkpoints.log
++++ /dev/null
+@@ -1 +0,0 @@
+-2026-04-16-14:55 | vscode-fix-checkpoint | ddb6ea1

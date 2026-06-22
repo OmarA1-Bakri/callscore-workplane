@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-06-22T16:10:17Z",
+  "phase": "prompt_5_full_canonical_agents_correction",
+  "status": "completed",
+  "soul_source_updated": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "soul_backup": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml.pre-full-agents-20260622T1607Z",
+  "heartbeat_dry_run_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+  "heartbeat_agent_count": 16,
+  "heartbeat_count": 16,
+  "db_write_performed": false,
+  "agents_written": 16,
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/FULL_CANONICAL_AGENTS.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/full-canonical-agent-manifest.json"
+  ],
+  "deleted_paths": [],
+  "disk_recovered_bytes": 0,
+  "lite_strategy_status": "rejected_by_operator"
+}

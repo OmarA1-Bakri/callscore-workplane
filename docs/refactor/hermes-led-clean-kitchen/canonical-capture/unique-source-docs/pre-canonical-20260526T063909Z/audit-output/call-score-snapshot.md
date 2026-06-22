@@ -1,0 +1,42 @@
+- generic [active] [ref=e1] [box=0,0,1030,3912]:
+  - banner [ref=e2] [box=0,0,1030,85]:
+    - generic [ref=e4] [box=28,0,974,84]:
+      - link "CallScore home" [ref=e5] [cursor=pointer] [box=28,-2,88,88]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6] [box=28,-2,88,88]
+      - navigation "Primary navigation" [ref=e7] [box=596,26,406,32]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer] [box=596,33,69,18]:
+          - /url: /
+        - link "Methodology" [ref=e9] [cursor=pointer] [box=694,33,71,18]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer] [box=792,33,37,18]:
+          - /url: /pricing
+        - generic [ref=e11] [box=857,26,144,32]
+  - main [ref=e14] [box=0,85,1030,3452]:
+    - generic [ref=e15] [box=0,85,1030,3452]:
+      - generic [ref=e16] [box=35,85,960,960]:
+        - generic [ref=e17] [box=35,85,960,704]
+        - generic [ref=e153] [box=36,803,958,198]
+      - generic [ref=e190] [box=35,1045,960,347]:
+        - generic [ref=e191] [box=35,1088,960,57]
+        - list [ref=e197] [box=163,1172,820,178]
+      - generic [ref=e211] [box=35,1392,960,1831]:
+        - generic [ref=e212] [box=35,1435,960,57]
+        - generic [ref=e217] [box=163,1520,820,1661]
+      - generic [ref=e667] [box=35,3223,960,314]:
+        - generic [ref=e668] [box=35,3266,960,45]
+        - generic [ref=e673] [box=163,3339,820,156]
+  - contentinfo [ref=e681] [box=0,3537,1030,375]:
+    - generic [ref=e682] [box=0,3538,1030,374]:
+      - generic [ref=e683] [box=28,3580,974,161]:
+        - generic [ref=e684] [box=28,3580,306,161]
+        - generic [ref=e688] [box=362,3580,306,161]
+        - generic [ref=e701] [box=696,3580,306,161]
+      - generic [ref=e708] [box=28,3769,974,101]:
+        - paragraph [ref=e709] [box=28,3791,974,51]
+        - paragraph [ref=e711] [box=28,3856,974,14]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e712] [cursor=pointer] [box=911,661,98,34]:
+    - /url: /feedback
+    - generic [ref=e713] [box=922,668,8,18]: "?"
+    - generic [ref=e714] [box=937,668,60,18]: Feedback
+  - alert [ref=e715] [box=-1,-1,1,1]

@@ -1,0 +1,60 @@
+{
+  "timestamp_utc": "2026-06-21T20:16:48Z",
+  "question": "How to ensure future startup commands do not recreate whop-auto-ytdlp-pot-provider-1?",
+  "safe_target_behavior": "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh --start, which executes docker compose -f /opt/crypto-tuber-ranked/docker-compose.yml -p whop-auto up -d --no-deps --no-recreate hermes-worker channel-agent-worker after singleton health checks",
+  "forbidden_startup_shape": "docker compose -f /opt/crypto-tuber-ranked/docker-compose.yml -p whop-auto up -d",
+  "why_no_deps_required": "The shared compose file has depends_on: ytdlp-pot-provider for whop-auto worker services; explicit service names without --no-deps can still recreate the provider dependency under whop-auto.",
+  "routes": [
+    {
+      "route": "systemd: hermes-worker.service",
+      "classification": "NOT_RELEVANT",
+      "evidence": "ExecStart=/usr/bin/docker compose up -d hermes-worker in /opt/crypto-tuber-ranked; no -p whop-auto. It belongs to crypto project and does not start whop-auto."
+    },
+    {
+      "route": "systemd: callscore daily/canary/read-api/enqueue units",
+      "classification": "NOT_RELEVANT",
+      "evidence": "No whop-auto Docker Compose startup found in captured systemd unit refs."
+    },
+    {
+      "route": "system cron / user crontab",
+      "classification": "NOT_RELEVANT",
+      "evidence": "No whop-auto Docker Compose startup found in captured cron refs."
+    },
+    {
+      "route": "Hermes cron jobs",
+      "classification": "NOT_RELEVANT",
+      "evidence": "cronjob list showed CallScore jobs/scripts/workdirs but no whop-auto Docker Compose startup route; filesystem scan under /srv/agents/hermes/scripts found no docker compose whop-auto start command."
+    },
+    {
+      "route": "/opt/crypto-tuber-ranked/scripts/start-whop-auto-workers.sh",
+      "classification": "SAFE_ALREADY_TARGETED",
+      "evidence": "Created wrapper uses --no-deps, --no-recreate, and explicit hermes-worker channel-agent-worker service targets after singleton health and duplicate absence checks."
+    },
+    {
+      "route": "manual operator command: docker compose -p whop-auto up -d",
+      "classification": "UNSAFE_STARTS_ALL_SERVICES",
+      "evidence": "Would materialize ytdlp-pot-provider under whop-auto because base compose defines the service and workers depend_on it."
+    },
+    {
+      "route": "manual operator command: docker compose -p whop-auto up -d hermes-worker channel-agent-worker without --no-deps",
+      "classification": "UNSAFE_STARTS_ALL_SERVICES",
+      "evidence": "Explicit services alone are insufficient because compose dependency resolution may start ytdlp-pot-provider."
+    },
+    {
+      "route": "package scripts in /opt/crypto-tuber-ranked/package.json",
+      "classification": "NOT_RELEVANT",
+      "evidence": "No package script starts whop-auto Docker Compose services."
+    },
+    {
+      "route": "docs/runbooks historical references",
+      "classification": "UNKNOWN_NEEDS_REVIEW",
+      "evidence": "Historical docs contain many stale mentions of whop-auto and compose; canonical new runbook is docs/ops/ytdlp-singleton-provider.md and clean-kitchen deliverables. Do not use archived snippets as startup authority."
+    }
+  ],
+  "raw_discovery_artifacts": [
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits-focused.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/systemd-relevant-units.txt",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/cron-summary.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/compose-services.json"
+  ]
+}

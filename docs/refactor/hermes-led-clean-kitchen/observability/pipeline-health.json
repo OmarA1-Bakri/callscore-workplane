@@ -1,0 +1,220 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:26Z",
+  "sources": [
+    "db-health",
+    "scheduler-health",
+    "runtime paths"
+  ],
+  "pipelines": [
+    {
+      "pipeline": "candles",
+      "scheduler_hits": [
+        {
+          "id": "e4f5b44877b3",
+          "name": "callscore-core-candles-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "*/15 * * * *",
+            "display": "*/15 * * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-candles.sh",
+          "profile": null,
+          "classification": "model_agent_or_profile_job"
+        }
+      ],
+      "status": "observed"
+    },
+    {
+      "pipeline": "matching",
+      "scheduler_hits": [
+        {
+          "id": "a9fbeabf4299",
+          "name": "callscore-core-match-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "30 3 * * *",
+            "display": "30 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-match.sh",
+          "profile": null,
+          "classification": "owner_provider_managed_quota_blocker"
+        }
+      ],
+      "status": "observed"
+    },
+    {
+      "pipeline": "scores",
+      "scheduler_hits": [
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null,
+          "classification": "model_agent_or_profile_job"
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null,
+          "classification": "model_agent_or_profile_job"
+        },
+        {
+          "id": "e4f5b44877b3",
+          "name": "callscore-core-candles-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "*/15 * * * *",
+            "display": "*/15 * * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-candles.sh",
+          "profile": null,
+          "classification": "model_agent_or_profile_job"
+        },
+        {
+          "id": "a9fbeabf4299",
+          "name": "callscore-core-match-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "30 3 * * *",
+            "display": "30 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-match.sh",
+          "profile": null,
+          "classification": "owner_provider_managed_quota_blocker"
+        },
+        {
+          "id": "a94f36600ba2",
+          "name": "callscore-core-scores-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "45 3 * * *",
+            "display": "45 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-scores.sh",
+          "profile": null,
+          "classification": "model_agent_or_profile_job"
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh",
+          "classification": "owner_provider_managed_quota_blocker"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh",
+          "classification": "model_agent_or_profile_job"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "classification": "owner_provider_managed_quota_blocker"
+        },
+        {
+          "id": "144c3a9cc860",
+          "name": "CallScore CMO cooldown catch-up watcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 5,
+            "display": "every 5m"
+          },
+          "enabled": true,
+          "script": "callscore-cmo-cooldown-catchup.sh",
+          "classification": "model_agent_or_profile_job"
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh",
+          "classification": "model_agent_or_profile_job"
+        }
+      ],
+      "status": "observed"
+    },
+    {
+      "pipeline": "transcript_main",
+      "scheduler_hits": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null,
+          "classification": "owner_provider_managed_quota_blocker"
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null,
+          "classification": "model_agent_or_profile_job"
+        }
+      ],
+      "status": "observed"
+    },
+    {
+      "pipeline": "transcript_shadow",
+      "scheduler_hits": [],
+      "status": "needs_more_instrumentation"
+    },
+    {
+      "pipeline": "workplane_jobs",
+      "scheduler_hits": [],
+      "status": "needs_more_instrumentation"
+    }
+  ]
+}

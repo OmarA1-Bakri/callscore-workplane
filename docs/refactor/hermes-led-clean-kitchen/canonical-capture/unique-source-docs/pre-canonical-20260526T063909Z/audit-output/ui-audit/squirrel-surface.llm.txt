@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audit version="0.0.38">
+<site url="http://127.0.0.1:37600" crawled="0" date="2026-05-05T18:55:43.875Z"/>
+<score overall="90" grade="A">
+ <cat name="Crawlability" score="79"/>
+ <cat name="Images" score="100"/>
+ <cat name="Links" score="100"/>
+ <cat name="Performance" score="100"/>
+ <cat name="Security" score="100"/>
+</score>
+<summary passed="18" warnings="0" failed="1"/>
+<issues>
+ <category name="Crawlability" errors="1" warnings="0">
+  <rule id="crawl/sitemap-domain" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/crawl/sitemap-domain">
+   14 URL(s) point to different domain(s)
+   Items (5/14):
+    - https://www.call-score.com [host: www.call-score.com]
+    - https://www.call-score.com/pricing [host: www.call-score.com]
+    - https://www.call-score.com/methodology [host: www.call-score.com]
+    - https://www.call-score.com/feedback [host: www.call-score.com]
+    - https://www.call-score.com/about [host: www.call-score.com]
+  </rule>
+ </category>
+</issues>
+</audit>

@@ -1,0 +1,14 @@
+{
+  "created_utc": "2026-06-21T18:17:44Z",
+  "tasks": {
+    "phase_2_runtime_map": "t_ea1d3582",
+    "phase_3_repo_classification": "t_b4b5c45d",
+    "phase_4_disk_census": "t_a878e1de",
+    "phase_5_controlled_deletion_planning": "t_ed698e09",
+    "phase_6_runtime_stabilisation": "t_b6cab860",
+    "phase_7_final_validation": "t_a63130ac"
+  },
+  "dependency_shape": "P2 and P3 parallel; P4 depends on P2+P3; P5 blocked and depends on P4; P6 depends on P5; P7 depends on P6",
+  "dispatch_status": "not_dispatched_by_parent_in_prompt_1; ready tasks exist for specialist pickup if board dispatcher is active",
+  "deletion_guard": "P5 is blocked and worker body forbids rm commands; parent/default controls actual deletion receipts."
+}

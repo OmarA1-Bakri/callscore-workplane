@@ -1,0 +1,29 @@
+--- active/tests/page-creator-shape.test.ts
++++ pre-canonical-20260526T063909Z/tests/page-creator-shape.test.ts
+@@ -12,16 +12,9 @@
+ 
+ test("creator page preserves notFound and query fetches", () => {
+   assert.match(src, /notFound\(\)/);
+-  assert.match(src, /fetchHhCreator<Creator, CreatorStats, Call>/);
+   assert.match(src, /findCreatorByHandle<Creator>/);
+   assert.match(src, /query<CreatorStats>/);
+   assert.match(src, /query<Call>/);
+-});
+-
+-test("creator page prefers HH read API before direct DB fallback", () => {
+-  assert.match(src, /const readApiProfile = await fetchHhCreator<Creator, CreatorStats, Call>/);
+-  assert.match(src, /if \(readApiProfile\?\.creator\)/);
+-  assert.match(src, /calls: Array\.isArray\(readApiProfile\.calls\) \? readApiProfile\.calls : \[\]/);
+ });
+ 
+ test("creator page does not use rounded-{lg,xl}", () => {
+@@ -31,9 +24,3 @@
+ test("creator page imports AlphaScoreBadge (not AlphaScoreBar — that's leaderboard)", () => {
+   assert.match(src, /import AlphaScoreBadge/);
+ });
+-
+-test("creator page distinguishes directional wins from target hit rate", () => {
+-  assert.match(src, /direction win/);
+-  assert.match(src, /directional win rate on resolved calls/);
+-  assert.match(src, /Target Hit Rate/);
+-});

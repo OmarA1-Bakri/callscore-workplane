@@ -1,0 +1,67 @@
+- generic [active] [ref=e1] [box=0,0,390,5917]:
+  - banner [ref=e2] [box=0,0,390,85]:
+    - generic [ref=e4] [box=14,0,362,84]:
+      - link "CallScore home" [ref=e5] [cursor=pointer] [box=14,4,76,76]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6] [box=14,4,76,76]
+      - button "Open menu" [ref=e716] [cursor=pointer] [box=355,32,21,21]:
+        - img [ref=e717] [box=355,32,21,21]
+  - main [ref=e14] [box=0,85,390,5160]:
+    - generic [ref=e15] [box=0,85,390,5160]:
+      - generic [ref=e16] [box=14,85,362,2184]:
+        - generic [ref=e17] [box=14,85,362,1412]:
+          - generic [ref=e18] [box=14,120,362,510]
+          - generic "CallScore product preview" [ref=e42] [box=14,665,362,832]
+        - generic [ref=e153] [box=15,1533,361,706]:
+          - generic [ref=e154] [box=15,1533,361,132]
+          - generic [ref=e161] [box=15,1665,361,132]
+          - generic [ref=e168] [box=15,1797,361,155]
+          - generic [ref=e177] [box=15,1953,361,132]
+          - generic [ref=e183] [box=15,2085,361,154]
+      - generic [ref=e190] [box=14,2269,362,588]:
+        - generic [ref=e191] [box=14,2311,362,150]:
+          - generic [ref=e192] [box=14,2311,362,18]: "01"
+          - heading "The premise, sourced." [level=2] [ref=e193] [box=14,2357,362,40]
+          - generic [ref=e195] [box=14,2425,362,36]
+        - list [ref=e197] [box=14,2489,362,326]:
+          - listitem [ref=e198] [box=14,2490,362,64]
+          - listitem [ref=e201] [box=14,2553,362,87]
+          - listitem [ref=e204] [box=14,2640,362,87]
+          - listitem [ref=e207] [box=14,2727,362,87]
+      - generic [ref=e211] [box=14,2857,362,1969]:
+        - generic [ref=e212] [box=14,2899,362,150]:
+          - generic [ref=e213] [box=14,2899,362,18]: "02"
+          - heading "The ranking, by alpha." [level=2] [ref=e214] [box=14,2945,362,40]
+          - generic [ref=e216] [box=14,3013,362,36]
+        - generic [ref=e217] [box=14,3077,362,1706]:
+          - generic [ref=e218] [box=14,3077,362,65]
+          - table [ref=e225] [box=14,3156,619,1627]
+      - generic [ref=e667] [box=14,4825,362,420]:
+        - generic [ref=e668] [box=14,4868,362,126]:
+          - generic [ref=e669] [box=14,4868,362,18]: "03"
+          - heading "What's forming across creators." [level=2] [ref=e670] [box=14,4914,362,80]
+        - generic [ref=e673] [box=14,5022,362,181]:
+          - generic [ref=e674] [box=32,5040,326,21]
+          - generic [ref=e678] [box=32,5075,326,110]
+  - contentinfo [ref=e681] [box=0,5245,390,671]:
+    - generic [ref=e682] [box=0,5246,390,671]:
+      - generic [ref=e683] [box=14,5288,362,406]:
+        - generic [ref=e684] [box=14,5288,362,112]:
+          - img "CallScore - Market calls, measured." [ref=e686] [box=14,5288,82,82]
+          - paragraph [ref=e687] [box=14,5380,362,20]: Market calls, measured.
+        - generic [ref=e688] [box=14,5428,362,161]:
+          - heading "Navigate" [level=2] [ref=e689] [box=14,5428,362,18]
+          - list [ref=e690] [box=14,5456,362,133]
+        - generic [ref=e701] [box=14,5617,362,77]:
+          - heading "Legal" [level=2] [ref=e702] [box=14,5617,362,18]
+          - list [ref=e703] [box=14,5645,362,49]
+      - generic [ref=e708] [box=14,5722,362,152]:
+        - paragraph [ref=e709] [box=14,5744,362,102]:
+          - strong [ref=e710] [box=14,5747,106,12]: "Financial Disclaimer:"
+          - text: CallScore is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions.
+        - paragraph [ref=e711] [box=14,5861,362,14]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e712] [cursor=pointer] [box=272,789,98,34]:
+    - /url: /feedback
+    - generic [ref=e713] [box=283,797,8,18]: "?"
+    - generic [ref=e714] [box=298,797,60,18]: Feedback
+  - alert [ref=e715] [box=-1,-1,1,1]

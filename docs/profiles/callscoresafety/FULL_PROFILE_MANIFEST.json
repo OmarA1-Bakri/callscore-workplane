@@ -1,0 +1,30 @@
+{
+  "profile_id": "callscoresafety",
+  "runtime_profile": "callscoresafety",
+  "mission": "Enforce deletion safety, provider safety, secret safety, DB/deploy gates, and emergency halt.",
+  "agents": [
+    "callscore-safety-head",
+    "callscore-compliance-linter-head"
+  ],
+  "tools": [
+    "protected path inventory",
+    "process refs",
+    "Docker mounts",
+    "compose refs",
+    "cron refs",
+    "systemd refs",
+    "secret redaction checks"
+  ],
+  "gates": [
+    "emergency_halt",
+    "forbidden_deletion_targets",
+    "secret_gate",
+    "unknown_path_blocks"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-safety-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-compliance-linter-head"
+  ]
+}

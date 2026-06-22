@@ -1,0 +1,101 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - button "Expand sidebar" [ref=e7] [cursor=pointer]:
+          - img [ref=e8]
+        - link [ref=e10] [cursor=pointer]:
+          - /url: /home-feed/
+          - img [ref=e11]
+      - generic [ref=e21]:
+        - link "For enterprise" [ref=e22] [cursor=pointer]:
+          - /url: https://network.whop.com
+        - link "API" [ref=e23] [cursor=pointer]:
+          - /url: https://docs.whop.com
+        - link "Sign in" [ref=e24] [cursor=pointer]:
+          - /url: /login/
+        - button "Get started" [ref=e26] [cursor=pointer]
+    - generic [ref=e27]:
+      - complementary [ref=e28]:
+        - generic [ref=e29]:
+          - generic [ref=e30]:
+            - link "Home" [ref=e31] [cursor=pointer]:
+              - /url: /home-feed/
+              - img [ref=e34]
+              - generic [ref=e37]: Home
+            - link "Discover" [ref=e38] [cursor=pointer]:
+              - /url: /discover/
+              - img [ref=e41]
+              - generic [ref=e45]: Discover
+            - link "Start a business" [ref=e46] [cursor=pointer]:
+              - /url: /new-business/
+              - img [ref=e49]
+              - generic [ref=e52]: Start a business
+          - generic [ref=e54]:
+            - text: Resources
+            - generic [ref=e55]:
+              - link "Affiliates" [ref=e56] [cursor=pointer]:
+                - /url: /affiliates/dashboard/
+                - img [ref=e59]
+                - generic [ref=e62]: Affiliates
+              - button "Help" [ref=e63] [cursor=pointer]:
+                - img [ref=e66]
+                - generic [ref=e69]: Help
+              - link "Blog" [ref=e70] [cursor=pointer]:
+                - /url: /blog/
+                - img [ref=e73]
+                - generic [ref=e76]: Blog
+              - link "About" [ref=e77] [cursor=pointer]:
+                - /url: /sell/
+                - img [ref=e80]
+                - generic [ref=e83]: About
+      - main [ref=e87]:
+        - generic [ref=e88]:
+          - img "Discover Background" [ref=e90]
+          - generic [ref=e92]:
+            - img "City skyline" [ref=e93]
+            - heading "Where the internet does business" [level=1] [ref=e94]
+          - generic [ref=e95]:
+            - img [ref=e96]
+            - generic [ref=e106]: Create an account or log in to discover whops and find ways to make money.
+            - generic [ref=e108]:
+              - generic [ref=e109]:
+                - generic "Email" [ref=e110]:
+                  - text: Email
+                  - textbox "Email" [active] [ref=e112]:
+                    - /placeholder: johnappleseed@gmail.com
+                - generic [ref=e113]:
+                  - button "Continue" [ref=e114] [cursor=pointer]
+                  - generic [ref=e117]: Or
+                  - generic [ref=e119]:
+                    - link [ref=e120] [cursor=pointer]:
+                      - /url: https://data.whop.com/api/auth/google?wru=https%3A%2F%2Fwhop.com%2Fdashboard%2Fdeveloper%2F&wa=signup&wdt=web
+                      - img [ref=e121]
+                    - link [ref=e127] [cursor=pointer]:
+                      - /url: https://data.whop.com/api/auth/apple?wru=https%3A%2F%2Fwhop.com%2Fdashboard%2Fdeveloper%2F&wa=signup&wdt=web
+                      - img [ref=e128]
+                    - link [ref=e130] [cursor=pointer]:
+                      - /url: https://data.whop.com/api/auth/discord?wru=https%3A%2F%2Fwhop.com%2Fdashboard%2Fdeveloper%2F&wa=signup&wdt=web
+                      - img [ref=e131]
+              - generic [ref=e134]:
+                - text: By signing in you agree to Whop's
+                - link "Terms of Service" [ref=e135] [cursor=pointer]:
+                  - /url: /tos/
+                - text: and
+                - link "Privacy Policy" [ref=e136] [cursor=pointer]:
+                  - /url: /privacy/
+                - text: .
+      - complementary [ref=e137]
+  - alert [ref=e139]
+  - generic:
+    - region "Notifications"
+  - generic:
+    - region "Notifications"
+  - generic:
+    - region "Notifications"
+  - generic:
+    - region "Notifications"
+  - generic:
+    - region "Notifications"
+  - generic:
+    - region "Notifications"

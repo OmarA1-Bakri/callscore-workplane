@@ -1,0 +1,69 @@
+--- active/src/lib/ml-promotion.ts
++++ pre-canonical-20260526T063909Z/src/lib/ml-promotion.ts
+@@ -278,6 +278,7 @@
+     `UPDATE ml_promotion_audit
+      SET status = $2,
+          promoted_call_ids = $3::integer[],
++         promoted_count = cardinality($3::integer[]),
+          error = $4,
+          updated_at = NOW()
+      WHERE id = $1`,
+@@ -394,40 +395,21 @@
+     throw new Error(message);
+   }
+ 
+-  try {
+-    const promotedCallIds = await promoteCandidates({ args, candidates, queryFn });
+-    await updateAudit({ auditId, status: "succeeded", promotedCallIds, queryFn });
+-    await writePromotionEvent(
+-      job,
+-      "ml_promotion_completed",
+-      "succeeded",
+-      "ML promotion completed",
+-      {
+-        ...baseMetrics,
+-        promoted: promotedCallIds.length,
+-        audit_id: auditId,
+-        promoted_call_ids: promotedCallIds,
+-      },
+-      queryFn,
+-    );
+-
+-    return { ...baseMetrics, promoted: promotedCallIds.length };
+-  } catch (error) {
+-    const message = error instanceof Error ? error.message : String(error);
+-    await updateAudit({ auditId, status: "failed", error: message, queryFn });
+-    await writePromotionEvent(
+-      job,
+-      "ml_promotion_completed",
+-      "failed",
+-      "ML promotion failed",
+-      {
+-        ...baseMetrics,
+-        promoted: 0,
+-        audit_id: auditId,
+-        error: message,
+-      },
+-      queryFn,
+-    );
+-    throw error;
+-  }
+-}
++  const promotedCallIds = await promoteCandidates({ args, candidates, queryFn });
++  await updateAudit({ auditId, status: "succeeded", promotedCallIds, queryFn });
++  await writePromotionEvent(
++    job,
++    "ml_promotion_completed",
++    "succeeded",
++    "ML promotion completed",
++    {
++      ...baseMetrics,
++      promoted: promotedCallIds.length,
++      audit_id: auditId,
++      promoted_call_ids: promotedCallIds,
++    },
++    queryFn,
++  );
++
++  return { ...baseMetrics, promoted: promotedCallIds.length };
++}

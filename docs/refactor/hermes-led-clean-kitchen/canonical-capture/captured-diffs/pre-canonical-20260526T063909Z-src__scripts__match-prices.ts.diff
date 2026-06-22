@@ -1,0 +1,146 @@
+--- active/src/scripts/match-prices.ts
++++ pre-canonical-20260526T063909Z/src/scripts/match-prices.ts
+@@ -1,7 +1,6 @@
+ import * as fs from "fs";
+ import * as path from "path";
+ import { query } from "../lib/db";
+-import { fetchNearestBinanceCandle, insertFetchedCandle } from "./binance-candle-fallback";
+ import { MS_7D, MS_30D, MS_90D } from "../lib/constants";
+ import { createLogger } from "../lib/logger";
+ import {
+@@ -47,8 +46,6 @@
+   readonly limit: number;
+   readonly batchSize: number;
+   readonly startAfterId: number;
+-  readonly fetchBinance: boolean;
+-  readonly binanceToleranceMinutes: number;
+ }
+ 
+ function argValue(argv: readonly string[], flag: string): string | null {
+@@ -73,8 +70,6 @@
+     limit: positiveInt(argValue(argv, "--limit"), Number.MAX_SAFE_INTEGER),
+     batchSize: positiveInt(argValue(argv, "--batch-size"), 200),
+     startAfterId: nonNegativeInt(argValue(argv, "--start-after-id"), 0),
+-    fetchBinance: argv.includes("--fetch-binance"),
+-    binanceToleranceMinutes: positiveInt(argValue(argv, "--binance-tolerance-minutes"), 30),
+   };
+ }
+ 
+@@ -159,11 +154,7 @@
+ // Without this, a data gap could silently use a days-old price.
+ const MAX_STALENESS_MS = 24 * 60 * 60 * 1000;
+ 
+-async function getCandleAt(
+-  symbol: string,
+-  dateMs: number,
+-  args: Pick<MatchPricesArgs, "fetchBinance" | "binanceToleranceMinutes">,
+-): Promise<CandleResult | null> {
++async function getCandleAt(symbol: string, dateMs: number): Promise<CandleResult | null> {
+   const key = cacheKey(symbol, dateMs);
+   const cached = getLruCacheEntry(priceCache, key);
+   if (cached !== undefined) {
+@@ -175,36 +166,25 @@
+     [symbol, dateMs],
+   );
+ 
+-  if (rows.length > 0) {
+-    const candleTime = typeof rows[0].open_time === "string"
+-      ? parseInt(rows[0].open_time, 10)
+-      : Number(rows[0].open_time);
+-    const staleness = dateMs - candleTime;
+-
+-    if (staleness <= MAX_STALENESS_MS) {
+-      const result: CandleResult = { close: rows[0].close, regime: rows[0].regime };
+-      setLruCacheEntry(priceCache, key, result, MATCH_PRICE_CACHE_MAX_ENTRIES);
+-      return result;
+-    }
+-  }
+-
+-  if (args.fetchBinance) {
+-    const fetched = await fetchNearestBinanceCandle({
+-      symbol,
+-      targetMs: dateMs,
+-      toleranceMs: args.binanceToleranceMinutes * 60_000,
+-    });
+-    if (fetched) {
+-      await insertFetchedCandle(symbol, fetched);
+-      const result: CandleResult = { close: fetched.close, regime: null };
+-      setLruCacheEntry(priceCache, key, result, MATCH_PRICE_CACHE_MAX_ENTRIES);
+-      return result;
+-    }
+-  }
+-
+-  // Candle is missing or too stale — data gap, don't trust this price.
+-  setLruCacheEntry(priceCache, key, null, MATCH_PRICE_CACHE_MAX_ENTRIES);
+-  return null;
++  if (rows.length === 0) {
++    setLruCacheEntry(priceCache, key, null, MATCH_PRICE_CACHE_MAX_ENTRIES);
++    return null;
++  }
++
++  const candleTime = typeof rows[0].open_time === "string"
++    ? parseInt(rows[0].open_time, 10)
++    : Number(rows[0].open_time);
++  const staleness = dateMs - candleTime;
++
++  if (staleness > MAX_STALENESS_MS) {
++    // Candle is too old — data gap, don't trust this price
++    setLruCacheEntry(priceCache, key, null, MATCH_PRICE_CACHE_MAX_ENTRIES);
++    return null;
++  }
++
++  const result: CandleResult = { close: rows[0].close, regime: rows[0].regime };
++  setLruCacheEntry(priceCache, key, result, MATCH_PRICE_CACHE_MAX_ENTRIES);
++  return result;
+ }
+ 
+ // ── High/Low cache ────────────────────────────────────────────────
+@@ -244,7 +224,7 @@
+   readonly call_date: string;
+ }
+ 
+-async function processCall(call: UnmatchedCall, args: MatchPricesArgs): Promise<boolean> {
++async function processCall(call: UnmatchedCall): Promise<boolean> {
+   const callDateMs = new Date(call.call_date).getTime();
+   if (isNaN(callDateMs)) return false;
+   const now = new Date();
+@@ -255,14 +235,14 @@
+ 
+   // Fetch all needed prices (coin + BTC at 4 timestamps each) using cache
+   const [coinNow, coin7d, coin30d, coin90d, btcNow, btc7d, btc30d, btc90d] = await Promise.all([
+-    getCandleAt(call.symbol, callDateMs, args),
+-    has7d ? getCandleAt(call.symbol, callDateMs + MS_7D, args) : Promise.resolve(null),
+-    has30d ? getCandleAt(call.symbol, callDateMs + MS_30D, args) : Promise.resolve(null),
+-    has90d ? getCandleAt(call.symbol, callDateMs + MS_90D, args) : Promise.resolve(null),
+-    getCandleAt("BTCUSDT", callDateMs, args),
+-    has7d ? getCandleAt("BTCUSDT", callDateMs + MS_7D, args) : Promise.resolve(null),
+-    has30d ? getCandleAt("BTCUSDT", callDateMs + MS_30D, args) : Promise.resolve(null),
+-    has90d ? getCandleAt("BTCUSDT", callDateMs + MS_90D, args) : Promise.resolve(null),
++    getCandleAt(call.symbol, callDateMs),
++    has7d ? getCandleAt(call.symbol, callDateMs + MS_7D) : Promise.resolve(null),
++    has30d ? getCandleAt(call.symbol, callDateMs + MS_30D) : Promise.resolve(null),
++    has90d ? getCandleAt(call.symbol, callDateMs + MS_90D) : Promise.resolve(null),
++    getCandleAt("BTCUSDT", callDateMs),
++    has7d ? getCandleAt("BTCUSDT", callDateMs + MS_7D) : Promise.resolve(null),
++    has30d ? getCandleAt("BTCUSDT", callDateMs + MS_30D) : Promise.resolve(null),
++    has90d ? getCandleAt("BTCUSDT", callDateMs + MS_90D) : Promise.resolve(null),
+   ]);
+ 
+   if (!coinNow) return false; // No candle data for this symbol
+@@ -423,7 +403,6 @@
+     limit: args.limit,
+     batch_size: args.batchSize,
+     start_after_id: args.startAfterId,
+-    binance_fallback: args.fetchBinance,
+   });
+   const lockResult = await withMatchPricesAdvisoryLock(async (): Promise<MatchPricesMetrics> => {
+     if (args.rematchAll) clearMatchPricesCaches();
+@@ -464,7 +443,7 @@
+           const call = batch[index];
+           if (!call) return;
+           try {
+-            const matched = await processCall(call, args);
++            const matched = await processCall(call);
+             if (matched) {
+               batchMatched++;
+             } else {

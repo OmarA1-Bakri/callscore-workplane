@@ -1,0 +1,65 @@
+--- active/src/scripts/scrape-transcripts-v2.ts
++++ pre-canonical-20260526T063909Z/src/scripts/scrape-transcripts-v2.ts
+@@ -407,14 +407,41 @@
+ 
+ async function upsertVideo(creator: Creator, video: YtDlpVideo, transcript: string, quality: number, publishedAt: string | null): Promise<void> {
+   await query(
+-    `INSERT INTO videos (creator_id, youtube_video_id, title, published_at, transcript, transcript_quality, calls_extracted)
+-     VALUES ($1, $2, $3, $4, $5, $6, false)
++    `INSERT INTO videos (
++       creator_id, youtube_video_id, title, published_at, transcript, transcript_quality, calls_extracted,
++       transcript_status, transcript_attempts, transcript_provider, transcript_error, transcript_last_attempt_at
++     )
++     VALUES ($1, $2, $3, $4, $5, $6, false, 'available', 1, 'yt-dlp-caption', NULL, NOW())
+      ON CONFLICT (youtube_video_id) DO UPDATE SET
+-       transcript = COALESCE(videos.transcript, EXCLUDED.transcript),
+-       transcript_quality = GREATEST(COALESCE(videos.transcript_quality, 0), EXCLUDED.transcript_quality),
+-       title = COALESCE(videos.title, EXCLUDED.title),
+-       published_at = COALESCE(videos.published_at, EXCLUDED.published_at)`,
++        transcript = COALESCE(videos.transcript, EXCLUDED.transcript),
++        transcript_quality = GREATEST(COALESCE(videos.transcript_quality, 0), EXCLUDED.transcript_quality),
++        title = COALESCE(videos.title, EXCLUDED.title),
++        published_at = COALESCE(videos.published_at, EXCLUDED.published_at),
++        transcript_status = 'available',
++        transcript_attempts = COALESCE(videos.transcript_attempts, 0) + 1,
++        transcript_provider = 'yt-dlp-caption',
++        transcript_error = NULL,
++        transcript_last_attempt_at = NOW()`,
+     [creator.id, video.id, video.title ?? video.id, publishedAt, transcript, quality],
++  );
++}
++
++async function markTranscriptAttempt(
++  videoId: number | undefined,
++  status: "attempted" | "failed",
++  provider: string,
++  error: string,
++): Promise<void> {
++  if (!videoId) return;
++  await query(
++    `UPDATE videos
++     SET transcript_status = $2,
++         transcript_attempts = transcript_attempts + 1,
++         transcript_provider = $3,
++         transcript_error = $4,
++         transcript_last_attempt_at = NOW()
++     WHERE id = $1`,
++    [videoId, status, provider, error.slice(0, 1000)],
+   );
+ }
+ 
+@@ -458,6 +485,14 @@
+ 
+     const transcriptResult = await fetchTranscript(details, args.transcriptLangs);
+     if (!transcriptResult.ok) {
++      if (args.write) {
++        await markTranscriptAttempt(
++          existing[0]?.id,
++          transcriptResult.reason === "provider-quota-exceeded" || transcriptResult.reason === "caption-http-429" ? "attempted" : "failed",
++          "yt-dlp-caption",
++          transcriptResult.detail ?? transcriptResult.reason,
++        );
++      }
+       audit(args, {
+         record_type: "transcript_backfill",
+         ts: timestamp(),

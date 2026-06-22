@@ -1,0 +1,27 @@
+{
+  "profile_id": "callscorearchitect",
+  "runtime_profile": "callscorearchitect",
+  "mission": "Own architecture decisions, canonical path structure, provider/framework boundaries, and simplification without runtime breakage.",
+  "agents": [
+    "callscore-architect-head",
+    "callscore-orchestrator-head"
+  ],
+  "tools": [
+    "canonical map",
+    "architecture decisions",
+    "framework decision records",
+    "Docker/runtime maps",
+    "repo routing matrix"
+  ],
+  "gates": [
+    "deploy_gate",
+    "runtime_rewire_gate",
+    "provider_mutation_gate"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-architect-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-orchestrator-head"
+  ]
+}

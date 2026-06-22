@@ -1,0 +1,11 @@
+--- active/src/scripts/bootstrap-whop.ts
++++ pre-canonical-20260526T063909Z/src/scripts/bootstrap-whop.ts
+@@ -182,7 +182,7 @@
+ 
+ function printEnv(outputs: Record<string, string>): void {
+   console.log("");
+-  console.log("Set these in Netlify production/deploy-preview/local environment:");
++  console.log("Set these in Vercel production/preview/development:");
+   for (const [key, value] of Object.entries(outputs).sort(([a], [b]) => a.localeCompare(b))) {
+     console.log(`${key}=${value}`);
+   }

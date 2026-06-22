@@ -1,0 +1,86 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+  "candidate": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+    "exists_now": true,
+    "size_bytes_current": 13255,
+    "file_count_current": 3,
+    "original_reference_count": 2,
+    "reference_sample": [
+      "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md",
+      "/opt/crypto-tuber-ranked/tests/loop-engineering-kernel.test.ts"
+    ],
+    "active_reference_check": {
+      "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+      "process_refs": [],
+      "docker_mount_refs": [],
+      "systemd_refs": [],
+      "cron_refs": []
+    },
+    "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+    "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+    "rationale": [
+      "small temp output; no active refs; references appear historical docs/tests"
+    ]
+  },
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "size_bytes": 13255,
+    "file_count": 3,
+    "mtime_utc": "2026-06-17T05:36:29Z",
+    "mode_octal": "0o755"
+  },
+  "active_reference_check": {
+    "process_refs": [],
+    "docker_mount_refs": []
+  },
+  "status": "deleted",
+  "delete_method": "python_exact_path_unlink_or_rmtree",
+  "manifest_sample": [
+    {
+      "rel": "loop-engineering-mtime-shadow-20260617T0536Z.json",
+      "size": 4353,
+      "mode": "0o644"
+    },
+    {
+      "rel": "loop-engineering-shadow-discovery-20260617T0532Z.json",
+      "size": 4549,
+      "mode": "0o644"
+    },
+    {
+      "rel": "loop-engineering-smoke-20260616T200401Z.json",
+      "size": 4353,
+      "mode": "0o644"
+    }
+  ],
+  "delete_ok": true,
+  "delete_error": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/loop-engineering",
+    "exists": false
+  },
+  "disk_before_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124922191872,
+    "free_bytes": 29448761344,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571940,
+    "inode_free": 7160556,
+    "inode_used_percent": 27
+  },
+  "disk_after_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124922163200,
+    "free_bytes": 29448790016,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571936,
+    "inode_free": 7160560,
+    "inode_used_percent": 27
+  },
+  "recovered_bytes": 28672
+}

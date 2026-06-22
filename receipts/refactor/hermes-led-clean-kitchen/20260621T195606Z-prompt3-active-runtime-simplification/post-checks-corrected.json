@@ -1,0 +1,16 @@
+{
+  "broken_absent": true,
+  "healthy_provider_running_healthy": true,
+  "whop_auto_hermes_worker_running": true,
+  "whop_auto_channel_agent_worker_running": true,
+  "crypto_hermes_worker_running": true,
+  "ping_4416_ok": true,
+  "runtime_secret_exists": true,
+  "active_compose_exists": true,
+  "disk_inode_safe": true,
+  "no_new_restart_loops": true,
+  "inspection_bug_corrected": true,
+  "initial_emergency_log_false_positive": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+  "false_positive_reason": "post-removal script used docker inspect with the intentionally removed container; docker inspect returned non-zero for the whole batch, causing existing healthy containers to be treated as missing",
+  "all_success": true
+}

@@ -1,0 +1,87 @@
+{
+  "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+  "classification": "DELETE_NOW_CACHE",
+  "reason": "stale .tmp inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+  "exists": true,
+  "size_before_bytes": 42524676,
+  "path_info": {
+    "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "is_symlink": false,
+    "size_lstat_bytes": 20480,
+    "mtime_utc": "2026-05-16T18:31:09Z",
+    "mode": "0o777"
+  },
+  "safe_to_delete": true,
+  "block_reasons": [],
+  "active_process_check": [],
+  "docker_mount_check": [],
+  "compose_reference_check": [],
+  "cron_reference_check": [],
+  "systemd_reference_check": [],
+  "all_reference_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+  ],
+  "git_status": {
+    "applicable": true,
+    "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+    "status": {
+      "exists": true,
+      "is_git": true,
+      "branch": {
+        "rc": 0,
+        "stdout": "master\n",
+        "stderr": ""
+      },
+      "status": {
+        "rc": 0,
+        "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+        "stderr": ""
+      },
+      "remote": {
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "head": {
+        "rc": 128,
+        "stdout": "HEAD\n",
+        "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+      }
+    }
+  },
+  "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+  "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp\"",
+  "delete_rc": 0,
+  "delete_stdout": "",
+  "delete_stderr": "",
+  "exists_after": false,
+  "deleted": true,
+  "disk_before_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134123847680,
+    "free_bytes": 26846396416,
+    "used_percent": 83.32,
+    "inode_total": 9732496,
+    "inode_used": 2696542,
+    "inode_free": 7035954,
+    "inode_used_percent": 27.71
+  },
+  "disk_after_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134079287296,
+    "free_bytes": 26890956800,
+    "used_percent": 83.29,
+    "inode_total": 9732496,
+    "inode_used": 2695866,
+    "inode_free": 7036630,
+    "inode_used_percent": 27.7
+  },
+  "disk_space_recovered_bytes": 44560384,
+  "post_delete_verification": "absent"
+}

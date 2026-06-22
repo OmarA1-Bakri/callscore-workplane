@@ -1,0 +1,71 @@
+diff --git a/.serena/ghost_publisher/README.md b/.serena/ghost_publisher/README.md
+deleted file mode 100644
+index e99f374..0000000
+--- a/.serena/ghost_publisher/README.md
++++ /dev/null
+@@ -1,65 +0,0 @@
+-# Ghost Publisher
+-
+-Posts markdown articles to `intelligentrails.news` via Ghost Admin API.
+-
+-## One-time setup
+-
+-```bash
+-pip install pyjwt requests markdown --break-system-packages
+-```
+-
+-## Credentials
+-
+-Set these in your shell (or a `.env` loaded by your orchestrator):
+-
+-```
+-GHOST_API_URL=https://intelligent-rails-1.ghost.io
+-GHOST_ADMIN_API_KEY=<REDACTED>
+-GHOST_CONTENT_API_KEY=<REDACTED> key>   # optional, not used for posting
+-```
+-
+-Do **not** commit keys. Do **not** persist them to auto-memory.
+-
+-## Usage
+-
+-```bash
+-python publish_to_ghost.py path/to/article.md \
+-    --status draft \
+-    --tags "Stablecoins,Banking"
+-```
+-
+-- Default status is `draft` — safer. Switch to `--status published` when you want it live.
+-- Title is pulled from the first `# H1`; override with `--title "..."`.
+-- The first non-heading, non-HR line becomes the custom excerpt.
+-- Markdown is rendered with `extra + smarty + sane_lists` then sent via `source=html`.
+-
+-### Feature image handling
+-
+-The script auto-scans the article's directory for a companion image matching `*teaser*`, `*hero*`, `*cover*`, or `*feature*` (`.png/.jpg/.jpeg/.webp`). Files whose name starts with the article basename win the tie-break. The first match is uploaded and set as `feature_image`. Alt text defaults to the article title.
+-
+-Override or disable:
+-
+-```bash
+-python publish_to_ghost.py article.md --feature-image ./hero.png --feature-image-alt "Custom alt"
+-python publish_to_ghost.py article.md --no-auto-image   # skip entirely
+-```
+-
+-**Rule:** if an article directory contains a teaser/hero image, the script WILL attach it. Stop rediscovering this by hand.
+-
+-## Return value
+-
+-Prints the post id, status, live URL, and the direct edit link in the Ghost admin.
+-
+-## Known defaults / assumptions
+-
+-- `Accept-Version: v5.0` — Ghost v5 Admin API.
+-- JWT expiry 5 minutes, `kid` = key id, HS256 over the hex-decoded secret.
+-- `tags` arrive as name objects; Ghost will create missing tags on first use.
+-- No feature image handling yet — add via `post_payload["feature_image"]` if needed.
+-
+-## Published history
+-
+-| Date       | Article                       | Status | Post ID                     |
+-|------------|-------------------------------|--------|-----------------------------|
+-| 2026-04-24 | The War for Float             | draft  | 69eae88080ff0500010fc9be    |
+-| 2026-04-24 | The War for Float (feature img) | draft | 69eae88080ff0500010fc9be  — added war-for-float-teaser-1.png as feature_image |

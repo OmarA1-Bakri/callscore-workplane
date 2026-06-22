@@ -1,0 +1,73 @@
+--- active/tests/self-correction.test.ts
++++ pre-canonical-20260526T063909Z/tests/self-correction.test.ts
+@@ -9,7 +9,6 @@
+ import assert from "node:assert/strict";
+ import * as path from "node:path";
+ import type { Call } from "../src/lib/types";
+-import { EXTRACTION_CONFIDENCE_THRESHOLD } from "../src/lib/public-methodology";
+ 
+ process.env.SESSION_SECRET=[REDACTED]
+   <REDACTED> ?? "test-session-secret-1234567890-abc";
+@@ -86,7 +85,7 @@
+ 
+   // computeSelfCorrectionScore denominator
+   if (
+-    /FROM calls WHERE creator_id = \$1 AND return_30d IS NOT NULL AND extraction_confidence >= 0\.7/i.test(
++    /FROM calls WHERE creator_id = \$1 AND return_30d IS NOT NULL AND extraction_confidence >= 0\.6/i.test(
+       sql,
+     )
+   ) {
+@@ -95,7 +94,7 @@
+       (c) =>
+         c.creator_id === creatorId &&
+         c.return_30d !== null &&
+-        c.extraction_confidence >= EXTRACTION_CONFIDENCE_THRESHOLD,
++        c.extraction_confidence >= 0.6,
+     );
+     return [{ scored_count: String(scored.length) }] as unknown as T[];
+   }
+@@ -104,7 +103,7 @@
+   if (/WITH scored AS/i.test(sql)) {
+     const scoredByCreator = new Map<number, number>();
+     for (const c of fakeDb.calls) {
+-      if (c.return_30d !== null && c.extraction_confidence >= EXTRACTION_CONFIDENCE_THRESHOLD) {
++      if (c.return_30d !== null && c.extraction_confidence >= 0.6) {
+         scoredByCreator.set(
+           c.creator_id,
+           (scoredByCreator.get(c.creator_id) ?? 0) + 1,
+@@ -133,7 +132,7 @@
+       } else if (
+         r.revision_type === "confirmed_miss" &&
+         oc.return_30d !== null &&
+-        oc.extraction_confidence >= EXTRACTION_CONFIDENCE_THRESHOLD &&
++        oc.extraction_confidence >= 0.6 &&
+         ((oc.direction === "bullish" && oc.return_30d <= 0) ||
+           (oc.direction === "bearish" && oc.return_30d >= 0))
+       ) {
+@@ -147,7 +146,7 @@
+         if (
+           rc &&
+           rc.return_30d !== null &&
+-          rc.extraction_confidence >= EXTRACTION_CONFIDENCE_THRESHOLD &&
++          rc.extraction_confidence >= 0.6 &&
+           rc.correct_direction === true
+         ) {
+           existing.numerator += 0.5;
+@@ -1083,7 +1082,7 @@
+     });
+   }
+   // Revised call id 2: SCORED with correct direction but confidence 0.55
+-  // (below the EXTRACTION_CONFIDENCE_THRESHOLD floor used across the scoring pipeline). Should be
++  // (below the 0.6 floor used across the scoring pipeline). Should be
+   // treated as not-trusted -> 0.
+   fakeDb.calls[1].correct_direction = true;
+   fakeDb.calls[1].return_30d = 10;
+@@ -1098,7 +1097,7 @@
+   assert.equal(
+     result.score,
+     0,
+-    "low-confidence scored reversal must score 0 (align with EXTRACTION_CONFIDENCE_THRESHOLD floor)",
++    "low-confidence scored reversal must score 0 (align with 0.6 floor)",
+   );
+ });
+ 

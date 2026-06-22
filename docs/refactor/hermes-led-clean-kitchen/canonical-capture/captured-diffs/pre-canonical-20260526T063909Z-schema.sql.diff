@@ -1,0 +1,30 @@
+--- active/schema.sql
++++ pre-canonical-20260526T063909Z/schema.sql
+@@ -1,5 +1,5 @@
+ -- CRYPTO-TUBER RANKED - Database Schema
+--- Run against canonical HH pgsql database (alongside candles table); Neon is backup/legacy compatibility only.
++-- Run against existing Neon DB (alongside candles table)
+ 
+ -- Creators: the 20 YouTube influencers we track
+ CREATE TABLE IF NOT EXISTS creators (
+@@ -53,20 +53,12 @@
+     raw_quote TEXT,
+     extraction_confidence DOUBLE PRECISION DEFAULT 0,
+     specificity_score DOUBLE PRECISION DEFAULT 0,
+-    low_confidence_validation_decision TEXT,
+-    low_confidence_validated_at TIMESTAMPTZ,
+-    low_confidence_validation_by TEXT,
+-    low_confidence_validation_reasons JSONB NOT NULL DEFAULT '[]'::jsonb,
+     call_date TIMESTAMPTZ NOT NULL,
+     -- Coin price data
+     price_at_call DOUBLE PRECISION,
+     price_7d DOUBLE PRECISION,
+     price_30d DOUBLE PRECISION,
+     price_90d DOUBLE PRECISION,
+-    price_repaired_by TEXT,
+-    price_repair_tolerance_ms INTEGER,
+-    price_repaired_at TIMESTAMPTZ,
+-    price_repair_notes JSONB NOT NULL DEFAULT '{}'::jsonb,
+     -- BTC benchmark prices (for alpha calculation)
+     btc_price_at_call DOUBLE PRECISION,
+     btc_price_7d DOUBLE PRECISION,

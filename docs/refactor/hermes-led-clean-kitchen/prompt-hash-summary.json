@@ -1,0 +1,1812 @@
+{
+  "timestamp_utc": "2026-06-22T16:38:27Z",
+  "phase": "prompt_9_prompt_hash_summary",
+  "instruction_bleed_prevention": "legacy prompt/profile files were hashed as inert bytes only",
+  "roots_scanned": [
+    "/srv/agents/hermes/profiles",
+    "/srv/agents/hermes/skills",
+    "/srv/agents/repos/callscore-workplane",
+    "/opt/crypto-tuber-ranked/docs",
+    "/opt/crypto-tuber-ranked/ops"
+  ],
+  "file_count": 8218,
+  "unique_hash_count": 2359,
+  "duplicate_hash_count": 987,
+  "duplicate_file_count": 6846,
+  "duplicate_groups_top": [
+    {
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "count": 17,
+      "bytes_each": 2,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/processes.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/openai_skills_skills_.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/clawhub_search_listing_v1_d41d8cd98f00b204e9800998ecf8427e_500.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "08701c3fa2067a0c58359c10dcfdcd50ff1d2c8e8d6b88a42679bb80d5853361",
+      "count": 16,
+      "bytes_each": 20079,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/guidance/references/examples.md",
+        "/srv/agents/hermes/skills/mlops/guidance/references/examples.md",
+        "/srv/agents/hermes/skills/mlops/inference/guidance/references/examples.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "ff9c1b1621353af90926c66d39e4bbbd1e9469905cd5213ec06d2c971df567b7",
+      "count": 16,
+      "bytes_each": 17690,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/models/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/skills/mlops/stable-diffusion/references/advanced-usage.md",
+        "/srv/agents/hermes/skills/mlops/models/stable-diffusion/references/advanced-usage.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d50d0d4eab3a04ff4aa1e0bcd2c67717b25ff4251346095c29fa8d1841e9cebd",
+      "count": 16,
+      "bytes_each": 15886,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/guidance/references/constraints.md",
+        "/srv/agents/hermes/skills/mlops/guidance/references/constraints.md",
+        "/srv/agents/hermes/skills/mlops/inference/guidance/references/constraints.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "e46f6f6fa3042114a017cef2189326523c0eb5ec35596667ea854e32d0df0a21",
+      "count": 16,
+      "bytes_each": 14540,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/guidance/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/guidance/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/inference/guidance/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "5c0f78ac8e6eb624fcb871e8404d583a6d184e51c7a9815b8c75b45a2b5a22dc",
+      "count": 16,
+      "bytes_each": 13014,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/models/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/stable-diffusion/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/models/stable-diffusion/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "8663cf75afa2e1048832f680c8594b2709c0205603133ab5e81561697c847659",
+      "count": 16,
+      "bytes_each": 12541,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/skills/mlops/training/peft/references/advanced-usage.md",
+        "/srv/agents/hermes/skills/mlops/peft/references/advanced-usage.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "6d42dc6feaa88f0761fac039664739ba1924cf4d4b8efebc38e4bd641b57c7c0",
+      "count": 16,
+      "bytes_each": 12401,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/models/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/skills/mlops/stable-diffusion/references/troubleshooting.md",
+        "/srv/agents/hermes/skills/mlops/models/stable-diffusion/references/troubleshooting.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "79ec7275734ceb97dedc22af22a826c81e8b738739059ff6486ab9189279152f",
+      "count": 16,
+      "bytes_each": 12235,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/peft/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/training/peft/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/peft/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "cf7ac97bcca4dc4208385038337bd23e68c26789f6c1e5d14e83f7f5aa31fd01",
+      "count": 16,
+      "bytes_each": 12010,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/guidance/references/backends.md",
+        "/srv/agents/hermes/skills/mlops/guidance/references/backends.md",
+        "/srv/agents/hermes/skills/mlops/inference/guidance/references/backends.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "ee7ed3b7c06b393b85109d5aa4816cf7d6e6fd2f0a8fdbb90db5eb03ad301f88",
+      "count": 16,
+      "bytes_each": 10887,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/gguf/references/advanced-usage.md",
+        "/srv/agents/hermes/skills/mlops/inference/llama-cpp/references/advanced-usage.md",
+        "/srv/agents/hermes/skills/mlops/inference/gguf/references/advanced-usage.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "06645be59b9ad0461e837fce5a1b0a7121b19a1353635c04fdf9df5a13578738",
+      "count": 16,
+      "bytes_each": 10344,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/skills/mlops/training/peft/references/troubleshooting.md",
+        "/srv/agents/hermes/skills/mlops/peft/references/troubleshooting.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "a83f9df40a6db7857b4b3ce3a982da7e939680ee89079170d4d258392804e09c",
+      "count": 16,
+      "bytes_each": 8904,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/gguf/references/troubleshooting.md",
+        "/srv/agents/hermes/skills/mlops/inference/llama-cpp/references/troubleshooting.md",
+        "/srv/agents/hermes/skills/mlops/inference/gguf/references/troubleshooting.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "437d50cf395fadac3be389b74c552a3229bb486cb42e828ad50a61da53568a56",
+      "count": 16,
+      "bytes_each": 6909,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/models/clip/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/clip/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/models/clip/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "682fc313e63cefbe466ed0efdf48048946a3abb292e5f32cf4058fcf59692ae9",
+      "count": 16,
+      "bytes_each": 5360,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/models/clip/references/applications.md",
+        "/srv/agents/hermes/skills/mlops/clip/references/applications.md",
+        "/srv/agents/hermes/skills/mlops/models/clip/references/applications.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "09766e974cb3c0c1aeb910b6fc79cd010a4a2b177559d617322ff1f2f842995b",
+      "count": 16,
+      "bytes_each": 269,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/safety/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/reviewer/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/implementer/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/cmo/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/trust/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator/FAILURE_MODES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/community/FAILURE_MODES.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "16353876839d094f710568293786c244a1337cb57c8633dbc42dc76b4e57ac99",
+      "count": 16,
+      "bytes_each": 211,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/safety/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/reviewer/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/implementer/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/cmo/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/trust/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator/TOOLS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/community/TOOLS.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "f1f5efe7a89eb124a453dfedb6b7e65588473f35bdef75dcfcdfbbb21f14869d",
+      "count": 16,
+      "bytes_each": 169,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/safety/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/reviewer/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/implementer/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/cmo/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/trust/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator/RECEIPTS.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/community/RECEIPTS.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "ca15e03bf63a3af1cfa0347df36b0aee999c6c6c631f31b4171a5df09e765d43",
+      "count": 15,
+      "bytes_each": 5940,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/last30days/references/save-html-brief.md",
+        "/srv/agents/hermes/skills/research/last30days/references/save-html-brief.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "eba47a9d26f87d0b4eb8a4f554833ed8d11b3d8728e363deeae702d09f87fc02",
+      "count": 15,
+      "bytes_each": 815,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json",
+        "/srv/agents/hermes/skills/research/last30days/scripts/lib/vendor/bird-search/lib/query-ids.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "36361f4cae0040255f84709459ebb1f0131566a567269ed7b99d073cad930f66",
+      "count": 15,
+      "bytes_each": 523,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/last30days/scripts/lib/vendor/bird-search/lib/features.json",
+        "/srv/agents/hermes/skills/research/last30days/scripts/lib/vendor/bird-search/lib/features.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "f46e7f09d3118dee7324ac165391ccb7ffe55323d1d75304e34062017913939c",
+      "count": 15,
+      "bytes_each": 448,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoredata/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/last30days/agents/openai.yaml",
+        "/srv/agents/hermes/skills/research/last30days/agents/openai.yaml"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "96b65305969a179ee7a7735f1b475599d6035f32fda1fd030ea57ee09380cdb5",
+      "count": 15,
+      "bytes_each": 331,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoretrust/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/last30days/scripts/lib/vendor/bird-search/package.json",
+        "/srv/agents/hermes/skills/research/last30days/scripts/lib/vendor/bird-search/package.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "ecf8bd939297a1960d98b684c4e01bbdba582670d5ddbe723d9df1df90cf19c0",
+      "count": 14,
+      "bytes_each": 346,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/session-management/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/llamaindex/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/file-handling/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/tool-router/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/google/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/cjs/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/versioning/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/tools/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/mastra/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/json-schema-to-zod/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/anthropic/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/custom-tools/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/mcp/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/examples/triggers/tsconfig.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "baba019086877dfd90b0ffd9ec40a2b26ebe265476b017a2417a52bb94375930",
+      "count": 12,
+      "bytes_each": 489,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/implementer/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/data/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/cmo/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/trust/GATES.md",
+        "/srv/agents/repos/callscore-workplane/docs/agents/community/GATES.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "42075f65bcf3a5a7f2a97cb6b3df5282d7908959d42461b5b75c6ccd1312dc47",
+      "count": 11,
+      "bytes_each": 263,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/tool-router-files/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/mastra-tool-router-zod-v4/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/esm-basic/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/cjs-basic/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/tool-router-pagination/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/file-roundtrip/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/openai-zod4-compat/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/json-schema-to-zod-v4/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/json-schema-to-zod-v3/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/node/mastra-tool-router-zod-v3/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/e2e-tests/runtimes/deno/esm-basic/tsconfig.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "b8a822b734a8e8cf440db5b1632771e8d1c65c4fccfbabf232a466a7b8e5ef34",
+      "count": 9,
+      "bytes_each": 369,
+      "paths": [
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/llamaindex/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/google/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/openai-agents/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/cloudflare/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/claude-agent-sdk/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/vercel/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/mastra/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/anthropic/tsconfig.json",
+        "/srv/agents/repos/callscore-workplane/control-plane/composio/ts/packages/providers/langchain/tsconfig.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "f283096d61af86064690e56855b97a912b849078d0fd8d8c675d2b094fff0f85",
+      "count": 8,
+      "bytes_each": 1077225,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/unsloth/references/llms-full.md",
+        "/srv/agents/hermes/skills/mlops/training/unsloth/references/llms-full.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d57d4357f34679786dc744cf46d367066088670490f72348baa56ab57e45a864",
+      "count": 8,
+      "bytes_each": 1029670,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/hermes-index.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/hermes-index.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "1888f959fc67d57215085e496960fb20a91ea17bf881be5805b4913a4407f193",
+      "count": 8,
+      "bytes_each": 813089,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/unsloth/references/llms-txt.md",
+        "/srv/agents/hermes/skills/mlops/training/unsloth/references/llms-txt.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "07711998889a60a6e47521472697cd816041121dd66b94b225bc49ffa5b84dcd",
+      "count": 8,
+      "bytes_each": 337500,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/pytorch-fsdp/references/other.md",
+        "/srv/agents/hermes/skills/mlops/training/pytorch-fsdp/references/other.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "6a51d5c10d92eeaa4c98769b2aec0223bf373a614218fa8222d41de66ab172f9",
+      "count": 8,
+      "bytes_each": 251446,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/lobehub_index.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/lobehub_index.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "c24e9e5123daa6a5c31a61a039742eef6f0a3c459e044e01bb62c8f89c999a84",
+      "count": 8,
+      "bytes_each": 160170,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/pytorch-fsdp/SKILL.md",
+        "/srv/agents/hermes/skills/mlops/training/pytorch-fsdp/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "5bba1b0b2b7a3dd210f76ce8dadfb95d5b6d72fe01312bb7fae1f26166686a91",
+      "count": 8,
+      "bytes_each": 140405,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/axolotl/references/other.md",
+        "/srv/agents/hermes/skills/mlops/training/axolotl/references/other.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "a328d602a2efee290d8c50e3b82ac101af178916661772a5ad33fc882145b66c",
+      "count": 8,
+      "bytes_each": 131222,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/last30days/SKILL.md",
+        "/srv/agents/hermes/skills/research/last30days/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "7fce685e5ee5705e422d6895450ef6e1a3d1146da73da97655b92d2287db3a06",
+      "count": 8,
+      "bytes_each": 121144,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/axolotl/references/api.md",
+        "/srv/agents/hermes/skills/mlops/training/axolotl/references/api.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "5bc92cec8357a19d71b1c10c5590ab605e846e4ddd914512511f8281a6053186",
+      "count": 8,
+      "bytes_each": 103375,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/research-paper-writing/SKILL.md",
+        "/srv/agents/hermes/skills/research/research-paper-writing/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "229467ea1e725460a205bf003ffd667f2299b824e2a2aa8d6b4a97ea9c5946d9",
+      "count": 8,
+      "bytes_each": 100152,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md",
+        "/srv/agents/hermes/skills/software-development/crypto-tuber-ranked-creator-pipeline/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "842f5720af3bf5a2d0ef7f0c9c832b8cc357caf93a9c534030f0f2b156c39f67",
+      "count": 8,
+      "bytes_each": 72928,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/effects.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/effects.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "cc4275af06db78c73ed9ba6e845dce1707d11d5c196439e31e520bba09ad2314",
+      "count": 8,
+      "bytes_each": 56153,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_featured.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_featured.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "29cac0af0b4614b3782fbd19c2f2857d8e95fec70c0ea68be86f5c5d0702c669",
+      "count": 8,
+      "bytes_each": 50435,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/shaders.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/shaders.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "79b365dbdef0229dee643357ae9963b1c0cc07125e847bf5b8bcf062faf62ef6",
+      "count": 8,
+      "bytes_each": 46043,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/training/axolotl/references/dataset-formats.md",
+        "/srv/agents/hermes/skills/mlops/training/axolotl/references/dataset-formats.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "e57a757c267ab40a1d3c76e0fd4fbaf1e58b66a6a6e6e602c49bb48fdde9fa38",
+      "count": 8,
+      "bytes_each": 40500,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/autonomous-ai-agents/hermes-agent/SKILL.md",
+        "/srv/agents/hermes/skills/autonomous-ai-agents/hermes-agent/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "f74fb8493a4c4b6096a92e856e50adc23dd226ecc479bb551b756b42d9e44ce4",
+      "count": 8,
+      "bytes_each": 38795,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/software-development/subagent-driven-development/SKILL.md",
+        "/srv/agents/hermes/skills/software-development/subagent-driven-development/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "6c9a0293a5be961269f5d02e5b6dc83d4960a10511dfd777bc1033d416ecf093",
+      "count": 8,
+      "bytes_each": 37487,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/scenes.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/scenes.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "a6658db437af8aab832b85405a0822ac730426c21aa90ad349bcea2ddd1de1e8",
+      "count": 8,
+      "bytes_each": 35242,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/humanizer/SKILL.md",
+        "/srv/agents/hermes/skills/creative/humanizer/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "3bdcb525921a3143b9f5e453fe6c4473f2992ac3404faa061d1883b8693da66c",
+      "count": 8,
+      "bytes_each": 34942,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/composition.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/composition.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "fd519867cc2ed9b2de8fd07fcb928b55547f39fa4767bc5d33c3a300b7a17236",
+      "count": 8,
+      "bytes_each": 33603,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/touchdesigner-mcp/references/network-patterns.md",
+        "/srv/agents/hermes/skills/creative/touchdesigner-mcp/references/network-patterns.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d537a3f6e6263cdd87a9cc71938706e50e8d7cc454aab36231923c319abd4aeb",
+      "count": 8,
+      "bytes_each": 33004,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/architecture.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/architecture.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "288f0da8ca0f1371b9d4bd6253c68f0de9f36c9aa2d89011e6b2eab30c040d0b",
+      "count": 8,
+      "bytes_each": 31347,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/touchdesigner-mcp/references/pitfalls.md",
+        "/srv/agents/hermes/skills/creative/touchdesigner-mcp/references/pitfalls.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d702a7353c76711a0797885da87a1adf1fd2640533aa415dab06eb6df6304eb1",
+      "count": 8,
+      "bytes_each": 30497,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/touchdesigner-mcp/references/mcp-tools.md",
+        "/srv/agents/hermes/skills/creative/touchdesigner-mcp/references/mcp-tools.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d3514b35de9ccd8723e05038ec12822e38b123e2d5764335493ac78bc112c866",
+      "count": 8,
+      "bytes_each": 30157,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/software-development/thredos-pack-authoring/SKILL.md",
+        "/srv/agents/hermes/skills/software-development/thredos-pack-authoring/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "16cb6a562e66f111ea866b5b813d3948765677f3ed170eea15ddffdd47189b22",
+      "count": 8,
+      "bytes_each": 27733,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/garrytan_gstack_.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/garrytan_gstack_.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "6a9722e2633ecdb3736e304f56c646258c5e777fd2c15a59c0d2b3ffa91b665a",
+      "count": 8,
+      "bytes_each": 27494,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/p5js/SKILL.md",
+        "/srv/agents/hermes/skills/creative/p5js/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "e73d9409a63d157774528b260b3249fb52745e6b242efe8bc1ae2e9f04b08827",
+      "count": 8,
+      "bytes_each": 27091,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/voltagent.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/voltagent.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "4681996eaca923d5cc1f931a3364521b429c8fc6d18545d8737a6301c8b8db80",
+      "count": 8,
+      "bytes_each": 26142,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json",
+        "/srv/agents/hermes/skills/.curator_backups/2026-06-19T11-43-26Z/cron-jobs.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "1904faa8ac220fb042706aebe751b685795e9aa144d4b87712687ad13b28a192",
+      "count": 8,
+      "bytes_each": 25742,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/research-paper-writing/references/experiment-patterns.md",
+        "/srv/agents/hermes/skills/research/research-paper-writing/references/experiment-patterns.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "96a05fbd98f0f93aeeb8767de152de370a4140147b218032053d494227f1a50d",
+      "count": 8,
+      "bytes_each": 25506,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_search_60347c99a21e30ec92f8c610fc8bde73.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "ba45d64bd73d143f5f7bb95c68e4ba1f51f880a6302cd57f60628e5616dd4ead",
+      "count": 8,
+      "bytes_each": 25193,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/autonomous-ai-agents/honcho/SKILL.md",
+        "/srv/agents/hermes/skills/autonomous-ai-agents/honcho/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "658bcf268da26e4d6e00a52fd68b31870d9e73f92fcfb012ccb8e90d16a30eb5",
+      "count": 8,
+      "bytes_each": 24674,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/lock.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/lock.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/lock.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/lock.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/lock.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/lock.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/lock.json",
+        "/srv/agents/hermes/skills/.hub/lock.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d9b723aa68f4239e7d306ed9ecd1e45b506e1197fb0c87194fbbe5a96f3d9402",
+      "count": 8,
+      "bytes_each": 24575,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/inputs.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/inputs.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "fc9514a3b888b35226a3d2276955bfcf1778fd1e61f4000d79c8c0c53e7905c3",
+      "count": 8,
+      "bytes_each": 24287,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/comfyui/SKILL.md",
+        "/srv/agents/hermes/skills/creative/comfyui/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "a9e78b131bf7fd6d575759c7eaf121a93e26bd56e2e0f6af67fd9fa766811713",
+      "count": 8,
+      "bytes_each": 24265,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/ascii-video/references/optimization.md",
+        "/srv/agents/hermes/skills/creative/ascii-video/references/optimization.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "799374661bdd8d90d443e41f13f6a7ef3275fd804843c18d0d172f0bd7376a97",
+      "count": 8,
+      "bytes_each": 23504,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_search_818339cac48fdb809fb809c84a02ed5f.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "644cbaf5f91b44dfa54ec125ccdff44c445f454781ff98edd316d30df258db56",
+      "count": 8,
+      "bytes_each": 23456,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/p5js/references/visual-effects.md",
+        "/srv/agents/hermes/skills/creative/p5js/references/visual-effects.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "0826aef4c683f0d9cefdd5464ae26865e003e827544da9d30d63010471e32835",
+      "count": 8,
+      "bytes_each": 23231,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/linear.app.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/linear.app.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9333accb9cb9900736d24e1efe21d24beeca1b8026293a23d1fc798c72585a58",
+      "count": 8,
+      "bytes_each": 23039,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_search_ac26e86f137d9a0a1e17c291cb60bcdf.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "2323a15aed1fbeafe3f0a3333ce75055ba63e5ea7e82bc82a1cfcc9255791a85",
+      "count": 8,
+      "bytes_each": 22648,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_search_5d7cc87181e3a81f6c0da914e7f722c4.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "31e294a093bce4fe298029e483d75ffe0003a7d3df43f4be7a99506aeb16046c",
+      "count": 8,
+      "bytes_each": 22589,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_search_3bed470aaaf72c86c56ccd52d401599a.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d1f9c7fc22923951094405c96d6b9d96e3f372d41641cb180c14ca0bfe83a3ea",
+      "count": 8,
+      "bytes_each": 22308,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json",
+        "/srv/agents/hermes/skills/.curator_backups/2026-06-12T11-28-30Z/cron-jobs.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "7bc9cd458ef84cf85814bcb16e5cee141c34cee96bcd51e4b6d1ae787b6f77c4",
+      "count": 8,
+      "bytes_each": 22238,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json",
+        "/srv/agents/hermes/skills/.hub/index-cache/skills_sh_search_58a1a391d188a2383a804c02e4ec2821.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "174ae98a518f69230f54865b8a47699e475dde7ad822e14e52eb26ecbbf52799",
+      "count": 8,
+      "bytes_each": 22041,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/sanity.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/sanity.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "71795e3a41736973d51fa09e98a2fa5d39ee700f91ae593cb44409256290dcec",
+      "count": 8,
+      "bytes_each": 21974,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/commerce/whop-automation/SKILL.md",
+        "/srv/agents/hermes/skills/commerce/whop-automation/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "2398498177e69c32819695c16718e83eea3d5499798c600d6aa4a025a496f448",
+      "count": 8,
+      "bytes_each": 21732,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/composio.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/composio.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "610d614bcc5abb007b605049a0c42466de85b145ed4651920c7297faa4eb95b6",
+      "count": 8,
+      "bytes_each": 21490,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/social-media/xurl/SKILL.md",
+        "/srv/agents/hermes/skills/social-media/xurl/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "e86168b132e67eeadbd6c8c383e87090f79b02a9b012617ad3e54b4372e2e65a",
+      "count": 8,
+      "bytes_each": 21265,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoredata/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json",
+        "/srv/agents/hermes/skills/.curator_backups/2026-06-05T10-56-29Z/cron-jobs.json"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "cdddebb03bc5282ad9eabf2e6fde823d7a2deb828f9dc8ca4ab6f919b42aef05",
+      "count": 8,
+      "bytes_each": 21263,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/stripe.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/stripe.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "1055815c239a3b9f266f0c80a2eeb0e94c4e1275f243aab4807a3a74ab684431",
+      "count": 8,
+      "bytes_each": 21231,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/inference/outlines/references/examples.md",
+        "/srv/agents/hermes/skills/mlops/inference/outlines/references/examples.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9dfce6c8ba40c93b6e9a3d537b24dad8643df56d0839bada58f8cf41f99ecaec",
+      "count": 8,
+      "bytes_each": 21122,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/apple.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/apple.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "0644dd065f1167959a157648a420d64756963fef47df8584968c0003dbce56ed",
+      "count": 8,
+      "bytes_each": 21078,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/claude.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/claude.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "328494dcf5266f17b71ccff3fb68b3a7077c8fe1f45d7688c26ba24f0aeae3fd",
+      "count": 8,
+      "bytes_each": 20366,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/ibm.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/ibm.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "ad326ef79b6e4415f564e31b4317170384b2cf424a2e582c4cbc4df53dea9705",
+      "count": 8,
+      "bytes_each": 20227,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/vercel.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/vercel.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "a37ae04745b04b8e9bbd8de37cdcbc2b2187ccafb68418e436a46ebb1e491ee5",
+      "count": 8,
+      "bytes_each": 20129,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/llm-wiki/SKILL.md",
+        "/srv/agents/hermes/skills/research/llm-wiki/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "f162b36f0b849dde48800e91a11f07f1e7cb8728620d9ce4223820bede6414b6",
+      "count": 8,
+      "bytes_each": 20108,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md",
+        "/srv/agents/hermes/skills/creative/concept-diagrams/examples/place-order-uml-sequence.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9c0584ad583057cf88c47f352a395d0e6d508b98f5e844188d0df2a122c7a100",
+      "count": 8,
+      "bytes_each": 19867,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/cursor.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/cursor.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "aa54aac5236997ac2f07ef28bb6685243247256215e3b0d4fc987f6e4d9c439e",
+      "count": 8,
+      "bytes_each": 19824,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/claude-design/SKILL.md",
+        "/srv/agents/hermes/skills/creative/claude-design/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "edbd6f3c175f45cd264a7fbf17ad9a367b68a5eb1068d385639973658730bd93",
+      "count": 8,
+      "bytes_each": 19714,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/superhuman.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/superhuman.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9aac8e73a4a471fecb2d252afead66c82436e7525e7f9d1e6bbe64e375c65160",
+      "count": 8,
+      "bytes_each": 19484,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/zapier.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/zapier.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "513bded0ab8137833488cba76526644f64f6d91de8bce0793253a261e78807cb",
+      "count": 8,
+      "bytes_each": 19466,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/expo.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/expo.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "68291d1291680183e2786965d076053f66e4fd68efb47cdb4ba48256ecf2b2b6",
+      "count": 8,
+      "bytes_each": 19430,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/uber.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/uber.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9d17a75b45720763c0107885f3f77f8f2871e4957e145a49696d569ddc5052a2",
+      "count": 8,
+      "bytes_each": 19347,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/posthog.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/posthog.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "90304a7a878784920768d8bdd46ac519cdc2258daf157dcb3668cd8e7bc47f67",
+      "count": 8,
+      "bytes_each": 19261,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/raycast.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/raycast.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9ee46f856f8d89d8dea4abb3d2c78a210825e8263f126eab3bdd939de0060834",
+      "count": 8,
+      "bytes_each": 19201,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/resend.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/resend.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "d3a68438f903c0ba78228ead3e2409cf17932da3390575a51aa2b9050f80a356",
+      "count": 8,
+      "bytes_each": 19146,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/research-paper-writing/references/autoreason-methodology.md",
+        "/srv/agents/hermes/skills/research/research-paper-writing/references/autoreason-methodology.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "9afd11387e550f2ce085514b38a5e0393d6192a1d9e05a14342356977a832621",
+      "count": 8,
+      "bytes_each": 19090,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/notion.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/notion.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "a617b7ed15a81fc460eb8e98d19565ce843828554b926265bc8571721258d2d0",
+      "count": 8,
+      "bytes_each": 18983,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/mlops/research/dspy/references/examples.md",
+        "/srv/agents/hermes/skills/mlops/research/dspy/references/examples.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "c90ee5b86212fab20fe5791289c9bf992f92eb3fdbe318de6a76c033bbe51984",
+      "count": 8,
+      "bytes_each": 18802,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/devops/art-of-war-system/SKILL.md",
+        "/srv/agents/hermes/skills/devops/art-of-war-system/SKILL.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "87b5ebb39dfaa2b3d86be692ad2210392476bb5a6b9190e977de61cd3f2d510f",
+      "count": 8,
+      "bytes_each": 18582,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/cal.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/cal.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "4374dc30dd981448936fa7f1d84e34025a0380a909e17ac9f43cc4e41adef0c5",
+      "count": 8,
+      "bytes_each": 18347,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/creative/popular-web-designs/templates/framer.md",
+        "/srv/agents/hermes/skills/creative/popular-web-designs/templates/framer.md"
+      ],
+      "truncated": false
+    },
+    {
+      "sha256": "073275dbe8547cd55e9513ea60b2b51d27f168d9b253485b9c7a63118b8df48a",
+      "count": 8,
+      "bytes_each": 18221,
+      "paths": [
+        "/srv/agents/hermes/profiles/callscoretrust/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/profiles/callscoredata/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/profiles/callscoreimplementer/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/profiles/callscorearchitect/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/profiles/callscorereviewer/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/profiles/callscoresafety/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/profiles/callscorecmo/skills/research/research-paper-writing/references/human-evaluation.md",
+        "/srv/agents/hermes/skills/research/research-paper-writing/references/human-evaluation.md"
+      ],
+      "truncated": false
+    }
+  ]
+}

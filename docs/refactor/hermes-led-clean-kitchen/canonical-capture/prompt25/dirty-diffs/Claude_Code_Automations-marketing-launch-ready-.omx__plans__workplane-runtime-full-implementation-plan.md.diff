@@ -1,0 +1,912 @@
+diff --git a/.omx/plans/workplane-runtime-full-implementation-plan.md b/.omx/plans/workplane-runtime-full-implementation-plan.md
+deleted file mode 100644
+index a88e5d0..0000000
+--- a/.omx/plans/workplane-runtime-full-implementation-plan.md
++++ /dev/null
+@@ -1,906 +0,0 @@
+-# Workplane Runtime Full Implementation Plan
+-
+-**Date:** 2026-05-11  
+-**Mode:** RALPLAN Planner step, deliberate/high-risk planning  
+-**Source PRD:** `docs/superpowers/specs/2026-05-08-workplane-runtime-prd.md`  
+-**Validation artifacts:**
+-- `docs/superpowers/specs/2026-05-11-workplane-runtime-go-forward-strategy.md`
+-- `docs/superpowers/specs/2026-05-11-workplane-runtime-test-verification-plan.md`
+-- `docs/superpowers/specs/2026-05-11-workplane-runtime-validation-synthesis.md`
+-
+-## 1. Current Evidence Snapshot
+-
+-Verified Stage 1 contract in `workplane/`:
+-
+-- `npm test` from `workplane/` passes **18/18** tests.
+-- `npm run validate` passes with **6 runtimes / 9 workflows / 15 resources / 11 policies**.
+-- `npm run status` emits read-only JSON using the fake adapter; every runtime reports `health: "unknown"` and `live_checked: false`, preserving safe uncertainty.
+-- Current implementation is dependency-light Node ESM with JSON-compatible YAML registries:
+-  - `workplane/src/cli.js`
+-  - `workplane/src/adapters/fake.js`
+-  - `workplane/src/registry/load.js`
+-  - `workplane/src/registry/schema.js`
+-  - `workplane/registry/*.yaml`
+-  - `workplane/tests/*.test.js`
+-- Registry schema files under `workplane/registry/schemas/*.schema.json` are placeholders; runtime validation currently lives in `workplane/src/registry/schema.js`.
+-
+-
+-## 1.1 Architect Iteration Revisions Incorporated
+-
+-This revision incorporates Architect review feedback before execution handoff:
+-
+-- PRD runtime fields become validator-required or explicitly nullable with documented reason in Phase 0.
+-- Workplane run/state data uses an ignored local state root before manifests/events are written.
+-- A formal `StateStore` interface is introduced before manifest/event and approval/lock implementation.
+-- File-backed state must define atomic write, append, compare-and-swap, and lease semantics before dispatch.
+-- SQLite reassessment moves to before safe dispatch, not after high-risk mutation gates.
+-- Adapter commands are split into adapter operations vs dispatchable workflow commands.
+-- All dispatch, including read-only dispatch, uses a versioned action request envelope.
+-- Adapter `approvals` and `locks` are observations only; Workplane-owned state is authoritative for authorization.
+-- Explicit user invocation is represented as a durable pre-authorization/consent event only when it binds exact runtime/workflow/action/target/payload hash and still passes policy gates.
+-
+-## 2. Objective
+-
+-Implement the full Workplane Runtime PRD as a safety-first control plane that can inventory, inspect, dispatch, pause, resume, audit, approve, lock, and recover work across Hermes, Claude Code Automations, career-ops, Whop-auto, SaaS Factory, and CallScore without collapsing their runtime boundaries.
+-
+-The implementation must progress through gated phases. Each phase must be independently testable and must fail closed for production, public, financial, credential, third-party-visible, or production-data mutations.
+-
+-## 3. RALPLAN-DR Summary
+-
+-### Principles
+-
+-1. **Control plane, not runtime merger:** Workplane orchestrates and records; it does not absorb business logic, secrets, or runtime state stores.
+-2. **Read-only and local-first before mutation:** Real adapters start with health/status/doctor. Dispatch is limited to safe commands until manifest, lock, and approval gates are proven.
+-3. **Exact consent for exact payloads:** Any high-risk action requires a durable approval bound to runtime, workflow, action, target, canonical payload hash, expiry, and actor.
+-4. **Observable uncertainty beats fake success:** Offline, unknown, divergent, or partially observed states are first-class terminal/blocked states, never coerced into success.
+-5. **SaaS Factory safety is runtime-enforced:** Sealed/private/shared/control surfaces, reveal gates, and traces must be enforced by code and substrate checks before sealed cycles run.
+-6. **Workplane state authorizes; adapters only observe:** Runtime adapters may report local approvals/locks/status, but only Workplane-owned policy, approval, lock, and run state can authorize dispatch.
+-
+-### Top 3 Decision Drivers
+-
+-1. **Security and production safety:** The PRD governs public publishing, production deploys, credentials, money/credit spend, job applications, and production data mutations.
+-2. **Recoverability and auditability:** Every dispatched run must leave a manifest, event log, lock/approval history, final observation, and resume/divergence evidence.
+-3. **Heterogeneous runtime maintainability:** Hermes, workflow folders, career-ops, whop-auto, CallScore, and SaaS Factory have different hosts, languages, credentials, and state models; Workplane must wrap them through contracts rather than rewriting them.
+-
+-### Viable Options
+-
+-#### Option A — Continue with file-backed control plane, staged adapters, and later remote/Docker rollout
+-
+-**Approach:** Keep `workplane/` as the source module in this repo. Add stronger schemas, stores, manifests, locks, approvals, and adapter contracts locally first; then connect read-only real adapters; then add safe dispatch; then deploy `/srv/workplane` and runtime Docker boundaries.
+-
+-**Pros:**
+-- Builds directly on verified Stage 1.
+-- Minimizes immediate blast radius.
+-- Keeps tests local and deterministic before remote integration.
+-- Allows exact security gates before any mutation.
+-- Matches the PRD release plan and validation artifacts.
+-
+-**Cons:**
+-- Slower path to visible real-runtime automation.
+-- File-backed locks/approvals need careful constraints and may later migrate to SQLite/Postgres.
+-- Requires discipline to avoid treating fake status as live health.
+-
+-**Decision:** **Chosen.** This is the safest and most incremental route for a high-risk control plane.
+-
+-#### Option B — Introduce SQLite-backed Workplane state before real adapters
+-
+-**Approach:** Move run manifests, events, locks, approvals, and cached status into a local SQLite database early, while retaining registry YAML files for static inventory.
+-
+-**Pros:**
+-- More durable query model for approvals, locks, and run history.
+-- Better concurrency semantics than flat files.
+-- Easier future TUI/web/Hermes status queries.
+-
+-**Cons:**
+-- Adds migration/design overhead before adapter behavior is proven.
+-- Can obscure the simple file artifacts requested by the PRD unless mirrored/exported.
+-- More moving parts for Stage 2.
+-
+-**Decision:** **Viable later.** Use only after file-backed manifest/approval/lock semantics are proven and tests identify concrete concurrency pain.
+-
+-#### Option C — Build remote `/srv/workplane` and Docker stack layout first
+-
+-**Approach:** Provision remote stack directories, compose files, volumes, and healthchecks before adding richer local state/approval/lock engines.
+-
+-**Pros:**
+-- Surfaces deployment and runtime-boundary issues earlier.
+-- Aligns with long-term `/srv/workplane` target layout.
+-- Useful for always-on runtimes like SaaS Factory.
+-
+-**Cons:**
+-- Touches remote host, ports, volumes, secrets, and production-adjacent services before controls are ready.
+-- Risks turning Docker setup into the source of truth instead of registry/contract tests.
+-- Harder to validate without credentials or remote authority.
+-
+-**Decision:** **Rejected for near-term implementation.** Defer until real read-only adapters, manifests, and rollback/runbooks are test-proven.
+-
+-#### Option D — Start from Hermes chat integration
+-
+-**Approach:** Expose Workplane status/approval commands in Hermes first, and backfill Workplane internals as needed.
+-
+-**Pros:**
+-- Fast operator-visible value.
+-- Matches Hermes as the conversational control surface.
+-
+-**Cons:**
+-- Risks Hermes becoming ad hoc shell/control logic.
+-- Approval commands are unsafe without exact approval records, payload hashes, and policy gates.
+-- Violates the PRD principle that Hermes is a control surface, not the state owner.
+-
+-**Decision:** **Rejected for early phases.** Hermes should integrate after CLI/API approval and status contracts are safe.
+-
+-## 4. ADR
+-
+-### Decision
+-
+-Implement Workplane using **Option A**: a gated, file-backed, local-first control plane in `workplane/`, evolving from verified fake/read-only status into schema-backed manifests, policy/approval/lock engines, read-only real adapters, safe dispatch, remote deployment, Hermes integration, and finally SaaS Factory enforcement.
+-
+-### Drivers
+-
+-- Avoid production/security blast radius while building high-risk controls.
+-- Preserve runtime boundaries and existing state stores.
+-- Make every phase independently testable with deterministic local commands.
+-- Keep CLI and registry semantics authoritative before UI/Hermes/Docker layers.
+-
+-### Alternatives Considered
+-
+-- SQLite-first state engine: viable future migration, not first because file artifacts and testable contracts should settle first.
+-- Docker-first rollout: rejected until controls exist.
+-- Hermes-first integration: rejected until approval/status commands are exact and non-shell.
+-
+-### Why Chosen
+-
+-The chosen route uses the verified Stage 1 contract as a safe foundation and adds only one risk class at a time: schemas, local state, locks/approvals, read-only real adapters, safe dispatch, remote rollout, Hermes, then SaaS Factory sealed execution.
+-
+-### Consequences
+-
+-- Workplane will initially feel conservative: many commands will report `blocked`, `unknown`, `unsupported_command`, or `approval_required` instead of acting.
+-- Additional engineering effort goes into test harnesses and safety gates before visible automation.
+-- File-backed state may need migration after concurrency requirements are proven.
+-
+-### Follow-ups
+-
+-- Run Architect and Critic review before implementation handoff.
+-- After Phase 4, reassess file-backed state vs SQLite/Postgres for lock/approval durability.
+-- Before any remote deployment, produce a separate rollout checklist and rollback plan.
+-
+-## 5. Exact Non-Goals
+-
+-These are explicitly out of scope for the implementation plan unless a later approved plan changes them:
+-
+-1. No polished web dashboard in early phases; CLI first, Hermes/TUI/web later.
+-2. No rewriting existing business workflows.
+-3. No merging all runtimes into one image, dependency tree, state store, or secrets scope.
+-4. No automatic secret migration or keychain/env rotation.
+-5. No live Whop/Vercel/GitHub/Telegram/Neon/Apollo/LinkedIn/Outlook/PhantomBuster/OpenRouter/Gemini calls in tests.
+-6. No mutating real runtime dispatch until manifests, locks, approvals, policy checks, and adapter allowlists are proven.
+-7. No public publish, production deploy, money spend, credential change, production data mutation, or third-party-visible action without exact durable approval.
+-8. No SaaS Factory sealed-wave execution until thredOS/ThreadOS enforcement is implemented and tested.
+-9. No Hermes arbitrary shell execution.
+-10. No automatic job application submission.
+-11. No treating skill plugins, especially `agent_workflows/frontend-backend-integration/`, as runtimes without independent lifecycle/state/credentials/side-effect justification.
+-12. No claiming `health: ok` for fake, cached, skipped, or unobserved runtime checks.
+-13. No storing raw secrets, private `.env` values, CV content, private stakeholder notes, raw emails, or sensitive full payloads in logs, manifests, approval records, Hermes messages, or summaries.
+-
+-## 6. Phased Implementation Plan
+-
+-### Phase 0 — Contract hardening and implementation baseline
+-
+-**Goal:** Turn the verified Stage 1 skeleton into an authoritative contract baseline before adding runtime behavior.
+-
+-**Primary files/resources:**
+-- `workplane/package.json`
+-- `workplane/src/cli.js`
+-- `workplane/src/registry/schema.js`
+-- `workplane/src/registry/load.js`
+-- `workplane/registry/schemas/*.schema.json`
+-- `workplane/tests/*.test.js`
+-- `workplane/README.md`
+-
+-**Work:**
+-1. Make every PRD-required runtime field executable in validation: `id`, `name`, `status`, `class`, `source_repo`, `local_path`, `remote_path`, `host`, `docker_stack_path`, `systemd_unit`, `owner`, `purpose`, `allowed_commands`, `default_run_mode`, `state_paths`, `artifact_paths`, `log_paths`, `secrets_scope`, `healthcheck`, `dispatch_adapter`, `runbook`, and `notes`. Fields may be `null` only when the schema/validator explicitly permits null and the runtime entry documents why.
+-2. Split runtime command metadata into two concepts before `run` exists:
+-   - **adapter operations**: `health`, `status`, `doctor`, `logs`, `artifacts`, `approvals`, `locks`; these inspect or report.
+-   - **dispatchable workflow commands**: commands that can be run through preflight and manifests, each with side-effect class, required locks, and approval policy.
+-3. Decide whether to keep dependency-free hand validation for Phase 0/1 or introduce a JSON Schema validator such as Ajv. Prefer no new dependency unless schema files become executable immediately.
+-4. Replace placeholder schema files with authoritative JSON Schemas, or keep them explicitly non-authoritative and test that `schema.js` is the only executable validator.
+-5. Add explicit status/health/run-terminal-state enums shared by CLI, manifest, and adapter tests.
+-6. Add fixture coverage for every PRD-required runtime, workflow, resource, policy, approval, lock, run, and event field.
+-7. Document Stage 1 known-safe limits: fake adapter, no live health, no mutation, no remote commands.
+-
+-**Acceptance criteria:**
+-- Registry validation still passes for the known Workplane inventory.
+-- Invalid entries fail with actionable error paths.
+-- All PRD-required runtime fields are required or explicitly nullable with documented reason.
+-- Adapter operations and dispatchable workflow commands are no longer conflated.
+-- Schema placeholders are no longer ambiguous.
+-- Tests prove fake/cached status cannot masquerade as live `ok`.
+-
+-**Verification:**
+-- `cd workplane && npm test`
+-- `cd workplane && npm run validate`
+-- `cd workplane && npm run status`
+-
+-### Phase 1 — StateStore, run manifest, and event log engine
+-
+-**Goal:** Define Workplane-owned state and make every future dispatch auditable before any real dispatch exists.
+-
+-**Primary files/resources:**
+-- `workplane/src/state/*` new module boundary
+-- `workplane/src/runs/*` new module boundary
+-- `workplane/src/events/*` new module boundary
+-- `workplane/registry/schemas/run.schema.json`
+-- `workplane/registry/schemas/event.schema.json`
+-- `workplane/tests/state-store.test.js`
+-- `workplane/tests/run-manifest.test.js`
+-- `workplane/tests/event-log.test.js`
+-- committed ignore rule for `workplane/.state/` plus tests using temp roots; never commit private run data
+-
+-**Work:**
+-1. Define a `StateStore` interface before persistence implementation:
+-   - `createRun`, `readRun`, `updateRunTerminalState`
+-   - `atomicAppendEvent`
+-   - `createApproval`, `compareAndSwapApproval`, `readApproval`, `listApprovals`
+-   - `acquireLease`, `renewLease`, `releaseLease`, `listLocks`
+-   - `writeArtifactRef`, `readArtifactRefs`
+-2. Define a local ignored state root such as `workplane/.state/` or configurable `WORKPLANE_STATE_ROOT`. Add a committed ignore rule for `workplane/.state/` so shared clones do not accidentally track runtime data. Tests must use temp directories. Do not write sensitive runtime state into tracked paths.
+-3. Implement file-backed state with explicit atomic semantics: temp-file write + fsync/rename for JSON records, append-only JSONL events, create-if-absent run IDs, lease files created atomically, and stale lease handling.
+-4. Implement run ID generation with collision-safe, timestamp-sortable IDs.
+-5. Implement `run.json`, `events.jsonl`, `summary.md`, and artifact reference helpers.
+-6. Add event writer with ordered append semantics and schema validation per event.
+-7. Add terminal state validation: `completed` requires final observation; `unknown_remote_state` is terminal but not success; `failed`, `blocked`, and `cancelled` record reasons.
+-8. Add redaction checks before manifest/event/summary writes.
+-9. Add a dry-run read-only status run command or internal harness that writes manifests/events without dispatching external work.
+-
+-**Acceptance criteria:**
+-- Workplane state root is local/ignored/configurable; tests prove temp-root isolation.
+-- File-backed store has documented atomicity and lease behavior.
+-- Every internal dry-run creates a valid `run.json` and `events.jsonl`.
+-- Event ordering constraints are enforced.
+-- Artifact entries are path references, not embedded blobs.
+-- Secret-looking values are rejected or redacted before persistence.
+-
+-**Verification:**
+-- Unit tests for StateStore atomic writes, event append, lease acquire/renew/release, manifest schema, event schema, event order, terminal states, redaction, artifact refs.
+-- CLI smoke test for a read-only/dry-run command that writes a manifest into a temp run root.
+-
+-### Phase 2 — Policy, approval, and lock engines
+-
+-**Goal:** Prove high-risk actions cannot bypass consent or resource collision controls using Workplane-owned StateStore authorization, not adapter self-authorization.
+-
+-**Primary files/resources:**
+-- `workplane/src/policy/*`
+-- `workplane/src/approvals/*`
+-- `workplane/src/locks/*`
+-- `workplane/registry/schemas/approval.schema.json`
+-- `workplane/registry/schemas/lock.schema.json`
+-- `workplane/tests/policy.test.js`
+-- `workplane/tests/approval.test.js`
+-- `workplane/tests/locks.test.js`
+-
+-**Work:**
+-1. Promote `canonicalPayloadHash`, `approvalMatchesAction`, and `locksConflict` out of registry validation into runtime policy modules backed by the `StateStore` interface.
+-2. Define the versioned action request envelope used by every future dispatch/preflight path, including read-only dispatch:
+-
+-```json
+-{
+-  "contract_version": "workplane.action.v1",
+-  "operation": "dispatch",
+-  "runtime_id": "...",
+-  "workflow_id": "...",
+-  "command": "...",
+-  "request_id": "...",
+-  "actor": "...",
+-  "dry_run": true,
+-  "side_effect_level": "read_only",
+-  "required_locks": [],
+-  "approval_ref": null,
+-  "payload_hash": "sha256:...",
+-  "timeout_ms": 30000,
+-  "observation_method": "status_after_dispatch"
+-}
+-```
+-
+-3. Implement approval/consent request creation with exact actor, expiry, side-effect/action class, runtime, workflow, action, target, canonical payload hash, risk class, and requested/approved timestamps.
+-4. Implement approval queue read APIs and CLI list/detail commands.
+-5. Implement approve/reject command logic locally but require explicit approval IDs and no live external mutation.
+-6. Implement lock acquisition/release/check with process-safe leases, stale detection, max concurrency, and high-risk forced-release representation.
+-7. Enforce preflight order: normalize raw `run` intent into the versioned action envelope → validate envelope shape → validate registry → resolve runtime/workflow → policy classify → check actor/consent/approval requirement → check/acquire locks → create manifest events → only then dispatch.
+-8. Add read-only mode blockers for `approve`, `reject`, `unlock`, `run`, `pause`, `resume`, and `cancel`.
+-9. Reassess file-backed StateStore vs SQLite before Phase 6 dispatch: if atomic lease/approval semantics cannot be proven under concurrent tests, switch to SQLite before dispatch is enabled.
+-
+-**Acceptance criteria:**
+-- High-risk policy classes cannot set `approval_required: false`.
+-- Approval reuse fails if actor authority, side-effect/action class, runtime, workflow, action, target, payload hash, status, or expiry differ.
+-- Expired/superseded/rejected approvals cannot authorize actions.
+-- Exclusive resources cannot be concurrently acquired.
+-- Stale locks are visible but forced release is represented as high-risk, not automatic.
+-
+-**Verification:**
+-- Unit tests for every side-effect class, actor/expiry/action-class approval matching, and exact consent payload reuse.
+-- Property/fuzz-style tests for canonical payload hashing key order and nested structures.
+-- CLI smoke tests for `approvals`, `locks`, read-only blockers, and invalid approval IDs.
+-
+-### Phase 3 — Versioned adapter envelopes and capability discovery
+-
+-**Goal:** Define adapter response/capability contracts after the Phase 2 action envelope exists and before real adapters or CLI `run` paths exist.
+-
+-**Work:**
+-1. Consume the Phase 2 `workplane.action.v1` request envelope for any dispatch-capable adapter operation.
+-2. Define adapter response envelope:
+-
+-```json
+-{
+-  "contract_version": "workplane.adapter.v1",
+-  "runtime_id": "...",
+-  "operation": "status",
+-  "status": "ok|blocked|failed|unsupported_command|unknown_remote_state",
+-  "health": "ok|degraded|blocked|unknown",
+-  "terminal_state": null,
+-  "live_checked": false,
+-  "redactions_applied": true,
+-  "artifacts": [],
+-  "logs_ref": null,
+-  "final_observation": null,
+-  "resume_points": [],
+-  "errors": []
+-}
+-```
+-
+-3. Define capability discovery: adapters expose supported operations, dispatchable commands, side-effect declarations, timeout defaults, idempotency support, and observation methods.
+-4. Require idempotency keys/request IDs for dispatch-capable operations.
+-5. Prohibit adapters from deciding approval sufficiency. They may surface observed runtime approvals/locks, but Workplane StateStore is authoritative for authorization.
+-
+-**Acceptance criteria:**
+-- All adapter tests use versioned envelopes.
+-- Read-only dispatch and future high-risk dispatch consume the same Phase 2 action envelope.
+-- Adapter `approvals`/`locks` operations are clearly observation-only.
+-- Unsupported operations return structured `unsupported_command`, never shell fallback.
+-
+-### Phase 4 — Complete CLI surface with safe default behavior
+-
+-**Goal:** Implement the PRD CLI contract while all mutating commands remain preflight-gated.
+-
+-**Primary files/resources:**
+-- `workplane/src/cli.js` or split into `workplane/src/cli/*.js`
+-- `workplane/bin/workplane.js`
+-- `workplane/tests/cli.test.js`
+-- `workplane/README.md`
+-
+-**Work:**
+-1. Add commands: `runtime <id>`, `workflows`, `logs <runtime-or-run-id>`, `artifacts <run-id>`, `approvals`, `approve <id>`, `reject <id>`, `locks`, `unlock <resource-id>`, `doctor --read-only`.
+-2. Add `run <runtime> <command>` only after Phase 3 envelopes exist. Every `run` invocation must normalize into a versioned action envelope before any validation, dry-run, manifest, or adapter call. Unsafe operations return `approval_required`, `locks_unavailable`, or `unsupported_command`; there is no pre-envelope dispatch path.
+-3. Add machine-readable JSON output mode and human-readable summary mode.
+-4. Add path-safe resolution for local Windows/WSL paths and remote path metadata without executing remote shell.
+-5. Add consistent error codes and exit codes.
+-
+-**Acceptance criteria:**
+-- CLI works from `workplane/` and WSL path context.
+-- Read-only commands never mutate state except optional temp/test run manifests when explicitly requested.
+-- Unsupported commands never fall back to arbitrary shell.
+-- Status returns within 5 seconds using fake/cached status.
+-
+-**Verification:**
+-- CLI smoke tests for every required command.
+-- Snapshot/shape tests for JSON output.
+-- Negative tests for arbitrary command injection, missing args, invalid IDs, path traversal, read-only blockers.
+-
+-### Phase 5 — Adapter interface and real read-only adapters
+-
+-**Goal:** Replace fake-only status with adapter-backed `health`, `status`, and `doctor --read-only` for selected runtimes, without dispatch mutation.
+-
+-**Primary files/resources:**
+-- `workplane/src/adapters/contract.js`
+-- `workplane/src/adapters/fake.js`
+-- `workplane/src/adapters/local-path.js`
+-- `workplane/src/adapters/hermes.js` or `hermes-readonly.js`
+-- `workplane/src/adapters/whop-auto.js`
+-- `workplane/src/adapters/career-ops.js`
+-- `workplane/src/adapters/callscore.js`
+-- `workplane/src/adapters/saas-factory.js`
+-- `workplane/tests/adapters/*.test.js`
+-
+-**Work:**
+-1. Implement the versioned adapter envelopes from Phase 3 for all commands: `health`, `status`, `dispatch`, `pause`, `resume`, `cancel`, `logs`, `artifacts`, `approvals`, `locks`, `doctor`.
+-2. Require capability discovery and allowlisted command implementations. Unsupported commands return `unsupported_command`.
+-3. Add redaction at adapter boundaries for env-like and token-like data.
+-4. Implement local read-only probes:
+-   - Claude Code Automations: path exists, registry/workflow count, dirty-state metadata if safe.
+-   - Whop-auto: package metadata, Node version compatibility, command availability; no Whop/Vercel/GitHub calls.
+-   - SaaS Factory: prompt pack/readiness artifact presence; sealed execution remains blocked.
+-5. Implement remote read-only adapter stubs behind an explicit disabled-by-default flag for Hermes/career-ops/CallScore; no SSH by default in tests.
+-6. Add cached/offline status file support so unavailable runtimes produce structured `unknown` or `degraded` responses.
+-
+-**Acceptance criteria:**
+-- At least three runtimes return adapter-backed live/local read-only health without external mutation.
+-- Missing paths, missing commands, or unavailable hosts return structured errors and do not crash aggregate status.
+-- Adapter output never includes secret values.
+-- Fake adapter remains available for fixtures/tests.
+-
+-**Verification:**
+-- Adapter contract tests with fake/local fixtures.
+-- Redaction tests using synthetic secret-looking data.
+-- Offline/unavailable adapter tests.
+-- `workplane status --read-only` with mixed fake/local adapters.
+-
+-### Phase 6 — Safe dispatch and run lifecycle for read-only workflows
+-
+-**Goal:** Dispatch only safe read-only commands through Workplane and prove manifest/event lifecycle end-to-end.
+-
+-**Primary files/resources:**
+-- `workplane/src/dispatch/*`
+-- `workplane/src/preflight/*`
+-- `workplane/src/runs/*`
+-- `workplane/src/adapters/*`
+-- `workplane/tests/dispatch.test.js`
+-- `workplane/tests/lifecycle.test.js`
+-
+-**Work:**
+-1. Implement dispatch preflight pipeline as a pure, testable function over the versioned action request envelope from Phase 3.
+-2. Implement safe commands first: `whop-status` dry/read-only, `saas-factory readiness`, `claude-code index-workflows`, `career-ops scan --dry-run` only if actual runtime supports dry-run safely, `callscore pipeline-status` read-only only when no database mutation occurs.
+-3. Dispatch writes run manifest and event log before, during, and after adapter call.
+-4. Capture logs/artifacts as references.
+-5. Implement resume-point recording for adapters that can declare safe resume points.
+-6. Implement timeout and unknown-outcome handling.
+-
+-**Acceptance criteria:**
+-- At least one safe workflow can be dispatched through Workplane.
+-- Every dispatched run creates manifest/events/summary.
+-- `unknown_remote_state` is used when final observation cannot be verified.
+-- Mutating commands are blocked unless policy/approval/lock gates pass; initially most remain blocked.
+-
+-**Verification:**
+-- End-to-end tests with fake adapters and temp run roots.
+-- Integration smoke tests for one local read-only runtime.
+-- Negative tests for mutating command attempts without approval/locks.
+-
+-### Phase 7 — Mutating action gate, approvals, and exact-consent dispatch
+-
+-**Goal:** Allow tightly controlled high-risk dispatch only in mocked/local harness first, then selected low-risk real paths after review.
+-
+-**Primary files/resources:**
+-- `workplane/src/policy/*`
+-- `workplane/src/approvals/*`
+-- `workplane/src/locks/*`
+-- `workplane/src/dispatch/*`
+-- `workplane/tests/security-gates.test.js`
+-
+-**Work:**
+-1. Extend/reuse the Phase 2 action request envelope with runtime, workflow, command, target, payload, side-effect class, expected artifacts, rollback/observation method.
+-2. Require canonical payload hash at approval request and dispatch time.
+-3. Require lock acquisition before dispatch for declared resources.
+-4. Add approval invalidation when payload changes.
+-5. Add explicit divergence state when external mutation is dispatched but observation fails.
+-6. Implement first real low-risk mutation only if it writes inside a Workplane temp/local run root; no third-party mutation in this phase.
+-7. Produce security review checklist output as part of CI/local verification.
+-
+-**Acceptance criteria:**
+-- No high-risk action can dispatch without exact approval and active locks.
+-- External mutation events cannot be written unless approval and policy gates are satisfied.
+-- Approval and lock histories attach to run manifests.
+-- Explicit user invocation of high-risk work creates a durable pre-authorization/consent event only when actor, expiry, side-effect/action class, exact runtime, workflow, action, target, and canonical payload hash are recorded; invocation text alone is never invisible consent.
+-- Payload hashes are stable and exact.
+-
+-**Verification:**
+-- Full policy matrix tests.
+-- Mutation-gate tests against fake adapters.
+-- Security review pass before any real external adapter mutation is introduced.
+-
+-### Phase 8 — Remote Workplane deployment and Docker/runtime boundaries
+-
+-**Goal:** Prepare `/srv/workplane` layout and runtime stack boundaries without disrupting current services.
+-
+-**Primary files/resources:**
+-- `workplane/deploy/*` or `workplane/stacks/*`
+-- `workplane/docs/runbooks/*.md`
+-- Runtime stack templates for career-ops, whop-auto, SaaS Factory skeleton
+-- `workplane/tests/deploy-fixtures.test.js`
+-
+-**Work:**
+-1. Write deployment design/runbook before touching remote host.
+-2. Add stack templates only; do not bring up public ports or production containers without separate approval.
+-3. Define `/srv/workplane/{registry,runs,logs,artifacts,stacks}` layout.
+-4. Add `.env.example`, `secrets.example.md`, healthcheck, adapter, volumes, logs, artifacts, rollback/runbook for each stack.
+-5. Preserve existing runtime paths until migration is explicitly approved.
+-6. Add remote drift checks for local source vs deployed remote copy.
+-
+-**Acceptance criteria:**
+-- Templates validate locally.
+-- No image contains secrets.
+-- State/log/artifact volumes are explicit.
+-- Rollback/restart procedure exists for each target runtime.
+-- Remote deployment remains a separate approval-gated operational step.
+-- At least one local read-only adapter and one remote-drift/readiness fixture pass before stack templates are treated as deployable.
+-
+-**Verification:**
+-- Static validation of compose/runbook templates.
+-- Shellcheck/parse checks where applicable.
+-- No live Docker/systemd/SSH in default tests.
+-
+-### Phase 9 — Hermes integration as control surface
+-
+-**Goal:** Let Hermes display status and approval prompts while Workplane remains state owner.
+-
+-**Primary files/resources:**
+-- Hermes adapter or command bridge docs under `workplane/docs/hermes-integration.md`
+-- Workplane CLI/API command wrapper
+-- Tests with fake Hermes message payloads
+-
+-**Work:**
+-1. Define Hermes command mapping: status, runtimes, approvals, approve/reject by exact ID, safe run, logs.
+-2. Ensure Hermes calls Workplane CLI/API allowlisted commands only.
+-3. Require exact approval ID and payload hash summary for approval actions.
+-4. Redact all private/secret fields before Hermes output.
+-5. Add duplicate-poller/command idempotency protections if Hermes dispatches messages into Workplane.
+-
+-**Acceptance criteria:**
+-- Hermes cannot execute arbitrary shell.
+-- Hermes cannot approve without exact approval ID.
+-- Hermes output contains redacted summaries and references only.
+-- Workplane, not Hermes, stores approvals/runs/locks.
+-
+-**Verification:**
+-- Command mapping unit tests.
+-- Redaction tests for Hermes-formatted summaries.
+-- Negative tests for arbitrary shell, missing approval ID, mismatched payload summary.
+-
+-### Phase 10 — Runtime-specific adapter expansion
+-
+-**Goal:** Add richer adapters without violating each runtime boundary.
+-
+-**Runtime slices:**
+-1. **Claude Code Automations:** workflow index/drift, skill-vs-runtime classification, local/remote repo metadata.
+-2. **Whop-auto:** read-only status, then consent-preserving deploy/adopt gates; Node 20 boundary; no desktop keychain dependency in production.
+-3. **Career-ops:** scan/pipeline/tracker/pdf read-only or draft flows; human-in-the-loop apply/followup.
+-4. **CallScore:** Vercel app status, worker status, Neon pipeline jobs read-only, production data mutation as high-risk separate action.
+-5. **Hermes:** status and approval surface only.
+-6. **SaaS Factory:** readiness, non-sealed dry-runs, then blocked sealed-cycle gate until enforcement proof.
+-
+-**Acceptance criteria:**
+-- Adapter-specific runbooks define commands, side effects, secrets scope, logs, artifacts, healthcheck, rollback, and failure modes.
+-- Each adapter has contract tests and offline tests.
+-- Real mutating commands remain disabled until adapter-specific security review passes.
+-
+-**Verification:**
+-- Per-adapter test suites.
+-- Runtime runbook review.
+-- Security checklist for each adapter before activation.
+-
+-### Phase 11 — SaaS Factory runtime enforcement
+-
+-**Goal:** Implement only the enforceable subset of SaaS Factory and keep sealed cycles blocked until substrate proof exists.
+-
+-**Primary files/resources:**
+-- `workplane/src/adapters/saas-factory.js`
+-- SaaS Factory phase/gate schemas
+-- thredOS/ThreadOS readiness contract docs/tests
+-- Trace/artifact manifest integration
+-
+-**Work:**
+-1. Define readiness proof contract for thredOS/ThreadOS: control/private/shared/sealed surfaces, reveal gate, trace store, artifact isolation, worker pool boundary.
+-2. Implement non-sealed dry-run phases 0-4 with manifests and events only.
+-3. Implement gate records and reveal approval request structures.
+-4. Add launch handoff bridge records to Whop/growth/deploy runtimes as approval-gated outputs, not direct mutations.
+-5. Keep Band B/full sealed cycles blocked until enforcement tests pass.
+-
+-**Acceptance criteria:**
+-- Prompt-only isolation cannot pass readiness.
+-- Reveal requires gate pass and exact approval.
+-- Phase 12 commercial actions remain drafts unless separately approved.
+-- Runtime logs/traces are sufficient to replay candidate selection.
+-
+-**Verification:**
+-- Readiness proof tests.
+-- Negative tests for prompt-only sealed claims.
+-- Non-sealed dry-run e2e with manifests/events.
+-- Reveal approval and trace replay tests.
+-
+-### Phase 12 — Operator UI/TUI/web layer
+-
+-**Goal:** Add a UI only after CLI/Hermes contracts are safe.
+-
+-**Work:**
+-1. Decide minimal UI: TUI vs web dashboard vs Telegram-only enhancement.
+-2. Consume Workplane CLI/API JSON outputs; do not create a second state model.
+-3. Display runtimes, runs, locks, approvals, artifacts, recent errors, and unknown/divergent states.
+-
+-**Acceptance criteria:**
+-- UI cannot bypass CLI/API policy gates.
+-- UI uses redacted summaries and references.
+-- Dashboard failure does not block runtimes or CLI.
+-
+-**Verification:**
+-- UI contract tests against JSON fixtures.
+-- Visual/browser verification if web UI is built.
+-
+-## 7. Dependencies and Sequencing
+-
+-### Hard dependencies
+-
+-- Phase 1 depends on Phase 0 contract clarity.
+-- Phase 2 depends on stable policy/side-effect enums from Phase 0 and StateStore from Phase 1.
+-- Phase 3 adapter envelopes depend on the Phase 2 action envelope and policy/approval/lock semantics.
+-- Phase 4 CLI `run` depends on Phase 3 envelopes; no `run` path exists before envelope normalization.
+-- Phase 5 real read-only adapters depend on Phase 3 adapter envelopes.
+-- Phase 6 safe dispatch depends on Phase 1 manifests, Phase 2 policy/lock/approval preflight, and Phase 3 envelopes.
+-- Phase 7 exact-consent mutation depends on Phase 6 dispatch lifecycle and Phase 2 approvals/locks.
+-- Phase 8 remote/Docker rollout depends on at least one real read-only adapter and runbook/rollback docs.
+-- Phase 9 Hermes integration depends on CLI/API status and approval commands.
+-- Phase 11 SaaS Factory sealed execution depends on thredOS/ThreadOS enforcement proof, not just prompt packs.
+-
+-### Suggested state-store evolution
+-
+-1. **Now:** file-backed registries and test temp dirs.
+-2. **Phase 1:** define `StateStore` and file-backed atomic semantics against an ignored/configurable state root.
+-3. **Phase 2:** prove file-backed approval/lock concurrency with adversarial tests.
+-4. **Before Phase 6 dispatch:** decide whether file-backed StateStore is sufficient or SQLite is required for lease/approval durability.
+-5. **Only later:** consider Postgres/Neon/FalkorDB if multi-host or query-heavy use justifies it.
+-
+-## 8. Expanded Test Plan
+-
+-### Unit tests
+-
+-- Registry validation: IDs, enums, required fields, duplicate detection, runtime/workflow/resource references.
+-- JSON Schema/reference schema validity if schemas become authoritative.
+-- Payload hash canonicalization for nested objects, arrays, key ordering, unicode, nulls.
+-- Approval match/invalidation matrix.
+-- Lock conflict, stale lock, max concurrency, lease renewal, expiry policy.
+-- Redaction of env vars, API keys, tokens, credential-looking values.
+-- Adapter contract result validation.
+-- Event ordering and terminal state rules.
+-
+-### Integration tests
+-
+-- CLI command smoke tests for all PRD commands.
+-- Manifest/event creation in temp run roots.
+-- Preflight pipeline from registry resolution to policy to locks to manifest to fake adapter.
+-- Mixed adapter status aggregation where some adapters are fake, unavailable, unsupported, or local-read-only.
+-- Read-only mode blockers for every mutating command.
+-- Runtime-specific local probes for Claude Code Automations, Whop-auto package metadata, SaaS Factory readiness artifacts.
+-
+-### End-to-end tests
+-
+-- `workplane validate registry` → `workplane status --read-only` → safe dry-run dispatch via fake adapter → inspect logs/artifacts/manifest.
+-- Approval request → approve exact ID → dispatch fake high-risk action → event log records approval and mutation dispatch/observation.
+-- Approval request → mutate payload → dispatch fails and requires new approval.
+-- Lock acquisition → conflicting workflow dispatch fails → stale lock visibility → forced release represented as approval-gated action.
+-- SaaS Factory non-sealed dry-run phases 0-4 with gate records and no reveal/sealed claims.
+-
+-### Security tests
+-
+-- No secret values in CLI stdout/stderr, manifests, events, summaries, approval records, lock records, cached statuses, adapter errors, Hermes summaries.
+-- No arbitrary shell execution through CLI runtime IDs, workflow IDs, paths, Hermes command strings, or adapter command names.
+-- Registry path traversal blocked.
+-- Remote commands disabled by default in tests and require explicit allowlist.
+-- Missing credentials fail closed.
+-- High-risk policy cannot be downgraded by registry entry.
+-- Public/production/money/credential/third-party/prod-data mutations blocked without exact active approval.
+-
+-### Observability tests
+-
+-- Status distinguishes `ok`, `degraded`, `blocked`, `unknown`.
+-- Final run statuses distinguish `completed`, `failed`, `blocked`, `cancelled`, `unknown_remote_state`, and divergence.
+-- `workplane status` target remains under 5 seconds with cached/unavailable runtimes.
+-- Logs/artifacts commands return references, not embedded sensitive payloads.
+-- Doctor output separates shallow read-only checks from deep/live checks.
+-
+-### Manual review gates
+-
+-- Security review before any real adapter mutation.
+-- Runtime maintainer review for each adapter runbook.
+-- Remote deployment review before Docker/systemd/SSH changes.
+-- SaaS Factory enforcement review before sealed cycles.
+-
+-## 9. Safety Gates
+-
+-1. **Gate A — Schema/registry:** All registries validate; known bad fixtures fail.
+-2. **Gate B — Read-only status:** Aggregate status tolerates fake/offline/unavailable adapters without mutation.
+-3. **Gate C — Manifest/event:** No dispatch path exists without run manifest and event writer.
+-4. **Gate D — Policy/approval/lock:** High-risk actions blocked without exact approval and required locks.
+-5. **Gate E — Adapter contract:** Real adapters pass contract, redaction, offline, unsupported-command tests.
+-6. **Gate F — Safe dispatch:** Only read-only or local-write-safe commands dispatch; every run produces final observation or documented terminal stop.
+-7. **Gate G — Security review:** No critical/high findings before real external mutation.
+-8. **Gate H — Remote rollout:** Runbook, rollback, volumes, secrets scope, and healthcheck exist before `/srv/workplane` changes.
+-9. **Gate I — Hermes integration:** Hermes maps to Workplane allowlisted commands only.
+-10. **Gate J — SaaS Factory enforcement:** Sealed cycles remain blocked until thredOS/ThreadOS enforcement tests pass.
+-
+-## 10. Pre-Mortem
+-
+-### Scenario 1 — Approval bypass causes production/public mutation
+-
+-**Failure story:** A Whop deploy, Vercel deploy, LinkedIn send, public publish, or CallScore production data recompute dispatches because an adapter trusts a CLI flag or stale approval instead of the exact policy engine.
+-
+-**Preventive controls:**
+-- Central preflight pipeline is the only dispatch entrypoint.
+-- Adapter cannot self-authorize high-risk commands.
+-- Exact approval match includes runtime, workflow, action, target, payload hash, status, and expiry.
+-- Event writer rejects `external_mutation_dispatched` without approval evidence for high-risk classes.
+-- Tests cover stale, expired, mismatched, and changed-payload approvals.
+-
+-**Detection:**
+-- Security-gate tests fail.
+-- Run manifest lacks approval record and cannot validate.
+-- Audit report flags high-risk mutation without matching approval.
+-
+-### Scenario 2 — Workplane leaks secrets or private data
+-
+-**Failure story:** Adapter logs, Hermes messages, run summaries, approval human summaries, or cached statuses include `.env` values, API tokens, CV/private job data, stakeholder notes, or raw runtime payloads.
+-
+-**Preventive controls:**
+-- Redaction module at adapter boundary and before persistence/output.
+-- Store references and hashes instead of raw sensitive payloads.
+-- Tests inject synthetic secrets into adapter errors/stdout/payloads.
+-- Hermes summaries are metadata-only.
+-
+-**Detection:**
+-- Secret-pattern tests fail.
+-- Security review checks manifests/events/summaries/CLI/Hermes fixtures.
+-- CI grep-style synthetic secret scanners run against generated test artifacts.
+-
+-### Scenario 3 — Runtime boundary collapse creates operational contamination
+-
+-**Failure story:** Workplane starts sharing dependencies, state folders, secrets, or job execution across Hermes, whop-auto, career-ops, CallScore, and SaaS Factory, causing drift, collisions, or accidental cross-runtime side effects.
+-
+-**Preventive controls:**
+-- Registry records source path, remote path, state paths, artifact paths, log paths, secrets scope, runbook, adapter.
+-- Runtime adapters are thin wrappers; business logic remains inside runtimes.
+-- Docker/runtime boundary rollout happens only after runbooks and rollback docs exist.
+-- Skill plugins remain non-runtime unless lifecycle/state/credentials/side effects justify promotion.
+-
+-**Detection:**
+-- Registry validation flags missing boundaries.
+-- Runtime-specific readiness tests fail.
+-- Run manifests show artifacts/logs outside declared runtime paths.
+-
+-### Scenario 4 — Unknown remote state is marked successful
+-
+-**Failure story:** Network timeout or adapter crash happens after a command is dispatched, but Workplane records success because the process exited or produced partial output.
+-
+-**Preventive controls:**
+-- Completion requires final observation.
+-- Unknown/divergent remote state is terminal but not success.
+-- Adapters declare observation method and safe resume points.
+-- Dispatch lifecycle records external mutation dispatch and observation separately.
+-
+-**Detection:**
+-- Event-order and terminal-state tests fail.
+-- Run summary shows `unknown_remote_state` or divergence and blocks follow-up mutation.
+-
+-### Scenario 5 — SaaS Factory sealed-wave safety is prompt-only theater
+-
+-**Failure story:** SaaS Factory claims sealed ideation tracks and reveals are safe because prompts say so, but no substrate enforces surfaces, trace isolation, or reveal gates.
+-
+-**Preventive controls:**
+-- Readiness proof contract requires code/substrate evidence.
+-- Prompt-only claims fail tests.
+-- Sealed cycles remain blocked until thredOS/ThreadOS enforcement passes.
+-- Reveal requires approval and gate pass.
+-
+-**Detection:**
+-- SaaS Factory readiness returns blocked.
+-- Negative tests reject missing sealed/private/shared/control surfaces.
+-
+-## 11. Staffing and Execution Handoff
+-
+-### Available agent-type roster
+-
+-- `planner`: maintain this plan, scope changes, acceptance criteria.
+-- `architect`: review boundaries, state-store evolution, adapter contract, remote rollout shape.
+-- `critic`: challenge risk controls, alternatives, testability, and non-goals.
+-- `executor`: implement bounded code slices.
+-- `test-engineer`: build test matrix and fixtures before/alongside implementation.
+-- `security-review`: review approvals, locks, secret handling, remote command safety.
+-- `code-reviewer`: review diffs after each phase.
+-- `debugger`: diagnose failing tests or adapter contract failures.
+-- `writer`: update README/runbooks/operator docs.
+-- `verifier`: independently confirm gates before phase promotion.
+-
+-### Recommended `$ralph` path
+-
+-Use for Phases 0-3 or any single cohesive phase where one owner should maintain contract consistency.
+-
+-Suggested reasoning levels:
+-- `executor`: medium/high for implementation.
+-- `test-engineer`: medium for fixtures and test cases.
+-- `security-review`: high before any policy/approval/lock gate promotion.
+-- `verifier`: high for final phase gate.
+-
+-Handoff instruction:
+-
+-```text
+-$ralph implement .omx/plans/workplane-runtime-full-implementation-plan.md starting with Phase 0 only. Do not proceed beyond the phase gate without fresh tests and review evidence.
+-```
+-
+-### Recommended `$team` path
+-
+-Use when implementing Phases 1-5 after Phase 0 is stable, because work can be split by disjoint modules.
+-
+-Suggested lanes:
+-1. **Manifest/events lane:** owns `workplane/src/runs/*`, `workplane/src/events/*`, and related tests.
+-2. **Policy/approvals/locks lane:** owns `workplane/src/policy/*`, `workplane/src/approvals/*`, `workplane/src/locks/*`, and related tests.
+-3. **CLI lane:** owns CLI command routing/output after core modules expose stable APIs.
+-4. **Adapter lane:** owns adapter contract/fake/local read-only adapters.
+-5. **Security/test lane:** owns adversarial fixtures, redaction tests, approval/lock bypass tests.
+-6. **Docs/runbook lane:** owns README, operator docs, phase gates, non-goals.
+-
+-Launch hint:
+-
+-```text
+-$team implement .omx/plans/workplane-runtime-full-implementation-plan.md with Phase 1-5 lanes only. Keep write scopes disjoint; no remote, Docker, SSH, or third-party API calls. Team must prove test, validate, status, security-gate, and manifest-gate evidence before shutdown.
+-```
+-
+-Team verification path:
+-- Each lane reports changed files, tests added, tests run, and unresolved risks.
+-- Security/test lane runs full local test suite and targeted adversarial tests.
+-- Verifier confirms no remote/live side effects occurred.
+-- Ralph or a single owner performs final integration pass after team merge.
+-
+-### Goal-mode follow-up suggestions
+-
+-- `$ultragoal` is the best durable goal-mode follow-up for tracking the full multi-phase Workplane implementation to completion.
+-- `$performance-goal` is not appropriate until the status/doctor surface has real latency constraints beyond the PRD's `<5s` status target.
+-- `$autoresearch-goal` is not appropriate unless the next task becomes researching thredOS/ThreadOS substrate enforcement or state-store alternatives.
+-
+-## 12. Phase Promotion Checklist
+-
+-A phase is not complete until all are true:
+-
+-- Tests for the phase pass from `workplane/`.
+-- `npm run validate` passes if registries are touched.
+-- `npm run status` remains safe/read-only until dispatch phases intentionally add gated writes.
+-- New commands have positive and negative CLI tests.
+-- Security-sensitive behavior has adversarial tests.
+-- README/runbook docs describe implemented behavior and still-deferred behavior.
+-- No secrets or private payloads are emitted in test fixtures/artifacts.
+-- Known failures are represented as `blocked`, `failed`, `unknown`, `unknown_remote_state`, or `unsupported_command`, not success.
+-
+-## 13. Initial Implementation Slice Recommendation
+-
+-Start with **Phase 0 + Phase 1 only**.
+-
+-Reason:
+-- Stage 1 is verified but schema files are placeholders and manifests/events are the next prerequisite for any dispatch.
+-- This keeps the first actual implementation slice local, reversible, and testable.
+-- It avoids prematurely introducing locks/approvals before run evidence exists, and avoids any remote/live side effects.
+-
+-Minimum first-slice deliverables:
+-1. Schema/validator clarity for existing registry files.
+-2. Manifest/event modules with temp-root tests.
+-3. Dry-run read-only run manifest path.
+-4. Redaction before persistence/output.
+-5. README update documenting what is still fake/read-only.
+-
+-Minimum first-slice verification:
+-
+-```bash
+-cd workplane
+-npm test
+-npm run validate
+-npm run status
+-```
+-
+-## 14. Open Questions to Resolve Before Later Phases
+-
+-These do not block Phase 0/1, but they must be answered before the named gates:
+-
+-- Before Phase 5/6: Which first real read-only runtime adapter should be promoted from fake status: Claude Code Automations local, Whop-auto local, or Hermes remote read-only?
+-- Before Phase 9: What is the first allowed real mutating action, if any, and what rollback/observation method proves it completed safely?
+-- Before Phase 9: Is `/srv/workplane` the canonical remote root, or should existing `/srv/agents` paths remain canonical with Workplane pointers?
+-- Before Phase 9: What operator approval process authorizes Docker/systemd/SSH changes on `hermes-agent-box`?
+-- Before Phase 9: Should Hermes invoke CLI commands, call a local API, or use both?
+-- Before Phase 11: What concrete thredOS/ThreadOS APIs or filesystem/process boundaries prove sealed/private/shared/control surface enforcement?
+-- Before UI work: Is the minimal UI Telegram-only, TUI, or web dashboard?
+-
+-## 15. Changelog / Planner Notes
+-
+-- Incorporated verified Stage 1 facts from current local test/validate/status runs.
+-- Expanded the PRD MVP sequence into gated engineering phases.
+-- Chose local file-backed staged implementation and rejected Docker-first/Hermes-first starts for safety.
+-- Added deliberate-mode pre-mortem and expanded unit/integration/e2e/security/observability test plan.
+-- Preserved exact non-goals around secrets, approvals, Hermes shell execution, production mutation, SaaS Factory sealed cycles, and workflow/runtime classification.
+-
+-- Moved versioned action/adapter envelopes before CLI `run` to eliminate any pre-envelope dispatch path.
+-- Tightened durable consent event requirements to include actor, expiry, side-effect/action class, exact target identity, and payload hash.
+-- Required a committed ignore rule for `workplane/.state/` instead of local-only exclude.
+-- Fixed final architect blockers: envelope-before-validation ordering, approval/consent field consistency, and phase dependency numbering.
+-- Moved action envelope definition into Phase 2 to remove the Phase 2/Phase 3 sequencing cycle.

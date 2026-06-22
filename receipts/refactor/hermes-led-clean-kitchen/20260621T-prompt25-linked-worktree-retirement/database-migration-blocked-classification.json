@@ -1,0 +1,17 @@
+{
+  "path": "/srv/agents/database-migration",
+  "classification": "BLOCKED_NEEDS_OPERATOR_APPROVAL",
+  "reason": "DB/migration protected data; no explicit operator approval to delete in current prompt",
+  "size_bytes": 878132059,
+  "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+  "active_reference_check": {
+    "path": "/srv/agents/database-migration",
+    "process_refs": [],
+    "docker_refs": [],
+    "systemd_refs": [],
+    "cron_refs": [],
+    "compose_refs": [],
+    "active_ref_files": []
+  },
+  "exists_after": true
+}

@@ -1,0 +1,22 @@
+--- active/tests/page-pricing-shape.test.ts
++++ pre-canonical-20260526T063909Z/tests/page-pricing-shape.test.ts
+@@ -17,18 +17,8 @@
+   assert.match(src, /tab:grid-cols-3|desk:grid-cols-3|grid-cols-3/);
+ });
+ 
+-test("/pricing keeps the feature matrix table with the target-price boundary", () => {
++test("/pricing keeps the feature matrix table with 12 features", () => {
+   assert.match(src, /const FEATURES/);
+-  assert.equal((src.match(/free: "/g) ?? []).length, 13);
+-  assert.match(src, /Creator profiles \+ call-history summaries/);
+-  assert.match(src, /Target prices in call history/);
+-  assert.match(src, /Pro unlocks target prices|Pro adds target\s+prices/);
+-  assert.match(src, /Alpha adds(?: the Backtest Lab,)? API keys,\s+webhook delivery logs, and advanced signal workflows/);
+-});
+-
+-test("/pricing presents only the 90d recent-context filter as a paid feature", () => {
+-  assert.match(src, /90-day recent-context filter/);
+-  assert.doesNotMatch(src, /Recent-performance filters \(30\/90d\)|30\/90d planned|Recent-performance filter \(30\/90d planned\)/);
+ });
+ 
+ test("/pricing does not use the `cat /docs/pricing.md` terminal-prompt header", () => {

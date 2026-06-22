@@ -1,0 +1,280 @@
+{
+  "timestamp_utc": "2026-06-22T08:55:15Z",
+  "toolbox_status": {
+    "status_check_performed": true,
+    "servers": [
+      {
+        "server": "aparajithn-agent-utils",
+        "name": "Developer Utilities",
+        "state": "connected"
+      },
+      {
+        "server": "elbpr-thinking-toolkit",
+        "name": "thinking-toolkit",
+        "state": "connected"
+      },
+      {
+        "server": "linxule-lotus-wisdom-mcp",
+        "name": "Lotus Wisdom",
+        "state": "connected"
+      },
+      {
+        "server": "node2flow-postgrest",
+        "name": "PostgREST",
+        "state": "connected"
+      },
+      {
+        "server": "salrad-code-sentinel",
+        "name": "Code Sentinel",
+        "state": "connected"
+      },
+      {
+        "server": "upstash-context7-mcp",
+        "name": "Context7",
+        "state": "connected"
+      },
+      {
+        "server": "useagents-useagents",
+        "name": "UseAgents",
+        "state": "connected"
+      },
+      {
+        "server": "waldzellai-clear-thought",
+        "name": "Clear Thought 1.5",
+        "state": "connected"
+      }
+    ],
+    "provider_route_search_performed": true,
+    "provider_route_search_matches_count": 0,
+    "provider_route_search_terms": [
+      "composio",
+      "gmail",
+      "calendar",
+      "contacts",
+      "github",
+      "netlify",
+      "whop",
+      "attio",
+      "posthog",
+      "discord",
+      "telegram",
+      "twitter",
+      "linkedin"
+    ],
+    "composio_visible": false,
+    "interpretation": "No Composio/provider route is visible in the current HH toolbox registry. Third-party provider automation remains blocked."
+  },
+  "providers": [
+    {
+      "provider_id": "composio",
+      "display_name": "Composio",
+      "current_status_from_prompt7b": "unknown",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "netlify",
+      "display_name": "Netlify",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "visible_but_not_verified",
+      "canonical_route": "direct_api_backup_exception",
+      "route_status": "visible_but_not_verified",
+      "hardening_decision": "document_direct_exception",
+      "required_gate_before_write": "DEPLOY_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": true,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "env_required_but_not_read",
+      "failure_mode": "gate violation or missing auth",
+      "immediate_next_action": "document_netlify_backup_exception"
+    },
+    {
+      "provider_id": "whop",
+      "display_name": "Whop",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "visible_but_not_verified",
+      "canonical_route": "direct_runtime_code",
+      "route_status": "visible_but_not_verified",
+      "hardening_decision": "document_direct_exception",
+      "required_gate_before_write": "WHOP_PAYMENT_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": true,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "env_required_but_not_read",
+      "failure_mode": "gate violation or missing auth",
+      "immediate_next_action": "document_direct_runtime_exception"
+    },
+    {
+      "provider_id": "attio",
+      "display_name": "Attio",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "posthog",
+      "display_name": "PostHog",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "env_required_but_not_read",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "gmail",
+      "display_name": "Gmail",
+      "current_status_from_prompt7b": "inferred_from_tooling",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PUBLIC_POST_GATE or OUTREACH_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "discord",
+      "display_name": "Discord",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PUBLIC_POST_GATE or OUTREACH_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "telegram",
+      "display_name": "Telegram",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PUBLIC_POST_GATE or OUTREACH_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "x_twitter",
+      "display_name": "X / Twitter",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PUBLIC_POST_GATE or OUTREACH_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "linkedin",
+      "display_name": "LinkedIn",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PUBLIC_POST_GATE or OUTREACH_GATE plus PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "display_name": "YouTube / ytdlp provider",
+      "current_status_from_prompt7b": "connected_runtime_local",
+      "current_status_from_prompt8_toolbox_check": "verified_available",
+      "canonical_route": "local_service",
+      "route_status": "runtime_only",
+      "hardening_decision": "runtime_local_only",
+      "required_gate_before_write": "SECRET_ACCESS_GATE / infrastructure approval; live mutation blocked",
+      "read_probe_allowed_later": true,
+      "write_wrapper_allowed_later": "false",
+      "credential_dependency": "protected_file_required",
+      "failure_mode": "runtime secret/config protected",
+      "immediate_next_action": "keep_current"
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "display_name": "Cloudflare Tunnel",
+      "current_status_from_prompt7b": "runtime_only",
+      "current_status_from_prompt8_toolbox_check": "runtime_only",
+      "canonical_route": "direct_runtime_code",
+      "route_status": "runtime_only",
+      "hardening_decision": "runtime_local_only",
+      "required_gate_before_write": "SECRET_ACCESS_GATE / infrastructure approval; live mutation blocked",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "false",
+      "credential_dependency": "protected_file_required",
+      "failure_mode": "runtime secret/config protected",
+      "immediate_next_action": "keep_current"
+    },
+    {
+      "provider_id": "github",
+      "display_name": "GitHub",
+      "current_status_from_prompt7b": "inferred_from_docs",
+      "current_status_from_prompt8_toolbox_check": "visible_but_not_verified",
+      "canonical_route": "manual_only",
+      "route_status": "manual_only",
+      "hardening_decision": "manual_operator_only",
+      "required_gate_before_write": "PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": true,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "gate violation or missing auth",
+      "immediate_next_action": "needs_operator_approval"
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "display_name": "Google Calendar / Contacts",
+      "current_status_from_prompt7b": "inferred_from_tooling",
+      "current_status_from_prompt8_toolbox_check": "not_visible",
+      "canonical_route": "composio",
+      "route_status": "not_visible",
+      "hardening_decision": "block_until_composio_visible",
+      "required_gate_before_write": "PROVIDER_MUTATION_GATE",
+      "read_probe_allowed_later": false,
+      "write_wrapper_allowed_later": "true_with_gate",
+      "credential_dependency": "OAuth_required",
+      "failure_mode": "Composio route unavailable",
+      "immediate_next_action": "repair/verify Composio route before automation"
+    }
+  ],
+  "provider_automation_blocked_until_composio_visible": true
+}

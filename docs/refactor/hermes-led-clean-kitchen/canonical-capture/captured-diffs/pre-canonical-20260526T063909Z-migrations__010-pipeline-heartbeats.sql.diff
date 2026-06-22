@@ -1,0 +1,11 @@
+--- active/migrations/010-pipeline-heartbeats.sql
++++ pre-canonical-20260526T063909Z/migrations/010-pipeline-heartbeats.sql
+@@ -4,6 +4,6 @@
+ ALTER TABLE pipeline_jobs
+     ADD COLUMN IF NOT EXISTS heartbeat_at TIMESTAMPTZ;
+ 
+-CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_pipeline_jobs_stale_running
+-    ON pipeline_jobs(heartbeat_at, locked_at, updated_at, id)
++CREATE INDEX IF NOT EXISTS idx_pipeline_jobs_stale_running
++    ON pipeline_jobs(status, heartbeat_at, locked_at, updated_at, id)
+     WHERE status = 'running';

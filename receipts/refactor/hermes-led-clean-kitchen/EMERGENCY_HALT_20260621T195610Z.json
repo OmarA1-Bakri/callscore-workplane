@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "2026-06-21T19:56:10Z",
+  "reason": "post_prompt3_verification_failed_after_targeted_removal",
+  "extra": {
+    "broken_absent": true,
+    "healthy_provider_running_healthy": false,
+    "whop_auto_hermes_worker_running": false,
+    "whop_auto_channel_agent_worker_running": false,
+    "crypto_hermes_worker_running": false,
+    "ping_4416_ok": true,
+    "runtime_secret_exists": true,
+    "active_compose_exists": true,
+    "disk_inode_safe": true,
+    "no_new_restart_loops": true,
+    "baseline_bad": [
+      "whop-auto-ytdlp-pot-provider-1"
+    ],
+    "post_bad": [],
+    "new_bad": [],
+    "all_success": false
+  }
+}

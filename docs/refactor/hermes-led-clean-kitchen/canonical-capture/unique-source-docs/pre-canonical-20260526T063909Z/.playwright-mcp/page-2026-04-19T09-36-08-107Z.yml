@@ -1,0 +1,622 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CryptoTubers Ranked CryptoTubersRanked" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CryptoTubers Ranked" [ref=e6]
+        - generic [ref=e7]: CryptoTubersRanked
+      - navigation [ref=e8]:
+        - link "Leaderboard" [ref=e9] [cursor=pointer]:
+          - /url: /
+        - link "Methodology" [ref=e10] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e11] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e12]:
+          - link "Sign In" [ref=e13] [cursor=pointer]:
+            - /url: /api/auth/whop
+            - img [ref=e14]
+            - text: Sign In
+          - link "Get Access" [ref=e17] [cursor=pointer]:
+            - /url: /pricing
+      - button "Toggle menu" [ref=e18]:
+        - img [ref=e19]
+  - main [ref=e20]:
+    - generic [ref=e21]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - img [ref=e24]
+          - generic [ref=e30]: 1792 calls scored against real price data
+        - heading "Most crypto YouTubers are noise. We found the signal." [level=1] [ref=e31]:
+          - text: Most crypto YouTubers are noise.
+          - text: We found the signal.
+        - paragraph [ref=e32]: We track 20 crypto YouTubers and score every eligible altcoin call against real market data. The current leaderboard includes 20 creators with scored call histories across 18.7M candles of market data.
+        - generic [ref=e33]:
+          - generic [ref=e34]:
+            - img [ref=e35]
+            - generic [ref=e40]:
+              - paragraph [ref=e41]: "20"
+              - paragraph [ref=e42]: Tracked Creators
+          - generic [ref=e43]:
+            - img [ref=e44]
+            - generic [ref=e46]:
+              - paragraph [ref=e47]: "1792"
+              - paragraph [ref=e48]: Scored Calls
+          - generic [ref=e49]:
+            - img [ref=e50]
+            - generic [ref=e54]:
+              - paragraph [ref=e55]: 6 of 20
+              - paragraph [ref=e56]: Creators Beating BTC
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - heading "Leaderboard" [level=2] [ref=e60]
+            - paragraph [ref=e61]: Ranked by average Alpha Score across scored calls
+          - generic [ref=e62]:
+            - button "All Time" [ref=e63]
+            - button "90 Days" [ref=e64]
+            - button "30 Days" [ref=e65]
+        - table [ref=e68]:
+          - rowgroup [ref=e69]:
+            - row "# Creator Alpha Score Win Rate Avg Alpha Scored Calls Best Call Trend" [ref=e70]:
+              - columnheader "#" [ref=e71]
+              - columnheader "Creator" [ref=e72]
+              - columnheader "Alpha Score" [ref=e73]
+              - columnheader "Win Rate" [ref=e74]
+              - columnheader "Avg Alpha" [ref=e75]
+              - columnheader "Scored Calls" [ref=e76]
+              - columnheader "Best Call" [ref=e77]
+              - columnheader "Trend" [ref=e78]
+          - rowgroup [ref=e79]:
+            - row "1 LD Lark Davis T1Low N @TheCryptoLark 35 63.6% -0.1% 11 --" [ref=e80]:
+              - cell "1" [ref=e81]:
+                - generic [ref=e82]:
+                  - img [ref=e83]
+                  - text: "1"
+              - cell "LD Lark Davis T1Low N @TheCryptoLark" [ref=e85]:
+                - link "LD Lark Davis T1Low N @TheCryptoLark" [ref=e86] [cursor=pointer]:
+                  - /url: /creator/@TheCryptoLark
+                  - generic [ref=e87]: LD
+                  - generic [ref=e88]:
+                    - generic [ref=e89]:
+                      - paragraph [ref=e90]: Lark Davis
+                      - generic [ref=e91]: T1Low N
+                    - paragraph [ref=e92]: "@TheCryptoLark"
+                  - img [ref=e93]
+              - cell "35" [ref=e96]:
+                - generic [ref=e97]: "35"
+              - cell "63.6%" [ref=e98]:
+                - generic [ref=e100]: 63.6%
+              - cell "-0.1%" [ref=e101]:
+                - generic [ref=e102]: "-0.1%"
+              - cell "11" [ref=e103]
+              - cell "--" [ref=e104]
+              - cell [ref=e105]:
+                - img [ref=e106]
+            - row "2 AB Alex Becker T1 @AlexBeckersChannel 34 50.0% +1.0% 78 --" [ref=e107]:
+              - cell "2" [ref=e108]
+              - cell "AB Alex Becker T1 @AlexBeckersChannel" [ref=e109]:
+                - link "AB Alex Becker T1 @AlexBeckersChannel" [ref=e110] [cursor=pointer]:
+                  - /url: /creator/@AlexBeckersChannel
+                  - generic [ref=e111]: AB
+                  - generic [ref=e112]:
+                    - generic [ref=e113]:
+                      - paragraph [ref=e114]: Alex Becker
+                      - generic [ref=e115]: T1
+                    - paragraph [ref=e116]: "@AlexBeckersChannel"
+                  - img [ref=e117]
+              - cell "34" [ref=e120]:
+                - generic [ref=e121]: "34"
+              - cell "50.0%" [ref=e122]:
+                - generic [ref=e124]: 50.0%
+              - cell "+1.0%" [ref=e125]:
+                - generic [ref=e126]: +1.0%
+              - cell "78" [ref=e127]
+              - cell "--" [ref=e128]
+              - cell [ref=e129]:
+                - img [ref=e130]
+            - row "3 CZ Crypto Zombie T1Low N @CryptoZombie 30 45.2% +1.1% 42 --" [ref=e131]:
+              - cell "3" [ref=e132]
+              - cell "CZ Crypto Zombie T1Low N @CryptoZombie" [ref=e133]:
+                - link "CZ Crypto Zombie T1Low N @CryptoZombie" [ref=e134] [cursor=pointer]:
+                  - /url: /creator/@CryptoZombie
+                  - generic [ref=e135]: CZ
+                  - generic [ref=e136]:
+                    - generic [ref=e137]:
+                      - paragraph [ref=e138]: Crypto Zombie
+                      - generic [ref=e139]: T1Low N
+                    - paragraph [ref=e140]: "@CryptoZombie"
+                  - img [ref=e141]
+              - cell "30" [ref=e144]:
+                - generic [ref=e145]: "30"
+              - cell "45.2%" [ref=e146]:
+                - generic [ref=e148]: 45.2%
+              - cell "+1.1%" [ref=e149]:
+                - generic [ref=e150]: +1.1%
+              - cell "42" [ref=e151]
+              - cell "--" [ref=e152]
+              - cell [ref=e153]:
+                - img [ref=e154]
+            - row "4 AD Altcoin Daily T1 @AltcoinDaily 28 44.0% +0.1% 1199 --" [ref=e155]:
+              - cell "4" [ref=e156]
+              - cell "AD Altcoin Daily T1 @AltcoinDaily" [ref=e157]:
+                - link "AD Altcoin Daily T1 @AltcoinDaily" [ref=e158] [cursor=pointer]:
+                  - /url: /creator/@AltcoinDaily
+                  - generic [ref=e159]: AD
+                  - generic [ref=e160]:
+                    - generic [ref=e161]:
+                      - paragraph [ref=e162]: Altcoin Daily
+                      - generic [ref=e163]: T1
+                    - paragraph [ref=e164]: "@AltcoinDaily"
+                  - img [ref=e165]
+              - cell "28" [ref=e168]:
+                - generic [ref=e169]: "28"
+              - cell "44.0%" [ref=e170]:
+                - generic [ref=e172]: 44.0%
+              - cell "+0.1%" [ref=e173]:
+                - generic [ref=e174]: +0.1%
+              - cell "1199" [ref=e175]
+              - cell "--" [ref=e176]
+              - cell [ref=e177]:
+                - img [ref=e178]
+            - row "5 I InvestAnswers T1Low N @InvestAnswers 28 46.2% -4.9% 26 --" [ref=e179]:
+              - cell "5" [ref=e180]
+              - cell "I InvestAnswers T1Low N @InvestAnswers" [ref=e181]:
+                - link "I InvestAnswers T1Low N @InvestAnswers" [ref=e182] [cursor=pointer]:
+                  - /url: /creator/@InvestAnswers
+                  - generic [ref=e183]: I
+                  - generic [ref=e184]:
+                    - generic [ref=e185]:
+                      - paragraph [ref=e186]: InvestAnswers
+                      - generic [ref=e187]: T1Low N
+                    - paragraph [ref=e188]: "@InvestAnswers"
+                  - img [ref=e189]
+              - cell "28" [ref=e192]:
+                - generic [ref=e193]: "28"
+              - cell "46.2%" [ref=e194]:
+                - generic [ref=e196]: 46.2%
+              - cell "-4.9%" [ref=e197]:
+                - generic [ref=e198]: "-4.9%"
+              - cell "26" [ref=e199]
+              - cell "--" [ref=e200]
+              - cell [ref=e201]:
+                - img [ref=e202]
+            - row "6 CR Crypto Rover T2Low N @CryptoRover 27 47.1% +0.9% 17 --" [ref=e203]:
+              - cell "6" [ref=e204]
+              - cell "CR Crypto Rover T2Low N @CryptoRover" [ref=e205]:
+                - link "CR Crypto Rover T2Low N @CryptoRover" [ref=e206] [cursor=pointer]:
+                  - /url: /creator/@CryptoRover
+                  - generic [ref=e207]: CR
+                  - generic [ref=e208]:
+                    - generic [ref=e209]:
+                      - paragraph [ref=e210]: Crypto Rover
+                      - generic [ref=e211]: T2Low N
+                    - paragraph [ref=e212]: "@CryptoRover"
+                  - img [ref=e213]
+              - cell "27" [ref=e216]:
+                - generic [ref=e217]: "27"
+              - cell "47.1%" [ref=e218]:
+                - generic [ref=e220]: 47.1%
+              - cell "+0.9%" [ref=e221]:
+                - generic [ref=e222]: +0.9%
+              - cell "17" [ref=e223]
+              - cell "--" [ref=e224]
+              - cell [ref=e225]:
+                - img [ref=e226]
+            - row "7 C CryptosRUs T2Low N @CryptosRUs 26 41.4% -1.2% 29 --" [ref=e227]:
+              - cell "7" [ref=e228]
+              - cell "C CryptosRUs T2Low N @CryptosRUs" [ref=e229]:
+                - link "C CryptosRUs T2Low N @CryptosRUs" [ref=e230] [cursor=pointer]:
+                  - /url: /creator/@CryptosRUs
+                  - generic [ref=e231]: C
+                  - generic [ref=e232]:
+                    - generic [ref=e233]:
+                      - paragraph [ref=e234]: CryptosRUs
+                      - generic [ref=e235]: T2Low N
+                    - paragraph [ref=e236]: "@CryptosRUs"
+                  - img [ref=e237]
+              - cell "26" [ref=e240]:
+                - generic [ref=e241]: "26"
+              - cell "41.4%" [ref=e242]:
+                - generic [ref=e244]: 41.4%
+              - cell "-1.2%" [ref=e245]:
+                - generic [ref=e246]: "-1.2%"
+              - cell "29" [ref=e247]
+              - cell "--" [ref=e248]
+              - cell [ref=e249]:
+                - img [ref=e250]
+            - row "8 BC Benjamin Cowen T2Low N @intothecryptoverse 26 53.8% +0.2% 13 --" [ref=e251]:
+              - cell "8" [ref=e252]
+              - cell "BC Benjamin Cowen T2Low N @intothecryptoverse" [ref=e253]:
+                - link "BC Benjamin Cowen T2Low N @intothecryptoverse" [ref=e254] [cursor=pointer]:
+                  - /url: /creator/@intothecryptoverse
+                  - generic [ref=e255]: BC
+                  - generic [ref=e256]:
+                    - generic [ref=e257]:
+                      - paragraph [ref=e258]: Benjamin Cowen
+                      - generic [ref=e259]: T2Low N
+                    - paragraph [ref=e260]: "@intothecryptoverse"
+                  - img [ref=e261]
+              - cell "26" [ref=e264]:
+                - generic [ref=e265]: "26"
+              - cell "53.8%" [ref=e266]:
+                - generic [ref=e268]: 53.8%
+              - cell "+0.2%" [ref=e269]:
+                - generic [ref=e270]: +0.2%
+              - cell "13" [ref=e271]
+              - cell "--" [ref=e272]
+              - cell [ref=e273]:
+                - img [ref=e274]
+            - row "9 SE Sheldon Evans T2Low N @SheldonEvansX 24 32.4% +2.2% 34 --" [ref=e275]:
+              - cell "9" [ref=e276]
+              - cell "SE Sheldon Evans T2Low N @SheldonEvansX" [ref=e277]:
+                - link "SE Sheldon Evans T2Low N @SheldonEvansX" [ref=e278] [cursor=pointer]:
+                  - /url: /creator/@SheldonEvansX
+                  - generic [ref=e279]: SE
+                  - generic [ref=e280]:
+                    - generic [ref=e281]:
+                      - paragraph [ref=e282]: Sheldon Evans
+                      - generic [ref=e283]: T2Low N
+                    - paragraph [ref=e284]: "@SheldonEvansX"
+                  - img [ref=e285]
+              - cell "24" [ref=e288]:
+                - generic [ref=e289]: "24"
+              - cell "32.4%" [ref=e290]:
+                - generic [ref=e292]: 32.4%
+              - cell "+2.2%" [ref=e293]:
+                - generic [ref=e294]: +2.2%
+              - cell "34" [ref=e295]
+              - cell "--" [ref=e296]
+              - cell [ref=e297]:
+                - img [ref=e298]
+            - row "10 SS Satoshi Stacker T2Low N @StackerSatoshi 22 38.9% -0.9% 18 --" [ref=e299]:
+              - cell "10" [ref=e300]
+              - cell "SS Satoshi Stacker T2Low N @StackerSatoshi" [ref=e301]:
+                - link "SS Satoshi Stacker T2Low N @StackerSatoshi" [ref=e302] [cursor=pointer]:
+                  - /url: /creator/@StackerSatoshi
+                  - generic [ref=e303]: SS
+                  - generic [ref=e304]:
+                    - generic [ref=e305]:
+                      - paragraph [ref=e306]: Satoshi Stacker
+                      - generic [ref=e307]: T2Low N
+                    - paragraph [ref=e308]: "@StackerSatoshi"
+                  - img [ref=e309]
+              - cell "22" [ref=e312]:
+                - generic [ref=e313]: "22"
+              - cell "38.9%" [ref=e314]:
+                - generic [ref=e316]: 38.9%
+              - cell "-0.9%" [ref=e317]:
+                - generic [ref=e318]: "-0.9%"
+              - cell "18" [ref=e319]
+              - cell "--" [ref=e320]
+              - cell [ref=e321]:
+                - img [ref=e322]
+            - row "11 D DataDash T2Low N @DataDash 22 26.7% -1.1% 30 --" [ref=e323]:
+              - cell "11" [ref=e324]
+              - cell "D DataDash T2Low N @DataDash" [ref=e325]:
+                - link "D DataDash T2Low N @DataDash" [ref=e326] [cursor=pointer]:
+                  - /url: /creator/@DataDash
+                  - generic [ref=e327]: D
+                  - generic [ref=e328]:
+                    - generic [ref=e329]:
+                      - paragraph [ref=e330]: DataDash
+                      - generic [ref=e331]: T2Low N
+                    - paragraph [ref=e332]: "@DataDash"
+                  - img [ref=e333]
+              - cell "22" [ref=e336]:
+                - generic [ref=e337]: "22"
+              - cell "26.7%" [ref=e338]:
+                - generic [ref=e340]: 26.7%
+              - cell "-1.1%" [ref=e341]:
+                - generic [ref=e342]: "-1.1%"
+              - cell "30" [ref=e343]
+              - cell "--" [ref=e344]
+              - cell [ref=e345]:
+                - img [ref=e346]
+            - row "12 CB Crypto Banter T2Low N @CryptoBanterGroup 20 31.3% -3.0% 32 --" [ref=e347]:
+              - cell "12" [ref=e348]
+              - cell "CB Crypto Banter T2Low N @CryptoBanterGroup" [ref=e349]:
+                - link "CB Crypto Banter T2Low N @CryptoBanterGroup" [ref=e350] [cursor=pointer]:
+                  - /url: /creator/@CryptoBanterGroup
+                  - generic [ref=e351]: CB
+                  - generic [ref=e352]:
+                    - generic [ref=e353]:
+                      - paragraph [ref=e354]: Crypto Banter
+                      - generic [ref=e355]: T2Low N
+                    - paragraph [ref=e356]: "@CryptoBanterGroup"
+                  - img [ref=e357]
+              - cell "20" [ref=e360]:
+                - generic [ref=e361]: "20"
+              - cell "31.3%" [ref=e362]:
+                - generic [ref=e364]: 31.3%
+              - cell "-3.0%" [ref=e365]:
+                - generic [ref=e366]: "-3.0%"
+              - cell "32" [ref=e367]
+              - cell "--" [ref=e368]
+              - cell [ref=e369]:
+                - img [ref=e370]
+            - row "13 CJ Crypto Jebb T3Low N @CryptoJebb 19 25.0% +0.0% 16 --" [ref=e371]:
+              - cell "13" [ref=e372]
+              - cell "CJ Crypto Jebb T3Low N @CryptoJebb" [ref=e373]:
+                - link "CJ Crypto Jebb T3Low N @CryptoJebb" [ref=e374] [cursor=pointer]:
+                  - /url: /creator/@CryptoJebb
+                  - generic [ref=e375]: CJ
+                  - generic [ref=e376]:
+                    - generic [ref=e377]:
+                      - paragraph [ref=e378]: Crypto Jebb
+                      - generic [ref=e379]: T3Low N
+                    - paragraph [ref=e380]: "@CryptoJebb"
+                  - img [ref=e381]
+              - cell "19" [ref=e384]:
+                - generic [ref=e385]: "19"
+              - cell "25.0%" [ref=e386]:
+                - generic [ref=e388]: 25.0%
+              - cell "+0.0%" [ref=e389]:
+                - generic [ref=e390]: +0.0%
+              - cell "16" [ref=e391]
+              - cell "--" [ref=e392]
+              - cell [ref=e393]:
+                - img [ref=e394]
+            - row "14 CC Crypto Capital Venture T3Low N @CryptoCapitalVenture 18 26.1% -2.6% 23 --" [ref=e395]:
+              - cell "14" [ref=e396]
+              - cell "CC Crypto Capital Venture T3Low N @CryptoCapitalVenture" [ref=e397]:
+                - link "CC Crypto Capital Venture T3Low N @CryptoCapitalVenture" [ref=e398] [cursor=pointer]:
+                  - /url: /creator/@CryptoCapitalVenture
+                  - generic [ref=e399]: CC
+                  - generic [ref=e400]:
+                    - generic [ref=e401]:
+                      - paragraph [ref=e402]: Crypto Capital Venture
+                      - generic [ref=e403]: T3Low N
+                    - paragraph [ref=e404]: "@CryptoCapitalVenture"
+                  - img [ref=e405]
+              - cell "18" [ref=e408]:
+                - generic [ref=e409]: "18"
+              - cell "26.1%" [ref=e410]:
+                - generic [ref=e412]: 26.1%
+              - cell "-2.6%" [ref=e413]:
+                - generic [ref=e414]: "-2.6%"
+              - cell "23" [ref=e415]
+              - cell "--" [ref=e416]
+              - cell [ref=e417]:
+                - img [ref=e418]
+            - row "15 JC Jacob Crypto Bury T3Low N @JacobCryptoBury 18 30.8% -0.1% 13 --" [ref=e419]:
+              - cell "15" [ref=e420]
+              - cell "JC Jacob Crypto Bury T3Low N @JacobCryptoBury" [ref=e421]:
+                - link "JC Jacob Crypto Bury T3Low N @JacobCryptoBury" [ref=e422] [cursor=pointer]:
+                  - /url: /creator/@JacobCryptoBury
+                  - generic [ref=e423]: JC
+                  - generic [ref=e424]:
+                    - generic [ref=e425]:
+                      - paragraph [ref=e426]: Jacob Crypto Bury
+                      - generic [ref=e427]: T3Low N
+                    - paragraph [ref=e428]: "@JacobCryptoBury"
+                  - img [ref=e429]
+              - cell "18" [ref=e432]:
+                - generic [ref=e433]: "18"
+              - cell "30.8%" [ref=e434]:
+                - generic [ref=e436]: 30.8%
+              - cell "-0.1%" [ref=e437]:
+                - generic [ref=e438]: "-0.1%"
+              - cell "13" [ref=e439]
+              - cell "--" [ref=e440]
+              - cell [ref=e441]:
+                - img [ref=e442]
+            - row "16 AH Austin Hilton T3Low N @AustinHilton 17 31.6% -1.0% 19 --" [ref=e443]:
+              - cell "16" [ref=e444]
+              - cell "AH Austin Hilton T3Low N @AustinHilton" [ref=e445]:
+                - link "AH Austin Hilton T3Low N @AustinHilton" [ref=e446] [cursor=pointer]:
+                  - /url: /creator/@AustinHilton
+                  - generic [ref=e447]: AH
+                  - generic [ref=e448]:
+                    - generic [ref=e449]:
+                      - paragraph [ref=e450]: Austin Hilton
+                      - generic [ref=e451]: T3Low N
+                    - paragraph [ref=e452]: "@AustinHilton"
+                  - img [ref=e453]
+              - cell "17" [ref=e456]:
+                - generic [ref=e457]: "17"
+              - cell "31.6%" [ref=e458]:
+                - generic [ref=e460]: 31.6%
+              - cell "-1.0%" [ref=e461]:
+                - generic [ref=e462]: "-1.0%"
+              - cell "19" [ref=e463]
+              - cell "--" [ref=e464]
+              - cell [ref=e465]:
+                - img [ref=e466]
+            - row "17 TM The Moon Carl T3 @TheMoon 17 23.2% -1.2% 56 --" [ref=e467]:
+              - cell "17" [ref=e468]
+              - cell "TM The Moon Carl T3 @TheMoon" [ref=e469]:
+                - link "TM The Moon Carl T3 @TheMoon" [ref=e470] [cursor=pointer]:
+                  - /url: /creator/@TheMoon
+                  - generic [ref=e471]: TM
+                  - generic [ref=e472]:
+                    - generic [ref=e473]:
+                      - paragraph [ref=e474]: The Moon Carl
+                      - generic [ref=e475]: T3
+                    - paragraph [ref=e476]: "@TheMoon"
+                  - img [ref=e477]
+              - cell "17" [ref=e480]:
+                - generic [ref=e481]: "17"
+              - cell "23.2%" [ref=e482]:
+                - generic [ref=e484]: 23.2%
+              - cell "-1.2%" [ref=e485]:
+                - generic [ref=e486]: "-1.2%"
+              - cell "56" [ref=e487]
+              - cell "--" [ref=e488]
+              - cell [ref=e489]:
+                - img [ref=e490]
+            - row "18 DC Discover Crypto T3Low N @DiscoverCrypto_ 17 25.0% -0.1% 24 --" [ref=e491]:
+              - cell "18" [ref=e492]
+              - cell "DC Discover Crypto T3Low N @DiscoverCrypto_" [ref=e493]:
+                - link "DC Discover Crypto T3Low N @DiscoverCrypto_" [ref=e494] [cursor=pointer]:
+                  - /url: /creator/@DiscoverCrypto_
+                  - generic [ref=e495]: DC
+                  - generic [ref=e496]:
+                    - generic [ref=e497]:
+                      - paragraph [ref=e498]: Discover Crypto
+                      - generic [ref=e499]: T3Low N
+                    - paragraph [ref=e500]: "@DiscoverCrypto_"
+                  - img [ref=e501]
+              - cell "17" [ref=e504]:
+                - generic [ref=e505]: "17"
+              - cell "25.0%" [ref=e506]:
+                - generic [ref=e508]: 25.0%
+              - cell "-0.1%" [ref=e509]:
+                - generic [ref=e510]: "-0.1%"
+              - cell "24" [ref=e511]
+              - cell "--" [ref=e512]
+              - cell [ref=e513]:
+                - img [ref=e514]
+            - row "19 MD Miles Deutscher T3 @milesdeutscher1357 15 18.5% -3.8% 54 --" [ref=e515]:
+              - cell "19" [ref=e516]
+              - cell "MD Miles Deutscher T3 @milesdeutscher1357" [ref=e517]:
+                - link "MD Miles Deutscher T3 @milesdeutscher1357" [ref=e518] [cursor=pointer]:
+                  - /url: /creator/@milesdeutscher1357
+                  - generic [ref=e519]: MD
+                  - generic [ref=e520]:
+                    - generic [ref=e521]:
+                      - paragraph [ref=e522]: Miles Deutscher
+                      - generic [ref=e523]: T3
+                    - paragraph [ref=e524]: "@milesdeutscher1357"
+                  - img [ref=e525]
+              - cell "15" [ref=e528]:
+                - generic [ref=e529]: "15"
+              - cell "18.5%" [ref=e530]:
+                - generic [ref=e532]: 18.5%
+              - cell "-3.8%" [ref=e533]:
+                - generic [ref=e534]: "-3.8%"
+              - cell "54" [ref=e535]
+              - cell "--" [ref=e536]
+              - cell [ref=e537]:
+                - img [ref=e538]
+            - row "20 MW Michael Wrubel T3 @MichaelWrubel 12 5.2% -4.1% 58 --" [ref=e539]:
+              - cell "20" [ref=e540]
+              - cell "MW Michael Wrubel T3 @MichaelWrubel" [ref=e541]:
+                - link "MW Michael Wrubel T3 @MichaelWrubel" [ref=e542] [cursor=pointer]:
+                  - /url: /creator/@MichaelWrubel
+                  - generic [ref=e543]: MW
+                  - generic [ref=e544]:
+                    - generic [ref=e545]:
+                      - paragraph [ref=e546]: Michael Wrubel
+                      - generic [ref=e547]: T3
+                    - paragraph [ref=e548]: "@MichaelWrubel"
+                  - img [ref=e549]
+              - cell "12" [ref=e552]:
+                - generic [ref=e553]: "12"
+              - cell "5.2%" [ref=e554]:
+                - generic [ref=e556]: 5.2%
+              - cell "-4.1%" [ref=e557]:
+                - generic [ref=e558]: "-4.1%"
+              - cell "58" [ref=e559]
+              - cell "--" [ref=e560]
+              - cell [ref=e561]:
+                - img [ref=e562]
+      - generic [ref=e564]:
+        - generic [ref=e565]:
+          - img [ref=e566]
+          - heading "Consensus Signals" [level=3] [ref=e568]
+          - text: Alpha
+        - generic [ref=e569]:
+          - generic [ref=e570]:
+            - img [ref=e572]
+            - generic [ref=e575]:
+              - generic [ref=e576]: BTCbullish
+              - paragraph [ref=e577]: 12 creators · Apr 3
+            - generic [ref=e578]: +2.5%
+          - generic [ref=e579]:
+            - img [ref=e581]
+            - generic [ref=e584]:
+              - generic [ref=e585]: NEARbullish
+              - paragraph [ref=e586]: 5 creators · Mar 30
+            - generic [ref=e587]: +0.0%
+          - generic [ref=e588]:
+            - img [ref=e590]
+            - generic [ref=e593]:
+              - generic [ref=e594]: BTCbearish
+              - paragraph [ref=e595]: 12 creators · Mar 28
+            - generic [ref=e596]: +3.7%
+          - generic [ref=e597]:
+            - img [ref=e599]
+            - generic [ref=e602]:
+              - generic [ref=e603]: LINKbullish
+              - paragraph [ref=e604]: 6 creators · Mar 28
+            - generic [ref=e605]: "-0.8%"
+          - generic [ref=e606]:
+            - img [ref=e608]
+            - generic [ref=e611]:
+              - generic [ref=e612]: BTCbullish
+              - paragraph [ref=e613]: 11 creators · Mar 26
+            - generic [ref=e614]: "-1.6%"
+          - generic [ref=e615]:
+            - img [ref=e617]
+            - generic [ref=e620]:
+              - generic [ref=e621]: BTCbullish
+              - paragraph [ref=e622]: 12 creators · Mar 17
+            - generic [ref=e623]: "-7.2%"
+          - generic [ref=e624]:
+            - img [ref=e626]
+            - generic [ref=e629]:
+              - generic [ref=e630]: LINKbullish
+              - paragraph [ref=e631]: 8 creators · Mar 17
+            - generic [ref=e632]: "-13.9%"
+          - generic [ref=e633]:
+            - img [ref=e635]
+            - generic [ref=e638]:
+              - generic [ref=e639]: NEARbullish
+              - paragraph [ref=e640]: 6 creators · Mar 16
+            - generic [ref=e641]: "-14.5%"
+          - generic [ref=e642]:
+            - img [ref=e644]
+            - generic [ref=e647]:
+              - generic [ref=e648]: XRPbullish
+              - paragraph [ref=e649]: 5 creators · Mar 12
+            - generic [ref=e650]: "-4.3%"
+          - generic [ref=e651]:
+            - img [ref=e653]
+            - generic [ref=e656]:
+              - generic [ref=e657]: BTCbullish
+              - paragraph [ref=e658]: 14 creators · Mar 9
+            - generic [ref=e659]: +4.0%
+  - contentinfo [ref=e660]:
+    - generic [ref=e661]:
+      - generic [ref=e662]:
+        - generic [ref=e663]:
+          - generic [ref=e664]:
+            - img "CryptoTubers Ranked" [ref=e665]
+            - generic [ref=e666]: CryptoTubersRanked
+          - paragraph [ref=e667]: We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls.
+        - generic [ref=e668]:
+          - heading "Navigate" [level=2] [ref=e669]
+          - list [ref=e670]:
+            - listitem [ref=e671]:
+              - link "Leaderboard" [ref=e672] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e673]:
+              - link "Methodology" [ref=e674] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e675]:
+              - link "Pricing" [ref=e676] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e677]:
+              - link "Give Feedback" [ref=e678] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e679]:
+              - link "About" [ref=e680] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e681]:
+          - heading "Legal" [level=2] [ref=e682]
+          - list [ref=e683]:
+            - listitem [ref=e684]:
+              - link "Terms of Service" [ref=e685] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e686]:
+              - link "Privacy Policy" [ref=e687] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e688]:
+        - paragraph [ref=e689]:
+          - strong [ref=e690]: "Financial Disclaimer:"
+          - text: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions.
+        - paragraph [ref=e691]: © 2026 CRYPTO-TUBER RANKED. All rights reserved.
+  - link "Give Feedback" [ref=e692] [cursor=pointer]:
+    - /url: /feedback
+    - img [ref=e693]

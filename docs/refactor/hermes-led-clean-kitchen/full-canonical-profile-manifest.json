@@ -1,0 +1,194 @@
+{
+  "timestamp_utc": "2026-06-22T16:39:32Z",
+  "schema_version": "callscore_full_canonical_profiles.v1",
+  "strategy": "full_canonical_profiles_not_lite",
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "profile_local_duplicate_policy": "byte-identical stopped-profile skill copies replaced with symlinks to canonical shared skills; active callscorecmo untouched while running; drift copies preserved",
+  "profiles": {
+    "default-orchestrator": {
+      "runtime_profile": "default",
+      "mission": "Coordinate Hermes gateway, Prompt 0-11 state, receipts, Kanban/workplane continuity, and multi-agent routing.",
+      "agents": [
+        "callscore-orchestrator-head",
+        "callscore-reviewer-head",
+        "callscore-safety-head"
+      ],
+      "tools": [
+        "Hermes gateway",
+        "master-state.json",
+        "receipt index",
+        "Kanban/workplane",
+        "HH Control Tunnel continuity",
+        "Docker read/status",
+        "Composio MCP test path"
+      ],
+      "gates": [
+        "emergency_halt",
+        "deletion_protocol",
+        "provider_gate",
+        "secret_gate"
+      ]
+    },
+    "callscorearchitect": {
+      "runtime_profile": "callscorearchitect",
+      "mission": "Own architecture decisions, canonical path structure, provider/framework boundaries, and simplification without runtime breakage.",
+      "agents": [
+        "callscore-architect-head",
+        "callscore-orchestrator-head"
+      ],
+      "tools": [
+        "canonical map",
+        "architecture decisions",
+        "framework decision records",
+        "Docker/runtime maps",
+        "repo routing matrix"
+      ],
+      "gates": [
+        "deploy_gate",
+        "runtime_rewire_gate",
+        "provider_mutation_gate"
+      ]
+    },
+    "callscorecmo": {
+      "runtime_profile": "callscorecmo",
+      "mission": "Operate owned-public growth, content/funnel experiments, Whop GTM, and social learning loops using full tools and receipts.",
+      "agents": [
+        "callscore-artofwar-strategist",
+        "callscore-x-linkedin-growth-head",
+        "callscore-community-drops-head",
+        "callscore-whop-commerce-head",
+        "callscore-email-partnership-drafts-head",
+        "callscore-opportunity-research-head",
+        "callscore-compliance-linter-head",
+        "callscore-trust-head"
+      ],
+      "tools": [
+        "Composio MCP",
+        "X/LinkedIn/Discord/Telegram/Gmail/Whop routes through Composio where automation applies",
+        "GTM registry",
+        "social posting discipline",
+        "commercial experiment receipts",
+        "provider/read-only monitors"
+      ],
+      "gates": [
+        "READY_PUBLIC_OWNED",
+        "PUBLIC_MESSAGING_POLICY",
+        "SEND_GATE",
+        "SPEND_GATE",
+        "PRODUCTION_GATE",
+        "FINANCIAL_GATE",
+        "SECRET_GATE"
+      ]
+    },
+    "callscoredata": {
+      "runtime_profile": "callscoredata",
+      "mission": "Own data truth, transcript/Gemma pipeline visibility, scoring freshness, ML verifier gates, and evidence freshness.",
+      "agents": [
+        "callscore-data-pipeline-sentinel",
+        "callscore-gemma-transcript-head",
+        "callscore-channel-agent-worker-head"
+      ],
+      "tools": [
+        "PostgreSQL read path",
+        "pipeline_jobs",
+        "transcript scripts",
+        "Gemma/Ollama shadow tools",
+        "ml verifier quality gate",
+        "Docker worker health"
+      ],
+      "gates": [
+        "DB_MUTATION_GATE",
+        "shadow_promotion_gate",
+        "provider_cooldown_gate",
+        "secret_gate"
+      ]
+    },
+    "callscoreimplementer": {
+      "runtime_profile": "callscoreimplementer",
+      "mission": "Perform bounded implementation, tests, docs, and minimum-diff fixes under approval gates.",
+      "agents": [
+        "callscore-implementer-head",
+        "callscore-safety-head"
+      ],
+      "tools": [
+        "git status/diff",
+        "tests",
+        "repo commands",
+        "receipt writer",
+        "Docker read/status",
+        "full canonical agent manifests"
+      ],
+      "gates": [
+        "deploy_gate",
+        "DB_mutation_gate",
+        "destructive_change_gate",
+        "secret_gate"
+      ]
+    },
+    "callscorereviewer": {
+      "runtime_profile": "callscorereviewer",
+      "mission": "Review claims, state, receipts, tests, and runtime evidence before phase completion.",
+      "agents": [
+        "callscore-reviewer-head",
+        "callscore-trust-head"
+      ],
+      "tools": [
+        "receipt diff",
+        "test logs",
+        "runtime health",
+        "master-state review",
+        "evidence packets"
+      ],
+      "gates": [
+        "no_rubber_stamp",
+        "evidence_required",
+        "state_consistency_required"
+      ]
+    },
+    "callscoresafety": {
+      "runtime_profile": "callscoresafety",
+      "mission": "Enforce deletion safety, provider safety, secret safety, DB/deploy gates, and emergency halt.",
+      "agents": [
+        "callscore-safety-head",
+        "callscore-compliance-linter-head"
+      ],
+      "tools": [
+        "protected path inventory",
+        "process refs",
+        "Docker mounts",
+        "compose refs",
+        "cron refs",
+        "systemd refs",
+        "secret redaction checks"
+      ],
+      "gates": [
+        "emergency_halt",
+        "forbidden_deletion_targets",
+        "secret_gate",
+        "unknown_path_blocks"
+      ]
+    },
+    "callscoretrust": {
+      "runtime_profile": "callscoretrust",
+      "mission": "Own trust/non-founder review, public claim evidence, methodology caution, and reputation protection.",
+      "agents": [
+        "callscore-trust-head",
+        "callscore-compliance-linter-head",
+        "callscore-data-pipeline-sentinel"
+      ],
+      "tools": [
+        "evidence packets",
+        "freshness reports",
+        "claim lint receipts",
+        "public messaging policy",
+        "non-founder review queue"
+      ],
+      "gates": [
+        "trust_gate",
+        "claim_gate",
+        "PUBLIC_MESSAGING_POLICY",
+        "SECRET_GATE"
+      ]
+    }
+  }
+}

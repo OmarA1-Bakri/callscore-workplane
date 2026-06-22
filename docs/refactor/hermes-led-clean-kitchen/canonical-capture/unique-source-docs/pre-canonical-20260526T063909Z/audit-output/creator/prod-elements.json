@@ -1,0 +1,427 @@
+{
+  "title": "Altcoin Daily — Creator Profile | CryptoTubers Ranked",
+  "h1": [
+    "Altcoin Daily"
+  ],
+  "h2": [
+    "Score Breakdown",
+    "Call History",
+    "Navigate",
+    "Legal"
+  ],
+  "h3": [
+    "Alpha Score Over Time"
+  ],
+  "stat_cards": [
+    "AD\nAltcoin Daily\nT1\n@AltcoinDaily\n1.65M subscribers\nDaily altcoin picks, BTC/ETH/ADA/SOL, AI tokens\nView on YouTube",
+    "28\nALPHA SCORE",
+    "WIN RATE\n\n44.0%",
+    "WIN RATE FLOOR\n\n≥0.0%",
+    "AVG ALPHA (30D)\n\n+0.1%",
+    "TOTAL CALLS\n\n1199",
+    "HIT RATE\n\n11.8%",
+    "Score Breakdown\n0.0\nDirection Correct\n0.0 / 40\nAlpha Over BTC\n0.0 / 25\nSpecificity\n0.0 / 15\nRegime Difficulty\n0.0 / 10\nTarget Hit\n0.0 / 10",
+    "Alpha Score Over Time\nAug 2022\nJan 2023\nJun 2023\nNov 2023\nMay 2024\nOct 2024\nMar 2025\nAug 2025\nMar 2026\n0\n25\n50\n75\n100\nNeutral",
+    "Call History\n\nShowing 50 of 3533 calls\n\nDATE\nDESC\n\tCOIN\tDIRECTION\t\nSCORE\n\t\nRETURN 30D\n\tALPHA 30D\tTARGET\nApr 6, 26\tAVAX\tbullish\t0.0\t--\t--\t--\nApr 6, 26\tSOL\tbullish\t0.0\t--\t--\t--\nApr 6, 26\tBTC\tbearish\t0.0\t--\t--\t--\nApr 6, 26\tNEAR\tbullish\t0.0\t--\t"
+  ],
+  "links": [
+    {
+      "tag": "A",
+      "text": "CryptoTubers\nRANKED",
+      "href": "/",
+      "aria_label": null,
+      "role": null,
+      "class": "flex items-center gap-2.5 group",
+      "w": 145,
+      "h": 40
+    },
+    {
+      "tag": "A",
+      "text": "Leaderboard",
+      "href": "/",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-300 hover:text-white transition-colors text-sm font-medium",
+      "w": 86,
+      "h": 20
+    },
+    {
+      "tag": "A",
+      "text": "Methodology",
+      "href": "/methodology",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-300 hover:text-white transition-colors text-sm font-medium",
+      "w": 88,
+      "h": 20
+    },
+    {
+      "tag": "A",
+      "text": "Pricing",
+      "href": "/pricing",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-300 hover:text-white transition-colors text-sm font-medium",
+      "w": 47,
+      "h": 20
+    },
+    {
+      "tag": "A",
+      "text": "Sign In",
+      "href": "/api/auth/whop",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-300 hover:text-white transition-colors text-sm flex items-center gap-1.5",
+      "w": 67,
+      "h": 20
+    },
+    {
+      "tag": "A",
+      "text": "Get Access",
+      "href": "/pricing",
+      "aria_label": null,
+      "role": null,
+      "class": "bg-brand-gold hover:bg-brand-gold-dim text-brand-dark font-semibold text-sm px-4 py-2 rounded-lg transition-colors",
+      "w": 109,
+      "h": 36
+    },
+    {
+      "tag": "A",
+      "text": "Back to Leaderboard",
+      "href": "/",
+      "aria_label": null,
+      "role": null,
+      "class": "inline-flex items-center gap-1.5 text-gray-500 hover:text-gray-300 text-sm mb-6 transition-colors",
+      "w": 160,
+      "h": 20
+    },
+    {
+      "tag": "A",
+      "text": "View on YouTube",
+      "href": "https://youtube.com/@AltcoinDaily",
+      "aria_label": null,
+      "role": null,
+      "class": "inline-flex items-center gap-1 text-brand-gold hover:text-brand-gold-dim text-sm transition-colors",
+      "w": 132,
+      "h": 20
+    },
+    {
+      "tag": "A",
+      "text": "AVAX",
+      "href": "/call/561",
+      "aria_label": "View AVAX bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 38,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "SOL",
+      "href": "/call/560",
+      "aria_label": "View SOL bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 28,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "BTC",
+      "href": "/call/559",
+      "aria_label": "View BTC bearish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 27,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "NEAR",
+      "href": "/call/562",
+      "aria_label": "View NEAR bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 38,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "BTC",
+      "href": "/call/563",
+      "aria_label": "View BTC bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 27,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "ETH",
+      "href": "/call/564",
+      "aria_label": "View ETH bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 28,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "XRP",
+      "href": "/call/565",
+      "aria_label": "View XRP bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 28,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "SOL",
+      "href": "/call/568",
+      "aria_label": "View SOL bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 28,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "LINK",
+      "href": "/call/569",
+      "aria_label": "View LINK bullish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 32,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "BTC",
+      "href": "/call/566",
+      "aria_label": "View BTC bearish call details",
+      "role": null,
+      "class": "text-white font-medium hover:text-brand-gold transition-colors",
+      "w": 27,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "Leaderboard",
+      "href": "/",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 85,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "Methodology",
+      "href": "/methodology",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 87,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "Pricing",
+      "href": "/pricing",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 46,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "Give Feedback",
+      "href": "/feedback",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 98,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "About",
+      "href": "/about",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 39,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "Terms of Service",
+      "href": "/terms",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 113,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "Privacy Policy",
+      "href": "/privacy",
+      "aria_label": null,
+      "role": null,
+      "class": "text-gray-500 hover:text-gray-300 transition-colors text-sm",
+      "w": 93,
+      "h": 17
+    },
+    {
+      "tag": "A",
+      "text": "",
+      "href": "/feedback",
+      "aria_label": "Give Feedback",
+      "role": null,
+      "class": "fixed bottom-6 right-6 z-40 flex items-center justify-center w-12 h-12 rounded-full bg-brand-gold hover:bg-brand-gold-dim text-brand-dark shadow-lg transition-all duration-200 hover:scale-110 glow-gold",
+      "w": 48,
+      "h": 48
+    }
+  ],
+  "buttons": [
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "href": null,
+      "aria_label": "Toggle menu",
+      "role": null,
+      "class": "md:hidden text-gray-400 hover:text-white",
+      "w": 0,
+      "h": 0
+    },
+    {
+      "tag": "BUTTON",
+      "text": "DATE\nDESC",
+      "href": null,
+      "aria_label": null,
+      "role": null,
+      "class": "flex items-center gap-1 text-gray-500 hover:text-gray-300 text-xs font-medium uppercase tracking-wider transition-colors",
+      "w": 77,
+      "h": 16
+    },
+    {
+      "tag": "BUTTON",
+      "text": "SCORE",
+      "href": null,
+      "aria_label": null,
+      "role": null,
+      "class": "flex items-center gap-1 text-gray-500 hover:text-gray-300 text-xs font-medium uppercase tracking-wider transition-colors",
+      "w": 60,
+      "h": 16
+    },
+    {
+      "tag": "BUTTON",
+      "text": "RETURN 30D",
+      "href": null,
+      "aria_label": null,
+      "role": null,
+      "class": "flex items-center gap-1 text-gray-500 hover:text-gray-300 text-xs font-medium uppercase tracking-wider transition-colors",
+      "w": 98,
+      "h": 16
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "href": null,
+      "aria_label": "Previous page",
+      "role": null,
+      "class": "p-1 rounded text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors",
+      "w": 24,
+      "h": 24
+    },
+    {
+      "tag": "BUTTON",
+      "text": "",
+      "href": null,
+      "aria_label": "Next page",
+      "role": null,
+      "class": "p-1 rounded text-gray-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-colors",
+      "w": 24,
+      "h": 24
+    }
+  ],
+  "tables": [
+    {
+      "rows": 11,
+      "headers": [
+        "DATE\nDESC",
+        "COIN",
+        "DIRECTION",
+        "SCORE",
+        "RETURN 30D",
+        "ALPHA 30D",
+        "TARGET"
+      ],
+      "firstRows": [
+        [
+          "Apr 6, 26",
+          "AVAX",
+          "bullish",
+          "0.0",
+          "--",
+          "--",
+          "--"
+        ],
+        [
+          "Apr 6, 26",
+          "SOL",
+          "bullish",
+          "0.0",
+          "--",
+          "--",
+          "--"
+        ],
+        [
+          "Apr 6, 26",
+          "BTC",
+          "bearish",
+          "0.0",
+          "--",
+          "--",
+          "--"
+        ],
+        [
+          "Apr 6, 26",
+          "NEAR",
+          "bullish",
+          "0.0",
+          "--",
+          "--",
+          "--"
+        ],
+        [
+          "Apr 5, 26",
+          "BTC",
+          "bullish",
+          "0.0",
+          "--",
+          "--",
+          "--"
+        ]
+      ]
+    }
+  ],
+  "images": [
+    {
+      "src": "https://crypto-tuber-ranked-ten.vercel.app/_next/image?url=%2Flogo-icon.png&w=1080&q=75",
+      "alt": "CryptoTubers Ranked",
+      "w": 31,
+      "h": 40
+    },
+    {
+      "src": "https://crypto-tuber-ranked-ten.vercel.app/_next/image?url=%2Flogo-icon.png&w=1080&q=75",
+      "alt": "CryptoTubers Ranked",
+      "w": 25,
+      "h": 32
+    }
+  ],
+  "svgsWithoutAria": 15
+}

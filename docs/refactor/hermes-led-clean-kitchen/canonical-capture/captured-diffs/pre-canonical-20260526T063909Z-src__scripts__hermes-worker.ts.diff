@@ -1,0 +1,349 @@
+--- active/src/scripts/hermes-worker.ts
++++ pre-canonical-20260526T063909Z/src/scripts/hermes-worker.ts
+@@ -1,44 +1,26 @@
+ import os from "node:os";
+-import { retryWithBackoff } from "../lib/pipeline/retry";
+ import {
+   appendPipelineJobEvent,
+-  auditDispatchEvent,
++  appendPipelineStageEvent,
+   claimNextPipelineJob,
+   completePipelineJob,
+-  DEFAULT_PHASE,
+   enqueuePipelineJob,
++  retryOrFailPipelineJob,
+   resetStalePipelineJobs,
+-  retryOrFailPipelineJob,
+   updatePipelineJobHeartbeat,
+   type PipelineJob,
+ } from "../lib/pipeline";
++import { runMlVerifierBatch } from "../lib/ml-verifier";
++import { query } from "../lib/db";
++import { createLogger } from "../lib/logger";
++import { captureException, flushMonitoring, initMonitoring } from "../lib/monitoring";
+ import {
+   runCandleRefreshJob,
+   runComputeScoresJob,
+   runMatchPricesJob,
+ } from "../lib/pipeline-jobs";
+-import { runMlVerifierBatch } from "../lib/ml-verifier";
+-import {
+-  PROMOTE_ML_VERIFIED_JOB_TYPE,
+-  runMlPromotionJob,
+-} from "../lib/ml-promotion";
+-import {
+-  CREATOR_CANDIDATE_ADMISSION_JOB_TYPE,
+-  runCandidateAdmissionJob,
+-} from "../lib/candidate-admission";
+-import { getWorkplaneJobSpec, runWorkplaneJob, WORKPLANE_JOB_TYPES } from "../lib/workplane-jobs";
+-import {
+-  CHANNEL_AGENT_TASK_TYPES,
+-  claimNextChannelTask,
+-  failChannelTask,
+-  runChannelTask,
+-} from "../lib/channel-agent-tasks";
+-import { query } from "../lib/db";
+-import { createLogger } from "../lib/logger";
+-import { captureException, flushMonitoring, initMonitoring } from "../lib/monitoring";
++import { runMlPromotionJob } from "../lib/ml-promotion";
+ import { loadEnv, sleep, timestamp } from "./script-helpers";
+-
+-const HERMES_WORKPLANE_JOB_TYPES = WORKPLANE_JOB_TYPES.filter((type) => getWorkplaneJobSpec(type).execution_location !== "Omar laptop");
+ 
+ export const SUPPORTED_JOB_TYPES = [
+   "ml_verifier_batch",
+@@ -46,13 +28,11 @@
+   "candle_refresh",
+   "match_prices_batch",
+   "compute_scores",
+-  PROMOTE_ML_VERIFIED_JOB_TYPE,
+-  CREATOR_CANDIDATE_ADMISSION_JOB_TYPE,
+-  ...HERMES_WORKPLANE_JOB_TYPES,
++  "promote_ml_verified",
+ ] as const;
+-export const SUPPORTED_CHANNEL_TASK_TYPES = CHANNEL_AGENT_TASK_TYPES;
+ const DEFAULT_POLL_MS = 15_000;
+-const HEARTBEAT_INTERVAL_MS = 30_000;
++const HEARTBEAT_MS = 60_000;
++const STALE_REAP_MS = 5 * 60_000;
+ 
+ interface WorkerArgs {
+   readonly once: boolean;
+@@ -60,8 +40,12 @@
+   readonly workerId: string;
+   readonly pollMs: number;
+   readonly maxJobs: number;
+-  readonly pipelineJobs: boolean;
+-  readonly channelTaskTypes: readonly string[];
++}
++
++interface WorkerLogger {
++  info(event: string, payload?: Record<string, unknown>): void;
++  error(event: string, payload?: Record<string, unknown>): void;
++  warn(event: string, payload?: Record<string, unknown>): void;
+ }
+ 
+ function argValue(argv: readonly string[], flag: string): string | null {
+@@ -73,12 +57,6 @@
+ function positiveInt(value: string | null, fallback: number): number {
+   const parsed = Number(value);
+   return Number.isFinite(parsed) && parsed > 0 ? Math.floor(parsed) : fallback;
+-}
+-
+-function csvValues(value: string | null, fallback: readonly string[]): readonly string[] {
+-  if (!value) return fallback;
+-  const values = value.split(",").map((item) => item.trim()).filter(Boolean);
+-  return values.length > 0 ? values : fallback;
+ }
+ 
+ export function parseHermesWorkerArgs(argv = process.argv.slice(2)): WorkerArgs {
+@@ -91,10 +69,6 @@
+     workerId,
+     pollMs: positiveInt(argValue(argv, "--poll-ms"), DEFAULT_POLL_MS),
+     maxJobs: positiveInt(argValue(argv, "--max-jobs"), Number.MAX_SAFE_INTEGER),
+-    pipelineJobs: !argv.includes("--no-pipeline-jobs"),
+-    channelTaskTypes: argv.includes("--no-channel-tasks")
+-      ? []
+-      : csvValues(argValue(argv, "--channel-task-types"), SUPPORTED_CHANNEL_TASK_TYPES),
+   };
+ }
+ 
+@@ -111,7 +85,6 @@
+     priority: 1000,
+     idempotencyKey: key,
+     maxAttempts: 1,
+-    phase: DEFAULT_PHASE,
+     payload: {
+       smoke: true,
+       worker_id: workerId,
+@@ -133,55 +106,66 @@
+ }
+ 
+ async function executeJob(job: PipelineJob): Promise<Record<string, unknown>> {
+-  return retryWithBackoff(
+-    async () => {
+-      if (job.type === "hermes_smoke_test") return runSmokeJob(job);
+-      if (job.type === "ml_verifier_batch") return runMlVerifierBatch(job) as Promise<Record<string, unknown>>;
+-      if (job.type === "candle_refresh") return runCandleRefreshJob(job);
+-      if (job.type === "match_prices_batch") return runMatchPricesJob(job);
+-      if (job.type === "compute_scores") return runComputeScoresJob();
+-      if (job.type === PROMOTE_ML_VERIFIED_JOB_TYPE) return runMlPromotionJob(job);
+-      if (job.type === CREATOR_CANDIDATE_ADMISSION_JOB_TYPE) return runCandidateAdmissionJob(job);
+-      if ((WORKPLANE_JOB_TYPES as readonly string[]).includes(job.type)) return runWorkplaneJob(job);
+-      throw new Error(`Unsupported pipeline job type: ${job.type}`);
+-    },
+-    {
+-      shouldRetry: (err: Error) => !err.message.startsWith("Unsupported pipeline job type:"),
+-    },
+-  );
+-}
+-
+-export async function executeJobWithKeepalive(
++  if (job.type === "hermes_smoke_test") return runSmokeJob(job);
++  if (job.type === "ml_verifier_batch") return runMlVerifierBatch(job) as Promise<Record<string, unknown>>;
++  if (job.type === "candle_refresh") return runCandleRefreshJob(job);
++  if (job.type === "match_prices_batch") return runMatchPricesJob(job);
++  if (job.type === "compute_scores") return runComputeScoresJob();
++  if (job.type === "promote_ml_verified") return runMlPromotionJob(job);
++  throw new Error(`Unsupported pipeline job type: ${job.type}`);
++}
++
++function numberMetric(metrics: Record<string, unknown>, key: string): number | undefined {
++  const value = metrics[key];
++  const parsed = typeof value === "number" ? value : Number(value);
++  return Number.isFinite(parsed) ? parsed : undefined;
++}
++
++async function executeJobWithKeepalive(
+   job: PipelineJob,
+-  logger: ReturnType<typeof createLogger>,
++  logger: WorkerLogger,
+ ): Promise<Record<string, unknown>> {
+-  await updatePipelineJobHeartbeat(job, { worker_id: job.locked_by });
+-  await auditDispatchEvent(job, "started");
+-
+-  const startMs = Date.now();
+-  const heartbeat = setInterval(() => {
+-    void updatePipelineJobHeartbeat(job, { worker_id: job.locked_by }).catch((error) => {
+-      logger.warn("job_heartbeat_failed", {
++  const startedAt = Date.now();
++  await updatePipelineJobHeartbeat(job, {
++    worker_id: job.locked_by,
++    job_type: job.type,
++    phase: "start",
++  });
++
++  const timer = setInterval(() => {
++    void updatePipelineJobHeartbeat(job, {
++      worker_id: job.locked_by,
++      job_type: job.type,
++      phase: "keepalive",
++    }).catch((error: unknown) => {
++      logger.error("job_heartbeat_failed", {
+         job_id: job.id,
+-        run_id: job.run_id,
+         job_type: job.type,
+         error: error instanceof Error ? error.message : String(error),
+       });
+     });
+-  }, HEARTBEAT_INTERVAL_MS);
++  }, HEARTBEAT_MS);
+ 
+   try {
+-    const result = await executeJob(job);
+-    const durationMs = Date.now() - startMs;
+-    await auditDispatchEvent(job, "completed", { duration_ms: durationMs });
+-    return result;
+-  } catch (error) {
+-    const durationMs = Date.now() - startMs;
+-    const message = error instanceof Error ? error.message : String(error);
+-    await auditDispatchEvent(job, "failed", { duration_ms: durationMs, error: message });
+-    throw error;
++    const metrics = await executeJob(job);
++    await appendPipelineStageEvent(job, {
++      stage: job.type,
++      elapsedMs: Date.now() - startedAt,
++      rowsRead: numberMetric(metrics, "rows_read") ?? numberMetric(metrics, "selected"),
++      rowsWritten: numberMetric(metrics, "rows_written") ?? numberMetric(metrics, "inserted_candles"),
++      apiRequests: numberMetric(metrics, "api_requests") ?? numberMetric(metrics, "request_count"),
++      inputTokens: numberMetric(metrics, "input_tokens"),
++      outputTokens: numberMetric(metrics, "output_tokens"),
++      totalTokens: numberMetric(metrics, "total_tokens"),
++      estimatedCostUsd: numberMetric(metrics, "estimated_cost_usd"),
++      extra: {
++        job_type: job.type,
++        metric_keys: Object.keys(metrics).sort(),
++      },
++    });
++    return metrics;
+   } finally {
+-    clearInterval(heartbeat);
++    clearInterval(timer);
+   }
+ }
+ 
+@@ -202,14 +186,10 @@
+   process.once("SIGTERM", () => { stopping = true; });
+ 
+   await initMonitoring({ serviceName: "hermes-worker" });
+-  logger.info("worker_start", {
+-    poll_ms: args.pollMs,
+-    max_jobs: args.maxJobs,
+-    pipeline_jobs: args.pipelineJobs,
+-    channel_task_types: args.channelTaskTypes,
+-  });
++  logger.info("worker_start", { poll_ms: args.pollMs, max_jobs: args.maxJobs });
+   await checkDatabaseConnection();
+   logger.info("database_ok");
++  let lastReapAt = 0;
+ 
+   if (args.dryRun) {
+     await enqueueSmokeJob(args.workerId);
+@@ -217,75 +197,19 @@
+   }
+ 
+   while (!stopping && processed < args.maxJobs) {
+-    if (args.pipelineJobs) {
++    const now = Date.now();
++    if (!args.dryRun && now - lastReapAt >= STALE_REAP_MS) {
+       const resetJobs = await resetStalePipelineJobs({ workerId: args.workerId });
+       if (resetJobs.length > 0) {
+-        logger.warn("stale_jobs_reset", {
+-          job_ids: resetJobs.map((job) => job.id),
+-          count: resetJobs.length,
+-        });
++        logger.warn("stale_jobs_reset", { count: resetJobs.length });
+       }
+-    }
+-
+-    const job = args.pipelineJobs
+-      ? await claimNextPipelineJob({ workerId: args.workerId, types: claimTypes })
+-      : null;
++      lastReapAt = now;
++    }
++
++    const job = await claimNextPipelineJob({ workerId: args.workerId, types: claimTypes });
+     if (!job) {
+-      const channelTask = args.dryRun
+-        ? null
+-        : args.channelTaskTypes.length === 0
+-          ? null
+-          : await claimNextChannelTask({ workerId: args.workerId, types: args.channelTaskTypes });
+-      if (channelTask) {
+-        logger.info("channel_task_claimed", {
+-          task_id: channelTask.id,
+-          agent_id: channelTask.agent_id,
+-          channel_id: channelTask.channel_id,
+-          task_type: channelTask.task_type,
+-          attempt: channelTask.attempts,
+-          max_attempts: channelTask.max_attempts,
+-        });
+-        try {
+-          const metrics = await runChannelTask(channelTask, args.workerId);
+-          logger.info("channel_task_completed", {
+-            task_id: channelTask.id,
+-            agent_id: channelTask.agent_id,
+-            channel_id: channelTask.channel_id,
+-            task_type: channelTask.task_type,
+-            receipt: metrics.receipt,
+-          });
+-        } catch (error) {
+-          await failChannelTask(channelTask, error);
+-          const message = error instanceof Error ? error.message : String(error);
+-          await captureException(error, {
+-            serviceName: "hermes-worker",
+-            tags: {
+-              component: "hermes-worker",
+-              channel_task_type: channelTask.task_type,
+-              agent_id: channelTask.agent_id,
+-            },
+-            extra: {
+-              task_id: channelTask.id,
+-              channel_id: channelTask.channel_id,
+-              attempt: channelTask.attempts,
+-              max_attempts: channelTask.max_attempts,
+-            },
+-          });
+-          logger.error("channel_task_failed", {
+-            task_id: channelTask.id,
+-            agent_id: channelTask.agent_id,
+-            channel_id: channelTask.channel_id,
+-            task_type: channelTask.task_type,
+-            error: message,
+-          });
+-        }
+-        processed += 1;
+-        if (args.once) break;
+-        continue;
+-      }
+-
+       if (args.once) {
+-        logger.info("no_pending_jobs", { claim_types: args.pipelineJobs ? claimTypes : [], channel_task_types: args.channelTaskTypes });
++        logger.info("no_pending_jobs", { claim_types: claimTypes });
+         break;
+       }
+       await sleep(args.pollMs);
+@@ -296,7 +220,6 @@
+       job_id: job.id,
+       job_type: job.type,
+       run_id: job.run_id,
+-      phase: job.phase ?? DEFAULT_PHASE,
+       attempt: job.attempts,
+       max_attempts: job.max_attempts,
+     });
+@@ -307,7 +230,6 @@
+         job_id: job.id,
+         job_type: job.type,
+         run_id: job.run_id,
+-        phase: job.phase ?? DEFAULT_PHASE,
+       });
+     } catch (error) {
+       const result = await retryOrFailPipelineJob(job, error);
+@@ -330,7 +252,6 @@
+         job_id: job.id,
+         job_type: job.type,
+         run_id: job.run_id,
+-        phase: job.phase ?? DEFAULT_PHASE,
+         retrying: result.retrying,
+         error: message,
+       });

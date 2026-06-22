@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - button "Open menu" [ref=e8] [cursor=pointer]:
+        - img [ref=e9]
+  - main [ref=e10]:
+    - generic [ref=e11]:
+      - generic [ref=e13]:
+        - generic [ref=e14]:
+          - paragraph [ref=e15]: Settings
+          - heading "API Access" [level=1] [ref=e16]
+          - paragraph [ref=e17]: Create read-only keys for programmatic access.
+        - generic [ref=e18]: Plan alpha
+      - generic [ref=e19]:
+        - complementary "Settings navigation" [ref=e20]:
+          - navigation [ref=e21]:
+            - link "Alerts Pro" [ref=e22] [cursor=pointer]:
+              - /url: /settings/alerts
+              - generic [ref=e23]: Alerts
+              - generic [ref=e24]: Pro
+            - link "API Keys Alpha" [ref=e25] [cursor=pointer]:
+              - /url: /settings/api
+              - generic [ref=e26]: API Keys
+              - generic [ref=e27]: Alpha
+            - link "Webhooks Alpha" [ref=e28] [cursor=pointer]:
+              - /url: /settings/webhooks
+              - generic [ref=e29]: Webhooks
+              - generic [ref=e30]: Alpha
+        - generic [ref=e31]:
+          - generic [ref=e32]:
+            - textbox "Key name" [ref=e33]
+            - button "Create key" [ref=e34] [cursor=pointer]
+          - generic [ref=e37]:
+            - paragraph
+            - paragraph [ref=e38]: ctr_alpha_ooNm3dIm... · revoked
+  - contentinfo [ref=e39]:
+    - generic [ref=e40]:
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - img "CallScore - Market calls, measured." [ref=e44]
+          - paragraph [ref=e45]: Market calls, measured.
+        - generic [ref=e46]:
+          - heading "Navigate" [level=2] [ref=e47]
+          - list [ref=e48]:
+            - listitem [ref=e49]:
+              - link "Leaderboard" [ref=e50] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e51]:
+              - link "Methodology" [ref=e52] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e53]:
+              - link "Pricing" [ref=e54] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e55]:
+              - link "Give Feedback" [ref=e56] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e57]:
+              - link "About" [ref=e58] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e59]:
+          - heading "Legal" [level=2] [ref=e60]
+          - list [ref=e61]:
+            - listitem [ref=e62]:
+              - link "Terms of Service" [ref=e63] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e64]:
+              - link "Privacy Policy" [ref=e65] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e66]:
+        - group [ref=e67]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e68] [cursor=pointer]':
+            - strong [ref=e69]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e70]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e71] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e72]: "?"

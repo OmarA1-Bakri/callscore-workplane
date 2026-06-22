@@ -1,0 +1,15 @@
+--- active/src/app/feedback/layout.tsx
++++ pre-canonical-20260526T063909Z/src/app/feedback/layout.tsx
+@@ -1,10 +1,11 @@
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ 
+ export const metadata: Metadata = {
+   title: "Feedback — CallScore",
+   description:
+     "Share your feedback on CallScore. Suggest creators, report issues, or request features.",
+-  alternates: { canonical: "/feedback" },
++  alternates: { canonical: SITE_URL + "/feedback" },
+ };
+ 
+ interface FeedbackLayoutProps {

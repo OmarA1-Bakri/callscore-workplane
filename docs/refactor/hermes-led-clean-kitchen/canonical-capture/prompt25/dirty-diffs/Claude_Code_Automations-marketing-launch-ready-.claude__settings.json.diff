@@ -1,0 +1,13 @@
+diff --git a/.claude/settings.json b/.claude/settings.json
+deleted file mode 100644
+index 48d3295..0000000
+--- a/.claude/settings.json
++++ /dev/null
+@@ -1,7 +0,0 @@
+-{
+-  "enabledPlugins": {
+-    "semgrep@claude-plugins-official": true,
+-    "posthog@claude-plugins-official": true,
+-    "rc@claude-plugins-official": true
+-  }
+-}

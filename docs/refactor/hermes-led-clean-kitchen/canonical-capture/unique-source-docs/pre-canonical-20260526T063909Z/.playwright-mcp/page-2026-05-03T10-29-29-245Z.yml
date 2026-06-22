@@ -1,0 +1,95 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "Methodology" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "Settings" [ref=e12] [cursor=pointer]:
+            - /url: /settings
+          - link "Backtest Lab" [ref=e13] [cursor=pointer]:
+            - /url: /backtest
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - text: Alpha
+          - button "Logout" [ref=e18] [cursor=pointer]
+  - main [ref=e19]:
+    - main [ref=e20]:
+      - generic [ref=e22]:
+        - generic [ref=e23]:
+          - paragraph [ref=e24]: Settings
+          - heading "Alerts" [level=1] [ref=e25]
+          - paragraph [ref=e26]: Watch creator activity and inspect the recent delivery queue.
+        - generic [ref=e27]: Plan alpha
+      - generic [ref=e28]:
+        - complementary "Settings navigation" [ref=e29]:
+          - navigation [ref=e30]:
+            - link "Alerts Pro" [ref=e31] [cursor=pointer]:
+              - /url: /settings/alerts
+              - generic [ref=e32]: Alerts
+              - generic [ref=e33]: Pro
+            - link "API Keys Alpha" [ref=e34] [cursor=pointer]:
+              - /url: /settings/api
+              - generic [ref=e35]: API Keys
+              - generic [ref=e36]: Alpha
+            - link "Webhooks Alpha" [ref=e37] [cursor=pointer]:
+              - /url: /settings/webhooks
+              - generic [ref=e38]: Webhooks
+              - generic [ref=e39]: Alpha
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - heading "Watchlist" [level=2] [ref=e42]
+            - paragraph [ref=e43]: No watched creators yet.
+          - generic [ref=e44]:
+            - heading "Recent alert queue" [level=2] [ref=e45]
+            - paragraph [ref=e46]: No recent alerts.
+  - contentinfo [ref=e47]:
+    - generic [ref=e48]:
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - img "CallScore - Market calls, measured." [ref=e52]
+          - paragraph [ref=e53]: Market calls, measured.
+        - generic [ref=e54]:
+          - heading "Navigate" [level=2] [ref=e55]
+          - list [ref=e56]:
+            - listitem [ref=e57]:
+              - link "Leaderboard" [ref=e58] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e59]:
+              - link "Methodology" [ref=e60] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e61]:
+              - link "Pricing" [ref=e62] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e63]:
+              - link "Give Feedback" [ref=e64] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e65]:
+              - link "About" [ref=e66] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e67]:
+          - heading "Legal" [level=2] [ref=e68]
+          - list [ref=e69]:
+            - listitem [ref=e70]:
+              - link "Terms of Service" [ref=e71] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e72]:
+              - link "Privacy Policy" [ref=e73] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e74]:
+        - group [ref=e75]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e76] [cursor=pointer]':
+            - strong [ref=e77]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e78]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e79] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e80]: "?"
+    - generic [ref=e81]: Feedback

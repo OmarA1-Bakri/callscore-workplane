@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<audit version="0.0.38">
+<site url="http://localhost:3002" crawled="98" date="2026-04-29T18:42:59.210Z"/>
+<score overall="47" grade="F">
+ <cat name="Accessibility" score="90"/>
+ <cat name="Security" score="42"/>
+ <cat name="Images" score="85"/>
+ <cat name="Performance" score="64"/>
+ <cat name="Links" score="66"/>
+ <cat name="Crawlability" score="86"/>
+ <cat name="Content" score="75"/>
+ <cat name="URL Structure" score="91"/>
+ <cat name="Core SEO" score="85"/>
+ <cat name="E-E-A-T" score="84"/>
+ <cat name="Internationalization" score="100"/>
+ <cat name="Legal Compliance" score="100"/>
+ <cat name="Mobile" score="100"/>
+ <cat name="Social Media" score="100"/>
+</score>
+<summary passed="7227" warnings="1101" failed="354"/>
+<issues>
+ <category name="Crawlability" errors="1" warnings="2">
+  <rule id="crawl/sitemap-domain" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/crawl/sitemap-domain">
+   4 URL(s) point to different domain(s)
+   Items (4):
+    - https://cryptotuberranked.com [host: cryptotuberranked.com]
+    - https://cryptotuberranked.com/pricing [host: cryptotuberranked.com]
+    - https://cryptotuberranked.com/methodology [host: cryptotuberranked.com]
+    - https://cryptotuberranked.com/feedback [host: cryptotuberranked.com]
+  </rule>
+  <rule id="crawl/sitemap-coverage" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/crawl/sitemap-coverage">
+   85 indexable page(s) not in sitemap (87%); 4 sitemap URL(s) were not crawled
+   Items (5/89):
+    - /
+    - /about
+    - /pricing
+    - /feedback
+    - /methodology
+  </rule>
+ </category>
+ <category name="Core SEO" errors="0" warnings="72">
+  <rule id="core/meta-title" severity="error" status="warn" docs="https://docs.squirrelscan.com/rules/core/meta-title">
+   Title too long; Title too short
+   Pages (5): /, /about, /methodology, /pricing, /creator/@cryptoshubhrantchaudhary8012
+   Items (5):
+    - / (Crypto YouTuber Leaderboard — Who Actually Beats T (82 chars))
+    - /methodology (Methodology — How We Score Crypto YouTubers | Cryp (65 chars))
+    - /creator/@cryptoshubhrantchaudhary8012 (Crypto Shubhrant chaudhary — Creator Profile | Cry (66 chars))
+    - /about (About — CryptoTubers Ranked (27 chars))
+    - /pricing (Pricing — CryptoTubers Ranked (29 chars))
+  </rule>
+  <rule id="core/meta-description" severity="error" status="warn" docs="https://docs.squirrelscan.com/rules/core/meta-description">
+   Description too short
+   Pages (5/62): /, /feedback, /pricing, /call/22894, /call/22902
+   Items (5/62):
+    - / (See which crypto YouTubers have the best track rec (119 chars))
+    - /pricing (Three tiers: free, pro ($19/mo), alpha ($49/mo). F (102 chars))
+    - /feedback (Share your feedback on CryptoTubers Ranked. Sugges (97 chars))
+    - /creator/@kitco (See Kitco News&apos;s crypto call track record, alpha s (111 chars))
+    - /creator/@AltcoinBuzz (See Altcoin Buzz&apos;s crypto call track record, alpha (113 chars))
+  </rule>
+  <rule id="core/canonical" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/core/canonical">
+   Missing canonical URL
+   Pages (2): /privacy, /terms
+  </rule>
+  <rule id="core/og-tags" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/core/og-tags">
+   Missing og:image - social shares will lack imagery
+   Pages (1): /about
+  </rule>
+  <rule id="core/title-unique" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/core/title-unique">
+   10 duplicate title(s) affecting 63 pages
+   Items (5/10):
+    - near bullish call — cryptotubers ranked (&quot;near bullish call — cryptotubers ranked...&quot; (4 pages)) [pageCount: 4] (from: /call/7444, /call/7443, /call/7442, /call/7437)
+    - btc bullish call — cryptotubers ranked (&quot;btc bullish call — cryptotubers ranked...&quot; (16 pages)) [pageCount: 16] (from: /call/7439, /call/7436, /call/6403, /call/6399, /call/6397; +11 more)
+    - eth bullish call — cryptotubers ranked (&quot;eth bullish call — cryptotubers ranked...&quot; (8 pages)) [pageCount: 8] (from: /call/7440, /call/6404, /call/6402, /call/6400, /call/6398; +3 more)
+    - link bearish call — cryptotubers ranked (&quot;link bearish call — cryptotubers ranked...&quot; (6 pages)) [pageCount: 6] (from: /call/7441, /call/8081, /call/6844, /call/6839, /call/6836; +1 more)
+    - near bearish call — cryptotubers ranked (&quot;near bearish call — cryptotubers ranked...&quot; (2 pages)) [pageCount: 2] (from: /call/7438, /call/7435)
+  </rule>
+  <rule id="core/twitter-cards" severity="info" status="warn" docs="https://docs.squirrelscan.com/rules/core/twitter-cards">
+   summary_large_image card requires an image
+   Pages (1): /about
+  </rule>
+ </category>
+ <category name="Security" errors="85" warnings="4">
+  <rule id="security/leaked-secrets" severity="error" status="warn" docs="https://docs.squirrelscan.com/rules/security/leaked-secrets">
+   11 potential secret(s) detected (verify manually)
+   Items (5/11):
+    - DigitalOcean Spaces Key: DO0FBQ*************FDQT (Found in external-script (http://localhost:3002/_next/static/chunks/app-pages-internals.js))
+    - DigitalOcean Spaces Key: DO1FBQ**************BQUE (Found in external-script (http://localhost:3002/_next/static/chunks/app/about/page.js))
+    - DigitalOcean Spaces Key: DO0FBQ********************FL0I (Found in external-script (http://localhost:3002/_next/static/chunks/app/about/page.js))
+    - DigitalOcean Spaces Key: DO1FBQ*************VBQV (Found in external-script (http://localhost:3002/_next/static/chunks/app/about/page.js))
+    - DigitalOcean Spaces Key: DO0FBQ********************UFFW (Found in external-script (http://localhost:3002/_next/static/chunks/app/about/page.js))
+  </rule>
+  <rule id="security/https" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/security/https">
+   Page not served over HTTPS
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+  </rule>
+  <rule id="security/csp" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/security/csp">
+   No Content-Security-Policy header
+  </rule>
+  <rule id="security/x-frame-options" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/security/x-frame-options">
+   No clickjacking protection
+  </rule>
+  <rule id="security/form-captcha" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/security/form-captcha">
+   1 public form(s) without CAPTCHA
+   Pages (1): /feedback
+   Items (1):
+    - form[0]
+  </rule>
+ </category>
+ <category name="Links" errors="1" warnings="3">
+  <rule id="links/broken-links" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/links/broken-links">
+   13 broken internal link(s) (4xx/5xx)
+   Items (5/13):
+    - /creator/channel/UCT44w6854K62cSiwA1aiXfw (http://localhost:3002/creator/channel/UCT44w6854K62cSiwA1aiXfw (404)) [statusCode: 404, linkedFrom: 1] (from: /)
+    - /creator/channel/UCRukJuuBAdoHMTBIsFJAgvw (http://localhost:3002/creator/channel/UCRukJuuBAdoHMTBIsFJAgvw (404)) [statusCode: 404, linkedFrom: 1] (from: /)
+    - /creator/channel/UC-f5nPBEDyUBZz_jOPBwAfQ (http://localhost:3002/creator/channel/UC-f5nPBEDyUBZz_jOPBwAfQ (404)) [statusCode: 404, linkedFrom: 1] (from: /)
+    - /creator/channel/UCIEvlRpHBVFthrF6pZzBEXw (http://localhost:3002/creator/channel/UCIEvlRpHBVFthrF6pZzBEXw (404)) [statusCode: 404, linkedFrom: 1] (from: /)
+    - /creator/channel/UC188KLMYLLGqVJZdYq7mYFw (http://localhost:3002/creator/channel/UC188KLMYLLGqVJZdYq7mYFw (404)) [statusCode: 404, linkedFrom: 1] (from: /)
+  </rule>
+  <rule id="links/broken-external-links" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/links/broken-external-links">
+   1 broken external link(s): 1 with 404
+   Items (1):
+    - https://github.com/dave-builder/crypto-tuber-ranked (https://github.com/dave-builder/crypto-tuber-ranked (404)) [status: 404] (from: /methodology)
+  </rule>
+  <rule id="links/orphan-pages" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/links/orphan-pages">
+   81 orphan page(s) with &lt;2 incoming links
+   Items (5/81):
+    - /call/7444
+    - /call/7443
+    - /call/7442
+    - /call/7439
+    - /call/7440
+  </rule>
+  <rule id="links/weak-internal-links" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/links/weak-internal-links">
+   81 page(s) have only 1 internal link
+   Items (5/81):
+    - /call/7444
+    - /call/7443
+    - /call/7442
+    - /call/7439
+    - /call/7440
+  </rule>
+ </category>
+ <category name="Content" errors="0" warnings="95">
+  <rule id="content/duplicate-title" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/content/duplicate-title">
+   10 duplicate title(s) found across 63 pages
+   Items (5/10):
+    - near bullish call — cryptotubers ranked (&quot;near bullish call — cryptotubers ranked...&quot; (4 pages)) [pageCount: 4] (from: /call/7444, /call/7443, /call/7442, /call/7437)
+    - btc bullish call — cryptotubers ranked (&quot;btc bullish call — cryptotubers ranked...&quot; (16 pages)) [pageCount: 16] (from: /call/7439, /call/7436, /call/6403, /call/6399, /call/6397; +11 more)
+    - eth bullish call — cryptotubers ranked (&quot;eth bullish call — cryptotubers ranked...&quot; (8 pages)) [pageCount: 8] (from: /call/7440, /call/6404, /call/6402, /call/6400, /call/6398; +3 more)
+    - link bearish call — cryptotubers ranked (&quot;link bearish call — cryptotubers ranked...&quot; (6 pages)) [pageCount: 6] (from: /call/7441, /call/8081, /call/6844, /call/6839, /call/6836; +1 more)
+    - near bearish call — cryptotubers ranked (&quot;near bearish call — cryptotubers ranked...&quot; (2 pages)) [pageCount: 2] (from: /call/7438, /call/7435)
+  </rule>
+  <rule id="content/duplicate-description" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/content/duplicate-description">
+   11 duplicate description(s) found across 57 pages
+   Items (5/11):
+    - detailed breakdown of this near bullish call: excluded_confi (&quot;detailed breakdown of this near bullish ...&quot; (4 pages)) [pageCount: 4] (from: /call/7444, /call/7443, /call/7442, /call/7437)
+    - detailed breakdown of this btc bullish call: excluded_confid (&quot;detailed breakdown of this btc bullish c...&quot; (13 pages)) [pageCount: 13] (from: /call/7439, /call/7436, /call/6403, /call/6399, /call/6397; +8 more)
+    - detailed breakdown of this eth bullish call: excluded_confid (&quot;detailed breakdown of this eth bullish c...&quot; (7 pages)) [pageCount: 7] (from: /call/7440, /call/6404, /call/6402, /call/6400, /call/6398; +2 more)
+    - detailed breakdown of this link bearish call: excluded_confi (&quot;detailed breakdown of this link bearish ...&quot; (6 pages)) [pageCount: 6] (from: /call/7441, /call/8081, /call/6844, /call/6839, /call/6836; +1 more)
+    - detailed breakdown of this near bearish call: excluded_confi (&quot;detailed breakdown of this near bearish ...&quot; (2 pages)) [pageCount: 2] (from: /call/7438, /call/7435)
+  </rule>
+  <rule id="content/keyword-stuffing" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/content/keyword-stuffing">
+   N word(s) may be overused
+   Pages (5/12): /, /privacy, /creator/@AltcoinBuzz, /creator/@AnggaAndinata, /creator/@AnthonyPompliano
+   Items (5/7):
+    - low (&quot;low&quot; (6.7%)) [count: 24, density: 6.741573033707865]
+    - nbtc (&quot;nbtc&quot; (5.1%)) [count: 18, density: 5.056179775280898]
+    - creators (&quot;creators&quot; (3.7%)) [count: 13, density: 3.651685393258427]
+    - data (&quot;data&quot; (3.6%)) [count: 16, density: 3.6363636363636362]
+    - alpha (&quot;alpha&quot; (3.7%)) [count: 6, density: 3.6585365853658534]
+  </rule>
+  <rule id="content/word-count" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/content/word-count">
+   Thin content: N words (min N)
+   Pages (5/81): /, /feedback, /pricing, /call/22894, /call/22902
+   Items (5/81):
+    - / (Thin content: 295 words (min 300))
+    - /pricing (Thin content: 297 words (min 300))
+    - /feedback (Thin content: 142 words (min 300))
+    - /creator/@kitco (Thin content: 183 words (min 300))
+    - /creator/@scottmelker (Thin content: 190 words (min 300))
+  </rule>
+ </category>
+ <category name="Images" errors="85" warnings="0">
+  <rule id="images/alt-text" severity="warning" status="fail" docs="https://docs.squirrelscan.com/rules/images/alt-text">
+   1 image(s) missing alt text
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (1):
+    - /_next/image?url=%2Flogo-icon.png&amp;w=1080&amp;q=75
+  </rule>
+ </category>
+ <category name="Performance" errors="12" warnings="670">
+  <rule id="perf/js-file-size" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/perf/js-file-size">
+   3 JS file(s) exceed 1.0 MB; 2 JS file(s) exceed 250.0 KB
+   Items (5):
+    - /_next/static/chunks/main-app.js?v=1777488180815 [sizeBytes: 6025041, size: 5.7 MB, status: 200, contentType: application/javascript; charset=UTF-8] (from: /)
+    - /_next/static/chunks/main-app.js?v=1777488183306 [sizeBytes: 6025041, size: 5.7 MB, status: 200, contentType: application/javascript; charset=UTF-8] (from: /about)
+    - /_next/static/chunks/main-app.js?v=1777488183330 [sizeBytes: 6025041, size: 5.7 MB, status: 200, contentType: application/javascript; charset=UTF-8] (from: /pricing)
+    - /_next/static/chunks/app/layout.js [sizeBytes: 647566, size: 632.4 KB, status: 200, contentType: application/javascript; charset=UTF-8] (from: /, /about, /pricing, /feedback, /methodology; +80 more)
+    - /_next/static/chunks/app/page.js [sizeBytes: 475740, size: 464.6 KB, status: 200, contentType: application/javascript; charset=UTF-8] (from: /)
+  </rule>
+  <rule id="perf/lcp-hints" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/perf/lcp-hints">
+   1 potential LCP image(s) without preload
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (1):
+    - /_next/image?url=%2Flogo-icon.png&amp;w=1080&amp;q=75
+  </rule>
+  <rule id="perf/ttfb" severity="warning" status="fail" docs="https://docs.squirrelscan.com/rules/perf/ttfb">
+   Very slow server response (Nms); Slow server response (Nms)
+   Pages (5/84): /, /about, /feedback, /methodology, /pricing
+   Items (5/84):
+    - / (Very slow server response (1439ms))
+    - /privacy (Very slow server response (3154ms))
+    - /creator/@kitco (Very slow server response (1617ms))
+    - /creator/@scottmelker (Very slow server response (5504ms))
+    - /creator/@PaulBarronNetwork (Very slow server response (1340ms))
+  </rule>
+  <rule id="perf/total-byte-weight" severity="warning" status="fail" docs="https://docs.squirrelscan.com/rules/perf/total-byte-weight">
+   Total tracked resources: 25485KB (very heavy)
+  </rule>
+  <rule id="perf/critical-request-chains" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/perf/critical-request-chains">
+   2 critical request chain(s) found
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (5/84):
+    - CSS: /_next/static/css/app/layout.css?v=1777488180815
+    - JS: /_next/static/chunks/polyfills.js
+    - CSS: /_next/static/css/app/layout.css?v=1777488183306
+    - CSS: /_next/static/css/app/layout.css?v=1777488183330
+    - CSS: /_next/static/css/app/layout.css?v=1777488184376
+  </rule>
+  <rule id="perf/lazy-above-fold" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/perf/lazy-above-fold">
+   1 above-fold image(s) with lazy loading
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (1):
+    - /_next/image?url=%2Flogo-icon.png&amp;w=1080&amp;q=75
+  </rule>
+  <rule id="perf/unminified-js" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/perf/unminified-js">
+   6 JavaScript file(s) appear unminified
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (5):
+    - app-pages-internals.js (131.3KB, ~127.9KB savings) [reason: 142 comments, long function names, excessive whitespace]
+    - layout.js (632.4KB, ~606.5KB savings) [reason: 512 comments, long function names, excessive whitespace]
+    - page.js (464.6KB, ~439.2KB savings) [reason: 506 comments, long function names, excessive whitespace]
+    - webpack.js (55.0KB, ~24.6KB savings) [reason: high newlines (2.50%), 1511 comments, long variable names, long function names, excessive whitespace]
+    - page.js (206.0KB, ~206.6KB savings) [reason: 164 comments, long function names, excessive whitespace]
+  </rule>
+  <rule id="perf/http2" severity="info" status="warn" docs="https://docs.squirrelscan.com/rules/perf/http2">
+   HTTP/2 requires HTTPS
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (5/85):
+    - / (HTTP/2 requires HTTPS)
+    - /about (HTTP/2 requires HTTPS)
+    - /pricing (HTTP/2 requires HTTPS)
+    - /feedback (HTTP/2 requires HTTPS)
+    - /methodology (HTTP/2 requires HTTPS)
+  </rule>
+  <rule id="perf/source-maps" severity="info" status="warn" docs="https://docs.squirrelscan.com/rules/perf/source-maps">
+   N potential source map(s) detected; N inline source map(s) found
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (5/13):
+    - /_next/static/chunks/url.js.map// (from /_next/static/chunks/app-pages-internals.js)
+    - /_next/static/chunks/dynamic-rendering.js.map// (from /_next/static/chunks/app-pages-internals.js)
+    - /_next/static/chunks/reflect.js.map// (from /_next/static/chunks/app-pages-internals.js)
+    - /_next/static/chunks/client-page.js.map/nvar (from /_next/static/chunks/app-pages-internals.js)
+    - /_next/static/chunks/hooks-server-context.js.map/n/n/n;/n (from /_next/static/chunks/app-pages-internals.js)
+  </rule>
+ </category>
+ <category name="Accessibility" errors="170" warnings="179">
+  <rule id="a11y/duplicate-id-aria" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/a11y/duplicate-id-aria">
+   1 problematic ID(s) in ARIA attributes
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (1):
+    - &quot;mobile-nav&quot; (not found)
+  </rule>
+  <rule id="a11y/label-content-name-mismatch" severity="error" status="fail" docs="https://docs.squirrelscan.com/rules/a11y/label-content-name-mismatch">
+   1 element(s) where visible text doesn&apos;t match accessible name
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (1):
+    - a: visible=&quot;cryptotubersranked&quot; vs aria-label=&quot;cryptotubers ranked &quot;
+  </rule>
+  <rule id="a11y/color-contrast" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/a11y/color-contrast">
+   N potential color contrast issue(s)
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (3):
+    - White text (verify background): 1 instance(s)
+    - Very light text color: 1 instance(s)
+    - button with class &quot;px-2 py-1 text-ink-600 hover:t...&quot; may have low contrast
+  </rule>
+  <rule id="a11y/identical-links-same-purpose" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/a11y/identical-links-same-purpose">
+   N link text(s) lead to different destinations
+   Pages (5/8): /creator/@AltcoinBuzz, /creator/@AnthonyPompliano, /creator/@cryptoshubhrantchaudhary8012, /creator/@kitco, /creator/@MMCryptoTube
+   Items (5/11):
+    - &quot;near&quot; → 6 different URLs
+    - &quot;btc&quot; → 2 different URLs
+    - &quot;eth&quot; → 4 different URLs
+    - &quot;btc&quot; → 5 different URLs
+    - &quot;btc&quot; → 3 different URLs
+  </rule>
+  <rule id="a11y/link-text" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/a11y/link-text">
+   1 link(s) with generic text
+   Pages (5/85): /, /about, /feedback, /methodology, /pricing
+   Items (1):
+    - sign in
+  </rule>
+  <rule id="a11y/table-duplicate-name" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/a11y/table-duplicate-name">
+   2 table(s) without accessible names
+   Pages (1): /methodology
+   Items (1):
+    - /methodology (2 table(s) without accessible names)
+  </rule>
+ </category>
+ <category name="URL Structure" errors="0" warnings="75">
+  <rule id="url/lowercase" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/url/lowercase">
+   URL contains uppercase characters
+   Pages (5/7): /creator/@AltcoinBuzz, /creator/@AnggaAndinata, /creator/@AnthonyPompliano, /creator/@EarnWithRK, /creator/@MMCryptoTube
+  </rule>
+  <rule id="url/slug-keywords" severity="info" status="warn" docs="https://docs.squirrelscan.com/rules/url/slug-keywords">
+   URL uses numeric/hash ID instead of descriptive slug
+   Pages (5/68): /call/22894, /call/22902, /call/22906, /call/22907, /call/22910
+  </rule>
+ </category>
+ <category name="E-E-A-T" errors="0" warnings="1">
+  <rule id="eeat/contact-page" severity="warning" status="warn" docs="https://docs.squirrelscan.com/rules/eeat/contact-page">
+   No Contact page found
+  </rule>
+ </category>
+</issues>
+</audit>

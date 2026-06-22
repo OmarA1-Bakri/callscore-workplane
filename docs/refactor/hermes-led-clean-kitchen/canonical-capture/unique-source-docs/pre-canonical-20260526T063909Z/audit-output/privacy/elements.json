@@ -1,0 +1,56 @@
+{
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Help Us Improve the Rankings",
+      "id": null
+    },
+    {
+      "tag": "H2",
+      "text": "Navigate",
+      "id": null
+    },
+    {
+      "tag": "H2",
+      "text": "Legal",
+      "id": null
+    }
+  ],
+  "mains": 1,
+  "articles": 0,
+  "sections": 2,
+  "skipLink": false,
+  "anchors": [],
+  "wordCount": 182,
+  "placeholder": false,
+  "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+  "bodyFont": "__Inter_f367f3, __Inter_Fallback_f367f3",
+  "bg": "rgb(10, 10, 15)",
+  "color": "rgb(255, 255, 255)",
+  "emails": [],
+  "hasTOC": false,
+  "usesGold": 12,
+  "mainBounds": {
+    "x": 0,
+    "y": 80.80000305175781,
+    "width": 1429.5999755859375,
+    "height": 1021.6000366210938,
+    "top": 80.80000305175781,
+    "right": 1429.5999755859375,
+    "bottom": 1102.4000396728516,
+    "left": 0
+  },
+  "focusables": 21,
+  "missingAlt": 0,
+  "checks": {
+    "jurisdictionClause": false,
+    "arbitration": false,
+    "gdpr": false,
+    "ccpa": false,
+    "ageMinimum": false,
+    "terminationClause": false,
+    "refundPolicy": false,
+    "youtubeApi": false,
+    "retentionPeriod": false
+  }
+}

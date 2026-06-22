@@ -1,0 +1,1007 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>methodology :: crypto-tuber-ranked</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter+Tight:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  /* ---------------------------------------------------------------
+     Terminal mockup :: methodology :: Direction B
+     Locked palette: #0B0F0E / #121815 / #C8D3CA / #5B6B63 / #3FD67A / #FF5B5B
+     --------------------------------------------------------------- */
+
+  :root {
+    --bg: #0B0F0E;
+    --surface: #121815;
+    --surface-2: #0F1513;
+    --text: #C8D3CA;
+    --muted: #5B6B63;
+    --accent: #3FD67A;
+    --negative: #FF5B5B;
+    --rule: rgba(200, 211, 202, 0.08);
+    --rule-strong: rgba(200, 211, 202, 0.14);
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    --sans: "Inter Tight", system-ui, -apple-system, Segoe UI, sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { background: var(--bg); }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "zero";
+    /* very subtle CRT scanlines — purely decorative, non-animated */
+    background-image:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(63, 214, 122, 0.010) 0px,
+        rgba(63, 214, 122, 0.010) 1px,
+        transparent 1px,
+        transparent 3px
+      );
+    background-attachment: fixed;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  /* ---------- a11y ---------- */
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+  .sr-only.focus\:not-sr-only:focus {
+    position: fixed;
+    top: 12px; left: 12px;
+    width: auto; height: auto;
+    margin: 0; padding: 8px 12px;
+    clip: auto; white-space: normal;
+    background: var(--surface);
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    z-index: 1000;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* ---------- layout ---------- */
+  .shell {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- header strip ---------- */
+  .topbar {
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface-2);
+  }
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 0;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+  .topbar__left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .dot-row { display: inline-flex; gap: 6px; }
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--rule-strong);
+  }
+  .dot.live { background: var(--accent); box-shadow: 0 0 6px rgba(63,214,122,0.5); }
+  .crumbs { color: var(--text); }
+  .crumbs .sep { color: var(--muted); margin: 0 8px; }
+  .crumbs em { color: var(--accent); font-style: normal; }
+  .topbar__right { color: var(--muted); font-size: 12px; }
+  .topbar__right b { color: var(--text); font-weight: 500; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: 72px 0 56px; }
+  .prompt {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    margin: 0 0 10px;
+  }
+  .prompt .chev { color: var(--accent); }
+  h1.page-title {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: clamp(40px, 6vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    color: var(--text);
+  }
+  h1.page-title .hash { color: var(--accent); margin-right: 14px; }
+  .hero__tag {
+    font-family: var(--mono);
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 20px;
+  }
+  .hero__sub {
+    font-family: var(--sans);
+    color: var(--muted);
+    font-size: 17px;
+    font-weight: 400;
+    margin: 0;
+    max-width: 58ch;
+    line-height: 1.55;
+  }
+  .hero__sub em { color: var(--text); font-style: normal; }
+
+  /* ---------- generic section ---------- */
+  section { margin-bottom: 72px; }
+  .section-label {
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+    font-weight: 500;
+  }
+  .section-title {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 0 0 28px;
+  }
+  .section-title .slash { color: var(--muted); margin-right: 10px; }
+
+  /* ---------- pipeline printout ---------- */
+  .code-block {
+    font-family: var(--mono);
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.75;
+    color: var(--text);
+    padding: 4px 0;
+  }
+  .code-block .cmd { color: var(--text); }
+  .code-block .cmd .dollar { color: var(--accent); margin-right: 8px; }
+  .code-block .tree { color: var(--muted); }
+  .code-block .step-name { color: var(--accent); font-weight: 500; }
+  .code-block .step-desc { color: var(--text); }
+  .code-block .comment { color: var(--muted); }
+
+  /* ---------- alpha score formula (ASCII bar chart) ---------- */
+  .formula {
+    display: grid;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 14px;
+  }
+  .formula .top-comment {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 14px;
+  }
+  .formula .frow {
+    display: grid;
+    grid-template-columns: 11ch minmax(0, 1fr) 8ch;
+    align-items: center;
+    column-gap: 16px;
+    padding: 3px 0;
+  }
+  .formula .frow .lbl {
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  .formula .frow .val {
+    color: var(--text);
+    font-weight: 700;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    font-size: 13px;
+  }
+  .formula .frow .bar {
+    position: relative;
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 1.1em;
+    display: flex;
+    align-items: center;
+    text-shadow: 0 0 6px rgba(63, 214, 122, 0.18);
+  }
+  .formula .frow .bar .fill {
+    display: inline-block;
+    height: 100%;
+    width: var(--target-w, 0%);
+    overflow: hidden;
+    white-space: nowrap;
+    animation: bar-grow 600ms cubic-bezier(.2,.7,.2,1) 1 both;
+  }
+  @keyframes bar-grow {
+    from { width: 0%; }
+    to   { width: var(--target-w, 0%); }
+  }
+  .formula .frow.total {
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px solid var(--rule-strong);
+  }
+  .formula .frow.total .lbl { font-weight: 700; }
+  .formula .frow.total .val { color: var(--accent); font-size: 14px; }
+  .formula .frow.total .bar {
+    position: relative;
+    height: 1.25em;
+  }
+  .formula .frow.total .bar .fill {
+    width: 100%;
+    animation: bar-grow-total 900ms cubic-bezier(.2,.7,.2,1) 1 both;
+  }
+  @keyframes bar-grow-total {
+    from { width: 0%; }
+    to   { width: 100%; }
+  }
+  /* subtle dividers at cumulative weight boundaries: 40 / 65 / 80 / 90 */
+  .formula .frow.total .bar .fill::before {
+    content: "";
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image:
+      linear-gradient(to right,
+        transparent 0,
+        transparent calc(40% - 1px),
+        rgba(11, 15, 14, 0.55) calc(40% - 1px),
+        rgba(11, 15, 14, 0.55) 40%,
+        transparent 40%,
+        transparent calc(65% - 1px),
+        rgba(11, 15, 14, 0.55) calc(65% - 1px),
+        rgba(11, 15, 14, 0.55) 65%,
+        transparent 65%,
+        transparent calc(80% - 1px),
+        rgba(11, 15, 14, 0.55) calc(80% - 1px),
+        rgba(11, 15, 14, 0.55) 80%,
+        transparent 80%,
+        transparent calc(90% - 1px),
+        rgba(11, 15, 14, 0.55) calc(90% - 1px),
+        rgba(11, 15, 14, 0.55) 90%,
+        transparent 90%,
+        transparent 100%);
+  }
+
+  @media (max-width: 640px) {
+    .formula { font-size: 13px; }
+    .formula .frow {
+      grid-template-columns: 10ch minmax(0, 1fr) 7ch;
+      column-gap: 10px;
+    }
+    .formula .frow .lbl,
+    .formula .frow .val,
+    .formula .frow .bar { font-size: 12px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .formula .frow .bar .fill,
+    .formula .frow.total .bar .fill {
+      animation: none !important;
+      width: var(--target-w, 100%);
+    }
+    .formula .frow.total .bar .fill { width: 100%; }
+  }
+
+  /* ---------- score components ---------- */
+  .components {
+    display: grid;
+    gap: 26px;
+  }
+  .component-block {
+    border-left: 1px solid var(--rule-strong);
+    padding-left: 20px;
+  }
+  .component-header {
+    color: var(--muted);
+    font-size: 12.5px;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+  .component-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0;
+    font-family: var(--mono);
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+  .component-row .lbl { color: var(--text); font-weight: 500; }
+  .component-row .dots {
+    flex: 1 1 auto;
+    color: var(--muted);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0 10px;
+    letter-spacing: 0.35em;
+    transform: translateY(-3px);
+    user-select: none;
+  }
+  .component-row .val {
+    color: var(--accent);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .component-desc {
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 72ch;
+  }
+  .component-desc b { color: var(--text); font-weight: 500; }
+
+  /* ---------- creator rankings table ---------- */
+  .metrics-table {
+    font-family: var(--mono);
+    font-size: 13.5px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .metrics-table th {
+    text-align: left;
+    padding: 8px 0 10px;
+    color: var(--muted);
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+  .metrics-table td {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: top;
+  }
+  .metrics-table td.col-metric {
+    color: var(--accent);
+    font-weight: 700;
+    white-space: nowrap;
+    padding-right: 32px;
+    width: 180px;
+  }
+  .metrics-table td.col-spec {
+    color: var(--text);
+    white-space: nowrap;
+    padding-right: 32px;
+  }
+  .metrics-table td.col-desc {
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  @media (max-width: 640px) {
+    .metrics-table td.col-metric { width: auto; padding-right: 16px; }
+    .metrics-table td.col-spec { padding-right: 16px; font-size: 12.5px; }
+    .metrics-table td.col-desc { font-size: 12.5px; }
+  }
+
+  .meta-line {
+    color: var(--muted);
+    font-size: 12.5px;
+    margin-top: 18px;
+  }
+  .meta-line b { color: var(--text); font-weight: 500; }
+
+  /* ---------- statistical rigor panels ---------- */
+  .panel-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 20px;
+  }
+  @media (max-width: 900px) {
+    .panel-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  }
+  @media (max-width: 560px) {
+    .panel-grid { grid-template-columns: 1fr; }
+  }
+  .panel {
+    font-family: var(--mono);
+    color: var(--text);
+    position: relative;
+    background: var(--surface);
+    padding: 18px 20px 18px;
+    border: 1px solid var(--rule-strong);
+  }
+  .panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(transparent, rgba(63,214,122,0.02));
+  }
+  .panel__title {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .panel__title::before {
+    content: "┌─";
+    color: var(--rule-strong);
+  }
+  .panel__title::after {
+    content: "─";
+    flex: 1 1 auto;
+    color: var(--rule-strong);
+    overflow: hidden;
+    white-space: nowrap;
+    letter-spacing: 0.25em;
+  }
+  .panel__stat {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--accent);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    margin-bottom: 6px;
+  }
+  .panel__sub {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 3px;
+  }
+  .panel__meta {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+  }
+  .panel__foot {
+    color: var(--rule-strong);
+    font-size: 11px;
+    margin-top: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- wilson block ---------- */
+  .wilson {
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--text);
+    border-left: 1px solid var(--rule-strong);
+    padding: 4px 0 4px 20px;
+  }
+  .wilson .cmd { color: var(--accent); display: block; margin-bottom: 14px; }
+  .wilson .cmd .dollar { color: var(--accent); margin-right: 8px; }
+  .wilson .cmt { color: var(--muted); display: block; }
+  .wilson .eqn {
+    color: var(--accent);
+    display: block;
+    margin: 14px 0;
+    font-weight: 500;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .wilson .where { color: var(--muted); display: block; }
+  .wilson .where var { color: var(--text); font-style: normal; font-weight: 500; }
+
+  /* ---------- transparency creed ---------- */
+  .creed {
+    font-family: var(--mono);
+  }
+  .creed__head {
+    color: var(--accent);
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  .creed__head .chev { color: var(--accent); margin-right: 8px; }
+  .creed__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+  .creed__list li {
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.55;
+    display: flex;
+    gap: 14px;
+  }
+  .creed__list li::before {
+    content: "·";
+    color: var(--accent);
+    flex: 0 0 auto;
+    width: 1ch;
+    font-weight: 700;
+  }
+
+  /* ---------- CTA footer ---------- */
+  .cta {
+    margin: 80px 0 40px;
+    padding: 28px 0 0;
+    border-top: 1px solid var(--rule);
+  }
+  .cta__line {
+    font-family: var(--mono);
+    font-size: 17px;
+    color: var(--text);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .cta__chev { color: var(--accent); }
+  .cta__q { color: var(--muted); font-weight: 400; }
+  .cta__caret {
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background: var(--accent);
+    transform: translateY(3px);
+    animation: blink 1.05s steps(1, end) infinite;
+  }
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+  }
+  .cta__actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding-left: 22px;
+  }
+  .btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 18px;
+    background: transparent;
+    border: 1px solid var(--rule-strong);
+    color: var(--text);
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: border-color 120ms ease, color 120ms ease, background 120ms ease;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn--primary {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .btn--primary:hover {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  /* ---------- footer signature ---------- */
+  .sig {
+    border-top: 1px solid var(--rule);
+    padding: 22px 0 40px;
+    color: var(--muted);
+    font-size: 11.5px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    letter-spacing: 0.04em;
+  }
+  .sig a:hover { color: var(--accent); }
+
+  /* ---------- motion: one-shot digit tick on stat panels ---------- */
+  .panel__stat {
+    animation: ticker 900ms cubic-bezier(.2,.7,.2,1) 1 both;
+  }
+  .panel-grid .panel:nth-child(1) .panel__stat { animation-delay: 0ms; }
+  .panel-grid .panel:nth-child(2) .panel__stat { animation-delay: 80ms; }
+  .panel-grid .panel:nth-child(3) .panel__stat { animation-delay: 160ms; }
+  .panel-grid .panel:nth-child(4) .panel__stat { animation-delay: 240ms; }
+  .panel-grid .panel:nth-child(5) .panel__stat { animation-delay: 320ms; }
+  .panel-grid .panel:nth-child(6) .panel__stat { animation-delay: 400ms; }
+  @keyframes ticker {
+    0%   { opacity: 0; transform: translateY(4px); filter: blur(3px); }
+    30%  { opacity: 0.6; filter: blur(1px); }
+    60%  { opacity: 1; filter: blur(0); }
+    70%  { transform: translateY(-1px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .panel__stat { animation: none !important; }
+    .cta__caret { animation: none; opacity: 1; }
+  }
+
+  /* ---------- small utility ---------- */
+  .nowrap { white-space: nowrap; }
+  .accent { color: var(--accent); }
+  .muted { color: var(--muted); }
+  hr.divider {
+    border: 0;
+    border-top: 1px dashed var(--rule-strong);
+    margin: 36px 0;
+  }
+</style>
+</head>
+<body>
+
+<a class="sr-only focus:not-sr-only" href="#main">skip to content</a>
+
+<!-- =========================== HEADER =========================== -->
+<header class="topbar" role="banner">
+  <div class="shell topbar__inner">
+    <div class="topbar__left">
+      <nav aria-label="window controls" class="dot-row">
+        <span class="dot" aria-hidden="true"></span>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="dot live" aria-label="live"></span>
+      </nav>
+      <div class="crumbs">
+        <span>CRYPTO-TUBER-RANKED</span>
+        <span class="sep">::</span>
+        <em>methodology</em>
+        <span class="sep">::</span>
+        <span class="muted">v2.3.1</span>
+      </div>
+    </div>
+    <div class="topbar__right">last-updated <b>2026-04-19</b></div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="shell">
+
+    <!-- =========================== HERO =========================== -->
+    <section class="hero" aria-labelledby="page-title">
+      <p class="prompt"><span class="chev">&gt;</span> cat /docs/methodology.md</p>
+      <h1 id="page-title" class="page-title">
+        <span class="hash">#</span>METHODOLOGY
+      </h1>
+      <p class="hero__tag">How we score every call.</p>
+      <p class="hero__sub">
+        We run every public crypto call against <em>18.7&#8239;million candles</em>. No black boxes. Every formula, every weight, every data source&mdash;laid out right here.
+      </p>
+    </section>
+
+    <!-- =========================== PIPELINE =========================== -->
+    <section aria-labelledby="pipeline-title">
+      <p class="section-label">01 / pipeline</p>
+      <h2 id="pipeline-title" class="section-title"><span class="slash">//</span>how rankings work</h2>
+<div class="code-block" role="img" aria-label="pipeline: scrape, extract, match, score, rank">
+<span class="cmd"><span class="dollar">$</span>pipeline --describe</span>
+<span class="tree">├──</span> <span class="step-name">scrape   </span> <span class="step-desc">fetch transcripts from 20 creators, daily</span>
+<span class="tree">├──</span> <span class="step-name">extract  </span> <span class="step-desc">LLM-identifies buy/sell calls with ticker + direction</span>
+<span class="tree">├──</span> <span class="step-name">match    </span> <span class="step-desc">align each call to the 30-day candle window that follows</span>
+<span class="tree">├──</span> <span class="step-name">score    </span> <span class="step-desc">compute return_30d vs BTC benchmark</span>
+<span class="tree">└──</span> <span class="step-name">rank     </span> <span class="step-desc">Wilson-adjusted Alpha Score with Low-N penalty</span>
+
+<span class="comment">// confidence floor: extraction threshold &gt; 70%</span>
+<span class="comment">// update cadence: daily, 00:00 UTC</span>
+</div>
+    </section>
+
+    <!-- =========================== FORMULA =========================== -->
+    <section aria-labelledby="formula-title">
+      <p class="section-label">02 / alpha score</p>
+      <h2 id="formula-title" class="section-title"><span class="slash">//</span>the alpha score formula</h2>
+
+      <div class="formula" role="img" aria-label="Alpha Score composition: Direction 40, Magnitude 25, Consistency 15, Timing 10, Conviction 10, Total 100 points">
+        <div class="top-comment">// ALPHA_SCORE = sum(weighted components)</div>
+
+        <div class="frow">
+          <span class="lbl">DIRECTION</span>
+          <span class="bar" aria-hidden="true"><span class="fill" style="--target-w: 40%;">████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span></span>
+          <span class="val">40 pts</span>
+        </div>
+
+        <div class="frow">
+          <span class="lbl">MAGNITUDE</span>
+          <span class="bar" aria-hidden="true"><span class="fill" style="--target-w: 25%;">████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span></span>
+          <span class="val">25 pts</span>
+        </div>
+
+        <div class="frow">
+          <span class="lbl">CONSISTENCY</span>
+          <span class="bar" aria-hidden="true"><span class="fill" style="--target-w: 15%;">████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span></span>
+          <span class="val">15 pts</span>
+        </div>
+
+        <div class="frow">
+          <span class="lbl">TIMING</span>
+          <span class="bar" aria-hidden="true"><span class="fill" style="--target-w: 10%;">████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span></span>
+          <span class="val">10 pts</span>
+        </div>
+
+        <div class="frow">
+          <span class="lbl">CONVICTION</span>
+          <span class="bar" aria-hidden="true"><span class="fill" style="--target-w: 10%;">████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span></span>
+          <span class="val">10 pts</span>
+        </div>
+
+        <div class="frow total">
+          <span class="lbl">TOTAL</span>
+          <span class="bar" aria-hidden="true"><span class="fill">████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span></span>
+          <span class="val">100 pts</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== COMPONENTS =========================== -->
+    <section aria-labelledby="components-title">
+      <p class="section-label">03 / components</p>
+      <h2 id="components-title" class="section-title"><span class="slash">//</span>score components</h2>
+
+      <div class="components">
+
+        <article class="component-block">
+          <div class="component-header">// direction — binary — 40 pts max</div>
+          <div class="component-row">
+            <span class="lbl">direction_correct</span>
+            <span class="dots" aria-hidden="true">.........................................</span>
+            <span class="val">40</span>
+          </div>
+          <p class="component-desc">
+            Did the price go the direction they called at 30 days? <b>Bullish call + price up = 40.</b> Wrong direction = 0.
+          </p>
+        </article>
+
+        <article class="component-block">
+          <div class="component-header">// alpha_over_btc — capped — 25 pts max</div>
+          <div class="component-row">
+            <span class="lbl">alpha_30d</span>
+            <span class="dots" aria-hidden="true">.........................................</span>
+            <span class="val">25</span>
+          </div>
+          <p class="component-desc">
+            How much did the coin outperform Bitcoin over 30 days? <b>Each 1% of alpha = 2.5 pts,</b> capped at 25.
+          </p>
+        </article>
+
+        <article class="component-block">
+          <div class="component-header">// specificity — composite — 15 pts max</div>
+          <div class="component-row">
+            <span class="lbl">specificity_score</span>
+            <span class="dots" aria-hidden="true">.........................................</span>
+            <span class="val">15</span>
+          </div>
+          <p class="component-desc">
+            How precise was the call? <b>entry (3.75)</b> · <b>target (3.75)</b> · <b>stop-loss (3.75)</b> · <b>timeframe (3.75).</b>
+          </p>
+        </article>
+
+        <article class="component-block">
+          <div class="component-header">// regime_difficulty — contextual — 10 pts max</div>
+          <div class="component-row">
+            <span class="lbl">regime_difficulty</span>
+            <span class="dots" aria-hidden="true">.........................................</span>
+            <span class="val">10</span>
+          </div>
+          <p class="component-desc">
+            How hard was this call given market conditions? <b>Bullish in a bear market = 10.</b> Bullish in a bull market = 1.
+          </p>
+        </article>
+
+        <article class="component-block">
+          <div class="component-header">// target_hit — binary — 10 pts max</div>
+          <div class="component-row">
+            <span class="lbl">hit_target_90d</span>
+            <span class="dots" aria-hidden="true">.........................................</span>
+            <span class="val">10</span>
+          </div>
+          <p class="component-desc">
+            Did the price actually hit their stated target within 90 days? <b>Yes = 10.</b> No = 0.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================== CREATOR RANKINGS =========================== -->
+    <section aria-labelledby="rankings-title">
+      <p class="section-label">04 / rankings</p>
+      <h2 id="rankings-title" class="section-title"><span class="slash">//</span>creator rankings</h2>
+
+      <table class="metrics-table" role="table">
+        <thead>
+          <tr>
+            <th scope="col">metric</th>
+            <th scope="col">spec</th>
+            <th scope="col">definition</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-metric">ALPHA SCORE</td>
+            <td class="col-spec">100 pt / Wilson-adjusted</td>
+            <td class="col-desc">Average Alpha Score across all scored calls. The primary ranking metric.</td>
+          </tr>
+          <tr>
+            <td class="col-metric">WIN RATE</td>
+            <td class="col-spec">% of calls · return_30d &gt; 0</td>
+            <td class="col-desc">Percentage of calls where direction was correct at 30 days.</td>
+          </tr>
+          <tr>
+            <td class="col-metric">AVG ALPHA</td>
+            <td class="col-spec">mean excess return vs BTC</td>
+            <td class="col-desc">Average excess return over Bitcoin at 30 days across all calls.</td>
+          </tr>
+          <tr>
+            <td class="col-metric">WINDOWS</td>
+            <td class="col-spec">30d · 90d · all-time</td>
+            <td class="col-desc">Recomputed daily across three time windows as new videos and prices land.</td>
+          </tr>
+          <tr>
+            <td class="col-metric">ELIGIBILITY</td>
+            <td class="col-spec">confidence &ge; 70%</td>
+            <td class="col-desc">Only calls above the extraction confidence threshold enter scoring.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="meta-line">
+        // access tiers <b>Free</b> — full leaderboard · <b>Pro</b> — deep analytics · <b>Alpha</b> — signals &amp; intelligence <span class="muted">(free tier is the complete research surface; premium is roadmap)</span>
+      </p>
+    </section>
+
+    <!-- =========================== STATISTICAL RIGOR =========================== -->
+    <section aria-labelledby="rigor-title">
+      <p class="section-label">05 / statistical rigor</p>
+      <h2 id="rigor-title" class="section-title"><span class="slash">//</span>diagnostics</h2>
+
+      <div class="panel-grid">
+        <div class="panel">
+          <div class="panel__title">CANDLES INDEXED</div>
+          <div class="panel__stat">18,712,334</div>
+          <div class="panel__sub">binance + coinbase</div>
+          <div class="panel__meta">1h resolution · 18 coins tracked</div>
+          <div class="panel__foot">└─ OHLCV ─────────────┘</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__title">BOOTSTRAP RESAMPLES</div>
+          <div class="panel__stat">5,000</div>
+          <div class="panel__sub">95% confidence intervals</div>
+          <div class="panel__meta">top-5 overlap disclosed honestly</div>
+          <div class="panel__foot">└─ CI ────────────────┘</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__title">SPEARMAN STABILITY</div>
+          <div class="panel__stat">0.95+</div>
+          <div class="panel__sub">robust under ±25% perturbation</div>
+          <div class="panel__meta">weights stress-tested across all variants</div>
+          <div class="panel__foot">└─ ρ ─────────────────┘</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__title">ICC / SIGNAL</div>
+          <div class="panel__stat">1.4%</div>
+          <div class="panel__sub">between-creator variance</div>
+          <div class="panel__meta">why thousands of calls are needed</div>
+          <div class="panel__foot">└─ noise floor ───────┘</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__title">CONTRARIAN EDGE</div>
+          <div class="panel__stat">3x</div>
+          <div class="panel__sub">against peer consensus</div>
+          <div class="panel__meta">statistically significant · 4,600+ calls</div>
+          <div class="panel__foot">└─ delta ─────────────┘</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel__title">ANALYSIS ITERATIONS</div>
+          <div class="panel__stat">136+</div>
+          <div class="panel__sub">bootstrap · Bayesian · regime</div>
+          <div class="panel__meta">decay curves &amp; sensitivity audits</div>
+          <div class="panel__foot">└─ log ───────────────┘</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== WILSON / LOW-N =========================== -->
+    <section aria-labelledby="wilson-title">
+      <p class="section-label">06 / low-N adjustment</p>
+      <h2 id="wilson-title" class="section-title"><span class="slash">//</span>wilson score &amp; the small-sample problem</h2>
+
+      <div class="wilson">
+        <span class="cmd"><span class="dollar">$</span>cat wilson-adjustment.md</span>
+
+        <span class="cmt">// Low-N threshold = calls &lt; 50</span>
+        <span class="cmt">// Penalty = Wilson score lower bound (95% CI)</span>
+        <span class="cmt">// Why: a creator with 2 wins out of 3 has less statistical confidence</span>
+        <span class="cmt">//      than a creator with 30 wins out of 50, even if raw win-rate is higher.</span>
+
+        <span class="eqn">wilson_lb = (p + z²/2n - z·√(p(1-p)/n + z²/4n²)) / (1 + z²/n)</span>
+
+        <span class="where">where <var>p</var> = win_rate, <var>n</var> = sample size, <var>z</var> = 1.96</span>
+      </div>
+    </section>
+
+    <!-- =========================== TRANSPARENCY CREED =========================== -->
+    <section aria-labelledby="creed-title">
+      <p class="section-label">07 / commitments</p>
+      <h2 id="creed-title" class="section-title"><span class="slash">//</span>transparency</h2>
+
+      <div class="creed">
+        <p class="creed__head"><span class="chev">&gt;</span>we will not</p>
+        <ul class="creed__list">
+          <li>charge creators to appear in rankings</li>
+          <li>take sponsorships from tracked creators</li>
+          <li>hide methodology or re-score without changelog</li>
+          <li>hide our mistakes</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- =========================== CTA =========================== -->
+    <section class="cta" aria-labelledby="cta-line">
+      <p id="cta-line" class="cta__line">
+        <span class="cta__chev">&gt;</span>
+        <span>ready to see who actually beats the market?</span>
+        <span class="cta__q">[Y/n]</span>
+        <span class="cta__caret" aria-hidden="true"></span>
+      </p>
+      <div class="cta__actions">
+        <a href="/" class="btn btn--primary">Y · view leaderboard</a>
+        <a href="/pricing" class="btn">n · see pricing</a>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- =========================== FOOTER =========================== -->
+  <footer class="shell sig" role="contentinfo">
+    <span>crypto-tuber-ranked :: methodology.md :: v2.3.1</span>
+    <span><a href="/changelog">changelog</a> · <a href="/leaderboard">leaderboard</a> · <a href="mailto:hi@crypto-tuber-ranked.com">contact</a></span>
+  </footer>
+</main>
+
+</body>
+</html>

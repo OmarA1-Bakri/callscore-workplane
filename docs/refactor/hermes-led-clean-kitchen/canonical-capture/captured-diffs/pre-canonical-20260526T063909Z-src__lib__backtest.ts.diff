@@ -1,0 +1,11 @@
+--- active/src/lib/backtest.ts
++++ pre-canonical-20260526T063909Z/src/lib/backtest.ts
+@@ -80,7 +80,7 @@
+ 
+ // Injectable dependencies for the backtest engine. Tests substitute
+ // fakes for all three loaders; production wiring goes through
+-// `liveBacktestDeps` which queries the primary Postgres connection directly.
++// `liveBacktestDeps` which queries Neon directly.
+ export interface BacktestDeps {
+   readonly loadCreator: (creatorId: number) => Promise<Creator | null>;
+   readonly loadCalls: (

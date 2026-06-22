@@ -1,0 +1,67 @@
+{
+  "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+  "classification": "DELETE_NOW_CACHE",
+  "reason": "stale .next inside non-active legacy/snapshot root /srv/agents/repos/callscore-stale-infra-cleanup",
+  "exists": true,
+  "size_before_bytes": 270899287,
+  "path_info": {
+    "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "is_symlink": false,
+    "size_lstat_bytes": 4096,
+    "mtime_utc": "2026-06-07T10:27:20Z",
+    "mode": "0o775"
+  },
+  "safe_to_delete": true,
+  "block_reasons": [],
+  "active_process_check": [],
+  "docker_mount_check": [],
+  "compose_reference_check": [],
+  "cron_reference_check": [],
+  "systemd_reference_check": [],
+  "all_reference_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+  ],
+  "git_status": {
+    "applicable": true,
+    "repo": "/srv/agents/repos/callscore-stale-infra-cleanup",
+    "status": {
+      "exists": true,
+      "is_git": false
+    }
+  },
+  "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+  "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/callscore-stale-infra-cleanup/.next\"",
+  "delete_rc": 0,
+  "delete_stdout": "",
+  "delete_stderr": "",
+  "exists_after": false,
+  "deleted": true,
+  "disk_before_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134514118656,
+    "free_bytes": 26456125440,
+    "used_percent": 83.56,
+    "inode_total": 9732496,
+    "inode_used": 2697502,
+    "inode_free": 7034994,
+    "inode_used_percent": 27.72
+  },
+  "disk_after_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134241099776,
+    "free_bytes": 26729144320,
+    "used_percent": 83.39,
+    "inode_total": 9732496,
+    "inode_used": 2696778,
+    "inode_free": 7035718,
+    "inode_used_percent": 27.71
+  },
+  "disk_space_recovered_bytes": 273018880,
+  "post_delete_verification": "absent"
+}

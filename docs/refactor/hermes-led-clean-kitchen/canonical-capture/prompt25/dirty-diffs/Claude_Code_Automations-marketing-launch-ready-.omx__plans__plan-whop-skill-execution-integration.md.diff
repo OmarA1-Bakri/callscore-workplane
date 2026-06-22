@@ -1,0 +1,507 @@
+diff --git a/.omx/plans/plan-whop-skill-execution-integration.md b/.omx/plans/plan-whop-skill-execution-integration.md
+deleted file mode 100644
+index ea72125..0000000
+--- a/.omx/plans/plan-whop-skill-execution-integration.md
++++ /dev/null
+@@ -1,501 +0,0 @@
+-# Whop Skill Execution Integration Implementation Plan
+-
+-> **For agentic workers:** REQUIRED SUB-SKILL: Use `superpowers:subagent-driven-development` (recommended) or `superpowers:executing-plans` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+-
+-**Goal:** Build executable `whop-adopt`, `whop-deploy`, and `whop-reconcile` runner paths that use the existing audited executor flow, status discovery, and event log lifecycle.
+-
+-**Architecture:** Add one shared runner module that sits above status discovery and below the MCP tool layer. Each supported skill produces deterministic actions, routes all mutating steps through the dispatch-audit helper, emits `observed` and `finalized` events, and stops cleanly on ambiguity, stale consent, or unknown remote state. Keep `index.ts` thin and keep policy logic centralized in `executor.ts`.
+-
+-**Tech Stack:** TypeScript, Node 20, MCP server SDK, existing Whop/Vercel REST transport wrappers, JSONL event log persistence, `node --test` with `tsx`.
+-
+----
+-
+-## File Structure
+-
+-Primary files for this phase:
+-
+-- Create: `agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts`
+-- Create: `agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/status.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/schemas.ts`
+-- Create: `agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/test/executor.test.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/test/consent.test.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/test/status.test.ts`
+-
+-Responsibilities:
+-
+-- `runner.ts`: shared execution path for adopt/deploy/reconcile, event ordering, audited dispatch calls, observed/finalized writes.
+-- `skill-plans.ts`: deterministic action derivation from status for each supported skill.
+-- `executor.ts`: shared policy checks, dispatch audit planning, consent reuse, blocked action handling.
+-- `index.ts`: MCP entrypoints only, no orchestration logic beyond dependency wiring.
+-- `status.ts`: stays read-oriented, but can expose small helpers the runner needs for terminal-state checks if required.
+-
+-## Task 0: Schema and policy alignment
+-
+-**Files:**
+-
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/schemas.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/test/schemas.test.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/test/executor.test.ts`
+-
+-- [ ] **Step 1: Write failing schema and risk-policy tests**
+-
+-Add tests that expect:
+-
+-- `EventSchema` accepts a sanitized `divergence` event
+-- the runner-facing state enum accepts D3 deploy/reconcile/adopt states used in this phase
+-- `classifyRisk()` returns `local-write` and `requiresConsent: false` for `LOCAL-*` actions such as `manifest.writeCachedBinding` and `registry.addRepo`
+-
+-Test shape to add:
+-
+-```ts
+-test("EventSchema accepts sanitized divergence events", () => {
+-  const result = EventSchema.safeParse({
+-    type: "divergence",
+-    runId: "r_0123456789abcdef",
+-    skill: "whop-deploy",
+-    stepId: "vercel.projects.promoteToProd",
+-    capabilityId: "VERCEL-006",
+-    toolId: "vercel.projects.promoteToProd",
+-    expectedPayloadHash: "sha256:" + "a".repeat(64),
+-    observedPayloadHash: "sha256:" + "b".repeat(64),
+-    observedDigestHash: "sha256:" + "c".repeat(64),
+-    divergenceClass: "payload-changed",
+-    redactedReason: "<redacted:provider-error:sha256:abcd1234abcd>",
+-    terminalState: "unknown-remote-state",
+-    at: "2026-05-03T00:00:00.000Z",
+-  });
+-  assert.equal(result.success, true);
+-});
+-```
+-
+-- [ ] **Step 2: Run the focused schema tests and verify they fail**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern divergence|local-write|runner-facing"
+-```
+-
+-Expected:
+-
+-- FAIL because the divergence event and state coverage are incomplete
+-
+-- [ ] **Step 3: Implement divergence schema, expanded runner states, and local-write risk mapping**
+-
+-Update:
+-
+-- `schemas.ts` to add `divergence` and the runner states required by adopt/deploy/reconcile
+-- `executor.ts` to classify `LOCAL-*` capability IDs as `local-write`
+-
+-Implementation rule:
+-
+-- keep `divergence.redactedReason` sanitized
+-- do not include raw provider text, raw remote free text, or secrets
+-
+-- [ ] **Step 4: Re-run the focused schema tests**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern divergence|local-write|runner-facing"
+-```
+-
+-Expected:
+-
+-- PASS for schema and risk-policy alignment
+-
+-- [ ] **Step 5: Commit**
+-
+-```powershell
+-git add agent_workflows/whop_auto/bin/whop-state-mcp/src/schemas.ts agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts agent_workflows/whop_auto/bin/whop-state-mcp/test/schemas.test.ts agent_workflows/whop_auto/bin/whop-state-mcp/test/executor.test.ts
+-git commit -m "Align runtime schemas and risk policy for skill runner phase"
+-```
+-
+-## Task 1: Add deterministic action planning for the first three skills
+-
+-**Files:**
+-
+-- Create: `agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts`
+-- Test: `agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts`
+-
+-- [ ] **Step 1: Write the failing plan-shape tests**
+-
+-Add tests that expect:
+-
+-- `whop-deploy` returns a single `noop.already-current` action when production already matches `HEAD`
+-- `whop-deploy` returns ordered promotion actions when deploy is needed
+-- `whop-reconcile` returns only local repair actions for safe local drift
+-- `whop-adopt` returns ambiguity failure when multiple targets exist
+-
+-Test shape to add:
+-
+-```ts
+-test("deriveDeployPlan returns noop action when prod already matches HEAD", async () => {
+-  const mod: any = await import("../src/skill-plans.js");
+-  const plan = mod.deriveDeployPlan({
+-    targetRepo: "C:/repo/app",
+-    status: {
+-      manifest: { lastDeploy: { sha: "abc123" } },
+-      target: { git: { head: "abc123" } },
+-      drift: [],
+-      terminalState: "status-ready",
+-      recommendedNextActions: [],
+-      whop: {},
+-      vercel: { deployments: [{ state: "READY", meta: { githubCommitSha: "abc123" } }] },
+-      eventLog: { state: "prod-live", pending: [], compensations: [], consents: [], eventCount: 0 },
+-    },
+-  });
+-  assert.equal(plan.actions[0].stepId, "noop.already-current");
+-});
+-```
+-
+-- [ ] **Step 2: Run the focused tests and verify they fail**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern deriveDeployPlan"
+-```
+-
+-Expected:
+-
+-- FAIL because `skill-plans.ts` does not exist yet
+-
+-- [ ] **Step 3: Implement minimal deterministic planners**
+-
+-Create `skill-plans.ts` with:
+-
+-- `deriveDeployPlan`
+-- `deriveAdoptPlan`
+-- `deriveReconcilePlan`
+-
+-Each action must include:
+-
+-- `stepId`
+-- `capabilityId`
+-- `toolId`
+-- `riskClass`
+-- `idempotencyKey`
+-- `requires_consent`
+-- `consent_reason` when gated
+-
+-Each idempotency key must follow the D3 shape:
+-
+-`<skill>:<repo-hash>:<capability-id>:<target-id-or-name>:<payload-hash>`
+-
+-Implementation rule:
+-
+-- do not create a generic planner framework yet
+-- use direct functions with small local helpers
+-
+-- [ ] **Step 4: Re-run the focused tests**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern deriveDeployPlan"
+-```
+-
+-Expected:
+-
+-- PASS for the added plan-shape tests
+-
+-- [ ] **Step 5: Commit**
+-
+-```powershell
+-git add agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts
+-git commit -m "Add deterministic action plans for adopt deploy and reconcile"
+-```
+-
+-## Task 2: Build the shared runner and event ordering
+-
+-**Files:**
+-
+-- Create: `agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts`
+-- Test: `agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts`
+-
+-- [ ] **Step 1: Write failing runner event-order tests**
+-
+-Add tests for:
+-
+-- `intent` appended before any action execution
+-- consent-gated action appends `consent`, then `dispatched`, then invokes mutation
+-- successful mutation appends `observed`
+-- failed proof appends `divergence`
+-- append failure aborts before mutation
+-- successful terminal run appends `finalized`
+-- `finalized` is not emitted on blocked, failed, or unknown paths
+-
+-Test shape to add:
+-
+-```ts
+-test("runSkill appends intent consent dispatched observed finalized in order", async () => {
+-  const mod: any = await import("../src/runner.js");
+-  const calls: string[] = [];
+-  await mod.runSkill({
+-    skill: "whop-deploy",
+-    runId: "r_0123456789abcdef",
+-    targetRepo: "C:/repo/app",
+-    actions: [/* one consent-gated action */],
+-    appendEvent: async (_runId: string, event: any) => calls.push(event.type),
+-    dispatchStep: async () => ({ returnedId: "dpl_123", responseDigest: "sha256:" + "a".repeat(64) }),
+-    computeTerminalState: async () => "prod-live",
+-  });
+-  assert.deepEqual(calls, ["intent", "consent", "dispatched", "observed", "finalized"]);
+-});
+-```
+-
+-- [ ] **Step 2: Run the focused runner tests and verify they fail**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern runSkill"
+-```
+-
+-Expected:
+-
+-- FAIL because `runner.ts` does not exist
+-
+-- [ ] **Step 3: Implement the shared runner**
+-
+-Create `runner.ts` with one exported `runSkill` function that:
+-
+-- appends `intent`
+-- iterates actions in order
+-- routes read-only actions directly through the step dispatcher
+-- routes mutating actions through `executeWithDispatchAudit`
+-- appends `observed` after each successful remote proof
+-- appends `divergence` when proof cannot be established or payload/ownership diverges
+-- appends `finalized` when `computeTerminalState()` returns a terminal success state
+-
+-Implementation rule:
+-
+-- keep divergence and unknown-outcome handling explicit and branch-based
+-- do not add a class hierarchy
+-- no successful `dispatched` event may end without either `observed` or `divergence`
+-
+-- [ ] **Step 4: Re-run the runner tests**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern runSkill"
+-```
+-
+-Expected:
+-
+-- PASS for event-order tests
+-
+-- [ ] **Step 5: Commit**
+-
+-```powershell
+-git add agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts
+-git commit -m "Add shared skill runner with audited event ordering"
+-```
+-
+-## Task 3: Integrate `whop-deploy` with the runner
+-
+-**Files:**
+-
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts`
+-- Test: `agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts`
+-
+-- [ ] **Step 1: Write failing deploy integration tests**
+-
+-Add tests for:
+-
+-- deploy no-op when current prod matches `HEAD`
+-- deploy requires consent before `vercel.projects.promoteToProd`
+-- deploy rejects stale prior consent when SHA changes
+-- deploy appends `observed` with redacted digest after promotion
+-- deploy uses Git push plus SHA-based Vercel observation, not an explicit Vercel deployment-create API
+-
+-- [ ] **Step 2: Run deploy-focused tests and verify they fail**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern deploy"
+-```
+-
+-Expected:
+-
+-- FAIL because the deploy path is not wired to the shared runner yet
+-
+-- [ ] **Step 3: Implement deploy runner wiring**
+-
+-Add a deploy entrypoint that:
+-
+-- calls `collectWhopStatus`
+-- derives deploy actions
+-- routes actions through `runSkill`
+-- writes manifest deploy metadata only after observed Vercel and Whop agreement
+-
+-Implementation rule:
+-
+-- use only existing `git.push`, `vercel.listDeployments`, `vercel.waitForDeployment`, and `whop.apps.update` boundaries
+-- do not bypass the runner for “simple” steps
+-- do not introduce `vercel.deployments.create` in this phase
+-
+-- [ ] **Step 4: Re-run deploy-focused tests**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern deploy"
+-```
+-
+-Expected:
+-
+-- PASS for deploy no-op, consent gate, and stale-consent tests
+-
+-- [ ] **Step 5: Commit**
+-
+-```powershell
+-git add agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts
+-git commit -m "Integrate whop-deploy with shared audited runner"
+-```
+-
+-## Task 4: Integrate `whop-adopt` and `whop-reconcile`
+-
+-**Files:**
+-
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts`
+-- Modify: `agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts`
+-- Test: `agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts`
+-
+-- [ ] **Step 1: Write failing adopt/reconcile tests**
+-
+-Add tests for:
+-
+-- adopt blocks on ambiguous app or project detection
+-- adopt writes manifest/registry only after verified ownership
+-- reconcile performs safe local repair without consent
+-- reconcile returns consent-required for webhook or iframe drift
+-
+-- [ ] **Step 2: Run adopt/reconcile-focused tests and verify they fail**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern adopt|reconcile"
+-```
+-
+-Expected:
+-
+-- FAIL because those skill flows are not yet routed through the runner
+-
+-- [ ] **Step 3: Implement adopt and reconcile execution paths**
+-
+-Add wiring that:
+-
+-- uses status discovery as the first step
+-- uses deterministic action derivation from `skill-plans.ts`
+-- routes mutating remote work through `runSkill`
+-- keeps safe manifest and registry repair local-only
+-
+-- [ ] **Step 4: Re-run adopt/reconcile-focused tests**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm test -- --test-name-pattern adopt|reconcile"
+-```
+-
+-Expected:
+-
+-- PASS for ambiguity stops, safe local repair, and consent-required repair behavior
+-
+-- [ ] **Step 5: Commit**
+-
+-```powershell
+-git add agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts agent_workflows/whop_auto/bin/whop-state-mcp/src/skill-plans.ts agent_workflows/whop_auto/bin/whop-state-mcp/test/runner.test.ts
+-git commit -m "Integrate whop-adopt and whop-reconcile with audited runner"
+-```
+-
+-## Task 5: Full verification and cleanup of the phase
+-
+-**Files:**
+-
+-- Modify if needed: `agent_workflows/whop_auto/bin/whop-state-mcp/test/*.ts`
+-- Review only: `agent_workflows/whop_auto/bin/whop-state-mcp/src/*.ts`
+-
+-- [ ] **Step 1: Add any missing edge-case tests**
+-
+-Cover:
+-
+-- `payload-changed`
+-- `blocked-by-policy`
+-- `unknown-remote-state`
+-- `divergence`
+-- `finalized` not emitted on failure paths
+-
+-- [ ] **Step 2: Run the full required verification suite**
+-
+-Run:
+-
+-```powershell
+-cd agent_workflows/whop_auto
+-cmd.exe /d /c "npm ci --registry=https://registry.npmjs.org/"
+-cmd.exe /d /c "npx tsc --noEmit"
+-cmd.exe /d /c "npm run build"
+-cmd.exe /d /c "npm test"
+-```
+-
+-Expected:
+-
+-- all commands PASS from a platform-local Node 20 shell with a fresh install
+-
+-- [ ] **Step 3: Review diff for boundary violations**
+-
+-Check that:
+-
+-- no logic was pushed back into unrelated folders
+-- `index.ts` remains wiring-oriented
+-- consent logic remains centralized in `executor.ts`
+-
+-- [ ] **Step 4: Commit**
+-
+-```powershell
+-git add agent_workflows/whop_auto/bin/whop-state-mcp/src agent_workflows/whop_auto/bin/whop-state-mcp/test
+-git commit -m "Finish Phase 1 skill execution integration"
+-```
+-
+-## Coverage Check
+-
+-This plan covers the PRD requirements for:
+-
+-- shared runner execution
+-- deploy integration
+-- adopt integration
+-- reconcile integration
+-- event lifecycle completeness
+-- consent reuse and stale-consent rejection
+-
+-Deferred intentionally to the next phase:
+-
+-- `whop-scaffold`
+-- `whop-manage`
+-- `whop-market`
+-- credential rotation
+-- broader LLM planner/critic orchestration

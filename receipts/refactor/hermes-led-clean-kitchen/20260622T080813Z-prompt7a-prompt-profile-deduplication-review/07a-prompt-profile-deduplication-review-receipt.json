@@ -1,0 +1,185 @@
+{
+  "timestamp_utc": "2026-06-22T08:08:38Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T080813Z-prompt7a-prompt-profile-deduplication-review",
+  "phase": "prompt_7a_prompt_profile_deduplication_review",
+  "status": "completed",
+  "profiles_inventoried": 7,
+  "duplication_clusters": 200,
+  "provider_dependency_profiles": 7,
+  "no_profile_edits": true,
+  "no_scheduler_edits": true,
+  "no_env_contents_read": true,
+  "no_db_mutation": true,
+  "no_docker_restart": true,
+  "no_provider_mutation": true,
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/07a-prompt-profile-deduplication-review.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/cmo-lite-profile-spec.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-deduplication-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-profile-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-duplication-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-manifest-schema.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-routing-plan.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-dependencies-for-next-phase.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-profile-deduplication-verification-report.json"
+  ],
+  "verification": {
+    "timestamp_utc": "2026-06-22T08:08:38Z",
+    "json_validation": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-profile-inventory.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-duplication-map.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-manifest-schema.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-routing-plan.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-dependencies-for-next-phase.json",
+        "valid": true
+      }
+    ],
+    "deliverable_existence": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/07a-prompt-profile-deduplication-review.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/cmo-lite-profile-spec.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-deduplication-implementation-plan.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-profile-inventory.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt-duplication-map.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/profile-manifest-schema.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-profile-routing-plan.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-dependencies-for-next-phase.json",
+        "exists": true
+      }
+    ],
+    "runtime": {
+      "df": {
+        "df_B1": {
+          "args": [
+            "df",
+            "-B1",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 128947089408 25423863808  84% /\n",
+          "stderr": ""
+        },
+        "df_h": {
+          "args": [
+            "df",
+            "-h",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  121G   24G  84% /\n",
+          "stderr": ""
+        },
+        "df_i": {
+          "args": [
+            "df",
+            "-i",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2573064 7159432   27% /\n",
+          "stderr": ""
+        },
+        "total_bytes": 160970244096,
+        "used_bytes": 128947089408,
+        "free_bytes": 25423863808,
+        "used_percent": 84,
+        "inode_total": 9732496,
+        "inode_used": 2573064,
+        "inode_free": 7159432,
+        "inode_used_percent": 27
+      },
+      "docker_ps": {
+        "args": [
+          "docker",
+          "ps",
+          "--format",
+          "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "NAMES                                      IMAGE                                             STATUS\nwhop-auto-hermes-worker-1                  crypto-tuber-ranked-hermes-worker:latest          Up 32 hours\nwhop-auto-channel-agent-worker-1           crypto-tuber-ranked-hermes-worker:latest          Up 32 hours\ncrypto-tuber-ranked-hermes-worker-1        b1369860652d                                      Up 33 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   Up 33 hours (healthy)\nhh-oauth-mcp-gateway                       oauth-mcp-gateway-oauth-mcp-gateway               Up 13 days\nhermes-whop-automation-tunnel              cloudflare/cloudflared:latest                     Up 2 weeks\n",
+        "stderr": ""
+      },
+      "provider_ping_4416": {
+        "status": "ok",
+        "http_status": 200
+      },
+      "protected_paths": [
+        {
+          "path": "/opt/crypto-tuber-ranked",
+          "exists": true,
+          "is_file": false,
+          "is_dir": true,
+          "size_bytes": 3053628560,
+          "file_count": 47686,
+          "mode": "0o775",
+          "mtime_utc": "2026-06-21T22:34:16Z"
+        },
+        {
+          "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 4382,
+          "file_count": 1,
+          "mode": "0o664",
+          "mtime_utc": "2026-06-20T23:37:30Z"
+        },
+        {
+          "path": "/opt/callscore/secrets/youtube-cookies.txt",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 22892,
+          "file_count": 1,
+          "mode": "0o600",
+          "mtime_utc": "2026-06-22T03:14:05Z"
+        }
+      ]
+    },
+    "artifact_safety_scan": {
+      "unsafe_raw_secret_assignment_files": [],
+      "safe_redacted_placeholder_files_count": 4
+    },
+    "profile_edits": false,
+    "scheduler_edits": false,
+    "db_mutation": false,
+    "docker_restart": false,
+    "provider_mutation": false,
+    "env_files_read_or_modified": false,
+    "status": "pass"
+  }
+}

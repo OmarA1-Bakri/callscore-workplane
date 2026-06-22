@@ -1,0 +1,52 @@
+{
+  "agent_id": "callscore-channel-agent-worker-head",
+  "class": "runtime_worker",
+  "owner_surface": "channel-agent worker runtime",
+  "identity": "Full canonical CallScore channel worker observer.",
+  "mission": "Track channel-worker health, queues, receipts, and safe task execution boundaries.",
+  "heartbeat_cadence": "hourly_light_after_worker_event",
+  "can_do_independently": [],
+  "gated_actions": [],
+  "forbidden_actions": [],
+  "heartbeat_reads": [],
+  "independent_outputs": [],
+  "stop_conditions": [],
+  "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "heartbeat_schema": "callscore_agent_heartbeat.v1",
+  "latest_heartbeat_id": "callscore-channel-agent-worker-head-2026-06-22T16:09:06.427Z",
+  "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+  "latest_proposed_task": {
+    "agent_id": "callscore-channel-agent-worker-head",
+    "channel_id": "general",
+    "task_type": "agent_observe",
+    "status": "pending",
+    "priority": 50,
+    "run_after": "2026-06-22T16:09:06.427Z",
+    "max_attempts": 1,
+    "idempotency_key": "callscore-channel-agent-worker-head:agent_observe:2026-06-22T16",
+    "payload_hash": "sha256:8caa6deef28b07c1f328526a8d7b8886bcbb16880fed231776f12b7743af4343",
+    "payload": {
+      "agent_id": "callscore-channel-agent-worker-head",
+      "channel_id": "general",
+      "task_type": "agent_observe",
+      "mode": "observe_or_draft",
+      "hermes_orchestrator": "default-profile",
+      "allowed_external_mutation": false
+    }
+  },
+  "tools": [
+    "Hermes profile/workplane",
+    "HH Control Tunnel continuity",
+    "filesystem receipts",
+    "master-state.json",
+    "observability contracts",
+    "git read/status",
+    "Docker read/status",
+    "Docker worker health",
+    "runtime logs",
+    "queue receipts"
+  ],
+  "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+  "log_root": "/srv/agents/hermes/logs",
+  "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+}

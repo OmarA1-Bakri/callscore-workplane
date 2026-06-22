@@ -1,0 +1,171 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+  "candidate": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+    "exists_now": true,
+    "size_bytes_current": 184379,
+    "file_count_current": 20,
+    "original_reference_count": 2,
+    "reference_sample": [
+      "/opt/crypto-tuber-ranked/docs/hermes-pipeline.md",
+      "/opt/crypto-tuber-ranked/tests/data-pipeline.test.ts"
+    ],
+    "active_reference_check": {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+      "process_refs": [],
+      "docker_mount_refs": [],
+      "systemd_refs": [],
+      "cron_refs": []
+    },
+    "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+    "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+    "rationale": [
+      "small temp output; no active refs; references appear historical docs/tests"
+    ]
+  },
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "size_bytes": 184379,
+    "file_count": 20,
+    "mtime_utc": "2026-06-11T08:34:04Z",
+    "mode_octal": "0o775"
+  },
+  "active_reference_check": {
+    "process_refs": [],
+    "docker_mount_refs": []
+  },
+  "status": "deleted",
+  "delete_method": "python_exact_path_unlink_or_rmtree",
+  "manifest_sample": [
+    {
+      "rel": "transcript-serpapi-dryrun-20260611T083404Z.jsonl",
+      "size": 500,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/pipeline-run.jsonl",
+      "size": 7888,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/ready-extract.log.jsonl",
+      "size": 485,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/blocker-audit.log.jsonl",
+      "size": 16216,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/audit.log.jsonl",
+      "size": 900,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/secret-hygiene.log.jsonl",
+      "size": 200,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/transcripts.log.jsonl",
+      "size": 6488,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/symbol-funnel.jsonl",
+      "size": 1660,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/low-confidence-validate.log.jsonl",
+      "size": 708,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/low-confidence-validate.jsonl",
+      "size": 883,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/symbol-funnel-audit.log.jsonl",
+      "size": 2719,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/discover.log.jsonl",
+      "size": 4260,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/price-repair.log.jsonl",
+      "size": 753,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/price-repair.jsonl",
+      "size": 173,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/discover.jsonl",
+      "size": 3841,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/call-blockers.json",
+      "size": 14030,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/candles.jsonl",
+      "size": 4189,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/pipeline-readiness.log.jsonl",
+      "size": 2327,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/pipeline-readiness.json",
+      "size": 113825,
+      "mode": "0o664"
+    },
+    {
+      "rel": "recovery-dryrun-20260611T083108Z/candles.log.jsonl",
+      "size": 2334,
+      "mode": "0o664"
+    }
+  ],
+  "delete_ok": true,
+  "delete_error": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/callscore-pipeline",
+    "exists": false
+  },
+  "disk_before_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124923224064,
+    "free_bytes": 29447729152,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571975,
+    "inode_free": 7160521,
+    "inode_used_percent": 27
+  },
+  "disk_after_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124922982400,
+    "free_bytes": 29447970816,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571953,
+    "inode_free": 7160543,
+    "inode_used_percent": 27
+  },
+  "recovered_bytes": 241664
+}

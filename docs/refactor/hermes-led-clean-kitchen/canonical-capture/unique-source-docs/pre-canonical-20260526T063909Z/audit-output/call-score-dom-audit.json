@@ -1,0 +1,213 @@
+{
+  "title": "CallScore — Market Calls, Measured",
+  "h1s": [
+    "Market calls, measured."
+  ],
+  "canonical": "https://call-score.com/",
+  "description": "Market calls scored against real price data, with every Alpha Score tied to the published methodology.",
+  "ogImage": "https://call-score.com/og-image.png",
+  "lang": "en",
+  "viewport": "width=device-width, initial-scale=1",
+  "links": [
+    {
+      "text": "",
+      "href": "https://www.call-score.com/"
+    },
+    {
+      "text": "Leaderboard",
+      "href": "https://www.call-score.com/"
+    },
+    {
+      "text": "Methodology",
+      "href": "https://www.call-score.com/methodology"
+    },
+    {
+      "text": "Pricing",
+      "href": "https://www.call-score.com/pricing"
+    },
+    {
+      "text": "Sign In",
+      "href": "https://www.call-score.com/api/auth/whop"
+    },
+    {
+      "text": "Get Access",
+      "href": "https://www.call-score.com/pricing"
+    },
+    {
+      "text": "View leaderboard",
+      "href": "https://www.call-score.com/#leaderboard"
+    },
+    {
+      "text": "Explore methodology",
+      "href": "https://www.call-score.com/methodology"
+    },
+    {
+      "text": "VVoskCoinchannel/UCT44w6854K62cSiwA1aiXfw",
+      "href": "https://www.call-score.com/creator/channel/UCT44w6854K62cSiwA1aiXfw"
+    },
+    {
+      "text": "WOWolf of All Streets@scottmelker",
+      "href": "https://www.call-score.com/creator/@scottmelker"
+    },
+    {
+      "text": "JPJoe Parys Cryptochannel/UCRukJuuBAdoHMTBIsFJAgvw",
+      "href": "https://www.call-score.com/creator/channel/UCRukJuuBAdoHMTBIsFJAgvw"
+    },
+    {
+      "text": "BKBrandon Kelly Crypto Traderchannel/UC-f5nPBEDyUBZz_jOPBwAfQ",
+      "href": "https://www.call-score.com/creator/channel/UC-f5nPBEDyUBZz_jOPBwAfQ"
+    },
+    {
+      "text": "KNKitco News@kitco",
+      "href": "https://www.call-score.com/creator/@kitco"
+    },
+    {
+      "text": "MMoneyZGchannel/UCIEvlRpHBVFthrF6pZzBEXw",
+      "href": "https://www.call-score.com/creator/channel/UCIEvlRpHBVFthrF6pZzBEXw"
+    },
+    {
+      "text": "ABAltcoin Buzz@AltcoinBuzz",
+      "href": "https://www.call-score.com/creator/@AltcoinBuzz"
+    },
+    {
+      "text": "PBPaul Barron Network@PaulBarronNetwork",
+      "href": "https://www.call-score.com/creator/@PaulBarronNetwork"
+    },
+    {
+      "text": "APAnthony Pompliano@AnthonyPompliano",
+      "href": "https://www.call-score.com/creator/@AnthonyPompliano"
+    },
+    {
+      "text": "JCJRNY Cryptochannel/UC188KLMYLLGqVJZdYq7mYFw",
+      "href": "https://www.call-score.com/creator/channel/UC188KLMYLLGqVJZdYq7mYFw"
+    },
+    {
+      "text": "CBCoin Bureau@CoinBureau",
+      "href": "https://www.call-score.com/creator/@CoinBureau"
+    },
+    {
+      "text": "EWEarn With Rk@EarnWithRK",
+      "href": "https://www.call-score.com/creator/@EarnWithRK"
+    },
+    {
+      "text": "E-EZC - Tradingchannel/UCaEmEcGngLdmOTeyirL4j6w",
+      "href": "https://www.call-score.com/creator/channel/UCaEmEcGngLdmOTeyirL4j6w"
+    },
+    {
+      "text": "CSCrypto Shubhrant chaudhary@cryptoshubhrantchaudhary8012",
+      "href": "https://www.call-score.com/creator/@cryptoshubhrantchaudhary8012"
+    },
+    {
+      "text": "MMMCrypto@MMCryptoTube",
+      "href": "https://www.call-score.com/creator/@MMCryptoTube"
+    },
+    {
+      "text": "CFCrypto Flash Francechannel/UC7t8V-dJPWfmAXEK2tvma1A",
+      "href": "https://www.call-score.com/creator/channel/UC7t8V-dJPWfmAXEK2tvma1A"
+    },
+    {
+      "text": "SSwissCryptoJaychannel/UCWM1uBxzGpNb4RyxtFc3A8g",
+      "href": "https://www.call-score.com/creator/channel/UCWM1uBxzGpNb4RyxtFc3A8g"
+    },
+    {
+      "text": "TSTabraiz Shams@Tabraizshams",
+      "href": "https://www.call-score.com/creator/@Tabraizshams"
+    },
+    {
+      "text": "CKCrypto Kaibachannel/UCx9Z8LQWzCehWv5GqqPUPjw",
+      "href": "https://www.call-score.com/creator/channel/UCx9Z8LQWzCehWv5GqqPUPjw"
+    },
+    {
+      "text": "CCryptoJackchannel/UCBjrrP9frGRuRwoAJ4RQdag",
+      "href": "https://www.call-score.com/creator/channel/UCBjrrP9frGRuRwoAJ4RQdag"
+    },
+    {
+      "text": "DRDidi Randomchannel/UCoMc0zniPatlGpR6OQiM-Qg",
+      "href": "https://www.call-score.com/creator/channel/UCoMc0zniPatlGpR6OQiM-Qg"
+    },
+    {
+      "text": "JEJesse Eckelchannel/UCPFMk8WxX3SJKy1jh61xxGw",
+      "href": "https://www.call-score.com/creator/channel/UCPFMk8WxX3SJKy1jh61xxGw"
+    },
+    {
+      "text": "AAAngga Andinata@AnggaAndinata",
+      "href": "https://www.call-score.com/creator/@AnggaAndinata"
+    },
+    {
+      "text": "BBBlockchain Backerchannel/UCia6oYbLKo8fLOguATpACmA",
+      "href": "https://www.call-score.com/creator/channel/UCia6oYbLKo8fLOguATpACmA"
+    },
+    {
+      "text": "Upgrade to Alpha",
+      "href": "https://www.call-score.com/pricing"
+    },
+    {
+      "text": "Leaderboard",
+      "href": "https://www.call-score.com/"
+    },
+    {
+      "text": "Methodology",
+      "href": "https://www.call-score.com/methodology"
+    },
+    {
+      "text": "Pricing",
+      "href": "https://www.call-score.com/pricing"
+    },
+    {
+      "text": "Give Feedback",
+      "href": "https://www.call-score.com/feedback"
+    },
+    {
+      "text": "About",
+      "href": "https://www.call-score.com/about"
+    },
+    {
+      "text": "Terms of Service",
+      "href": "https://www.call-score.com/terms"
+    },
+    {
+      "text": "Privacy Policy",
+      "href": "https://www.call-score.com/privacy"
+    },
+    {
+      "text": "?Feedback",
+      "href": "https://www.call-score.com/feedback"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://www.call-score.com/brand/callscore-exact-transparent.svg",
+      "alt": "CallScore - Market calls, measured.",
+      "w": 2000,
+      "h": 2000
+    },
+    {
+      "src": "https://www.call-score.com/brand/callscore-exact-transparent.svg",
+      "alt": "CallScore - Market calls, measured.",
+      "w": 2000,
+      "h": 2000
+    }
+  ],
+  "buttons": [
+    {
+      "text": "",
+      "ariaLabel": "Open menu",
+      "expanded": "false"
+    },
+    {
+      "text": "All time",
+      "ariaLabel": null,
+      "expanded": null
+    },
+    {
+      "text": "90 days",
+      "ariaLabel": null,
+      "expanded": null
+    },
+    {
+      "text": "30 days",
+      "ariaLabel": null,
+      "expanded": null
+    }
+  ]
+}

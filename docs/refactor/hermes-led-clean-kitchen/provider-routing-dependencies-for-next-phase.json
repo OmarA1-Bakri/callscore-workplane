@@ -1,0 +1,139 @@
+{
+  "timestamp_utc": "2026-06-22T08:08:13Z",
+  "profiles_with_provider_mentions": [
+    {
+      "profile_id": "callscorearchitect",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    },
+    {
+      "profile_id": "callscorecmo",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    },
+    {
+      "profile_id": "callscoredata",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    },
+    {
+      "profile_id": "callscoreimplementer",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    },
+    {
+      "profile_id": "callscorereviewer",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    },
+    {
+      "profile_id": "callscoresafety",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    },
+    {
+      "profile_id": "callscoretrust",
+      "mentions": {
+        "composio": true,
+        "whop": true,
+        "netlify": true,
+        "attio": true,
+        "posthog": true,
+        "gmail": true,
+        "discord": true,
+        "telegram": true,
+        "twitter": true,
+        "x/twitter": true,
+        "linkedin": true,
+        "public": true,
+        "outreach": true,
+        "spend": true
+      }
+    }
+  ],
+  "next_phase": "prompt_7b_third_party_integration_routing"
+}

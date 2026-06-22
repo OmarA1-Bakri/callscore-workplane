@@ -1,0 +1,25 @@
+{
+  "schema": "callscore.artofwar_owned_public_next_draft_packet.v1",
+  "run_id": "callscore-owned-public-next-draft-20260618T121352Z",
+  "created_at_utc": "2026-06-18T12:13:52Z",
+  "status": "prepared_not_published_recent_post_within_24h_revised_x_length_ok",
+  "candidate_channel": "X / Twitter or LinkedIn owned public organic",
+  "earliest_publish_after_utc": "2026-06-19T10:37:02Z",
+  "payload_sha256": "2270251d2c9a744e72281cb450feac71b2f295e71c1f8a147852bf69237834fd",
+  "duplicate_spam_context": {
+    "latest_public_post_id": "2067557086796398667",
+    "latest_public_post_url": "https://x.com/0marbakri/status/2067557086796398667",
+    "latest_public_post_created_at_utc": "2026-06-18T10:36:37Z",
+    "recent_24h_public_post_found": true,
+    "action": "do_not_publish_until_window_clears"
+  },
+  "forbidden_actions_not_performed": [
+    "public post during 24h cooldown",
+    "paid spend",
+    "DM/outreach/email/newsletter send",
+    "Whop pricing/product/customer/payment/provider mutation",
+    "DB write",
+    "deploy",
+    "secret exposure"
+  ]
+}

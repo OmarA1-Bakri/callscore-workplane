@@ -1,0 +1,20 @@
+{
+  "proof": {
+    "broken_exists": true,
+    "broken_restarting_or_unhealthy": true,
+    "broken_project_whop_auto": true,
+    "broken_service_ytdlp": true,
+    "broken_config_file": true,
+    "healthy_exists": true,
+    "healthy_running_healthy": true,
+    "healthy_project_crypto": true,
+    "healthy_service_ytdlp": true,
+    "healthy_config_file": true,
+    "port_4416_reachable": true,
+    "no_healthy_container_depends_on_broken_instance": true,
+    "dependency_findings": [],
+    "emergency_halt_checks_clear": true
+  },
+  "passed": true,
+  "failed": []
+}

@@ -1,0 +1,6 @@
+timestamp_quarantined_utc=2026-06-22T10:07:22Z
+quarantine_sizes:
+1.3G	/tmp/cleanup-rollback-chunk4/home/omar/.cache/camoufox
+942M	/tmp/cleanup-rollback-chunk4/home/omar/.cache/ms-playwright
+641M	/tmp/cleanup-rollback-chunk4/home/omar/.cache/puppeteer
+df_after_quarantine=/dev/sda1       150G   88G   56G  62% /

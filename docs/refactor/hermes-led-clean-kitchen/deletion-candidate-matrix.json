@@ -1,0 +1,563 @@
+{
+  "timestamp_utc": "20260621T182522Z",
+  "candidates": [
+    {
+      "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+      "classification": "DELETE_NOW_STALE_BACKUP",
+      "reason": "old backup tarball in /srv/agents/backups; latest two tar-like backups kept",
+      "exists": true,
+      "size_before_bytes": 2683500081,
+      "path_info": {
+        "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "is_symlink": false,
+        "size_lstat_bytes": 2683500081,
+        "mtime_utc": "2026-06-19T02:34:03Z",
+        "mode": "0o644"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": false
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/srv/agents/backups/agents-20260618T023000Z.tar.gz",
+      "classification": "DELETE_NOW_STALE_BACKUP",
+      "reason": "old backup tarball in /srv/agents/backups; latest two tar-like backups kept",
+      "exists": true,
+      "size_before_bytes": 2383291489,
+      "path_info": {
+        "path": "/srv/agents/backups/agents-20260618T023000Z.tar.gz",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "is_symlink": false,
+        "size_lstat_bytes": 2383291489,
+        "mtime_utc": "2026-06-18T03:08:30Z",
+        "mode": "0o644"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log"
+      ],
+      "git_status": {
+        "applicable": false
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.omx",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .omx inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 116515370,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.omx",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-05-02T16:46:51Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale .tmp inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 42524676,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 20480,
+        "mtime_utc": "2026-05-16T18:31:09Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.vercel",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale .vercel inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 15640503,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.vercel",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-05-03T16:59:12Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .serena inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 2922008,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-04-30T12:57:28Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/node_modules",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale node_modules inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 532203001,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/node_modules",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 20480,
+        "mtime_utc": "2026-05-09T04:47:44Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.claude",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .claude inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 14051214,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.claude",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-04-29T15:36:55Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale node_modules inside non-active legacy/snapshot root /srv/agents/repos/callscore-stale-infra-cleanup",
+      "exists": true,
+      "size_before_bytes": 862059940,
+      "path_info": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 20480,
+        "mtime_utc": "2026-06-07T10:24:16Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale .next inside non-active legacy/snapshot root /srv/agents/repos/callscore-stale-infra-cleanup",
+      "exists": true,
+      "size_before_bytes": 270899287,
+      "path_info": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-07T10:27:20Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .omx inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "exists": true,
+      "size_before_bytes": 149435,
+      "path_info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T07:05:37Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.serena",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .serena inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "exists": true,
+      "size_before_bytes": 17564,
+      "path_info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.serena",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T07:05:37Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.claude",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .claude inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "exists": true,
+      "size_before_bytes": 1479,
+      "path_info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.claude",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T07:05:37Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots"
+    }
+  ]
+}

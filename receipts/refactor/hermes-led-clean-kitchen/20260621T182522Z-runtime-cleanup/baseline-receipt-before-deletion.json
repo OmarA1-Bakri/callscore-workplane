@@ -1,0 +1,22 @@
+{
+  "timestamp_utc": "20260621T182522Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup",
+  "baseline_receipts": [
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/baseline-before-deletion.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json"
+  ],
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 141214588928,
+    "free_bytes": 19755655168,
+    "used_percent": 87.73,
+    "inode_total": 9732496,
+    "inode_used": 2776680,
+    "inode_free": 6955816,
+    "inode_used_percent": 28.53
+  },
+  "candidate_count": 13,
+  "safe_candidate_count": 13,
+  "note": "baseline receipt written before deletion"
+}

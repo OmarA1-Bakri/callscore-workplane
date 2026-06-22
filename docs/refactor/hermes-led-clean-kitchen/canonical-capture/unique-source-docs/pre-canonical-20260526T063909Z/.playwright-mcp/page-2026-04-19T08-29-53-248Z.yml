@@ -1,0 +1,105 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CryptoTubers Ranked CryptoTubers Ranked" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CryptoTubers Ranked" [ref=e6]
+        - generic [ref=e7]:
+          - text: CryptoTubers
+          - generic [ref=e8]: Ranked
+      - navigation [ref=e9]:
+        - link "Leaderboard" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Methodology" [ref=e11] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e12] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e13]:
+          - link "Sign In" [ref=e14] [cursor=pointer]:
+            - /url: /api/auth/whop
+            - img [ref=e15]
+            - text: Sign In
+          - link "Get Access" [ref=e18] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - link "Back to Leaderboard" [ref=e21] [cursor=pointer]:
+        - /url: /
+        - img [ref=e22]
+        - text: Back to Leaderboard
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - img [ref=e26]
+          - generic [ref=e28]: Your Voice Matters
+        - heading "Help Us Improve the Rankings" [level=1] [ref=e29]
+        - paragraph [ref=e30]: We value your input. Share feedback on how we rank creators, what criteria you'd like to see, or if you have suggestions to improve accuracy. Your voice shapes this platform, and we're always listening to refine our rankings.
+      - generic [ref=e32]:
+        - generic [ref=e33]:
+          - generic [ref=e34]: Name (optional)
+          - textbox "Name (optional)" [ref=e35]:
+            - /placeholder: Your name
+        - generic [ref=e36]:
+          - generic [ref=e37]: Email (optional)
+          - textbox "Email (optional)" [ref=e38]:
+            - /placeholder: you@example.com
+        - generic [ref=e39]:
+          - generic [ref=e40]: Category
+          - combobox "Category" [ref=e41] [cursor=pointer]:
+            - option "Scoring Methodology" [selected]
+            - option "Creator Suggestion"
+            - option "Feature Request"
+            - option "Bug Report"
+            - option "Other"
+        - generic [ref=e42]:
+          - generic [ref=e43]: Message *
+          - textbox "Message *" [ref=e44]:
+            - /placeholder: Tell us what you think...
+        - button "Send Feedback" [ref=e45] [cursor=pointer]:
+          - img [ref=e46]
+          - text: Send Feedback
+  - contentinfo [ref=e49]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]:
+          - generic [ref=e53]:
+            - img "CryptoTubers Ranked" [ref=e54]
+            - generic [ref=e55]:
+              - text: CryptoTubers
+              - generic [ref=e56]: Ranked
+          - paragraph [ref=e57]: We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls.
+        - generic [ref=e58]:
+          - heading "Navigate" [level=2] [ref=e59]
+          - list [ref=e60]:
+            - listitem [ref=e61]:
+              - link "Leaderboard" [ref=e62] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e63]:
+              - link "Methodology" [ref=e64] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e65]:
+              - link "Pricing" [ref=e66] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e67]:
+              - link "Give Feedback" [ref=e68] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e69]:
+              - link "About" [ref=e70] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e71]:
+          - heading "Legal" [level=2] [ref=e72]
+          - list [ref=e73]:
+            - listitem [ref=e74]:
+              - link "Terms of Service" [ref=e75] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e76]:
+              - link "Privacy Policy" [ref=e77] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e78]:
+        - paragraph [ref=e79]:
+          - strong [ref=e80]: "Financial Disclaimer:"
+          - text: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions.
+        - paragraph [ref=e81]: © 2026 CRYPTO-TUBER RANKED. All rights reserved.
+  - link "Give Feedback" [ref=e82] [cursor=pointer]:
+    - /url: /feedback
+    - img [ref=e83]
+  - alert [ref=e85]

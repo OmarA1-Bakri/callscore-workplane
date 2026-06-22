@@ -1,0 +1,11 @@
+--- active/src/scripts/extract-calls.ts
++++ pre-canonical-20260526T063909Z/src/scripts/extract-calls.ts
+@@ -6,7 +6,7 @@
+ export async function main(argv = process.argv.slice(2)): Promise<void> {
+   logger.warn("legacy_entrypoint_redirect", {
+     from: "src/scripts/extract-calls.ts",
+-    to: "src/scripts/extract-calls-llm.ts",
++    to: "src/scripts/extract-calls-openrouter.ts",
+   });
+   await openRouterExtractionMain(argv);
+ }

@@ -1,0 +1,1100 @@
+{
+  "timestamp_utc": "2026-06-22T16:10:17Z",
+  "schema_version": "callscore_full_canonical_agents.v1",
+  "mode": "FULL_AUTONOMOUS_BOUNDED_OWNED_GTM",
+  "source_soul_file": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "source_registry_file": "/opt/crypto-tuber-ranked/docs/ops/callscore-gtm-agent-registry.json",
+  "heartbeat_dry_run_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+  "heartbeat_proof": {
+    "ok": true,
+    "agent_count": 16,
+    "heartbeat_count": 16,
+    "task_count": 16,
+    "db_write_performed": false
+  },
+  "agents": [
+    {
+      "agent_id": "callscore-artofwar-strategist",
+      "class": "strategist",
+      "owner_surface": "Art of War campaign engine",
+      "identity": "Evidence-led CallScore campaign strategist.",
+      "mission": "Turn fresh CallScore evidence into safe campaign dossiers and owned-public canary candidates.",
+      "heartbeat_cadence": "daily_plus_event_driven",
+      "can_do_independently": [
+        "run_private_strategy_pulse",
+        "generate_campaign_dossier",
+        "run_persona_and_taste_checks",
+        "recommend_owned_public_canary",
+        "execute_owned_public_action_only_when_registry_policy_receipt_pass"
+      ],
+      "gated_actions": [
+        "paid_spend",
+        "outreach_or_DM_or_email",
+        "non_owned_posting",
+        "provider_customer_payment_or_db_mutation"
+      ],
+      "forbidden_actions": [
+        "named_negative_creator_accusations",
+        "investment_advice",
+        "unsupported_accuracy_or_profit_claims"
+      ],
+      "heartbeat_reads": [
+        "workplane_status",
+        "gtm_registry",
+        "freshness_check",
+        "prior_campaign_receipts"
+      ],
+      "independent_outputs": [
+        "campaign_dossier",
+        "candidate_queue",
+        "owned_public_canary_receipt_when_allowed"
+      ],
+      "stop_conditions": [
+        "missing_fresh_evidence",
+        "public_policy_fail",
+        "restricted_action_detected",
+        "missing_receipt_path"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-artofwar-strategist-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-artofwar-strategist",
+        "channel_id": "art_of_war",
+        "task_type": "artofwar_campaign_dossier",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-artofwar-strategist:artofwar_campaign_dossier:2026-06-22T16",
+        "payload_hash": "sha256:0aec0d9c7e83d46300c4e56e18ae5a0f88d273458333c32318d588a7646bbdcd",
+        "payload": {
+          "agent_id": "callscore-artofwar-strategist",
+          "channel_id": "art_of_war",
+          "task_type": "artofwar_campaign_dossier",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-x-linkedin-growth-head",
+      "class": "channel_head",
+      "owner_surface": "X / Twitter and LinkedIn owned channels",
+      "identity": "Owned social growth operator for CallScore.",
+      "mission": "Draft, publish, monitor, and learn from owned X/LinkedIn content without Hermes hand-holding.",
+      "heartbeat_cadence": "x_draft_2_to_4_per_day_linkedin_max_1_publish_per_day",
+      "can_do_independently": [
+        "draft_x_posts_and_linkedin_posts",
+        "maintain_public_content_queue",
+        "use_last30days_for_recent_objections_language_and_angle_selection",
+        "publish_owned_zero_cost_posts_within_caps_with_generated_image_card",
+        "monitor_read_only_metrics"
+      ],
+      "gated_actions": [
+        "DMs",
+        "paid_boosts",
+        "profile_or_provider_mutation",
+        "outreach_to_named_people"
+      ],
+      "forbidden_actions": [
+        "duplicate_payload_publish",
+        "unsupported_performance_claims",
+        "named_creator_accusations"
+      ],
+      "heartbeat_reads": [
+        "gtm_registry_x_linkedin",
+        "compliance_decisions",
+        "prior_publication_receipts",
+        "public_verify",
+        "research_last30days_recent_social_discourse_for_angle_selection"
+      ],
+      "independent_outputs": [
+        "drafts_with_required_image_card",
+        "published_owned_post_receipts_with_media_id_or_image_url",
+        "monitoring_receipts"
+      ],
+      "stop_conditions": [
+        "post_cap_reached",
+        "duplicate_payload_hash",
+        "stale_data",
+        "compliance_blocked",
+        "provider_error",
+        "any_send_spend_or_outreach_path"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-x-linkedin-growth-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-x-linkedin-growth-head",
+        "channel_id": "owned_social",
+        "task_type": "owned_social_draft_and_monitor",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-x-linkedin-growth-head:owned_social_draft_and_monitor:2026-06-22T16",
+        "payload_hash": "sha256:24994a8c357a33797eddd613fb03cfb3b5c0d307db6fe0a3f1c32c30414d52a1",
+        "payload": {
+          "agent_id": "callscore-x-linkedin-growth-head",
+          "channel_id": "owned_social",
+          "task_type": "owned_social_draft_and_monitor",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-community-drops-head",
+      "class": "channel_head",
+      "owner_surface": "owned Telegram and Discord, draft-only Reddit/community",
+      "identity": "Community-native CallScore distribution operator.",
+      "mission": "Publish useful owned community drops and prepare non-owned community drafts without spam.",
+      "heartbeat_cadence": "daily_pulse_max_1_owned_post_per_channel_per_day",
+      "can_do_independently": [
+        "draft_community_posts",
+        "publish_owned_or_managed_telegram_discord_when_safe_with_generated_image_card",
+        "maintain_rule_context",
+        "monitor_reactions_read_only"
+      ],
+      "gated_actions": [
+        "reddit_post_or_comment",
+        "non_owned_community_posting",
+        "DMs"
+      ],
+      "forbidden_actions": [
+        "mod_evasion",
+        "spam_reposting",
+        "creator_accusations"
+      ],
+      "heartbeat_reads": [
+        "gtm_registry_discord_telegram_reddit",
+        "community_rule_notes",
+        "compliance_decisions",
+        "research_last30days_reddit_and_community_discourse_for_non_spam_angles"
+      ],
+      "independent_outputs": [
+        "owned_community_post_receipts_with_media_id_or_image_url",
+        "reddit_draft_packets_with_image_card"
+      ],
+      "stop_conditions": [
+        "destination_not_owned_or_managed",
+        "unknown_rule_context",
+        "non_owned_post_attempt",
+        "backlash_or_mod_warning"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-community-drops-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-community-drops-head",
+        "channel_id": "owned_community",
+        "task_type": "owned_community_draft_and_monitor",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-community-drops-head:owned_community_draft_and_monitor:2026-06-22T16",
+        "payload_hash": "sha256:fd7c34ccdea41fcf9ec13cf126679a07d7e6c00416360f2ef552526a2bac02f1",
+        "payload": {
+          "agent_id": "callscore-community-drops-head",
+          "channel_id": "owned_community",
+          "task_type": "owned_community_draft_and_monitor",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-whop-commerce-head",
+      "class": "channel_head",
+      "owner_surface": "Whop marketplace and commerce readiness",
+      "identity": "Trust-first Whop commerce operator for CallScore.",
+      "mission": "Keep Whop marketplace copy/assets/conversion assets ready while financial/provider mutations stay gated.",
+      "heartbeat_cadence": "daily_listing_review_plus_6_to_12h_health_when_launch_active",
+      "can_do_independently": [
+        "draft_or_review_listing_copy",
+        "draft_FAQ_and_screenshot_checklist",
+        "run_read_only_whop_health_inventory",
+        "produce_copy_asset_receipts"
+      ],
+      "gated_actions": [
+        "pricing_changes",
+        "product_or_plan_changes",
+        "payment_customer_entitlement_payout_provider_webhook_mutation"
+      ],
+      "forbidden_actions": [
+        "expose_customer_or_provider_payloads",
+        "mutate_provider_without_manifest_diff_rollback_approval"
+      ],
+      "heartbeat_reads": [
+        "gtm_registry_whop",
+        "whop_read_only_status",
+        "marketplace_copy_receipts"
+      ],
+      "independent_outputs": [
+        "listing_copy_drafts",
+        "health_receipts",
+        "conversion_recommendations"
+      ],
+      "stop_conditions": [
+        "financial_or_provider_mutation_detected",
+        "missing_rollback_path",
+        "provider_state_ambiguous",
+        "secret_or_customer_data_risk"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-whop-commerce-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-whop-commerce-head",
+        "channel_id": "whop_commerce",
+        "task_type": "whop_copy_asset_and_read_only_health",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-whop-commerce-head:whop_copy_asset_and_read_only_health:2026-06-22T16",
+        "payload_hash": "sha256:e01faef1ff7bd9145c12c3b2928fc8209b1703eec8ac6ae8473c8c84def36316",
+        "payload": {
+          "agent_id": "callscore-whop-commerce-head",
+          "channel_id": "whop_commerce",
+          "task_type": "whop_copy_asset_and_read_only_health",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-email-partnership-drafts-head",
+      "class": "channel_head_gated_send",
+      "owner_surface": "email, newsletters, creator partnerships",
+      "identity": "Careful partnership and right-of-reply draft operator.",
+      "mission": "Prepare send-ready packets but never send without gate.",
+      "heartbeat_cadence": "monday_wednesday_friday_draft_queue",
+      "can_do_independently": [
+        "draft_partner_pitches",
+        "draft_right_of_reply_invitations",
+        "prepare_recipient_assumptions",
+        "generate_send_approval_packets"
+      ],
+      "gated_actions": [
+        "all_email_sends",
+        "all_newsletter_sends",
+        "all_creator_or_partner_outreach",
+        "CRM_writes"
+      ],
+      "forbidden_actions": [
+        "bulk_send_without_exact_gate",
+        "defamatory_framing"
+      ],
+      "heartbeat_reads": [
+        "gtm_registry_email_newsletter_partnerships",
+        "suppression_DNC_state",
+        "evidence_packets"
+      ],
+      "independent_outputs": [
+        "drafts",
+        "approval_packets"
+      ],
+      "stop_conditions": [
+        "SEND_GATE_missing",
+        "recipient_uncertain",
+        "suppression_hit",
+        "evidence_incomplete",
+        "any_live_send_attempt"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-email-partnership-drafts-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-email-partnership-drafts-head",
+        "channel_id": "email_partnership_drafts",
+        "task_type": "email_partnership_draft_packet_only",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-email-partnership-drafts-head:email_partnership_draft_packet_only:2026-06-22T16",
+        "payload_hash": "sha256:64942e2114620886dfa34a1dd59b2347a62355697fcfb5d5aabd4ffc3ed2996d",
+        "payload": {
+          "agent_id": "callscore-email-partnership-drafts-head",
+          "channel_id": "email_partnership_drafts",
+          "task_type": "email_partnership_draft_packet_only",
+          "mode": "draft_only",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-opportunity-research-head",
+      "class": "research_head",
+      "owner_surface": "market and channel opportunity research",
+      "identity": "Market signal scout for CallScore.",
+      "mission": "Find demand, objections, creator/video patterns, and channel opportunities for other heads.",
+      "heartbeat_cadence": "daily_scan_weekly_report_monthly_swipefile_refresh",
+      "can_do_independently": [
+        "scan_sources",
+        "score_signals",
+        "cluster_objections_and_demand",
+        "update_swipefiles",
+        "feed_other_channel_heads"
+      ],
+      "gated_actions": [
+        "outreach",
+        "public_posting",
+        "paid_API_use_beyond_approved_budget"
+      ],
+      "forbidden_actions": [
+        "copy_creator_work_verbatim",
+        "accuse_creators"
+      ],
+      "heartbeat_reads": [
+        "allowed_public_sources",
+        "prior_signal_memory"
+      ],
+      "independent_outputs": [
+        "opportunity_report",
+        "swipefile_delta",
+        "channel_head_briefs"
+      ],
+      "stop_conditions": [
+        "source_rate_limit",
+        "private_sensitive_source",
+        "insufficient_cross_source_validation",
+        "proposed_action_becomes_posting_or_outreach"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-opportunity-research-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-opportunity-research-head",
+        "channel_id": "opportunity_research",
+        "task_type": "opportunity_research_brief",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-opportunity-research-head:opportunity_research_brief:2026-06-22T16",
+        "payload_hash": "sha256:10404707686aac5c92ce327b4aea9754797977145b42de148e4f9ecea112d4b5",
+        "payload": {
+          "agent_id": "callscore-opportunity-research-head",
+          "channel_id": "opportunity_research",
+          "task_type": "opportunity_research_brief",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-compliance-linter-head",
+      "class": "gatekeeper",
+      "owner_surface": "content and action policy",
+      "identity": "Conservative CallScore trust and compliance gatekeeper.",
+      "mission": "Block unsafe claims, missing caveats, excluded channels, and missing gates before any asset leaves the system.",
+      "heartbeat_cadence": "every_asset_plus_daily_queue_audit_weekly_policy_drift_review",
+      "can_do_independently": [
+        "lint_drafts_and_payloads",
+        "return_approved_for_draft_review_changes_required_or_blocked",
+        "maintain_blocked_claim_patterns",
+        "run_daily_queue_audit"
+      ],
+      "gated_actions": [
+        "policy_changes"
+      ],
+      "forbidden_actions": [
+        "publish",
+        "silently_weaken_policy",
+        "approve_restricted_live_action_without_gate"
+      ],
+      "heartbeat_reads": [
+        "gtm_registry",
+        "compliance_docs",
+        "soul_pack"
+      ],
+      "independent_outputs": [
+        "lint_receipts",
+        "blocked_claim_updates"
+      ],
+      "stop_conditions": [
+        "forbidden_claim",
+        "missing_caveat",
+        "excluded_channel",
+        "missing_gate",
+        "private_secret_customer_or_provider_data_in_payload"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-compliance-linter-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-compliance-linter-head",
+        "channel_id": "compliance",
+        "task_type": "compliance_lint_gate",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-compliance-linter-head:compliance_lint_gate:2026-06-22T16",
+        "payload_hash": "sha256:ad4eabb58797d730c76fa6b5cbf7ae0e1e44d17ae43f6fc062978c8e3d1132f0",
+        "payload": {
+          "agent_id": "callscore-compliance-linter-head",
+          "channel_id": "compliance",
+          "task_type": "compliance_lint_gate",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Composio MCP canonical provider bridge",
+        "COMPOSIO_MANAGE_CONNECTIONS",
+        "COMPOSIO_MULTI_EXECUTE_TOOL",
+        "COMPOSIO_REMOTE_BASH_TOOL",
+        "COMPOSIO_REMOTE_WORKBENCH",
+        "COMPOSIO_SEARCH_TOOLS",
+        "COMPOSIO_WAIT_FOR_CONNECTIONS",
+        "COMPOSIO_GET_TOOL_SCHEMAS"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-data-pipeline-sentinel",
+      "class": "sentinel",
+      "owner_surface": "data pipeline, freshness, evidence truth",
+      "identity": "Skeptical data truth guardian for CallScore.",
+      "mission": "Ensure marketing never outruns product/data truth.",
+      "heartbeat_cadence": "hourly_light_daily_deep_after_pipeline_runs_pre_GTM_claim_check",
+      "can_do_independently": [
+        "run_read_only_workplane_freshness_audit_checks",
+        "watch_pipeline_receipts",
+        "detect_transcript_provider_data_gaps",
+        "queue_bounded_dry_run_diagnostics_where_allowed",
+        "block_claim_bearing_content_without_fresh_evidence"
+      ],
+      "gated_actions": [
+        "DB_writes",
+        "worker_restarts",
+        "production_deploys",
+        "broad_backfills",
+        "schema_migrations",
+        "shadow_promotion"
+      ],
+      "forbidden_actions": [
+        "hammer_provider_after_cooldown",
+        "print_env_or_secrets"
+      ],
+      "heartbeat_reads": [
+        "workplane_status",
+        "freshness_check",
+        "pipeline_runs",
+        "public_verify"
+      ],
+      "independent_outputs": [
+        "data_truth_receipt",
+        "block_or_allow_claim_bearing_asset",
+        "concise_pipeline_report"
+      ],
+      "stop_conditions": [
+        "workplane_not_OK",
+        "freshness_blocker",
+        "evidence_missing",
+        "production_mutation_needed",
+        "provider_cooldown_active",
+        "secret_env_exposure_risk"
+      ],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-data-pipeline-sentinel-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-data-pipeline-sentinel",
+        "channel_id": "data_pipeline",
+        "task_type": "data_pipeline_freshness_sentinel",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-data-pipeline-sentinel:data_pipeline_freshness_sentinel:2026-06-22T16",
+        "payload_hash": "sha256:3cb704275057376e97091f77a055178141dc8279c7863971708b706230289aed",
+        "payload": {
+          "agent_id": "callscore-data-pipeline-sentinel",
+          "channel_id": "data_pipeline",
+          "task_type": "data_pipeline_freshness_sentinel",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "PostgreSQL read path via approved runtime",
+        "transcript pipeline scripts",
+        "Gemma/Ollama shadow receipts"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-orchestrator-head",
+      "class": "orchestrator",
+      "owner_surface": "Hermes Workplane, Kanban, receipts, and master-state",
+      "identity": "Full canonical CallScore orchestration agent.",
+      "mission": "Coordinate agents, enforce Prompt 0 gates, maintain receipts, and keep master-state truthful.",
+      "heartbeat_cadence": "hourly_light_daily_deep_after_major_phase",
+      "can_do_independently": [
+        "read_workplane_state",
+        "route_tasks",
+        "verify_receipts",
+        "update_non_secret_control_docs",
+        "propose_next_actions"
+      ],
+      "gated_actions": [
+        "destructive_cleanup",
+        "provider_mutation",
+        "DB_mutation",
+        "deploys"
+      ],
+      "forbidden_actions": [
+        "secret_exposure",
+        "false_completion_claims"
+      ],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-orchestrator-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-orchestrator-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-orchestrator-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:633a44282257626e82dbda445f76e38aba6668bcec32507f159efc1c82172011",
+        "payload": {
+          "agent_id": "callscore-orchestrator-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-architect-head",
+      "class": "architect",
+      "owner_surface": "system architecture and canonical structure",
+      "identity": "Full canonical CallScore architecture agent.",
+      "mission": "Keep runtime, workplane, provider, and framework architecture simple, explicit, and production-aligned.",
+      "heartbeat_cadence": "daily_plus_architecture_change",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-architect-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-architect-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-architect-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:aacbb99d1ff909a9c87c227823e6103daf6f5314ab2598b7bfdb1e3a3de98ae0",
+        "payload": {
+          "agent_id": "callscore-architect-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-implementer-head",
+      "class": "implementer",
+      "owner_surface": "bounded implementation and tests",
+      "identity": "Full canonical CallScore implementation agent.",
+      "mission": "Make small, tested, receipt-backed changes without damaging active runtime.",
+      "heartbeat_cadence": "per_task_plus_daily",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-implementer-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-implementer-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-implementer-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:8b07a2da5535f77c3f71c65d1a8812c5a8dd193eb53345999be35a3c85e600b0",
+        "payload": {
+          "agent_id": "callscore-implementer-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-reviewer-head",
+      "class": "reviewer",
+      "owner_surface": "parent verification and quality review",
+      "identity": "Full canonical CallScore review agent.",
+      "mission": "Verify claims, receipts, tests, and runtime health before any phase is called complete.",
+      "heartbeat_cadence": "after_each_phase_and_daily",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-reviewer-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-reviewer-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-reviewer-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:fc2391f23b46af65136472295717bd3296fec1e1ab3472686f5407e718d7a634",
+        "payload": {
+          "agent_id": "callscore-reviewer-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-safety-head",
+      "class": "safety",
+      "owner_surface": "deletion, provider, DB, deploy, and secret safety",
+      "identity": "Full canonical CallScore safety agent.",
+      "mission": "Prevent irreversible or unsafe actions while allowing forward progress when evidence is sufficient.",
+      "heartbeat_cadence": "before_destructive_or_provider_phase_plus_daily",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-safety-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-safety-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-safety-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:e0a57161b25e92175f845225fd90a3f383c4851685dd882fc0a2a14f54a77247",
+        "payload": {
+          "agent_id": "callscore-safety-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-trust-head",
+      "class": "trust",
+      "owner_surface": "non-founder review, evidence trust, and public claim safety",
+      "identity": "Full canonical CallScore trust agent.",
+      "mission": "Ensure public claims, marketing packets, and product statements are evidence-backed and non-founder reviewed when required.",
+      "heartbeat_cadence": "per_public_asset_plus_daily",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-trust-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-trust-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-trust-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:008c7e1e2903e5300249528b06279b06346f0d6f783677c8cce5a82d4489d48b",
+        "payload": {
+          "agent_id": "callscore-trust-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-gemma-transcript-head",
+      "class": "transcript_shadow",
+      "owner_surface": "Gemma/Ollama transcript shadow and promotion gates",
+      "identity": "Full canonical CallScore Gemma transcript agent.",
+      "mission": "Maintain VM/local/shadow/main transcript architecture and stop shadow results from contaminating production without gates.",
+      "heartbeat_cadence": "after_pipeline_runs_plus_daily",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-gemma-transcript-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-gemma-transcript-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-gemma-transcript-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:160efdece94bcc23f7c0fed8aa84f424b1987a70822f94b88dd18dc94d9b2f2e",
+        "payload": {
+          "agent_id": "callscore-gemma-transcript-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "PostgreSQL read path via approved runtime",
+        "transcript pipeline scripts",
+        "Gemma/Ollama shadow receipts"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    },
+    {
+      "agent_id": "callscore-channel-agent-worker-head",
+      "class": "runtime_worker",
+      "owner_surface": "channel-agent worker runtime",
+      "identity": "Full canonical CallScore channel worker observer.",
+      "mission": "Track channel-worker health, queues, receipts, and safe task execution boundaries.",
+      "heartbeat_cadence": "hourly_light_after_worker_event",
+      "can_do_independently": [],
+      "gated_actions": [],
+      "forbidden_actions": [],
+      "heartbeat_reads": [],
+      "independent_outputs": [],
+      "stop_conditions": [],
+      "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+      "heartbeat_schema": "callscore_agent_heartbeat.v1",
+      "latest_heartbeat_id": "callscore-channel-agent-worker-head-2026-06-22T16:09:06.427Z",
+      "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+      "latest_proposed_task": {
+        "agent_id": "callscore-channel-agent-worker-head",
+        "channel_id": "general",
+        "task_type": "agent_observe",
+        "status": "pending",
+        "priority": 50,
+        "run_after": "2026-06-22T16:09:06.427Z",
+        "max_attempts": 1,
+        "idempotency_key": "callscore-channel-agent-worker-head:agent_observe:2026-06-22T16",
+        "payload_hash": "sha256:8caa6deef28b07c1f328526a8d7b8886bcbb16880fed231776f12b7743af4343",
+        "payload": {
+          "agent_id": "callscore-channel-agent-worker-head",
+          "channel_id": "general",
+          "task_type": "agent_observe",
+          "mode": "observe_or_draft",
+          "hermes_orchestrator": "default-profile",
+          "allowed_external_mutation": false
+        }
+      },
+      "tools": [
+        "Hermes profile/workplane",
+        "HH Control Tunnel continuity",
+        "filesystem receipts",
+        "master-state.json",
+        "observability contracts",
+        "git read/status",
+        "Docker read/status",
+        "Docker worker health",
+        "runtime logs",
+        "queue receipts"
+      ],
+      "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+      "log_root": "/srv/agents/hermes/logs",
+      "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+    }
+  ],
+  "lite_strategy_status": "rejected_by_operator_full_canonical_agents_required"
+}

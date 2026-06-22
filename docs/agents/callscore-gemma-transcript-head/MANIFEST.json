@@ -1,0 +1,52 @@
+{
+  "agent_id": "callscore-gemma-transcript-head",
+  "class": "transcript_shadow",
+  "owner_surface": "Gemma/Ollama transcript shadow and promotion gates",
+  "identity": "Full canonical CallScore Gemma transcript agent.",
+  "mission": "Maintain VM/local/shadow/main transcript architecture and stop shadow results from contaminating production without gates.",
+  "heartbeat_cadence": "after_pipeline_runs_plus_daily",
+  "can_do_independently": [],
+  "gated_actions": [],
+  "forbidden_actions": [],
+  "heartbeat_reads": [],
+  "independent_outputs": [],
+  "stop_conditions": [],
+  "profile_or_runtime_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "heartbeat_schema": "callscore_agent_heartbeat.v1",
+  "latest_heartbeat_id": "callscore-gemma-transcript-head-2026-06-22T16:09:06.427Z",
+  "latest_heartbeat_receipt": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/agent_heartbeat/agent-heartbeat-2026-06-22T16-09-06-427Z.json",
+  "latest_proposed_task": {
+    "agent_id": "callscore-gemma-transcript-head",
+    "channel_id": "general",
+    "task_type": "agent_observe",
+    "status": "pending",
+    "priority": 50,
+    "run_after": "2026-06-22T16:09:06.427Z",
+    "max_attempts": 1,
+    "idempotency_key": "callscore-gemma-transcript-head:agent_observe:2026-06-22T16",
+    "payload_hash": "sha256:160efdece94bcc23f7c0fed8aa84f424b1987a70822f94b88dd18dc94d9b2f2e",
+    "payload": {
+      "agent_id": "callscore-gemma-transcript-head",
+      "channel_id": "general",
+      "task_type": "agent_observe",
+      "mode": "observe_or_draft",
+      "hermes_orchestrator": "default-profile",
+      "allowed_external_mutation": false
+    }
+  },
+  "tools": [
+    "Hermes profile/workplane",
+    "HH Control Tunnel continuity",
+    "filesystem receipts",
+    "master-state.json",
+    "observability contracts",
+    "git read/status",
+    "Docker read/status",
+    "PostgreSQL read path via approved runtime",
+    "transcript pipeline scripts",
+    "Gemma/Ollama shadow receipts"
+  ],
+  "receipt_root": "/srv/agents/repos/callscore-workplane/receipts/",
+  "log_root": "/srv/agents/hermes/logs",
+  "provider_rule": "Composio MCP canonical for third-party automation; Netlify direct backup exception; Whop app-runtime direct exception only for live app auth/webhooks/entitlements."
+}

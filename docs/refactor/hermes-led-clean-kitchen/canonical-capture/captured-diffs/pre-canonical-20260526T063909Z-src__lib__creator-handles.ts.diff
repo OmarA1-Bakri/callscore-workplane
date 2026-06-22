@@ -1,0 +1,18 @@
+--- active/src/lib/creator-handles.ts
++++ pre-canonical-20260526T063909Z/src/lib/creator-handles.ts
+@@ -1,7 +1,13 @@
+ import { query } from "@/lib/db";
+-import { normalizeCreatorHandle } from "@/lib/creator-handle-path";
+-export { creatorHandlePath, normalizeCreatorHandle } from "@/lib/creator-handle-path";
+ import type { Creator } from "@/lib/types";
++
++export function normalizeCreatorHandle(rawHandle: string): string {
++  return rawHandle.trim().replace(/^@+/, "");
++}
++
++export function creatorHandlePath(rawHandle: string): string {
++  return encodeURIComponent(normalizeCreatorHandle(rawHandle).toLowerCase());
++}
+ 
+ export async function findCreatorByHandle<T extends Partial<Creator>>(
+   rawHandle: string,

@@ -1,0 +1,11 @@
+--- active/src/app/api/v1/calls/route.ts
++++ pre-canonical-20260526T063909Z/src/app/api/v1/calls/route.ts
+@@ -33,7 +33,7 @@
+       [limit],
+     );
+     const rows = parseApiRows(callRowSchema, rawRows, "v1 calls");
+-    return NextResponse.json({ data: serializeCalls(rows, { userTier: "alpha" }) }, { headers: noStoreHeaders() });
++    return NextResponse.json({ data: serializeCalls(rows) }, { headers: noStoreHeaders() });
+   } catch (error) {
+     logger.error("v1_calls_failed", {
+       error: error instanceof Error ? error.message : String(error),

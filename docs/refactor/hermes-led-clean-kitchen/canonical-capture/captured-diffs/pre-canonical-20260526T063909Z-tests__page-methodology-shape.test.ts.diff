@@ -1,0 +1,12 @@
+--- active/tests/page-methodology-shape.test.ts
++++ pre-canonical-20260526T063909Z/tests/page-methodology-shape.test.ts
+@@ -28,8 +28,6 @@
+   assert.match(src, /SCORE_WEIGHTS/);
+ });
+ 
+-test("/methodology labels TRACKED_CREATOR_COUNT as seed-list scope", () => {
++test("/methodology preserves TRACKED_CREATOR_COUNT reference", () => {
+   assert.match(src, /TRACKED_CREATOR_COUNT|TRACKED_COINS/);
+-  assert.match(src, /creator seed list/);
+-  assert.doesNotMatch(src, /creators tracked", v: TRACKED_CREATOR_COUNT/);
+ });

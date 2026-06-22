@@ -1,0 +1,127 @@
+{
+  "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+  "deletion_type": "git worktree removal",
+  "common_repo": "/srv/agents/repos/crypto-tuber-ranked",
+  "worktree_record_before": {
+    "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+    "head": "4bacabce35bc354a0ab3c2c924e34271e60cae3d",
+    "branch": "refs/heads/callscore/stale-infra-cleanup"
+  },
+  "worktree_list_before": [
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+      "branch": "refs/heads/master"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "head": "4bacabce35bc354a0ab3c2c924e34271e60cae3d",
+      "branch": "refs/heads/callscore/stale-infra-cleanup"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "head": "541510ea9532db40814bc78a25032a915b90535c",
+      "branch": "refs/heads/callscore/db-provider-portability"
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+      "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+    }
+  ],
+  "git_status": {
+    "args": [
+      "git",
+      "-C",
+      "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "status",
+      "--short",
+      "--branch"
+    ],
+    "rc": 0,
+    "stdout": "## callscore/stale-infra-cleanup...origin/master [behind 36]\n",
+    "stderr": ""
+  },
+  "dirty_capture": {
+    "status": {
+      "args": [
+        "git",
+        "-C",
+        "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "status",
+        "--short",
+        "--branch"
+      ],
+      "rc": 0,
+      "stdout": "## callscore/stale-infra-cleanup...origin/master [behind 36]\n",
+      "stderr": ""
+    },
+    "dirty_entries": [],
+    "captures": [],
+    "skipped": []
+  },
+  "pre_delete_size": 16035204,
+  "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+  "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/callscore-stale-infra-cleanup",
+  "active_reference_check": {
+    "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+    "process_refs": [],
+    "docker_refs": [],
+    "systemd_refs": [],
+    "cron_refs": [],
+    "compose_refs": [],
+    "active_ref_files": []
+  },
+  "emergency_halt_status": {
+    "halted": false
+  },
+  "classification": "GIT_WORKTREE_RETIRED",
+  "command_used": "git -C /srv/agents/repos/crypto-tuber-ranked worktree remove --force \"/srv/agents/repos/callscore-stale-infra-cleanup\"",
+  "command_return_code": 0,
+  "command_stdout": "",
+  "command_stderr": "",
+  "prune_command": "git -C /srv/agents/repos/crypto-tuber-ranked worktree prune",
+  "prune_return_code": 0,
+  "post_delete_exists": false,
+  "worktree_list_after": [
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+      "branch": "refs/heads/master"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "head": "541510ea9532db40814bc78a25032a915b90535c",
+      "branch": "refs/heads/callscore/db-provider-portability"
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+      "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+    }
+  ],
+  "bytes_recovered": 17833984,
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 133728862208,
+    "free_bytes": 27241381888,
+    "used_percent": 83.08,
+    "inode_total": 9732496,
+    "inode_used": 2666735,
+    "inode_free": 7065761,
+    "inode_used_percent": 27.4
+  },
+  "disk_after": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 133711028224,
+    "free_bytes": 27259215872,
+    "used_percent": 83.07,
+    "inode_total": 9732496,
+    "inode_used": 2666112,
+    "inode_free": 7066384,
+    "inode_used_percent": 27.39
+  },
+  "deleted": true
+}

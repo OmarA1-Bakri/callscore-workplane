@@ -1,0 +1,18 @@
+--- active/src/app/about/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/about/page.tsx
+@@ -1,5 +1,6 @@
+ import Link from "next/link";
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import type { ReactElement } from "react";
+ import { EditorialSection, MetaStrip } from "@/components/primitives";
+ 
+@@ -11,7 +12,7 @@
+ export const metadata: Metadata = {
+   title: TITLE,
+   description: DESCRIPTION,
+-  alternates: { canonical: "/about" },
++  alternates: { canonical: SITE_URL + "/about" },
+   openGraph: { title: TITLE, description: DESCRIPTION, type: "website" },
+   twitter: { card: "summary_large_image", title: TITLE, description: DESCRIPTION },
+ };

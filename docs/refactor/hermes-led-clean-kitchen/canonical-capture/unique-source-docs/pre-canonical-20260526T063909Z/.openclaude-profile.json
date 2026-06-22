@@ -1,0 +1,8 @@
+{
+  "profile": "ollama",
+  "env": {
+    "OPENAI_BASE_URL": "http://127.0.0.1:11434/v1",
+    "OPENAI_MODEL": "deepseek-v4-pro:cloud"
+  },
+  "createdAt": "2026-05-01T17:15:14.263Z"
+}

@@ -1,0 +1,1153 @@
+{
+  "timestamp_utc": "2026-06-21T18:25:41Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup",
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 141214588928,
+    "free_bytes": 19755655168,
+    "used_percent": 87.73,
+    "inode_total": 9732496,
+    "inode_used": 2776680,
+    "inode_free": 6955816,
+    "inode_used_percent": 28.53
+  },
+  "disk_after": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134043717632,
+    "free_bytes": 26926526464,
+    "used_percent": 83.27,
+    "inode_total": 9732496,
+    "inode_used": 2694716,
+    "inode_free": 7037780,
+    "inode_used_percent": 27.69
+  },
+  "inode_before": {
+    "inode_total": 9732496,
+    "inode_used": 2776680,
+    "inode_free": 6955816,
+    "inode_used_percent": 28.53
+  },
+  "inode_after": {
+    "inode_total": 9732496,
+    "inode_used": 2694716,
+    "inode_free": 7037780,
+    "inode_used_percent": 27.69
+  },
+  "deletions": [
+    {
+      "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+      "classification": "DELETE_NOW_STALE_BACKUP",
+      "reason": "old backup tarball in /srv/agents/backups; latest two tar-like backups kept",
+      "exists": true,
+      "size_before_bytes": 2683500081,
+      "path_info": {
+        "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "is_symlink": false,
+        "size_lstat_bytes": 2683500081,
+        "mtime_utc": "2026-06-19T02:34:03Z",
+        "mode": "0o644"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": false
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/backups/agents-20260619T023002Z.tar.gz\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 141214838784,
+        "free_bytes": 19755405312,
+        "used_percent": 87.73,
+        "inode_total": 9732496,
+        "inode_used": 2776686,
+        "inode_free": 6955810,
+        "inode_used_percent": 28.53
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 138531332096,
+        "free_bytes": 22438912000,
+        "used_percent": 86.06,
+        "inode_total": 9732496,
+        "inode_used": 2776685,
+        "inode_free": 6955811,
+        "inode_used_percent": 28.53
+      },
+      "disk_space_recovered_bytes": 2683506688,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/srv/agents/backups/agents-20260618T023000Z.tar.gz",
+      "classification": "DELETE_NOW_STALE_BACKUP",
+      "reason": "old backup tarball in /srv/agents/backups; latest two tar-like backups kept",
+      "exists": true,
+      "size_before_bytes": 2383291489,
+      "path_info": {
+        "path": "/srv/agents/backups/agents-20260618T023000Z.tar.gz",
+        "exists": true,
+        "is_dir": false,
+        "is_file": true,
+        "is_symlink": false,
+        "size_lstat_bytes": 2383291489,
+        "mtime_utc": "2026-06-18T03:08:30Z",
+        "mode": "0o644"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": false
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/backups/agents-20260618T023000Z.tar.gz\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 138531336192,
+        "free_bytes": 22438907904,
+        "used_percent": 86.06,
+        "inode_total": 9732496,
+        "inode_used": 2776686,
+        "inode_free": 6955810,
+        "inode_used_percent": 28.53
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 136148037632,
+        "free_bytes": 24822206464,
+        "used_percent": 84.58,
+        "inode_total": 9732496,
+        "inode_used": 2776685,
+        "inode_free": 6955811,
+        "inode_used_percent": 28.53
+      },
+      "disk_space_recovered_bytes": 2383298560,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale node_modules inside non-active legacy/snapshot root /srv/agents/repos/callscore-stale-infra-cleanup",
+      "exists": true,
+      "size_before_bytes": 862059940,
+      "path_info": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 20480,
+        "mtime_utc": "2026-06-07T10:24:16Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+        "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/callscore-stale-infra-cleanup/node_modules\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 136148041728,
+        "free_bytes": 24822202368,
+        "used_percent": 84.58,
+        "inode_total": 9732496,
+        "inode_used": 2776686,
+        "inode_free": 6955810,
+        "inode_used_percent": 28.53
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 135149690880,
+        "free_bytes": 25820553216,
+        "used_percent": 83.96,
+        "inode_total": 9732496,
+        "inode_used": 2731017,
+        "inode_free": 7001479,
+        "inode_used_percent": 28.06
+      },
+      "disk_space_recovered_bytes": 998350848,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/node_modules",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale node_modules inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 532203001,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/node_modules",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 20480,
+        "mtime_utc": "2026-05-09T04:47:44Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/node_modules\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 135149694976,
+        "free_bytes": 25820549120,
+        "used_percent": 83.96,
+        "inode_total": 9732496,
+        "inode_used": 2731018,
+        "inode_free": 7001478,
+        "inode_used_percent": 28.06
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134514114560,
+        "free_bytes": 26456129536,
+        "used_percent": 83.56,
+        "inode_total": 9732496,
+        "inode_used": 2697501,
+        "inode_free": 7034995,
+        "inode_used_percent": 27.72
+      },
+      "disk_space_recovered_bytes": 635580416,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale .next inside non-active legacy/snapshot root /srv/agents/repos/callscore-stale-infra-cleanup",
+      "exists": true,
+      "size_before_bytes": 270899287,
+      "path_info": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup/.next",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-07T10:27:20Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/callscore-stale-infra-cleanup/.next\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134514118656,
+        "free_bytes": 26456125440,
+        "used_percent": 83.56,
+        "inode_total": 9732496,
+        "inode_used": 2697502,
+        "inode_free": 7034994,
+        "inode_used_percent": 27.72
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134241099776,
+        "free_bytes": 26729144320,
+        "used_percent": 83.39,
+        "inode_total": 9732496,
+        "inode_used": 2696778,
+        "inode_free": 7035718,
+        "inode_used_percent": 27.71
+      },
+      "disk_space_recovered_bytes": 273018880,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.omx",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .omx inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 116515370,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.omx",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-05-02T16:46:51Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.omx\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134241103872,
+        "free_bytes": 26729140224,
+        "used_percent": 83.39,
+        "inode_total": 9732496,
+        "inode_used": 2696779,
+        "inode_free": 7035717,
+        "inode_used_percent": 27.71
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134123843584,
+        "free_bytes": 26846400512,
+        "used_percent": 83.32,
+        "inode_total": 9732496,
+        "inode_used": 2696541,
+        "inode_free": 7035955,
+        "inode_used_percent": 27.71
+      },
+      "disk_space_recovered_bytes": 117260288,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale .tmp inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 42524676,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 20480,
+        "mtime_utc": "2026-05-16T18:31:09Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.tmp\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134123847680,
+        "free_bytes": 26846396416,
+        "used_percent": 83.32,
+        "inode_total": 9732496,
+        "inode_used": 2696542,
+        "inode_free": 7035954,
+        "inode_used_percent": 27.71
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134079287296,
+        "free_bytes": 26890956800,
+        "used_percent": 83.29,
+        "inode_total": 9732496,
+        "inode_used": 2695866,
+        "inode_free": 7036630,
+        "inode_used_percent": 27.7
+      },
+      "disk_space_recovered_bytes": 44560384,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.vercel",
+      "classification": "DELETE_NOW_CACHE",
+      "reason": "stale .vercel inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 15640503,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.vercel",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-05-03T16:59:12Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.vercel\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134079291392,
+        "free_bytes": 26890952704,
+        "used_percent": 83.29,
+        "inode_total": 9732496,
+        "inode_used": 2695867,
+        "inode_free": 7036629,
+        "inode_used_percent": 27.7
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134063214592,
+        "free_bytes": 26907029504,
+        "used_percent": 83.28,
+        "inode_total": 9732496,
+        "inode_used": 2695647,
+        "inode_free": 7036849,
+        "inode_used_percent": 27.7
+      },
+      "disk_space_recovered_bytes": 16076800,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.claude",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .claude inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 14051214,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.claude",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-04-29T15:36:55Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.claude\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134063218688,
+        "free_bytes": 26907025408,
+        "used_percent": 83.28,
+        "inode_total": 9732496,
+        "inode_used": 2695648,
+        "inode_free": 7036848,
+        "inode_used_percent": 27.7
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134046916608,
+        "free_bytes": 26923327488,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694752,
+        "inode_free": 7037744,
+        "inode_used_percent": 27.69
+      },
+      "disk_space_recovered_bytes": 16302080,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .serena inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "exists": true,
+      "size_before_bytes": 2922008,
+      "path_info": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-04-30T12:57:28Z",
+        "mode": "0o777"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "status": {
+          "exists": true,
+          "is_git": true,
+          "branch": {
+            "rc": 0,
+            "stdout": "master\n",
+            "stderr": ""
+          },
+          "status": {
+            "rc": 0,
+            "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+            "stderr": ""
+          },
+          "remote": {
+            "rc": 0,
+            "stdout": "",
+            "stderr": ""
+          },
+          "head": {
+            "rc": 128,
+            "stdout": "HEAD\n",
+            "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+          }
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134046920704,
+        "free_bytes": 26923323392,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694753,
+        "inode_free": 7037743,
+        "inode_used_percent": 27.69
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043971584,
+        "free_bytes": 26926272512,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694744,
+        "inode_free": 7037752,
+        "inode_used_percent": 27.69
+      },
+      "disk_space_recovered_bytes": 2949120,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .omx inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "exists": true,
+      "size_before_bytes": 149435,
+      "path_info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T07:05:37Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043975680,
+        "free_bytes": 26926268416,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694745,
+        "inode_free": 7037751,
+        "inode_used_percent": 27.69
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043758592,
+        "free_bytes": 26926485504,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694723,
+        "inode_free": 7037773,
+        "inode_used_percent": 27.69
+      },
+      "disk_space_recovered_bytes": 217088,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.serena",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .serena inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "exists": true,
+      "size_before_bytes": 17564,
+      "path_info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.serena",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T07:05:37Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.serena\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043762688,
+        "free_bytes": 26926481408,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694724,
+        "inode_free": 7037772,
+        "inode_used_percent": 27.69
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043725824,
+        "free_bytes": 26926518272,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694718,
+        "inode_free": 7037778,
+        "inode_used_percent": 27.69
+      },
+      "disk_space_recovered_bytes": 36864,
+      "post_delete_verification": "absent"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.claude",
+      "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+      "reason": "stale .claude inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "exists": true,
+      "size_before_bytes": 1479,
+      "path_info": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.claude",
+        "exists": true,
+        "is_dir": true,
+        "is_file": false,
+        "is_symlink": false,
+        "size_lstat_bytes": 4096,
+        "mtime_utc": "2026-06-05T07:05:37Z",
+        "mode": "0o775"
+      },
+      "safe_to_delete": true,
+      "block_reasons": [],
+      "active_process_check": [],
+      "docker_mount_check": [],
+      "compose_reference_check": [],
+      "cron_reference_check": [],
+      "systemd_reference_check": [],
+      "all_reference_files": [
+        "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+      ],
+      "git_status": {
+        "applicable": true,
+        "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "status": {
+          "exists": true,
+          "is_git": false
+        }
+      },
+      "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+      "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.claude\"",
+      "delete_rc": 0,
+      "delete_stdout": "",
+      "delete_stderr": "",
+      "exists_after": false,
+      "deleted": true,
+      "disk_before_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043729920,
+        "free_bytes": 26926514176,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694719,
+        "inode_free": 7037777,
+        "inode_used_percent": 27.69
+      },
+      "disk_after_delete": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134043713536,
+        "free_bytes": 26926530560,
+        "used_percent": 83.27,
+        "inode_total": 9732496,
+        "inode_used": 2694715,
+        "inode_free": 7037781,
+        "inode_used_percent": 27.69
+      },
+      "disk_space_recovered_bytes": 16384,
+      "post_delete_verification": "absent"
+    }
+  ],
+  "deleted_count": 13,
+  "blocked_candidates": [],
+  "recovered_bytes_sum_from_deletion_receipts": 7171174400,
+  "recovered_bytes_df_free_delta": 7170871296,
+  "runtime_routing_proven": [
+    {
+      "container": "whop-auto-hermes-worker-1",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": "whop-auto",
+      "compose_service": "hermes-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "whop-auto-channel-agent-worker-1",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": "whop-auto",
+      "compose_service": "channel-agent-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "whop-auto-ytdlp-pot-provider-1",
+      "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "state": "restarting",
+      "health": "unhealthy",
+      "compose_project": "whop-auto",
+      "compose_service": "ytdlp-pot-provider",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "crypto-tuber-ranked-hermes-worker-1",
+      "image": "crypto-tuber-ranked-hermes-worker:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": "crypto-tuber-ranked",
+      "compose_service": "hermes-worker",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+      "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+      "state": "running",
+      "health": "healthy",
+      "compose_project": "crypto-tuber-ranked",
+      "compose_service": "ytdlp-pot-provider",
+      "compose_config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "compose_working_dir": "/opt/crypto-tuber-ranked",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY"
+    },
+    {
+      "container": "hh-oauth-mcp-gateway",
+      "image": "oauth-mcp-gateway-oauth-mcp-gateway",
+      "state": "running",
+      "health": null,
+      "compose_project": "oauth-mcp-gateway",
+      "compose_service": "oauth-mcp-gateway",
+      "compose_config_files": "/srv/agents/oauth-mcp-gateway/docker-compose.yml",
+      "compose_working_dir": "/srv/agents/oauth-mcp-gateway",
+      "classification": "UNKNOWN_BLOCKED"
+    },
+    {
+      "container": "hermes-whop-automation-tunnel",
+      "image": "cloudflare/cloudflared:latest",
+      "state": "running",
+      "health": null,
+      "compose_project": null,
+      "compose_service": null,
+      "compose_config_files": null,
+      "compose_working_dir": null,
+      "classification": "UNKNOWN_BLOCKED"
+    }
+  ],
+  "protected_verification": {
+    "/opt/crypto-tuber-ranked/docker-compose.yml": {
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_lstat_bytes": 4382,
+      "mtime_utc": "2026-06-20T23:37:30Z",
+      "mode": "0o664"
+    },
+    "/opt/callscore/secrets/youtube-cookies.txt": {
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_lstat_bytes": 22892,
+      "mtime_utc": "2026-06-21T03:21:02Z",
+      "mode": "0o600"
+    },
+    "/opt/callscore/secrets": {
+      "path": "/opt/callscore/secrets",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_lstat_bytes": 4096,
+      "mtime_utc": "2026-06-12T04:18:19Z",
+      "mode": "0o755"
+    },
+    "/opt/crypto-tuber-ranked": {
+      "path": "/opt/crypto-tuber-ranked",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_lstat_bytes": 4096,
+      "mtime_utc": "2026-06-21T10:27:40Z",
+      "mode": "0o775"
+    }
+  },
+  "preexisting_warnings": [
+    "whop-auto-ytdlp-pot-provider-1 was restarting/unhealthy in prior prompt/baseline if still observed; not caused by this cleanup unless new regression recorded"
+  ]
+}

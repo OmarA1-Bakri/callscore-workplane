@@ -1,0 +1,297 @@
+--- active/src/app/methodology/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/methodology/page.tsx
+@@ -1,5 +1,6 @@
+ import Link from "next/link";
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import type { ReactElement } from "react";
+ import { EditorialSection, MetaStrip, Chip } from "@/components/primitives";
+ import {
+@@ -7,19 +8,12 @@
+   SCORE_WEIGHTS,
+ } from "@/lib/public-methodology";
+ import { TRACKED_CREATOR_COUNT } from "@/lib/tracked-creators";
+-import {
+-  CALL_SCORE_LIFECYCLE_STATES,
+-  CREATOR_RANKING_STATES,
+-  CURRENT_CREATOR_RANKING_METHOD,
+-  OFFICIAL_CREATOR_THRESHOLDS,
+-  RECOMMENDED_CREATOR_RANK_SCORE_V2,
+-} from "@/lib/methodology-rubric";
+ 
+ export const metadata: Metadata = {
+   title: "Methodology — CallScore",
+   description:
+-    "Our scoring methodology: public Call Score components, creator ranking eligibility, bucket states, and current methodology limits.",
+-  alternates: { canonical: "/methodology" },
++    "Our scoring methodology: one public Alpha Score formula, confidence-gated extraction, and real market-data verification.",
++  alternates: { canonical: SITE_URL + "/methodology" },
+ };
+ 
+ /* ------------------------------------------------------------------ */
+@@ -41,8 +35,8 @@
+   { name: "Scrape", detail: "Auto-generated subtitles, daily" },
+   { name: "Extract", detail: "AI identifies actionable predictions" },
+   { name: "Match", detail: "Each call ↔ Binance candles" },
+-  { name: "Score", detail: "5 components → 0–100 Call Score" },
+-  { name: "Rank", detail: "Creator Rank Score + eligibility buckets" },
++  { name: "Score", detail: "5 components → 0–100" },
++  { name: "Rank", detail: "Avg Alpha across scored calls" },
+ ] as const;
+ 
+ interface ScoreRow {
+@@ -55,22 +49,22 @@
+   {
+     label: "Direction correct",
+     max: SCORE_WEIGHTS.direction,
+-    how: "30d move must clear the direction threshold: bullish > +2%, bearish < -2%, neutral within ±10%.",
++    how: "Bullish call + price up at 30d (or vice versa).",
+   },
+   {
+     label: "Alpha over BTC",
+     max: SCORE_WEIGHTS.alpha,
+-    how: `BTC-relative 30d alpha contributes up to ${SCORE_WEIGHTS.alpha} points; current implementation floors negative alpha at 0 in the public 0–100 score.`,
++    how: `Each 1% excess return = ${(SCORE_WEIGHTS.alpha / 10).toFixed(1)}pt, capped at ${SCORE_WEIGHTS.alpha}.`,
+   },
+   {
+     label: "Specificity",
+     max: SCORE_WEIGHTS.specificity,
+-    how: "Entry, target, stop-loss, and timeframe can each add credit; current data is mostly target-driven.",
++    how: "Entry, target, stop-loss, timeframe (¼ each).",
+   },
+   {
+     label: "Regime difficulty",
+     max: SCORE_WEIGHTS.regime,
+-    how: "Contrarian calls receive more credit through the stored regime_difficulty field.",
++    how: "Bullish in bear / bearish in bull = max.",
+   },
+   {
+     label: "Target hit",
+@@ -85,12 +79,13 @@
+   readonly read: string;
+ }
+ 
+-// Call Score thresholds for S/A/B/C public tier badges.
++// Alpha-Score thresholds per current `compute-scores` output. S/A/B/C
++// banding is the public dev-pack contract for tier badges.
+ const TIERS: readonly TierRow[] = [
+-  { tier: "S", range: "70 – 100", read: "Elite individual-call score, not a guarantee of creator rank." },
+-  { tier: "A", range: "55 – 69",  read: "Strong call-level outcome with directional edge." },
+-  { tier: "B", range: "40 – 54",  read: "Mixed call-level result; some edge but incomplete score components." },
+-  { tier: "C", range: "0 – 39",   read: "Weak call-level result or insufficient component evidence." },
++  { tier: "S", range: "70 – 100", read: "Elite — beats BTC consistently with high specificity." },
++  { tier: "A", range: "55 – 69",  read: "Strong — directional edge, partial specificity." },
++  { tier: "B", range: "40 – 54",  read: "Mixed — directional hit but thin alpha." },
++  { tier: "C", range: "0 – 39",   read: "Underperforming — frequent misses or low-conviction." },
+ ] as const;
+ 
+ /* ------------------------------------------------------------------ */
+@@ -118,26 +113,21 @@
+           <em className="italic font-normal text-accent">In public.</em>
+         </h1>
+         <p className="font-serif text-[20px] text-ink-700 leading-relaxed max-w-[760px]">
+-          Call Score is a 0–100 score for one matured market call. Creator
+-          ranking is a separate eligibility-and-ranking contract that uses
+-          sample size, exclusions, freshness, and bucket states before anyone
+-          appears as official.{" "}
++          One formula, five components, capped 0–100. Every score reproducible
++          from the published pipeline.{" "}
+           <em className="italic text-accent">If a number looks wrong, audit me.</em>
+         </p>
+         <MetaStrip
+           cells={[
+             { k: "components", v: "5" },
+             { k: "candles", v: "18.7M" },
+-            { k: "creator seed list", v: TRACKED_CREATOR_COUNT },
++            { k: "creators tracked", v: TRACKED_CREATOR_COUNT },
+             {
+               k: "extraction floor",
+               v: `${Math.round(EXTRACTION_CONFIDENCE_THRESHOLD * 100)}%`,
+             },
+           ]}
+         />
+-        <p className="mt-4 max-w-[760px] font-mono text-[11px] uppercase tracking-caps text-ink-500">
+-          The seed-list count is the repo-maintained creator admission baseline. The homepage tracked-creator count is live HH PostgreSQL coverage and may be higher after runtime ingestion.
+-        </p>
+       </section>
+ 
+       {/* 01 — pipeline */}
+@@ -230,112 +220,10 @@
+         </div>
+       </EditorialSection>
+ 
+-      {/* 04 — rank contract */}
++      {/* 04 — tier ranges */}
+       <EditorialSection
+         index="04"
+-        title={<>Creator <em className="italic text-accent">rank</em> contract.</>}
+-        meta={<>official / provisional / watchlist / stale / excluded</>}
+-      >
+-        <div className="grid grid-cols-1 tab:grid-cols-2 gap-6">
+-          <div>
+-            <h3 className="font-serif text-[21px] text-ink-900 font-medium mb-2">
+-              Call Score ≠ Creator Rank Score
+-            </h3>
+-            <p className="font-serif text-[16px] text-ink-700 leading-relaxed mb-4">
+-              Call Score scores one matured prediction. Creator Rank Score ranks a creator
+-              only after official eligibility gates pass. The current writer stores average
+-              Call Score in <code className="font-mono text-[13px]">{CURRENT_CREATOR_RANKING_METHOD.scoreField}</code>,
+-              then assigns rank with a sample-adjusted Creator Rank Score before raw score,
+-              win rate, sample size, and creator id tie-breakers. The legacy column
+-              name is misleading: it is not raw average alpha.
+-            </p>
+-            <ul className="font-mono text-[12px] text-ink-600 leading-relaxed space-y-1">
+-              {CURRENT_CREATOR_RANKING_METHOD.rankOrder.map((rule) => (
+-                <li key={rule}>→ {rule}</li>
+-              ))}
+-            </ul>
+-          </div>
+-          <div>
+-            <h3 className="font-serif text-[21px] text-ink-900 font-medium mb-2">
+-              Official thresholds
+-            </h3>
+-            <table className="w-full font-mono text-[12px]">
+-              <tbody>
+-                {Object.entries(OFFICIAL_CREATOR_THRESHOLDS).map(([period, rule]) => (
+-                  <tr key={period} className="border-b border-ink-200">
+-                    <td className="py-2 text-ink-900">{rule.label}</td>
+-                    <td className="py-2 text-ink-700">
+-                      {rule.officialEnabled
+-                        ? `${rule.officialMinCalls}+ official · ${rule.certifiedMinCalls}+ certified`
+-                        : `disabled: ${rule.emptyReason}`}
+-                    </td>
+-                  </tr>
+-                ))}
+-              </tbody>
+-            </table>
+-            <p className="font-serif text-[15px] text-ink-700 leading-relaxed mt-4">
+-              A serious creator making roughly one mature qualifying call per month can enter the 12m official leaderboard at 12 calls. Certified labels require larger samples. The 30d official leaderboard stays disabled as <code className="font-mono text-[13px]">PENDING_MATURITY</code>, not a fake zero-call ranking.
+-            </p>
+-          </div>
+-        </div>
+-      </EditorialSection>
+-
+-      {/* 05 — creator states */}
+-      <EditorialSection
+-        index="05"
+-        title={<>Creator <em className="italic text-accent">states</em>.</>}
+-        meta={<>public-safe buckets</>}
+-      >
+-        <div className="grid grid-cols-1 tab:grid-cols-2 desk:grid-cols-3 gap-4">
+-          {CREATOR_RANKING_STATES.map((state) => (
+-            <div key={state.state} className="border-t border-ink-250 pt-3">
+-              <div className="font-mono text-[11px] text-ink-500 tracking-caps uppercase mb-1">
+-                {state.bucket}
+-              </div>
+-              <h3 className="font-serif text-[19px] text-ink-900 font-medium mb-1">
+-                {state.label}
+-              </h3>
+-              <p className="font-serif text-[15px] text-ink-700 leading-relaxed">
+-                {state.definition}
+-              </p>
+-            </div>
+-          ))}
+-        </div>
+-      </EditorialSection>
+-
+-      {/* 06 — lifecycle */}
+-      <EditorialSection
+-        index="06"
+-        title={<>Score <em className="italic text-accent">lifecycle</em>.</>}
+-        meta={<>status is separate from value</>}
+-      >
+-        <p className="font-serif text-[16px] text-ink-700 leading-relaxed mb-5 max-w-[760px]">
+-          A real scored call can eventually have a value of 0. The long-term
+-          methodology separates score lifecycle from score value. Today some
+-          writer/count paths still use stored score 0 as an unscored placeholder,
+-          so the read layer is conservative until a schema/recompute migration is approved.
+-        </p>
+-        <ol className="grid grid-cols-1 tab:grid-cols-2 gap-4">
+-          {CALL_SCORE_LIFECYCLE_STATES.map((state, i) => (
+-            <li key={state.state} className="border-t border-ink-250 pt-3">
+-              <div className="font-mono text-[11px] text-ink-500 tracking-caps uppercase mb-1">
+-                state {String(i + 1).padStart(2, "0")} · {state.state}
+-              </div>
+-              <div className="font-serif text-[18px] text-ink-900 font-medium mb-1">
+-                {state.label}
+-              </div>
+-              <div className="font-serif text-[15px] text-ink-700 leading-relaxed">
+-                {state.definition}
+-              </div>
+-            </li>
+-          ))}
+-        </ol>
+-      </EditorialSection>
+-
+-      {/* 07 — tier ranges */}
+-      <EditorialSection
+-        index="07"
+-        title={<>Call-score <em className="italic text-accent">bands</em>.</>}
++        title={<>Tier <em className="italic text-accent">ranges</em>.</>}
+         meta={<>S / A / B / C bands</>}
+       >
+         <table className="w-full font-mono text-[13px]">
+@@ -345,7 +233,7 @@
+                 Tier
+               </th>
+               <th className="text-left text-[11px] text-ink-500 tracking-caps uppercase font-normal py-2 w-32">
+-                Score range
++                Alpha range
+               </th>
+               <th className="text-left text-[11px] text-ink-500 tracking-caps uppercase font-normal py-2 pl-6">
+                 Reading
+@@ -368,45 +256,21 @@
+         </table>
+       </EditorialSection>
+ 
+-      {/* 08 — rank adjustment */}
+-      <EditorialSection
+-        index="08"
+-        title={<>Sample <em className="italic text-accent">adjustment</em>.</>}
+-        meta={<>implemented in source ranks</>}
+-      >
+-        <div className="font-serif text-[16px] text-ink-700 leading-relaxed max-w-[760px] space-y-4">
+-          <p>
+-            Official rankings use a sample-adjusted Creator Rank Score rather than a noisy raw average. This lets serious lower-frequency creators qualify while pulling 12-call samples toward the global baseline so variance alone cannot dominate proven larger samples.
+-          </p>
+-          <p className="font-mono text-[13px] text-ink-600 not-italic">
+-            {RECOMMENDED_CREATOR_RANK_SCORE_V2.sampleAdjustedFormula}
+-          </p>
+-          <ul className="font-mono text-[12px] text-ink-600 leading-relaxed space-y-1">
+-            {RECOMMENDED_CREATOR_RANK_SCORE_V2.components.map((component) => (
+-              <li key={component.label}>
+-                {component.weight}% · {component.label}
+-              </li>
+-            ))}
+-          </ul>
+-        </div>
+-      </EditorialSection>
+-
+-      {/* 09 — audit me */}
+-      <EditorialSection
+-        index="09"
++      {/* 05 — audit me */}
++      <EditorialSection
++        index="05"
+         title={<><em className="italic text-accent">Audit</em> me.</>}
+-        meta={<>Reproducible · source available for audit on request</>}
++        meta={<>Reproducible · open source</>}
+       >
+         <div className="font-serif text-[17px] text-ink-700 leading-relaxed max-w-[680px] space-y-4">
+           <p>
+-            The recompute pipeline is designed to be reproducible. Every public
+-            score should trace to a transcript line, a Binance candle range, a
+-            lifecycle status, and a deterministic formula. There is no
+-            hand-tuned weighting per creator.
++            The recompute pipeline is reproducible. Every score traces to a
++            transcript line, a Binance candle range, and a deterministic
++            formula. There is no hand-tuned weighting per creator.
+           </p>
+           <p>
+-            Disagree with a number? Request the audit trail, rerun the score
+-            against the documented formula, and tell us where it diverges.
++            Disagree with a number? The source is published; clone it, rerun
++            the score, and tell us where it diverges.
+           </p>
+           <AuditLinks />
+         </div>

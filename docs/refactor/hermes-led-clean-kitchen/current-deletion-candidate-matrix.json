@@ -1,0 +1,135 @@
+{
+  "timestamp_utc": "2026-06-21T19:26:10Z",
+  "classification_enum": [
+    "CANONICAL_ACTIVE",
+    "CONTROL_PLANE_ACTIVE",
+    "ACTIVE_RUNTIME_DEPENDENCY",
+    "PROTECTED_RUNTIME_STATE",
+    "PROTECTED_STALE_MANIFESTED",
+    "GIT_WORKTREE_RETIRED",
+    "DELETE_NOW_AFTER_CAPTURE",
+    "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+    "BLOCKED_ACTIVE_REFERENCE",
+    "BLOCKED_DIRTY_WORKTREE",
+    "BLOCKED_COMMON_GIT_RISK",
+    "BLOCKED_NEEDS_OPERATOR_APPROVAL",
+    "UNKNOWN_BLOCKED"
+  ],
+  "note": "Prompt 2.5 current post-action matrix",
+  "candidates": [
+    {
+      "path": "/opt/crypto-tuber-ranked",
+      "classification": "CANONICAL_ACTIVE",
+      "exists_now": true,
+      "do_not_delete": true
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY",
+      "exists_now": true,
+      "do_not_delete": true
+    },
+    {
+      "path": "/opt/callscore/secrets",
+      "classification": "PROTECTED_RUNTIME_STATE",
+      "exists_now": true,
+      "do_not_delete": true
+    },
+    {
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "classification": "PROTECTED_RUNTIME_STATE",
+      "exists_now": true,
+      "do_not_delete": true
+    },
+    {
+      "path": "/srv/agents/repos/callscore-workplane",
+      "classification": "CONTROL_PLANE_ACTIVE",
+      "exists_now": true,
+      "do_not_delete": true
+    },
+    {
+      "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+      "classification": "CONTROL_PLANE_ACTIVE",
+      "exists_now": true,
+      "do_not_delete": true
+    },
+    {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "exists_after": true,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "classification": "BLOCKED_COMMON_GIT_RISK",
+      "reason": "common repo not deleted in Prompt 2.5; common .git preservation rule; deletion/classification can be separate later phase after worktree retirement verification",
+      "size_bytes": 11488186,
+      "exists_after": true,
+      "exists_now": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false,
+      "exists_now": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "classification": "BLOCKED_COMMON_GIT_RISK",
+      "reason": "common repo explicitly not approved for deletion in Prompt 2.5",
+      "size_bytes": 1067520068,
+      "exists_after": true,
+      "exists_now": true
+    },
+    {
+      "path": "/srv/agents/database-migration",
+      "classification": "BLOCKED_NEEDS_OPERATOR_APPROVAL",
+      "reason": "DB/migration protected data; no explicit operator approval to delete in current prompt",
+      "size_bytes": 878132059,
+      "exists_after": true,
+      "exists_now": true
+    }
+  ]
+}

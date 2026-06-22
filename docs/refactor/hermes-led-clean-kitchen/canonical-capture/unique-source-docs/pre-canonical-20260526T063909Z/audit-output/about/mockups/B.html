@@ -1,0 +1,917 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CTR :: terminal — about</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---------- reset ---------- */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --base: #0b0f0e;
+        --surface: #121815;
+        --surface-2: #0f1513;
+        --line: #1c2420;
+        --line-strong: #283229;
+        --text: #c8d3ca;
+        --muted: #5b6b63;
+        --muted-dim: #3d4a43;
+        --green: #3fd67a;
+        --red: #ff5b5b;
+        --cell-h: 28px;
+      }
+
+      body {
+        background: var(--base);
+        color: var(--text);
+        font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo,
+          Consolas, monospace;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        min-height: 100vh;
+        /* faint scanline/grid texture */
+        background-image:
+          linear-gradient(
+            180deg,
+            rgba(63, 214, 122, 0.015) 0%,
+            rgba(63, 214, 122, 0) 100%
+          ),
+          repeating-linear-gradient(
+            0deg,
+            rgba(200, 211, 202, 0.018) 0 1px,
+            transparent 1px 3px
+          );
+      }
+
+      /* ---------- top bar ---------- */
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 10px 20px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface-2);
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .topbar .meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .topbar .sep {
+        color: var(--muted-dim);
+      }
+      .topbar .status-dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 8px rgba(63, 214, 122, 0.55);
+        margin-right: 8px;
+        animation: pulse 2.4s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.45;
+        }
+      }
+      .topbar .env {
+        color: var(--green);
+        font-weight: 500;
+      }
+      .topbar .right {
+        display: flex;
+        gap: 18px;
+        color: var(--muted);
+      }
+      .topbar .right b {
+        color: var(--text);
+        font-weight: 500;
+      }
+
+      /* ---------- console frame ---------- */
+      .console {
+        display: grid;
+        grid-template-columns: minmax(240px, 30%) 1fr;
+        min-height: calc(100vh - 41px);
+      }
+
+      /* ---------- sidebar ---------- */
+      nav.sidebar {
+        border-right: 1px solid var(--line);
+        background: var(--surface-2);
+        padding: 24px 20px 24px 20px;
+        font-size: 13px;
+      }
+      .sidebar h2 {
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+        margin: 0 0 18px 0;
+        text-transform: uppercase;
+      }
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 28px 0;
+      }
+      .sidebar li {
+        margin: 0;
+      }
+      .sidebar a {
+        display: block;
+        color: var(--muted);
+        text-decoration: none;
+        padding: 6px 6px 6px 14px;
+        border-radius: 2px;
+        outline: none;
+        position: relative;
+        letter-spacing: 0.02em;
+      }
+      .sidebar a::before {
+        content: "  ";
+        white-space: pre;
+        color: var(--muted-dim);
+      }
+      .sidebar a:hover {
+        color: var(--text);
+        background: rgba(63, 214, 122, 0.04);
+      }
+      .sidebar a:focus-visible {
+        outline: 1px solid var(--green);
+        outline-offset: 2px;
+        color: var(--text);
+        background: rgba(63, 214, 122, 0.06);
+      }
+      .sidebar a.active {
+        color: var(--green);
+        background: rgba(63, 214, 122, 0.05);
+      }
+      .sidebar a.active::before {
+        content: "> ";
+        color: var(--green);
+      }
+      .sidebar a .bracket {
+        color: var(--green);
+      }
+      .sidebar .footnote {
+        margin-top: 32px;
+        color: var(--muted-dim);
+        font-size: 11px;
+        line-height: 1.7;
+        letter-spacing: 0.02em;
+      }
+      .sidebar .footnote .kbd {
+        display: inline-block;
+        padding: 1px 5px;
+        border: 1px solid var(--line-strong);
+        border-radius: 2px;
+        color: var(--muted);
+        background: var(--surface);
+        margin: 0 2px;
+        font-size: 10px;
+      }
+
+      /* ---------- main pane ---------- */
+      main.pane {
+        padding: 28px 32px 28px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        min-width: 0;
+      }
+
+      .pane-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .pane-head h1 {
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        margin: 0;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+      .pane-head h1 b {
+        color: var(--text);
+        font-weight: 500;
+      }
+      .pane-head .uptime {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.05em;
+      }
+      .pane-head .uptime b {
+        color: var(--green);
+        font-weight: 500;
+      }
+
+      /* ---------- 2x2 stat grid ---------- */
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .cell {
+        background: var(--surface);
+        padding: 22px 24px 20px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        min-height: 128px;
+      }
+      .cell .label {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .cell .row {
+        display: flex;
+        align-items: baseline;
+        gap: 8px;
+        font-size: 13px;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+      .cell .key {
+        color: var(--text);
+        font-weight: 500;
+        letter-spacing: 0.03em;
+      }
+      .cell .dots {
+        flex: 1;
+        color: var(--muted-dim);
+        overflow: hidden;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+      .cell .val {
+        color: var(--text);
+        font-weight: 600;
+        font-size: 22px;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.01em;
+      }
+      .cell .val-row {
+        display: flex;
+        align-items: baseline;
+        gap: 14px;
+        justify-content: space-between;
+      }
+      .cell .delta {
+        color: var(--green);
+        font-size: 12px;
+        font-weight: 500;
+      }
+      .cell .delta.neg {
+        color: var(--red);
+      }
+      .cell .sub {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.04em;
+      }
+      .cell svg.spark {
+        display: block;
+      }
+      .cell-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+        padding-top: 8px;
+      }
+
+      /* ---------- humanist line ---------- */
+      .humanist {
+        font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+        font-weight: 300;
+        font-size: 22px;
+        line-height: 1.35;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        padding: 8px 2px 0 2px;
+        max-width: 760px;
+      }
+      .humanist em {
+        font-style: normal;
+        color: var(--green);
+      }
+
+      /* ---------- ticker ---------- */
+      .ticker {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--surface-2);
+        overflow: hidden;
+        position: relative;
+        height: 36px;
+        display: flex;
+        align-items: center;
+      }
+      .ticker::before {
+        content: "TICKER";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        background: var(--surface);
+        border-right: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 10px;
+        letter-spacing: 0.16em;
+        z-index: 2;
+      }
+      .ticker-track {
+        display: flex;
+        gap: 48px;
+        padding-left: 90px;
+        white-space: nowrap;
+        animation: scroll 38s linear infinite;
+        font-size: 12px;
+        letter-spacing: 0.03em;
+      }
+      .ticker-track span.sym {
+        color: var(--text);
+        font-weight: 500;
+        margin-right: 6px;
+      }
+      .ticker-track span.creator {
+        color: var(--muted);
+        margin-right: 6px;
+      }
+      .ticker-track span.hit {
+        color: var(--green);
+        font-weight: 500;
+      }
+      .ticker-track span.miss {
+        color: var(--red);
+        font-weight: 500;
+      }
+      .ticker-track .tag {
+        color: var(--muted-dim);
+        letter-spacing: 0.12em;
+        font-size: 10px;
+        margin-left: 6px;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* ---------- cta prompt ---------- */
+      .cta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 20px 4px 6px 4px;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+      }
+      .cta .prompt {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .cta .msg {
+        color: var(--text);
+      }
+      .cta .brackets {
+        color: var(--muted);
+        margin-left: 6px;
+      }
+      .cta .brackets b {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .cursor {
+        display: inline-block;
+        width: 10px;
+        height: 18px;
+        background: var(--green);
+        margin-left: 8px;
+        vertical-align: -3px;
+        animation: blink 1.05s steps(2, start) infinite;
+        box-shadow: 0 0 6px rgba(63, 214, 122, 0.6);
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      .cta-hint {
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+        margin-left: 4px;
+      }
+
+      /* ---------- second viewport: cat methodology.md ---------- */
+      section.methodology {
+        border-top: 1px solid var(--line);
+        background: var(--surface-2);
+        padding: 48px 32px 64px 32px;
+      }
+      .methodology-wrap {
+        max-width: 960px;
+        margin: 0 auto;
+      }
+      .methodology .shell {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        color: var(--muted);
+        font-size: 12px;
+        letter-spacing: 0.05em;
+        margin-bottom: 18px;
+      }
+      .methodology .shell .prompt {
+        color: var(--green);
+        font-weight: 600;
+      }
+      .methodology .shell .path {
+        color: var(--text);
+      }
+      .methodology .shell .cmd em {
+        font-style: normal;
+        color: var(--text);
+      }
+      .methodology pre.file {
+        margin: 0;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 3px;
+        padding: 18px 20px 22px 20px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        line-height: 1.7;
+        overflow-x: auto;
+      }
+      .methodology .file-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 16px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-bottom: none;
+        border-radius: 3px 3px 0 0;
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+      .methodology .file-head .dots {
+        display: flex;
+        gap: 6px;
+      }
+      .methodology .file-head .dots i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--line-strong);
+        display: inline-block;
+      }
+      .methodology pre.file {
+        border-top: none;
+        border-radius: 0 0 3px 3px;
+      }
+      .methodology .ln {
+        display: inline-block;
+        width: 28px;
+        color: var(--muted-dim);
+        text-align: right;
+        user-select: none;
+        margin-right: 18px;
+        font-weight: 400;
+      }
+      .methodology .kw {
+        color: var(--green);
+        font-weight: 500;
+      }
+      .methodology .str {
+        color: var(--text);
+      }
+      .methodology .num {
+        color: var(--green);
+      }
+      .methodology .neg {
+        color: var(--red);
+      }
+      .methodology .cm {
+        color: var(--muted);
+        font-style: italic;
+      }
+      .methodology .heading {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .methodology .foot {
+        margin-top: 18px;
+        color: var(--muted);
+        font-size: 11px;
+        letter-spacing: 0.04em;
+        display: flex;
+        justify-content: space-between;
+      }
+      .methodology .foot a {
+        color: var(--green);
+        text-decoration: none;
+        border-bottom: 1px dashed rgba(63, 214, 122, 0.4);
+      }
+      .methodology .foot a:focus-visible {
+        outline: 1px solid var(--green);
+        outline-offset: 3px;
+      }
+
+      /* ---------- responsive ---------- */
+      @media (max-width: 900px) {
+        .console {
+          grid-template-columns: 1fr;
+        }
+        nav.sidebar {
+          border-right: none;
+          border-bottom: 1px solid var(--line);
+          padding: 16px 18px;
+        }
+        main.pane {
+          padding: 20px 16px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .cell .val {
+          font-size: 20px;
+        }
+        .humanist {
+          font-size: 18px;
+        }
+        .topbar {
+          padding: 8px 14px;
+          font-size: 11px;
+        }
+        .topbar .right {
+          gap: 10px;
+        }
+        .topbar .right .hide-m {
+          display: none;
+        }
+        section.methodology {
+          padding: 28px 14px 40px 14px;
+        }
+        .methodology pre.file {
+          font-size: 12px;
+          padding: 14px 12px;
+        }
+        .methodology .ln {
+          width: 22px;
+          margin-right: 10px;
+        }
+        .cta {
+          flex-wrap: wrap;
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- top strip -->
+    <header class="topbar" role="banner">
+      <div class="meta">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="env">CRYPTO-TUBER-RANKED</span>
+        <span class="sep">::</span>
+        <span>v2.3.1</span>
+        <span class="sep">::</span>
+        <span>last-sync <b style="color: var(--text)">00:04:17</b> ago</span>
+      </div>
+      <div class="right">
+        <span class="hide-m">uptime <b>99.97%</b></span>
+        <span class="hide-m">node <b>iad-01</b></span>
+        <span>
+          <b style="color: var(--green)">ONLINE</b>
+        </span>
+      </div>
+    </header>
+
+    <div class="console">
+      <!-- sidebar -->
+      <nav class="sidebar" aria-label="About sections">
+        <h2>// modules</h2>
+        <ul>
+          <li>
+            <a href="#overview" class="active" aria-current="page">
+              <span class="bracket">[</span>OVERVIEW<span class="bracket">]</span>
+            </a>
+          </li>
+          <li><a href="#methodology">METHODOLOGY</a></li>
+          <li><a href="#coverage">COVERAGE</a></li>
+          <li><a href="#limitations">LIMITATIONS</a></li>
+          <li><a href="#changelog">CHANGELOG</a></li>
+        </ul>
+
+        <h2>// shortcuts</h2>
+        <ul>
+          <li><a href="/">RANKINGS</a></li>
+          <li><a href="/methodology">METHOD.md</a></li>
+          <li><a href="https://github.com/">SOURCE</a></li>
+        </ul>
+
+        <div class="footnote">
+          press
+          <span class="kbd">?</span>
+          for help &nbsp;/&nbsp; <span class="kbd">/</span> to search
+          <br />
+          build: 2026.04.19-a7f3c12<br />
+          region: us-east-1
+        </div>
+      </nav>
+
+      <!-- main pane -->
+      <main class="pane" id="overview">
+        <div class="pane-head">
+          <h1>// <b>OVERVIEW</b> &nbsp;·&nbsp; system status board</h1>
+          <div class="uptime">all probes <b>NOMINAL</b></div>
+        </div>
+
+        <!-- 2x2 grid -->
+        <section class="grid" aria-label="System metrics">
+          <div class="cell">
+            <div class="label">// creators_tracked</div>
+            <div class="row">
+              <span class="key">CREATORS_TRACKED</span>
+              <span class="dots"
+                >.........................................................</span
+              >
+              <span>20</span>
+            </div>
+            <div class="val-row">
+              <span class="val">20</span>
+              <svg
+                class="spark"
+                width="72"
+                height="22"
+                viewBox="0 0 72 22"
+                aria-hidden="true"
+              >
+                <polyline
+                  points="0,16 8,12 14,14 22,8 30,11 38,6 46,9 54,4 62,7 72,3"
+                  fill="none"
+                  stroke="#3FD67A"
+                  stroke-width="1.3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="cell-foot">
+              <span class="sub">active last 30d</span>
+              <span class="delta">+2 this month</span>
+            </div>
+          </div>
+
+          <div class="cell">
+            <div class="label">// calls_scored</div>
+            <div class="row">
+              <span class="key">CALLS_SCORED</span>
+              <span class="dots"
+                >.........................................................</span
+              >
+              <span>4,598</span>
+            </div>
+            <div class="val-row">
+              <span class="val">4,598</span>
+              <span class="delta">(+12 today)</span>
+            </div>
+            <div class="cell-foot">
+              <span class="sub">hit-rate 52.4% &nbsp;·&nbsp; median +3.1%/30d</span>
+            </div>
+          </div>
+
+          <div class="cell">
+            <div class="label">// candles_indexed</div>
+            <div class="row">
+              <span class="key">CANDLES_INDEXED</span>
+              <span class="dots"
+                >.........................................................</span
+              >
+              <span>18,712,334</span>
+            </div>
+            <div class="val-row">
+              <span class="val">18,712,334</span>
+              <span class="sub">1m / 5m / 1h / 1d</span>
+            </div>
+            <div class="cell-foot">
+              <span class="sub">849 symbols &nbsp;·&nbsp; 2019→now</span>
+              <span class="delta">+41,220 /24h</span>
+            </div>
+          </div>
+
+          <div class="cell">
+            <div class="label">// last_rescore</div>
+            <div class="row">
+              <span class="key">LAST_RESCORE</span>
+              <span class="dots"
+                >.........................................................</span
+              >
+              <span>04:17 UTC</span>
+            </div>
+            <div class="val-row">
+              <span class="val">04:17 UTC</span>
+              <span class="sub">next in 01:43</span>
+            </div>
+            <div class="cell-foot">
+              <span class="sub">every 6h &nbsp;·&nbsp; commit a7f3c12</span>
+              <span class="delta">OK</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- humanist line -->
+        <p class="humanist">
+          Every public crypto call, scored against <em>18.7 million candles</em>.
+        </p>
+
+        <!-- ticker -->
+        <div
+          class="ticker"
+          role="marquee"
+          aria-label="Recent scored calls ticker"
+        >
+          <div class="ticker-track">
+            <span
+              ><span class="sym">$SOL</span
+              ><span class="creator">creator-x</span
+              ><span class="hit">+14.2%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <span
+              ><span class="sym">$ETH</span
+              ><span class="creator">creator-y</span
+              ><span class="miss">-8.1%/30d</span
+              ><span class="tag">MISS</span></span
+            >
+            <span
+              ><span class="sym">$LINK</span
+              ><span class="creator">creator-z</span
+              ><span class="hit">+3.3%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <span
+              ><span class="sym">$ARB</span
+              ><span class="creator">creator-q</span
+              ><span class="hit">+21.9%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <span
+              ><span class="sym">$DOGE</span
+              ><span class="creator">creator-m</span
+              ><span class="miss">-12.4%/30d</span
+              ><span class="tag">MISS</span></span
+            >
+            <span
+              ><span class="sym">$AVAX</span
+              ><span class="creator">creator-n</span
+              ><span class="hit">+6.0%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <!-- duplicated for seamless loop -->
+            <span
+              ><span class="sym">$SOL</span
+              ><span class="creator">creator-x</span
+              ><span class="hit">+14.2%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <span
+              ><span class="sym">$ETH</span
+              ><span class="creator">creator-y</span
+              ><span class="miss">-8.1%/30d</span
+              ><span class="tag">MISS</span></span
+            >
+            <span
+              ><span class="sym">$LINK</span
+              ><span class="creator">creator-z</span
+              ><span class="hit">+3.3%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <span
+              ><span class="sym">$ARB</span
+              ><span class="creator">creator-q</span
+              ><span class="hit">+21.9%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+            <span
+              ><span class="sym">$DOGE</span
+              ><span class="creator">creator-m</span
+              ><span class="miss">-12.4%/30d</span
+              ><span class="tag">MISS</span></span
+            >
+            <span
+              ><span class="sym">$AVAX</span
+              ><span class="creator">creator-n</span
+              ><span class="hit">+6.0%/30d</span
+              ><span class="tag">HIT</span></span
+            >
+          </div>
+        </div>
+
+        <!-- cta prompt -->
+        <div class="cta" role="group" aria-label="Primary action">
+          <span class="prompt">&gt;</span>
+          <span class="msg">ready to see the rankings?</span>
+          <span class="brackets">[<b>Y</b>/n]</span>
+          <span class="cursor" aria-hidden="true"></span>
+          <span class="cta-hint">press RETURN to continue</span>
+        </div>
+      </main>
+    </div>
+
+    <!-- second viewport: methodology -->
+    <section class="methodology" id="methodology" aria-label="Scoring methodology">
+      <div class="methodology-wrap">
+        <div class="shell">
+          <span class="prompt">ctr@prod</span
+          ><span style="color: var(--muted-dim)">:</span
+          ><span class="path">~/docs</span
+          ><span style="color: var(--muted-dim)">$</span>
+          <span class="cmd">cat <em>methodology.md</em></span>
+        </div>
+
+        <div class="file-head">
+          <span>methodology.md &nbsp;·&nbsp; 328 bytes &nbsp;·&nbsp; utf-8</span>
+          <span class="dots" aria-hidden="true"
+            ><i></i><i></i><i></i
+          ></span>
+        </div>
+
+        <pre
+          class="file"
+        ><span class="ln">01</span><span class="heading"># Scoring formula (v2.3)</span>
+<span class="ln">02</span><span class="cm"># A "call" = explicit buy/sell mention of a ticker in a public video.</span>
+<span class="ln">03</span>
+<span class="ln">04</span><span class="kw">return_30d</span>  = (price[t+30d] - price[t_call]) / price[t_call] * <span class="num">100</span>
+<span class="ln">05</span><span class="kw">hit</span>         = return_30d &gt;= <span class="num">+5.0%</span>    <span class="cm"># beats BTC-drift baseline</span>
+<span class="ln">06</span><span class="kw">miss</span>        = return_30d &lt;= <span class="neg">-5.0%</span>    <span class="cm"># clear drawdown</span>
+<span class="ln">07</span><span class="kw">alpha</span>       = return_30d - benchmark_30d(<span class="str">"BTC"</span>)
+<span class="ln">08</span>
+<span class="ln">09</span><span class="cm"># Candle source: Binance + Coinbase (1m), cross-checked against CryptoCompare.</span>
+<span class="ln">10</span><span class="cm"># Transcripts: yt-dlp + Invidious fallback; dates verified at 96.6% accuracy.</span>
+<span class="ln">11</span><span class="cm"># Low-confidence extractions re-run nightly via LLM audit pass.</span>
+<span class="ln">12</span><span class="cm"># No creator pays to be included. No creator can remove their score.</span></pre>
+
+        <div class="foot">
+          <span>EOF &nbsp;·&nbsp; sha256 4f2a…b91c &nbsp;·&nbsp; read-only</span>
+          <span
+            >full spec:
+            <a href="/methodology">/methodology &rarr;</a></span
+          >
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

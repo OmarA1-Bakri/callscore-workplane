@@ -1,0 +1,210 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "Methodology" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "Sign In" [ref=e12] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "Get Access" [ref=e13] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e14]:
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - heading "CallScore plans. Free research, paid delivery." [level=1] [ref=e17]:
+          - text: CallScore plans.
+          - emphasis [ref=e18]: Free research, paid delivery.
+        - paragraph [ref=e19]: Leaderboards stay free. Paid tiers add alerts, exports, backtests, and API access.
+        - generic "Section metadata" [ref=e20]:
+          - generic [ref=e21]:
+            - term [ref=e22]: free tier
+            - definition [ref=e23]: $0
+          - generic [ref=e24]:
+            - term [ref=e25]: pro
+            - definition [ref=e26]: $19 /mo
+          - generic [ref=e27]:
+            - term [ref=e28]: alpha
+            - definition [ref=e29]: $49 /mo
+          - generic [ref=e30]:
+            - term [ref=e31]: refund
+            - definition [ref=e32]: 30 days
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - generic [ref=e35]: "01"
+          - heading "Three tiers." [level=2] [ref=e36]:
+            - text: Three
+            - emphasis [ref=e37]: tiers
+            - text: .
+          - generic [ref=e38]:
+            - text: billed monthly · no contracts
+            - text: cancel anytime · refund within 30d
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e42]: Free
+            - generic [ref=e43]:
+              - generic [ref=e44]: $0
+              - generic [ref=e45]: forever
+            - paragraph [ref=e46]: Full public research.
+            - link "Browse leaderboard" [ref=e47] [cursor=pointer]:
+              - /url: /
+              - text: Browse leaderboard →
+          - generic [ref=e48]:
+            - generic [ref=e49]: Pro
+            - generic [ref=e50]:
+              - generic [ref=e51]: $19
+              - generic [ref=e52]: /mo
+            - paragraph [ref=e53]: Alerts, watchlists, exports.
+            - link "Upgrade to Pro" [ref=e54] [cursor=pointer]:
+              - /url: /api/checkout/pro
+          - generic [ref=e55]:
+            - generic [ref=e56]: Alpha
+            - generic [ref=e57]:
+              - generic [ref=e58]: $49
+              - generic [ref=e59]: /mo
+            - paragraph [ref=e60]: Backtests, API, webhooks.
+            - link "Upgrade to Alpha" [ref=e61] [cursor=pointer]:
+              - /url: /api/checkout/alpha
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - generic [ref=e64]: "02"
+          - heading "Feature matrix." [level=2] [ref=e65]:
+            - text: Feature
+            - emphasis [ref=e66]: matrix
+            - text: .
+          - generic [ref=e67]:
+            - text: 12 features · 3 plans
+            - text: ✓ included · → coming · · gated
+        - table "Feature availability by tier" [ref=e70]:
+          - caption [ref=e71]: Feature availability by tier
+          - rowgroup [ref=e72]:
+            - row "Feature Free Pro Alpha" [ref=e73]:
+              - columnheader "Feature" [ref=e74]
+              - columnheader "Free" [ref=e75]
+              - columnheader "Pro" [ref=e76]
+              - columnheader "Alpha" [ref=e77]
+          - rowgroup [ref=e78]:
+            - row "Full leaderboard (all ranks) included included included" [ref=e79]:
+              - cell "Full leaderboard (all ranks)" [ref=e80]
+              - cell "included" [ref=e81]: ✓
+              - cell "included" [ref=e82]: ✓
+              - cell "included" [ref=e83]: ✓
+            - row "Creator profiles + full call history included included included" [ref=e84]:
+              - cell "Creator profiles + full call history" [ref=e85]
+              - cell "included" [ref=e86]: ✓
+              - cell "included" [ref=e87]: ✓
+              - cell "included" [ref=e88]: ✓
+            - row "Per-call Alpha Score breakdowns included included included" [ref=e89]:
+              - cell "Per-call Alpha Score breakdowns" [ref=e90]
+              - cell "included" [ref=e91]: ✓
+              - cell "included" [ref=e92]: ✓
+              - cell "included" [ref=e93]: ✓
+            - row "Methodology transparency included included included" [ref=e94]:
+              - cell "Methodology transparency" [ref=e95]
+              - cell "included" [ref=e96]: ✓
+              - cell "included" [ref=e97]: ✓
+              - cell "included" [ref=e98]: ✓
+            - row "Per-creator email alerts + queue not in this tier included included" [ref=e99]:
+              - cell "Per-creator email alerts + queue" [ref=e100]
+              - cell "not in this tier" [ref=e101]: ·
+              - cell "included" [ref=e102]: ✓
+              - cell "included" [ref=e103]: ✓
+            - row "Watchlists with creator management not in this tier included included" [ref=e104]:
+              - cell "Watchlists with creator management" [ref=e105]
+              - cell "not in this tier" [ref=e106]: ·
+              - cell "included" [ref=e107]: ✓
+              - cell "included" [ref=e108]: ✓
+            - row "Recent-performance filter (30/90d) not in this tier coming soon coming soon" [ref=e109]:
+              - cell "Recent-performance filter (30/90d)" [ref=e110]
+              - cell "not in this tier" [ref=e111]: ·
+              - cell "coming soon" [ref=e112]: →
+              - cell "coming soon" [ref=e113]: →
+            - row "CSV export of creator call history not in this tier included included" [ref=e114]:
+              - cell "CSV export of creator call history" [ref=e115]
+              - cell "not in this tier" [ref=e116]: ·
+              - cell "included" [ref=e117]: ✓
+              - cell "included" [ref=e118]: ✓
+            - row "Historical backtest simulator not in this tier not in this tier included" [ref=e119]:
+              - cell "Historical backtest simulator" [ref=e120]
+              - cell "not in this tier" [ref=e121]: ·
+              - cell "not in this tier" [ref=e122]: ·
+              - cell "included" [ref=e123]: ✓
+            - row "Anti-consensus / convergence alerts not in this tier not in this tier coming soon" [ref=e124]:
+              - cell "Anti-consensus / convergence alerts" [ref=e125]
+              - cell "not in this tier" [ref=e126]: ·
+              - cell "not in this tier" [ref=e127]: ·
+              - cell "coming soon" [ref=e128]: →
+            - row "API access with key manager not in this tier not in this tier included" [ref=e129]:
+              - cell "API access with key manager" [ref=e130]
+              - cell "not in this tier" [ref=e131]: ·
+              - cell "not in this tier" [ref=e132]: ·
+              - cell "included" [ref=e133]: ✓
+            - row "Webhook notifications + delivery log not in this tier not in this tier included" [ref=e134]:
+              - cell "Webhook notifications + delivery log" [ref=e135]
+              - cell "not in this tier" [ref=e136]: ·
+              - cell "not in this tier" [ref=e137]: ·
+              - cell "included" [ref=e138]: ✓
+      - generic [ref=e139]:
+        - generic [ref=e140]:
+          - generic [ref=e141]: "03"
+          - heading "Why these tiers." [level=2] [ref=e142]:
+            - emphasis [ref=e143]: Why
+            - text: these tiers.
+        - generic [ref=e145]:
+          - paragraph [ref=e146]: Why is research free? Because the value of an accuracy tracker is in the public methodology, not the data lock. If we hid the leaderboard behind a paywall, no one could check our work — which would defeat the point.
+          - paragraph [ref=e147]: What do paid tiers actually buy? Delivery, not data. Pro alerts you when ranked creators move so you don't have to refresh. Alpha adds the full apparatus — backtest, anti-consensus signals, API access — for users who want to build on the data.
+          - paragraph [ref=e148]:
+            - text: Refunds? 30 days, full refund. Send the request through the
+            - link "feedback page" [ref=e149] [cursor=pointer]:
+              - /url: /feedback
+            - text: with the email used at checkout.
+  - contentinfo [ref=e150]:
+    - generic [ref=e151]:
+      - generic [ref=e152]:
+        - generic [ref=e153]:
+          - img "CallScore - Market calls, measured." [ref=e155]
+          - paragraph [ref=e156]: Market calls, measured.
+        - generic [ref=e157]:
+          - heading "Navigate" [level=2] [ref=e158]
+          - list [ref=e159]:
+            - listitem [ref=e160]:
+              - link "Leaderboard" [ref=e161] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e162]:
+              - link "Methodology" [ref=e163] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e164]:
+              - link "Pricing" [ref=e165] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e166]:
+              - link "Give Feedback" [ref=e167] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e168]:
+              - link "About" [ref=e169] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e170]:
+          - heading "Legal" [level=2] [ref=e171]
+          - list [ref=e172]:
+            - listitem [ref=e173]:
+              - link "Terms of Service" [ref=e174] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e175]:
+              - link "Privacy Policy" [ref=e176] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e177]:
+        - group [ref=e178]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e179] [cursor=pointer]':
+            - strong [ref=e180]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e181]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e182] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e183]: "?"
+    - generic [ref=e184]: Feedback

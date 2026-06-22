@@ -1,0 +1,190 @@
+{
+  "timestamp_utc": "2026-06-22T08:24:16Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T082404Z-prompt7b-third-party-integration-routing",
+  "phase": "prompt_7b_third_party_integration_routing",
+  "status": "completed",
+  "providers_classified": 14,
+  "no_env_contents_read": true,
+  "no_env_files_modified": true,
+  "no_provider_mutation": true,
+  "no_db_mutation": true,
+  "no_docker_restart": true,
+  "no_deploy": true,
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/07b-third-party-integration-routing.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-risk-register.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-implementation-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/whop-runtime-direct-exception.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/netlify-direct-backup-exception.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/composio-canonical-provider-routing.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-inventory.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-mutation-gate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-provider-routing-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/third-party-routing-verification-report.json"
+  ],
+  "verification": {
+    "timestamp_utc": "2026-06-22T08:24:16Z",
+    "json_validation": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-inventory.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-map.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-mutation-gate-matrix.json",
+        "valid": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-provider-routing-matrix.json",
+        "valid": true
+      }
+    ],
+    "deliverable_existence": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/07b-third-party-integration-routing.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-risk-register.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-implementation-plan.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/whop-runtime-direct-exception.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/netlify-direct-backup-exception.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/composio-canonical-provider-routing.md",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-inventory.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-routing-map.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/provider-mutation-gate-matrix.json",
+        "exists": true
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/agent-provider-routing-matrix.json",
+        "exists": true
+      }
+    ],
+    "runtime": {
+      "timestamp_utc": "2026-06-22T08:24:16Z",
+      "df": {
+        "df_B1": {
+          "args": [
+            "df",
+            "-B1",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 128948047872 25422905344  84% /\n",
+          "stderr": ""
+        },
+        "df_h": {
+          "args": [
+            "df",
+            "-h",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  121G   24G  84% /\n",
+          "stderr": ""
+        },
+        "df_i": {
+          "args": [
+            "df",
+            "-i",
+            "/"
+          ],
+          "rc": 0,
+          "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2573089 7159407   27% /\n",
+          "stderr": ""
+        },
+        "total_bytes": 160970244096,
+        "used_bytes": 128948047872,
+        "free_bytes": 25422905344,
+        "used_percent": 84,
+        "inode_total": 9732496,
+        "inode_used": 2573089,
+        "inode_free": 7159407,
+        "inode_used_percent": 27
+      },
+      "docker_ps": {
+        "args": [
+          "docker",
+          "ps",
+          "--format",
+          "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "NAMES                                      IMAGE                                             STATUS\nwhop-auto-hermes-worker-1                  crypto-tuber-ranked-hermes-worker:latest          Up 33 hours\nwhop-auto-channel-agent-worker-1           crypto-tuber-ranked-hermes-worker:latest          Up 33 hours\ncrypto-tuber-ranked-hermes-worker-1        b1369860652d                                      Up 33 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   Up 33 hours (healthy)\nhh-oauth-mcp-gateway                       oauth-mcp-gateway-oauth-mcp-gateway               Up 13 days\nhermes-whop-automation-tunnel              cloudflare/cloudflared:latest                     Up 2 weeks\n",
+        "stderr": ""
+      },
+      "provider_ping_4416": {
+        "status": "ok",
+        "http_status": 200
+      },
+      "protected_paths": [
+        {
+          "path": "/opt/crypto-tuber-ranked",
+          "exists": true,
+          "is_file": false,
+          "is_dir": true,
+          "size_bytes": 3053628560,
+          "file_count": 2537,
+          "mode": "0o775",
+          "mtime_utc": "2026-06-21T22:34:16Z"
+        },
+        {
+          "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 4382,
+          "file_count": 1,
+          "mode": "0o664",
+          "mtime_utc": "2026-06-20T23:37:30Z"
+        },
+        {
+          "path": "/opt/callscore/secrets/youtube-cookies.txt",
+          "exists": true,
+          "is_file": true,
+          "is_dir": false,
+          "size_bytes": 22892,
+          "file_count": 1,
+          "mode": "0o600",
+          "mtime_utc": "2026-06-22T03:14:05Z"
+        }
+      ]
+    },
+    "artifact_safety_scan": {
+      "unsafe_raw_secret_assignment_files": [],
+      "safe_redacted_placeholder_files_count": 4
+    },
+    "env_file_read_or_modified": false,
+    "provider_mutation": false,
+    "db_mutation": false,
+    "docker_restart": false,
+    "deploy": false,
+    "profile_or_scheduler_edit": false,
+    "status": "pass"
+  }
+}

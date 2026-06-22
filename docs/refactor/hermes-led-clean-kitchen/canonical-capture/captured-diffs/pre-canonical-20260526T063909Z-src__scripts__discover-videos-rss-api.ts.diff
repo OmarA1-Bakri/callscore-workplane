@@ -1,0 +1,153 @@
+--- active/src/scripts/discover-videos-rss-api.ts
++++ pre-canonical-20260526T063909Z/src/scripts/discover-videos-rss-api.ts
+@@ -5,7 +5,6 @@
+ 
+ const logger = createLogger({ component: "discover-videos-rss-api" });
+ const YOUTUBE_API_SEARCH_URL = "[REDACTED]";
+-const FETCH_TIMEOUT_MS = 30_000;
+ 
+ export interface Args {
+   readonly creator?: string;
+@@ -17,9 +16,7 @@
+   readonly write: boolean;
+ }
+ 
+-type QueryFn = <T>(text: string, params?: unknown[]) => Promise<T[]>;
+-
+-export interface DiscoveredVideo {
++interface DiscoveredVideo {
+   readonly youtube_video_id: string;
+   readonly title: string | null;
+   readonly published_at: string | null;
+@@ -28,7 +25,7 @@
+ 
+ function argValue(argv: readonly string[], flag: string): string | null {
+   const index = argv.indexOf(flag);
+-  if (index < 0 || argv[index + 1] === undefined) return null;
++  if (index < 0 || !argv[index + 1]) return null;
+   return argv[index + 1];
+ }
+ 
+@@ -56,14 +53,11 @@
+ 
+ function unescapeXml(value: string): string {
+   return value
++    .replace(/&amp;/g, "&")
+     .replace(/&lt;/g, "<")
+     .replace(/&gt;/g, ">")
+     .replace(/&quot;/g, "\"")
+-    .replace(/&apos;/g, "'")
+-    .replace(/&#39;/g, "'")
+-    .replace(/&#(\d+);/g, (_match, decimal) => String.fromCodePoint(Number(decimal)))
+-    .replace(/&#x([0-9A-Fa-f]+);/g, (_match, hex) => String.fromCodePoint(parseInt(hex, 16)))
+-    .replace(/&amp;/g, "&");
++    .replace(/&#39;/g, "'");
+ }
+ 
+ function tagText(xml: string, tag: string): string | null {
+@@ -86,7 +80,7 @@
+ }
+ 
+ function isRecent(publishedAt: string | null, sinceDays: number): boolean {
+-  if (!publishedAt) return false;
++  if (!publishedAt) return true;
+   const time = Date.parse(publishedAt);
+   return Number.isFinite(time) && time >= Date.now() - sinceDays * 86_400_000;
+ }
+@@ -104,21 +98,10 @@
+   );
+ }
+ 
+-async function fetchWithTimeout(url: URL): Promise<Response> {
+-  try {
+-    return await fetch(url, { signal: AbortSignal.timeout(FETCH_TIMEOUT_MS) });
+-  } catch (error) {
+-    if (error instanceof Error && error.name === "TimeoutError") {
+-      throw new Error(`Request timed out after ${FETCH_TIMEOUT_MS}ms: ${url.toString()}`);
+-    }
+-    throw error;
+-  }
+-}
+-
+ async function fetchRssVideos(channelId: string, limit: number): Promise<readonly DiscoveredVideo[]> {
+   const url = new URL("https://www.youtube.com/feeds/videos.xml");
+   url.searchParams.set("channel_id", channelId);
+-  const response = await fetchWithTimeout(url);
++  const response = await fetch(url);
+   if (!response.ok) throw new Error(`YouTube RSS HTTP ${response.status}: ${(await response.text()).slice(0, 300)}`);
+   return parseYouTubeRss(await response.text(), limit);
+ }
+@@ -134,7 +117,7 @@
+   url.searchParams.set("maxResults", String(Math.min(args.limitVideos, 50)));
+   url.searchParams.set("publishedAfter", new Date(Date.now() - args.sinceDays * 86_400_000).toISOString());
+   url.searchParams.set("key", key);
+-  const response = await fetchWithTimeout(url);
++  const response = await fetch(url);
+   if (!response.ok) throw new Error(`YouTube Data API HTTP ${response.status}: ${(await response.text()).slice(0, 300)}`);
+   const payload = await response.json() as {
+     items?: readonly { id?: { videoId?: string }; snippet?: { title?: string; publishedAt?: string } }[];
+@@ -156,12 +139,8 @@
+   return fetchYouTubeApiVideos(creator.youtube_channel_id, args);
+ }
+ 
+-export async function upsertVideo(
+-  creator: Creator,
+-  video: DiscoveredVideo,
+-  queryFn: QueryFn = query,
+-): Promise<void> {
+-  await queryFn(
++async function upsertVideo(creator: Creator, video: DiscoveredVideo): Promise<void> {
++  await query(
+     `INSERT INTO videos (
+        creator_id, youtube_video_id, title, published_at,
+        transcript, transcript_quality, calls_extracted,
+@@ -175,11 +154,6 @@
+        transcript_status = CASE
+          WHEN videos.transcript IS NOT NULL AND videos.transcript <> '' THEN 'available'
+          ELSE COALESCE(videos.transcript_status, 'pending')
+-       END,
+-       transcript_provider = CASE
+-         WHEN videos.transcript IS NOT NULL AND videos.transcript <> ''
+-           THEN COALESCE(videos.transcript_provider, EXCLUDED.transcript_provider, 'legacy')
+-         ELSE COALESCE(videos.transcript_provider, EXCLUDED.transcript_provider)
+        END`,
+     [creator.id, video.youtube_video_id, video.title, video.published_at],
+   );
+@@ -194,27 +168,18 @@
+   let written = 0;
+ 
+   for (const creator of creators) {
+-    try {
+-      const videos = await discoverCreatorVideos(creator, args);
+-      discovered += videos.length;
+-      for (const video of videos.filter((item) => isRecent(item.published_at, args.sinceDays))) {
+-        eligible += 1;
+-        if (args.write) {
+-          await upsertVideo(creator, video);
+-          written += 1;
+-        }
+-        logger.info(args.write ? "video_upserted" : "video_discovered", {
+-          creator_id: creator.id,
+-          youtube_video_id: video.youtube_video_id,
+-          source: video.source,
+-        });
++    const videos = await discoverCreatorVideos(creator, args);
++    discovered += videos.length;
++    for (const video of videos.filter((item) => isRecent(item.published_at, args.sinceDays))) {
++      eligible += 1;
++      if (args.write) {
++        await upsertVideo(creator, video);
++        written += 1;
+       }
+-    } catch (error) {
+-      logger.error("discover_creator_videos_failed", {
++      logger.info(args.write ? "video_upserted" : "video_discovered", {
+         creator_id: creator.id,
+-        youtube_handle: creator.youtube_handle,
+-        youtube_channel_id: creator.youtube_channel_id,
+-        error: error instanceof Error ? error.message : String(error),
++        youtube_video_id: video.youtube_video_id,
++        source: video.source,
+       });
+     }
+     if (args.gapMs > 0) await sleep(args.gapMs);

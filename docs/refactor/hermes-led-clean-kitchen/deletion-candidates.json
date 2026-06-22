@@ -1,0 +1,1860 @@
+{
+  "collection_policy": {
+    "deletion_performed": false,
+    "docker_env_inspected": false,
+    "env_files_read": false,
+    "exclusions_enforced": [
+      "Docker volumes",
+      "DBs/DB dumps",
+      "secrets/credentials/tokens/cookies",
+      "live env files",
+      "mounted paths",
+      "active runtime source",
+      "current workspace artifact path"
+    ],
+    "read_only": true,
+    "secrets_read_or_printed": false
+  },
+  "deletion_candidates": [
+    {
+      "bytes": 3433529344,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "system-log-retention",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "3.20 GiB",
+      "mtime_utc": "2026-05-03T04:04:04Z",
+      "path": "/var/log/journal",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "System journal storage; use journalctl vacuum, never rm directly.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 2923716608,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "tool-cache",
+      "confidence_after_checks": "high",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "2.72 GiB",
+      "mtime_utc": "2026-05-28T02:02:06Z",
+      "path": "/home/omar/.npm/_cacache",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "npm content-addressable cache; npm can verify/rebuild it.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 2828832768,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "agent-state-backup-archive",
+      "confidence_after_checks": "low",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": null,
+      "human_size": "2.63 GiB",
+      "mtime_utc": "2026-06-21T02:34:13Z",
+      "path": "/srv/agents/backups/agents-20260621T023006Z.tar.gz",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Most recent dated backup tarball; normally keep unless backup policy explicitly allows deleting latest.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 2801901568,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "agent-state-backup-archive",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": null,
+      "human_size": "2.61 GiB",
+      "mtime_utc": "2026-06-20T02:33:57Z",
+      "path": "/srv/agents/backups/agents-20260620T023003Z.tar.gz",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Large dated backup tarball; reviewable only if newer/off-host backups exist.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 2704457728,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "tool-cache",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "2.52 GiB",
+      "mtime_utc": "2026-05-13T05:06:13Z",
+      "path": "/home/omar/.bun/install/cache",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Bun package cache; can be regenerated.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1400393728,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "tool-cache",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "1.30 GiB",
+      "mtime_utc": "2026-06-17T17:56:38Z",
+      "path": "/home/omar/.cache/uv/archive-v0",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "uv unpack/archive cache; uv can recreate, but ensure no active uv jobs.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1381629952,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "browser-cache",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "1.29 GiB",
+      "mtime_utc": "2026-05-03T04:10:07Z",
+      "path": "/home/omar/.cache/camoufox",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Camoufox browser cache; will be re-downloaded if needed.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1318395904,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "stale-workspace",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "callscore/db-provider-portability",
+        "exists": true,
+        "head": "541510ea9532db40814bc78a25032a915b90535c",
+        "is_git_worktree": true,
+        "linked_worktree_count": 4,
+        "linked_worktrees": [
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "/srv/whop-auto/workspace/callscore-db-portability",
+          "/tmp/callscore-pr38-build"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/srv/whop-auto/workspace/callscore-db-portability"
+      },
+      "human_size": "1.23 GiB",
+      "mtime_utc": "2026-06-07T10:29:35Z",
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Large whop-auto workspace; no live Docker bind observed in current pass, but may contain DB-portability work.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1299046400,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "stale-workspace",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "callscore/candidate-autonomy-scaffold",
+        "exists": true,
+        "head": "a22af15e1d68a635ae9d750da6e95da4bffe481e",
+        "is_git_worktree": true,
+        "linked_worktree_count": 10,
+        "linked_worktrees": [
+          "/srv/whop-auto/workspace/crypto-tuber-ranked",
+          "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+          "/srv/whop-auto/workspace/callscore-creator-admission-gate",
+          "/srv/whop-auto/workspace/callscore-favicon-fix",
+          "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+          "/srv/whop-auto/workspace/callscore-production-launch-master",
+          "/srv/whop-auto/workspace/callscore-revenue-activation",
+          "/srv/whop-auto/workspace/callscore-transparent-centered-favicon",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-phase4e1e",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-prod-hygiene"
+        ],
+        "status_short_count": 1,
+        "status_short_sample": [
+          " M AGENTS.md"
+        ],
+        "top_level": "/srv/whop-auto/workspace/callscore-candidate-autonomy"
+      },
+      "human_size": "1.21 GiB",
+      "mtime_utc": "2026-06-07T21:32:23Z",
+      "path": "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Large whop-auto workspace; requires ownership/run-state review before retirement.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1293959168,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "stale-workspace",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "callscore/post-checkout-ux-cancel-clarity",
+        "exists": true,
+        "head": "a53bb6d490bbe02514e9e2fe9bcdde8d934c4475",
+        "is_git_worktree": true,
+        "linked_worktree_count": 10,
+        "linked_worktrees": [
+          "/srv/whop-auto/workspace/crypto-tuber-ranked",
+          "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+          "/srv/whop-auto/workspace/callscore-creator-admission-gate",
+          "/srv/whop-auto/workspace/callscore-favicon-fix",
+          "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+          "/srv/whop-auto/workspace/callscore-production-launch-master",
+          "/srv/whop-auto/workspace/callscore-revenue-activation",
+          "/srv/whop-auto/workspace/callscore-transparent-centered-favicon",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-phase4e1e",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-prod-hygiene"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/srv/whop-auto/workspace/callscore-post-checkout-ux"
+      },
+      "human_size": "1.21 GiB",
+      "mtime_utc": "2026-06-07T10:09:31Z",
+      "path": "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Large whop-auto workspace; requires ownership/run-state review before retirement.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1278152704,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "tmp-build-worktree",
+      "confidence_after_checks": "high",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "thread2/pr39-homepage-readonlymap-typefix",
+        "exists": true,
+        "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+        "is_git_worktree": true,
+        "linked_worktree_count": 4,
+        "linked_worktrees": [
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "/srv/whop-auto/workspace/callscore-db-portability",
+          "/tmp/callscore-pr38-build"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/tmp/callscore-pr38-build"
+      },
+      "human_size": "1.19 GiB",
+      "mtime_utc": "2026-06-10T04:29:28Z",
+      "path": "/tmp/callscore-pr38-build",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Temporary CallScore PR/build worktree with node_modules/.next; candidate after git worktree/dirty-process checks.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1266049024,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "stale-workspace",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "HEAD",
+        "exists": true,
+        "head": "1cd23206c484d8c9b66a524ac2a4b08c43e47898",
+        "is_git_worktree": true,
+        "linked_worktree_count": 10,
+        "linked_worktrees": [
+          "/srv/whop-auto/workspace/crypto-tuber-ranked",
+          "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+          "/srv/whop-auto/workspace/callscore-creator-admission-gate",
+          "/srv/whop-auto/workspace/callscore-favicon-fix",
+          "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+          "/srv/whop-auto/workspace/callscore-production-launch-master",
+          "/srv/whop-auto/workspace/callscore-revenue-activation",
+          "/srv/whop-auto/workspace/callscore-transparent-centered-favicon",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-phase4e1e",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-prod-hygiene"
+        ],
+        "status_short_count": 1,
+        "status_short_sample": [
+          " M package-lock.json"
+        ],
+        "top_level": "/srv/whop-auto/workspace/callscore-production-launch-master"
+      },
+      "human_size": "1.18 GiB",
+      "mtime_utc": "2026-06-07T11:17:20Z",
+      "path": "/srv/whop-auto/workspace/callscore-production-launch-master",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Large whop-auto workspace; requires ownership/run-state review before retirement.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 1121439744,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "agent-state-snapshot",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "1.04 GiB",
+      "mtime_utc": "2026-06-17T17:56:32Z",
+      "path": "/srv/agents/hermes/state-snapshots/20260617-175630-pre-update",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Pre-update Hermes state snapshot; cleanup only after current Hermes state and external backup are verified.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 986976256,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "browser-cache",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "0.92 GiB",
+      "mtime_utc": "2026-05-03T04:14:03Z",
+      "path": "/home/omar/.cache/ms-playwright",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Playwright browser cache; will be re-downloaded if needed.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 912023552,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "tmp-build-worktree",
+      "confidence_after_checks": "high",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "codex/leaderboard-credibility-floor",
+        "exists": true,
+        "head": "9e90e05d9d90f144264dd93e488ae2d55374f8a7",
+        "is_git_worktree": true,
+        "linked_worktree_count": 1,
+        "linked_worktrees": [
+          "/tmp/callscore-hermes"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/tmp/callscore-hermes"
+      },
+      "human_size": "0.85 GiB",
+      "mtime_utc": "2026-06-05T09:54:40Z",
+      "path": "/tmp/callscore-hermes",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Temporary CallScore Hermes worktree/cache with node_modules/.next; candidate after git worktree/dirty-process checks.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 906846208,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "stale-workspace",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "master",
+        "exists": true,
+        "head": "1f5b102f422b414e63a98d8fe5855899b42e7c43",
+        "is_git_worktree": true,
+        "linked_worktree_count": 10,
+        "linked_worktrees": [
+          "/srv/whop-auto/workspace/crypto-tuber-ranked",
+          "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+          "/srv/whop-auto/workspace/callscore-creator-admission-gate",
+          "/srv/whop-auto/workspace/callscore-favicon-fix",
+          "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+          "/srv/whop-auto/workspace/callscore-production-launch-master",
+          "/srv/whop-auto/workspace/callscore-revenue-activation",
+          "/srv/whop-auto/workspace/callscore-transparent-centered-favicon",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-phase4e1e",
+          "/srv/whop-auto/workspace/crypto-tuber-ranked-prod-hygiene"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/srv/whop-auto/workspace/callscore-revenue-activation"
+      },
+      "human_size": "0.84 GiB",
+      "mtime_utc": "2026-06-05T06:27:07Z",
+      "path": "/srv/whop-auto/workspace/callscore-revenue-activation",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Large whop-auto workspace; requires ownership/run-state review before retirement.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 671203328,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "browser-cache",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "0.63 GiB",
+      "mtime_utc": "2026-06-10T06:12:44Z",
+      "path": "/home/omar/.cache/puppeteer",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Puppeteer browser cache; will be re-downloaded if needed.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 345202688,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "stale-workspace-preclone",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "codex/public-surface-brand-polish",
+        "exists": true,
+        "head": "a0d012d671e8e96dde6af2df27a30e30b415c5ea",
+        "is_git_worktree": true,
+        "linked_worktree_count": 11,
+        "linked_worktrees": [
+          "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904",
+          "/mnt/c/Users/albak/xdev/worktrees/ctr-pipeline-fallback",
+          "/mnt/c/Users/albak/xdev/worktrees/ctr-pr-fixes/codex-callscore-base-sync-20260504",
+          "/mnt/c/Users/albak/xdev/worktrees/ctr-pr-fixes/codex-callscore-stage-1-settings-alerts",
+          "/mnt/c/Users/albak/xdev/worktrees/ctr-pr-fixes/codex-callscore-stage-2-alpha-platform",
+          "/mnt/c/Users/albak/xdev/worktrees/ctr-pr-fixes/codex-callscore-stage-3-lab-feedback",
+          "/mnt/c/Users/albak/xdev/worktrees/ctr-pr-fixes/codex-callscore-stage-4-pricing-release-clean",
+          "C:/Users/albak/xdev/crypto-tuber-ranked-deploy-stage4",
+          "C:/Users/albak/xdev/crypto-tuber-ranked/.claude/worktrees/agent-a851dff1",
+          "C:/Users/albak/xdev/crypto-tuber-ranked/.claude/worktrees/nifty-goldberg-fb4fbe",
+          "C:/Users/albak/xdev/crypto-tuber-ranked/.claude/worktrees/xenodochial-hellman-6edc59"
+        ],
+        "status_short_count": 2,
+        "status_short_sample": [
+          " D .env.example",
+          " D .env.hermes.example"
+        ],
+        "top_level": "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904"
+      },
+      "human_size": "0.32 GiB",
+      "mtime_utc": "2026-05-06T11:17:57Z",
+      "path": "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Old preclone workspace; requires git/unique-work and mount review.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 132984832,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "tmp-worktree",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "cca-pr9-ready",
+        "exists": true,
+        "head": "aa0c4688334dfa4360f0ffc1e60498a5ae947732",
+        "is_git_worktree": true,
+        "linked_worktree_count": 1,
+        "linked_worktrees": [
+          "/tmp/cca-hermes"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/tmp/cca-hermes"
+      },
+      "human_size": "0.12 GiB",
+      "mtime_utc": "2026-06-05T05:03:14Z",
+      "path": "/tmp/cca-hermes",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Temporary Hermes checkout; candidate after process and unique-work checks.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 61579264,
+      "candidate_status": "review_candidate_not_deleted",
+      "category": "old-product-backup",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": null,
+        "exists": true,
+        "head": null,
+        "is_git_worktree": true,
+        "linked_worktree_count": 1,
+        "linked_worktrees": [
+          "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z"
+        ],
+        "status_short_count": 49,
+        "status_short_sample": [
+          "?? .codacy/",
+          "?? .copilot-tracking/",
+          "?? .dockerignore",
+          "?? .env.example",
+          "?? .env.hermes.example",
+          "?? .eslintrc.json",
+          "?? .github/",
+          "?? .gitignore",
+          "?? .kilo/",
+          "?? .new-FE-design/"
+        ],
+        "top_level": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z"
+      },
+      "human_size": "0.06 GiB",
+      "mtime_utc": "2026-06-21T18:25:40Z",
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Old pre-canonical copy outside active /opt/crypto-tuber-ranked; requires diff/route review.",
+      "same_filesystem_as_workspace": true
+    }
+  ],
+  "docker": {
+    "named_volume_mountpoints_excluded": [],
+    "system_df_lines": [
+      "TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE",
+      "Images          7         4         25.24GB   4.656GB (18%)",
+      "Containers      8         7         3.736MB   262.1kB (7%)",
+      "Local Volumes   8         0         49.76kB   49.76kB (100%)",
+      "Build Cache     74        0         18.88GB   13.65GB"
+    ]
+  },
+  "excluded_candidates_due_to_hard_gates": [
+    {
+      "blocked_reason": "Active process command lines reference this path in the current pass; do not clean until re-check shows zero refs.",
+      "bytes": 2129444864,
+      "candidate_status": "excluded_by_current_process_refs",
+      "category": "tool-cache",
+      "confidence_after_checks": "high",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "exists": true,
+        "is_git_worktree": false
+      },
+      "human_size": "1.98 GiB",
+      "mtime_utc": "2026-06-16T09:29:16Z",
+      "path": "/home/omar/.npm/_npx",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [
+          "33136",
+          "101066",
+          "202630"
+        ],
+        "process_ref_count": 3
+      },
+      "protected_prefix_hits": [],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "npx package execution cache; package managers can recreate it.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 650731520,
+      "candidate_status": "excluded_by_current_hard_gate",
+      "category": "stale-legacy-clone",
+      "confidence_after_checks": "low",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "master",
+        "exists": true,
+        "head": "03df7f07e98ba43e8cdd580783aab3307b929882",
+        "is_git_worktree": true,
+        "linked_worktree_count": 1,
+        "linked_worktrees": [
+          "/srv/agents/crypto-tuber-ranked"
+        ],
+        "status_short_count": 1,
+        "status_short_sample": [
+          "?? pipeline-enqueue.sh"
+        ],
+        "top_level": "/srv/agents/crypto-tuber-ranked"
+      },
+      "human_size": "0.61 GiB",
+      "mtime_utc": "2026-05-18T03:46:18Z",
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [
+        "/srv/agents/crypto-tuber-ranked"
+      ],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Parent classified as stale but contains unique untracked pipeline-enqueue.sh; whole-clone deletion only after capture/approval.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 622649344,
+      "candidate_status": "excluded_by_current_hard_gate",
+      "category": "stale-repo-dependency-cache",
+      "confidence_after_checks": "medium",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "master",
+        "exists": true,
+        "head": "03df7f07e98ba43e8cdd580783aab3307b929882",
+        "is_git_worktree": true,
+        "linked_worktree_count": 1,
+        "linked_worktrees": [
+          "/srv/agents/crypto-tuber-ranked"
+        ],
+        "status_short_count": 1,
+        "status_short_sample": [
+          "?? ../pipeline-enqueue.sh"
+        ],
+        "top_level": "/srv/agents/crypto-tuber-ranked"
+      },
+      "human_size": "0.58 GiB",
+      "mtime_utc": "2026-05-17T03:52:06Z",
+      "path": "/srv/agents/crypto-tuber-ranked/node_modules",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [
+        "/srv/agents/crypto-tuber-ranked"
+      ],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Dependency cache inside stale legacy clone; lower-risk than deleting whole clone after no process refs.",
+      "same_filesystem_as_workspace": true
+    },
+    {
+      "bytes": 13426688,
+      "candidate_status": "excluded_by_current_hard_gate",
+      "category": "stale-minimal-repo",
+      "confidence_after_checks": "low",
+      "deletion_method": "operator-selected cleanup only; no deletion performed by this task",
+      "docker_mount_hits": [],
+      "exists": true,
+      "findmnt": [
+        {
+          "fstype": "ext4",
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        }
+      ],
+      "git": {
+        "branch": "master",
+        "exists": true,
+        "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+        "is_git_worktree": true,
+        "linked_worktree_count": 4,
+        "linked_worktrees": [
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "/srv/whop-auto/workspace/callscore-db-portability",
+          "/tmp/callscore-pr38-build"
+        ],
+        "status_short_count": 0,
+        "status_short_sample": [],
+        "top_level": "/srv/agents/repos/crypto-tuber-ranked"
+      },
+      "human_size": "0.01 GiB",
+      "mtime_utc": "2026-05-17T07:20:24Z",
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "process_refs": {
+        "args_redacted": true,
+        "ignored_current_process_tree": true,
+        "pids_sample": [],
+        "process_ref_count": 0
+      },
+      "protected_prefix_hits": [
+        "/srv/agents/repos/crypto-tuber-ranked"
+      ],
+      "required_pre_delete_checks": [
+        "Re-run df/du immediately before deletion to confirm target still matters and is on expected filesystem.",
+        "Re-run docker ps/inspect and confirm target is not a source/bind mount and is not under any Docker named volume mountpoint.",
+        "Re-run ps/lsof/fuser or equivalent and confirm no active process references target.",
+        "Confirm target is not a DB, DB dump, secret, env file, credential, mounted path, live runtime source, or current workspace artifact path.",
+        "For git/worktree paths, run git status, git remote -v with secrets redacted, git worktree list, and capture/commit/export any unique dirty or untracked work before deletion.",
+        "For caches, prefer tool-native prune/cache-clean commands over rm when available and accept that tools may re-download artifacts.",
+        "Record operator approval and receipt path before deletion in a later phase."
+      ],
+      "review_reason": "Tiny but classified as stale minimal repo; deletion gated by linked worktree review.",
+      "same_filesystem_as_workspace": true
+    }
+  ],
+  "explicit_not_candidates": [
+    {
+      "bytes": 3280887808,
+      "exists": true,
+      "human_size": "3.06 GiB",
+      "path": "/opt/crypto-tuber-ranked",
+      "reason": "protected active runtime source"
+    },
+    {
+      "bytes": 1760100352,
+      "exists": true,
+      "human_size": "1.64 GiB",
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "reason": "inside protected active runtime source"
+    },
+    {
+      "bytes": 247607296,
+      "exists": true,
+      "human_size": "0.23 GiB",
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "reason": "inside protected active runtime source"
+    },
+    {
+      "bytes": 997842944,
+      "exists": true,
+      "human_size": "0.93 GiB",
+      "path": "/opt/crypto-tuber-ranked/node_modules",
+      "reason": "inside protected active runtime source"
+    },
+    {
+      "bytes": 28672,
+      "exists": true,
+      "human_size": "0.00 GiB",
+      "path": "/opt/callscore/secrets",
+      "reason": "secret-bearing protected path"
+    },
+    {
+      "bytes": 4096,
+      "exists": true,
+      "human_size": "0.00 GiB",
+      "path": "/home/omar/.cloudflared/hermes-whop-automation.token",
+      "reason": "secret bind mount"
+    },
+    {
+      "bytes": 879763456,
+      "exists": true,
+      "human_size": "0.82 GiB",
+      "path": "/tmp/callscore-prod-full-before-control-plane-20260618T192832Z.dump",
+      "reason": "database dump excluded by task rule"
+    },
+    {
+      "bytes": null,
+      "exists": false,
+      "human_size": null,
+      "path": "/var/lib/docker/volumes",
+      "reason": "Docker volumes excluded by task rule"
+    },
+    {
+      "bytes": 11538427904,
+      "exists": true,
+      "human_size": "10.75 GiB",
+      "path": "/usr/share/ollama",
+      "reason": "local Ollama model store; active ML/runtime dependency, not a cleanup target without separate model-retention review"
+    },
+    {
+      "bytes": 1277706240,
+      "exists": true,
+      "human_size": "1.19 GiB",
+      "path": "/srv/agents/hermes/profiles",
+      "reason": "Hermes profile state; durable agent state, not a deletion target"
+    },
+    {
+      "bytes": 373354496,
+      "exists": true,
+      "human_size": "0.35 GiB",
+      "path": "/srv/agents/repos/callscore-workplane",
+      "reason": "current workspace/control repo"
+    },
+    {
+      "bytes": 204800,
+      "exists": true,
+      "human_size": "0.00 GiB",
+      "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen",
+      "reason": "current evidence artifact directory"
+    }
+  ],
+  "filesystem": {
+    "root_df": {
+      "available_bytes": 26837585920,
+      "filesystem": "/dev/sda1",
+      "mounted_on": "/",
+      "size_bytes": 160970244096,
+      "use_percent": "83%",
+      "used_bytes": 127533367296
+    },
+    "workspace_df": {
+      "available_bytes": 26837590016,
+      "filesystem": "/dev/sda1",
+      "mounted_on": "/",
+      "size_bytes": 160970244096,
+      "use_percent": "83%",
+      "used_bytes": 127533363200
+    }
+  },
+  "generated_utc": "2026-06-21T18:30:22Z",
+  "largest_same_filesystem_dirs_top80": [
+    {
+      "bytes": 27539906560,
+      "human_size": "25.65 GiB",
+      "path": "/srv",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 23689220096,
+      "human_size": "22.06 GiB",
+      "path": "/home",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 23689216000,
+      "human_size": "22.06 GiB",
+      "path": "/home/omar",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 21697118208,
+      "human_size": "20.21 GiB",
+      "path": "/usr",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 18340909056,
+      "human_size": "17.08 GiB",
+      "path": "/srv/agents",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 12136353792,
+      "human_size": "11.30 GiB",
+      "path": "/usr/share",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 11538427904,
+      "human_size": "10.75 GiB",
+      "path": "/usr/share/ollama",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 9198993408,
+      "human_size": "8.57 GiB",
+      "path": "/srv/whop-auto",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 9141223424,
+      "human_size": "8.51 GiB",
+      "path": "/srv/whop-auto/workspace",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 7521525760,
+      "human_size": "7.00 GiB",
+      "path": "/srv/agents/hermes",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 5731479552,
+      "human_size": "5.34 GiB",
+      "path": "/var",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 5701517312,
+      "human_size": "5.31 GiB",
+      "path": "/usr/local",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 5630738432,
+      "human_size": "5.24 GiB",
+      "path": "/srv/agents/backups",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 5401870336,
+      "human_size": "5.03 GiB",
+      "path": "/home/omar/.cache",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 5300125696,
+      "human_size": "4.94 GiB",
+      "path": "/usr/local/lib",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 5060907008,
+      "human_size": "4.71 GiB",
+      "path": "/home/omar/.npm",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 4322570240,
+      "human_size": "4.03 GiB",
+      "path": "/home/omar/.hermes",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 3834032128,
+      "human_size": "3.57 GiB",
+      "path": "/tmp",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 3716378624,
+      "human_size": "3.46 GiB",
+      "path": "/var/log",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 3465478144,
+      "human_size": "3.23 GiB",
+      "path": "/srv/agents/repos",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 3433529344,
+      "human_size": "3.20 GiB",
+      "path": "/var/log/journal",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 3413082112,
+      "human_size": "3.18 GiB",
+      "path": "/opt",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 3280887808,
+      "human_size": "3.06 GiB",
+      "path": "/opt/crypto-tuber-ranked",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 3031773184,
+      "human_size": "2.82 GiB",
+      "path": "/home/omar/.local",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 2792677376,
+      "human_size": "2.60 GiB",
+      "path": "/usr/lib",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 2704465920,
+      "human_size": "2.52 GiB",
+      "path": "/home/omar/.bun",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 1852268544,
+      "human_size": "1.73 GiB",
+      "path": "/var/lib",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 1842565120,
+      "human_size": "1.72 GiB",
+      "path": "/opt/crypto-tuber-ranked/.tmp",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 1598898176,
+      "human_size": "1.49 GiB",
+      "path": "/var/lib/snapd",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 1278152704,
+      "human_size": "1.19 GiB",
+      "path": "/tmp/callscore-pr38-build",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 1087770624,
+      "human_size": "1.01 GiB",
+      "path": "/usr/lib/aarch64-linux-gnu",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 998334464,
+      "human_size": "0.93 GiB",
+      "path": "/tmp/callscore-pr38-build/node_modules",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 997842944,
+      "human_size": "0.93 GiB",
+      "path": "/opt/crypto-tuber-ranked/node_modules",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 912023552,
+      "human_size": "0.85 GiB",
+      "path": "/tmp/callscore-hermes",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 888532992,
+      "human_size": "0.83 GiB",
+      "path": "/usr/lib/node_modules",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 878161920,
+      "human_size": "0.82 GiB",
+      "path": "/srv/agents/database-migration",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 762073088,
+      "human_size": "0.71 GiB",
+      "path": "/home/omar/google-cloud-sdk",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 705392640,
+      "human_size": "0.66 GiB",
+      "path": "/usr/bin",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 650731520,
+      "human_size": "0.61 GiB",
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 622923776,
+      "human_size": "0.58 GiB",
+      "path": "/tmp/callscore-hermes/node_modules",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 550039552,
+      "human_size": "0.51 GiB",
+      "path": "/home/omar/.codex",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 510005248,
+      "human_size": "0.47 GiB",
+      "path": "/home/omar/agent-memory-backups",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 408281088,
+      "human_size": "0.38 GiB",
+      "path": "/home/omar/.composio",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 381280256,
+      "human_size": "0.36 GiB",
+      "path": "/home/omar/go",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 313049088,
+      "human_size": "0.29 GiB",
+      "path": "/usr/lib/python3",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 279097344,
+      "human_size": "0.26 GiB",
+      "path": "/usr/local/go",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 261836800,
+      "human_size": "0.24 GiB",
+      "path": "/tmp/callscore-pr38-build/.next",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 258813952,
+      "human_size": "0.24 GiB",
+      "path": "/tmp/callscore-hermes/.next",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 247607296,
+      "human_size": "0.23 GiB",
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 227987456,
+      "human_size": "0.21 GiB",
+      "path": "/home/omar/.codex.backups",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 193806336,
+      "human_size": "0.18 GiB",
+      "path": "/var/lib/apt",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 188813312,
+      "human_size": "0.18 GiB",
+      "path": "/usr/libexec",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 157835264,
+      "human_size": "0.15 GiB",
+      "path": "/var/cache",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 149172224,
+      "human_size": "0.14 GiB",
+      "path": "/var/cache/apt",
+      "root_scanned": "/var"
+    },
+    {
+      "bytes": 146604032,
+      "human_size": "0.14 GiB",
+      "path": "/opt/crypto-tuber-ranked/.netlify",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 132984832,
+      "human_size": "0.12 GiB",
+      "path": "/tmp/cca-hermes",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 125112320,
+      "human_size": "0.12 GiB",
+      "path": "/tmp/headroom",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 122204160,
+      "human_size": "0.11 GiB",
+      "path": "/usr/local/bin",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 115052544,
+      "human_size": "0.11 GiB",
+      "path": "/srv/agents/hh-control-bridge",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 105144320,
+      "human_size": "0.10 GiB",
+      "path": "/usr/lib/firmware",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 103559168,
+      "human_size": "0.10 GiB",
+      "path": "/usr/share/fonts",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 102092800,
+      "human_size": "0.10 GiB",
+      "path": "/usr/lib/snapd",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 99295232,
+      "human_size": "0.09 GiB",
+      "path": "/usr/libexec/docker",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 97648640,
+      "human_size": "0.09 GiB",
+      "path": "/usr/include",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 92467200,
+      "human_size": "0.09 GiB",
+      "path": "/usr/share/doc",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 85712896,
+      "human_size": "0.08 GiB",
+      "path": "/tmp/node-compile-cache",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 82821120,
+      "human_size": "0.08 GiB",
+      "path": "/usr/libexec/gcc",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 79724544,
+      "human_size": "0.07 GiB",
+      "path": "/tmp/cca-hermes/agent_workflows",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 77230080,
+      "human_size": "0.07 GiB",
+      "path": "/home/omar/whop-auto-stage-20260506163505",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 76533760,
+      "human_size": "0.07 GiB",
+      "path": "/home/omar/.paperclip",
+      "root_scanned": "/home"
+    },
+    {
+      "bytes": 74616832,
+      "human_size": "0.07 GiB",
+      "path": "/usr/sbin",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 70606848,
+      "human_size": "0.07 GiB",
+      "path": "/opt/callscore",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 70574080,
+      "human_size": "0.07 GiB",
+      "path": "/opt/callscore/yt-dlp-2026.6.9",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 67760128,
+      "human_size": "0.06 GiB",
+      "path": "/usr/include/node",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 67227648,
+      "human_size": "0.06 GiB",
+      "path": "/usr/lib/modules",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 63619072,
+      "human_size": "0.06 GiB",
+      "path": "/usr/share/locale",
+      "root_scanned": "/usr"
+    },
+    {
+      "bytes": 61579264,
+      "human_size": "0.06 GiB",
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "root_scanned": "/opt"
+    },
+    {
+      "bytes": 59441152,
+      "human_size": "0.06 GiB",
+      "path": "/tmp/agentmemory-repo",
+      "root_scanned": "/tmp"
+    },
+    {
+      "bytes": 58466304,
+      "human_size": "0.05 GiB",
+      "path": "/srv/agents/system-index",
+      "root_scanned": "/srv"
+    },
+    {
+      "bytes": 57679872,
+      "human_size": "0.05 GiB",
+      "path": "/srv/whop-auto/plugin",
+      "root_scanned": "/srv"
+    }
+  ],
+  "notes": [
+    "Manifest is a review queue, not an approval to delete.",
+    "All Docker named volumes are excluded by rule even when docker system df reports them reclaimable.",
+    "Docker build cache is visible as reclaimable in docker system df but is intentionally not converted into a path deletion candidate; use Docker-native prune only in a later approved phase."
+  ],
+  "protected_paths": [
+    "/home/omar/.cloudflared/hermes-whop-automation.token",
+    "/opt/callscore/secrets",
+    "/opt/callscore/secrets/youtube-cookies.txt",
+    "/opt/crypto-tuber-ranked",
+    "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "/srv/agents/crypto-tuber-ranked",
+    "/srv/agents/repos/callscore-workplane",
+    "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen",
+    "/srv/agents/repos/crypto-tuber-ranked"
+  ],
+  "source_artifacts": [
+    "docs/refactor/hermes-led-clean-kitchen/active-runtime-map.json",
+    "docs/refactor/hermes-led-clean-kitchen/protected-paths.md",
+    "docs/refactor/hermes-led-clean-kitchen/repo-classification.json",
+    "docs/refactor/hermes-led-clean-kitchen/unique-work-capture-plan.md"
+  ],
+  "summary": {
+    "deletion_performed": false,
+    "excluded_candidate_count": 4,
+    "largest_dirs_reviewed": 80,
+    "not_candidate_count": 12,
+    "review_candidate_count": 20,
+    "review_candidate_total_bytes": 29068320768,
+    "review_candidate_total_human": "27.07 GiB"
+  },
+  "task_id": "t_a878e1de",
+  "workspace": "/srv/agents/repos/callscore-workplane"
+}

@@ -1,0 +1,15 @@
+diff --git a/.omx/metrics.json b/.omx/metrics.json
+deleted file mode 100644
+index 073d7dd..0000000
+--- a/.omx/metrics.json
++++ /dev/null
+@@ -1,8 +0,0 @@
+-{
+-  "total_turns": 84,
+-  "session_turns": 84,
+-  "last_activity": "2026-05-03T04:05:24.915Z",
+-  "session_input_tokens": 0,
+-  "session_output_tokens": 0,
+-  "session_total_tokens": 0
+-}
+\ No newline at end of file

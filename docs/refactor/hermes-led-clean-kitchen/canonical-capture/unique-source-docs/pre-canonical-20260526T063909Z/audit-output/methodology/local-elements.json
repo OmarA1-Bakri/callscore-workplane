@@ -1,0 +1,1215 @@
+{
+  "desktop": {
+    "title": "Methodology — How We Score Crypto YouTubers | CryptoTubers Ranked",
+    "h1": {
+      "sel": "h1",
+      "text": "How We Score Every Call",
+      "rect": {
+        "x": 112,
+        "y": 219,
+        "w": 1216,
+        "h": 48
+      },
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+      "fontSize": "48px",
+      "fontWeight": "700",
+      "lineHeight": "48px"
+    },
+    "h2s": [
+      {
+        "tag": "H2",
+        "text": "How Rankings Work",
+        "rect": {
+          "x": 112,
+          "y": 395,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Data Sources",
+        "rect": {
+          "x": 112,
+          "y": 763.5,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "The Alpha Score",
+        "rect": {
+          "x": 112,
+          "y": 1259.5,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Score Components",
+        "rect": {
+          "x": 112,
+          "y": 1633.5,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Creator Rankings",
+        "rect": {
+          "x": 112,
+          "y": 2081,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Statistical Rigor",
+        "rect": {
+          "x": 112,
+          "y": 2635,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Our Transparency Commitment",
+        "rect": {
+          "x": 112,
+          "y": 3140,
+          "w": 1216,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Ready to see who actually beats the market?",
+        "rect": {
+          "x": 161,
+          "y": 3700,
+          "w": 1118,
+          "h": 32
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "24px",
+        "fontWeight": "700",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Navigate",
+        "rect": {
+          "x": 528,
+          "y": 4012,
+          "w": 384,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H2",
+        "text": "Legal",
+        "rect": {
+          "x": 944,
+          "y": 4012,
+          "w": 384,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      }
+    ],
+    "h3s": [
+      {
+        "tag": "H3",
+        "text": "Market Data",
+        "rect": {
+          "x": 189,
+          "y": 884.5,
+          "w": 94.09375,
+          "h": 24
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "YouTube Transcripts",
+        "rect": {
+          "x": 602.328125,
+          "y": 884.5,
+          "w": 159.109375,
+          "h": 24
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Extraction",
+        "rect": {
+          "x": 1015.65625,
+          "y": 884.5,
+          "w": 98.890625,
+          "h": 24
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Direction Correct",
+        "rect": {
+          "x": 134,
+          "y": 1746.5,
+          "w": 115.859375,
+          "h": 20
+        },
+        "color": "rgb(38, 222, 129)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Alpha Over BTC",
+        "rect": {
+          "x": 544.65625,
+          "y": 1746.5,
+          "w": 106.375,
+          "h": 20
+        },
+        "color": "rgb(96, 165, 250)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Specificity",
+        "rect": {
+          "x": 955.328125,
+          "y": 1746.5,
+          "w": 72.421875,
+          "h": 20
+        },
+        "color": "rgb(139, 92, 246)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Regime Difficulty",
+        "rect": {
+          "x": 134,
+          "y": 1901.5,
+          "w": 115.96875,
+          "h": 20
+        },
+        "color": "rgb(251, 146, 60)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Target Hit",
+        "rect": {
+          "x": 544.65625,
+          "y": 1901.5,
+          "w": 66.0625,
+          "h": 20
+        },
+        "color": "rgb(247, 183, 49)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Total Maximum",
+        "rect": {
+          "x": 955.328125,
+          "y": 1903.5,
+          "w": 103.28125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Alpha Score",
+        "rect": {
+          "x": 165,
+          "y": 2190,
+          "w": 82.046875,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Win Rate",
+        "rect": {
+          "x": 575.65625,
+          "y": 2190,
+          "w": 60.234375,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Alpha",
+        "rect": {
+          "x": 986.328125,
+          "y": 2190,
+          "w": 39.203125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Ranking Periods",
+        "rect": {
+          "x": 165,
+          "y": 2323,
+          "w": 109.625,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Tier System",
+        "rect": {
+          "x": 781,
+          "y": 2323,
+          "w": 81,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Bootstrap Resamples",
+        "rect": {
+          "x": 133,
+          "y": 2788,
+          "w": 352.65625,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Spearman Stability",
+        "rect": {
+          "x": 543.65625,
+          "y": 2788,
+          "w": 352.671875,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "ICC (Signal Strength)",
+        "rect": {
+          "x": 954.328125,
+          "y": 2788,
+          "w": 352.65625,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Contrarian Edge",
+        "rect": {
+          "x": 133,
+          "y": 2972.5,
+          "w": 352.65625,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Candle Data Points",
+        "rect": {
+          "x": 543.65625,
+          "y": 2972.5,
+          "w": 352.671875,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Analysis Iterations",
+        "rect": {
+          "x": 954.328125,
+          "y": 2972.5,
+          "w": 352.65625,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Open Formula",
+        "rect": {
+          "x": 165,
+          "y": 3249,
+          "w": 94.75,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "AI Confidence Filter",
+        "rect": {
+          "x": 781,
+          "y": 3249,
+          "w": 134.125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Per-Call Transparency",
+        "rect": {
+          "x": 165,
+          "y": 3374,
+          "w": 151.28125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Daily Updates",
+        "rect": {
+          "x": 781,
+          "y": 3374,
+          "w": 93.953125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "No Conflicts",
+        "rect": {
+          "x": 165,
+          "y": 3499,
+          "w": 83.53125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "H3",
+        "text": "Verifiable Data",
+        "rect": {
+          "x": 781,
+          "y": 3499,
+          "w": 99.609375,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      }
+    ],
+    "subHeroP": {
+      "sel": "section.text-center p",
+      "text": "We show you exactly how scores are calculated so you can evaluate our methodology. No black boxes. Every formula, every weight, every data source -- laid out ri",
+      "rect": {
+        "x": 384,
+        "y": 283,
+        "w": 672,
+        "h": 48
+      },
+      "color": "rgb(156, 163, 175)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px"
+    },
+    "backLink": {
+      "sel": "a[href='/']",
+      "text": "CryptoTubersRanked",
+      "rect": {
+        "x": 112,
+        "y": 20,
+        "w": 145.328125,
+        "h": 40
+      },
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+      "fontSize": "16px",
+      "fontWeight": "400",
+      "lineHeight": "24px"
+    },
+    "ctas": [
+      {
+        "tag": "A",
+        "text": "CryptoTubersRanked",
+        "href": "/",
+        "rect": {
+          "x": 112,
+          "y": 20,
+          "w": 145.328125,
+          "h": 40
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 822.640625,
+          "y": 30,
+          "w": 85.734375,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "href": "/methodology",
+        "rect": {
+          "x": 940.375,
+          "y": 30,
+          "w": 88.484375,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Pricing",
+        "href": "/pricing",
+        "rect": {
+          "x": 1060.859375,
+          "y": 30,
+          "w": 46.75,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Get Access",
+        "href": "/pricing",
+        "rect": {
+          "x": 1218.8125,
+          "y": 22,
+          "w": 109.1875,
+          "h": 36
+        },
+        "color": "rgb(10, 10, 15)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Back to Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 112,
+          "y": 113,
+          "w": 160.296875,
+          "h": 20
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "View Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 562.765625,
+          "y": 3808,
+          "w": 171.78125,
+          "h": 42
+        },
+        "color": "rgb(10, 10, 15)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "See Pricing",
+        "href": "/pricing",
+        "rect": {
+          "x": 750.546875,
+          "y": 3808,
+          "w": 126.671875,
+          "h": 42
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 528,
+          "y": 4048,
+          "w": 84.875,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "href": "/methodology",
+        "rect": {
+          "x": 528,
+          "y": 4080,
+          "w": 87.28125,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      }
+    ],
+    "allLinks": [
+      {
+        "tag": "A",
+        "text": "CryptoTubersRanked",
+        "href": "/",
+        "rect": {
+          "x": 112,
+          "y": 20,
+          "w": 145.328125,
+          "h": 40
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 822.640625,
+          "y": 30,
+          "w": 85.734375,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "href": "/methodology",
+        "rect": {
+          "x": 940.375,
+          "y": 30,
+          "w": 88.484375,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Pricing",
+        "href": "/pricing",
+        "rect": {
+          "x": 1060.859375,
+          "y": 30,
+          "w": 46.75,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "500",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Sign In",
+        "href": "/api/auth/whop",
+        "rect": {
+          "x": 1139.609375,
+          "y": 30,
+          "w": 67.203125,
+          "h": 20
+        },
+        "color": "rgb(209, 213, 219)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Get Access",
+        "href": "/pricing",
+        "rect": {
+          "x": 1218.8125,
+          "y": 22,
+          "w": 109.1875,
+          "h": 36
+        },
+        "color": "rgb(10, 10, 15)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Back to Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 112,
+          "y": 113,
+          "w": 160.296875,
+          "h": 20
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "View Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 562.765625,
+          "y": 3808,
+          "w": 171.78125,
+          "h": 42
+        },
+        "color": "rgb(10, 10, 15)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "See Pricing",
+        "href": "/pricing",
+        "rect": {
+          "x": 750.546875,
+          "y": 3808,
+          "w": 126.671875,
+          "h": 42
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "href": "/",
+        "rect": {
+          "x": 528,
+          "y": 4048,
+          "w": 84.875,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "href": "/methodology",
+        "rect": {
+          "x": 528,
+          "y": 4080,
+          "w": 87.28125,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Pricing",
+        "href": "/pricing",
+        "rect": {
+          "x": 528,
+          "y": 4112,
+          "w": 46,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Give Feedback",
+        "href": "/feedback",
+        "rect": {
+          "x": 528,
+          "y": 4144,
+          "w": 98.390625,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "About",
+        "href": "/about",
+        "rect": {
+          "x": 528,
+          "y": 4176,
+          "w": 39.484375,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Terms of Service",
+        "href": "/terms",
+        "rect": {
+          "x": 944,
+          "y": 4048,
+          "w": 112.765625,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "Privacy Policy",
+        "href": "/privacy",
+        "rect": {
+          "x": 944,
+          "y": 4080,
+          "w": 92.578125,
+          "h": 17
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      },
+      {
+        "tag": "A",
+        "text": "",
+        "href": "/feedback",
+        "rect": {
+          "x": 1368,
+          "y": 828,
+          "w": 48,
+          "h": 48
+        },
+        "color": "rgb(10, 10, 15)",
+        "fontSize": "16px",
+        "fontWeight": "400",
+        "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3"
+      }
+    ],
+    "formulaBars": [
+      {
+        "text": "40",
+        "width": 459.1875,
+        "styleWidth": "40%"
+      },
+      {
+        "text": "25",
+        "width": 287,
+        "styleWidth": "25%"
+      },
+      {
+        "text": "15",
+        "width": 172.1875,
+        "styleWidth": "15%"
+      },
+      {
+        "text": "10",
+        "width": 114.796875,
+        "styleWidth": "10%"
+      },
+      {
+        "text": "10",
+        "width": 114.796875,
+        "styleWidth": "10%"
+      },
+      {
+        "text": "",
+        "width": 140.65625,
+        "styleWidth": "40%"
+      },
+      {
+        "text": "",
+        "width": 87.90625,
+        "styleWidth": "25%"
+      },
+      {
+        "text": "",
+        "width": 52.734375,
+        "styleWidth": "15%"
+      },
+      {
+        "text": "",
+        "width": 35.15625,
+        "styleWidth": "10%"
+      },
+      {
+        "text": "",
+        "width": 35.15625,
+        "styleWidth": "10%"
+      }
+    ],
+    "numberMatches": [
+      "5 ",
+      "20 ",
+      "18.7M ",
+      "5 ",
+      "0-100",
+      "18.7 ",
+      "2024 - ",
+      "18\n\n",
+      "20 ",
+      "70% ",
+      "70% ",
+      "0 ",
+      "100\n\n",
+      "40\n25\n15\n10\n10\n",
+      "40",
+      "25",
+      "15",
+      "10",
+      "10",
+      "100 ",
+      "30 ",
+      "40 ",
+      "0 ",
+      "30 ",
+      "1% ",
+      "2.5 ",
+      "25.\n\n",
+      "3.75 ",
+      "3.75 ",
+      "3.75 ",
+      "3.75 ",
+      "10 ",
+      "1 ",
+      "90 ",
+      "10 ",
+      "0 ",
+      "100\n\n",
+      "30 ",
+      "30 ",
+      "90 ",
+      "30 ",
+      "5,000\n",
+      "5,000 ",
+      "95% ",
+      "5 ",
+      "0.95+\n",
+      "25%. ",
+      "0.95",
+      "1.4%\n",
+      "1.4% ",
+      "3x\n",
+      "3x ",
+      "4,600+ ",
+      "18.7M\n",
+      "18 ",
+      "136+\n",
+      "136+ ",
+      "70% ",
+      "20 ",
+      "2026 "
+    ],
+    "bodyFontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+    "bodyColor": "rgb(255, 255, 255)",
+    "bodyBg": "rgb(10, 10, 15)",
+    "docHeight": 4392,
+    "docWidth": 1440,
+    "innerW": 1440,
+    "innerH": 900,
+    "hasFocusVisibleRule": false
+  },
+  "mobile": {
+    "innerW": 375,
+    "innerH": 812,
+    "docWidth": 375,
+    "hasHorizScroll": false,
+    "headerLinks": [
+      {
+        "tag": "A",
+        "text": "CryptoTubersRanked",
+        "w": 31.03125,
+        "h": 40
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Pricing",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Sign In",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Get Access",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "BUTTON",
+        "text": "",
+        "w": 24,
+        "h": 24
+      }
+    ],
+    "ctaLinks": [
+      {
+        "tag": "A",
+        "text": "CryptoTubersRanked",
+        "w": 31.03125,
+        "h": 40
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Pricing",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Get Access",
+        "w": 0,
+        "h": 0
+      },
+      {
+        "tag": "A",
+        "text": "Back to Leaderboard",
+        "w": 160.296875,
+        "h": 20
+      },
+      {
+        "tag": "A",
+        "text": "View Leaderboard",
+        "w": 171.78125,
+        "h": 40
+      },
+      {
+        "tag": "A",
+        "text": "See Pricing",
+        "w": 126.671875,
+        "h": 42
+      },
+      {
+        "tag": "A",
+        "text": "Leaderboard",
+        "w": 84.875,
+        "h": 17
+      },
+      {
+        "tag": "A",
+        "text": "Methodology",
+        "w": 87.28125,
+        "h": 17
+      },
+      {
+        "tag": "A",
+        "text": "Pricing",
+        "w": 46,
+        "h": 17
+      }
+    ],
+    "formulaText": "Direction + Alpha + Specificity + Regime + Target = Alpha Score",
+    "formulaBarRect": {
+      "x": 41,
+      "w": 293
+    }
+  }
+}

@@ -1,0 +1,32 @@
+diff --git a/.claude/settings.local.json b/.claude/settings.local.json
+deleted file mode 100644
+index 5ad9743..0000000
+--- a/.claude/settings.local.json
++++ /dev/null
+@@ -1,26 +0,0 @@
+-{
+-  "enabledPlugins": {
+-    "vercel@claude-plugins-official": true,
+-    "skill-creator@claude-code-plugins-plus": true,
+-    "geepers@claude-code-plugins-plus": true,
+-    "firecrawl-pack@claude-code-plugins-plus": true,
+-    "langchain-pack@claude-code-plugins-plus": true,
+-    "coderabbit-pack@claude-code-plugins-plus": true,
+-    "lindy-pack@claude-code-plugins-plus": true,
+-    "clerk-pack@claude-code-plugins-plus": true,
+-    "langfuse-pack@claude-code-plugins-plus": true,
+-    "evernote-pack@claude-code-plugins-plus": true,
+-    "wondelai-blue-ocean-strategy@claude-code-plugins-plus": true,
+-    "youtube-strategy@claude-code-plugins-plus": true,
+-    "wondelai-cro-methodology@claude-code-plugins-plus": true,
+-    "wondelai-crossing-the-chasm@claude-code-plugins-plus": true,
+-    "wondelai-drive-motivation@claude-code-plugins-plus": true,
+-    "wondelai-hooked-ux@claude-code-plugins-plus": true,
+-    "wondelai-influence-psychology@claude-code-plugins-plus": true,
+-    "wondelai-lean-startup@claude-code-plugins-plus": true,
+-    "wondelai-scorecard-marketing@claude-code-plugins-plus": true,
+-    "wondelai-predictable-revenue@claude-code-plugins-plus": true,
+-    "anthropic-pack@claude-code-plugins-plus": true,
+-    "canva-pack@claude-code-plugins-plus": true
+-  }
+-}

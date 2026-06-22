@@ -1,0 +1,523 @@
+{
+  "generated_at_utc": "2026-06-21T21:27:50Z",
+  "scope": {
+    "clean_kitchen_docs": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen",
+    "clean_kitchen_receipts": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen",
+    "runtime_repo": "/opt/crypto-tuber-ranked"
+  },
+  "disk_status": {
+    "disk_used_percent": "81%",
+    "inodes_used_percent": "27%"
+  },
+  "clean_kitchen_docs_inventory": {
+    "total_files": 547,
+    "top_level_files": [
+      {
+        "path": "01-runtime-routing-and-cleanup-audit.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 2024
+      },
+      {
+        "path": "02-5-linked-worktree-retirement.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 2570
+      },
+      {
+        "path": "02-canonical-code-capture.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 1123
+      },
+      {
+        "path": "03-5-ytdlp-singleton-provider-guard.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 2690
+      },
+      {
+        "path": "03-6-secret-artifact-scrub.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 965
+      },
+      {
+        "path": "03-active-runtime-simplification.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 1748
+      },
+      {
+        "path": "active-runtime-map.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 35521
+      },
+      {
+        "path": "canonical-code-map.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 344138
+      },
+      {
+        "path": "canonical-map.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 20706
+      },
+      {
+        "path": "controlled-deletion-batch-plan.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 60390
+      },
+      {
+        "path": "controlled-deletion-batch-plan.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 4878
+      },
+      {
+        "path": "current-deletion-candidate-matrix.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 4280
+      },
+      {
+        "path": "database-migration-classification.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 495
+      },
+      {
+        "path": "deletion-candidate-matrix.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 26038
+      },
+      {
+        "path": "deletion-candidates.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 74347
+      },
+      {
+        "path": "docker-runtime-map.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 2617
+      },
+      {
+        "path": "execution-plan.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 4519
+      },
+      {
+        "path": "gemma-transcript-architecture.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 8908
+      },
+      {
+        "path": "immediate-disk-recovery-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 3660
+      },
+      {
+        "path": "legacy-repo-deletion-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 1976
+      },
+      {
+        "path": "master-state.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 37743
+      },
+      {
+        "path": "prompt25-deletion-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 4928
+      },
+      {
+        "path": "protected-paths.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 4617
+      },
+      {
+        "path": "protected-stale-state-manifest.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 40166
+      },
+      {
+        "path": "repo-classification.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 13157
+      },
+      {
+        "path": "repo-routing-matrix.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 53988
+      },
+      {
+        "path": "runtime-cleanup-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 676
+      },
+      {
+        "path": "runtime-health.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 6064
+      },
+      {
+        "path": "secret-artifact-redaction-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 1908
+      },
+      {
+        "path": "secret-artifact-scan-report.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 938475
+      },
+      {
+        "path": "session-secret-rotation-required.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 690
+      },
+      {
+        "path": "unique-work-capture-plan.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 9446
+      },
+      {
+        "path": "worktree-retirement-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 1077
+      },
+      {
+        "path": "ytdlp-provider-conflict-resolution.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 663
+      },
+      {
+        "path": "ytdlp-singleton-implementation-report.md",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 1520
+      },
+      {
+        "path": "ytdlp-singleton-startup-routes.json",
+        "classification": "CANONICAL_CONTROL_ARTIFACT",
+        "size": 3940
+      }
+    ],
+    "subdirectories": {
+      "canonical-capture/": {
+        "classification": "HISTORICAL_CAPTURE",
+        "description": "Prompt 2/2.5 unique-work capture from deleted pre-canonical snapshot. Contains redacted diffs, legacy scripts, manifests, and source docs.",
+        "action": "PRESERVE_AS_AUDIT_TRAIL",
+        "may_archive_later": true
+      }
+    }
+  },
+  "clean_kitchen_receipts_inventory": {
+    "total_files": 66,
+    "run_directories": [
+      {
+        "name": "20260621T182522Z-runtime-cleanup",
+        "phase": "Prompt 1",
+        "classification": "CANONICAL_RECEIPT"
+      },
+      {
+        "name": "20260621T190926Z-prompt2-canonical-capture",
+        "phase": "Prompt 2",
+        "classification": "CANONICAL_RECEIPT"
+      },
+      {
+        "name": "20260621T-prompt25-linked-worktree-retirement",
+        "phase": "Prompt 2.5",
+        "classification": "CANONICAL_RECEIPT"
+      },
+      {
+        "name": "20260621T195606Z-prompt3-active-runtime-simplification",
+        "phase": "Prompt 3",
+        "classification": "CANONICAL_RECEIPT"
+      },
+      {
+        "name": "20260621T200540Z-prompt35-ytdlp-singleton-guard",
+        "phase": "Prompt 3.5",
+        "classification": "CANONICAL_RECEIPT"
+      }
+    ],
+    "emergency_halt_logs": [
+      {
+        "path": "EMERGENCY_HALT_20260621T195610Z.json",
+        "classification": "FALSE_POSITIVE_PRESERVED",
+        "note": "Prompt 3 batched docker inspect false positive"
+      },
+      {
+        "path": "EMERGENCY_HALT_20260621T202048Z.json",
+        "classification": "PRESERVED_INCIDENT_LOG",
+        "note": "Prompt 3.5 secret artifact capture incident"
+      }
+    ],
+    "top_level_receipts": [
+      {
+        "name": "03-6-secret-artifact-scrub-receipt.json",
+        "phase": "Prompt 3.6",
+        "classification": "CANONICAL_RECEIPT"
+      },
+      {
+        "name": "prompt1-baseline-*.json",
+        "phase": "Prompt 1",
+        "classification": "CANONICAL_RECEIPT"
+      }
+    ]
+  },
+  "runtime_repo_inventory": {
+    "path": "/opt/crypto-tuber-ranked",
+    "total_size": "3.1G",
+    "total_files": 54390,
+    "git_branch": "master",
+    "git_status": "dirty (modified + untracked files present)",
+    "top_level_directories": [
+      {
+        "name": "src/",
+        "classification": "CANONICAL_SOURCE",
+        "files": 319,
+        "description": "Application source: app routes, components, lib, scripts, data"
+      },
+      {
+        "name": "tests/",
+        "classification": "CANONICAL_SOURCE",
+        "files": 115,
+        "description": "100+ test files covering pipeline, API, ops, frontend, ML"
+      },
+      {
+        "name": "docs/",
+        "classification": "CANONICAL_DOCS",
+        "files": 96,
+        "description": "11 subdirs: ops, plans, hermes, audits, architecture, ml, handovers, diagrams, superpowers, system-index, agentic-architecture"
+      },
+      {
+        "name": "scripts/",
+        "classification": "CANONICAL_SOURCE",
+        "files": 6,
+        "description": "5 files: wrapper, pipeline audit, env validator, worker wrappers"
+      },
+      {
+        "name": "ops/",
+        "classification": "CANONICAL_OPS",
+        "files": 4,
+        "description": "Ollama Modelfiles + systemd hermes-worker.service"
+      },
+      {
+        "name": "migrations/",
+        "classification": "CANONICAL_DB",
+        "files": 24,
+        "description": "PostgreSQL schema migrations"
+      },
+      {
+        "name": "data/",
+        "classification": "CANONICAL_DATA",
+        "files": 2,
+        "description": "Audit + eval data"
+      },
+      {
+        "name": "public/",
+        "classification": "CANONICAL_STATIC",
+        "files": 19,
+        "description": "Static public assets + brand"
+      },
+      {
+        "name": "netlify/",
+        "classification": "CANONICAL_DEPLOY",
+        "files": 7,
+        "description": "Netlify functions"
+      },
+      {
+        "name": ".github/",
+        "classification": "CANONICAL_CI",
+        "files": 4,
+        "description": "CI workflow + copilot instructions + whop-docs skill"
+      },
+      {
+        "name": ".git/",
+        "classification": "NEVER_DELETE",
+        "size": "24M",
+        "description": "Canonical repository history"
+      },
+      {
+        "name": "node_modules/",
+        "classification": "PROTECTED_BUILD_CACHE",
+        "size": "952M",
+        "description": "Dependencies - protected by hard gates"
+      },
+      {
+        "name": ".next/",
+        "classification": "PROTECTED_BUILD_CACHE",
+        "size": "237M",
+        "description": "Next.js build output - protected by hard gates"
+      },
+      {
+        "name": ".tmp/",
+        "classification": "TEMPORARY_RUNTIME_OUTPUT",
+        "size": "1.8G",
+        "files": 5990,
+        "description": "5987 files, 1.8G. Largest: prod-rollout (1.7G). NOT protected by hard gates but active runtime may write here."
+      },
+      {
+        "name": ".netlify/",
+        "classification": "PROTECTED_BUILD_CACHE",
+        "size": "140M",
+        "description": "Netlify build/deploy state - protected by hard gates"
+      },
+      {
+        "name": ".omx/",
+        "classification": "HISTORICAL_CONTEXT",
+        "size": "932K",
+        "description": "OMX activation, context, logs, plans, ultragoal. ~928K. May archive later."
+      },
+      {
+        "name": ".new-FE-design/",
+        "classification": "DESIGN_REFERENCE",
+        "files": 11,
+        "description": "11 HTML design mockups. Reference only."
+      },
+      {
+        "name": ".kilo/",
+        "classification": "TOOL_CONFIG",
+        "files": 5,
+        "description": "Kilo IDE agent/skill config. Tool-specific."
+      },
+      {
+        "name": ".codacy/",
+        "classification": "TOOL_CONFIG",
+        "files": 2,
+        "description": "Codacy CI config."
+      },
+      {
+        "name": "callscore-g10-approval-packet/",
+        "classification": "HISTORICAL_APPROVAL",
+        "size": "204K",
+        "description": "G10 launch approval packet. Historical."
+      }
+    ],
+    "top_level_files": [
+      {
+        "name": "package.json",
+        "classification": "CANONICAL_SOURCE"
+      },
+      {
+        "name": "package-lock.json",
+        "classification": "CANONICAL_SOURCE"
+      },
+      {
+        "name": "docker-compose.yml",
+        "classification": "PROTECTED_RUNTIME",
+        "description": "Active compose file - never modify without approval"
+      },
+      {
+        "name": "Dockerfile.hermes",
+        "classification": "CANONICAL_SOURCE"
+      },
+      {
+        "name": "tsconfig.json",
+        "classification": "CANONICAL_SOURCE"
+      },
+      {
+        "name": "next.config.js",
+        "classification": "CANONICAL_SOURCE"
+      },
+      {
+        "name": "netlify.toml",
+        "classification": "CANONICAL_DEPLOY"
+      },
+      {
+        "name": "schema.sql",
+        "classification": "CANONICAL_DB"
+      },
+      {
+        "name": "AGENTS.md",
+        "classification": "CANONICAL_DOCS"
+      },
+      {
+        "name": "README.md",
+        "classification": "CANONICAL_DOCS"
+      },
+      {
+        "name": "CLAUDE.md",
+        "classification": "HISTORICAL_DOCS",
+        "note": "Superseded by AGENTS.md"
+      },
+      {
+        "name": "CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md",
+        "classification": "HISTORICAL_DOCS"
+      },
+      {
+        "name": ".whop-pipeline.json",
+        "classification": "CANONICAL_CONFIG"
+      },
+      {
+        "name": "middleware.ts",
+        "classification": "CANONICAL_SOURCE"
+      },
+      {
+        "name": ".env.example",
+        "classification": "CANONICAL_TEMPLATE"
+      },
+      {
+        "name": ".env.hermes",
+        "classification": "PROTECTED_SECRET",
+        "note": "NEVER read, print, copy, move, delete, or modify"
+      },
+      {
+        "name": ".env.hermes.example",
+        "classification": "CANONICAL_TEMPLATE"
+      },
+      {
+        "name": ".env.hermes.backup.20260615T180727Z",
+        "classification": "PROTECTED_SECRET",
+        "note": "Backup of live env - same protection as .env.hermes"
+      },
+      {
+        "name": "docker-compose.yml.backup.20260608T040349Z",
+        "classification": "HISTORICAL_BACKUP",
+        "note": "Untracked backup - REVIEW_LATER per existing audits"
+      },
+      {
+        "name": "docker-compose.yml.backup.20260608T041836Z",
+        "classification": "HISTORICAL_BACKUP",
+        "note": "Untracked backup - REVIEW_LATER per existing audits"
+      },
+      {
+        "name": "Dockerfile.hermes.backup.20260608T035330Z",
+        "classification": "HISTORICAL_BACKUP"
+      },
+      {
+        "name": "tsconfig.tsbuildinfo",
+        "classification": "GENERATED_CACHE",
+        "note": "TypeScript incremental build cache - safe to clean"
+      },
+      {
+        "name": "docs/ops/.hermes-tmp.UR6IXl",
+        "classification": "TEMPORARY_FILE",
+        "note": "Temp file - safe to clean in future phase"
+      }
+    ],
+    "git_branches": {
+      "current": "master",
+      "local_feature_branches": 16,
+      "note": "Multiple stale feature branches exist; branch cleanup is a separate future phase"
+    }
+  },
+  "classification_legend": {
+    "CANONICAL_SOURCE": "Live source code. Never delete or move.",
+    "CANONICAL_DOCS": "Canonical documentation. Preserve.",
+    "CANONICAL_OPS": "Operational config. Preserve.",
+    "CANONICAL_DB": "Database schema/migrations. Never delete.",
+    "CANONICAL_DATA": "Application data. Preserve.",
+    "CANONICAL_DEPLOY": "Deployment config. Preserve.",
+    "CANONICAL_CI": "CI config. Preserve.",
+    "CANONICAL_CONFIG": "Application config. Preserve.",
+    "CANONICAL_TEMPLATE": "Env template. Safe reference.",
+    "CANONICAL_CONTROL_ARTIFACT": "Clean-kitchen audit/control docs. Preserve.",
+    "CANONICAL_RECEIPT": "Deletion/change receipts. Preserve for audit trail.",
+    "PROTECTED_RUNTIME": "Active runtime dependency. Never modify without approval.",
+    "PROTECTED_SECRET": "Live secret. NEVER read, print, copy, move, delete, or modify.",
+    "PROTECTED_BUILD_CACHE": "Build dependency cache. Protected by hard gates. Do not delete.",
+    "NEVER_DELETE": "Irreplaceable. Never delete under any circumstance.",
+    "HISTORICAL_BACKUP": "Untracked backup file. REVIEW_LATER - may archive with approval.",
+    "HISTORICAL_DOCS": "Superseded documentation. May archive later.",
+    "HISTORICAL_CONTEXT": "Historical context/logs. May archive later.",
+    "HISTORICAL_APPROVAL": "Historical approval artifacts. May archive later.",
+    "HISTORICAL_CAPTURE": "Captured unique work from deleted sources. Preserve as audit trail.",
+    "TEMPORARY_RUNTIME_OUTPUT": "Temporary output. Largest cleanup target. Requires active-process check before cleaning.",
+    "TEMPORARY_FILE": "Stray temp file. Safe to clean in future phase.",
+    "GENERATED_CACHE": "Generated cache. Safe to clean.",
+    "DESIGN_REFERENCE": "Design reference files. Preserve until design is finalized.",
+    "TOOL_CONFIG": "IDE/tool-specific config. Low priority."
+  }
+}

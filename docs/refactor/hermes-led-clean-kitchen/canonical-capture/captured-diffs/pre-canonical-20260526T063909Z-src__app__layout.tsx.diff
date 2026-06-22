@@ -1,0 +1,43 @@
+--- active/src/app/layout.tsx
++++ pre-canonical-20260526T063909Z/src/app/layout.tsx
+@@ -8,32 +8,26 @@
+ import "./globals.css";
+ 
+ export const metadata: Metadata = {
+-  title: "CallScore — Crypto Market Calls Tracker | Score Alpha. Find Edge.",
++  title: "CallScore — Market Calls, Measured",
+   description:
+-    "CallScore is the crypto market calls tracker that scores every prediction against real price data. Transparent methodology. Ranked alpha. No noise.",
++    "Market calls scored against real price data. Public methodology, auditable history, no sponsorships.",
+   metadataBase: new URL(SITE_URL),
+-  alternates: { canonical: "/" },
+-  manifest: "/site.webmanifest",
+   icons: {
+-    icon: [
+-      { url: "/favicon.ico" },
+-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+-    ],
+-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
++    icon: "/favicon.ico",
++    apple: "/apple-touch-icon.png",
+   },
+   openGraph: {
+-    title: "CallScore — Crypto Market Calls Tracker | Score Alpha. Find Edge.",
++    title: "CallScore — Market Calls, Measured",
+     description:
+-      "CallScore is the crypto market calls tracker that scores every prediction against real price data. Transparent methodology. Ranked alpha. No noise.",
++      "Market calls scored against real price data. Public methodology, auditable history, no sponsorships.",
+     type: "website",
+     images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+   },
+   twitter: {
+     card: "summary_large_image",
+-    title: "CallScore — Crypto Market Calls Tracker",
++    title: "CallScore",
+     description:
+-      "The crypto market calls tracker that scores every prediction against real price data. Transparent methodology. Ranked alpha.",
++      "Market calls scored against real price data. Public methodology, no sponsorships.",
+     images: ["/opengraph-image"],
+   },
+ };

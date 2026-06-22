@@ -1,0 +1,41 @@
+{
+  "timestamp_utc": "2026-06-22T10:15:01Z",
+  "phase": "authorized_deployment_purge_chunk4_browser_caches_with_rollback",
+  "status": "completed_purged",
+  "final_action": "purged_quarantine",
+  "strict_blacklist": "/srv/agents/repos/Claude_Code_Automations",
+  "blacklist_touched": false,
+  "targets": [
+    "/home/omar/.cache/camoufox",
+    "/home/omar/.cache/ms-playwright",
+    "/home/omar/.cache/puppeteer"
+  ],
+  "rollback_dir": "/tmp/cleanup-rollback-chunk4",
+  "rollback_dir_exists_after_purge": false,
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T100717Z-chunk4-browser-caches",
+  "quarantine_sizes_before_purge_from_log": [
+    "1.3G /tmp/cleanup-rollback-chunk4/home/omar/.cache/camoufox",
+    "942M /tmp/cleanup-rollback-chunk4/home/omar/.cache/ms-playwright",
+    "641M /tmp/cleanup-rollback-chunk4/home/omar/.cache/puppeteer"
+  ],
+  "estimated_quarantine_size_before_purge": "approximately 2.86G by du -sh entries",
+  "df_before_chunk4": "/dev/sda1 150G 88G 56G 62% /",
+  "df_after_purge": "/dev/sda1 150G 85G 59G 60% /",
+  "estimated_filesystem_delta": "approximately 3G by df -h",
+  "health_after_quarantine": {
+    "ping": "OK 200",
+    "docker_containers": "all expected runtime containers present",
+    "ytdlp_provider": "Up 35 hours (healthy)",
+    "pass": true
+  },
+  "chunk5_prepared_targets": [
+    {
+      "path": "/srv/agents/hermes/state-snapshots",
+      "size": "1.4G"
+    },
+    {
+      "path": "/srv/agents/hermes/sessions",
+      "size": "541M"
+    }
+  ]
+}

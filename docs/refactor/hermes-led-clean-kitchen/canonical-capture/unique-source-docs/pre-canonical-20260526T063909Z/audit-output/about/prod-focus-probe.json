@@ -1,0 +1,130 @@
+[
+  {
+    "tag": "A",
+    "text": "CryptoTubersRanked",
+    "href": "/",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 112,
+      "y": 20,
+      "w": 145.328125,
+      "h": 40
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Leaderboard",
+    "href": "/",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 822.640625,
+      "y": 30,
+      "w": 85.734375,
+      "h": 20
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Methodology",
+    "href": "/methodology",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 940.375,
+      "y": 30,
+      "w": 88.484375,
+      "h": 20
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Pricing",
+    "href": "/pricing",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 1060.859375,
+      "y": 30,
+      "w": 46.75,
+      "h": 20
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Sign In",
+    "href": "/api/auth/whop",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 1139.609375,
+      "y": 30,
+      "w": 67.203125,
+      "h": 20
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Get Access",
+    "href": "/pricing",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 1218.8125,
+      "y": 22,
+      "w": 109.1875,
+      "h": 36
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Back to Leaderboard",
+    "href": "/",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 112,
+      "y": 113,
+      "w": 160.296875,
+      "h": 20
+    }
+  },
+  {
+    "tag": "A",
+    "text": "Learn About Our Scoring Methodology",
+    "href": "/methodology",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none",
+    "rect": {
+      "x": 458.75,
+      "y": 428.75,
+      "w": 332.71875,
+      "h": 42
+    }
+  }
+]

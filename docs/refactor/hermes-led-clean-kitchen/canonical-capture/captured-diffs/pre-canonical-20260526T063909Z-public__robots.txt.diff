@@ -1,0 +1,8 @@
+--- active/public/robots.txt
++++ pre-canonical-20260526T063909Z/public/robots.txt
+@@ -2,4 +2,4 @@
+ Allow: /
+ Disallow: /api/
+ 
+-Sitemap: https://call-score.com/sitemap.xml
++Sitemap: https://www.call-score.com/sitemap.xml

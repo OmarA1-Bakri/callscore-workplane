@@ -1,0 +1,57 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe-venv",
+  "classification": "TEMPORARY_RUNTIME_OUTPUT_PHASE_A_CANDIDATE",
+  "phase_a_bucket": "safe_batch_1",
+  "status": "deleted",
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe-venv",
+    "exists": true,
+    "is_file": false,
+    "is_dir": true,
+    "is_symlink": false,
+    "mode_octal": "0o775",
+    "size_lstat_bytes": 4096,
+    "recursive_size_bytes": 43599963,
+    "file_count": 4800,
+    "mtime_utc": "2026-06-13T16:53:16Z",
+    "sha256": null
+  },
+  "refs": {
+    "process_refs": [],
+    "docker_mount_refs": [],
+    "findmnt": {
+      "cmd": "findmnt -T \"/opt/crypto-tuber-ranked/.tmp/composio-probe-venv\" -o TARGET,SOURCE,FSTYPE -n 2>/dev/null || true",
+      "rc": 0,
+      "stdout": "/      /dev/sda1 ext4\n",
+      "stderr": ""
+    }
+  },
+  "command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/composio-probe-venv\"",
+  "command_rc": 0,
+  "stderr": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe-venv",
+    "exists": false
+  },
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593043968,
+    "free_bytes": 29377200128,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577096,
+    "inode_free": 7155400,
+    "inode_used_percent": 26.48
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131536674816,
+    "free_bytes": 29433569280,
+    "used_percent": 81.71,
+    "inode_total": 9732496,
+    "inode_used": 2571825,
+    "inode_free": 7160671,
+    "inode_used_percent": 26.43
+  },
+  "recovered_bytes": 56369152
+}

@@ -1,0 +1,2131 @@
+{
+  "timestamp_utc": "2026-06-22T15:57:03Z",
+  "phase": "prompt_5_agent_workplane_profile_cleanup_closure",
+  "profile_list": {
+    "args": [
+      "bash",
+      "-lc",
+      "HERMES_HOME=/srv/agents/hermes hermes profile list"
+    ],
+    "rc": 0,
+    "stdout": "\n Profile          Model                        Gateway      Alias        Distribution\n \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500    \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\n \u25c6default         z-ai/glm-5.2-free            running      \u2014            \u2014\n  callscorearchitect gpt-5.5                      stopped      \u2014            \u2014\n  callscorecmo    gpt-5.5                      running      \u2014            \u2014\n  callscoredata   gpt-5.5                      stopped      \u2014            \u2014\n  callscoreimplementer gpt-5.5                      stopped      \u2014            \u2014\n  callscorereviewer gpt-5.5                      stopped      \u2014            \u2014\n  callscoresafety gpt-5.5                      stopped      \u2014            \u2014\n  callscoretrust  gpt-5.5                      stopped      \u2014            \u2014\n\n",
+    "stderr": ""
+  },
+  "gateway_list": {
+    "args": [
+      "bash",
+      "-lc",
+      "HERMES_HOME=/srv/agents/hermes hermes gateway list"
+    ],
+    "rc": 0,
+    "stdout": "Gateways:\n  \u2713 default (current)        \u2014 PID 309776\n  \u2717 callscorearchitect       \u2014 not running\n  \u2713 callscorecmo             \u2014 PID 820326\n  \u2717 callscoredata            \u2014 not running\n  \u2717 callscoreimplementer     \u2014 not running\n  \u2717 callscorereviewer        \u2014 not running\n  \u2717 callscoresafety          \u2014 not running\n  \u2717 callscoretrust           \u2014 not running\n",
+    "stderr": ""
+  },
+  "profiles": [
+    {
+      "profile": "callscorearchitect",
+      "path": "/srv/agents/hermes/profiles/callscorearchitect",
+      "size": {
+        "exists": true,
+        "bytes": 230434118,
+        "human": "219.76 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 3,
+        "preview": [
+          "description: CallScore architecture and plan reviewer. Owns autonomy design, Workplane/GTM",
+          "  contracts, runtime boundaries, and built-vs-planned honesty.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 19,
+        "preview": [
+          "# CallScore Architect Profile",
+          "",
+          "You are the CallScore architecture and contract specialist.",
+          "",
+          "Mission:",
+          "- Design bounded channel-head autonomy without theatre.",
+          "- Keep Workplane, GTM registry, Hermes, Kanban, receipts, and CallScore runtime contracts coherent.",
+          "- Separate BUILT from PLANNED with zero ambiguity.",
+          "",
+          "Hard rules:",
+          "- Do not implement broad code changes unless the Kanban card explicitly asks for architecture implementation.",
+          "- Prefer existing CallScore rails before proposing new infrastructure.",
+          "- Cron jobs are not agents; agent claims require identity, authority, governance, memory, cadence, and taste.",
+          "- Restricted actions remain gated: provider/customer/payment/Whop financial, DB/deploy/infra, credentials, paid spend, outreach/sends.",
+          "",
+          "Expected output:",
+          "- Concrete task graphs, contracts, acceptance criteria, risks, and exact file paths.",
+          "- Built/not-built tables for status.",
+          "- Clear blocker classification: code, external-tool, external-policy, operator-approval."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78870058,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": false
+    },
+    {
+      "profile": "callscorecmo",
+      "path": "/srv/agents/hermes/profiles/callscorecmo",
+      "size": {
+        "exists": true,
+        "bytes": 130688214,
+        "human": "124.63 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 3,
+        "preview": [
+          "description: CallScore CMO/channel-growth specialist. Owns X/LinkedIn/Reddit owned-public",
+          "  growth mechanics, originality/cooldown/media gates, and CMO receipts.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 19,
+        "preview": [
+          "# CallScore CMO / Channel Growth Profile",
+          "",
+          "You are the CallScore CMO and owned-public channel growth specialist.",
+          "",
+          "Mission:",
+          "- Operate X, LinkedIn, Reddit owned-public growth mechanics under CallScore social discipline.",
+          "- Produce platform-native copy, visual/media plans, originality checks, cooldown decisions, provider readiness checks, and receipts.",
+          "- Use live CallScore facts and current discourse; never generic cross-posting.",
+          "",
+          "Hard rules:",
+          "- Composio first when provider tools exist.",
+          "- No text-only publish when media is required.",
+          "- Respect same-channel cooldowns and same-channel originality.",
+          "- Non-owned subreddits, DMs, email/newsletters, outreach, paid boosts, Whop/customer/payment/provider mutations, DB/deploy/infra changes, and credential work remain gated.",
+          "- No investment advice, guarantees, named accusations, private-data claims, or unsupported accuracy claims.",
+          "",
+          "Expected output:",
+          "- Channel-specific growth_mechanics, capability_usage ledger, quality/originality/media gate evidence, and receipt paths.",
+          "- Published vs evaluated vs blocked/cooldown status, with exact blocker receipts."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78869368,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": true
+    },
+    {
+      "profile": "callscoredata",
+      "path": "/srv/agents/hermes/profiles/callscoredata",
+      "size": {
+        "exists": true,
+        "bytes": 216380221,
+        "human": "206.36 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 4,
+        "preview": [
+          "description: CallScore data and sentinel worker. Owns pipeline freshness, creator",
+          "  discovery, fresh-call sentinels, dedupe, queue safety, and transcript/provider cooldown",
+          "  respect.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 19,
+        "preview": [
+          "# CallScore Data / Sentinel Profile",
+          "",
+          "You are the CallScore data freshness, creator discovery, and sentinel worker.",
+          "",
+          "Mission:",
+          "- Build and operate fresh-call / creator-discovery sentinels.",
+          "- Respect transcript provider cooldowns, dedupe rules, queue safety, and pipeline freshness.",
+          "- Prefer existing pipeline_jobs, channel_tasks, autonomy_events, artifacts, and receipts before adding new tables or services.",
+          "",
+          "Hard rules:",
+          "- No queue flooding. Always dedupe open pending/running work before enqueueing.",
+          "- No provider hammering after 429/cooldown signals.",
+          "- No broad DB writes/backfills unless explicitly gated.",
+          "<REDACTED_SECRETISH_LINE>",
+          "",
+          "Expected output:",
+          "- Discovered counts, skipped duplicate counts, enqueued/recommended counts, blockers, receipt paths.",
+          "- Tests proving dedupe and fail-closed behavior.",
+          "- Clear distinction between read-only discovery and mutating enqueue/write actions."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78869370,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": false
+    },
+    {
+      "profile": "callscoreimplementer",
+      "path": "/srv/agents/hermes/profiles/callscoreimplementer",
+      "size": {
+        "exists": true,
+        "bytes": 229666318,
+        "human": "219.03 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 3,
+        "preview": [
+          "description: CallScore implementation worker. Owns TypeScript/Node code changes with",
+          "  TDD, exact tests, minimal diffs, and no restricted production/provider mutations.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 19,
+        "preview": [
+          "# CallScore Implementer Profile",
+          "",
+          "You are the CallScore implementation worker.",
+          "",
+          "Mission:",
+          "- Execute assigned Kanban implementation cards in /opt/crypto-tuber-ranked.",
+          "- Use strict TDD: RED test first, verify fail, minimal GREEN, verify pass, refactor only after green.",
+          "- Keep diffs minimal and aligned to the card acceptance criteria.",
+          "",
+          "Hard rules:",
+          "- Do not skip tests.",
+          "- Do not mutate production providers, Whop financial/customer/payment state, deploys, DB schema/destructive writes, credentials, paid spend, DMs/email/outreach unless the card includes explicit gate evidence.",
+          "- Do not broaden scope because you noticed nearby work.",
+          "<REDACTED_SECRETISH_LINE>",
+          "",
+          "Expected output:",
+          "- Changed files, tests run, exact results, receipts/artifacts, known blockers.",
+          "- Complete with kanban_complete only after parent-verifiable tests pass.",
+          "- Block clearly if gate evidence or credentials are required."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78869368,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": false
+    },
+    {
+      "profile": "callscorereviewer",
+      "path": "/srv/agents/hermes/profiles/callscorereviewer",
+      "size": {
+        "exists": true,
+        "bytes": 200413767,
+        "human": "191.13 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 3,
+        "preview": [
+          "description: CallScore integration reviewer. Owns parent verification, tests, status",
+          "  docs, final built/not-built audit, and acceptance gates.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 19,
+        "preview": [
+          "# CallScore Reviewer Profile",
+          "",
+          "You are the CallScore integration and parent-verification reviewer.",
+          "",
+          "Mission:",
+          "- Verify worker outputs directly against the repo, tests, receipts, and runtime behavior.",
+          "- Confirm the intended worktree/path was modified and no unrelated scope leaked.",
+          "- Produce final built/not-built status for Omar.",
+          "",
+          "Hard rules:",
+          "- Never trust a worker summary alone.",
+          "- Rerun relevant tests and inspect actual diffs/artifacts before PASS.",
+          "- Reject theatre: cron job != autonomous agent, filesystem probe != adapter, planned != built.",
+          "<REDACTED_SECRETISH_LINE>",
+          "",
+          "Expected output:",
+          "- Exact commands run and results.",
+          "- Changed-file summary, acceptance checklist, remaining blockers.",
+          "- PASS/REQUEST_CHANGES/FAIL with concrete next action."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78869368,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": false
+    },
+    {
+      "profile": "callscoresafety",
+      "path": "/srv/agents/hermes/profiles/callscoresafety",
+      "size": {
+        "exists": true,
+        "bytes": 208594992,
+        "human": "198.93 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 3,
+        "preview": [
+          "<REDACTED_SECRETISH_LINE>",
+          "  action classification, policy fail-closed behavior, and receipt audit.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 17,
+        "preview": [
+          "# CallScore Safety / Risk Reviewer Profile",
+          "",
+          "You are the CallScore security, policy, and risk reviewer.",
+          "",
+          "Mission:",
+          "- Review plans and implementations for gate violations, credential exposure, unsafe provider actions, DB/deploy risk, and public-claims risk.",
+          "- Enforce smart autonomy: safe owned-public organic can act when gates pass; restricted lanes fail closed.",
+          "",
+          "Hard rules:",
+          "<REDACTED_SECRETISH_LINE>",
+          "- Do not approve financial/provider/customer/payment/Whop mutation, DB/deploy/infra mutation, paid spend, outreach/sends, or credential changes without explicit gate evidence.",
+          "- Check receipts and rollback paths before accepting state changes.",
+          "",
+          "Expected output:",
+          "- PASS/FAIL with exact file/line or artifact evidence.",
+          "- Risk class, violated gate, required remediation, and verification command.",
+          "- No vague \u201clooks good\u201d approvals."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78869370,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": false
+    },
+    {
+      "profile": "callscoretrust",
+      "path": "/srv/agents/hermes/profiles/callscoretrust",
+      "size": {
+        "exists": true,
+        "bytes": 219336955,
+        "human": "209.18 MiB"
+      },
+      "profile_yaml": {
+        "exists": true,
+        "line_count": 3,
+        "preview": [
+          "description: CallScore no-founder trust worker. Owns publish/suppress/review decisions,",
+          "  verifier artifacts, non-founder review queue, and evidence-chain safety.",
+          "description_auto: false"
+        ]
+      },
+      "soul_md": {
+        "exists": true,
+        "line_count": 19,
+        "preview": [
+          "# CallScore Trust Engine Profile",
+          "",
+          "You are the CallScore no-founder trust and verifier specialist.",
+          "",
+          "Mission:",
+          "- Replace founder review dependency with bounded publish/suppress/review decisions.",
+          "- Build verifier artifacts, evidence chains, confidence thresholds, non-founder review queues, and suppression behavior.",
+          "- Ensure low-confidence, vague, risky, or unsupported outputs never reach public scoring or public claims.",
+          "",
+          "Hard rules:",
+          "- Founder review required count should be zero for routine workflows; ambiguous cases route to non-founder review or suppression.",
+          "- Audit-only verifier paths must not mutate public ranking state unless explicitly promoted by gate evidence.",
+          "- Named negative creator claims, legal/compliance claims, investment advice, and unsupported performance claims fail closed.",
+          "<REDACTED_SECRETISH_LINE>",
+          "",
+          "Expected output:",
+          "- Decision artifacts: publish | suppress | review.",
+          "- Reason codes, evidence links, confidence thresholds, tests, and receipt paths.",
+          "- Explicit safety notes for every public-impacting path."
+        ]
+      },
+      "skills_dir_count": 61,
+      "skills_size": {
+        "exists": true,
+        "bytes": 78869369,
+        "human": "75.22 MiB"
+      },
+      "config_has_composio": true,
+      "config_inherit_mcp_toolsets": true,
+      "gateway_running": false
+    }
+  ],
+  "profile_local_skill_duplicate_name_summary": [
+    {
+      "profile": "callscorearchitect",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78870058,
+        "human": "75.22 MiB"
+      }
+    },
+    {
+      "profile": "callscorecmo",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78869368,
+        "human": "75.22 MiB"
+      }
+    },
+    {
+      "profile": "callscoredata",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78869370,
+        "human": "75.22 MiB"
+      }
+    },
+    {
+      "profile": "callscoreimplementer",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78869368,
+        "human": "75.22 MiB"
+      }
+    },
+    {
+      "profile": "callscorereviewer",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78869368,
+        "human": "75.22 MiB"
+      }
+    },
+    {
+      "profile": "callscoresafety",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78869370,
+        "human": "75.22 MiB"
+      }
+    },
+    {
+      "profile": "callscoretrust",
+      "local_skill_dirs": 61,
+      "names_also_in_canonical": 61,
+      "sample": [
+        "agent-interop-channels",
+        "agent-state-relocation",
+        "airflow-dag-patterns",
+        "apple",
+        "autonomous-ai-agents",
+        "brand-pioneer",
+        "callscore-autopilot",
+        "callscore-sentinel",
+        "caveman",
+        "commerce",
+        "communication",
+        "crawl4ai-skill",
+        "creative",
+        "data",
+        "data-pipeline",
+        "data-science",
+        "devops",
+        "diagramming",
+        "dogfood",
+        "domain",
+        "email",
+        "epoch-ai",
+        "everything-search",
+        "feeds",
+        "find-skills",
+        "gaming",
+        "ghostwriter-pro-ai",
+        "gifs",
+        "github",
+        "inference-sh",
+        "last30days",
+        "leisure",
+        "llm-evaluation",
+        "machine-learning-pro",
+        "mcp",
+        "media",
+        "ml-pipeline-workflow",
+        "mlops",
+        "note-taking",
+        "orchestration"
+      ],
+      "size": {
+        "exists": true,
+        "bytes": 78869369,
+        "human": "75.22 MiB"
+      }
+    }
+  ],
+  "exact_profile_local_skill_file_duplicates": [
+    {
+      "profile": "callscorearchitect",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscorearchitect",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscorecmo",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscoredata",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscorereviewer",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscoresafety",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "agent-interop-channels",
+      "file": "SKILL.md",
+      "hash": "2f353fb639a01ec62050fb85b9ed5e67d02626a6089864cb3d0116bfe313843b"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "agent-state-relocation",
+      "file": "SKILL.md",
+      "hash": "33a14c9a7d165f3f50fe90bdd8fef36e5a5cae8c22d2a8aff23268a74b56671a"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "airflow-dag-patterns",
+      "file": "SKILL.md",
+      "hash": "3885c5a0584cdc645619ca22c91c909376f01280a819ae02616641c964ab22bd"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "brand-pioneer",
+      "file": "SKILL.md",
+      "hash": "2d520d84a2a469a828019658dfdaf93341564c08ad635628d72be980aff2be44"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "callscore-sentinel",
+      "file": "SKILL.md",
+      "hash": "8d82f91b63c80cd6665e9059056d124a290e808beb3482cb304bdd21fcee7c5b"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "caveman",
+      "file": "SKILL.md",
+      "hash": "683fab67916397fadde1dec0eb7e5d27cf2a56a774037aaca2c66e76a18db8d4"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "crawl4ai-skill",
+      "file": "SKILL.md",
+      "hash": "a926ed2c033de82e29d2269e5bb795c717842d5420340f3f71e318fec309ad0c"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "data-pipeline",
+      "file": "SKILL.md",
+      "hash": "db9ba0f6adb6d303bd9e74385c4ea2cbc01ffadf1cfe3b1730097ba7a35e0855"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "dogfood",
+      "file": "SKILL.md",
+      "hash": "babe7bc47d8cab8bd5066ea9407186ea58a566f9e7f5b267cab676a5cce162c0"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "epoch-ai",
+      "file": "SKILL.md",
+      "hash": "28a2e09fd8168d6a72591ca1b11113c60ce78817cfd5162cad2c869f57bab6d5"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "everything-search",
+      "file": "SKILL.md",
+      "hash": "085e9b7a258ce2c222d43f896954a874bd8e5cc4c69ce39174c1d58eb23ef3f6"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "find-skills",
+      "file": "SKILL.md",
+      "hash": "1e85f6f9686e145aca4a124e3b704b9bbea9aa87e08515c1e352eee70f6e6e7a"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "ghostwriter-pro-ai",
+      "file": "SKILL.md",
+      "hash": "e7a2afe9f42207fc2732e991ab6d1692fafa45534e221ee90e3a0665f476fc27"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "last30days",
+      "file": "SKILL.md",
+      "hash": "bee461995acc5faf1a9608d2f8c6ea82017995dc7b2bcf525f845331392cd5cf"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "llm-evaluation",
+      "file": "SKILL.md",
+      "hash": "cf35370650db81388ce292d1a6a18ea791645c7e88fd7bb0472a6c55e6e0a51d"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "machine-learning-pro",
+      "file": "SKILL.md",
+      "hash": "8985d2a6fe14a424d97a5b61eaf35eccfdc60f5a648ea3b5e5d95754405fa90c"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "ml-pipeline-workflow",
+      "file": "SKILL.md",
+      "hash": "3049880901f70761137ef8818c6e0e5c357e5d108b82be48003e98c882a31c8b"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "posthog-instrumentation",
+      "file": "SKILL.md",
+      "hash": "8f2dccaf51a9e743041fd44c0a611ee3282dfdf74c32f71de684da475733ddf5"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "prompt-engineering-patterns",
+      "file": "SKILL.md",
+      "hash": "c455dde62511e04c420824be5dd5e516ab34d07842019dd7be2c9b41ca1e46bc"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "prompt-master-ai",
+      "file": "SKILL.md",
+      "hash": "3183acc084456be1759f105d2b8d00c2648e5e2e6d7d4db3357ad840694818bb"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "rag-implementation",
+      "file": "SKILL.md",
+      "hash": "ef888c8b742d79458a0f90814fa6392df3f6cbafbe103b1262503d1b0c568efe"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "resume-analyzer",
+      "file": "SKILL.md",
+      "hash": "f3e08b84999049c568a382674607a3f298049c2fddad9a0cb4f5d611b5d67bc6"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "sentry-workflow",
+      "file": "SKILL.md",
+      "hash": "5b2fb11e45f3cfc7e3f5365249a5a88fa7159fcf2e4574fb0edeed457e502857"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "stripe-best-practices",
+      "file": "SKILL.md",
+      "hash": "15a7f1fc6ff2a8d06d45205797928b519583bdc55354c965d99b4ae4186db8c8"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "task-router",
+      "file": "SKILL.md",
+      "hash": "9e69a0f5219d8e5116c0a75a44cd63cd0453a2ff44959969e021c75e74c90460"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "toby-frontend-design-pro",
+      "file": "SKILL.md",
+      "hash": "6b92e8279275af9a10c1dcd3b6780802e00cb04e3338b2e39cad67cf2a693dba"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "vector-database-engineer",
+      "file": "SKILL.md",
+      "hash": "953c5d760c4b562cc02db5cc25e1dd00ec1d9cc5bc31f7b4ce618bddef19bd9b"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "web-artifacts-builder",
+      "file": "SKILL.md",
+      "hash": "459bafeae0baf828b5689f8f0410c0eb497e11ce04939feed2e00358a9f6a70c"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "webapp-testing",
+      "file": "SKILL.md",
+      "hash": "39318b8c400e83c64c08e1f0159beb4d2d9ada511598af3a515fc9c5e4f8f042"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "workflow-orchestration-patterns",
+      "file": "SKILL.md",
+      "hash": "7c370674fdaa55a363aef43a5ebee1e0eb1c1851ada59b47e65b67c490b98c51"
+    },
+    {
+      "profile": "callscoretrust",
+      "skill": "yuanbao",
+      "file": "SKILL.md",
+      "hash": "239e4875f511124fab06e94ff21511fd8f857554c6ffd82dfb796ed275b4ff32"
+    }
+  ],
+  "exact_duplicate_count_capped": 217,
+  "agent_workplanes": [
+    {
+      "agent_id": "orchestrator",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator"
+    },
+    {
+      "agent_id": "cmo",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/cmo"
+    },
+    {
+      "agent_id": "data",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/data"
+    },
+    {
+      "agent_id": "trust",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/trust"
+    },
+    {
+      "agent_id": "compliance-linter",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter"
+    },
+    {
+      "agent_id": "reviewer",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/reviewer"
+    },
+    {
+      "agent_id": "implementer",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/implementer"
+    },
+    {
+      "agent_id": "safety",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/safety"
+    },
+    {
+      "agent_id": "opportunity-research",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research"
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts"
+    },
+    {
+      "agent_id": "community",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/community"
+    },
+    {
+      "agent_id": "whop-commerce",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce"
+    },
+    {
+      "agent_id": "art-of-war",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war"
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript"
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker"
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "path": "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker"
+    }
+  ],
+  "cleanup_decision": {
+    "profile_directories_deleted": [],
+    "profile_local_skills_deleted": [],
+    "reason": "No active profile-local skill deletion executed in Prompt 5 closure because callscorecmo is running and manifest replacement is not yet proven; deletion deferred to Prompt 9 lean profile implementation."
+  }
+}

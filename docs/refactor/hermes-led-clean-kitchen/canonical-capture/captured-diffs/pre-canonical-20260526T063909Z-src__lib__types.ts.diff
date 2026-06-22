@@ -1,0 +1,18 @@
+--- active/src/lib/types.ts
++++ pre-canonical-20260526T063909Z/src/lib/types.ts
+@@ -7,8 +7,7 @@
+   | "fundamental"
+   | "narrative"
+   | "contrarian";
+-export type Period = "all_time" | "12m" | "90d" | "30d";
+-export type CreatorConfidenceTier = "certified" | "official" | "provisional" | "watchlist" | "pending_maturity";
++export type Period = "all_time" | "90d" | "30d";
+ 
+ export interface Creator {
+   readonly id: number;
+@@ -153,5 +152,4 @@
+   readonly selfCorrectionScore?: number;
+   readonly revisionCount?: number;
+   readonly selfCorrectionTier?: "honest" | "some" | "rarely";
+-  readonly confidenceTier?: CreatorConfidenceTier;
+ }

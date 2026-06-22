@@ -1,0 +1,678 @@
+{
+  "desktop": {
+    "title": "ETH Bullish Call — CryptoTubers Ranked",
+    "canonical": "https://cryptotuberranked.com/call/3652",
+    "metas": {
+      "viewport": "width=device-width, initial-scale=1",
+      "theme-color": "#0a0a0f",
+      "description": "Detailed breakdown of this ETH bullish call: score 62.1/100, direction correct, with full alpha and regime analysis.",
+      "og:title": "CRYPTO-TUBER RANKED — Who Actually Beats The Market?",
+      "og:description": "We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls.",
+      "og:image": "https://cryptotuberranked.com/og-image.png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:type": "website",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "CRYPTO-TUBER RANKED",
+      "twitter:description": "We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls.",
+      "twitter:image": "https://cryptotuberranked.com/og-image.png",
+      "twitter:image:width": "1200",
+      "twitter:image:height": "630",
+      "next-size-adjust": null
+    },
+    "h1": {
+      "sel": "h1",
+      "text": "ETH -- Bullish Call",
+      "rect": {
+        "x": 337,
+        "y": 214,
+        "w": 683.75,
+        "h": 32
+      },
+      "color": "rgb(255, 255, 255)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+      "fontSize": "24px",
+      "fontWeight": "700",
+      "lineHeight": "32px"
+    },
+    "h2s": [
+      {
+        "tag": "H2",
+        "text": "Score Breakdown",
+        "rect": {
+          "x": 325,
+          "y": 681,
+          "w": 118.8125,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      },
+      {
+        "tag": "H2",
+        "text": "Market Context",
+        "rect": {
+          "x": 757,
+          "y": 677,
+          "w": 358,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      },
+      {
+        "tag": "H2",
+        "text": "From the Transcript",
+        "rect": {
+          "x": 357,
+          "y": 1003,
+          "w": 132.484375,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      },
+      {
+        "tag": "H2",
+        "text": "Navigate",
+        "rect": {
+          "x": 528,
+          "y": 1292,
+          "w": 384,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      },
+      {
+        "tag": "H2",
+        "text": "Legal",
+        "rect": {
+          "x": 944,
+          "y": 1292,
+          "w": 384,
+          "h": 20
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "14px",
+        "fontWeight": "600"
+      }
+    ],
+    "glassCards": [
+      {
+        "tag": "SECTION",
+        "text": "Lark Davis · February 23, 2026ETH -- Bullish Call62.1CoinEthereum (ETH)DirectionbullishEntry Price--Target Price--Stop Loss--Timeframe--Conf",
+        "rect": {
+          "x": 304,
+          "y": 157,
+          "w": 832,
+          "h": 260
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "DIV",
+        "text": "7 DaysPrice$1,948.77Return+1.9%BTC Return+0.3%Alpha+1.6%",
+        "rect": {
+          "x": 304,
+          "y": 449,
+          "w": 266.65625,
+          "h": 175
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "DIV",
+        "text": "30 DaysPrice$2,190.42Return+14.5%BTC Return+8.5%Alpha+6.0%",
+        "rect": {
+          "x": 586.65625,
+          "y": 449,
+          "w": 266.671875,
+          "h": 175
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "DIV",
+        "text": "90 DaysNot yet available",
+        "rect": {
+          "x": 869.328125,
+          "y": 449,
+          "w": 266.65625,
+          "h": 175
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "DIV",
+        "text": "Score Breakdown62.1Direction Correct40.0 / 40Alpha Over BTC15.1 / 25Specificity0.0 / 15Regime Difficulty7.0 / 10Target Hit0.0 / 10",
+        "rect": {
+          "x": 304,
+          "y": 656,
+          "w": 400,
+          "h": 290
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "DIV",
+        "text": "Market ContextMarket Regime at CallMild BearRegime Difficulty70%Direction CorrectYesHit TargetNo",
+        "rect": {
+          "x": 736,
+          "y": 656,
+          "w": 400,
+          "h": 290
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "DIV",
+        "text": "From the Transcript“se are insane deposit bonuses. Great trading fee discount. Of course, Bait UX has got all the coins you want to trade. T",
+        "rect": {
+          "x": 304,
+          "y": 978,
+          "w": 832,
+          "h": 201
+        },
+        "color": "rgb(255, 255, 255)",
+        "fontSize": "16px",
+        "fontWeight": "400"
+      }
+    ],
+    "miniStats": [
+      {
+        "tag": "P",
+        "text": "Lark Davis · February 23, 2026",
+        "rect": {
+          "x": 337,
+          "y": 190,
+          "w": 683.75,
+          "h": 20
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "14px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Coin",
+        "rect": {
+          "x": 337,
+          "y": 262,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Direction",
+        "rect": {
+          "x": 532.5,
+          "y": 262,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Entry Price",
+        "rect": {
+          "x": 728,
+          "y": 262,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Target Price",
+        "rect": {
+          "x": 923.5,
+          "y": 262,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Stop Loss",
+        "rect": {
+          "x": 337,
+          "y": 321,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Timeframe",
+        "rect": {
+          "x": 532.5,
+          "y": 321,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Confidence",
+        "rect": {
+          "x": 728,
+          "y": 321,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Strategy",
+        "rect": {
+          "x": 923.5,
+          "y": 321,
+          "w": 179.5,
+          "h": 15
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "10px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "7 Days",
+        "rect": {
+          "x": 321,
+          "y": 466,
+          "w": 232.65625,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "30 Days",
+        "rect": {
+          "x": 603.65625,
+          "y": 466,
+          "w": 232.671875,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "90 Days",
+        "rect": {
+          "x": 886.328125,
+          "y": 466,
+          "w": 232.65625,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Market Regime at Call",
+        "rect": {
+          "x": 757,
+          "y": 713,
+          "w": 358,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Regime Difficulty",
+        "rect": {
+          "x": 757,
+          "y": 769,
+          "w": 358,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Direction Correct",
+        "rect": {
+          "x": 757,
+          "y": 821,
+          "w": 358,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      },
+      {
+        "tag": "P",
+        "text": "Hit Target",
+        "rect": {
+          "x": 757,
+          "y": 881,
+          "w": 358,
+          "h": 16
+        },
+        "color": "rgb(107, 114, 128)",
+        "fontSize": "12px",
+        "fontWeight": "400"
+      }
+    ],
+    "badges": [
+      {
+        "tag": "SPAN",
+        "text": "bullish",
+        "rect": {
+          "x": 532.5,
+          "y": 284,
+          "w": 56.203125,
+          "h": 21
+        },
+        "color": "rgb(38, 222, 129)",
+        "fontSize": "12px",
+        "fontWeight": "600"
+      }
+    ],
+    "priceCards": [
+      "7 DaysPrice$1,948.77Return+1.9%BTC Return+0.3%Alpha+1.6%",
+      "30 DaysPrice$2,190.42Return+14.5%BTC Return+8.5%Alpha+6.0%",
+      "90 DaysNot yet available",
+      "Score Breakdown62.1Direction Correct40.0 / 40Alpha Over BTC15.1 / 25Specificity0.0 / 15Regime Difficulty7.0 / 10Target Hit0.0 / 10",
+      "Market ContextMarket Regime at CallMild BearRegime Difficulty70%Direction CorrectYesHit TargetNo"
+    ],
+    "backLink": {
+      "sel": "a[href^='/creator/']",
+      "text": "Back to Lark Davis",
+      "rect": {
+        "x": 304,
+        "y": 113,
+        "w": 144.71875,
+        "h": 20
+      },
+      "color": "rgb(107, 114, 128)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "20px"
+    },
+    "rawQuote": {
+      "sel": "blockquote",
+      "text": "“se are insane deposit bonuses. Great trading fee discount. Of course, Bait UX has got all the coins you want to trade. They got the liquidity to anyone, anywhere. That's you. So whether you want to long the rip, short the dips, they got yo",
+      "rect": {
+        "x": 329,
+        "y": 1035,
+        "w": 782,
+        "h": 91
+      },
+      "color": "rgb(209, 213, 219)",
+      "background": "rgba(0, 0, 0, 0)",
+      "fontFamily": "__Inter_f367f3, __Inter_Fallback_f367f3",
+      "fontSize": "14px",
+      "fontWeight": "400",
+      "lineHeight": "22.75px"
+    },
+    "allLinks": [
+      {
+        "text": "CryptoTubersRanked",
+        "href": "/"
+      },
+      {
+        "text": "Leaderboard",
+        "href": "/"
+      },
+      {
+        "text": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "text": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "text": "Sign In",
+        "href": "/api/auth/whop"
+      },
+      {
+        "text": "Get Access",
+        "href": "/pricing"
+      },
+      {
+        "text": "Back to Lark Davis",
+        "href": "/creator/@TheCryptoLark"
+      },
+      {
+        "text": "Leaderboard",
+        "href": "/"
+      },
+      {
+        "text": "Methodology",
+        "href": "/methodology"
+      },
+      {
+        "text": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "text": "Give Feedback",
+        "href": "/feedback"
+      },
+      {
+        "text": "About",
+        "href": "/about"
+      },
+      {
+        "text": "Terms of Service",
+        "href": "/terms"
+      },
+      {
+        "text": "Privacy Policy",
+        "href": "/privacy"
+      },
+      {
+        "text": "",
+        "href": "/feedback"
+      }
+    ],
+    "docHeight": 1672,
+    "docWidth": 1440,
+    "innerW": 1440,
+    "innerH": 900,
+    "hasFocusVisibleRule": false,
+    "scoreText": null,
+    "bodyText": "CryptoTubers RANKED Leaderboard Methodology Pricing Sign In Get Access Back to Lark Davis Lark Davis · February 23, 2026 ETH -- Bullish Call 62.1 COIN Ethereum (ETH) DIRECTION bullish ENTRY PRICE -- TARGET PRICE -- STOP LOSS -- TIMEFRAME -- CONFIDENCE High STRATEGY Narrative 7 DAYS Price $1,948.77 Return +1.9% BTC Return +0.3% Alpha +1.6% 30 DAYS Price $2,190.42 Return +14.5% BTC Return +8.5% Alpha +6.0% 90 DAYS Not yet available Score Breakdown 62.1 Direction Correct 40.0 / 40 Alpha Over BTC 15.1 / 25 Specificity 0.0 / 15 Regime Difficulty 7.0 / 10 Target Hit 0.0 / 10 Market Context MARKET REGIME AT CALL Mild Bear REGIME DIFFICULTY 70% DIRECTION CORRECT Yes HIT TARGET No From the Transcript “se are insane deposit bonuses. Great trading fee discount. Of course, Bait UX has got all the coins you want to trade. They got the liquidity to anyone, anywhere. That's you. So whether you want to long the rip, short the dips, they got you covered. Link down below. Go check it out. Continuing Donald. Donald, why? Man, Trump says, \"Uh, we're winning too much” Extraction confidence: 100% CryptoTubers RANKED We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls. Navigate Leaderboard Methodology Pricing Give Feedback About Legal Terms of Service Privacy Policy Financial Disclaimer: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions. © 2026 CRYPTO-TUBER RANKED. All rights reserved."
+  },
+  "mobile": {
+    "innerW": 375,
+    "docWidth": 375,
+    "hasHorizScroll": false,
+    "h1": "ETH -- Bullish Call"
+  },
+  "focusProbe": [
+    {
+      "tag": "A",
+      "text": "CryptoTubersRanked",
+      "href": "/",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 112,
+        "y": 20,
+        "w": 145.328125,
+        "h": 40
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Leaderboard",
+      "href": "/",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 822.640625,
+        "y": 30,
+        "w": 85.734375,
+        "h": 20
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Methodology",
+      "href": "/methodology",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 940.375,
+        "y": 30,
+        "w": 88.484375,
+        "h": 20
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Pricing",
+      "href": "/pricing",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 1060.859375,
+        "y": 30,
+        "w": 46.75,
+        "h": 20
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Sign In",
+      "href": "/api/auth/whop",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 1139.609375,
+        "y": 30,
+        "w": 67.203125,
+        "h": 20
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Get Access",
+      "href": "/pricing",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 1218.8125,
+        "y": 22,
+        "w": 109.1875,
+        "h": 36
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Back to Lark Davis",
+      "href": "/creator/@TheCryptoLark",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 304,
+        "y": 113,
+        "w": 144.71875,
+        "h": 20
+      }
+    },
+    {
+      "tag": "A",
+      "text": "Leaderboard",
+      "href": "/",
+      "outline": "rgb(16, 16, 16) auto 1px",
+      "outlineColor": "rgb(16, 16, 16)",
+      "outlineWidth": "1px",
+      "boxShadow": "none",
+      "rect": {
+        "x": 528,
+        "y": 556,
+        "w": 84.875,
+        "h": 17
+      }
+    }
+  ],
+  "secondary": {
+    "pending": {
+      "status": 200,
+      "title": "BTC Bullish Call — CryptoTubers Ranked",
+      "scoreText": null,
+      "body": "CryptoTubers RANKED Leaderboard Methodology Pricing Sign In Get Access Back to Lark Davis Lark Davis · April 3, 2026 BTC -- Bullish Call 0.0 COIN Bitcoin (BTC) DIRECTION bullish ENTRY PRICE -- TARGET PRICE -- STOP LOSS -- TIMEFRAME -- CONFIDENCE High STRATEGY Narrative 7 DAYS Price $68,655.51 Return +2.6% BTC Return +2.6% Alpha +0.0% 30 DAYS Not yet available 90 DAYS Not yet available Score Breakdown 5.0 Direction Correct 0.0 / 40 Alpha Over BTC 0.0 / 25 Specificity 0.0 / 15 Regime Difficulty 5.0 / 10 Target Hit 0.0 / 10 Market Context MARKET REGIME AT CALL Neutral REGIME DIFFICULTY 50% DIRECTION CORRECT No HIT TARGET No From the Transcript “ge of having parallel exposure. So, for example, if you're bullish on risk, you might want crypto exposure and a stock linked long at the same time like micro strategy. Go long on Bitcoin and Micro Strategy at the same time. Or if crypto's quiet but equity linked contracts are moving strongly around a macro event or earning season, go long on Nvidia and just” Extraction confidence: 100% CryptoTubers RANKED We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls. Navigate Leaderboard Methodology Pricing Give Feedback About Legal Terms of Service Privacy Policy Financial Disclaimer: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile "
+    },
+    "notFound": {
+      "status": 404,
+      "title": "404: This page could not be found.",
+      "body": "CryptoTubers RANKED Leaderboard Methodology Pricing Sign In Get Access 404 This page could not be found. CryptoTubers RANKED We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls. Navigate Leaderboard Methodology Pricing Give Feedback About Legal Terms of Service Privacy Policy Financial Disclaimer: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions. © 2026 CRYPTO-TU"
+    },
+    "nonNumeric": {
+      "status": 404,
+      "title": "404: This page could not be found."
+    }
+  }
+}

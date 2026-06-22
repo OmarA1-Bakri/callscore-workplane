@@ -1,0 +1,82 @@
+{
+  "timestamp_utc": "2026-06-22T09:20:01Z",
+  "phase": "composio_layer_correction_after_operator_clarification",
+  "status": "corrected_context_model",
+  "correction": "Composio is a Hermes/CallScore agent tool/capability, not a ChatGPT-visible HH toolbox tool. Prior conclusions based only on HH toolbox visibility were layer-confused.",
+  "hermes_side_evidence": [
+    {
+      "path": "/srv/agents/hermes/config.yaml",
+      "evidence": "contains composio MCP entry pointing to https://connect.composio.dev/mcp; secret values were not read or printed"
+    },
+    {
+      "path": "/srv/agents/hermes/skills/software-development/composio-native-action-integration/SKILL.md",
+      "evidence": "Hermes skill for Composio-backed native runtime actions"
+    },
+    {
+      "path": "/srv/agents/hermes/skills/mcp/composio-apify-mcp/SKILL.md",
+      "evidence": "Hermes skill for Composio MCP setup/use; notes mcp_composio_* style tool discovery after Hermes restart"
+    },
+    {
+      "path": "/srv/agents/hermes/skills/mcp/composio-apify-mcp/references/composio-mcp-connection.md",
+      "evidence": "Hermes reference for Composio MCP connection/troubleshooting"
+    },
+    {
+      "path": "/srv/agents/hermes/skills/commerce/whop-automation/references/composio-integration-state.md",
+      "evidence": "Hermes Whop automation reference mentions Composio integration state"
+    }
+  ],
+  "hh_chatgpt_toolbox_status": "Composio not visible to ChatGPT/HH toolbox; this is not the authoritative Hermes capability test.",
+  "corrected_status": {
+    "composio_policy_status": "canonical_for_callscore_agent_provider_automation",
+    "composio_hermes_config_status": "configured_reference_present",
+    "composio_hermes_invocation_status": "unverified_in_this_chat_because_Hermes_agent_execution_is_unavailable_or_not_invoked",
+    "provider_automation_status": "requires_Hermes_side_validation_before_claiming_live_execution"
+  },
+  "runtime_health": {
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 34 hours\nwhop-auto-channel-agent-worker-1           Up 34 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 34 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 34 hours (healthy)\nhh-oauth-mcp-gateway                       Up 13 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+      "stderr": ""
+    },
+    "df_h": {
+      "args": [
+        "df",
+        "-h",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  121G   24G  84% /\n",
+      "stderr": ""
+    },
+    "df_i": {
+      "args": [
+        "df",
+        "-i",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2573201 7159295   27% /\n",
+      "stderr": ""
+    },
+    "ytdlp_ping": {
+      "status": "ok",
+      "http_status": 200
+    }
+  },
+  "mutations_performed": {
+    "runtime_mutation": false,
+    "provider_mutation": false,
+    "db_mutation": false,
+    "docker_restart": false,
+    "env_file_read": false,
+    "profile_edit": false,
+    "scheduler_edit": false,
+    "master_state_metadata_correction": true
+  }
+}

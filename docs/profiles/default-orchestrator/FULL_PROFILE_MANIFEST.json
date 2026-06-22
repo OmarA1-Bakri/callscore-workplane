@@ -1,0 +1,32 @@
+{
+  "profile_id": "default-orchestrator",
+  "runtime_profile": "default",
+  "mission": "Coordinate Hermes gateway, Prompt 0-11 state, receipts, Kanban/workplane continuity, and multi-agent routing.",
+  "agents": [
+    "callscore-orchestrator-head",
+    "callscore-reviewer-head",
+    "callscore-safety-head"
+  ],
+  "tools": [
+    "Hermes gateway",
+    "master-state.json",
+    "receipt index",
+    "Kanban/workplane",
+    "HH Control Tunnel continuity",
+    "Docker read/status",
+    "Composio MCP test path"
+  ],
+  "gates": [
+    "emergency_halt",
+    "deletion_protocol",
+    "provider_gate",
+    "secret_gate"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-orchestrator-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-reviewer-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-safety-head"
+  ]
+}

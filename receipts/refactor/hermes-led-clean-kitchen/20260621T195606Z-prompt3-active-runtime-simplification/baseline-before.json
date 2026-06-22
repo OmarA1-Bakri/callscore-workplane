@@ -1,0 +1,912 @@
+{
+  "timestamp_utc": "2026-06-21T19:56:06Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification",
+  "inputs": {
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json": {
+      "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 30773,
+      "mode": "0o664",
+      "mtime_utc": "2026-06-21T19:27:30Z"
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/02-5-linked-worktree-retirement.md": {
+      "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/02-5-linked-worktree-retirement.md",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 2570,
+      "mode": "0o664",
+      "mtime_utc": "2026-06-21T19:28:08Z"
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/worktree-retirement-report.md": {
+      "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/worktree-retirement-report.md",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 1077,
+      "mode": "0o664",
+      "mtime_utc": "2026-06-21T19:26:10Z"
+    },
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt25-deletion-report.md": {
+      "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt25-deletion-report.md",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 4928,
+      "mode": "0o664",
+      "mtime_utc": "2026-06-21T19:28:08Z"
+    }
+  },
+  "host": {
+    "hostname": "hermes-agent-box",
+    "date_Is": {
+      "cmd": "date -Is",
+      "rc": 0,
+      "stdout": "2026-06-21T20:56:06+01:00\n",
+      "stderr": ""
+    },
+    "whoami": {
+      "cmd": "whoami",
+      "rc": 0,
+      "stdout": "omar\n",
+      "stderr": ""
+    }
+  },
+  "df": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 130988052480,
+    "free_bytes": 29982191616,
+    "used_percent": 81.37,
+    "inode_total": 9732496,
+    "inode_used": 2566394,
+    "inode_free": 7166102,
+    "inode_used_percent": 26.37
+  },
+  "df_h": {
+    "cmd": "df -h /",
+    "rc": 0,
+    "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  116G   28G  81% /\n",
+    "stderr": ""
+  },
+  "df_i": {
+    "cmd": "df -i /",
+    "rc": 0,
+    "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2566394 7166102   27% /\n",
+    "stderr": ""
+  },
+  "docker_ps": {
+    "raw": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "{{json .}}"
+      ],
+      "rc": 0,
+      "stdout": "{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"da4d0e928c00\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=hermes-worker-1,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"whop-auto-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"561kB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 20 hours\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"8787903a1ad5\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=channel-agent-worker-1,com.docker.compose.service=channel-agent-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-channel-agent-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"2.47MB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 20 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:39:54 +0100 BST\",\"HealthStatus\":\"unhealthy\",\"ID\":\"d352f6a7217c\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"restarting\",\"Status\":\"Restarting (0) 42 seconds ago\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"70e98d9f9b52\",\"Image\":\"b1369860652d\",\"Labels\":\"com.docker.compose.config-hash=0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"crypto-tuber-ranked-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"21 hours ago\",\"Size\":\"492kB (virtual 2.46GB)\",\"State\":\"running\",\"Status\":\"Up 21 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"healthy\",\"ID\":\"362901a5fca0\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"crypto-tuber-ranked-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"21 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"running\",\"Status\":\"Up 21 hours (healthy)\"}\n{\"Command\":\"\\\"uvicorn app:app --h\u2026\\\"\",\"CreatedAt\":\"2026-06-09 06:04:07 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"1635003474d8\",\"Image\":\"oauth-mcp-gateway-oauth-mcp-gateway\",\"Labels\":\"com.docker.compose.config-hash=3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/srv/agents/oauth-mcp-gateway/docker-compose.yml,com.docker.compose.project.working_dir=/srv/agents/oauth-mcp-gateway,com.docker.compose.project=oauth-mcp-gateway,com.docker.compose.replace=hh-oauth-mcp-gateway,com.docker.compose.service=oauth-mcp-gateway,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"hh-oauth-mcp-gateway\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"12 days ago\",\"Size\":\"4.1kB (virtual 223MB)\",\"State\":\"running\",\"Status\":\"Up 12 days\"}\n{\"Command\":\"\\\"cloudflared --no-au\u2026\\\"\",\"CreatedAt\":\"2026-05-07 07:57:43 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"996b7342b827\",\"Image\":\"cloudflare/cloudflared:latest\",\"Labels\":\"CI_BUILD_DATE=2026-03-09 14:24:30.312423,CI_DOCKER_FROM=gcr.io/distroless/base-debian13:nonroot-arm64,CI_DOCKER_VERSION={\\\"Platform\\\": {\\\"Name\\\": \\\"Docker Engine - Community\\\"}, \\\"Components\\\": [{\\\"Name\\\": \\\"Engine\\\", \\\"Version\\\": \\\"28.5.2\\\", \\\"Details\\\": {\\\"ApiVersion\\\": \\\"1.51\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\", \\\"Experimental\\\": \\\"false\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"Os\\\": \\\"linux\\\"}}, {\\\"Name\\\": \\\"containerd\\\", \\\"Version\\\": \\\"v2.1.5\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"fcd43222d6b07379a4be9786bda52438f0dd16a1\\\"}}, {\\\"Name\\\": \\\"runc\\\", \\\"Version\\\": \\\"1.3.3\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"v1.3.3-0-gd842d771\\\"}}, {\\\"Name\\\": \\\"docker-init\\\", \\\"Version\\\": \\\"0.19.0\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"de40ad0\\\"}}], \\\"Version\\\": \\\"28.5.2\\\", \\\"ApiVersion\\\": \\\"1.51\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"Os\\\": \\\"linux\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\"},CI_GIT_COMMIT=d2a87e9b93456ad7f82417400f4209d513668487,CI_GIT_REMOTE=https://gitlab.cfdata.org/cloudflare/tun/cloudflared.git,CI_TEAMCITY_BUILDCONF=,CI_TEAMCITY_BUILD_NUMBER=,IMAGE_TYPE=distroless,org.opencontainers.image.source=https://github.com/cloudflare/cloudflared\",\"LocalVolumes\":\"0\",\"Mounts\":\"/home/omar/.cl\u2026\",\"Names\":\"hermes-whop-automation-tunnel\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"6 weeks ago\",\"Size\":\"12.3kB (virtual 76.5MB)\",\"State\":\"running\",\"Status\":\"Up 2 weeks\"}\n",
+      "stderr": ""
+    },
+    "containers": [
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-21 00:46:08 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "da4d0e928c00",
+        "Image": "crypto-tuber-ranked-hermes-worker:latest",
+        "Labels": "com.docker.compose.config-hash=9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=hermes-worker-1,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "/opt/callscore\u2026",
+        "Names": "whop-auto-hermes-worker-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "20 hours ago",
+        "Size": "561kB (virtual 2.47GB)",
+        "State": "running",
+        "Status": "Up 20 hours"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-21 00:46:08 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "8787903a1ad5",
+        "Image": "crypto-tuber-ranked-hermes-worker:latest",
+        "Labels": "com.docker.compose.config-hash=b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=channel-agent-worker-1,com.docker.compose.service=channel-agent-worker,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "whop-auto-channel-agent-worker-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "20 hours ago",
+        "Size": "2.47MB (virtual 2.47GB)",
+        "State": "running",
+        "Status": "Up 20 hours"
+      },
+      {
+        "Command": "\"/usr/local/bin/node\u2026\"",
+        "CreatedAt": "2026-06-21 00:39:54 +0100 BST",
+        "HealthStatus": "unhealthy",
+        "ID": "d352f6a7217c",
+        "Image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "Labels": "com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "whop-auto-ytdlp-pot-provider-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "20 hours ago",
+        "Size": "16.4kB (virtual 394MB)",
+        "State": "restarting",
+        "Status": "Restarting (0) 42 seconds ago"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-21 00:09:04 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "70e98d9f9b52",
+        "Image": "b1369860652d",
+        "Labels": "com.docker.compose.config-hash=0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "/opt/callscore\u2026",
+        "Names": "crypto-tuber-ranked-hermes-worker-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "21 hours ago",
+        "Size": "492kB (virtual 2.46GB)",
+        "State": "running",
+        "Status": "Up 21 hours"
+      },
+      {
+        "Command": "\"/usr/local/bin/node\u2026\"",
+        "CreatedAt": "2026-06-21 00:09:04 +0100 BST",
+        "HealthStatus": "healthy",
+        "ID": "362901a5fca0",
+        "Image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "Labels": "com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "21 hours ago",
+        "Size": "16.4kB (virtual 394MB)",
+        "State": "running",
+        "Status": "Up 21 hours (healthy)"
+      },
+      {
+        "Command": "\"uvicorn app:app --h\u2026\"",
+        "CreatedAt": "2026-06-09 06:04:07 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "1635003474d8",
+        "Image": "oauth-mcp-gateway-oauth-mcp-gateway",
+        "Labels": "com.docker.compose.config-hash=3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/srv/agents/oauth-mcp-gateway/docker-compose.yml,com.docker.compose.project.working_dir=/srv/agents/oauth-mcp-gateway,com.docker.compose.project=oauth-mcp-gateway,com.docker.compose.replace=hh-oauth-mcp-gateway,com.docker.compose.service=oauth-mcp-gateway,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "hh-oauth-mcp-gateway",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "12 days ago",
+        "Size": "4.1kB (virtual 223MB)",
+        "State": "running",
+        "Status": "Up 12 days"
+      },
+      {
+        "Command": "\"cloudflared --no-au\u2026\"",
+        "CreatedAt": "2026-05-07 07:57:43 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "996b7342b827",
+        "Image": "cloudflare/cloudflared:latest",
+        "Labels": "CI_BUILD_DATE=2026-03-09 14:24:30.312423,CI_DOCKER_FROM=gcr.io/distroless/base-debian13:nonroot-arm64,CI_DOCKER_VERSION={\"Platform\": {\"Name\": \"Docker Engine - Community\"}, \"Components\": [{\"Name\": \"Engine\", \"Version\": \"28.5.2\", \"Details\": {\"ApiVersion\": \"1.51\", \"Arch\": \"amd64\", \"BuildTime\": \"2025-11-05T14:43:25.000000000+00:00\", \"Experimental\": \"false\", \"GitCommit\": \"89c5e8f\", \"GoVersion\": \"go1.25.3\", \"KernelVersion\": \"6.12.58-cloudflare-2025.11.5\", \"MinAPIVersion\": \"1.24\", \"Os\": \"linux\"}}, {\"Name\": \"containerd\", \"Version\": \"v2.1.5\", \"Details\": {\"GitCommit\": \"fcd43222d6b07379a4be9786bda52438f0dd16a1\"}}, {\"Name\": \"runc\", \"Version\": \"1.3.3\", \"Details\": {\"GitCommit\": \"v1.3.3-0-gd842d771\"}}, {\"Name\": \"docker-init\", \"Version\": \"0.19.0\", \"Details\": {\"GitCommit\": \"de40ad0\"}}], \"Version\": \"28.5.2\", \"ApiVersion\": \"1.51\", \"MinAPIVersion\": \"1.24\", \"GitCommit\": \"89c5e8f\", \"GoVersion\": \"go1.25.3\", \"Os\": \"linux\", \"Arch\": \"amd64\", \"KernelVersion\": \"6.12.58-cloudflare-2025.11.5\", \"BuildTime\": \"2025-11-05T14:43:25.000000000+00:00\"},CI_GIT_COMMIT=d2a87e9b93456ad7f82417400f4209d513668487,CI_GIT_REMOTE=https://gitlab.cfdata.org/cloudflare/tun/cloudflared.git,CI_TEAMCITY_BUILDCONF=,CI_TEAMCITY_BUILD_NUMBER=,IMAGE_TYPE=distroless,org.opencontainers.image.source=https://github.com/cloudflare/cloudflared",
+        "LocalVolumes": "0",
+        "Mounts": "/home/omar/.cl\u2026",
+        "Names": "hermes-whop-automation-tunnel",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "6 weeks ago",
+        "Size": "12.3kB (virtual 76.5MB)",
+        "State": "running",
+        "Status": "Up 2 weeks"
+      }
+    ]
+  },
+  "docker_ps_a": {
+    "raw": {
+      "args": [
+        "docker",
+        "ps",
+        "-a",
+        "--format",
+        "{{json .}}"
+      ],
+      "rc": 0,
+      "stdout": "{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"da4d0e928c00\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=hermes-worker-1,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"whop-auto-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"561kB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 20 hours\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:46:08 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"8787903a1ad5\",\"Image\":\"crypto-tuber-ranked-hermes-worker:latest\",\"Labels\":\"com.docker.compose.config-hash=b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=channel-agent-worker-1,com.docker.compose.service=channel-agent-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-channel-agent-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"2.47MB (virtual 2.47GB)\",\"State\":\"running\",\"Status\":\"Up 20 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:39:54 +0100 BST\",\"HealthStatus\":\"unhealthy\",\"ID\":\"d352f6a7217c\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"whop-auto-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"20 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"restarting\",\"Status\":\"Restarting (0) 42 seconds ago\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"70e98d9f9b52\",\"Image\":\"b1369860652d\",\"Labels\":\"com.docker.compose.config-hash=0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"/opt/callscore\u2026\",\"Names\":\"crypto-tuber-ranked-hermes-worker-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"21 hours ago\",\"Size\":\"492kB (virtual 2.46GB)\",\"State\":\"running\",\"Status\":\"Up 21 hours\"}\n{\"Command\":\"\\\"/usr/local/bin/node\u2026\\\"\",\"CreatedAt\":\"2026-06-21 00:09:04 +0100 BST\",\"HealthStatus\":\"healthy\",\"ID\":\"362901a5fca0\",\"Image\":\"brainicism/bgutil-ytdlp-pot-provider:1.3.1-node\",\"Labels\":\"com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"crypto-tuber-ranked-ytdlp-pot-provider-1\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"21 hours ago\",\"Size\":\"16.4kB (virtual 394MB)\",\"State\":\"running\",\"Status\":\"Up 21 hours (healthy)\"}\n{\"Command\":\"\\\"uvicorn app:app --h\u2026\\\"\",\"CreatedAt\":\"2026-06-09 06:04:07 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"1635003474d8\",\"Image\":\"oauth-mcp-gateway-oauth-mcp-gateway\",\"Labels\":\"com.docker.compose.config-hash=3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/srv/agents/oauth-mcp-gateway/docker-compose.yml,com.docker.compose.project.working_dir=/srv/agents/oauth-mcp-gateway,com.docker.compose.project=oauth-mcp-gateway,com.docker.compose.replace=hh-oauth-mcp-gateway,com.docker.compose.service=oauth-mcp-gateway,com.docker.compose.version=5.1.4\",\"LocalVolumes\":\"0\",\"Mounts\":\"\",\"Names\":\"hh-oauth-mcp-gateway\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"12 days ago\",\"Size\":\"4.1kB (virtual 223MB)\",\"State\":\"running\",\"Status\":\"Up 12 days\"}\n{\"Command\":\"\\\"docker-entrypoint.s\u2026\\\"\",\"CreatedAt\":\"2026-06-03 10:01:13 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"b518c0e35938\",\"Image\":\"79476f33a1dc\",\"Labels\":\"com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.3\",\"LocalVolumes\":\"0\",\"Mounts\":\"/srv/whop-auto\u2026\",\"Names\":\"crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"2 weeks ago\",\"Size\":\"262kB (virtual 1.01GB)\",\"State\":\"exited\",\"Status\":\"Exited (0) 2 weeks ago\"}\n{\"Command\":\"\\\"cloudflared --no-au\u2026\\\"\",\"CreatedAt\":\"2026-05-07 07:57:43 +0100 BST\",\"HealthStatus\":\"none\",\"ID\":\"996b7342b827\",\"Image\":\"cloudflare/cloudflared:latest\",\"Labels\":\"CI_BUILD_DATE=2026-03-09 14:24:30.312423,CI_DOCKER_FROM=gcr.io/distroless/base-debian13:nonroot-arm64,CI_DOCKER_VERSION={\\\"Platform\\\": {\\\"Name\\\": \\\"Docker Engine - Community\\\"}, \\\"Components\\\": [{\\\"Name\\\": \\\"Engine\\\", \\\"Version\\\": \\\"28.5.2\\\", \\\"Details\\\": {\\\"ApiVersion\\\": \\\"1.51\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\", \\\"Experimental\\\": \\\"false\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"Os\\\": \\\"linux\\\"}}, {\\\"Name\\\": \\\"containerd\\\", \\\"Version\\\": \\\"v2.1.5\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"fcd43222d6b07379a4be9786bda52438f0dd16a1\\\"}}, {\\\"Name\\\": \\\"runc\\\", \\\"Version\\\": \\\"1.3.3\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"v1.3.3-0-gd842d771\\\"}}, {\\\"Name\\\": \\\"docker-init\\\", \\\"Version\\\": \\\"0.19.0\\\", \\\"Details\\\": {\\\"GitCommit\\\": \\\"de40ad0\\\"}}], \\\"Version\\\": \\\"28.5.2\\\", \\\"ApiVersion\\\": \\\"1.51\\\", \\\"MinAPIVersion\\\": \\\"1.24\\\", \\\"GitCommit\\\": \\\"89c5e8f\\\", \\\"GoVersion\\\": \\\"go1.25.3\\\", \\\"Os\\\": \\\"linux\\\", \\\"Arch\\\": \\\"amd64\\\", \\\"KernelVersion\\\": \\\"6.12.58-cloudflare-2025.11.5\\\", \\\"BuildTime\\\": \\\"2025-11-05T14:43:25.000000000+00:00\\\"},CI_GIT_COMMIT=d2a87e9b93456ad7f82417400f4209d513668487,CI_GIT_REMOTE=https://gitlab.cfdata.org/cloudflare/tun/cloudflared.git,CI_TEAMCITY_BUILDCONF=,CI_TEAMCITY_BUILD_NUMBER=,IMAGE_TYPE=distroless,org.opencontainers.image.source=https://github.com/cloudflare/cloudflared\",\"LocalVolumes\":\"0\",\"Mounts\":\"/home/omar/.cl\u2026\",\"Names\":\"hermes-whop-automation-tunnel\",\"Networks\":\"host\",\"Platform\":{\"architecture\":\"arm64\",\"os\":\"linux\"},\"Ports\":\"\",\"RunningFor\":\"6 weeks ago\",\"Size\":\"12.3kB (virtual 76.5MB)\",\"State\":\"running\",\"Status\":\"Up 2 weeks\"}\n",
+      "stderr": ""
+    },
+    "containers": [
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-21 00:46:08 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "da4d0e928c00",
+        "Image": "crypto-tuber-ranked-hermes-worker:latest",
+        "Labels": "com.docker.compose.config-hash=9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=hermes-worker-1,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "/opt/callscore\u2026",
+        "Names": "whop-auto-hermes-worker-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "20 hours ago",
+        "Size": "561kB (virtual 2.47GB)",
+        "State": "running",
+        "Status": "Up 20 hours"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-21 00:46:08 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "8787903a1ad5",
+        "Image": "crypto-tuber-ranked-hermes-worker:latest",
+        "Labels": "com.docker.compose.config-hash=b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.replace=channel-agent-worker-1,com.docker.compose.service=channel-agent-worker,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "whop-auto-channel-agent-worker-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "20 hours ago",
+        "Size": "2.47MB (virtual 2.47GB)",
+        "State": "running",
+        "Status": "Up 20 hours"
+      },
+      {
+        "Command": "\"/usr/local/bin/node\u2026\"",
+        "CreatedAt": "2026-06-21 00:39:54 +0100 BST",
+        "HealthStatus": "unhealthy",
+        "ID": "d352f6a7217c",
+        "Image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "Labels": "com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=whop-auto,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "whop-auto-ytdlp-pot-provider-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "20 hours ago",
+        "Size": "16.4kB (virtual 394MB)",
+        "State": "restarting",
+        "Status": "Restarting (0) 42 seconds ago"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-21 00:09:04 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "70e98d9f9b52",
+        "Image": "b1369860652d",
+        "Labels": "com.docker.compose.config-hash=0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e,com.docker.compose.container-number=1,com.docker.compose.depends_on=ytdlp-pot-provider:service_started:false,com.docker.compose.image=sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "/opt/callscore\u2026",
+        "Names": "crypto-tuber-ranked-hermes-worker-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "21 hours ago",
+        "Size": "492kB (virtual 2.46GB)",
+        "State": "running",
+        "Status": "Up 21 hours"
+      },
+      {
+        "Command": "\"/usr/local/bin/node\u2026\"",
+        "CreatedAt": "2026-06-21 00:09:04 +0100 BST",
+        "HealthStatus": "healthy",
+        "ID": "362901a5fca0",
+        "Image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "Labels": "com.docker.compose.config-hash=9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/opt/crypto-tuber-ranked/docker-compose.yml,com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked,com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=ytdlp-pot-provider,com.docker.compose.version=5.1.4,org.opencontainers.image.created=2026-03-07T00:28:43.298Z,org.opencontainers.image.description=Proof-of-origin token provider plugin for yt-dlp,org.opencontainers.image.licenses=GPL-3.0,org.opencontainers.image.revision=7608dd51ee813b48cf9a6d68c6e42cb197ce10e0,org.opencontainers.image.source=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.title=bgutil-ytdlp-pot-provider,org.opencontainers.image.url=https://github.com/Brainicism/bgutil-ytdlp-pot-provider,org.opencontainers.image.version=master-node",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "21 hours ago",
+        "Size": "16.4kB (virtual 394MB)",
+        "State": "running",
+        "Status": "Up 21 hours (healthy)"
+      },
+      {
+        "Command": "\"uvicorn app:app --h\u2026\"",
+        "CreatedAt": "2026-06-09 06:04:07 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "1635003474d8",
+        "Image": "oauth-mcp-gateway-oauth-mcp-gateway",
+        "Labels": "com.docker.compose.config-hash=3f14236648db406c1796b97a07c496f42dff5bafdebe4544beaf8054fc5f9685,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.image=sha256:f0de3878ede1dedf5a9eedff781e4b68dcea6d3a7f17426bf02a19b49f9811b7,com.docker.compose.oneoff=False,com.docker.compose.project.config_files=/srv/agents/oauth-mcp-gateway/docker-compose.yml,com.docker.compose.project.working_dir=/srv/agents/oauth-mcp-gateway,com.docker.compose.project=oauth-mcp-gateway,com.docker.compose.replace=hh-oauth-mcp-gateway,com.docker.compose.service=oauth-mcp-gateway,com.docker.compose.version=5.1.4",
+        "LocalVolumes": "0",
+        "Mounts": "",
+        "Names": "hh-oauth-mcp-gateway",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "12 days ago",
+        "Size": "4.1kB (virtual 223MB)",
+        "State": "running",
+        "Status": "Up 12 days"
+      },
+      {
+        "Command": "\"docker-entrypoint.s\u2026\"",
+        "CreatedAt": "2026-06-03 10:01:13 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "b518c0e35938",
+        "Image": "79476f33a1dc",
+        "Labels": "com.docker.compose.project=crypto-tuber-ranked,com.docker.compose.service=hermes-worker,com.docker.compose.version=5.1.3",
+        "LocalVolumes": "0",
+        "Mounts": "/srv/whop-auto\u2026",
+        "Names": "crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "2 weeks ago",
+        "Size": "262kB (virtual 1.01GB)",
+        "State": "exited",
+        "Status": "Exited (0) 2 weeks ago"
+      },
+      {
+        "Command": "\"cloudflared --no-au\u2026\"",
+        "CreatedAt": "2026-05-07 07:57:43 +0100 BST",
+        "HealthStatus": "none",
+        "ID": "996b7342b827",
+        "Image": "cloudflare/cloudflared:latest",
+        "Labels": "CI_BUILD_DATE=2026-03-09 14:24:30.312423,CI_DOCKER_FROM=gcr.io/distroless/base-debian13:nonroot-arm64,CI_DOCKER_VERSION={\"Platform\": {\"Name\": \"Docker Engine - Community\"}, \"Components\": [{\"Name\": \"Engine\", \"Version\": \"28.5.2\", \"Details\": {\"ApiVersion\": \"1.51\", \"Arch\": \"amd64\", \"BuildTime\": \"2025-11-05T14:43:25.000000000+00:00\", \"Experimental\": \"false\", \"GitCommit\": \"89c5e8f\", \"GoVersion\": \"go1.25.3\", \"KernelVersion\": \"6.12.58-cloudflare-2025.11.5\", \"MinAPIVersion\": \"1.24\", \"Os\": \"linux\"}}, {\"Name\": \"containerd\", \"Version\": \"v2.1.5\", \"Details\": {\"GitCommit\": \"fcd43222d6b07379a4be9786bda52438f0dd16a1\"}}, {\"Name\": \"runc\", \"Version\": \"1.3.3\", \"Details\": {\"GitCommit\": \"v1.3.3-0-gd842d771\"}}, {\"Name\": \"docker-init\", \"Version\": \"0.19.0\", \"Details\": {\"GitCommit\": \"de40ad0\"}}], \"Version\": \"28.5.2\", \"ApiVersion\": \"1.51\", \"MinAPIVersion\": \"1.24\", \"GitCommit\": \"89c5e8f\", \"GoVersion\": \"go1.25.3\", \"Os\": \"linux\", \"Arch\": \"amd64\", \"KernelVersion\": \"6.12.58-cloudflare-2025.11.5\", \"BuildTime\": \"2025-11-05T14:43:25.000000000+00:00\"},CI_GIT_COMMIT=d2a87e9b93456ad7f82417400f4209d513668487,CI_GIT_REMOTE=https://gitlab.cfdata.org/cloudflare/tun/cloudflared.git,CI_TEAMCITY_BUILDCONF=,CI_TEAMCITY_BUILD_NUMBER=,IMAGE_TYPE=distroless,org.opencontainers.image.source=https://github.com/cloudflare/cloudflared",
+        "LocalVolumes": "0",
+        "Mounts": "/home/omar/.cl\u2026",
+        "Names": "hermes-whop-automation-tunnel",
+        "Networks": "host",
+        "Platform": {
+          "architecture": "arm64",
+          "os": "linux"
+        },
+        "Ports": "",
+        "RunningFor": "6 weeks ago",
+        "Size": "12.3kB (virtual 76.5MB)",
+        "State": "running",
+        "Status": "Up 2 weeks"
+      }
+    ]
+  },
+  "docker_inspect_targeted": {
+    "rc": 0,
+    "stderr": "",
+    "containers": {
+      "whop-auto-ytdlp-pot-provider-1": {
+        "name": "whop-auto-ytdlp-pot-provider-1",
+        "id": "d352f6a7217c",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "created": "2026-06-20T23:39:54.333833109Z",
+        "state": "restarting",
+        "running": true,
+        "paused": false,
+        "restarting": true,
+        "oom_killed": false,
+        "dead": false,
+        "pid": 0,
+        "exit_code": 0,
+        "error": "",
+        "started_at": "2026-06-21T19:55:23.100384912Z",
+        "finished_at": "2026-06-21T19:55:24.895439253Z",
+        "health": "unhealthy",
+        "restart_count": 1191,
+        "restart_policy": {
+          "Name": "unless-stopped",
+          "MaximumRetryCount": 0
+        },
+        "port_bindings": {},
+        "network_mode": "host",
+        "links": null,
+        "depends_on_not_in_inspect": "compose dependencies not represented in container inspect; compose labels and network checked instead",
+        "exposed_ports": {
+          "4416/tcp": {}
+        },
+        "ports": {},
+        "mounts": [],
+        "compose_labels": {
+          "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "",
+          "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "whop-auto",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.service": "ytdlp-pot-provider",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "labels_subset": {
+          "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "",
+          "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "whop-auto",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.service": "ytdlp-pot-provider",
+          "com.docker.compose.version": "5.1.4",
+          "org.opencontainers.image.source": "https://github.com/Brainicism/bgutil-ytdlp-pot-provider"
+        },
+        "env_omitted": true
+      },
+      "crypto-tuber-ranked-ytdlp-pot-provider-1": {
+        "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "id": "362901a5fca0",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "created": "2026-06-20T23:09:04.900108998Z",
+        "state": "running",
+        "running": true,
+        "paused": false,
+        "restarting": false,
+        "oom_killed": false,
+        "dead": false,
+        "pid": 3680205,
+        "exit_code": 0,
+        "error": "",
+        "started_at": "2026-06-20T23:09:05.070436567Z",
+        "finished_at": "0001-01-01T00:00:00Z",
+        "health": "healthy",
+        "restart_count": 0,
+        "restart_policy": {
+          "Name": "unless-stopped",
+          "MaximumRetryCount": 0
+        },
+        "port_bindings": {},
+        "network_mode": "host",
+        "links": null,
+        "depends_on_not_in_inspect": "compose dependencies not represented in container inspect; compose labels and network checked instead",
+        "exposed_ports": {
+          "4416/tcp": {}
+        },
+        "ports": {},
+        "mounts": [],
+        "compose_labels": {
+          "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "",
+          "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "crypto-tuber-ranked",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.service": "ytdlp-pot-provider",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "labels_subset": {
+          "com.docker.compose.config-hash": "9a9ec6e0e887db19e70770e296537de6fbc9ecad6d5b9cd9c40a74f03cebfb2f",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "",
+          "com.docker.compose.image": "sha256:1aaa43a0ca72dfca6a6d2129a0fb4a23465c25adb1b043f8aff829a20825646b",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "crypto-tuber-ranked",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.service": "ytdlp-pot-provider",
+          "com.docker.compose.version": "5.1.4",
+          "org.opencontainers.image.source": "https://github.com/Brainicism/bgutil-ytdlp-pot-provider"
+        },
+        "env_omitted": true
+      },
+      "whop-auto-hermes-worker-1": {
+        "name": "whop-auto-hermes-worker-1",
+        "id": "da4d0e928c00",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "created": "2026-06-20T23:46:08.955924044Z",
+        "state": "running",
+        "running": true,
+        "paused": false,
+        "restarting": false,
+        "oom_killed": false,
+        "dead": false,
+        "pid": 3712736,
+        "exit_code": 0,
+        "error": "",
+        "started_at": "2026-06-20T23:46:09.830140032Z",
+        "finished_at": "0001-01-01T00:00:00Z",
+        "health": null,
+        "restart_count": 0,
+        "restart_policy": {
+          "Name": "unless-stopped",
+          "MaximumRetryCount": 0
+        },
+        "port_bindings": {},
+        "network_mode": "host",
+        "links": null,
+        "depends_on_not_in_inspect": "compose dependencies not represented in container inspect; compose labels and network checked instead",
+        "exposed_ports": null,
+        "ports": {},
+        "mounts": [
+          {
+            "type": "bind",
+            "source": "/opt/callscore/secrets/youtube-cookies.txt",
+            "destination": "/run/secrets/youtube-cookies.txt",
+            "rw": false
+          }
+        ],
+        "compose_labels": {
+          "com.docker.compose.config-hash": "9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+          "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "whop-auto",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.replace": "hermes-worker-1",
+          "com.docker.compose.service": "hermes-worker",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "labels_subset": {
+          "com.docker.compose.config-hash": "9a248c9fcebb07c3bc6e7aa5e3d263e99b7e0623f6e6c8b3e4ba45ce26a6b5bf",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+          "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "whop-auto",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.replace": "hermes-worker-1",
+          "com.docker.compose.service": "hermes-worker",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "env_omitted": true
+      },
+      "whop-auto-channel-agent-worker-1": {
+        "name": "whop-auto-channel-agent-worker-1",
+        "id": "8787903a1ad5",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "created": "2026-06-20T23:46:08.917395863Z",
+        "state": "running",
+        "running": true,
+        "paused": false,
+        "restarting": false,
+        "oom_killed": false,
+        "dead": false,
+        "pid": 3712729,
+        "exit_code": 0,
+        "error": "",
+        "started_at": "2026-06-20T23:46:09.831271962Z",
+        "finished_at": "0001-01-01T00:00:00Z",
+        "health": null,
+        "restart_count": 0,
+        "restart_policy": {
+          "Name": "unless-stopped",
+          "MaximumRetryCount": 0
+        },
+        "port_bindings": {},
+        "network_mode": "host",
+        "links": null,
+        "depends_on_not_in_inspect": "compose dependencies not represented in container inspect; compose labels and network checked instead",
+        "exposed_ports": null,
+        "ports": {},
+        "mounts": [],
+        "compose_labels": {
+          "com.docker.compose.config-hash": "b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+          "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "whop-auto",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.replace": "channel-agent-worker-1",
+          "com.docker.compose.service": "channel-agent-worker",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "labels_subset": {
+          "com.docker.compose.config-hash": "b18e10644aae1c143dc9e2f5f513879a7916ebe5803f38acd76e087ae8598c08",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+          "com.docker.compose.image": "sha256:c3bce08d035699f954c30c2f998f1987d866aa2cc3de0f7cd52457ca71435f11",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "whop-auto",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.replace": "channel-agent-worker-1",
+          "com.docker.compose.service": "channel-agent-worker",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "env_omitted": true
+      },
+      "crypto-tuber-ranked-hermes-worker-1": {
+        "name": "crypto-tuber-ranked-hermes-worker-1",
+        "id": "70e98d9f9b52",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "created": "2026-06-20T23:09:04.985754107Z",
+        "state": "running",
+        "running": true,
+        "paused": false,
+        "restarting": false,
+        "oom_killed": false,
+        "dead": false,
+        "pid": 3680257,
+        "exit_code": 0,
+        "error": "",
+        "started_at": "2026-06-20T23:09:05.20114701Z",
+        "finished_at": "0001-01-01T00:00:00Z",
+        "health": null,
+        "restart_count": 0,
+        "restart_policy": {
+          "Name": "unless-stopped",
+          "MaximumRetryCount": 0
+        },
+        "port_bindings": {},
+        "network_mode": "host",
+        "links": null,
+        "depends_on_not_in_inspect": "compose dependencies not represented in container inspect; compose labels and network checked instead",
+        "exposed_ports": null,
+        "ports": {},
+        "mounts": [
+          {
+            "type": "bind",
+            "source": "/opt/callscore/secrets/youtube-cookies.txt",
+            "destination": "/run/secrets/youtube-cookies.txt",
+            "rw": false
+          }
+        ],
+        "compose_labels": {
+          "com.docker.compose.config-hash": "0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+          "com.docker.compose.image": "sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "crypto-tuber-ranked",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.service": "hermes-worker",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "labels_subset": {
+          "com.docker.compose.config-hash": "0785c49fbcdd663178eff6544103e2c138794a98a77968a1281635134c3a9b4e",
+          "com.docker.compose.container-number": "1",
+          "com.docker.compose.depends_on": "ytdlp-pot-provider:service_started:false",
+          "com.docker.compose.image": "sha256:b1369860652daec8cfc071b0ad8274bbdea4d2aafb586013690206e1356252f3",
+          "com.docker.compose.oneoff": "False",
+          "com.docker.compose.project": "crypto-tuber-ranked",
+          "com.docker.compose.project.config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "com.docker.compose.project.working_dir": "/opt/crypto-tuber-ranked",
+          "com.docker.compose.service": "hermes-worker",
+          "com.docker.compose.version": "5.1.4"
+        },
+        "env_omitted": true
+      }
+    }
+  },
+  "port_4416": {
+    "ss_ltnp": {
+      "cmd": "ss -ltnp 'sport = :4416' || true",
+      "rc": 0,
+      "stdout": "State  Recv-Q Send-Q Local Address:Port Peer Address:PortProcess\nLISTEN 0      511                *:4416            *:*          \n",
+      "stderr": ""
+    },
+    "docker_port_healthy": {
+      "args": [
+        "docker",
+        "port",
+        "crypto-tuber-ranked-ytdlp-pot-provider-1"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    "docker_port_broken": {
+      "args": [
+        "docker",
+        "port",
+        "whop-auto-ytdlp-pot-provider-1"
+      ],
+      "rc": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "ping_4416": {
+    "cmd": "curl -fsS --max-time 3 -w '\\nHTTP_STATUS:%{http_code}\\n' http://127.0.0.1:4416/ping",
+    "rc": 0,
+    "stdout_snippet": "{\"server_uptime\":74822.077295624,\"version\":\"1.3.1\"}\nHTTP_STATUS:200\n",
+    "stderr": "",
+    "safe": true
+  },
+  "protected_path_checks": {
+    "/opt/crypto-tuber-ranked": {
+      "path": "/opt/crypto-tuber-ranked",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-21T10:27:40Z"
+    },
+    "/opt/crypto-tuber-ranked/.tmp": {
+      "path": "/opt/crypto-tuber-ranked/.tmp",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 12288,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-21T18:10:32Z"
+    },
+    "/opt/crypto-tuber-ranked/.next": {
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-21T14:33:47Z"
+    },
+    "/opt/crypto-tuber-ranked/.netlify": {
+      "path": "/opt/crypto-tuber-ranked/.netlify",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-13T08:08:46Z"
+    },
+    "/opt/crypto-tuber-ranked/node_modules": {
+      "path": "/opt/crypto-tuber-ranked/node_modules",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 20480,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-11T05:32:05Z"
+    },
+    "/opt/crypto-tuber-ranked/docker-compose.yml": {
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 4382,
+      "mode": "0o664",
+      "mtime_utc": "2026-06-20T23:37:30Z"
+    },
+    "/opt/callscore": {
+      "path": "/opt/callscore",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o755",
+      "mtime_utc": "2026-06-12T04:47:41Z"
+    },
+    "/opt/callscore/secrets": {
+      "path": "/opt/callscore/secrets",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o755",
+      "mtime_utc": "2026-06-12T04:18:19Z"
+    },
+    "/opt/callscore/secrets/youtube-cookies.txt": {
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "size_bytes": 22892,
+      "mode": "0o600",
+      "mtime_utc": "2026-06-21T03:21:02Z"
+    },
+    "/srv/agents/repos/callscore-workplane": {
+      "path": "/srv/agents/repos/callscore-workplane",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o755",
+      "mtime_utc": "2026-06-18T09:07:27Z"
+    },
+    "/srv/agents/repos/callscore-workplane/apps/callscore-web": {
+      "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o700",
+      "mtime_utc": "2026-06-18T06:38:36Z"
+    },
+    "/srv/agents/repos/crypto-tuber-ranked": {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o775",
+      "mtime_utc": "2026-05-17T07:20:24Z"
+    },
+    "/srv/agents/repos/Claude_Code_Automations": {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o777",
+      "mtime_utc": "2026-06-07T21:39:39Z"
+    },
+    "/srv/agents/database-migration": {
+      "path": "/srv/agents/database-migration",
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "size_bytes": 4096,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-03T16:24:42Z"
+    }
+  }
+}

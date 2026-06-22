@@ -1,0 +1,144 @@
+--- active/src/app/call/[id]/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/call/[id]/page.tsx
+@@ -1,15 +1,13 @@
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import Link from "next/link";
+ import { notFound } from "next/navigation";
+-import CallDetailUpgradeCta from "@/components/commercial/CallDetailUpgradeCta";
+ import ScoreBreakdown from "@/components/ScoreBreakdown";
+ import { EditorialSection, MetaStrip } from "@/components/primitives";
+-import { getCurrentTier } from "@/lib/auth";
+ import { query } from "@/lib/db";
+ import { getLiveCallPriceJoinSql, getLiveCallPriceSelectSql } from "@/lib/live-call-pricing";
+ import { SYMBOL_TICKERS } from "@/lib/constants";
+ import { serializeCall } from "@/lib/public-serializer";
+-import { hasAccess } from "@/lib/whop";
+ import type { Call, Creator } from "@/lib/types";
+ 
+ interface PageProps {
+@@ -54,7 +52,7 @@
+     return {
+       title: `${ticker} ${direction} Call — CryptoTubers Ranked`,
+       description: `Detailed breakdown of this ${ticker} ${call.direction} call: ${scoreText}, direction ${call.correct_direction ? "correct" : "wrong"}, with full alpha and regime analysis.`,
+-      alternates: { canonical: `/call/${id}` },
++      alternates: { canonical: `${SITE_URL}/call/${id}` },
+     };
+   } catch {
+     return { title: "Call Not Found | CryptoTubers Ranked" };
+@@ -115,12 +113,10 @@
+     // Videos table may not be present in some environments
+   }
+ 
+-  const currentTier = await getCurrentTier();
+-  const serializedCall = serializeCall(call, { userTier: currentTier });
++  const serializedCall = serializeCall(call);
+   const creatorName = creator?.name ?? "Unknown Creator";
+   const creatorHandle = creator?.youtube_handle ?? "unknown";
+   const ticker = SYMBOL_TICKERS[serializedCall.symbol] ?? serializedCall.symbol.replace("USDT", "");
+-  const displayTargetPrice = serializedCall.validated_target_price;
+ 
+   const directionLabel = DIRECTION_LABEL[serializedCall.direction];
+ 
+@@ -140,7 +136,7 @@
+             : "flat";
+ 
+   const targetHitLabel: string =
+-    displayTargetPrice === null
++    serializedCall.target_price === null
+       ? "—"
+       : serializedCall.target_status !== "available"
+         ? "pending"
+@@ -155,7 +151,6 @@
+       ? serializedCall.public_score.toFixed(1)
+       : "—";
+   const showLivePerformance = serializedCall.is_live_open && serializedCall.live_return !== null;
+-  const showUpgradeCta = !hasAccess(currentTier, "pro");
+ 
+   const return30dCellValue =
+     serializedCall.return_30d !== null
+@@ -202,10 +197,10 @@
+           {serializedCall.is_live_open
+             ? "Live/open call tracked against the latest Binance candle until the 30-day window closes."
+             : "Scored against Binance candles for the 30-day window following the call date."}
+-          {displayTargetPrice !== null && (
++          {serializedCall.target_price !== null && (
+             <>
+               {" "}Target was{" "}
+-              <em className="italic text-accent">${displayTargetPrice.toFixed(2)}</em>.
++              <em className="italic text-accent">${serializedCall.target_price.toFixed(2)}</em>.
+             </>
+           )}
+         </p>
+@@ -319,15 +314,6 @@
+         )}
+       </EditorialSection>
+ 
+-      <CallDetailUpgradeCta
+-        offerTier="Pro Monthly"
+-        headline="Turn crypto calls into a repeatable edge."
+-        subheadline="Upgrade when you want faster signal review, cleaner creator comparisons, and a stronger daily decision loop."
+-        buttonCopy="Review Pro upgrade"
+-        href="/pricing"
+-        killSwitchActive={showUpgradeCta}
+-      />
+-
+       {/* 03 — source clip
+           Always render the section to preserve index numbering across calls
+           (round2-009). Three states: (a) timestamped clip → embed iframe;
+@@ -365,16 +351,24 @@
+       </EditorialSection>
+ 
+       {/* 04 — recompute log
+-          Canonical source is deterministic extraction provenance. The UI shows
+-          the call's extraction confidence and validation state only; it never
+-          synthesizes score-computed timestamps from request time. */}
++          NOTE: pending real call_audit_log integration. Until then, show ONLY
++          the deterministic extraction confidence (no synthesized timestamps).
++          Do NOT use new Date() to fake "score computed at" timestamps — that
++          would lie about provenance on every render. (round2-006) */}
+       <EditorialSection
+         index="04"
+         title={<>Recompute <em className="italic text-accent">log</em>.</>}
+         meta={<>extraction provenance<br />reproduce with: npm run audit:recompute</>}
+       >
+         {serializedCall.extraction_confidence !== null ? (
+-          <table className="w-full text-left text-[12px] font-mono">
++          <table className="w-full font-mono text-[12px]">
++            <thead>
++              <tr className="border-b border-ink-250">
++                <th className="text-left text-[11px] text-ink-500 tracking-caps uppercase font-normal py-2 w-32">When</th>
++                <th className="text-left text-[11px] text-ink-500 tracking-caps uppercase font-normal py-2 w-24">Stage</th>
++                <th className="text-left text-[11px] text-ink-500 tracking-caps uppercase font-normal py-2 pl-4">Output</th>
++              </tr>
++            </thead>
+             <tbody>
+               <tr className="border-b border-ink-150">
+                 <td className="py-2.5 text-ink-600 tabular-nums">
+@@ -385,17 +379,6 @@
+                   Confidence {(serializedCall.extraction_confidence * 100).toFixed(0)}%
+                 </td>
+               </tr>
+-              <tr className="border-b border-ink-150">
+-                <td className="py-2.5 text-ink-600 tabular-nums">
+-                  {new Date(serializedCall.call_date).toISOString().slice(0, 19).replace("T", " ")}
+-                </td>
+-                <td className="py-2.5 text-accent">validate</td>
+-                <td className="py-2.5 pl-4 text-ink-700">
+-                  {serializedCall.extraction_valid
+-                    ? "No deterministic validation flags"
+-                    : `Flagged: ${serializedCall.extraction_notes.join("; ")}`}
+-                </td>
+-              </tr>
+             </tbody>
+           </table>
+         ) : (
+@@ -403,6 +386,8 @@
+             No recompute history yet. This call was scored once at extraction.
+           </p>
+         )}
++        {/* TODO: when call_audit_log table lands, query it for this call.id and
++            render real rows. Drop the single-row fallback above. */}
+       </EditorialSection>
+     </div>
+   );

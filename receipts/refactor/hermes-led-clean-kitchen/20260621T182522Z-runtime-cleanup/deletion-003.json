@@ -1,0 +1,69 @@
+{
+  "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+  "classification": "DELETE_NOW_CACHE",
+  "reason": "stale node_modules inside non-active legacy/snapshot root /srv/agents/repos/callscore-stale-infra-cleanup",
+  "exists": true,
+  "size_before_bytes": 862059940,
+  "path_info": {
+    "path": "/srv/agents/repos/callscore-stale-infra-cleanup/node_modules",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "is_symlink": false,
+    "size_lstat_bytes": 20480,
+    "mtime_utc": "2026-06-07T10:24:16Z",
+    "mode": "0o775"
+  },
+  "safe_to_delete": true,
+  "block_reasons": [],
+  "active_process_check": [],
+  "docker_mount_check": [],
+  "compose_reference_check": [],
+  "cron_reference_check": [],
+  "systemd_reference_check": [],
+  "all_reference_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/03-space-preflight-no-d-drive.log",
+    "/srv/agents/repos/callscore-workplane/ledgers/run-20260618T063257Z/first-command-packet-wrapper.log",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+  ],
+  "git_status": {
+    "applicable": true,
+    "repo": "/srv/agents/repos/callscore-stale-infra-cleanup",
+    "status": {
+      "exists": true,
+      "is_git": false
+    }
+  },
+  "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+  "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/callscore-stale-infra-cleanup/node_modules\"",
+  "delete_rc": 0,
+  "delete_stdout": "",
+  "delete_stderr": "",
+  "exists_after": false,
+  "deleted": true,
+  "disk_before_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 136148041728,
+    "free_bytes": 24822202368,
+    "used_percent": 84.58,
+    "inode_total": 9732496,
+    "inode_used": 2776686,
+    "inode_free": 6955810,
+    "inode_used_percent": 28.53
+  },
+  "disk_after_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 135149690880,
+    "free_bytes": 25820553216,
+    "used_percent": 83.96,
+    "inode_total": 9732496,
+    "inode_used": 2731017,
+    "inode_free": 7001479,
+    "inode_used_percent": 28.06
+  },
+  "disk_space_recovered_bytes": 998350848,
+  "post_delete_verification": "absent"
+}

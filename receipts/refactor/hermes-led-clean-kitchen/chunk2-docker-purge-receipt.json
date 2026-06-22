@@ -1,0 +1,443 @@
+{
+  "timestamp_utc": "2026-06-22T09:56:27Z",
+  "phase": "authorized_deployment_purge_chunk2_docker_cleanup",
+  "strict_blacklist": "/srv/agents/repos/Claude_Code_Automations",
+  "blacklist_touched": false,
+  "status": "completed_purged",
+  "images_requested": [
+    "callscore-hermes-ytdlp-test:latest",
+    "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+    "postgres:17"
+  ],
+  "events": [
+    {
+      "time": "2026-06-22T09:56:27Z",
+      "event": "verified_zero_active_container_refs_for_requested_images"
+    },
+    {
+      "time": "2026-06-22T09:56:59Z",
+      "event": "docker_builder_prune_completed",
+      "rc": 0
+    }
+  ],
+  "df_before": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 124350500864 30020452352  81% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 124350500864,
+    "free_bytes": 30020452352,
+    "used_percent": 81
+  },
+  "docker_system_df_before": {
+    "args": [
+      "docker",
+      "system",
+      "df",
+      "-v"
+    ],
+    "rc": 0,
+    "stdout": "Images space usage:\n\nREPOSITORY                             TAG                         IMAGE ID       CREATED        SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS\ncrypto-tuber-ranked-hermes-worker      latest                      c3bce08d0356   34 hours ago   3.3GB     135.9MB       3.169GB       2\ncallscore-hermes-ytdlp-test            latest                      a161bae23aac   10 days ago    2.34GB    135.9MB       2.208GB       0\noauth-mcp-gateway-oauth-mcp-gateway    latest                      f0de3878ede1   13 days ago    284MB     139.5MB       145MB         1\ncrypto-tuber-ranked-hermes-worker      rollback-20260526T063747Z   c2cbd357ddd7   4 weeks ago    1.92GB    0B            1.921GB       0\npostgres                               17                          0027bef26712   4 weeks ago    667MB     139.5MB       527.1MB       0\ncloudflare/cloudflared                 latest                      6b599ca3e974   3 months ago   104MB     0B            104.3MB       1\nbrainicism/bgutil-ytdlp-pot-provider   1.3.1-node                  1aaa43a0ca72   3 months ago   505MB     0B            505.4MB       1\n\nContainers space usage:\n\nCONTAINER ID   IMAGE                                             COMMAND                  LOCAL VOLUMES   SIZE      CREATED        STATUS                   NAMES\nda4d0e928c00   crypto-tuber-ranked-hermes-worker:latest          \"docker-entrypoint.s\u2026\"   0               582kB     34 hours ago   Up 34 hours              whop-auto-hermes-worker-1\n8787903a1ad5   crypto-tuber-ranked-hermes-worker:latest          \"docker-entrypoint.s\u2026\"   0               3.88MB    34 hours ago   Up 34 hours              whop-auto-channel-agent-worker-1\n70e98d9f9b52   b1369860652d                                      \"docker-entrypoint.s\u2026\"   0               496kB     35 hours ago   Up 35 hours              crypto-tuber-ranked-hermes-worker-1\n362901a5fca0   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   \"/usr/local/bin/node\u2026\"   0               16.4kB    35 hours ago   Up 35 hours (healthy)    crypto-tuber-ranked-ytdlp-pot-provider-1\n1635003474d8   oauth-mcp-gateway-oauth-mcp-gateway               \"uvicorn app:app --h\u2026\"   0               4.1kB     13 days ago    Up 13 days               hh-oauth-mcp-gateway\nb518c0e35938   79476f33a1dc                                      \"docker-entrypoint.s\u2026\"   0               262kB     2 weeks ago    Exited (0) 2 weeks ago   crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652\n996b7342b827   cloudflare/cloudflared:latest                     \"cloudflared --no-au\u2026\"   0               12.3kB    6 weeks ago    Up 2 weeks               hermes-whop-automation-tunnel\n\nLocal Volumes space usage:\n\nVOLUME NAME                              LINKS     SIZE\nwhopstage20260506164836_whop_state       0         0B\nwhopstage20260506164836_whop_workspace   0         24.81kB\nwhop_auto_whop_state                     0         2B\nwhop_auto_whop_workspace                 0         24.78kB\nwhop_phase3a_state_1e2da21_codex         0         169B\nwhop_task5_state_ae7e790                 0         0B\nwhopstage20260506164050_whop_state       0         0B\nwhopstage20260506164050_whop_workspace   0         0B\n\nBuild cache usage: 18.88GB\n\nCACHE ID       CACHE TYPE     SIZE      CREATED        LAST USED      USAGE     SHARED\nkpvvajhyr1xi   regular        136MB     4 weeks ago    4 weeks ago    1         true\nnbhpkv1wqnwv   regular        72.9kB    4 weeks ago    4 weeks ago    1         true\nz5c3lx2ss3bd   regular        168MB     4 weeks ago    4 weeks ago    1         true\nwel8h1r5aezv   regular        9.03MB    4 weeks ago    4 weeks ago    1         true\n71jcc104hcqs   regular        377kB     4 weeks ago    4 weeks ago    1         false\n96q631qlnhre   regular        20.9kB    4 weeks ago    4 weeks ago    1         true\npohne78tlnnd   regular        12.4kB    4 weeks ago    4 weeks ago    1         false\nwlrnc78vpxup   regular        1.58GB    4 weeks ago    4 weeks ago    1         true\ny4uildoy52cq   regular        8.29kB    4 weeks ago    4 weeks ago    4         true\n7cy3vhozo32m   regular        26.5MB    4 weeks ago    4 weeks ago    1         true\nswcx2g1ml5kn   regular        389kB     4 weeks ago    4 weeks ago    1         true\nhfjwsjnm6ytg   regular        12.4kB    4 weeks ago    3 weeks ago    2         true\nxaxawseup4l5   regular        378kB     3 weeks ago    3 weeks ago    1         false\n6dj3wiqbstam   regular        30.1MB    2 weeks ago    2 weeks ago    1         false\nlkox5gh0puer   regular        6.27MB    2 weeks ago    2 weeks ago    1         false\n5z8btzhdcoej   regular        56.7MB    2 weeks ago    2 weeks ago    1         false\n9972f8srgcbj   regular        16.6kB    2 weeks ago    2 weeks ago    1         false\nixhm91tzy7rd   regular        8.29kB    2 weeks ago    2 weeks ago    1         false\nmwyru4qoyvgo   regular        12.5kB    2 weeks ago    2 weeks ago    1         false\nyw0rnkukuwsl   source.local   8.19kB    2 weeks ago    13 days ago    5         false\n3kzppfm2ocxj   source.local   16.4kB    2 weeks ago    13 days ago    5         false\ncwxc7k0iihlp   regular        82MB      2 weeks ago    13 days ago    5         false\n71hu52azpx3h   source.local   4.1kB     2 weeks ago    13 days ago    5         false\nhxxtjbdoxbgi   regular        355kB     12 days ago    12 days ago    1         false\ns0ggsqiz6wne   regular        27.4MB    11 days ago    11 days ago    1         false\n5sufl7f53i6w   regular        355kB     11 days ago    11 days ago    1         false\n7kp8z6pkf2vh   regular        1.58GB    11 days ago    11 days ago    1         false\nariw26egj0a0   regular        12.4kB    2 weeks ago    11 days ago    3         false\nqz64e53kxthh   regular        72.9kB    10 days ago    10 days ago    1         false\nv9on5pondgkl   regular        201MB     10 days ago    10 days ago    1         false\n85sr2i0e93wf   regular        9.03MB    10 days ago    10 days ago    1         false\nxiju3xv4ebgl   regular        12.4kB    10 days ago    10 days ago    1         false\n123cb1nar3hx   regular        355kB     10 days ago    10 days ago    1         false\njhtgd7xn1c21   regular        242MB     10 days ago    10 days ago    1         false\nqe9nbm6h4v3z   regular        172MB     10 days ago    10 days ago    1         false\nmic5xigswmsh   regular        8.29kB    10 days ago    10 days ago    1         false\ndmweg3pbwghj   regular        1.58GB    10 days ago    10 days ago    2         false\niobl1jtba5lq   regular        242MB     10 days ago    10 days ago    1         false\n3b064m1qhatq   regular        355kB     10 days ago    10 days ago    1         false\nkkyci1fd4d90   regular        1.58GB    10 days ago    10 days ago    1         false\n23d6u1m0przo   regular        242MB     10 days ago    10 days ago    1         false\nw053ma29sh6g   regular        173MB     10 days ago    10 days ago    1         false\nyvmgqmjqek0q   regular        8.29kB    10 days ago    10 days ago    1         false\nvoekxltswaj4   regular        12.4kB    10 days ago    10 days ago    1         false\nyoyfkzb5upeu   regular        20.9kB    10 days ago    10 days ago    3         false\n2a941wne680a   regular        355kB     10 days ago    10 days ago    1         false\ni83uu6zlg610   regular        1.12GB    10 days ago    10 days ago    1         false\nro5m4ij8pn8s   regular        1.58GB    10 days ago    10 days ago    1         false\nleqvbj3oy59w   regular        242MB     10 days ago    10 days ago    1         false\nn1wgqbrjwk4l   regular        8.29kB    10 days ago    10 days ago    1         false\nxtc0l99h32z5   regular        355kB     9 days ago     9 days ago     1         false\nuh8w4ut3l9zj   regular        243MB     9 days ago     9 days ago     1         false\ne8wq236yiob0   regular        12.4kB    10 days ago    9 days ago     2         false\nqoc6e2gfb6q3   regular        1.58GB    9 days ago     9 days ago     1         false\nrshvjiocbps3   regular        136MB     10 days ago    35 hours ago   2         true\nzbxk3uh82hno   regular        72.9kB    35 hours ago   35 hours ago   1         true\notsbgmgft2s2   regular        201MB     35 hours ago   35 hours ago   1         true\n0rizf9d4olii   regular        9.03MB    35 hours ago   35 hours ago   1         true\n6l389ziph7vm   regular        1.12GB    35 hours ago   35 hours ago   1         true\nnsi83y4invag   regular        12.4kB    35 hours ago   35 hours ago   1         true\nj01tsrpk8c4k   regular        355kB     35 hours ago   35 hours ago   1         true\n4x9y1j0akiy0   regular        245MB     35 hours ago   35 hours ago   1         false\n7p5jcz4phg05   regular        20.9kB    35 hours ago   35 hours ago   1         true\nd4nkuwodjzt5   regular        8.29kB    35 hours ago   35 hours ago   1         true\nwanqzj1d72w1   regular        993MB     4 weeks ago    35 hours ago   2         false\noh1954xa11ti   regular        12.3kB    4 weeks ago    35 hours ago   2         false\nojdeawrt0ea6   regular        12.3kB    4 weeks ago    35 hours ago   2         false\n7wk5ysb6dt6i   regular        993MB     3 weeks ago    35 hours ago   3         false\nnsr5bkism7c8   regular        245MB     34 hours ago   34 hours ago   1         false\n5rur5vfowcug   source.local   8.19kB    4 weeks ago    34 hours ago   18        false\nkisf82tqnb4n   regular        245MB     34 hours ago   34 hours ago   1         true\nit90fg7nwfzg   source.local   8.19kB    4 weeks ago    34 hours ago   17        false\nfiymlq8jerz3   regular        1.59GB    35 hours ago   34 hours ago   3         true\nocjos9nge4uc   source.local   166MB     4 weeks ago    34 hours ago   17        false\n",
+    "stderr": ""
+  },
+  "image_inspect_before": [
+    {
+      "ref": "callscore-hermes-ytdlp-test:latest",
+      "exists": true,
+      "id": "sha256:a161bae23aac7311144a755c21a2a819ffcfdbc5d829286bb83d13c0812f420e",
+      "repo_tags": [
+        "callscore-hermes-ytdlp-test:latest"
+      ],
+      "size_bytes": 579347214,
+      "inspect": {
+        "rc": 0
+      }
+    },
+    {
+      "ref": "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+      "exists": true,
+      "id": "sha256:c2cbd357ddd7cc55adc089dd5528abb989e4e60898dfaf4cc66861da665d029c",
+      "repo_tags": [
+        "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z"
+      ],
+      "size_bytes": 464830231,
+      "inspect": {
+        "rc": 0
+      }
+    },
+    {
+      "ref": "postgres:17",
+      "exists": true,
+      "id": "sha256:0027bef26712baaee437a4ea48fdf3d2d2e2bc5f0d81615374408ca320f3c7e3",
+      "repo_tags": [
+        "postgres:17"
+      ],
+      "size_bytes": 159865023,
+      "inspect": {
+        "rc": 0
+      }
+    }
+  ],
+  "active_container_refs_before": [
+    {
+      "ref": "callscore-hermes-ytdlp-test:latest",
+      "active_count": 0,
+      "active_refs": [],
+      "cmd": {
+        "args": [
+          "docker",
+          "ps",
+          "--filter",
+          "ancestor=callscore-hermes-ytdlp-test:latest",
+          "--format",
+          "{{.ID}} {{.Names}} {{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "ref": "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+      "active_count": 0,
+      "active_refs": [],
+      "cmd": {
+        "args": [
+          "docker",
+          "ps",
+          "--filter",
+          "ancestor=crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+          "--format",
+          "{{.ID}} {{.Names}} {{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "ref": "postgres:17",
+      "active_count": 0,
+      "active_refs": [],
+      "cmd": {
+        "args": [
+          "docker",
+          "ps",
+          "--filter",
+          "ancestor=postgres:17",
+          "--format",
+          "{{.ID}} {{.Names}} {{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  ],
+  "all_container_refs_before": [
+    {
+      "ref": "callscore-hermes-ytdlp-test:latest",
+      "all_count": 0,
+      "all_refs": [],
+      "cmd": {
+        "args": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "ancestor=callscore-hermes-ytdlp-test:latest",
+          "--format",
+          "{{.ID}} {{.Names}} {{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "ref": "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+      "all_count": 0,
+      "all_refs": [],
+      "cmd": {
+        "args": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "ancestor=crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+          "--format",
+          "{{.ID}} {{.Names}} {{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "ref": "postgres:17",
+      "all_count": 0,
+      "all_refs": [],
+      "cmd": {
+        "args": [
+          "docker",
+          "ps",
+          "-a",
+          "--filter",
+          "ancestor=postgres:17",
+          "--format",
+          "{{.ID}} {{.Names}} {{.Status}}"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  ],
+  "docker_builder_prune": {
+    "args": [
+      "docker",
+      "builder",
+      "prune",
+      "-a",
+      "-f"
+    ],
+    "rc": 0,
+    "stdout": "ID\t\t\t\t\t\tRECLAIMABLE\tSIZE\t\tLAST ACCESSED\nit90fg7nwfzg9tr09126d5plp*              \ttrue \t\t8.192kB   \t34 hours ago\nyw0rnkukuwsl3p3f2ry4rspzs*              \ttrue \t8.192kB   \t13 days ago\n3kzppfm2ocxjaf6qiutkdb8tf*              \ttrue \t16.38kB   \t13 days ago\ncwxc7k0iihlpb4aw8aqg9y19i               \ttrue \t82.05MB   \t13 days ago\n7cy3vhozo32mzasfyo1x4upnf               \ttrue \t26.47MB   \t4 weeks ago\noh1954xa11ti15oqdiyyikt5d               \ttrue \t12.29kB   \t35 hours ago\nuh8w4ut3l9zjf76qtqyo28mgj               \ttrue \t243.1MB   \t9 days ago\njhtgd7xn1c21w6g1hf8hv2iky               \ttrue \t242MB     \t10 days ago\nleqvbj3oy59wrh9055grlwl53               \ttrue \t242MB     \t10 days ago\n71hu52azpx3hx12udyf427z02*              \ttrue \t4.096kB   \t13 days ago\nwanqzj1d72w1vclnha7b0hvtt               \ttrue \t992.9MB   \t35 hours ago\n4x9y1j0akiy0zbleikmosiauj               \ttrue \t244.6MB   \t35 hours ago\nkisf82tqnb4ngx8gc8s114ulw               \ttrue \t244.7MB   \t34 hours ago\n7wk5ysb6dt6ipj26fh96i0aqc               \ttrue \t993.3MB   \t35 hours ago\n5rur5vfowcugqtymzxvqs2ly6*              \ttrue \t8.192kB   \t34 hours ago\nojdeawrt0ea6fgdr9pd10lkb6               \ttrue \t12.29kB   \t35 hours ago\n23d6u1m0przo9x28u8s6ajz4k               \ttrue \t242MB     \t10 days ago\nnsr5bkism7c88b1ftzj7ntq07               \ttrue \t244.7MB   \t34 hours ago\nhxxtjbdoxbgi5eds4p9yn90b4               \ttrue \t354.8kB   \t12 days ago\nwlrnc78vpxup4c2opkw4ilobb               \ttrue \t1.582GB   \tLess than a second ago\nqoc6e2gfb6q3vmrg8bvpujwym               \ttrue \t1.585GB   \t9 days ago\nkkyci1fd4d901a5hhud6pdezw               \ttrue \t1.583GB   \t10 days ago\niobl1jtba5lq89jzn6rvgs7fc               \ttrue \t242MB     \t10 days ago\nro5m4ij8pn8smnbxz5bcrk7df               \ttrue \t1.583GB   \t10 days ago\nfiymlq8jerz316urczm7ie3jt               \ttrue \t1.592GB   \t34 hours ago\n71jcc104hcqs64laeah5qh9yo               \ttrue \t377.4kB   \tLess than a second ago\nswcx2g1ml5kno9knfpins4is1               \ttrue \t388.7kB   \tLess than a second ago\nocjos9nge4uc7813pe2ozj83y*              \ttrue \t166.3MB   \t34 hours ago\ns0ggsqiz6wne7e8t2ku1swngj               \ttrue \t27.36MB   \t11 days ago\nxaxawseup4l53uwk0t1h9c2mu               \ttrue \t377.5kB   \tLess than a second ago\nhfjwsjnm6ytg8u157zqdqa279               \ttrue \t12.38kB   \tLess than a second ago\nxtc0l99h32z55t7neipwct3bx               \ttrue \t355kB     \t9 days ago\n2a941wne680avbwh35ad18hmj               \ttrue \t354.9kB   \t10 days ago\nj01tsrpk8c4k42acc2io8ot8u               \ttrue \t355.2kB   \t35 hours ago\npohne78tlnndn6d6bp3whk5ym               \ttrue \t12.38kB   \tLess than a second ago\ndmweg3pbwghjmcgjsher88mud               \ttrue \t1.583GB   \t10 days ago\n3b064m1qhatq2b7apay16zbxa               \ttrue \t354.9kB   \t10 days ago\n7kp8z6pkf2vh9rwpd6ca23dh7               \ttrue \t1.58GB    \t11 days ago\nmwyru4qoyvgo3qlt5z5s9z01d               \ttrue \t12.51kB   \t2 weeks ago\n123cb1nar3hx9o1gavmbx0rsb               \ttrue \t354.9kB   \t10 days ago\nvoekxltswaj42cmddl9a85vz3               \ttrue \t12.38kB   \t10 days ago\ne8wq236yiob05hbeqv4ocf6zw               \ttrue \t12.38kB   \t9 days ago\n5sufl7f53i6wfm6gb5a8kpdr0               \ttrue \t354.8kB   \t11 days ago\nnsi83y4invagdr6r1yw5dscqt               \ttrue \t12.38kB   \t35 hours ago\nixhm91tzy7rd0vr9sj8u98wig               \ttrue \t8.285kB   \t2 weeks ago\nyvmgqmjqek0qwn4z5sic9czpq               \ttrue \t8.285kB   \t10 days ago\nxiju3xv4ebglettywxy5b8b4b               \ttrue \t12.38kB   \t10 days ago\nariw26egj0a0016sdyx2mx7wa               \ttrue \t12.38kB   \t11 days ago\n9972f8srgcbjl6ns7pj3f3jkl               \ttrue \t16.63kB   \t2 weeks ago\nd4nkuwodjzt5dqj0ivnpo2h9l               \ttrue \t8.285kB   \t35 hours ago\nn1wgqbrjwk4l4rx2ggk1seq13               \ttrue \t8.285kB   \t10 days ago\ni83uu6zlg6105sz4885dkkcqi               \ttrue \t1.122GB   \t10 days ago\n6l389ziph7vm9cuabx3x3q5uz               \ttrue \t1.122GB   \t35 hours ago\nmic5xigswmshg7muluiti2327               \ttrue \t8.285kB   \t10 days ago\ny4uildoy52cq53z2wwwn8qqa2               \ttrue \t8.285kB   \tLess than a second ago\nw053ma29sh6g9kpzjx4i18zdq               \ttrue \t172.5MB   \t10 days ago\n5z8btzhdcoejjh9cb4woeza2x               \ttrue \t56.66MB   \t2 weeks ago\n96q631qlnhre12lc0027ce88z               \ttrue \t20.93kB   \tLess than a second ago\nqe9nbm6h4v3zb79fekg8rsq1r               \ttrue \t172.4MB   \t10 days ago\nlkox5gh0puer285k2qj35k0x6               \ttrue \t6.267MB   \t2 weeks ago\n7p5jcz4phg05zzdotrf8wjyfw               \ttrue \t20.93kB   \t35 hours ago\n6dj3wiqbstamitk0swrmnzejn               \ttrue \t30.14MB   \t2 weeks ago\nyoyfkzb5upeus7bk2nez3sgcb               \ttrue \t20.93kB   \t10 days ago\nwel8h1r5aezv4euhh44vpgzdw               \ttrue \t9.032MB   \tLess than a second ago\n0rizf9d4oliiwsmofyerl0fc2               \ttrue \t9.032MB   \t35 hours ago\nz5c3lx2ss3bdnwulu22mcycrs               \ttrue \t167.5MB   \tLess than a second ago\n85sr2i0e93wfsjnz9ja7nb0b8               \ttrue \t9.032MB   \t10 days ago\notsbgmgft2s2ilb82gpc500xw               \ttrue \t201.4MB   \t35 hours ago\nv9on5pondgklqr4j4p95yav68               \ttrue \t201.3MB   \t10 days ago\nnbhpkv1wqnwvj3jdvi9ampsfc               \ttrue \t72.94kB   \tLess than a second ago\nzbxk3uh82hnok65jv615n05d2               \ttrue \t72.94kB   \t35 hours ago\nqz64e53kxthhe49ssw5qlmnqp               \ttrue \t72.94kB   \t10 days ago\nkpvvajhyr1xife1lkwgfgs30j               \ttrue \t135.9MB   \tLess than a second ago\nrshvjiocbps3p0zht3qik1c2l               \ttrue \t135.9MB   \t35 hours ago\nTotal:\t18.88GB\n",
+    "stderr": ""
+  },
+  "image_remove_results": [
+    {
+      "image": "callscore-hermes-ytdlp-test:latest",
+      "status": "removed",
+      "before": {
+        "ref": "callscore-hermes-ytdlp-test:latest",
+        "exists": true,
+        "id": "sha256:a161bae23aac7311144a755c21a2a819ffcfdbc5d829286bb83d13c0812f420e",
+        "repo_tags": [
+          "callscore-hermes-ytdlp-test:latest"
+        ],
+        "size_bytes": 579347214,
+        "inspect": {
+          "rc": 0
+        }
+      },
+      "remove_result": {
+        "args": [
+          "docker",
+          "rmi",
+          "callscore-hermes-ytdlp-test:latest"
+        ],
+        "rc": 0,
+        "stdout": "Untagged: callscore-hermes-ytdlp-test:latest\nDeleted: sha256:a161bae23aac7311144a755c21a2a819ffcfdbc5d829286bb83d13c0812f420e\n",
+        "stderr": ""
+      },
+      "after": {
+        "ref": "callscore-hermes-ytdlp-test:latest",
+        "exists": false,
+        "inspect": {
+          "args": [
+            "docker",
+            "image",
+            "inspect",
+            "callscore-hermes-ytdlp-test:latest"
+          ],
+          "rc": 1,
+          "stdout": "[]\n",
+          "stderr": "Error response from daemon: No such image: callscore-hermes-ytdlp-test:latest\n"
+        }
+      }
+    },
+    {
+      "image": "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+      "status": "removed",
+      "before": {
+        "ref": "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+        "exists": true,
+        "id": "sha256:c2cbd357ddd7cc55adc089dd5528abb989e4e60898dfaf4cc66861da665d029c",
+        "repo_tags": [
+          "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z"
+        ],
+        "size_bytes": 464830231,
+        "inspect": {
+          "rc": 0
+        }
+      },
+      "remove_result": {
+        "args": [
+          "docker",
+          "rmi",
+          "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z"
+        ],
+        "rc": 0,
+        "stdout": "Untagged: crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z\nDeleted: sha256:c2cbd357ddd7cc55adc089dd5528abb989e4e60898dfaf4cc66861da665d029c\n",
+        "stderr": ""
+      },
+      "after": {
+        "ref": "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z",
+        "exists": false,
+        "inspect": {
+          "args": [
+            "docker",
+            "image",
+            "inspect",
+            "crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z"
+          ],
+          "rc": 1,
+          "stdout": "[]\n",
+          "stderr": "Error response from daemon: No such image: crypto-tuber-ranked-hermes-worker:rollback-20260526T063747Z\n"
+        }
+      }
+    },
+    {
+      "image": "postgres:17",
+      "status": "removed",
+      "before": {
+        "ref": "postgres:17",
+        "exists": true,
+        "id": "sha256:0027bef26712baaee437a4ea48fdf3d2d2e2bc5f0d81615374408ca320f3c7e3",
+        "repo_tags": [
+          "postgres:17"
+        ],
+        "size_bytes": 159865023,
+        "inspect": {
+          "rc": 0
+        }
+      },
+      "remove_result": {
+        "args": [
+          "docker",
+          "rmi",
+          "postgres:17"
+        ],
+        "rc": 0,
+        "stdout": "Untagged: postgres:17\nDeleted: sha256:0027bef26712baaee437a4ea48fdf3d2d2e2bc5f0d81615374408ca320f3c7e3\n",
+        "stderr": ""
+      },
+      "after": {
+        "ref": "postgres:17",
+        "exists": false,
+        "inspect": {
+          "args": [
+            "docker",
+            "image",
+            "inspect",
+            "postgres:17"
+          ],
+          "rc": 1,
+          "stdout": "[]\n",
+          "stderr": "Error response from daemon: No such image: postgres:17\n"
+        }
+      }
+    }
+  ],
+  "docker_system_df_after": {
+    "args": [
+      "docker",
+      "system",
+      "df",
+      "-v"
+    ],
+    "rc": 0,
+    "stdout": "Images space usage:\n\nREPOSITORY                             TAG          IMAGE ID       CREATED        SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS\ncrypto-tuber-ranked-hermes-worker      latest       c3bce08d0356   34 hours ago   3.3GB     0B            3.305GB       2\noauth-mcp-gateway-oauth-mcp-gateway    latest       f0de3878ede1   13 days ago    284MB     0B            284.5MB       1\ncloudflare/cloudflared                 latest       6b599ca3e974   3 months ago   104MB     0B            104.3MB       1\nbrainicism/bgutil-ytdlp-pot-provider   1.3.1-node   1aaa43a0ca72   3 months ago   505MB     0B            505.4MB       1\n\nContainers space usage:\n\nCONTAINER ID   IMAGE                                             COMMAND                  LOCAL VOLUMES   SIZE      CREATED        STATUS                   NAMES\nda4d0e928c00   crypto-tuber-ranked-hermes-worker:latest          \"docker-entrypoint.s\u2026\"   0               582kB     34 hours ago   Up 34 hours              whop-auto-hermes-worker-1\n8787903a1ad5   crypto-tuber-ranked-hermes-worker:latest          \"docker-entrypoint.s\u2026\"   0               3.88MB    34 hours ago   Up 34 hours              whop-auto-channel-agent-worker-1\n70e98d9f9b52   b1369860652d                                      \"docker-entrypoint.s\u2026\"   0               496kB     35 hours ago   Up 35 hours              crypto-tuber-ranked-hermes-worker-1\n362901a5fca0   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   \"/usr/local/bin/node\u2026\"   0               16.4kB    35 hours ago   Up 35 hours (healthy)    crypto-tuber-ranked-ytdlp-pot-provider-1\n1635003474d8   oauth-mcp-gateway-oauth-mcp-gateway               \"uvicorn app:app --h\u2026\"   0               4.1kB     13 days ago    Up 13 days               hh-oauth-mcp-gateway\nb518c0e35938   79476f33a1dc                                      \"docker-entrypoint.s\u2026\"   0               262kB     2 weeks ago    Exited (0) 2 weeks ago   crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652\n996b7342b827   cloudflare/cloudflared:latest                     \"cloudflared --no-au\u2026\"   0               12.3kB    6 weeks ago    Up 2 weeks               hermes-whop-automation-tunnel\n\nLocal Volumes space usage:\n\nVOLUME NAME                              LINKS     SIZE\nwhop_auto_whop_workspace                 0         24.78kB\nwhop_phase3a_state_1e2da21_codex         0         169B\nwhop_task5_state_ae7e790                 0         0B\nwhopstage20260506164050_whop_state       0         0B\nwhopstage20260506164050_whop_workspace   0         0B\nwhopstage20260506164836_whop_state       0         0B\nwhopstage20260506164836_whop_workspace   0         24.81kB\nwhop_auto_whop_state                     0         2B\n\nBuild cache usage: 0B\n\nCACHE ID   CACHE TYPE   SIZE      CREATED   LAST USED   USAGE     SHARED\n",
+    "stderr": ""
+  },
+  "df_after_cleanup_before_health": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 103846830080 50524123136  68% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 103846830080,
+    "free_bytes": 50524123136,
+    "used_percent": 68
+  },
+  "health_after_cleanup": {
+    "ytdlp_ping": {
+      "status": "ok",
+      "http_status": 200
+    },
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 34 hours\nwhop-auto-channel-agent-worker-1           Up 34 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 35 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 35 hours (healthy)\nhh-oauth-mcp-gateway                       Up 13 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+      "stderr": ""
+    },
+    "ytdlp_inspect_rc": 0,
+    "ytdlp_state": "running",
+    "ytdlp_health": "healthy",
+    "expected_containers_present": {
+      "whop-auto-hermes-worker-1": true,
+      "whop-auto-channel-agent-worker-1": true,
+      "crypto-tuber-ranked-hermes-worker-1": true,
+      "crypto-tuber-ranked-ytdlp-pot-provider-1": true,
+      "hh-oauth-mcp-gateway": true,
+      "hermes-whop-automation-tunnel": true
+    },
+    "pass": true
+  },
+  "df_after": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 103846830080 50524123136  68% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 103846830080,
+    "free_bytes": 50524123136,
+    "used_percent": 68
+  },
+  "space_reclaimed_bytes": 20503670784,
+  "space_reclaimed_human": "19.10 GiB",
+  "chunk3_prepared_targets": [
+    {
+      "path": "/srv/whop-auto/workspace",
+      "du_sh": {
+        "args": [
+          "du",
+          "-sh",
+          "/srv/whop-auto/workspace"
+        ],
+        "rc": 0,
+        "stdout": "7.3G\t/srv/whop-auto/workspace\n",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "du_sh": {
+        "args": [
+          "du",
+          "-sh",
+          "/opt/crypto-tuber-ranked/.tmp/prod-rollout"
+        ],
+        "rc": 0,
+        "stdout": "1.7G\t/opt/crypto-tuber-ranked/.tmp/prod-rollout\n",
+        "stderr": ""
+      }
+    }
+  ],
+  "timestamp_finished_utc": "2026-06-22T09:57:07Z"
+}

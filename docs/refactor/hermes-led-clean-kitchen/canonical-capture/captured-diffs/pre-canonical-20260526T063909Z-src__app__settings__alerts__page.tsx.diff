@@ -1,0 +1,26 @@
+--- active/src/app/settings/alerts/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/settings/alerts/page.tsx
+@@ -8,6 +8,14 @@
+ } from "@/lib/alerts";
+ import { creatorHandlePath } from "@/lib/creator-handles";
+ import { query } from "@/lib/db";
++
++import { SITE_URL } from "@/lib/site";
++
++export const metadata = {
++  title: "Alerts — CallScore",
++  robots: { index: false, follow: false },
++  alternates: { canonical: SITE_URL + "/settings/alerts" },
++};
+ 
+ interface PageProps {
+   readonly searchParams?: Promise<{
+@@ -108,7 +116,7 @@
+         <section className="border border-ink-250 bg-ink-50 p-5">
+           <p className="font-serif text-[19px] text-ink-700">
+             {isGuest
+-              ? "Open this app from your Whop product to access alerts."
++              ? "Alerts require a Pro or Alpha plan."
+               : "Pro unlocks creator watchlists and email alert delivery."}
+           </p>
+           <Link

@@ -1,0 +1,45 @@
+{
+  "timestamp_utc": "2026-06-22T15:32:15Z",
+  "phase": "point_9_canonical_cmo_deployment",
+  "status": "completed",
+  "canonical_cmo_agent": "deployed_and_active",
+  "profile": "callscorecmo",
+  "profile_path": "/srv/agents/hermes/profiles/callscorecmo",
+  "profile_description": "CallScore CMO/channel-growth specialist. Owns X/LinkedIn/Reddit owned-public growth mechanics, originality/cooldown/media gates, and CMO receipts.",
+  "gateway": {
+    "status": "running",
+    "pid": 820326,
+    "launch_method": "tmux session callscorecmo-gateway",
+    "command": "/srv/agents/hermes/hermes-agent/venv/bin/hermes -p callscorecmo gateway run"
+  },
+  "composio_mcp": {
+    "status": "connected_tools_discovered",
+    "profile_test_command": "HERMES_HOME=/srv/agents/hermes hermes -p callscorecmo mcp test composio",
+    "connected_ms": 3093,
+    "tools_discovered": 7,
+    "tools": [
+      "COMPOSIO_MANAGE_CONNECTIONS",
+      "COMPOSIO_MULTI_EXECUTE_TOOL",
+      "COMPOSIO_REMOTE_BASH_TOOL",
+      "COMPOSIO_REMOTE_WORKBENCH",
+      "COMPOSIO_SEARCH_TOOLS",
+      "COMPOSIO_WAIT_FOR_CONNECTIONS",
+      "COMPOSIO_GET_TOOL_SCHEMAS"
+    ]
+  },
+  "runtime_health": {
+    "local_ping": "200 OK",
+    "docker_runtime_containers": "up",
+    "ytdlp_provider": "healthy"
+  },
+  "side_effects": {
+    "public_posting_executed": false,
+    "outreach_executed": false,
+    "spend_executed": false,
+    "provider_mutation_executed": false,
+    "db_mutation_executed": false,
+    "deploy_executed": false
+  },
+  "state_file_updated": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+  "next_phase_allowed": "post_point_9_operational_cmo_canary_or_operator_defined_next_step"
+}

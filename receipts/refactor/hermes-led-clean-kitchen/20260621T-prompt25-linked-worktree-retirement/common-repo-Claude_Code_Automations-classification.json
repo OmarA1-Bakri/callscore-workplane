@@ -1,0 +1,35 @@
+{
+  "path": "/srv/agents/repos/Claude_Code_Automations",
+  "classification": "BLOCKED_COMMON_GIT_RISK",
+  "reason": "common repo explicitly not approved for deletion in Prompt 2.5",
+  "remaining_worktrees": [
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+      "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+    }
+  ],
+  "worktree_prune": {
+    "args": [
+      "git",
+      "-C",
+      "/srv/agents/repos/Claude_Code_Automations",
+      "worktree",
+      "prune"
+    ],
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "active_reference_check": {
+    "path": "/srv/agents/repos/Claude_Code_Automations",
+    "process_refs": [],
+    "docker_refs": [],
+    "systemd_refs": [],
+    "cron_refs": [],
+    "compose_refs": [],
+    "active_ref_files": []
+  },
+  "size_bytes": 1067520068,
+  "exists_after": true
+}

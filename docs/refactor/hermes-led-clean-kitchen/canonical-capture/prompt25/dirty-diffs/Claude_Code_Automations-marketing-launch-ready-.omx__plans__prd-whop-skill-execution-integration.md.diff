@@ -1,0 +1,286 @@
+diff --git a/.omx/plans/prd-whop-skill-execution-integration.md b/.omx/plans/prd-whop-skill-execution-integration.md
+deleted file mode 100644
+index 6cc09a3..0000000
+--- a/.omx/plans/prd-whop-skill-execution-integration.md
++++ /dev/null
+@@ -1,280 +0,0 @@
+-# Whop Skill Execution Integration PRD
+-
+-**Date:** 2026-05-03
+-**Status:** Draft
+-**Owner:** Codex
+-**Scope:** `agent_workflows/whop_auto/`
+-**Phase:** Post-foundation implementation phase after status discovery and audited dispatch primitives
+-
+-## Summary
+-
+-The next development phase is to turn the existing autonomy primitives into executable skill flows for `whop-adopt`, `whop-deploy`, and `whop-reconcile`. The current codebase can classify risk, build durable consent events, append audited dispatch events, sanitize remote state, and read live Whop/Vercel status. It does not yet execute the core skill flows through one shared runner that emits `intent`, `consent`, `dispatched`, `observed`, `divergence`, and `finalized` events around real remote operations.
+-
+-This phase delivers that integration layer. It stops short of `whop-scaffold`, `whop-manage`, and `whop-market`, which are separate feature phases.
+-
+-## Problem
+-
+-`agent_workflows/whop_auto/bin/whop-state-mcp/src/` now contains the necessary primitives, but they are still disconnected:
+-
+-- [executor.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts:170) can validate and audit a single consent-gated dispatch.
+-- [status.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/status.ts:61) can produce live status with meaningful terminal states.
+-- [index.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts:104) exposes low-level tools and read-only status collection.
+-
+-What is missing is the runtime path that uses those pieces to:
+-
+-- derive a concrete action list for adopt/deploy/reconcile,
+-- enforce consent before every gated remote mutation,
+-- emit `observed` and `finalized` events after real tool execution,
+-- reuse or reject prior consent on resume,
+-- stop safely on `ambiguous-target`, `payload-changed`, `blocked-by-policy`, and `unknown-remote-state`.
+-
+-Without that layer, the project has correct building blocks but no end-to-end skill execution.
+-
+-## Goal
+-
+-Build the first executable autonomy runner for the Phase 1 skills:
+-
+-- `whop-adopt`
+-- `whop-deploy`
+-- `whop-reconcile`
+-
+-The runner must use the existing audited executor path and existing transport/tool boundaries, not a parallel control flow.
+-
+-## Non-Goals
+-
+-- No implementation of `whop-scaffold`, `whop-manage`, or `whop-market`.
+-- No new undocumented Whop or Vercel APIs.
+-- No production-side destructive cleanup automation beyond what current policy already permits.
+-- No credential rotation flows.
+-- No LLM planner or critic integration beyond deterministic local runner behavior.
+-- No broad refactor of unrelated workflow folders or vendored code.
+-
+-## Users
+-
+-- Omar invoking Whop automation against a real adopted repo.
+-- Future agents that need one executable control path instead of disconnected helper functions.
+-
+-## Current Baseline
+-
+-Already implemented and verified:
+-
+-- Read-only status discovery with live Whop/Vercel reads and sanitized remote state.
+-- Durable consent event construction and payload-hash reuse checks.
+-- Policy-based risk classification.
+-- Audited dispatch helper that blocks mutation until `consent` and `dispatched` are appended.
+-- Clean Node 20 runtime gate with `npm ci`, `npx tsc --noEmit`, `npm run build`, and `npm test`.
+-
+-Still missing:
+-
+-- Schema support for `divergence` events in the runner-facing event model.
+-- Runner-facing state coverage for the D3 adopt/deploy/reconcile terminal and blocking states.
+-- Action planning for adopt/deploy/reconcile.
+-- Evented mutation orchestration around real tool calls.
+-- Resume-aware `observed` and `finalized` event handling.
+-- Skill-facing entrypoints above the low-level MCP tools.
+-
+-## Functional Requirements
+-
+-### 1. Shared skill runner
+-
+-Create one local execution path that:
+-
+-- takes a resolved target repo,
+-- runs status discovery first,
+-- derives a deterministic action sequence,
+-- validates that every action has `stepId`, `capabilityId`, `toolId`, `riskClass`, `idempotencyKey`, and `requires_consent`,
+-- routes every mutating remote action through the audited executor path,
+-- appends `observed` after successful re-read or response capture,
+-- appends `divergence` when proof cannot be established, payload changed, ownership mismatches, or targets are ambiguous,
+-- appends `finalized` only when the terminal state is actually reached.
+-
+-Every successful `dispatched` step must end in exactly one of:
+-
+-- `observed`
+-- `divergence`
+-- a terminal blocked/unknown outcome that is itself recorded
+-
+-The runner must not leave silent hanging `dispatched` steps.
+-
+-### 2. `whop-deploy` integration
+-
+-`whop-deploy` must:
+-
+-- no-op when current production already matches `HEAD`,
+-- require exact deploy consent for public-visible promotion and iframe update,
+-- use Git push plus Vercel Git-linked deployment observation by SHA as the only deployment mechanism in this phase,
+-- update manifest deploy metadata only after Vercel and Whop agree,
+-- stop on changed SHA, changed app/project/domain target, or unreadable remote state.
+-
+-This phase does not add a new `vercel.deployments.create` wrapper. Deployment creation is inferred from Git push plus Vercel linkage, then proven through `listDeployments` and `waitForDeployment`.
+-
+-### 3. `whop-adopt` integration
+-
+-`whop-adopt` must:
+-
+-- reuse existing status detection,
+-- stop on ambiguous app or project matches,
+-- create or repair missing env/webhook state only through audited mutation steps,
+-- write manifest and registry only after verified ownership,
+-- preserve the existing happy path already covered by integration tests.
+-
+-### 4. `whop-reconcile` integration
+-
+-`whop-reconcile` must:
+-
+-- classify drift into safe local repair, consent-required repair, or blocked,
+-- perform safe manifest/registry repair locally without redundant consent,
+-- stop on ambiguous target selection,
+-- route any public-visible or destructive repair through the audited executor path,
+-- preserve `unknown-remote-state` as a terminal stop, not a silent retry loop.
+-
+-### 5. Event lifecycle completeness
+-
+-For all three skills:
+-
+-- append `intent` before execution begins,
+-- append `consent` before every gated mutation,
+-- append `dispatched` before the actual mutation callback,
+-- append `observed` after the system can prove remote state,
+-- append `divergence` on payload change, ambiguous targets, owner mismatch, or missing observed state,
+-- append `finalized` only on true terminal completion.
+-
+-The event schema for this phase must explicitly support `divergence` with:
+-
+-- `runId`
+-- `skill`
+-- `stepId`
+-- `capabilityId`
+-- `toolId`
+-- `expectedPayloadHash`
+-- `observedPayloadHash`
+-- `observedDigestHash`
+-- `divergenceClass`
+-- `redactedReason`
+-- `terminalState`
+-- `at`
+-
+-`divergence` must remain sanitized. Raw provider errors, raw free text, webhook URLs, and secret values are forbidden.
+-
+-### 6. Resume behavior
+-
+-Resume must:
+-
+-- reuse consent only when payload hash matches,
+-- reject stale consent with `payload-changed`,
+-- re-read remote state before replaying non-idempotent creates,
+-- surface `unknown-remote-state` rather than guessing when remote proof is unavailable.
+-
+-## Required Schema and Policy Alignment
+-
+-Before runner integration begins, the codebase must align the foundational schemas and risk policy with this phase:
+-
+-- Add `divergence` to the runtime event schema.
+-- Expand the runner-facing state enum to cover the D3 states needed by `whop-adopt`, `whop-deploy`, and `whop-reconcile`, including:
+-  - `deploy-status-ready`
+-  - `deploy-noop-current`
+-  - `deploy-consent-required`
+-  - `deploy-blocked`
+-  - `reconcile-complete`
+-  - `ambiguous-target`
+-  - `consent-required`
+-  - `blocked-by-policy`
+-- Fix risk classification so local tools with `LOCAL-*` capability IDs classify as:
+-  - `riskClass: "local-write"`
+-  - `requiresConsent: false`
+-  - `blocked: false`
+-
+-Local manifest, registry, event-log, and codegen operations must not be accidentally gated as remote private updates.
+-
+-## MCP Entry Points
+-
+-This phase must expose strict high-level skill entrypoints rather than only low-level transport tools.
+-
+-Minimum MCP entrypoints:
+-
+-- `whop.deploy`
+-  - `targetRepo: string`
+-  - `branch?: string`
+-  - `productionDomain?: string`
+-  - `runId?: string`
+-- `whop.adopt`
+-  - `targetRepo: string`
+-  - `appIdHint?: string`
+-  - `vercelProjectIdHint?: string`
+-  - `runId?: string`
+-- `whop.reconcile`
+-  - `targetRepo: string`
+-  - `dryRun?: boolean`
+-  - `forceReconcile?: boolean`
+-  - `runId?: string`
+-
+-`index.ts` must stay thin, but the tool schemas must be explicit and validated.
+-
+-## Technical Approach
+-
+-Recommended approach:
+-
+-Build a thin skill runner on top of the existing low-level modules instead of embedding more logic into `index.ts` or duplicating dispatch rules inside each skill.
+-
+-This means:
+-
+-- keep policy in [executor.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts:103),
+-- keep state discovery in [status.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/status.ts:61),
+-- add a new execution module for skill flows,
+-- keep MCP server wiring thin and declarative.
+-
+-Rejected alternative:
+-
+-- Put all skill logic directly into [index.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts:1).
+-
+-Reason:
+-
+-- it would mix transport wiring, orchestration, policy, and persistence in one file and make resume logic harder to test.
+-
+-Rejected alternative:
+-
+-- Implement `whop-scaffold` at the same time as adopt/deploy/reconcile.
+-
+-Reason:
+-
+-- scaffold introduces a larger remote-create surface and a separate launch consent model. It is a different phase.
+-
+-## File Boundaries
+-
+-Expected primary files in this phase:
+-
+-- Modify: [executor.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/executor.ts:1)
+-- Create: `agent_workflows/whop_auto/bin/whop-state-mcp/src/runner.ts`
+-- Create or modify: skill-specific action/plan modules under `agent_workflows/whop_auto/bin/whop-state-mcp/src/`
+-- Modify: [index.ts](/C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/bin/whop-state-mcp/src/index.ts:1)
+-- Modify tests under `agent_workflows/whop_auto/bin/whop-state-mcp/test/`
+-
+-## Success Criteria
+-
+-This phase is complete when:
+-
+-- runtime schemas and risk policy are aligned with the D3/D6 requirements for this phase,
+-- `whop-adopt`, `whop-deploy`, and `whop-reconcile` all have executable runner paths.
+-- Every mutating action goes through the shared audited dispatch helper.
+-- every successful `dispatched` event is followed by `observed` or `divergence`,
+-- `observed`, `divergence`, and `finalized` events are emitted in the correct order,
+-- Resume and stale-consent scenarios are covered by tests.
+-- No-op deploy, safe local reconcile, and ambiguous-target stops are verified.
+-- `npm ci`, `npx tsc --noEmit`, `npm run build`, and `npm test` pass in `agent_workflows/whop_auto` from a platform-local Node 20 install in the intended shell.
+-
+-## Risks
+-
+-- The project may accidentally grow two orchestration layers if runner logic leaks back into `index.ts`.
+-- Reconcile can become too permissive if safe local repair and consent-required repair are not sharply separated.
+-- Remote `observed` logic can become optimistic if it trusts responses instead of re-reads for non-idempotent creates.
+-- Runner state names can drift from the documented D3 state model unless the schema alignment task happens first.
+-- The implementation can accidentally build the wrong deployment path if Git-push-triggered deployment and API-created deployment are both implied.
+-
+-## Phase Boundary
+-
+-This PRD ends at executable Phase 1 skill integration.
+-
+-The next phase after this PRD is:
+-
+-- scaffold creation flow,
+-- then broader manage/market execution surfaces.

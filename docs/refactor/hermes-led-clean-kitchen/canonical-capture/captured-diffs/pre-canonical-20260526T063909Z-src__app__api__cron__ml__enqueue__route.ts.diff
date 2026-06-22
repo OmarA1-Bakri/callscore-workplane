@@ -1,0 +1,11 @@
+--- active/src/app/api/cron/ml/enqueue/route.ts
++++ pre-canonical-20260526T063909Z/src/app/api/cron/ml/enqueue/route.ts
+@@ -76,7 +76,7 @@
+   return enqueue(request);
+ }
+ 
+-// Netlify scheduled functions invoke route handlers with GET, while manual/debug callers may
++// Vercel Cron invokes route handlers with GET, while manual/debug callers may
+ // use the POST contract documented in the pipeline plan. Keep both paths wired
+ // to the same protected enqueue operation.
+ export async function GET(request: NextRequest): Promise<NextResponse> {

@@ -1,0 +1,275 @@
+[
+  {
+    "route": "home",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": -1,
+          "label": "",
+          "w": 0,
+          "sw": 0
+        },
+        {
+          "tabIndex": -1,
+          "label": "",
+          "w": 362,
+          "sw": 610
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "pricing",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": 0,
+          "label": "Pricing feature matrix",
+          "w": 362,
+          "sw": 362
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "settings-account-alpha",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": -1,
+          "label": "",
+          "w": 362,
+          "sw": 837
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "settings-alerts-pro",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": -1,
+          "label": "",
+          "w": 362,
+          "sw": 837
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "settings-api-alpha",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 436,
+      "clientWidth": 390,
+      "overflow": true,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": -1,
+          "label": "",
+          "w": 362,
+          "sw": 837
+        },
+        {
+          "tabIndex": 0,
+          "label": "API example code",
+          "w": 392,
+          "sw": 390
+        },
+        {
+          "tabIndex": 0,
+          "label": "API example code",
+          "w": 392,
+          "sw": 390
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "settings-webhooks-alpha",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": -1,
+          "label": "",
+          "w": 362,
+          "sw": 837
+        },
+        {
+          "tabIndex": 0,
+          "label": "new_call_digest webhook event schema",
+          "w": 332,
+          "sw": 330
+        },
+        {
+          "tabIndex": 0,
+          "label": "consensus_signal webhook event schema",
+          "w": 332,
+          "sw": 330
+        },
+        {
+          "tabIndex": 0,
+          "label": "test.ping webhook event schema",
+          "w": 332,
+          "sw": 330
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  },
+  {
+    "route": "backtest-alpha",
+    "status": 200,
+    "pageErrors": [],
+    "bad": [],
+    "metrics": {
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "overflow": false,
+      "menuButton": {
+        "w": 39,
+        "h": 39
+      },
+      "scrollables": [
+        {
+          "tabIndex": 0,
+          "label": "Backtest creator allocation table",
+          "w": 360,
+          "sw": 620
+        },
+        {
+          "tabIndex": 0,
+          "label": "Backtest call ledger table",
+          "w": 360,
+          "sw": 720
+        }
+      ]
+    },
+    "axe": [
+      {
+        "id": "region",
+        "impact": "moderate",
+        "nodes": 1,
+        "sample": [
+          ".fixed"
+        ]
+      }
+    ]
+  }
+]

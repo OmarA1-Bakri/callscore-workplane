@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CallScore Lean Agent Profile Manifest",
+  "type": "object",
+  "required": [
+    "agent_id",
+    "mission",
+    "workplane_path",
+    "control_layer",
+    "gates",
+    "skills",
+    "receipts"
+  ],
+  "properties": {
+    "agent_id": {
+      "type": "string"
+    },
+    "display_name": {
+      "type": "string"
+    },
+    "mission": {
+      "type": "string"
+    },
+    "workplane_path": {
+      "type": "string"
+    },
+    "control_layer": {
+      "type": "object",
+      "properties": {
+        "inherits_global_controls": {
+          "type": "boolean"
+        },
+        "provider_routing_policy": {
+          "type": "string"
+        },
+        "emergency_halt_policy": {
+          "type": "string"
+        }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "fail_closed",
+          "allowed_read_only",
+          "operator_approval_required",
+          "not_applicable"
+        ]
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "mode": {
+            "enum": [
+              "reference",
+              "local_copy_forbidden"
+            ]
+          }
+        }
+      }
+    },
+    "runtime_binding": {
+      "type": "object",
+      "properties": {
+        "scheduler_job_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "profile_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "worker_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "receipts": {
+      "type": "object",
+      "properties": {
+        "root": {
+          "type": "string"
+        },
+        "required_per_run": {
+          "type": "boolean"
+        },
+        "index_policy": {
+          "type": "string"
+        }
+      }
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "route": {
+            "type": "string"
+          },
+          "mutation_gate": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

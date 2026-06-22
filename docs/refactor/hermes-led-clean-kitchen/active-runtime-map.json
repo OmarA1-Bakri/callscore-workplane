@@ -1,0 +1,1088 @@
+{
+  "collection_policy": {
+    "docker_env_inspected": false,
+    "environment_values_printed": false,
+    "no_deletion_performed": true,
+    "notes": "Docker/compose/cron/systemd/process refs were sanitized. Environment keys may be listed; values are intentionally omitted/redacted.",
+    "secret_values_printed": false
+  },
+  "compose_refs": [
+    {
+      "env_values_printed": false,
+      "exists": true,
+      "parse_mode": "yaml",
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "services": {
+        "channel-agent-worker": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "ML_VERIFIER_MODEL",
+            "ML_VERIFIER_PROVIDER",
+            "OLLAMA_HOST",
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": []
+        },
+        "data-pipeline-continuous": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": []
+        },
+        "data-pipeline-continuous-once": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": [
+            "debug"
+          ],
+          "restart": null,
+          "volumes": []
+        },
+        "hermes-worker": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "ML_VERIFIER_MODEL",
+            "ML_VERIFIER_PROVIDER",
+            "OLLAMA_HOST",
+            "YTDLP_BIN",
+            "YTDLP_COOKIES_PATH",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": [
+            "/opt/callscore/secrets/youtube-cookies.txt:/run/secrets/youtube-cookies.txt:ro"
+          ]
+        },
+        "hermes-worker-once": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "ML_VERIFIER_MODEL",
+            "ML_VERIFIER_PROVIDER",
+            "OLLAMA_HOST",
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": [
+            "debug"
+          ],
+          "restart": null,
+          "volumes": []
+        },
+        "ytdlp-pot-provider": {
+          "build": null,
+          "container_name": null,
+          "depends_on": null,
+          "env_files": [],
+          "env_keys": [],
+          "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": []
+        }
+      }
+    },
+    {
+      "env_values_printed": false,
+      "exists": true,
+      "parse_mode": "yaml",
+      "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web/docker-compose.yml",
+      "services": {
+        "data-pipeline-continuous": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": []
+        },
+        "data-pipeline-continuous-once": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": [
+            "debug"
+          ],
+          "restart": null,
+          "volumes": []
+        },
+        "hermes-worker": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "ML_VERIFIER_MODEL",
+            "ML_VERIFIER_PROVIDER",
+            "OLLAMA_HOST",
+            "YTDLP_BIN",
+            "YTDLP_COOKIES_PATH",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": [
+            "/opt/callscore/secrets/youtube-cookies.txt:/run/secrets/youtube-cookies.txt:ro"
+          ]
+        },
+        "hermes-worker-once": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": [
+            "ytdlp-pot-provider"
+          ],
+          "env_files": [
+            ".env.hermes"
+          ],
+          "env_keys": [
+            "ML_VERIFIER_MODEL",
+            "ML_VERIFIER_PROVIDER",
+            "OLLAMA_HOST",
+            "YTDLP_BIN",
+            "YTDLP_JS_RUNTIMES",
+            "YTDLP_PLAYER_CLIENT",
+            "YTDLP_PO_TOKEN_BROWSER_PATH",
+            "YTDLP_PO_TOKEN_PROVIDER",
+            "YTDLP_REMOTE_COMPONENTS"
+          ],
+          "image": "crypto-tuber-ranked-hermes-worker:latest",
+          "ports": [],
+          "profiles": [
+            "debug"
+          ],
+          "restart": null,
+          "volumes": []
+        },
+        "ytdlp-pot-provider": {
+          "build": null,
+          "container_name": null,
+          "depends_on": null,
+          "env_files": [],
+          "env_keys": [],
+          "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": []
+        }
+      }
+    },
+    {
+      "env_values_printed": false,
+      "exists": true,
+      "parse_mode": "yaml",
+      "path": "/srv/agents/repos/callscore-workplane/control-plane/oauth-mcp-gateway/docker-compose.yml",
+      "services": {
+        "oauth-mcp-gateway": {
+          "build": ".",
+          "container_name": "hh-oauth-mcp-gateway",
+          "depends_on": null,
+          "env_files": [
+            ".env"
+          ],
+          "env_keys": [],
+          "image": null,
+          "ports": [],
+          "profiles": null,
+          "restart": "unless-stopped",
+          "volumes": []
+        }
+      }
+    },
+    {
+      "env_values_printed": false,
+      "exists": true,
+      "parse_mode": "yaml",
+      "path": "/srv/agents/repos/callscore-workplane/data-plane/transcript-acquisition/vpn-ytdlp/docker-compose.yml",
+      "services": {
+        "gluetun": {
+          "build": null,
+          "container_name": "gluetun",
+          "depends_on": null,
+          "env_files": [],
+          "env_keys": [
+            "OPENVPN_PASSWORD",
+            "OPENVPN_USER",
+            "SERVER_COUNTRIES",
+            "VPN_SERVICE_PROVIDER",
+            "VPN_TYPE"
+          ],
+          "image": "qmcgaw/gluetun:latest",
+          "ports": [
+            "8888:8888/tcp",
+            "8388:8388/tcp"
+          ],
+          "profiles": null,
+          "restart": null,
+          "volumes": []
+        },
+        "w0": {
+          "build": null,
+          "container_name": "ytdlp-w0",
+          "depends_on": {
+            "gluetun": {
+              "condition": "service_healthy"
+            }
+          },
+          "env_files": [],
+          "env_keys": [],
+          "image": "node:20-slim",
+          "ports": [],
+          "profiles": null,
+          "restart": null,
+          "volumes": [
+            "/srv/agents/vpn-ytdlp/work:/work"
+          ]
+        },
+        "w1": {
+          "build": null,
+          "container_name": "ytdlp-w1",
+          "depends_on": {
+            "gluetun": {
+              "condition": "service_healthy"
+            }
+          },
+          "env_files": [],
+          "env_keys": [],
+          "image": "node:20-slim",
+          "ports": [],
+          "profiles": null,
+          "restart": null,
+          "volumes": [
+            "/srv/agents/vpn-ytdlp/work:/work"
+          ]
+        },
+        "w2": {
+          "build": null,
+          "container_name": "ytdlp-w2",
+          "depends_on": {
+            "gluetun": {
+              "condition": "service_healthy"
+            }
+          },
+          "env_files": [],
+          "env_keys": [],
+          "image": "node:20-slim",
+          "ports": [],
+          "profiles": null,
+          "restart": null,
+          "volumes": [
+            "/srv/agents/vpn-ytdlp/work:/work"
+          ]
+        },
+        "w3": {
+          "build": null,
+          "container_name": "ytdlp-w3",
+          "depends_on": {
+            "gluetun": {
+              "condition": "service_healthy"
+            }
+          },
+          "env_files": [],
+          "env_keys": [],
+          "image": "node:20-slim",
+          "ports": [],
+          "profiles": null,
+          "restart": null,
+          "volumes": [
+            "/srv/agents/vpn-ytdlp/work:/work"
+          ]
+        },
+        "w4": {
+          "build": null,
+          "container_name": "ytdlp-w4",
+          "depends_on": {
+            "gluetun": {
+              "condition": "service_healthy"
+            }
+          },
+          "env_files": [],
+          "env_keys": [],
+          "image": "node:20-slim",
+          "ports": [],
+          "profiles": null,
+          "restart": null,
+          "volumes": [
+            "/srv/agents/vpn-ytdlp/work:/work"
+          ]
+        }
+      }
+    },
+    {
+      "env_values_printed": false,
+      "exists": true,
+      "parse_mode": "yaml",
+      "path": "/srv/agents/repos/callscore-workplane/sources/whop/plugin/agent_workflows/whop_auto/docker-compose.hetzner.yml",
+      "services": {
+        "whop-auto": {
+          "build": ".",
+          "container_name": null,
+          "depends_on": null,
+          "env_files": [],
+          "env_keys": [
+            "HOME",
+            "WHOP_PIPELINE_BOOTSTRAP_SECRET_DIR",
+            "WHOP_PIPELINE_HOME",
+            "WHOP_PIPELINE_SECRET_DIR"
+          ],
+          "image": null,
+          "ports": [],
+          "profiles": null,
+          "restart": null,
+          "volumes": [
+            "{'type': 'bind', 'source': '${WHOP_AUTO_STATE_DIR:-./.runtime/state}', 'target': '/var/lib/whop-pipeline'}",
+            "{'type': 'bind', 'source': '${WHOP_AUTO_WORKSPACE_DIR:-./workspace}', 'target': '/workspace'}"
+          ]
+        }
+      }
+    }
+  ],
+  "cron_refs": {
+    "files_checked": [
+      {
+        "exists": true,
+        "is_file": true,
+        "mode_octal": "0o644",
+        "path": "/etc/cron.d/e2scrub_all"
+      },
+      {
+        "exists": true,
+        "is_file": true,
+        "mode_octal": "0o644",
+        "path": "/etc/cron.d/sysstat"
+      },
+      {
+        "exists": true,
+        "is_file": true,
+        "mode_octal": "0o644",
+        "path": "/etc/crontab"
+      }
+    ],
+    "matching_refs": []
+  },
+  "docker": {
+    "available": true,
+    "containers": [
+      {
+        "compose": {
+          "config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "oneoff": "False",
+          "project": "whop-auto",
+          "service": "hermes-worker",
+          "working_dir": "/opt/crypto-tuber-ranked"
+        },
+        "health": null,
+        "id12": "da4d0e928c00",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "mounts": [
+          {
+            "destination": "/run/secrets/youtube-cookies.txt",
+            "protected_reason": "secret-cookie",
+            "rw": false,
+            "source": "/opt/callscore/secrets/youtube-cookies.txt",
+            "type": "bind"
+          }
+        ],
+        "name": "whop-auto-hermes-worker-1",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "status": "Up 19 hours"
+      },
+      {
+        "compose": {
+          "config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "oneoff": "False",
+          "project": "whop-auto",
+          "service": "channel-agent-worker",
+          "working_dir": "/opt/crypto-tuber-ranked"
+        },
+        "health": null,
+        "id12": "8787903a1ad5",
+        "image": "crypto-tuber-ranked-hermes-worker:latest",
+        "mounts": [],
+        "name": "whop-auto-channel-agent-worker-1",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "status": "Up 19 hours"
+      },
+      {
+        "compose": {
+          "config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "oneoff": "False",
+          "project": "whop-auto",
+          "service": "ytdlp-pot-provider",
+          "working_dir": "/opt/crypto-tuber-ranked"
+        },
+        "health": "unhealthy",
+        "id12": "d352f6a7217c",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "mounts": [],
+        "name": "whop-auto-ytdlp-pot-provider-1",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "restarting",
+        "status": "Restarting (0) 49 seconds ago"
+      },
+      {
+        "compose": {
+          "config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "oneoff": "False",
+          "project": "crypto-tuber-ranked",
+          "service": "hermes-worker",
+          "working_dir": "/opt/crypto-tuber-ranked"
+        },
+        "health": null,
+        "id12": "70e98d9f9b52",
+        "image": "b1369860652d",
+        "mounts": [
+          {
+            "destination": "/run/secrets/youtube-cookies.txt",
+            "protected_reason": "secret-cookie",
+            "rw": false,
+            "source": "/opt/callscore/secrets/youtube-cookies.txt",
+            "type": "bind"
+          }
+        ],
+        "name": "crypto-tuber-ranked-hermes-worker-1",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "status": "Up 19 hours"
+      },
+      {
+        "compose": {
+          "config_files": "/opt/crypto-tuber-ranked/docker-compose.yml",
+          "oneoff": "False",
+          "project": "crypto-tuber-ranked",
+          "service": "ytdlp-pot-provider",
+          "working_dir": "/opt/crypto-tuber-ranked"
+        },
+        "health": "healthy",
+        "id12": "362901a5fca0",
+        "image": "brainicism/bgutil-ytdlp-pot-provider:1.3.1-node",
+        "mounts": [],
+        "name": "crypto-tuber-ranked-ytdlp-pot-provider-1",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "status": "Up 19 hours (healthy)"
+      },
+      {
+        "compose": {
+          "config_files": "/srv/agents/oauth-mcp-gateway/docker-compose.yml",
+          "oneoff": "False",
+          "project": "oauth-mcp-gateway",
+          "service": "oauth-mcp-gateway",
+          "working_dir": "/srv/agents/oauth-mcp-gateway"
+        },
+        "health": null,
+        "id12": "1635003474d8",
+        "image": "oauth-mcp-gateway-oauth-mcp-gateway",
+        "mounts": [],
+        "name": "hh-oauth-mcp-gateway",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "status": "Up 12 days"
+      },
+      {
+        "compose": {
+          "config_files": null,
+          "oneoff": null,
+          "project": "crypto-tuber-ranked",
+          "service": "hermes-worker",
+          "working_dir": null
+        },
+        "health": null,
+        "id12": "b518c0e35938",
+        "image": "79476f33a1dc",
+        "mounts": [
+          {
+            "destination": "/app",
+            "protected_reason": null,
+            "rw": true,
+            "source": "/srv/whop-auto/workspace/crypto-tuber-ranked",
+            "type": "bind"
+          }
+        ],
+        "name": "crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "exited",
+        "status": "Exited (0) 2 weeks ago"
+      },
+      {
+        "compose": {
+          "config_files": null,
+          "oneoff": null,
+          "project": null,
+          "service": null,
+          "working_dir": null
+        },
+        "health": null,
+        "id12": "996b7342b827",
+        "image": "cloudflare/cloudflared:latest",
+        "mounts": [
+          {
+            "destination": "/etc/cloudflared/token",
+            "protected_reason": null,
+            "rw": false,
+            "source": "/home/omar/.cloudflared/hermes-whop-automation.token",
+            "type": "bind"
+          }
+        ],
+        "name": "hermes-whop-automation-tunnel",
+        "networks": [
+          "host"
+        ],
+        "ports": "",
+        "restart_policy": "unless-stopped",
+        "state": "running",
+        "status": "Up 2 weeks"
+      }
+    ],
+    "inspect_errors": []
+  },
+  "generated_utc": "2026-06-21T18:22:33Z",
+  "hard_gates": {
+    "/opt/callscore/secrets/youtube-cookies.txt": "PROTECTED_SECRET_COOKIE_FILE_READ_ONLY_BIND_MOUNT",
+    "/opt/crypto-tuber-ranked": "PROTECTED_ACTIVE_RUNTIME_DEPENDENCY"
+  },
+  "phase": "phase_2_runtime_map_and_non_deleteable_inventory",
+  "process_refs": {
+    "error": null,
+    "items": [
+      {
+        "args": "bash /home/omar/.hermes/scripts/bridge-worker-hetzner daemon",
+        "comm": "bash",
+        "pid": 1286,
+        "ppid": 1191,
+        "user": "omar"
+      },
+      {
+        "args": "/srv/agents/hermes/hermes-agent/venv/bin/python -m hermes_cli.main gateway run",
+        "comm": "hermes",
+        "pid": 32963,
+        "ppid": 1191,
+        "user": "omar"
+      },
+      {
+        "args": "/srv/agents/hermes/hermes-agent/venv/bin/python3 /srv/agents/hermes/hermes-agent/venv/bin/hermes -c --yolo",
+        "comm": "hermes",
+        "pid": 101019,
+        "ppid": 3991028,
+        "user": "omar"
+      },
+      {
+        "args": "node /srv/agents/hermes/lsp/bin/pyright-langserver --stdio",
+        "comm": "node",
+        "pid": 197486,
+        "ppid": 32963,
+        "user": "omar"
+      },
+      {
+        "args": "/srv/agents/hermes/hermes-agent/venv/bin/python3 /srv/agents/hermes/hermes-agent/venv/bin/hermes -p callscorearchitect --accept-hooks --skills task-router --skills kanban-orchestrator --skills writing-plans --skills subagent-driven-development --skills test-driven-development --toolsets browser,chrome-devtools,clarify,code_execution,composio,context_engine,cronjob,delegation,file,image_gen,kanban,memory,messaging,moa,rl,session_search,skills,terminal,todo,tts,video,video_gen,vision,web,x_search chat -q work kanban task t_ea1d3582",
+        "comm": "hermes",
+        "pid": 197768,
+        "ppid": 32963,
+        "user": "omar"
+      },
+      {
+        "args": "/srv/agents/hermes/hermes-agent/venv/bin/python3 /srv/agents/hermes/hermes-agent/venv/bin/hermes -p callscoreimplementer --accept-hooks --skills task-router --skills kanban-orchestrator --skills writing-plans --skills subagent-driven-development --skills test-driven-development --toolsets browser,chrome-devtools,clarify,code_execution,composio,context_engine,cronjob,delegation,file,image_gen,kanban,memory,messaging,moa,rl,session_search,skills,terminal,todo,tts,video,video_gen,vision,web,x_search chat -q work kanban task t_b4b5c45d",
+        "comm": "hermes",
+        "pid": 197778,
+        "ppid": 32963,
+        "user": "omar"
+      },
+      {
+        "args": "postgres: 16/main: callscore_app callscore ::1(60818) idle",
+        "comm": "postgres",
+        "pid": 201388,
+        "ppid": 3081120,
+        "user": "postgres"
+      },
+      {
+        "args": "postgres: 16/main: callscore_app callscore ::1(60820) idle",
+        "comm": "postgres",
+        "pid": 201422,
+        "ppid": 3081120,
+        "user": "postgres"
+      },
+      {
+        "args": "cloudflared --no-autoupdate tunnel --no-autoupdate run --token-file /etc/cloudflared/token",
+        "comm": "cloudflared",
+        "pid": 1110197,
+        "ppid": 1110129,
+        "user": "root"
+      },
+      {
+        "args": "/usr/bin/node --import tsx src/scripts/callscore-enqueue-server.ts",
+        "comm": "node",
+        "pid": 1267907,
+        "ppid": 1,
+        "user": "omar"
+      },
+      {
+        "args": "/opt/crypto-tuber-ranked/node_modules/@esbuild/linux-arm64/bin/esbuild --service=0.27.7 --ping",
+        "comm": "esbuild",
+        "pid": 1267974,
+        "ppid": 1267907,
+        "user": "omar"
+      },
+      {
+        "args": "/opt/crypto-tuber-ranked/node_modules/@esbuild/linux-arm64/bin/esbuild --service=0.27.7 --ping",
+        "comm": "esbuild",
+        "pid": 1267985,
+        "ppid": 1267907,
+        "user": "omar"
+      },
+      {
+        "args": "/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py",
+        "comm": "python",
+        "pid": 1354458,
+        "ppid": 1,
+        "user": "omar"
+      },
+      {
+        "args": "/usr/bin/cloudflared --no-autoupdate --config /etc/cloudflared/config.yml tunnel run",
+        "comm": "cloudflared",
+        "pid": 1828751,
+        "ppid": 1,
+        "user": "root"
+      },
+      {
+        "args": "/usr/bin/node src/scripts/callscore-read-api-server.mjs",
+        "comm": "node",
+        "pid": 1890157,
+        "ppid": 1,
+        "user": "omar"
+      },
+      {
+        "args": "sh -c node --import tsx src/scripts/hermes-worker.ts --poll-ms 15000",
+        "comm": "sh",
+        "pid": 3680285,
+        "ppid": 3680257,
+        "user": "omar"
+      },
+      {
+        "args": "node --import tsx src/scripts/hermes-worker.ts --poll-ms 15000",
+        "comm": "node",
+        "pid": 3680286,
+        "ppid": 3680285,
+        "user": "omar"
+      },
+      {
+        "args": "sh -c node --import tsx src/scripts/hermes-worker.ts --worker-id data-pipeline-worker --poll-ms 15000 --no-channel-tasks",
+        "comm": "sh",
+        "pid": 3712779,
+        "ppid": 3712736,
+        "user": "omar"
+      },
+      {
+        "args": "sh -c node --import tsx src/scripts/hermes-worker.ts --worker-id channel-agent-worker --poll-ms 15000 --no-pipeline-jobs",
+        "comm": "sh",
+        "pid": 3712780,
+        "ppid": 3712729,
+        "user": "omar"
+      },
+      {
+        "args": "node --import tsx src/scripts/hermes-worker.ts --worker-id data-pipeline-worker --poll-ms 15000 --no-channel-tasks",
+        "comm": "node",
+        "pid": 3712781,
+        "ppid": 3712779,
+        "user": "omar"
+      },
+      {
+        "args": "node --import tsx src/scripts/hermes-worker.ts --worker-id channel-agent-worker --poll-ms 15000 --no-pipeline-jobs",
+        "comm": "node",
+        "pid": 3712782,
+        "ppid": 3712780,
+        "user": "omar"
+      }
+    ]
+  },
+  "program": "callscore-clean-kitchen-refactor",
+  "protected_paths": [
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "mtime_utc": "2026-06-21T10:27:40Z",
+      "path": "/opt/crypto-tuber-ranked",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "mode_octal": "0o664",
+      "mtime_utc": "2026-06-20T23:37:30Z",
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "size_bytes": 4382
+    },
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o755",
+      "mtime_utc": "2026-06-12T04:18:19Z",
+      "path": "/opt/callscore/secrets",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "mode_octal": "0o600",
+      "mtime_utc": "2026-06-21T03:21:02Z",
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "size_bytes": 22892
+    },
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o755",
+      "mtime_utc": "2026-06-18T09:07:27Z",
+      "path": "/srv/agents/repos/callscore-workplane",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "mtime_utc": "2026-06-21T18:22:17Z",
+      "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o700",
+      "mtime_utc": "2026-06-18T06:38:36Z",
+      "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "mtime_utc": "2026-05-17T07:20:24Z",
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": true,
+      "is_file": false,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "mtime_utc": "2026-05-18T03:46:18Z",
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "size_bytes": 4096
+    },
+    {
+      "exists": true,
+      "is_dir": false,
+      "is_file": true,
+      "is_symlink": false,
+      "mode_octal": "0o600",
+      "mtime_utc": "2026-05-07T06:56:15Z",
+      "path": "/home/omar/.cloudflared/hermes-whop-automation.token",
+      "size_bytes": 242
+    }
+  ],
+  "schema_version": 1,
+  "systemd_refs": {
+    "available": true,
+    "repo_unit_files": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web/ops/systemd/hermes-worker.service",
+        "sanitized_refs": [
+          "WorkingDirectory=/opt/crypto-tuber-ranked",
+          "ExecStart=/usr/bin/docker compose up -d hermes-worker"
+        ]
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane/control-plane/hh-control-bridge/hh-control-bridge.service",
+        "sanitized_refs": [
+          "User=omar",
+          "Group=omar",
+          "WorkingDirectory=/srv/agents/hh-control-bridge",
+          "Environment keys: HOST",
+          "Environment keys: PORT",
+          "Environment keys: HH_TIMEOUT",
+          "Environment keys: HH_ENABLE_WRITE",
+          "Environment keys: HH_APPROVAL_CODE",
+          "ExecStart=/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py"
+        ]
+      }
+    ],
+    "units": [
+      {
+        "ActiveState": "inactive",
+        "Description": "Snapshot Hermes/agent workspace",
+        "DropInPaths": "",
+        "ExecStart": "{ path=/usr/local/bin/agent-snapshot ; argv[]=/usr/local/bin/agent-snapshot ; ignore_errors=no ; start_time=[Sun 2026-06-21 03:30:06 BST] ; stop_time=[Sun 2026-06-21 03:34:13 BST] ; pid=3811823 ; code=exited ; status=0 }",
+        "FragmentPath": "/etc/systemd/system/agent-snapshot.service",
+        "Id": "agent-snapshot.service",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "SubState": "dead",
+        "WorkingDirectory": ""
+      },
+      {
+        "ActiveState": "inactive",
+        "Description": "CallScore control-plane production shadow canary",
+        "DropInPaths": "",
+        "EnvironmentFiles": "/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=no)",
+        "ExecStart": "{ path=/usr/bin/npm ; argv[]=/usr/bin/npm run control-plane:canary ; ignore_errors=no ; start_time=[Sun 2026-06-21 04:23:04 BST] ; stop_time=[Sun 2026-06-21 04:23:15 BST] ; pid=3846194 ; code=exited ; status=0 }",
+        "FragmentPath": "/etc/systemd/system/callscore-control-plane-canary.service",
+        "Id": "callscore-control-plane-canary.service",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "SubState": "dead",
+        "WorkingDirectory": "/opt/crypto-tuber-ranked"
+      },
+      {
+        "ActiveState": "inactive",
+        "Description": "CallScore daily slow transcript/data pipeline",
+        "DropInPaths": "",
+        "EnvironmentFiles": "/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=yes)",
+        "ExecStart": "{ path=/usr/bin/npm ; argv[]=/usr/bin/npm run pipeline:daily -- --write --read-api-base https://ops-bridge.call-score.com/api/read --transcript-limit 25 --transcript-concurrency 1 --transcript-gap-ms 20000 --limit-creators 250 --limit-videos 10 --since-days 45 --extract-limit 50 --match-limit 500 --match-batch-size 100 ; ignore_errors=no ; start_time=[Sun 2026-06-21 03:44:29 BST] ; stop_time=[Sun 2026-06-21 04:22:12 BST] ; pid=3821064 ; code=exited ; status=0 }",
+        "FragmentPath": "/etc/systemd/system/callscore-daily-pipeline.service",
+        "Id": "callscore-daily-pipeline.service",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "SubState": "dead",
+        "WorkingDirectory": "/opt/crypto-tuber-ranked"
+      },
+      {
+        "ActiveState": "active",
+        "Description": "CallScore HH enqueue endpoint",
+        "DropInPaths": "",
+        "EnvironmentFiles": "/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=no)",
+        "ExecStart": "{ path=/usr/bin/node ; argv[]=/usr/bin/node --import tsx src/scripts/callscore-enqueue-server.ts ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "FragmentPath": "/etc/systemd/system/callscore-enqueue.service",
+        "Id": "callscore-enqueue.service",
+        "LoadState": "loaded",
+        "MainPID": "1267907",
+        "SubState": "running",
+        "WorkingDirectory": "/opt/crypto-tuber-ranked"
+      },
+      {
+        "ActiveState": "active",
+        "Description": "CallScore HH read API",
+        "DropInPaths": "",
+        "EnvironmentFiles": "/opt/crypto-tuber-ranked/.env.hermes (ignore_errors=no)",
+        "ExecStart": "{ path=/usr/bin/node ; argv[]=/usr/bin/node src/scripts/callscore-read-api-server.mjs ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "FragmentPath": "/etc/systemd/system/callscore-read-api.service",
+        "Id": "callscore-read-api.service",
+        "LoadState": "loaded",
+        "MainPID": "1890157",
+        "SubState": "running",
+        "WorkingDirectory": "/opt/crypto-tuber-ranked"
+      },
+      {
+        "ActiveState": "inactive",
+        "Description": "Update cloudflared",
+        "DropInPaths": "",
+        "ExecStart": "{ path=/bin/bash ; argv[]=/bin/bash -c /usr/bin/cloudflared update; code=$?; if [ $code -eq 11 ]; then systemctl restart cloudflared; exit 0; fi; exit $code ; ignore_errors=no ; start_time=[Sun 2026-06-21 00:00:00 BST] ; stop_time=[Sun 2026-06-21 00:00:00 BST] ; pid=3673574 ; code=exited ; status=0 }",
+        "FragmentPath": "/etc/systemd/system/cloudflared-update.service",
+        "Id": "cloudflared-update.service",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "SubState": "dead",
+        "WorkingDirectory": ""
+      },
+      {
+        "ActiveState": "active",
+        "Description": "cloudflared",
+        "DropInPaths": "",
+        "ExecStart": "{ path=/usr/bin/cloudflared ; argv[]=/usr/bin/cloudflared --no-autoupdate --config /etc/cloudflared/config.yml tunnel run ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "FragmentPath": "/etc/systemd/system/cloudflared.service",
+        "Id": "cloudflared.service",
+        "LoadState": "loaded",
+        "MainPID": "1828751",
+        "SubState": "running",
+        "WorkingDirectory": ""
+      },
+      {
+        "ActiveState": "active",
+        "Description": "Crypto Tuber Ranked Hermes worker",
+        "DropInPaths": "",
+        "ExecStart": "{ path=/usr/bin/docker ; argv[]=/usr/bin/docker compose up -d hermes-worker ; ignore_errors=no ; start_time=[Sun 2026-06-21 00:09:04 BST] ; stop_time=[Sun 2026-06-21 00:09:05 BST] ; pid=3680133 ; code=exited ; status=0 }",
+        "FragmentPath": "/etc/systemd/system/hermes-worker.service",
+        "Id": "hermes-worker.service",
+        "LoadState": "loaded",
+        "MainPID": "0",
+        "SubState": "exited",
+        "WorkingDirectory": "/opt/crypto-tuber-ranked"
+      },
+      {
+        "ActiveState": "active",
+        "Description": "HH Control Bridge MCP Server",
+        "DropInPaths": "",
+        "EnvironmentFiles": "/etc/hh-control-bridge/smithery.env (ignore_errors=yes)",
+        "ExecStart": "{ path=/srv/agents/hh-control-bridge/.venv/bin/python ; argv[]=/srv/agents/hh-control-bridge/.venv/bin/python /srv/agents/hh-control-bridge/server.py ; ignore_errors=no ; start_time=[n/a] ; stop_time=[n/a] ; pid=0 ; code=(null) ; status=0/0 }",
+        "FragmentPath": "/etc/systemd/system/hh-control-bridge.service",
+        "Id": "hh-control-bridge.service",
+        "LoadState": "loaded",
+        "MainPID": "1354458",
+        "SubState": "running",
+        "WorkingDirectory": "/srv"
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:26Z",
+  "runtime": {
+    "disk_used_percent": 81,
+    "inode_used_percent": 27,
+    "docker_container_count": 6,
+    "ytdlp_ping": {
+      "status": "ok",
+      "http_status": 200
+    },
+    "tests_pre_prompt6": "npm test passed before prompt 6 execution"
+  },
+  "canonical_paths": {
+    "runtime_repo": "/opt/crypto-tuber-ranked",
+    "control_repo": "/srv/agents/repos/callscore-workplane",
+    "compose": "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "receipts": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen",
+    "agents": "/srv/agents/repos/callscore-workplane/docs/agents"
+  }
+}

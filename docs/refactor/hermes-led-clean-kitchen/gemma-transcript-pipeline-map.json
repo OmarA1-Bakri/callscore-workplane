@@ -1,0 +1,184 @@
+{
+  "timestamp_utc": "2026-06-22T16:31:03Z",
+  "phase": "prompt_8_gemma_transcript_pipeline_map",
+  "canonical_architecture": {
+    "vm_primary_route": {
+      "status": "preserve",
+      "runtime_root": "/opt/crypto-tuber-ranked",
+      "compose": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "provider": "crypto-tuber-ranked-ytdlp-pot-provider-1 healthy on 4416",
+      "scripts": [
+        "backfill:transcripts",
+        "transcript:extract",
+        "transcript:worklist",
+        "transcript:ingest",
+        "transcript:media-fallback",
+        "scrape:v2"
+      ]
+    },
+    "local_bare_metal_backup_route": {
+      "status": "preserve",
+      "owner": "Omar laptop / residential browser-context lane",
+      "scripts": [
+        "scripts/windows/run-transcript-collector.ps1",
+        "docs/ops/laptop-transcript-collector.md",
+        "workplane job type transcript_collect_laptop"
+      ],
+      "rule": "bounded batches; cooldown after 429/provider block; no retry hammering"
+    },
+    "shadow_pipeline": {
+      "status": "preserve",
+      "scripts": [
+        "shadow:extract",
+        "shadow:diff",
+        "shadow:validate",
+        "shadow:promote",
+        "src/lib/shadow-extraction.ts"
+      ],
+      "rule": "artifact-only by default; no production writes unless promotion gates pass"
+    },
+    "main_production_pipeline": {
+      "status": "preserve",
+      "scripts": [
+        "run-daily-pipeline.ts",
+        "hermes-worker.ts",
+        "pipeline_jobs queue",
+        "videos transcript fields",
+        "calls/creator_calls extraction path"
+      ],
+      "rule": "DB writes remain gated and queue-driven"
+    },
+    "gemma_ollama_runtime": {
+      "status": "preserve",
+      "scripts": [
+        "gemma:capacity-preflight",
+        "ops/ollama/Modelfile.callscore-gemma4-extractor",
+        "ops/ollama/Modelfile.callscore-gemma4-eval-extractor",
+        "bakeoff:ollama"
+      ],
+      "model_files": "ops/ollama/Modelfile.* are source/config and were not deleted"
+    },
+    "quality_gated_promotion": {
+      "status": "preserve",
+      "scripts": [
+        "ml:verifier:quality-gate",
+        "tests/ml-verifier-quality-gate.test.ts",
+        "gemma-shadow-promotion-gates.md"
+      ],
+      "rule": "shadow promote requires validation, diff review, explicit reviewed IDs, and write canary before production impact"
+    }
+  },
+  "db_tables_involved": [
+    "videos",
+    "calls",
+    "creator_calls/creator_stats depending pipeline view",
+    "pipeline_jobs",
+    "pipeline_job_events",
+    "ml_verification_runs"
+  ],
+  "env_dependencies_by_name_only": [
+    "DATABASE_URL or POSTGRES_URL",
+    "DATABASE_PROVIDER",
+    "TRANSCRIPT_BATCH_LIMIT",
+    "TRANSCRIPT_GAP_MS",
+    "YTDLP_* option names only",
+    "OLLAMA_HOST / model selection variables by name only"
+  ],
+  "failed_jobs": [
+    {
+      "job": "transcript_collect_laptop",
+      "classification": "local_bare_metal_backup_route_not_vm_failure",
+      "evidence": "docs/ops/laptop-transcript-collector.md and workplane snapshots show laptop runner claims this job; bounded local route owns residential/browser-context acquisition.",
+      "status": "represented_and_preserved",
+      "action": "Document as local runner lane; do not move into HH-only VM route."
+    },
+    {
+      "job": "ml_verifier_batch",
+      "classification": "known_single_failure_not_stuck_queue",
+      "evidence": "Hermes cron outputs and observability snapshots show one known failed job with later successful verifier batches.",
+      "status": "classified",
+      "action": "Preserve quality gate; treat wrong-host model run as operator/runtime config error, not stale artefact."
+    },
+    {
+      "job": "operator_killed_wrong_ollama_host_model_run",
+      "classification": "wrong_ollama_host_model_run_operator_kill",
+      "evidence": "observability snapshots and cron output show failure class attached to ml_verifier_batch.",
+      "status": "classified_blocked_for_production_promotion",
+      "action": "Require Gemma capacity preflight and host/model verification before any production-affecting verifier run."
+    }
+  ],
+  "tests": {
+    "command": "node --import tsx --test tests/shadow-extraction.test.ts tests/shadow-scripts.test.ts tests/transcript-extraction-methods.test.ts tests/ml-verifier-quality-gate.test.ts",
+    "tests": 26,
+    "pass": 26,
+    "fail": 0
+  },
+  "cleanup": {
+    "deleted_paths": [],
+    "blocked_candidates": [
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-12T02-37-16-688Z",
+        "bytes": 243030,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-12T02-37-16-688Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-13T02-21-47-114Z",
+        "bytes": 240230,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-13T02-21-47-114Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-14T02-35-35-149Z",
+        "bytes": 239457,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-14T02-35-35-149Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-15T02-32-12-384Z",
+        "bytes": 239343,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-15T02-32-12-384Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-16T02-49-36-563Z",
+        "bytes": 190664,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-16T02-49-36-563Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-17T02-38-32-870Z",
+        "bytes": 156812,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-17T02-38-32-870Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-18T02-40-10-688Z",
+        "bytes": 239217,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-18T02-40-10-688Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-19T02-47-28-957Z",
+        "bytes": 240827,
+        "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+        "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-19T02-47-28-957Z\"",
+        "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+      }
+    ],
+    "retained_latest_daily_runs": [
+      "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-20T02-34-51-473Z",
+      "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-21T02-44-30-628Z",
+      "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-22T02-37-53-148Z"
+    ],
+    "bytes_deleted": 0,
+    "bytes_blocked": 1789580
+  }
+}

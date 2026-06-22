@@ -1,0 +1,28 @@
+{
+  "timestamp_utc": "2026-06-22T16:51:40Z",
+  "phase": "prompt_10_framework_integration_plan_after_cleanup",
+  "status": "completed_no_deletion",
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/10-framework-integration-plan.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/zod-pydantic-schema-strategy.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/langgraph-suitability-matrix.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/framework-decision-record.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/framework-experiment-cleanup-report.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/prompt10-framework-discovery.json"
+  ],
+  "discovery_counts": {
+    "zod_files": 14,
+    "pydantic_files": 3,
+    "langgraph_files": 2,
+    "experiment_candidates": 2
+  },
+  "decisions": {
+    "zod": "canonical",
+    "pydantic": "sidecar_only_generated_or_aligned_to_zod",
+    "langgraph": "spike_only_not_production_control_plane",
+    "existing_rails": "preserve_hermes_workplane_cron_db_queue"
+  },
+  "deleted_paths": [],
+  "bytes_recovered": 0,
+  "next_phase_allowed": "prompt_11_final_clean_kitchen_verification_and_remaining_deletion_pass"
+}

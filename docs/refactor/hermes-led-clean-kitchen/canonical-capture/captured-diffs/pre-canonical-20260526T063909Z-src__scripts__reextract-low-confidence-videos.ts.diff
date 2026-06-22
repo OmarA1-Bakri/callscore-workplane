@@ -1,0 +1,43 @@
+--- active/src/scripts/reextract-low-confidence-videos.ts
++++ pre-canonical-20260526T063909Z/src/scripts/reextract-low-confidence-videos.ts
+@@ -26,10 +26,7 @@
+ function parseArgValue(argv: readonly string[], flag: string): string | null {
+   const index = argv.indexOf(flag);
+   if (index < 0 || !argv[index + 1]) return null;
+-  const candidate = argv[index + 1];
+-  // Only treat as a value if it doesn't start with "--" (not another flag)
+-  if (candidate.startsWith("--")) return null;
+-  return candidate;
++  return argv[index + 1];
+ }
+ 
+ export function parseLowConfidenceReextractArgs(argv = process.argv.slice(2)): {
+@@ -47,8 +44,6 @@
+   const creatorHandle = parseArgValue(argv, "--creator");
+   const videoIdValue = parseArgValue(argv, "--video");
+   const videoId = videoIdValue ? parseInt(videoIdValue, 10) : null;
+-  const chunkCharsValue = Number(parseArgValue(argv, "--chunk-chars") ?? STRONGER_CHUNK_CHARS);
+-  const maxChunksValue = Number(parseArgValue(argv, "--max-chunks") ?? STRONGER_MAX_CHUNKS);
+   return {
+     write,
+     limit: Number.isFinite(limit) && limit > 0 ? limit : 50,
+@@ -56,8 +51,8 @@
+     videoId,
+     provider: parseArgValue(argv, "--provider") ?? STRONGER_PROVIDER,
+     model: parseArgValue(argv, "--model") ?? STRONGER_MODEL,
+-    chunkChars: Number.isFinite(chunkCharsValue) && chunkCharsValue > 0 ? chunkCharsValue : STRONGER_CHUNK_CHARS,
+-    maxChunks: Number.isFinite(maxChunksValue) && maxChunksValue > 0 ? maxChunksValue : STRONGER_MAX_CHUNKS,
++    chunkChars: Number(parseArgValue(argv, "--chunk-chars") ?? STRONGER_CHUNK_CHARS),
++    maxChunks: Number(parseArgValue(argv, "--max-chunks") ?? STRONGER_MAX_CHUNKS),
+   };
+ }
+ 
+@@ -149,7 +144,7 @@
+   console.log(`[${timestamp()}] Routing ${videoIds.length} low-confidence videos through chunked extractor provider=${args.provider} model=${args.model}`);
+   await chunkedExtractorMain(extractorArgs);
+   console.log(
+-    `[${timestamp()}] Re-extraction route complete for ${videoIds.length} videos`,
++    `[${timestamp()}] Re-extraction route complete for ${videos.length} videos`,
+   );
+ }
+ 

@@ -1,0 +1,14 @@
+{
+  "focusInfo": {
+    "selector": "A",
+    "outline": "rgb(16, 16, 16) auto 1px",
+    "outlineColor": "rgb(16, 16, 16)",
+    "outlineStyle": "auto",
+    "outlineWidth": "1px",
+    "boxShadow": "none"
+  },
+  "focusRingIsVisible": true,
+  "sortClickedNetwork": [],
+  "firstCallHref": "/call/561",
+  "hoverPrefetchNet": []
+}

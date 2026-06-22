@@ -1,0 +1,45 @@
+{
+  "timestamp_utc": "2026-06-21T21:49:26Z",
+  "phase": "prompt_3_7_parent_verification_after_glm_rate_limit",
+  "status": "PASS",
+  "context": "Prompt 3.7 deliverables existed after GLM 5.2 free rate-limit interruption. Parent verification inspected and remediated artefact-side redaction coverage.",
+  "hard_gates_observed": {
+    "no_live_env_files_read": true,
+    "no_live_env_files_modified": true,
+    "no_files_deleted": true,
+    "no_files_moved": true,
+    "no_application_code_changed": true,
+    "no_sensitive_values_printed": true,
+    "session_signing_key_not_rotated": true,
+    "json_artifacts_valid": true
+  },
+  "prompt_3_7_required_files_present": true,
+  "artifact_redaction_followup": {
+    "performed": true,
+    "reason": "Independent conservative scan found assignment-shaped artefact remnants not covered by the original 3.7 receipt scan.",
+    "live_runtime_files_changed": false,
+    "files_redacted_in_place": [
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__db-env.test.ts.diff",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-src__scripts__discover-videos-rss-api.ts.diff",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__self-correction.test.ts.diff",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/enqueue-local.js",
+      "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/audit-output/research/codex-review-w1.md",
+      "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json"
+    ]
+  },
+  "final_scoped_verification": {
+    "files_scanned": 621,
+    "unsafe_raw_assignment_pattern_files": 0,
+    "safe_redacted_placeholder_files": 6,
+    "required_files_missing": [],
+    "json_invalid": [],
+    "read_errors": [],
+    "status": "PASS"
+  },
+  "disk": {
+    "used_percent": "81%",
+    "inode_used_percent": "27%"
+  },
+  "session_signing_key_rotation_status": "pending_controlled_maintenance",
+  "next_phase_allowed": "controlled_session_secret_rotation_or_clean_architecture_staging_plan"
+}

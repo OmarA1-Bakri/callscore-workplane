@@ -1,0 +1,516 @@
+--- active/src/lib/pipeline.ts
++++ pre-canonical-20260526T063909Z/src/lib/pipeline.ts
+@@ -1,21 +1,6 @@
+ import { throwIfCronDeadlineExceeded } from "@/app/api/cron/deadline";
+ import { TRACKED_SYMBOLS } from "./constants";
+-import { CREATOR_CANDIDATE_ADMISSION_JOB_TYPE } from "./candidate-admission";
+-import { getWorkplaneJobSpec, isWorkplaneJobType, type WorkplaneJobType } from "./workplane-jobs";
+ import { query } from "./db";
+-import { createHash } from "node:crypto";
+-
+-export const RALPLAN_PHASES = [
+-  "phase1-stabilize",
+-  "phase2-pipeline",
+-  "phase3-whop-scaffold",
+-  "phase4-commerce",
+-  "phase5-marketing",
+-] as const;
+-
+-export type RalplanPhase = (typeof RALPLAN_PHASES)[number];
+-
+-export const DEFAULT_PHASE: RalplanPhase = "phase2-pipeline";
+ 
+ export type PipelineRunStatus =
+   | "queued"
+@@ -55,12 +40,9 @@
+   readonly locked_by: string | null;
+   readonly locked_at: string | null;
+   readonly heartbeat_at: string | null;
+-  readonly lease_expires_at: string | null;
+   readonly run_after: string;
+   readonly idempotency_key: string | null;
+   readonly error: string | null;
+-  readonly metrics: Record<string, unknown>;
+-  readonly phase: string | null;
+   readonly created_at: string;
+   readonly updated_at: string;
+ }
+@@ -97,13 +79,25 @@
+   readonly priority?: number;
+   readonly idempotencyKey: string;
+   readonly maxAttempts?: number;
+-  readonly phase?: string;
+   readonly signal?: AbortSignal;
+ }
+ 
+ interface ClaimNextJobInput {
+   readonly workerId: string;
+   readonly types: readonly string[];
++}
++
++export interface PipelineStageMetrics {
++  readonly stage: string;
++  readonly elapsedMs: number;
++  readonly rowsRead?: number;
++  readonly rowsWritten?: number;
++  readonly apiRequests?: number;
++  readonly inputTokens?: number;
++  readonly outputTokens?: number;
++  readonly totalTokens?: number;
++  readonly estimatedCostUsd?: number;
++  readonly extra?: Record<string, unknown>;
+ }
+ 
+ export interface PipelineStatusSnapshot {
+@@ -118,7 +112,7 @@
+ const DEFAULT_MATCH_PRICES_LIMIT = 1000;
+ const DEFAULT_MATCH_PRICES_BATCH_SIZE = 200;
+ const DEFAULT_STUCK_JOB_SECONDS = 30 * 60;
+-export const DEFAULT_PIPELINE_JOB_LEASE_SECONDS = 10 * 60;
++const DEFAULT_STALE_JOB_SECONDS = 45 * 60;
+ const FRESH_CANDLE_SECONDS = 2 * 60 * 60;
+ const CANDLE_FRESHNESS_SYMBOLS = Array.from(new Set([...TRACKED_SYMBOLS, "XLMUSDT"]));
+ 
+@@ -140,7 +134,7 @@
+ }
+ 
+ function normalizeJob(row: PipelineJob): PipelineJob {
+-  return { ...row, payload: readPayload(row.payload), metrics: readPayload(row.metrics) };
++  return { ...row, payload: readPayload(row.payload) };
+ }
+ 
+ function normalizeRun(row: PipelineRun): PipelineRun {
+@@ -173,14 +167,6 @@
+ 
+ export function mlPromotionRunKey(now = new Date()): string {
+   return dailyRunKey("ml-promotion", now);
+-}
+-
+-export function candidateAdmissionRunKey(now = new Date()): string {
+-  return dailyRunKey("candidate-admission", now);
+-}
+-
+-export function workplaneRunKey(type: WorkplaneJobType, now = new Date()): string {
+-  return dailyRunKey(`workplane-${type}`, now);
+ }
+ 
+ export async function enqueuePipelineJob(input: EnqueueJobInput): Promise<{
+@@ -202,9 +188,9 @@
+   throwIfCronDeadlineExceeded(input.signal);
+   const [job] = await query<PipelineJob>(
+     `INSERT INTO pipeline_jobs (
+-       run_id, type, status, priority, payload, max_attempts, idempotency_key, phase, updated_at
++       run_id, type, status, priority, payload, max_attempts, idempotency_key, updated_at
+      )
+-     VALUES ($1, $2, 'pending', $3, $4::jsonb, $5, $6, $7, NOW())
++     VALUES ($1, $2, 'pending', $3, $4::jsonb, $5, $6, NOW())
+      ON CONFLICT (idempotency_key) WHERE idempotency_key IS NOT NULL DO UPDATE
+        SET updated_at = NOW()
+      RETURNING *`,
+@@ -215,7 +201,6 @@
+       asJsonbParam(input.payload),
+       input.maxAttempts ?? 3,
+       input.idempotencyKey,
+-      input.phase ?? DEFAULT_PHASE,
+     ],
+   );
+ 
+@@ -250,7 +235,7 @@
+     payload: {
+       batch_size: batchSize,
+       audit_only: true,
+-      queued_by: "netlify-scheduled",
++      queued_by: "vercel-cron",
+     },
+     maxAttempts: 3,
+     signal: input.signal,
+@@ -274,7 +259,7 @@
+       symbols: input.symbols,
+       max_requests_per_symbol: input.maxRequestsPerSymbol ?? 25,
+       write: true,
+-      queued_by: "netlify-scheduled",
++      queued_by: "vercel-cron",
+     },
+     maxAttempts: 3,
+     signal: input.signal,
+@@ -300,7 +285,7 @@
+       batch_size: input.batchSize ?? DEFAULT_MATCH_PRICES_BATCH_SIZE,
+       start_after_id: input.startAfterId ?? 0,
+       rematch_all: false,
+-      queued_by: "netlify-scheduled",
++      queued_by: "vercel-cron",
+     },
+     maxAttempts: 3,
+     signal: input.signal,
+@@ -319,63 +304,52 @@
+     priority: 70,
+     idempotencyKey: runKey,
+     payload: {
+-      queued_by: "netlify-scheduled",
++      queued_by: "vercel-cron",
+     },
+     maxAttempts: 2,
+     signal: input.signal,
+   });
+ }
+ 
+-export async function enqueueWorkplaneJob(input: {
+-  readonly type: WorkplaneJobType;
+-  readonly payload?: Record<string, unknown>;
+-  readonly now?: Date;
+-  readonly signal?: AbortSignal;
+-}): Promise<{ readonly run: PipelineRun; readonly job: PipelineJob }> {
+-  if (!isWorkplaneJobType(input.type)) throw new Error(`Unsupported workplane job type: ${input.type}`);
+-  const spec = getWorkplaneJobSpec(input.type);
+-  const runKey = workplaneRunKey(input.type, input.now);
+-  return enqueuePipelineJob({
+-    runKey,
+-    runType: `workplane-${input.type}`,
+-    jobType: input.type,
+-    priority: input.type === "transcript_collect_laptop" ? 65 : 55,
+-    idempotencyKey: runKey,
+-    payload: {
+-      ...spec.input_payload,
+-      ...(input.payload ?? {}),
+-      queued_by: "workplane",
+-      production_call_writes_allowed: spec.production_call_writes_allowed,
+-      public_ranking_impact_allowed: spec.public_ranking_impact_allowed,
+-    },
+-    maxAttempts: input.type === "transcript_collect_laptop" ? 1 : 2,
+-    signal: input.signal,
+-  });
+-}
+-
+-export async function enqueueCandidateAdmissionJob(input: {
+-  readonly maxRecords?: number;
+-  readonly minAutoApproveRelevance?: number;
+-  readonly minNeedsReviewRelevance?: number;
++export async function enqueueMlPromotionJob(input: {
++  readonly promptVersion?: string;
++  readonly provider?: string;
++  readonly model?: string;
++  readonly limit?: number;
++  readonly minVerifierConfidence?: number;
++  readonly manualReviewApproved?: boolean;
++  readonly manualReviewedBy?: string;
++  readonly manualReviewTicket?: string;
++  readonly shadowDiffPassed?: boolean;
++  readonly shadowDiffSummary?: Record<string, unknown>;
++  readonly goldSetPassed?: boolean;
++  readonly goldSetMetrics?: Record<string, unknown>;
++  readonly write?: boolean;
+   readonly now?: Date;
+   readonly signal?: AbortSignal;
+ } = {}): Promise<{ readonly run: PipelineRun; readonly job: PipelineJob }> {
+-  const runKey = candidateAdmissionRunKey(input.now);
++  const runKey = mlPromotionRunKey(input.now);
+   return enqueuePipelineJob({
+     runKey,
+-    runType: "candidate-admission",
+-    jobType: CREATOR_CANDIDATE_ADMISSION_JOB_TYPE,
+-    priority: 60,
++    runType: "ml-promotion",
++    jobType: "promote_ml_verified",
++    priority: 30,
+     idempotencyKey: runKey,
+     payload: {
+-      mode: "decision_record_only",
+-      max_records: input.maxRecords ?? 50,
+-      min_auto_approve_relevance: input.minAutoApproveRelevance ?? 0.85,
+-      min_needs_review_relevance: input.minNeedsReviewRelevance ?? 0.7,
+-      writes_tracked_creators: false,
+-      publishes_buyer_facing_rankings: false,
+-      operator_export_required: true,
+-      queued_by: "pipeline",
++      prompt_version: input.promptVersion,
++      provider: input.provider,
++      model: input.model,
++      limit: input.limit,
++      min_verifier_confidence: input.minVerifierConfidence,
++      manual_review_approved: input.manualReviewApproved ?? false,
++      manual_reviewed_by: input.manualReviewedBy,
++      manual_review_ticket: input.manualReviewTicket,
++      shadow_diff_passed: input.shadowDiffPassed ?? false,
++      shadow_diff_summary: input.shadowDiffSummary ?? {},
++      gold_set_passed: input.goldSetPassed ?? false,
++      gold_set_metrics: input.goldSetMetrics ?? {},
++      write: input.write === true,
++      queued_by: "manual",
+     },
+     maxAttempts: 1,
+     signal: input.signal,
+@@ -388,7 +362,6 @@
+   locked_by = $1,
+   locked_at = NOW(),
+   heartbeat_at = NOW(),
+-  lease_expires_at = NOW() + ($3::int * INTERVAL '1 second'),
+   attempts = attempts + 1,
+   updated_at = NOW()
+ WHERE id = (
+@@ -404,80 +377,11 @@
+ )
+ RETURNING *`;
+ 
+-export async function updatePipelineJobHeartbeat(
+-  job: Pick<PipelineJob, "id" | "run_id" | "locked_by">,
+-  payload: Record<string, unknown> = {},
+-): Promise<void> {
+-  await query(
+-    `UPDATE pipeline_jobs
+-     SET heartbeat_at = NOW(),
+-         lease_expires_at = NOW() + ($2::int * INTERVAL '1 second'),
+-         updated_at = NOW()
+-     WHERE id = $1`,
+-    [job.id, DEFAULT_PIPELINE_JOB_LEASE_SECONDS],
+-  );
+-
+-  await appendPipelineJobEvent({
+-    runId: job.run_id,
+-    jobId: job.id,
+-    eventType: "heartbeat",
+-    status: "running",
+-    message: "Worker heartbeat",
+-    payload,
+-  });
+-}
+-
+-export async function resetStalePipelineJobs(input: {
+-  readonly staleSeconds?: number;
+-  readonly workerId?: string;
+-} = {}): Promise<readonly PipelineJob[]> {
+-  const staleSeconds = Math.max(60, Math.floor(input.staleSeconds ?? DEFAULT_STUCK_JOB_SECONDS));
+-  const resetJobs = await query<PipelineJob>(
+-    `UPDATE pipeline_jobs
+-     SET status = 'pending',
+-         locked_by = NULL,
+-         locked_at = NULL,
+-         heartbeat_at = NULL,
+-         lease_expires_at = NULL,
+-         run_after = NOW(),
+-         updated_at = NOW()
+-     WHERE id IN (
+-       SELECT id
+-       FROM pipeline_jobs
+-       WHERE status = 'running'
+-         AND (
+-           (lease_expires_at IS NOT NULL AND lease_expires_at < NOW())
+-           OR (lease_expires_at IS NULL AND heartbeat_at IS NOT NULL AND heartbeat_at < NOW() - ($1::int * INTERVAL '1 second'))
+-           OR (lease_expires_at IS NULL AND heartbeat_at IS NULL AND locked_at IS NOT NULL AND locked_at < NOW() - ($1::int * INTERVAL '1 second'))
+-         )
+-       FOR UPDATE SKIP LOCKED
+-     )
+-     RETURNING *`,
+-    [staleSeconds],
+-  );
+-
+-  await Promise.all(
+-    resetJobs.map((staleJob) => appendPipelineJobEvent({
+-      runId: staleJob.run_id,
+-      jobId: staleJob.id,
+-      eventType: "stale_reset",
+-      status: "pending",
+-      message: "Recovered stale running job",
+-      payload: {
+-        stale_seconds: staleSeconds,
+-        reset_by: input.workerId ?? null,
+-      },
+-    })),
+-  );
+-
+-  return resetJobs.map(normalizeJob);
+-}
+-
+ export async function claimNextPipelineJob(input: ClaimNextJobInput): Promise<PipelineJob | null> {
+   if (input.types.length === 0) return null;
+   const [job] = await query<PipelineJob>(
+     CLAIM_NEXT_PIPELINE_JOB_SQL,
+-    [input.workerId, input.types, DEFAULT_PIPELINE_JOB_LEASE_SECONDS],
++    [input.workerId, input.types],
+   );
+   if (!job) return null;
+ 
+@@ -529,45 +433,51 @@
+   return normalizeEvent(event);
+ }
+ 
+-function hashPayload(payload: Record<string, unknown>): string {
+-  const normalized = JSON.stringify(payload, Object.keys(payload).sort());
+-  return createHash("sha256").update(normalized).digest("hex").slice(0, 16);
+-}
+-
+-export type DispatchAuditEvent = "started" | "completed" | "failed";
+-
+-export interface DispatchAuditMeta {
+-  readonly input_hash: string;
+-  readonly duration_ms?: number;
+-  readonly error?: string;
+-}
+-
+-export async function auditDispatchEvent(
+-  job: Pick<PipelineJob, "id" | "run_id" | "payload">,
+-  event: DispatchAuditEvent,
+-  meta: Record<string, unknown> = {},
++export async function appendPipelineStageEvent(
++  job: Pick<PipelineJob, "id" | "run_id">,
++  metrics: PipelineStageMetrics,
++): Promise<PipelineJobEvent> {
++  return appendPipelineJobEvent({
++    runId: job.run_id,
++    jobId: job.id,
++    eventType: "stage_completed",
++    status: "running",
++    message: `Stage ${metrics.stage} completed`,
++    payload: {
++      stage: metrics.stage,
++      elapsed_ms: metrics.elapsedMs,
++      rows_read: metrics.rowsRead ?? 0,
++      rows_written: metrics.rowsWritten ?? 0,
++      api_requests: metrics.apiRequests ?? 0,
++      input_tokens: metrics.inputTokens ?? 0,
++      output_tokens: metrics.outputTokens ?? 0,
++      total_tokens: metrics.totalTokens ?? 0,
++      estimated_cost_usd: metrics.estimatedCostUsd ?? 0,
++      ...(metrics.extra ?? {}),
++    },
++  });
++}
++
++export async function updatePipelineJobHeartbeat(
++  job: Pick<PipelineJob, "id" | "run_id">,
++  payload: Record<string, unknown> = {},
+ ): Promise<void> {
+-  const auditPayload: Record<string, unknown> = { event, ...meta };
+-
+-  if (event === "started") {
+-    auditPayload.input_hash = hashPayload(job.payload);
+-  }
+-
+   await query(
+     `UPDATE pipeline_jobs
+-     SET metrics = COALESCE(metrics, '{}'::jsonb) || $2::jsonb,
++     SET heartbeat_at = NOW(),
+          updated_at = NOW()
+-     WHERE id = $1`,
+-    [job.id, asJsonbParam(auditPayload)],
++     WHERE id = $1
++       AND status = 'running'`,
++    [job.id],
+   );
+ 
+   await appendPipelineJobEvent({
+     runId: job.run_id,
+     jobId: job.id,
+-    eventType: `dispatch_${event}`,
+-    status: event === "failed" ? "failed" : event === "completed" ? "succeeded" : "running",
+-    message: `Dispatch ${event}`,
+-    payload: auditPayload,
++    eventType: "heartbeat",
++    status: "running",
++    message: "Worker heartbeat",
++    payload,
+   });
+ }
+ 
+@@ -578,11 +488,10 @@
+   await query(
+     `UPDATE pipeline_jobs
+      SET status = 'succeeded',
+-         locked_by = NULL,
+-         locked_at = NULL,
+-         heartbeat_at = NULL,
+-         lease_expires_at = NULL,
+-         error = NULL,
++          locked_by = NULL,
++          locked_at = NULL,
++          heartbeat_at = NULL,
++          error = NULL,
+          updated_at = NOW()
+      WHERE id = $1`,
+     [job.id],
+@@ -619,11 +528,10 @@
+   await query(
+     `UPDATE pipeline_jobs
+      SET status = $2,
+-         locked_by = NULL,
+-         locked_at = NULL,
+-         heartbeat_at = NULL,
+-         lease_expires_at = NULL,
+-         error = $3,
++          locked_by = NULL,
++          locked_at = NULL,
++          heartbeat_at = NULL,
++          error = $3,
+          run_after = CASE
+            WHEN $2 = 'pending' THEN NOW() + ($4::int * INTERVAL '1 second')
+            ELSE run_after
+@@ -654,6 +562,55 @@
+   });
+ 
+   return { retrying, backoffSeconds };
++}
++
++export async function resetStalePipelineJobs(input: {
++  readonly staleAfterSeconds?: number;
++  readonly limit?: number;
++  readonly workerId?: string;
++} = {}): Promise<readonly PipelineJob[]> {
++  const staleAfterSeconds = Math.max(60, Math.floor(input.staleAfterSeconds ?? DEFAULT_STALE_JOB_SECONDS));
++  const limit = Math.max(1, Math.min(100, Math.floor(input.limit ?? 25)));
++  const resetBy = input.workerId ?? "pipeline-reaper";
++  const jobs = await query<PipelineJob>(
++    `WITH stale AS (
++       SELECT id
++       FROM pipeline_jobs
++       WHERE status = 'running'
++         AND COALESCE(heartbeat_at, locked_at, updated_at)
++           <= NOW() - ($1::int * INTERVAL '1 second')
++         AND attempts < max_attempts
++       ORDER BY COALESCE(heartbeat_at, locked_at, updated_at) ASC, id ASC
++       LIMIT $2
++       FOR UPDATE SKIP LOCKED
++     )
++     UPDATE pipeline_jobs
++     SET status = 'pending',
++         locked_by = NULL,
++         locked_at = NULL,
++         heartbeat_at = NULL,
++         error = 'Reset stale running job after heartbeat timeout',
++         updated_at = NOW()
++     FROM stale
++     WHERE pipeline_jobs.id = stale.id
++     RETURNING pipeline_jobs.*`,
++    [staleAfterSeconds, limit],
++  );
++
++  await Promise.all(jobs.map((job) => appendPipelineJobEvent({
++    runId: job.run_id,
++    jobId: job.id,
++    eventType: "stale_reset",
++    status: "pending",
++    message: "Reset stale running job",
++    payload: {
++      reset_by: resetBy,
++      stale_after_seconds: staleAfterSeconds,
++      previous_attempts: job.attempts,
++    },
++  })));
++
++  return jobs.map(normalizeJob);
+ }
+ 
+ interface CandleFreshnessRow {
+@@ -721,11 +678,9 @@
+               EXTRACT(EPOCH FROM (NOW() - locked_at))::int AS stuck_seconds
+        FROM pipeline_jobs
+        WHERE status = 'running'
+-         AND (
+-           (lease_expires_at IS NOT NULL AND lease_expires_at < NOW())
+-           OR (lease_expires_at IS NULL AND locked_at IS NOT NULL AND locked_at <= NOW() - ($1::int * INTERVAL '1 second'))
+-         )
+-       ORDER BY locked_at ASC
++         AND locked_at IS NOT NULL
++         AND COALESCE(heartbeat_at, locked_at) <= NOW() - ($1::int * INTERVAL '1 second')
++       ORDER BY COALESCE(heartbeat_at, locked_at) ASC
+        LIMIT $2`,
+       [DEFAULT_STUCK_JOB_SECONDS, safeLimit],
+     ),

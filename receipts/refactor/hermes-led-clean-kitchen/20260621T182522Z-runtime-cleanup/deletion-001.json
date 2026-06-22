@@ -1,0 +1,62 @@
+{
+  "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+  "classification": "DELETE_NOW_STALE_BACKUP",
+  "reason": "old backup tarball in /srv/agents/backups; latest two tar-like backups kept",
+  "exists": true,
+  "size_before_bytes": 2683500081,
+  "path_info": {
+    "path": "/srv/agents/backups/agents-20260619T023002Z.tar.gz",
+    "exists": true,
+    "is_dir": false,
+    "is_file": true,
+    "is_symlink": false,
+    "size_lstat_bytes": 2683500081,
+    "mtime_utc": "2026-06-19T02:34:03Z",
+    "mode": "0o644"
+  },
+  "safe_to_delete": true,
+  "block_reasons": [],
+  "active_process_check": [],
+  "docker_mount_check": [],
+  "compose_reference_check": [],
+  "cron_reference_check": [],
+  "systemd_reference_check": [],
+  "all_reference_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+  ],
+  "git_status": {
+    "applicable": false
+  },
+  "unique_work_capture_status": "not_applicable_cache_or_old_backup",
+  "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/backups/agents-20260619T023002Z.tar.gz\"",
+  "delete_rc": 0,
+  "delete_stdout": "",
+  "delete_stderr": "",
+  "exists_after": false,
+  "deleted": true,
+  "disk_before_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 141214838784,
+    "free_bytes": 19755405312,
+    "used_percent": 87.73,
+    "inode_total": 9732496,
+    "inode_used": 2776686,
+    "inode_free": 6955810,
+    "inode_used_percent": 28.53
+  },
+  "disk_after_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 138531332096,
+    "free_bytes": 22438912000,
+    "used_percent": 86.06,
+    "inode_total": 9732496,
+    "inode_used": 2776685,
+    "inode_free": 6955811,
+    "inode_used_percent": 28.53
+  },
+  "disk_space_recovered_bytes": 2683506688,
+  "post_delete_verification": "absent"
+}

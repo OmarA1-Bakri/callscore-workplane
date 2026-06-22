@@ -1,0 +1,12 @@
+diff --git a/.omx/state/team-leader-nudge.json b/.omx/state/team-leader-nudge.json
+deleted file mode 100644
+index 96f0509..0000000
+--- a/.omx/state/team-leader-nudge.json
++++ /dev/null
+@@ -1,5 +0,0 @@
+-{
+-  "last_nudged_by_team": {},
+-  "last_idle_nudged_by_team": {},
+-  "progress_by_team": {}
+-}
+\ No newline at end of file

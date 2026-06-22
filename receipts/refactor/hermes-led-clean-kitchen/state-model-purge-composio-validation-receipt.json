@@ -1,0 +1,42 @@
+{
+  "timestamp_utc": "2026-06-22T12:10:18Z",
+  "phase": "state_model_purge_and_hermes_side_composio_validation",
+  "status": "completed_hermes_mcp_live_tools_discovered",
+  "native_linux_only_for_validation": true,
+  "forbidden_tools_used_for_composio_validation": false,
+  "config_evidence": [
+    "hostname=hermes-agent-box",
+    "whoami=omar",
+    "pwd=/srv",
+    "/srv/agents/hermes/config.yaml exists mode 600 owner omar",
+    "mcp_servers.composio.url=https://connect.composio.dev/mcp",
+    "Hermes process PID 309776 command=/srv/agents/hermes/hermes-agent/venv/bin/python -m hermes_cli.main gateway run",
+    "Hermes process cwd=/srv/agents/hermes"
+  ],
+  "native_probe_evidence": "mcporter list https://connect.composio.dev/mcp --schema --timeout 30000 reached Composio MCP endpoint and returned OAuth authorization required, then tool discovery timed out after 30000ms",
+  "state_file": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/master-state.json",
+  "state_update": {
+    "composio_route_status": "active_hermes_mcp_connected_tools_discovered",
+    "composio_hh_toolbox_visibility_field_removed": true,
+    "composio_hermes_invocation_status": "hermes_mcp_test_connected_3570ms_tools_discovered_7",
+    "next_phase_allowed": "point_9_canonical_cmo_deployment"
+  },
+  "point_9_status": "blocked_until_composio_oauth_or_tool_discovery_is_completed",
+  "timestamp_updated_utc": "2026-06-22T12:25:05Z",
+  "correction_after_operator_note": "Composio is accessed via MCP; authoritative validation used hermes mcp test composio, not ChatGPT toolbox status and not bare-url mcporter without Hermes config.",
+  "native_hermes_mcp_test_evidence": {
+    "command": "hermes mcp test composio",
+    "transport": "HTTP -> https://connect.composio.dev/mcp",
+    "connected_ms": 3570,
+    "tools_discovered": 7,
+    "tools": [
+      "COMPOSIO_MANAGE_CONNECTIONS",
+      "COMPOSIO_MULTI_EXECUTE_TOOL",
+      "COMPOSIO_REMOTE_BASH_TOOL",
+      "COMPOSIO_REMOTE_WORKBENCH",
+      "COMPOSIO_SEARCH_TOOLS",
+      "COMPOSIO_WAIT_FOR_CONNECTIONS",
+      "COMPOSIO_GET_TOOL_SCHEMAS"
+    ]
+  }
+}

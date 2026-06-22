@@ -1,0 +1,37 @@
+--- active/migrations/014-ml-promotion-audit.sql
++++ pre-canonical-20260526T063909Z/migrations/014-ml-promotion-audit.sql
+@@ -21,33 +21,15 @@
+     gold_set_metrics JSONB NOT NULL DEFAULT '{}'::jsonb,
+     candidate_call_ids INTEGER[] NOT NULL DEFAULT '{}'::integer[],
+     promoted_call_ids INTEGER[] NOT NULL DEFAULT '{}'::integer[],
+-    promoted_count INTEGER GENERATED ALWAYS AS (cardinality(promoted_call_ids)) STORED,
++    promoted_count INTEGER NOT NULL DEFAULT 0,
+     gate_results JSONB NOT NULL DEFAULT '{}'::jsonb,
+     error TEXT,
+     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+ );
+ 
+-CREATE OR REPLACE FUNCTION update_ml_promotion_audit_updated_at()
+-RETURNS TRIGGER AS $$
+-BEGIN
+-  NEW.updated_at = NOW();
+-  RETURN NEW;
+-END;
+-$$ LANGUAGE plpgsql;
+-
+-DROP TRIGGER IF EXISTS trg_ml_promotion_audit_updated_at ON ml_promotion_audit;
+-
+-CREATE TRIGGER trg_ml_promotion_audit_updated_at
+-BEFORE UPDATE ON ml_promotion_audit
+-FOR EACH ROW
+-EXECUTE FUNCTION update_ml_promotion_audit_updated_at();
+-
+ CREATE INDEX IF NOT EXISTS idx_ml_promotion_audit_created
+     ON ml_promotion_audit(created_at DESC);
+ 
+ CREATE INDEX IF NOT EXISTS idx_ml_promotion_audit_job
+     ON ml_promotion_audit(job_id, created_at DESC);
+-
+-CREATE INDEX IF NOT EXISTS idx_ml_promotion_audit_run
+-    ON ml_promotion_audit(run_id, created_at DESC);

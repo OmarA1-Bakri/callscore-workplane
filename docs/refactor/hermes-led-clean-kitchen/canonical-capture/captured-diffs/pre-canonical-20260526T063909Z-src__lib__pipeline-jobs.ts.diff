@@ -1,0 +1,11 @@
+--- active/src/lib/pipeline-jobs.ts
++++ pre-canonical-20260526T063909Z/src/lib/pipeline-jobs.ts
+@@ -75,8 +75,6 @@
+     limit: positiveInt(payload.limit, 1000),
+     batchSize: positiveInt(payload.batch_size, 200),
+     startAfterId: nonNegativeInt(payload.start_after_id, 0),
+-    fetchBinance: booleanValue(payload.fetch_binance, false),
+-    binanceToleranceMinutes: positiveInt(payload.binance_tolerance_minutes, 30),
+   };
+ }
+ 

@@ -1,0 +1,35 @@
+{
+  "path": "/srv/agents/repos/crypto-tuber-ranked",
+  "classification": "BLOCKED_COMMON_GIT_RISK",
+  "reason": "common repo not deleted in Prompt 2.5; common .git preservation rule; deletion/classification can be separate later phase after worktree retirement verification",
+  "remaining_worktrees": [
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+      "branch": "refs/heads/master"
+    }
+  ],
+  "worktree_prune": {
+    "args": [
+      "git",
+      "-C",
+      "/srv/agents/repos/crypto-tuber-ranked",
+      "worktree",
+      "prune"
+    ],
+    "rc": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "active_reference_check": {
+    "path": "/srv/agents/repos/crypto-tuber-ranked",
+    "process_refs": [],
+    "docker_refs": [],
+    "systemd_refs": [],
+    "cron_refs": [],
+    "compose_refs": [],
+    "active_ref_files": []
+  },
+  "size_bytes": 11488186,
+  "exists_after": true
+}

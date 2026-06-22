@@ -1,0 +1,83 @@
+{
+  "timestamp_utc": "2026-06-22T16:31:03Z",
+  "phase": "prompt_8_gemma_transcript_pipeline_map_and_stale_artifact_cleanup",
+  "status": "completed_with_cleanup_blocked_by_permissions",
+  "deliverables": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/08-gemma-transcript-pipeline-map.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/gemma-transcript-pipeline-map.json",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/gemma-shadow-promotion-gates.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/transcript-cleanup-report.md"
+  ],
+  "tests": {
+    "command": "node --import tsx --test tests/shadow-extraction.test.ts tests/shadow-scripts.test.ts tests/transcript-extraction-methods.test.ts tests/ml-verifier-quality-gate.test.ts",
+    "tests": 26,
+    "pass": 26,
+    "fail": 0
+  },
+  "deleted_paths": [],
+  "blocked_deletion_candidates": [
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-12T02-37-16-688Z",
+      "bytes": 243030,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-12T02-37-16-688Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-13T02-21-47-114Z",
+      "bytes": 240230,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-13T02-21-47-114Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-14T02-35-35-149Z",
+      "bytes": 239457,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-14T02-35-35-149Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-15T02-32-12-384Z",
+      "bytes": 239343,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-15T02-32-12-384Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-16T02-49-36-563Z",
+      "bytes": 190664,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-16T02-49-36-563Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-17T02-38-32-870Z",
+      "bytes": 156812,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-17T02-38-32-870Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-18T02-40-10-688Z",
+      "bytes": 239217,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-18T02-40-10-688Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-19T02-47-28-957Z",
+      "bytes": 240827,
+      "classification": "stale_root_owned_tmp_daily_transcript_run_output",
+      "attempted_command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/callscore-daily/2026-06-19T02-47-28-957Z\"",
+      "blocked_reason": "Permission denied on root-owned files; no escalation available through current allowed tool surface; retained latest three daily runs."
+    }
+  ],
+  "bytes_recovered": 0,
+  "blocked_candidate_bytes": 1789580,
+  "health": {
+    "disk_before_after": "58 percent used before and after; no material change",
+    "docker": "containers up; ytdlp provider healthy"
+  },
+  "next_phase_allowed": "prompt_9_prompt_deduplication_and_full_profile_implementation"
+}

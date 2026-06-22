@@ -1,0 +1,162 @@
+{
+  "timestamp_utc": "2026-06-22T09:49:40Z",
+  "phase": "authorized_deployment_purge_chunk1_package_caches_with_rollback",
+  "strict_blacklist": "/srv/agents/repos/Claude_Code_Automations",
+  "blacklist_touched": false,
+  "targets": [
+    "/home/omar/.npm/_cacache",
+    "/home/omar/.bun/install/cache",
+    "/home/omar/.cache/uv/archive-v0",
+    "/home/omar/.cache/pip"
+  ],
+  "rollback_dir": "/tmp/cleanup-rollback-chunk1",
+  "status": "completed_purged",
+  "events": [
+    {
+      "time": "2026-06-22T09:49:40Z",
+      "event": "rollback_directory_ready",
+      "path": "/tmp/cleanup-rollback-chunk1"
+    },
+    {
+      "time": "2026-06-22T09:51:19Z",
+      "event": "quarantine_complete"
+    }
+  ],
+  "df_before": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 128964685824 25406267392  84% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 128964685824,
+    "free_bytes": 25406267392,
+    "used_percent": 84
+  },
+  "pre_quarantine_sizes": [
+    {
+      "path": "/home/omar/.npm/_cacache",
+      "label": "npm cache",
+      "exists": true,
+      "bytes": 2857815838,
+      "human": "2.66 GiB"
+    },
+    {
+      "path": "/home/omar/.bun/install/cache",
+      "label": "bun install cache",
+      "exists": true,
+      "bytes": 2374334537,
+      "human": "2.21 GiB"
+    },
+    {
+      "path": "/home/omar/.cache/uv/archive-v0",
+      "label": "uv archive cache",
+      "exists": true,
+      "bytes": 1231604316,
+      "human": "1.15 GiB"
+    },
+    {
+      "path": "/home/omar/.cache/pip",
+      "label": "pip cache",
+      "exists": true,
+      "bytes": 159651440,
+      "human": "152.26 MiB"
+    }
+  ],
+  "pre_quarantine_total_bytes": 6623406131,
+  "pre_quarantine_total_human": "6.17 GiB",
+  "moved": [
+    {
+      "original_path": "/home/omar/.npm/_cacache",
+      "quarantine_path": "/tmp/cleanup-rollback-chunk1/home/omar/.npm/_cacache",
+      "status": "quarantined"
+    },
+    {
+      "original_path": "/home/omar/.bun/install/cache",
+      "quarantine_path": "/tmp/cleanup-rollback-chunk1/home/omar/.bun/install/cache",
+      "status": "quarantined"
+    },
+    {
+      "original_path": "/home/omar/.cache/uv/archive-v0",
+      "quarantine_path": "/tmp/cleanup-rollback-chunk1/home/omar/.cache/uv/archive-v0",
+      "status": "quarantined"
+    },
+    {
+      "original_path": "/home/omar/.cache/pip",
+      "quarantine_path": "/tmp/cleanup-rollback-chunk1/home/omar/.cache/pip",
+      "status": "quarantined"
+    }
+  ],
+  "health_after_quarantine": {
+    "ytdlp_ping": {
+      "status": "ok",
+      "http_status": 200
+    },
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      STATUS\nwhop-auto-hermes-worker-1                  Up 34 hours\nwhop-auto-channel-agent-worker-1           Up 34 hours\ncrypto-tuber-ranked-hermes-worker-1        Up 35 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   Up 35 hours (healthy)\nhh-oauth-mcp-gateway                       Up 13 days\nhermes-whop-automation-tunnel              Up 2 weeks\n",
+      "stderr": ""
+    },
+    "ytdlp_inspect_rc": 0,
+    "ytdlp_health": "healthy",
+    "ytdlp_state": "running",
+    "expected_containers_present": {
+      "whop-auto-hermes-worker-1": true,
+      "whop-auto-channel-agent-worker-1": true,
+      "crypto-tuber-ranked-hermes-worker-1": true,
+      "crypto-tuber-ranked-ytdlp-pot-provider-1": true,
+      "hh-oauth-mcp-gateway": true,
+      "hermes-whop-automation-tunnel": true
+    },
+    "pass": true
+  },
+  "final_action": "purged_quarantine",
+  "quarantine_size_before_purge_bytes": 6623406131,
+  "quarantine_size_before_purge_human": "6.17 GiB",
+  "df_before_final_purge": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 131556327424 22814625792  86% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 131556327424,
+    "free_bytes": 22814625792,
+    "used_percent": 86
+  },
+  "df_after_final_purge": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 124350087168 30020866048  81% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 124350087168,
+    "free_bytes": 30020866048,
+    "used_percent": 81
+  },
+  "df_free_delta_bytes": 7206240256,
+  "df_free_delta_human": "6.71 GiB",
+  "timestamp_finished_utc": "2026-06-22T09:51:25Z"
+}

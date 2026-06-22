@@ -1,0 +1,9 @@
+--- active/migrations/006-autonomous-ml-pipeline.sql
++++ pre-canonical-20260526T063909Z/migrations/006-autonomous-ml-pipeline.sql
+@@ -1,5 +1,5 @@
+ -- CRYPTO-TUBER RANKED :: migration 006 :: autonomous ML pipeline
+--- Durable pgsql-backed queue/orchestration state for Netlify-scheduled,
++-- Durable Neon-backed queue/orchestration state for Vercel-scheduled,
+ -- Hermes/Hetzner-executed audit-only ML verifier work.
+ --
+ -- Safe to re-run: all CREATE statements use IF NOT EXISTS and partial

@@ -1,0 +1,230 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CryptoTubers Ranked home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img [ref=e6]
+        - generic [ref=e7]:
+          - text: CryptoTubers
+          - generic [ref=e8]: Ranked
+      - navigation "Primary navigation" [ref=e9]:
+        - link "Leaderboard" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Methodology" [ref=e11] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e12] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e13]:
+          - link "Sign In" [ref=e14] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "Get Access" [ref=e15] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e16]:
+    - generic [ref=e17]:
+      - generic [ref=e18]:
+        - heading "Most crypto YouTubers are noise. We found the signal." [level=1] [ref=e19]:
+          - text: Most crypto YouTubers are noise.
+          - emphasis [ref=e20]: We found the signal.
+        - paragraph [ref=e21]:
+          - text: We track 123 crypto YouTubers and score every eligible altcoin call against real market data.
+          - emphasis [ref=e22]: "0"
+          - text: scored calls across 18.7M Binance candles.
+        - generic "Section metadata" [ref=e23]:
+          - generic [ref=e24]:
+            - term [ref=e25]: creators
+            - definition [ref=e26]: "123"
+          - generic [ref=e27]:
+            - term [ref=e28]: scored calls
+            - definition [ref=e29]: "0"
+          - generic [ref=e30]:
+            - term [ref=e31]: beating BTC
+            - definition [ref=e32]:
+              - text: "0"
+              - generic [ref=e33]: / 0
+          - generic [ref=e34]:
+            - term [ref=e35]: methodology
+            - definition [ref=e36]:
+              - link "read" [ref=e37] [cursor=pointer]:
+                - /url: /methodology
+      - generic [ref=e38]:
+        - generic [ref=e39]:
+          - generic [ref=e40]: "01"
+          - heading "The premise, sourced." [level=2] [ref=e41]:
+            - text: The
+            - emphasis [ref=e42]: premise
+            - text: ", sourced."
+          - generic [ref=e43]:
+            - text: three claims · peer-reviewed
+            - text: one signature signal · self-correction
+        - list [ref=e45]:
+          - listitem [ref=e46]:
+            - generic [ref=e47]: 76% of influencer-endorsed tokens fail to deliver.
+            - generic [ref=e48]: "[Arkham · Mar 2025]"
+          - listitem [ref=e49]:
+            - generic [ref=e50]: Top crypto YouTubers are directionally correct ~22% of the time.
+            - generic [ref=e51]: "[Finance Research Letters · 2024]"
+          - listitem [ref=e52]:
+            - generic [ref=e53]: Influencer-tweeted tokens returned −19% over 3 months.
+            - generic [ref=e54]: "[HBS · Pacelli]"
+          - listitem [ref=e55]:
+            - generic [ref=e56]:
+              - text: We also score who admits when they're wrong.
+              - emphasis [ref=e57]: No other tracker does.
+            - generic [ref=e58]: "[self-correction index]"
+      - generic [ref=e59]:
+        - generic [ref=e60]:
+          - generic [ref=e61]: "02"
+          - heading "The ranking, by alpha." [level=2] [ref=e62]:
+            - text: The ranking,
+            - emphasis [ref=e63]: by alpha
+            - text: .
+          - generic [ref=e64]:
+            - text: 0 ranked creators · 0 scored calls
+            - text: tier S/A/B/C · low-N flagged
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - paragraph [ref=e67]: Sorted by alpha; ties broken by Wilson lower bound.
+            - tablist "Period filter" [ref=e68]:
+              - tab "All time" [selected] [ref=e69] [cursor=pointer]
+              - tab "90 days" [ref=e70] [cursor=pointer]
+              - tab "30 days" [ref=e71] [cursor=pointer]
+          - paragraph [ref=e73]: Leaderboard data is being computed. Run the data pipeline to populate scores.
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - generic [ref=e76]: "03"
+          - heading "What's forming across creators." [level=2] [ref=e77]:
+            - text: What's
+            - emphasis [ref=e78]: forming
+            - text: across creators.
+        - generic [ref=e80]:
+          - generic [ref=e81]:
+            - generic [ref=e82]: ★
+            - heading "Consensus Signals" [level=3] [ref=e83]
+            - generic [ref=e84]: Alpha
+          - generic [ref=e85]:
+            - generic [ref=e86]:
+              - generic [ref=e88]: ↑
+              - generic [ref=e89]:
+                - generic [ref=e90]:
+                  - generic [ref=e91]: BTC
+                  - generic [ref=e92]: bullish
+                - paragraph [ref=e93]: 12 creators · Apr 3
+              - generic [ref=e94]: +2.5%
+            - generic [ref=e95]:
+              - generic [ref=e97]: ↑
+              - generic [ref=e98]:
+                - generic [ref=e99]:
+                  - generic [ref=e100]: NEAR
+                  - generic [ref=e101]: bullish
+                - paragraph [ref=e102]: 5 creators · Mar 30
+              - generic [ref=e103]: +0.0%
+            - generic [ref=e104]:
+              - generic [ref=e106]: ↓
+              - generic [ref=e107]:
+                - generic [ref=e108]:
+                  - generic [ref=e109]: BTC
+                  - generic [ref=e110]: bearish
+                - paragraph [ref=e111]: 12 creators · Mar 28
+              - generic [ref=e112]: +3.7%
+            - generic [ref=e113]:
+              - generic [ref=e115]: ↑
+              - generic [ref=e116]:
+                - generic [ref=e117]:
+                  - generic [ref=e118]: LINK
+                  - generic [ref=e119]: bullish
+                - paragraph [ref=e120]: 6 creators · Mar 28
+              - generic [ref=e121]: "-0.8%"
+            - generic [ref=e122]:
+              - generic [ref=e124]: ↑
+              - generic [ref=e125]:
+                - generic [ref=e126]:
+                  - generic [ref=e127]: BTC
+                  - generic [ref=e128]: bullish
+                - paragraph [ref=e129]: 11 creators · Mar 26
+              - generic [ref=e130]: "-1.6%"
+            - generic [ref=e131]:
+              - generic [ref=e133]: ↑
+              - generic [ref=e134]:
+                - generic [ref=e135]:
+                  - generic [ref=e136]: BTC
+                  - generic [ref=e137]: bullish
+                - paragraph [ref=e138]: 12 creators · Mar 17
+              - generic [ref=e139]: "-7.2%"
+            - generic [ref=e140]:
+              - generic [ref=e142]: ↑
+              - generic [ref=e143]:
+                - generic [ref=e144]:
+                  - generic [ref=e145]: LINK
+                  - generic [ref=e146]: bullish
+                - paragraph [ref=e147]: 8 creators · Mar 17
+              - generic [ref=e148]: "-13.9%"
+            - generic [ref=e149]:
+              - generic [ref=e151]: ↑
+              - generic [ref=e152]:
+                - generic [ref=e153]:
+                  - generic [ref=e154]: NEAR
+                  - generic [ref=e155]: bullish
+                - paragraph [ref=e156]: 6 creators · Mar 16
+              - generic [ref=e157]: "-14.5%"
+            - generic [ref=e158]:
+              - generic [ref=e160]: ↑
+              - generic [ref=e161]:
+                - generic [ref=e162]:
+                  - generic [ref=e163]: XRP
+                  - generic [ref=e164]: bullish
+                - paragraph [ref=e165]: 5 creators · Mar 12
+              - generic [ref=e166]: "-4.3%"
+            - generic [ref=e167]:
+              - generic [ref=e169]: ↑
+              - generic [ref=e170]:
+                - generic [ref=e171]:
+                  - generic [ref=e172]: BTC
+                  - generic [ref=e173]: bullish
+                - paragraph [ref=e174]: 14 creators · Mar 9
+              - generic [ref=e175]: +4.0%
+  - contentinfo [ref=e176]:
+    - generic [ref=e177]:
+      - generic [ref=e178]:
+        - generic [ref=e179]:
+          - generic [ref=e180]:
+            - img "CryptoTubers Ranked" [ref=e181]
+            - generic [ref=e182]:
+              - text: CryptoTubers
+              - generic [ref=e183]: Ranked
+          - paragraph [ref=e184]: We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls.
+        - generic [ref=e185]:
+          - heading "Navigate" [level=2] [ref=e186]
+          - list [ref=e187]:
+            - listitem [ref=e188]:
+              - link "Leaderboard" [ref=e189] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e190]:
+              - link "Methodology" [ref=e191] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e192]:
+              - link "Pricing" [ref=e193] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e194]:
+              - link "Give Feedback" [ref=e195] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e196]:
+              - link "About" [ref=e197] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e198]:
+          - heading "Legal" [level=2] [ref=e199]
+          - list [ref=e200]:
+            - listitem [ref=e201]:
+              - link "Terms of Service" [ref=e202] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e203]:
+              - link "Privacy Policy" [ref=e204] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e205]:
+        - paragraph [ref=e206]:
+          - strong [ref=e207]: "Financial Disclaimer:"
+          - text: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions.
+        - paragraph [ref=e208]: © 2026 CRYPTO-TUBER RANKED. All rights reserved.
+  - link "Send feedback" [ref=e209] [cursor=pointer]:
+    - /url: /feedback
+    - generic [ref=e210]: "?"
+    - generic [ref=e211]: Feedback

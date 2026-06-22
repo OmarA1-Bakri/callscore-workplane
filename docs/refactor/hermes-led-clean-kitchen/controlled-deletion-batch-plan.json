@@ -1,0 +1,2211 @@
+{
+  "counts": {
+    "allowed_bytes_live": 7028568064,
+    "allowed_human_live": "6.55 GiB",
+    "blocked_or_deferred_count": 17,
+    "candidate_count": 20,
+    "deferred_bytes_live": 22048127451,
+    "deferred_human_live": "20.53 GiB",
+    "parent_execution_allowed_count": 3
+  },
+  "docker_context": {
+    "available": true,
+    "compose_project_count": 3,
+    "containers": 7,
+    "mount_count": 3
+  },
+  "generated_at_utc": "2026-06-21T18:36:29Z",
+  "policy": {
+    "deletion_performed_by_worker": false,
+    "hard_blocks": [
+      "protected prefix",
+      "secret/env/credential path pattern",
+      "DB/dump path pattern",
+      "active process refs",
+      "Docker/Compose mount refs",
+      "cron/systemd refs",
+      "dirty git worktree or uncaptured unique work"
+    ],
+    "parent_default_must_execute_deletion": true,
+    "secrets_policy": "no env files/cookies/tokens/private keys read or printed; cron/systemd searched only for target-path string matches and contents not emitted",
+    "worker_role": "read-only safety/risk reviewer"
+  },
+  "receipts": [
+    {
+      "category": "system-log-retention",
+      "decision": {
+        "block_reasons": [
+          "systemd_refs: 4 hits"
+        ],
+        "command_plan": [
+          "journalctl --disk-usage",
+          "sudo journalctl --vacuum-size=1G"
+        ],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "4 hits",
+            "name": "systemd_refs",
+            "status": "BLOCK"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "journalctl_vacuum_only",
+        "parent_execution_allowed": false,
+        "risk": "MEDIUM"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 3441917952,
+          "exists": true,
+          "human_size": "3.21 GiB",
+          "mtime_utc": "2026-05-03T04:04:04Z",
+          "realpath": "/var/log/journal",
+          "type": "dir"
+        },
+        "systemd_hits": [
+          {
+            "active": "active",
+            "file": "/lib/systemd/system/systemd-journal-flush.service",
+            "unit": "systemd-journal-flush.service"
+          },
+          {
+            "active": "active",
+            "file": "/lib/systemd/system/sysinit.target.wants/systemd-journal-flush.service",
+            "unit": "systemd-journal-flush.service"
+          },
+          {
+            "active": "active",
+            "file": "/usr/lib/systemd/system/systemd-journal-flush.service",
+            "unit": "systemd-journal-flush.service"
+          },
+          {
+            "active": "active",
+            "file": "/usr/lib/systemd/system/sysinit.target.wants/systemd-journal-flush.service",
+            "unit": "systemd-journal-flush.service"
+          }
+        ]
+      },
+      "manifest_bytes": 3433529344,
+      "manifest_human_size": "3.20 GiB",
+      "path": "/var/log/journal"
+    },
+    {
+      "category": "tool-cache",
+      "decision": {
+        "block_reasons": [],
+        "command_plan": [
+          "npm cache verify",
+          "rm -rf -- \"/home/omar/.npm/_cacache\""
+        ],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "tool_native_or_rm_cache",
+        "parent_execution_allowed": true,
+        "risk": "MEDIUM"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 2923716608,
+          "exists": true,
+          "human_size": "2.72 GiB",
+          "mtime_utc": "2026-05-28T02:02:06Z",
+          "realpath": "/home/omar/.npm/_cacache",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 2923716608,
+      "manifest_human_size": "2.72 GiB",
+      "path": "/home/omar/.npm/_cacache"
+    },
+    {
+      "category": "agent-state-backup-archive",
+      "decision": {
+        "block_reasons": [
+          "backup archive requires explicit retention/off-host backup approval; latest backup must not be deleted by batch default"
+        ],
+        "command_plan": [
+          "rm -f -- \"/srv/agents/backups/agents-20260621T023006Z.tar.gz\""
+        ],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_backup_retention_gate",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 2828826693,
+          "exists": true,
+          "human_size": "2.63 GiB",
+          "mtime_utc": "2026-06-21T02:34:13Z",
+          "realpath": "/srv/agents/backups/agents-20260621T023006Z.tar.gz",
+          "type": "file"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 2828832768,
+      "manifest_human_size": "2.63 GiB",
+      "path": "/srv/agents/backups/agents-20260621T023006Z.tar.gz"
+    },
+    {
+      "category": "agent-state-backup-archive",
+      "decision": {
+        "block_reasons": [
+          "backup archive requires explicit retention/off-host backup approval; latest backup must not be deleted by batch default"
+        ],
+        "command_plan": [
+          "rm -f -- \"/srv/agents/backups/agents-20260620T023003Z.tar.gz\""
+        ],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_backup_retention_gate",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 2801893782,
+          "exists": true,
+          "human_size": "2.61 GiB",
+          "mtime_utc": "2026-06-20T02:33:57Z",
+          "realpath": "/srv/agents/backups/agents-20260620T023003Z.tar.gz",
+          "type": "file"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 2801901568,
+      "manifest_human_size": "2.61 GiB",
+      "path": "/srv/agents/backups/agents-20260620T023003Z.tar.gz"
+    },
+    {
+      "category": "tool-cache",
+      "decision": {
+        "block_reasons": [],
+        "command_plan": [
+          "rm -rf -- \"/home/omar/.bun/install/cache\""
+        ],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "tool_native_or_rm_cache",
+        "parent_execution_allowed": true,
+        "risk": "MEDIUM"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 2704457728,
+          "exists": true,
+          "human_size": "2.52 GiB",
+          "mtime_utc": "2026-05-13T05:06:13Z",
+          "realpath": "/home/omar/.bun/install/cache",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 2704457728,
+      "manifest_human_size": "2.52 GiB",
+      "path": "/home/omar/.bun/install/cache"
+    },
+    {
+      "category": "tool-cache",
+      "decision": {
+        "block_reasons": [],
+        "command_plan": [
+          "rm -rf -- \"/home/omar/.cache/uv/archive-v0\""
+        ],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "tool_native_or_rm_cache",
+        "parent_execution_allowed": true,
+        "risk": "MEDIUM"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1400393728,
+          "exists": true,
+          "human_size": "1.30 GiB",
+          "mtime_utc": "2026-06-17T17:56:38Z",
+          "realpath": "/home/omar/.cache/uv/archive-v0",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1400393728,
+      "manifest_human_size": "1.30 GiB",
+      "path": "/home/omar/.cache/uv/archive-v0"
+    },
+    {
+      "category": "browser-cache",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'browser-cache' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1381629952,
+          "exists": true,
+          "human_size": "1.29 GiB",
+          "mtime_utc": "2026-05-03T04:10:07Z",
+          "realpath": "/home/omar/.cache/camoufox",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1381629952,
+      "manifest_human_size": "1.29 GiB",
+      "path": "/home/omar/.cache/camoufox"
+    },
+    {
+      "category": "stale-workspace",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'stale-workspace' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /srv/whop-auto/workspace/callscore-db-portability clean",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [],
+          "dirty_entry_count": 0,
+          "is_git_worktree": true,
+          "root": "/srv/whop-auto/workspace/callscore-db-portability",
+          "worktree_count": 4
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1318395904,
+          "exists": true,
+          "human_size": "1.23 GiB",
+          "mtime_utc": "2026-06-07T10:29:35Z",
+          "realpath": "/srv/whop-auto/workspace/callscore-db-portability",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1318395904,
+      "manifest_human_size": "1.23 GiB",
+      "path": "/srv/whop-auto/workspace/callscore-db-portability"
+    },
+    {
+      "category": "stale-workspace",
+      "decision": {
+        "block_reasons": [
+          "git_unique_work_capture: git root /srv/whop-auto/workspace/callscore-candidate-autonomy dirty entries=1",
+          "unknown or non-cache category 'stale-workspace' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /srv/whop-auto/workspace/callscore-candidate-autonomy dirty entries=1",
+            "name": "git_unique_work_capture",
+            "status": "BLOCK"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [
+            {
+              "path": "AGENTS.md",
+              "status": " M"
+            }
+          ],
+          "dirty_entry_count": 1,
+          "is_git_worktree": true,
+          "root": "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+          "worktree_count": 10
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1299046400,
+          "exists": true,
+          "human_size": "1.21 GiB",
+          "mtime_utc": "2026-06-07T21:32:23Z",
+          "realpath": "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1299046400,
+      "manifest_human_size": "1.21 GiB",
+      "path": "/srv/whop-auto/workspace/callscore-candidate-autonomy"
+    },
+    {
+      "category": "stale-workspace",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'stale-workspace' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /srv/whop-auto/workspace/callscore-post-checkout-ux clean",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [],
+          "dirty_entry_count": 0,
+          "is_git_worktree": true,
+          "root": "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+          "worktree_count": 10
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1293959168,
+          "exists": true,
+          "human_size": "1.21 GiB",
+          "mtime_utc": "2026-06-07T10:09:31Z",
+          "realpath": "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1293959168,
+      "manifest_human_size": "1.21 GiB",
+      "path": "/srv/whop-auto/workspace/callscore-post-checkout-ux"
+    },
+    {
+      "category": "tmp-build-worktree",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'tmp-build-worktree' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /tmp/callscore-pr38-build clean",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "MEDIUM"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [],
+          "dirty_entry_count": 0,
+          "is_git_worktree": true,
+          "root": "/tmp/callscore-pr38-build",
+          "worktree_count": 4
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1278152704,
+          "exists": true,
+          "human_size": "1.19 GiB",
+          "mtime_utc": "2026-06-10T04:29:28Z",
+          "realpath": "/tmp/callscore-pr38-build",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1278152704,
+      "manifest_human_size": "1.19 GiB",
+      "path": "/tmp/callscore-pr38-build"
+    },
+    {
+      "category": "stale-workspace",
+      "decision": {
+        "block_reasons": [
+          "git_unique_work_capture: git root /srv/whop-auto/workspace/callscore-production-launch-master dirty entries=1",
+          "unknown or non-cache category 'stale-workspace' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /srv/whop-auto/workspace/callscore-production-launch-master dirty entries=1",
+            "name": "git_unique_work_capture",
+            "status": "BLOCK"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [
+            {
+              "path": "package-lock.json",
+              "status": " M"
+            }
+          ],
+          "dirty_entry_count": 1,
+          "is_git_worktree": true,
+          "root": "/srv/whop-auto/workspace/callscore-production-launch-master",
+          "worktree_count": 10
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1266049024,
+          "exists": true,
+          "human_size": "1.18 GiB",
+          "mtime_utc": "2026-06-07T11:17:20Z",
+          "realpath": "/srv/whop-auto/workspace/callscore-production-launch-master",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1266049024,
+      "manifest_human_size": "1.18 GiB",
+      "path": "/srv/whop-auto/workspace/callscore-production-launch-master"
+    },
+    {
+      "category": "agent-state-snapshot",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'agent-state-snapshot' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 1121439744,
+          "exists": true,
+          "human_size": "1.04 GiB",
+          "mtime_utc": "2026-06-17T17:56:32Z",
+          "realpath": "/srv/agents/hermes/state-snapshots/20260617-175630-pre-update",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 1121439744,
+      "manifest_human_size": "1.04 GiB",
+      "path": "/srv/agents/hermes/state-snapshots/20260617-175630-pre-update"
+    },
+    {
+      "category": "browser-cache",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'browser-cache' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 986976256,
+          "exists": true,
+          "human_size": "941.25 MiB",
+          "mtime_utc": "2026-05-03T04:14:03Z",
+          "realpath": "/home/omar/.cache/ms-playwright",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 986976256,
+      "manifest_human_size": "0.92 GiB",
+      "path": "/home/omar/.cache/ms-playwright"
+    },
+    {
+      "category": "tmp-build-worktree",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'tmp-build-worktree' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /tmp/callscore-hermes clean",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "MEDIUM"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [],
+          "dirty_entry_count": 0,
+          "is_git_worktree": true,
+          "root": "/tmp/callscore-hermes",
+          "worktree_count": 1
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 912023552,
+          "exists": true,
+          "human_size": "869.77 MiB",
+          "mtime_utc": "2026-06-05T09:54:40Z",
+          "realpath": "/tmp/callscore-hermes",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 912023552,
+      "manifest_human_size": "0.85 GiB",
+      "path": "/tmp/callscore-hermes"
+    },
+    {
+      "category": "stale-workspace",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'stale-workspace' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /srv/whop-auto/workspace/callscore-revenue-activation clean",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [],
+          "dirty_entry_count": 0,
+          "is_git_worktree": true,
+          "root": "/srv/whop-auto/workspace/callscore-revenue-activation",
+          "worktree_count": 10
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 906846208,
+          "exists": true,
+          "human_size": "864.84 MiB",
+          "mtime_utc": "2026-06-05T06:27:07Z",
+          "realpath": "/srv/whop-auto/workspace/callscore-revenue-activation",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 906846208,
+      "manifest_human_size": "0.84 GiB",
+      "path": "/srv/whop-auto/workspace/callscore-revenue-activation"
+    },
+    {
+      "category": "browser-cache",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'browser-cache' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "not inside git worktree",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "is_git_worktree": false
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 671203328,
+          "exists": true,
+          "human_size": "640.11 MiB",
+          "mtime_utc": "2026-06-10T06:12:44Z",
+          "realpath": "/home/omar/.cache/puppeteer",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 671203328,
+      "manifest_human_size": "0.63 GiB",
+      "path": "/home/omar/.cache/puppeteer"
+    },
+    {
+      "category": "stale-workspace-preclone",
+      "decision": {
+        "block_reasons": [
+          "git_unique_work_capture: git root /srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904 dirty entries=2",
+          "unknown or non-cache category 'stale-workspace-preclone' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904 dirty entries=2",
+            "name": "git_unique_work_capture",
+            "status": "BLOCK"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [
+            {
+              "path": ".env.example",
+              "status": " D"
+            },
+            {
+              "path": ".env.hermes.example",
+              "status": " D"
+            }
+          ],
+          "dirty_entry_count": 2,
+          "is_git_worktree": true,
+          "root": "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904",
+          "worktree_count": 11
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 345202688,
+          "exists": true,
+          "human_size": "329.21 MiB",
+          "mtime_utc": "2026-05-06T11:17:57Z",
+          "realpath": "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 345202688,
+      "manifest_human_size": "0.32 GiB",
+      "path": "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904"
+    },
+    {
+      "category": "tmp-worktree",
+      "decision": {
+        "block_reasons": [
+          "unknown or non-cache category 'tmp-worktree' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /tmp/cca-hermes clean",
+            "name": "git_unique_work_capture",
+            "status": "PASS"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [],
+          "dirty_entry_count": 0,
+          "is_git_worktree": true,
+          "root": "/tmp/cca-hermes",
+          "worktree_count": 1
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 132984832,
+          "exists": true,
+          "human_size": "126.82 MiB",
+          "mtime_utc": "2026-06-05T05:03:14Z",
+          "realpath": "/tmp/cca-hermes",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 132984832,
+      "manifest_human_size": "0.12 GiB",
+      "path": "/tmp/cca-hermes"
+    },
+    {
+      "category": "old-product-backup",
+      "decision": {
+        "block_reasons": [
+          "git_unique_work_capture: git root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z dirty entries=49",
+          "unknown or non-cache category 'old-product-backup' requires manual review"
+        ],
+        "command_plan": [],
+        "gates": [
+          {
+            "detail": "",
+            "name": "exists",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "protected_prefix",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "secret_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "db_or_dump_name",
+            "status": "PASS"
+          },
+          {
+            "detail": "{\"fstype\": \"ext4\", \"ok\": true, \"options\": \"rw,relatime\", \"source\": \"/dev/sda1\", \"target\": \"/\"}",
+            "name": "mount",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "active_process_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "docker_mounts",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "compose_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "cron_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "",
+            "name": "systemd_refs",
+            "status": "PASS"
+          },
+          {
+            "detail": "git root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z dirty entries=49",
+            "name": "git_unique_work_capture",
+            "status": "BLOCK"
+          }
+        ],
+        "method": "defer_unknown_category",
+        "parent_execution_allowed": false,
+        "risk": "HIGH"
+      },
+      "live_checks": {
+        "compose_hits": [],
+        "cron_hits": [],
+        "docker_mount_hits": [],
+        "git": {
+          "dirty_entries_sample": [
+            {
+              "path": ".codacy/",
+              "status": "??"
+            },
+            {
+              "path": ".copilot-tracking/",
+              "status": "??"
+            },
+            {
+              "path": ".dockerignore",
+              "status": "??"
+            },
+            {
+              "path": ".env.example",
+              "status": "??"
+            },
+            {
+              "path": ".env.hermes.example",
+              "status": "??"
+            },
+            {
+              "path": ".eslintrc.json",
+              "status": "??"
+            },
+            {
+              "path": ".github/",
+              "status": "??"
+            },
+            {
+              "path": ".gitignore",
+              "status": "??"
+            },
+            {
+              "path": ".kilo/",
+              "status": "??"
+            },
+            {
+              "path": ".new-FE-design/",
+              "status": "??"
+            },
+            {
+              "path": ".vercelignore",
+              "status": "??"
+            },
+            {
+              "path": ".whop-pipeline.json",
+              "status": "??"
+            },
+            {
+              "path": "CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md",
+              "status": "??"
+            },
+            {
+              "path": "CLAUDE.md",
+              "status": "??"
+            },
+            {
+              "path": "Dockerfile",
+              "status": "??"
+            }
+          ],
+          "dirty_entry_count": 49,
+          "is_git_worktree": true,
+          "root": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+          "worktree_count": 1
+        },
+        "mount": {
+          "fstype": "ext4",
+          "ok": true,
+          "options": "rw,relatime",
+          "source": "/dev/sda1",
+          "target": "/"
+        },
+        "process_refs": {
+          "count": 0,
+          "sample": [],
+          "truncated": false
+        },
+        "stat": {
+          "bytes": 61579264,
+          "exists": true,
+          "human_size": "58.73 MiB",
+          "mtime_utc": "2026-06-21T18:25:40Z",
+          "realpath": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+          "type": "dir"
+        },
+        "systemd_hits": []
+      },
+      "manifest_bytes": 61579264,
+      "manifest_human_size": "0.06 GiB",
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z"
+    }
+  ],
+  "source_manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidates.json",
+  "source_manifest_sha256": "7af977bcbc2e3ccebdb5d35b464b0e34171e4c7b27e0801a3a12038070057bde",
+  "task_id": "t_ed698e09"
+}

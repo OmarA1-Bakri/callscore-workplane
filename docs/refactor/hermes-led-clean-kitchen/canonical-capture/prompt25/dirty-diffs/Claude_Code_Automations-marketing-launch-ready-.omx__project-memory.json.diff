@@ -1,0 +1,21 @@
+diff --git a/.omx/project-memory.json b/.omx/project-memory.json
+deleted file mode 100644
+index 267e927..0000000
+--- a/.omx/project-memory.json
++++ /dev/null
+@@ -1,14 +0,0 @@
+-{
+-  "notes": [
+-    {
+-      "category": "architecture",
+-      "content": "Feedback/gotcha: In Whop autonomy specs, explicit user invocation must not be treated as invisible consent. Why: deploy/scaffold can mutate public-visible production state, and resume/audit depends on durable consent records. How to apply: define a pre-authorized invocation rule that writes a consent event with exact skill, target repo, target IDs/names, action class, and payload hash; reuse it on resume only if the action payload hash still matches. Production launch from scaffold and marketing/public publishing remain separately gated.",
+-      "timestamp": "2026-05-02T08:05:17.547Z"
+-    },
+-    {
+-      "category": "architecture",
+-      "content": "Feedback/gotcha: Whop autonomy specs must preserve Phase 1's LLM safety invariant for every future skill. Why: whop-manage and whop-market will read untrusted remote free text from app descriptions, reviews, support messages, forums/chats, campaign content, webhook URLs, and remote errors; raw text in planner/critic context creates prompt-injection risk. How to apply: state digests may include IDs, enums, hashes, and redacted markers only, and pressure tests must prove remote free text is redacted or hashed before planner/critic handoff.",
+-      "timestamp": "2026-05-02T08:15:25.458Z"
+-    }
+-  ]
+-}
+\ No newline at end of file

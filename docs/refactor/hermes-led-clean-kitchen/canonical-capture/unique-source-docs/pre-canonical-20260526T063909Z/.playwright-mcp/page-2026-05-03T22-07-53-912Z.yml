@@ -1,0 +1,110 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CallScore home" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CallScore - Market calls, measured." [ref=e6]
+      - navigation "Primary navigation" [ref=e7]:
+        - link "Leaderboard" [ref=e8] [cursor=pointer]:
+          - /url: /#leaderboard
+        - link "Methodology" [ref=e9] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e10] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e11]:
+          - link "Sign In" [ref=e12] [cursor=pointer]:
+            - /url: /api/auth/whop
+          - link "Get Access" [ref=e13] [cursor=pointer]:
+            - /url: /pricing
+      - button "Open menu" [ref=e15]:
+        - img [ref=e16]
+  - main [ref=e17]:
+    - generic [ref=e18]:
+      - link "← Back to leaderboard" [ref=e19] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - paragraph [ref=e22]: Evidence intake
+          - heading "Report a data issue, source gap, or product defect." [level=1] [ref=e23]
+          - paragraph [ref=e24]: The useful report is the one that includes the exact creator, call, page URL, source link, or screenshot needed to verify the issue.
+          - generic [ref=e25]:
+            - generic [ref=e26]: 01category
+            - generic [ref=e27]: 02context
+            - generic [ref=e28]: 03evidence
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - generic [ref=e32]:
+              - text: Category
+              - combobox "Category" [ref=e33]:
+                - option "Scoring Evidence" [selected]
+                - option "Creator Data"
+                - option "Call Source"
+                - option "Product Issue"
+                - option "Billing Access"
+            - generic [ref=e34]:
+              - text: Issue type
+              - combobox "Issue type" [ref=e35]:
+                - option "Incorrect data" [selected]
+                - option "Missing source"
+                - option "Broken page"
+                - option "Feature gap"
+                - option "Access issue"
+          - generic [ref=e36]:
+            - generic [ref=e37]: URL / context / optional
+            - textbox "URL / context / optional" [ref=e38]:
+              - /placeholder: https://www.call-score.com/creator/...
+          - generic [ref=e39]:
+            - generic [ref=e40]: Screenshot / source link / optional
+            - textbox "Screenshot / source link / optional" [ref=e41]:
+              - /placeholder: https://youtube.com/... or image link
+          - generic [ref=e42]:
+            - generic [ref=e43]: Contact email / optional
+            - textbox "Contact email / optional" [ref=e44]:
+              - /placeholder: you@example.com
+          - generic [ref=e45]:
+            - text: Evidence
+            - textbox "Evidence" [ref=e46]:
+              - /placeholder: Creator, call, timestamp, expected value, observed value...
+          - button "Send evidence" [ref=e47]
+  - contentinfo [ref=e48]:
+    - generic [ref=e49]:
+      - generic [ref=e50]:
+        - generic [ref=e51]:
+          - img "CallScore - Market calls, measured." [ref=e53]
+          - paragraph [ref=e54]: Market calls, measured.
+        - generic [ref=e55]:
+          - heading "Navigate" [level=2] [ref=e56]
+          - list [ref=e57]:
+            - listitem [ref=e58]:
+              - link "Leaderboard" [ref=e59] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e60]:
+              - link "Methodology" [ref=e61] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e62]:
+              - link "Pricing" [ref=e63] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e64]:
+              - link "Give Feedback" [ref=e65] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e66]:
+              - link "About" [ref=e67] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e68]:
+          - heading "Legal" [level=2] [ref=e69]
+          - list [ref=e70]:
+            - listitem [ref=e71]:
+              - link "Terms of Service" [ref=e72] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e73]:
+              - link "Privacy Policy" [ref=e74] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e75]:
+        - group [ref=e76]:
+          - 'generic "Financial Disclaimer: CallScore is an informational analytics platform only.Read full disclaimer" [ref=e77]':
+            - strong [ref=e78]: "Financial Disclaimer:"
+            - text: CallScore is an informational analytics platform only.Read full disclaimer
+        - paragraph [ref=e79]: © 2026 CallScore. All rights reserved.
+  - link "Send feedback" [ref=e80] [cursor=pointer]:
+    - /url: /feedback
+    - text: "?Feedback"

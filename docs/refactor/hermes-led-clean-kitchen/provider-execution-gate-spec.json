@@ -1,0 +1,4765 @@
+{
+  "timestamp_utc": "2026-06-22T08:55:15Z",
+  "gate_specs": [
+    {
+      "provider_id": "composio",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "composio",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "deploy",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "netlify",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "whop",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "attio",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "posthog",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "public_post",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "outreach_send",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "spend",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "gmail",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "public_post",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "outreach_send",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "spend",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "discord",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "public_post",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "outreach_send",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "spend",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "telegram",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "public_post",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "outreach_send",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "spend",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "x_twitter",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "public_post",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "outreach_send",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "spend",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "linkedin",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_for_local_ping_only",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "draft_only",
+      "required_approval": "allowed_for_local_ping_only",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "youtube_ytdlp",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "cloudflare_tunnel",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "github",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "read_only_probe",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "draft_only",
+      "required_approval": "allowed_only_after_route_visible_and_receipt_prepared",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "write_mutation",
+      "required_approval": "operator_approval_required",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "public_post",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "outreach_send",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "spend",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "deploy",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "whop_payment_or_plan",
+      "required_approval": "not_applicable",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "credential_rotation",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    },
+    {
+      "provider_id": "google_calendar_contacts",
+      "action_type": "OAuth_config_change",
+      "required_approval": "operator_approval_required_controlled_maintenance",
+      "required_receipt_fields": [
+        "operator_approval_reference",
+        "provider_id",
+        "action_type",
+        "preflight_status",
+        "result",
+        "post_check_status",
+        "artifact_safety_status"
+      ],
+      "required_preflight_checks": [
+        "route_status_visible",
+        "gate_status_open",
+        "runtime_health_ok",
+        "protected_paths_present",
+        "no_secret_printing"
+      ],
+      "required_post_checks": [
+        "receipt_written",
+        "runtime_health_ok",
+        "artifact_safety_scan_pass"
+      ],
+      "automatic_halt_conditions": [
+        "unsafe_secret_artifact",
+        "unexpected_provider_mutation",
+        "docker_restart",
+        "db_mutation",
+        "deploy_without_gate",
+        "provider_error_with_partial_write"
+      ]
+    }
+  ]
+}

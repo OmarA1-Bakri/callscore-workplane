@@ -1,0 +1,9 @@
+timestamp_start_utc=2026-06-22T10:07:17Z
+run_dir=/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T100717Z-chunk4-browser-caches
+rollback_dir=/tmp/cleanup-rollback-chunk4
+blacklist_not_touched=/srv/agents/repos/Claude_Code_Automations
+df_before=/dev/sda1       150G   88G   56G  62% /
+sizes_before:
+1.3G	/home/omar/.cache/camoufox
+942M	/home/omar/.cache/ms-playwright
+641M	/home/omar/.cache/puppeteer

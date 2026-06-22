@@ -1,0 +1,57 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/social-drafts",
+  "classification": "TEMPORARY_RUNTIME_OUTPUT_PHASE_A_CANDIDATE",
+  "phase_a_bucket": "safe_batch_1",
+  "status": "deleted",
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/social-drafts",
+    "exists": true,
+    "is_file": false,
+    "is_dir": true,
+    "is_symlink": false,
+    "mode_octal": "0o775",
+    "size_lstat_bytes": 4096,
+    "recursive_size_bytes": 74329,
+    "file_count": 14,
+    "mtime_utc": "2026-06-21T19:15:25Z",
+    "sha256": null
+  },
+  "refs": {
+    "process_refs": [],
+    "docker_mount_refs": [],
+    "findmnt": {
+      "cmd": "findmnt -T \"/opt/crypto-tuber-ranked/.tmp/social-drafts\" -o TARGET,SOURCE,FSTYPE -n 2>/dev/null || true",
+      "rc": 0,
+      "stdout": "/      /dev/sda1 ext4\n",
+      "stderr": ""
+    }
+  },
+  "command": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked/.tmp/social-drafts\"",
+  "command_rc": 0,
+  "stderr": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/social-drafts",
+    "exists": false
+  },
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131517521920,
+    "free_bytes": 29452722176,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571531,
+    "inode_free": 7160965,
+    "inode_used_percent": 26.42
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131517403136,
+    "free_bytes": 29452840960,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571515,
+    "inode_free": 7160981,
+    "inode_used_percent": 26.42
+  },
+  "recovered_bytes": 118784
+}

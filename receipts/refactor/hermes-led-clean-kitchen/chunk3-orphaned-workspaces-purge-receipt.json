@@ -1,0 +1,102 @@
+{
+  "timestamp_utc": "2026-06-22T10:04:06Z",
+  "phase": "authorized_deployment_purge_chunk3_orphaned_workspaces_with_rollback",
+  "status": "completed_purged",
+  "final_action": "purged_quarantine",
+  "strict_blacklist": "/srv/agents/repos/Claude_Code_Automations",
+  "blacklist_touched": false,
+  "targets": [
+    "/srv/whop-auto/workspace",
+    "/opt/crypto-tuber-ranked/.tmp/prod-rollout"
+  ],
+  "rollback_dir": "/tmp/cleanup-rollback-chunk3",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T100118Z-chunk3-orphaned-workspaces",
+  "quarantine_size_before_purge": {
+    "exists": true,
+    "bytes": 8749860587,
+    "human": "8.15 GiB"
+  },
+  "health_after_quarantine": {
+    "pass": true,
+    "evidence_file": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260622T100118Z-chunk3-orphaned-workspaces/health.txt",
+    "ytdlp_ping_final": {
+      "status": "ok",
+      "http_status": 200
+    }
+  },
+  "df_before_final_purge": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 103869173760 50501779456  68% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 103869173760,
+    "free_bytes": 50501779456,
+    "used_percent": 68
+  },
+  "df_after_final_purge": {
+    "raw": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks        Used   Available Use% Mounted on\n/dev/sda1      160970244096 94286233600 60084719616  62% /\n",
+      "stderr": ""
+    },
+    "total_bytes": 160970244096,
+    "used_bytes": 94286233600,
+    "free_bytes": 60084719616,
+    "used_percent": 62
+  },
+  "df_free_delta_bytes": 9582940160,
+  "df_free_delta_human": "8.92 GiB",
+  "chunk4_prepared_targets": [
+    {
+      "path": "/home/omar/.cache/camoufox",
+      "du_sh": {
+        "args": [
+          "du",
+          "-sh",
+          "/home/omar/.cache/camoufox"
+        ],
+        "rc": 0,
+        "stdout": "1.3G\t/home/omar/.cache/camoufox\n",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "/home/omar/.cache/ms-playwright",
+      "du_sh": {
+        "args": [
+          "du",
+          "-sh",
+          "/home/omar/.cache/ms-playwright"
+        ],
+        "rc": 0,
+        "stdout": "942M\t/home/omar/.cache/ms-playwright\n",
+        "stderr": ""
+      }
+    },
+    {
+      "path": "/home/omar/.cache/puppeteer",
+      "du_sh": {
+        "args": [
+          "du",
+          "-sh",
+          "/home/omar/.cache/puppeteer"
+        ],
+        "rc": 0,
+        "stdout": "641M\t/home/omar/.cache/puppeteer\n",
+        "stderr": ""
+      }
+    }
+  ]
+}

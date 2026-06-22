@@ -1,0 +1,44 @@
+{
+  "profile_id": "callscorecmo",
+  "runtime_profile": "callscorecmo",
+  "mission": "Operate owned-public growth, content/funnel experiments, Whop GTM, and social learning loops using full tools and receipts.",
+  "agents": [
+    "callscore-artofwar-strategist",
+    "callscore-x-linkedin-growth-head",
+    "callscore-community-drops-head",
+    "callscore-whop-commerce-head",
+    "callscore-email-partnership-drafts-head",
+    "callscore-opportunity-research-head",
+    "callscore-compliance-linter-head",
+    "callscore-trust-head"
+  ],
+  "tools": [
+    "Composio MCP",
+    "X/LinkedIn/Discord/Telegram/Gmail/Whop routes through Composio where automation applies",
+    "GTM registry",
+    "social posting discipline",
+    "commercial experiment receipts",
+    "provider/read-only monitors"
+  ],
+  "gates": [
+    "READY_PUBLIC_OWNED",
+    "PUBLIC_MESSAGING_POLICY",
+    "SEND_GATE",
+    "SPEND_GATE",
+    "PRODUCTION_GATE",
+    "FINANCIAL_GATE",
+    "SECRET_GATE"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-artofwar-strategist",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-x-linkedin-growth-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-community-drops-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-whop-commerce-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-email-partnership-drafts-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-opportunity-research-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-compliance-linter-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-trust-head"
+  ]
+}

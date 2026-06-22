@@ -1,0 +1,58 @@
+--- active/src/app/api/auth/whop/route.ts
++++ pre-canonical-20260526T063909Z/src/app/api/auth/whop/route.ts
+@@ -1,9 +1,4 @@
+-import { NextRequest, NextResponse } from "next/server";
+-import {
+-  getCanonicalWhopAuthUrl,
+-  getWhopOAuthBaseUrl,
+-  getWhopOAuthCallbackUrl,
+-} from "@/lib/whop-oauth";
++import { NextResponse } from "next/server";
+ 
+ const OAUTH_STATE_COOKIE_NAME = "ctr_oauth_state";
+ const OAUTH_STATE_TTL_SECONDS = 10 * 60;
+@@ -12,17 +7,7 @@
+  * GET /api/auth/whop
+  * Redirects the user to Whop's OAuth authorization page.
+  */
+-export async function GET(request: NextRequest): Promise<NextResponse> {
+-  const canonicalAuthUrl = getCanonicalWhopAuthUrl();
+-  const enforceCanonicalHost =
+-    process.env.NODE_ENV === "production" || Boolean(process.env.WHOP_OAUTH_BASE_URL);
+-  if (
+-    enforceCanonicalHost &&
+-    (request.headers.get("host") ?? request.nextUrl.host) !== new URL(getWhopOAuthBaseUrl()).host
+-  ) {
+-    return NextResponse.redirect(canonicalAuthUrl, { status: 307 });
+-  }
+-
++export async function GET(): Promise<NextResponse> {
+   const clientId = process.env.WHOP_CLIENT_ID;
+ 
+   if (!clientId) {
+@@ -32,7 +17,7 @@
+     );
+   }
+ 
+-  const redirectUri = getWhopOAuthCallbackUrl();
++  const redirectUri = getRedirectUri();
+ 
+   const params = new URLSearchParams({
+     client_id: clientId,
+@@ -54,6 +39,16 @@
+   return response;
+ }
+ 
++function getRedirectUri(): string {
++  const base =
++    process.env.NEXT_PUBLIC_BASE_URL ??
++    (process.env.NODE_ENV === "production"
++      ? "https://call-score.com"
++      : "http://localhost:3000");
++
++  return `${base}/api/auth/whop/callback`;
++}
++
+ function generateState(): string {
+   const bytes = new Uint8Array(16);
+   crypto.getRandomValues(bytes);

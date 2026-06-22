@@ -1,0 +1,262 @@
+{
+  "timestamp_utc": "2026-06-22T15:57:03Z",
+  "phase": "prompt_5_agent_workplane_profile_cleanup_closure",
+  "agents": [
+    {
+      "agent_id": "orchestrator",
+      "mission": "Coordinate CallScore agent work across Kanban, receipts, gates, and master-state.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "cmo",
+      "mission": "Owned-public growth, social campaign drafting, channel/funnel receipts, no public side effects without gates.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/cmo",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "data",
+      "mission": "Pipeline sentinel for scoring/data freshness and transcript/call ingestion health.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/data",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "trust",
+      "mission": "Non-founder review, trust scoring, evidence quality, and escalation.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/trust",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "compliance-linter",
+      "mission": "Fail-closed policy/compliance linting for public/provider/outreach changes.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "reviewer",
+      "mission": "Parent verification and review of implementation/evidence.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/reviewer",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "implementer",
+      "mission": "Bounded code/docs implementation under approved gates.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/implementer",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "safety",
+      "mission": "Deletion/provider/DB/deploy safety checks and emergency halt handling.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/safety",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "opportunity-research",
+      "mission": "Market/customer/revenue opportunity research.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "mission": "Draft partnership/outreach material without sending.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "community",
+      "mission": "Community drop drafts and public-commentary packets without posting.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/community",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "whop-commerce",
+      "mission": "Whop commerce, funnel, entitlement and marketplace automation boundaries.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "art-of-war",
+      "mission": "Art of War strategy/marketing workplane.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "mission": "Gemma/Ollama transcript shadow/main architecture and promotion gates.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "mission": "Channel agent worker runtime visibility and logs.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "mission": "Data pipeline worker runtime visibility and logs.",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker",
+      "receipt_path": "/srv/agents/repos/callscore-workplane/receipts/",
+      "provider_access": "Composio required for third-party automation; Netlify direct backup exception; Whop runtime direct exception only for app runtime.",
+      "forbidden_actions": [
+        "public_post_without_gate",
+        "outreach_send_without_gate",
+        "spend_without_gate",
+        "db_mutation_without_gate",
+        "deploy_without_gate",
+        "secret_printing"
+      ],
+      "escalation_path": "operator via master-state emergency halt receipt"
+    }
+  ]
+}

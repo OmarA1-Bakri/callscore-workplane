@@ -1,0 +1,13 @@
+diff --git a/.omx/state/hud-state.json b/.omx/state/hud-state.json
+deleted file mode 100644
+index 044efd2..0000000
+--- a/.omx/state/hud-state.json
++++ /dev/null
+@@ -1,6 +0,0 @@
+-{
+-  "last_turn_at": "2026-05-03T04:05:24.920Z",
+-  "turn_count": 84,
+-  "last_progress_at": "2026-05-03T04:05:24.920Z",
+-  "last_agent_output": "{\"title\":\"Fix Task 2 replay bugs\"}"
+-}
+\ No newline at end of file

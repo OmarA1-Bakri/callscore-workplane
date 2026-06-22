@@ -1,0 +1,30 @@
+{
+  "profile_id": "callscoretrust",
+  "runtime_profile": "callscoretrust",
+  "mission": "Own trust/non-founder review, public claim evidence, methodology caution, and reputation protection.",
+  "agents": [
+    "callscore-trust-head",
+    "callscore-compliance-linter-head",
+    "callscore-data-pipeline-sentinel"
+  ],
+  "tools": [
+    "evidence packets",
+    "freshness reports",
+    "claim lint receipts",
+    "public messaging policy",
+    "non-founder review queue"
+  ],
+  "gates": [
+    "trust_gate",
+    "claim_gate",
+    "PUBLIC_MESSAGING_POLICY",
+    "SECRET_GATE"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-trust-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-compliance-linter-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-data-pipeline-sentinel"
+  ]
+}

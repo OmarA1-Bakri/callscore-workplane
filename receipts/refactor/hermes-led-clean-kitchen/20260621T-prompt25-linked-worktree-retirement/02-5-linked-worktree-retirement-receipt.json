@@ -1,0 +1,1400 @@
+{
+  "timestamp_utc": "2026-06-21T19:26:10Z",
+  "run_dir": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement",
+  "classification_enum": [
+    "CANONICAL_ACTIVE",
+    "CONTROL_PLANE_ACTIVE",
+    "ACTIVE_RUNTIME_DEPENDENCY",
+    "PROTECTED_RUNTIME_STATE",
+    "PROTECTED_STALE_MANIFESTED",
+    "GIT_WORKTREE_RETIRED",
+    "DELETE_NOW_AFTER_CAPTURE",
+    "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+    "BLOCKED_ACTIVE_REFERENCE",
+    "BLOCKED_DIRTY_WORKTREE",
+    "BLOCKED_COMMON_GIT_RISK",
+    "BLOCKED_NEEDS_OPERATOR_APPROVAL",
+    "UNKNOWN_BLOCKED"
+  ],
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134441086976,
+    "free_bytes": 26529157120,
+    "used_percent": 83.52,
+    "inode_total": 9732496,
+    "inode_used": 2711337,
+    "inode_free": 7021159,
+    "inode_used_percent": 27.86
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 130982055936,
+    "free_bytes": 29988188160,
+    "used_percent": 81.37,
+    "inode_total": 9732496,
+    "inode_used": 2566373,
+    "inode_free": 7166123,
+    "inode_used_percent": 26.37
+  },
+  "inode_before": {
+    "inode_total": 9732496,
+    "inode_used": 2711337,
+    "inode_free": 7021159,
+    "inode_used_percent": 27.86
+  },
+  "inode_after": {
+    "inode_total": 9732496,
+    "inode_used": 2566373,
+    "inode_free": 7166123,
+    "inode_used_percent": 26.37
+  },
+  "recovered_bytes_df_delta": 3459031040,
+  "protected_stale_state_manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+  "protected_file_count": 63,
+  "capture_verification": {
+    "pipeline_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/legacy-scripts/pipeline-enqueue.sh",
+    "pipeline_capture_ok": true,
+    "pre_canonical_remaining_manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/manifests/pre-canonical-remaining-file-manifest.json",
+    "pre_canonical_source_capture": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/manifests/pre-canonical-source-doc-capture.json",
+    "pre_capture_ok": true,
+    "pre_capture_counts": {
+      "same_count": 187,
+      "changed_count": 147,
+      "unique_count": 333
+    }
+  },
+  "per_path_receipts": [
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__crypto-tuber-ranked.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/opt__crypto-tuber-ranked.pre-canonical-20260526T063909Z.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__callscore-stale-infra-cleanup.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__whop-auto__workspace__callscore-db-portability.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/tmp__callscore-pr38-build.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-marketing-launch-ready.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-measurement-pack-001.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-pr10-master-clean.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations_callscore_launch_sweep_clean.json"
+  ],
+  "deletions": [
+    {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "deletion_type": "raw exact path deletion",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "reason": "stale clone; pipeline-enqueue.sh captured and protected-state metadata manifested; no active references",
+      "pre_delete_size": 519758591,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/legacy-scripts/pipeline-enqueue.sh",
+      "active_reference_check": {
+        "path": "/srv/agents/crypto-tuber-ranked",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "command_used": "rm -rf --one-file-system -- \"/srv/agents/crypto-tuber-ranked\"",
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "post_delete_exists": false,
+      "bytes_recovered": 650731520,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 134441160704,
+        "free_bytes": 26529083392,
+        "used_percent": 83.52,
+        "inode_total": 9732496,
+        "inode_used": 2711340,
+        "inode_free": 7021156,
+        "inode_used_percent": 27.86
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 133790429184,
+        "free_bytes": 27179814912,
+        "used_percent": 83.12,
+        "inode_total": 9732496,
+        "inode_used": 2667773,
+        "inode_free": 7064723,
+        "inode_used_percent": 27.41
+      },
+      "deleted": true
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "deletion_type": "raw exact path deletion",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "reason": "pre-canonical snapshot; 333 unique files and 147 diffs captured in Prompt 2; protected-state metadata manifested; no active references",
+      "pre_delete_size": 58926941,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/manifests/pre-canonical-source-doc-capture.json",
+      "active_reference_check": {
+        "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z\"",
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "command_return_code": 1,
+      "command_stdout": "",
+      "command_stderr": "rm: cannot remove '/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z': Permission denied\n",
+      "post_delete_exists": false,
+      "bytes_recovered": 61575168,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 133790433280,
+        "free_bytes": 27179810816,
+        "used_percent": 83.12,
+        "inode_total": 9732496,
+        "inode_used": 2667774,
+        "inode_free": 7064722,
+        "inode_used_percent": 27.41
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 133728858112,
+        "free_bytes": 27241385984,
+        "used_percent": 83.08,
+        "inode_total": 9732496,
+        "inode_used": 2666734,
+        "inode_free": 7065762,
+        "inode_used_percent": 27.4
+      },
+      "deleted": true,
+      "prompt25_supplemental_delete_after_permission_denied": {
+        "timestamp_utc": "2026-06-21T19:27:30Z",
+        "reason": "initial non-sudo exact rm removed contents but could not remove root-owned directory; sudo available passwordless; target was empty/no active refs",
+        "command_used": "sudo -n rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z\"",
+        "command_return_code": 0,
+        "command_stdout": "",
+        "command_stderr": "",
+        "disk_before": {
+          "total_bytes": 160970244096,
+          "used_bytes": 130982055936,
+          "free_bytes": 29988188160,
+          "used_percent": 81.37,
+          "inode_total": 9732496,
+          "inode_used": 2566373,
+          "inode_free": 7166123,
+          "inode_used_percent": 26.37
+        },
+        "disk_after": {
+          "total_bytes": 160970244096,
+          "used_bytes": 130982055936,
+          "free_bytes": 29988188160,
+          "used_percent": 81.37,
+          "inode_total": 9732496,
+          "inode_used": 2566373,
+          "inode_free": 7166123,
+          "inode_used_percent": 26.37
+        },
+        "bytes_recovered": 0,
+        "post_delete_exists": false
+      },
+      "command_return_code_final": 0
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/crypto-tuber-ranked",
+      "worktree_record_before": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "head": "4bacabce35bc354a0ab3c2c924e34271e60cae3d",
+        "branch": "refs/heads/callscore/stale-infra-cleanup"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        },
+        {
+          "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "head": "4bacabce35bc354a0ab3c2c924e34271e60cae3d",
+          "branch": "refs/heads/callscore/stale-infra-cleanup"
+        },
+        {
+          "path": "/srv/whop-auto/workspace/callscore-db-portability",
+          "head": "541510ea9532db40814bc78a25032a915b90535c",
+          "branch": "refs/heads/callscore/db-provider-portability"
+        },
+        {
+          "path": "/tmp/callscore-pr38-build",
+          "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+          "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/callscore-stale-infra-cleanup",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/stale-infra-cleanup...origin/master [behind 36]\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/srv/agents/repos/callscore-stale-infra-cleanup",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## callscore/stale-infra-cleanup...origin/master [behind 36]\n",
+          "stderr": ""
+        },
+        "dirty_entries": [],
+        "captures": [],
+        "skipped": []
+      },
+      "pre_delete_size": 16035204,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/callscore-stale-infra-cleanup",
+      "active_reference_check": {
+        "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/crypto-tuber-ranked worktree remove --force \"/srv/agents/repos/callscore-stale-infra-cleanup\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/crypto-tuber-ranked worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        },
+        {
+          "path": "/srv/whop-auto/workspace/callscore-db-portability",
+          "head": "541510ea9532db40814bc78a25032a915b90535c",
+          "branch": "refs/heads/callscore/db-provider-portability"
+        },
+        {
+          "path": "/tmp/callscore-pr38-build",
+          "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+          "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+        }
+      ],
+      "bytes_recovered": 17833984,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 133728862208,
+        "free_bytes": 27241381888,
+        "used_percent": 83.08,
+        "inode_total": 9732496,
+        "inode_used": 2666735,
+        "inode_free": 7065761,
+        "inode_used_percent": 27.4
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 133711028224,
+        "free_bytes": 27259215872,
+        "used_percent": 83.07,
+        "inode_total": 9732496,
+        "inode_used": 2666112,
+        "inode_free": 7066384,
+        "inode_used_percent": 27.39
+      },
+      "deleted": true
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/crypto-tuber-ranked",
+      "worktree_record_before": {
+        "path": "/srv/whop-auto/workspace/callscore-db-portability",
+        "head": "541510ea9532db40814bc78a25032a915b90535c",
+        "branch": "refs/heads/callscore/db-provider-portability"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        },
+        {
+          "path": "/srv/whop-auto/workspace/callscore-db-portability",
+          "head": "541510ea9532db40814bc78a25032a915b90535c",
+          "branch": "refs/heads/callscore/db-provider-portability"
+        },
+        {
+          "path": "/tmp/callscore-pr38-build",
+          "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+          "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/whop-auto/workspace/callscore-db-portability",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/db-provider-portability...origin/master [behind 31]\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/srv/whop-auto/workspace/callscore-db-portability",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## callscore/db-provider-portability...origin/master [behind 31]\n",
+          "stderr": ""
+        },
+        "dirty_entries": [],
+        "captures": [],
+        "skipped": []
+      },
+      "pre_delete_size": 1176057987,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/callscore-db-portability",
+      "active_reference_check": {
+        "path": "/srv/whop-auto/workspace/callscore-db-portability",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/crypto-tuber-ranked worktree remove --force \"/srv/whop-auto/workspace/callscore-db-portability\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/crypto-tuber-ranked worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        },
+        {
+          "path": "/tmp/callscore-pr38-build",
+          "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+          "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+        }
+      ],
+      "bytes_recovered": 1318494208,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 133711032320,
+        "free_bytes": 27259211776,
+        "used_percent": 83.07,
+        "inode_total": 9732496,
+        "inode_used": 2666113,
+        "inode_free": 7066383,
+        "inode_used_percent": 27.39
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 132392538112,
+        "free_bytes": 28577705984,
+        "used_percent": 82.25,
+        "inode_total": 9732496,
+        "inode_used": 2618319,
+        "inode_free": 7114177,
+        "inode_used_percent": 26.9
+      },
+      "deleted": true
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/crypto-tuber-ranked",
+      "worktree_record_before": {
+        "path": "/tmp/callscore-pr38-build",
+        "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+        "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        },
+        {
+          "path": "/tmp/callscore-pr38-build",
+          "head": "f8ba404c9fddf482bfcd81bac8e0c77700dcbd88",
+          "branch": "refs/heads/thread2/pr39-homepage-readonlymap-typefix"
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/tmp/callscore-pr38-build",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## thread2/pr39-homepage-readonlymap-typefix\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/tmp/callscore-pr38-build",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## thread2/pr39-homepage-readonlymap-typefix\n",
+          "stderr": ""
+        },
+        "dirty_entries": [],
+        "captures": [],
+        "skipped": []
+      },
+      "pre_delete_size": 1137963880,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/callscore-pr38-build",
+      "active_reference_check": {
+        "path": "/tmp/callscore-pr38-build",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/crypto-tuber-ranked worktree remove --force \"/tmp/callscore-pr38-build\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/crypto-tuber-ranked worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        }
+      ],
+      "bytes_recovered": 1278242816,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 132392542208,
+        "free_bytes": 28577701888,
+        "used_percent": 82.25,
+        "inode_total": 9732496,
+        "inode_used": 2618320,
+        "inode_free": 7114176,
+        "inode_used_percent": 26.9
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 131114299392,
+        "free_bytes": 29855944704,
+        "used_percent": 81.45,
+        "inode_total": 9732496,
+        "inode_used": 2571299,
+        "inode_free": 7161197,
+        "inode_used_percent": 26.42
+      },
+      "deleted": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/Claude_Code_Automations",
+      "worktree_record_before": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "head": "7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13",
+        "branch": "refs/heads/callscore/marketing-dispatch-pack-001"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+          "head": "7e1a5fb8f14fcb409d9660d4d1be8e1ba4becf13",
+          "branch": "refs/heads/callscore/marketing-dispatch-pack-001"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "head": "78944f60081f1a3994fe1689147841cf579798e3",
+          "branch": "refs/heads/callscore/asset-pack-001-measurement-packet"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "head": "5846e233aa45f017bb1e9ea279c5efd59a27c318",
+          "branch": "refs/heads/callscore/marketing-dispatch-pack-001-master"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        },
+        {
+          "path": "C:/Users/albak/xdev/Claude_Code_Automations/agent_workflows/whop_auto/.claude/worktrees/cranky-albattani-bdcecf",
+          "head": "6542afa1e02d666000c6c540ad7a10d7711d0e84",
+          "branch": "refs/heads/claude/cranky-albattani-bdcecf",
+          "prunable": true
+        },
+        {
+          "path": "C:/Users/albak/xdev/worktrees/Claude_Code_Automations-whop-phase2",
+          "head": "4ca899971fa61cdd6e0047874d309dc18deed55b",
+          "branch": "refs/heads/codex/whop-phase2-runner",
+          "prunable": true
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/marketing-dispatch-pack-001...origin/callscore/marketing-dispatch-pack-001\n D .claude/checkpoints.log\n D .claude/settings.json\n D .claude/settings.local.json\n D .omx/logs/notify-hook-2026-05-03.jsonl\n D .omx/logs/tmux-hook-2026-04-18.jsonl\n D .omx/logs/tmux-hook-2026-05-02.jsonl\n D .omx/logs/tmux-hook-2026-05-03.jsonl\n D .omx/logs/turns-2026-04-18.jsonl\n D .omx/logs/turns-2026-05-02.jsonl\n D .omx/logs/turns-2026-05-03.jsonl\n D .omx/metrics.json\n D .omx/plans/plan-whop-skill-execution-integration.md\n D .omx/plans/prd-whop-skill-execution-integration.md\n D .omx/plans/workplane-runtime-full-implementation-plan.md\n D .omx/project-memory.json\n D .omx/state/current-task-baseline.json\n D .omx/state/hud-state.json\n D .omx/state/notify-hook-state.json\n D .omx/state/skill-active-state.json\n D .omx/state/team-leader-nudge.json\n D .omx/state/tmux-hook-state.json\n D .serena/.gitignore\n D .serena/ghost_publisher/README.md\n D .serena/ghost_publisher/publish_to_ghost.py\n D .serena/project.yml\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## callscore/marketing-dispatch-pack-001...origin/callscore/marketing-dispatch-pack-001\n D .claude/checkpoints.log\n D .claude/settings.json\n D .claude/settings.local.json\n D .omx/logs/notify-hook-2026-05-03.jsonl\n D .omx/logs/tmux-hook-2026-04-18.jsonl\n D .omx/logs/tmux-hook-2026-05-02.jsonl\n D .omx/logs/tmux-hook-2026-05-03.jsonl\n D .omx/logs/turns-2026-04-18.jsonl\n D .omx/logs/turns-2026-05-02.jsonl\n D .omx/logs/turns-2026-05-03.jsonl\n D .omx/metrics.json\n D .omx/plans/plan-whop-skill-execution-integration.md\n D .omx/plans/prd-whop-skill-execution-integration.md\n D .omx/plans/workplane-runtime-full-implementation-plan.md\n D .omx/project-memory.json\n D .omx/state/current-task-baseline.json\n D .omx/state/hud-state.json\n D .omx/state/notify-hook-state.json\n D .omx/state/skill-active-state.json\n D .omx/state/team-leader-nudge.json\n D .omx/state/tmux-hook-state.json\n D .serena/.gitignore\n D .serena/ghost_publisher/README.md\n D .serena/ghost_publisher/publish_to_ghost.py\n D .serena/project.yml\n",
+          "stderr": ""
+        },
+        "dirty_entries": [
+          " D .claude/checkpoints.log",
+          " D .claude/settings.json",
+          " D .claude/settings.local.json",
+          " D .omx/logs/notify-hook-2026-05-03.jsonl",
+          " D .omx/logs/tmux-hook-2026-04-18.jsonl",
+          " D .omx/logs/tmux-hook-2026-05-02.jsonl",
+          " D .omx/logs/tmux-hook-2026-05-03.jsonl",
+          " D .omx/logs/turns-2026-04-18.jsonl",
+          " D .omx/logs/turns-2026-05-02.jsonl",
+          " D .omx/logs/turns-2026-05-03.jsonl",
+          " D .omx/metrics.json",
+          " D .omx/plans/plan-whop-skill-execution-integration.md",
+          " D .omx/plans/prd-whop-skill-execution-integration.md",
+          " D .omx/plans/workplane-runtime-full-implementation-plan.md",
+          " D .omx/project-memory.json",
+          " D .omx/state/current-task-baseline.json",
+          " D .omx/state/hud-state.json",
+          " D .omx/state/notify-hook-state.json",
+          " D .omx/state/skill-active-state.json",
+          " D .omx/state/team-leader-nudge.json",
+          " D .omx/state/tmux-hook-state.json",
+          " D .serena/.gitignore",
+          " D .serena/ghost_publisher/README.md",
+          " D .serena/ghost_publisher/publish_to_ghost.py",
+          " D .serena/project.yml"
+        ],
+        "captures": [
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".claude/checkpoints.log",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.claude__checkpoints.log.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".claude/settings.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.claude__settings.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".claude/settings.local.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.claude__settings.local.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/notify-hook-2026-05-03.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__notify-hook-2026-05-03.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/tmux-hook-2026-04-18.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__tmux-hook-2026-04-18.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/tmux-hook-2026-05-02.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__tmux-hook-2026-05-02.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/tmux-hook-2026-05-03.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__tmux-hook-2026-05-03.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/turns-2026-04-18.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__turns-2026-04-18.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/turns-2026-05-02.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__turns-2026-05-02.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/logs/turns-2026-05-03.jsonl",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__logs__turns-2026-05-03.jsonl.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/metrics.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__metrics.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/plans/plan-whop-skill-execution-integration.md",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__plans__plan-whop-skill-execution-integration.md.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/plans/prd-whop-skill-execution-integration.md",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__plans__prd-whop-skill-execution-integration.md.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/plans/workplane-runtime-full-implementation-plan.md",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__plans__workplane-runtime-full-implementation-plan.md.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/project-memory.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__project-memory.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/state/current-task-baseline.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__state__current-task-baseline.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/state/hud-state.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__state__hud-state.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/state/notify-hook-state.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__state__notify-hook-state.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/state/skill-active-state.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__state__skill-active-state.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/state/team-leader-nudge.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__state__team-leader-nudge.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".omx/state/tmux-hook-state.json",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.omx__state__tmux-hook-state.json.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".serena/.gitignore",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.serena__.gitignore.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".serena/ghost_publisher/README.md",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.serena__ghost_publisher__README.md.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".serena/ghost_publisher/publish_to_ghost.py",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.serena__ghost_publisher__publish_to_ghost.py.diff"
+          },
+          {
+            "type": "sanitized_diff",
+            "relative_path": ".serena/project.yml",
+            "captured_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-diffs/Claude_Code_Automations-marketing-launch-ready-.serena__project.yml.diff"
+          }
+        ],
+        "skipped": []
+      },
+      "pre_delete_size": 98985512,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/Claude_Code_Automations-marketing-launch-ready",
+      "active_reference_check": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/Claude_Code_Automations worktree remove --force \"/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/Claude_Code_Automations worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "head": "78944f60081f1a3994fe1689147841cf579798e3",
+          "branch": "refs/heads/callscore/asset-pack-001-measurement-packet"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "head": "5846e233aa45f017bb1e9ea279c5efd59a27c318",
+          "branch": "refs/heads/callscore/marketing-dispatch-pack-001-master"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        }
+      ],
+      "bytes_recovered": 109883392,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 131114557440,
+        "free_bytes": 29855686656,
+        "used_percent": 81.45,
+        "inode_total": 9732496,
+        "inode_used": 2571326,
+        "inode_free": 7161170,
+        "inode_used_percent": 26.42
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 131004674048,
+        "free_bytes": 29965570048,
+        "used_percent": 81.38,
+        "inode_total": 9732496,
+        "inode_used": 2568081,
+        "inode_free": 7164415,
+        "inode_used_percent": 26.39
+      },
+      "deleted": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/Claude_Code_Automations",
+      "worktree_record_before": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+        "head": "78944f60081f1a3994fe1689147841cf579798e3",
+        "branch": "refs/heads/callscore/asset-pack-001-measurement-packet"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "head": "78944f60081f1a3994fe1689147841cf579798e3",
+          "branch": "refs/heads/callscore/asset-pack-001-measurement-packet"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "head": "5846e233aa45f017bb1e9ea279c5efd59a27c318",
+          "branch": "refs/heads/callscore/marketing-dispatch-pack-001-master"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/asset-pack-001-measurement-packet...origin/callscore/asset-pack-001-measurement-packet\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## callscore/asset-pack-001-measurement-packet...origin/callscore/asset-pack-001-measurement-packet\n",
+          "stderr": ""
+        },
+        "dirty_entries": [],
+        "captures": [],
+        "skipped": []
+      },
+      "pre_delete_size": 5835442,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/Claude_Code_Automations-measurement-pack-001",
+      "active_reference_check": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/Claude_Code_Automations worktree remove --force \"/srv/agents/repos/Claude_Code_Automations-measurement-pack-001\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/Claude_Code_Automations worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "head": "5846e233aa45f017bb1e9ea279c5efd59a27c318",
+          "branch": "refs/heads/callscore/marketing-dispatch-pack-001-master"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        }
+      ],
+      "bytes_recovered": 7467008,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 131004694528,
+        "free_bytes": 29965549568,
+        "used_percent": 81.38,
+        "inode_total": 9732496,
+        "inode_used": 2568082,
+        "inode_free": 7164414,
+        "inode_used_percent": 26.39
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 130997227520,
+        "free_bytes": 29973016576,
+        "used_percent": 81.38,
+        "inode_total": 9732496,
+        "inode_used": 2567509,
+        "inode_free": 7164987,
+        "inode_used_percent": 26.38
+      },
+      "deleted": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/Claude_Code_Automations",
+      "worktree_record_before": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+        "head": "5846e233aa45f017bb1e9ea279c5efd59a27c318",
+        "branch": "refs/heads/callscore/marketing-dispatch-pack-001-master"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "head": "5846e233aa45f017bb1e9ea279c5efd59a27c318",
+          "branch": "refs/heads/callscore/marketing-dispatch-pack-001-master"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## callscore/marketing-dispatch-pack-001-master...origin/callscore/marketing-dispatch-pack-001-master\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## callscore/marketing-dispatch-pack-001-master...origin/callscore/marketing-dispatch-pack-001-master\n",
+          "stderr": ""
+        },
+        "dirty_entries": [],
+        "captures": [],
+        "skipped": []
+      },
+      "pre_delete_size": 5830998,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/Claude_Code_Automations-pr10-master-clean",
+      "active_reference_check": {
+        "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/Claude_Code_Automations worktree remove --force \"/srv/agents/repos/Claude_Code_Automations-pr10-master-clean\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/Claude_Code_Automations worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        }
+      ],
+      "bytes_recovered": 7454720,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 130997235712,
+        "free_bytes": 29973008384,
+        "used_percent": 81.38,
+        "inode_total": 9732496,
+        "inode_used": 2567510,
+        "inode_free": 7164986,
+        "inode_used_percent": 26.38
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 130989780992,
+        "free_bytes": 29980463104,
+        "used_percent": 81.38,
+        "inode_total": 9732496,
+        "inode_used": 2566938,
+        "inode_free": 7165558,
+        "inode_used_percent": 26.37
+      },
+      "deleted": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+      "deletion_type": "git worktree removal",
+      "common_repo": "/srv/agents/repos/Claude_Code_Automations",
+      "worktree_record_before": {
+        "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+        "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+        "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+      },
+      "worktree_list_before": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        },
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "head": "e890f5b27ca36afb941e18be7e44b627ffed93ac",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep-clean"
+        }
+      ],
+      "git_status": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+          "status",
+          "--short",
+          "--branch"
+        ],
+        "rc": 0,
+        "stdout": "## chore/callscore-launch-domain-sweep-clean...origin/master [ahead 1]\n",
+        "stderr": ""
+      },
+      "dirty_capture": {
+        "status": {
+          "args": [
+            "git",
+            "-C",
+            "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+            "status",
+            "--short",
+            "--branch"
+          ],
+          "rc": 0,
+          "stdout": "## chore/callscore-launch-domain-sweep-clean...origin/master [ahead 1]\n",
+          "stderr": ""
+        },
+        "dirty_entries": [],
+        "captures": [],
+        "skipped": []
+      },
+      "pre_delete_size": 5834284,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/prompt25/dirty-files/Claude_Code_Automations_callscore_launch_sweep_clean",
+      "active_reference_check": {
+        "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "emergency_halt_status": {
+        "halted": false
+      },
+      "classification": "GIT_WORKTREE_RETIRED",
+      "command_used": "git -C /srv/agents/repos/Claude_Code_Automations worktree remove --force \"/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "prune_command": "git -C /srv/agents/repos/Claude_Code_Automations worktree prune",
+      "prune_return_code": 0,
+      "post_delete_exists": false,
+      "worktree_list_after": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        }
+      ],
+      "bytes_recovered": 7471104,
+      "disk_before": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 130989785088,
+        "free_bytes": 29980459008,
+        "used_percent": 81.38,
+        "inode_total": 9732496,
+        "inode_used": 2566939,
+        "inode_free": 7165557,
+        "inode_used_percent": 26.37
+      },
+      "disk_after": {
+        "path": "/",
+        "total_bytes": 160970244096,
+        "used_bytes": 130982313984,
+        "free_bytes": 29987930112,
+        "used_percent": 81.37,
+        "inode_total": 9732496,
+        "inode_used": 2566364,
+        "inode_free": 7166132,
+        "inode_used_percent": 26.37
+      },
+      "deleted": true
+    }
+  ],
+  "classifications": [
+    {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "exists_after": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+      "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+      "exists_after": true
+    },
+    {
+      "path": "/srv/agents/repos/callscore-stale-infra-cleanup",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-db-portability",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "classification": "BLOCKED_COMMON_GIT_RISK",
+      "reason": "common repo not deleted in Prompt 2.5; common .git preservation rule; deletion/classification can be separate later phase after worktree retirement verification",
+      "remaining_worktrees": [
+        {
+          "path": "/srv/agents/repos/crypto-tuber-ranked",
+          "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+          "branch": "refs/heads/master"
+        }
+      ],
+      "worktree_prune": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/crypto-tuber-ranked",
+          "worktree",
+          "prune"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "active_reference_check": {
+        "path": "/srv/agents/repos/crypto-tuber-ranked",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "size_bytes": 11488186,
+      "exists_after": true
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-measurement-pack-001",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations-pr10-master-clean",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations_callscore_launch_sweep_clean",
+      "classification": "GIT_WORKTREE_RETIRED",
+      "exists_after": false
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "classification": "BLOCKED_COMMON_GIT_RISK",
+      "reason": "common repo explicitly not approved for deletion in Prompt 2.5",
+      "remaining_worktrees": [
+        {
+          "path": "/srv/agents/repos/Claude_Code_Automations",
+          "head": "8d69b406408deaa1f462373fbb4318027104cc38",
+          "branch": "refs/heads/chore/callscore-launch-domain-sweep"
+        }
+      ],
+      "worktree_prune": {
+        "args": [
+          "git",
+          "-C",
+          "/srv/agents/repos/Claude_Code_Automations",
+          "worktree",
+          "prune"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "active_reference_check": {
+        "path": "/srv/agents/repos/Claude_Code_Automations",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "size_bytes": 1067520068,
+      "exists_after": true
+    },
+    {
+      "path": "/srv/agents/database-migration",
+      "classification": "BLOCKED_NEEDS_OPERATOR_APPROVAL",
+      "reason": "DB/migration protected data; no explicit operator approval to delete in current prompt",
+      "size_bytes": 878132059,
+      "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+      "active_reference_check": {
+        "path": "/srv/agents/database-migration",
+        "process_refs": [],
+        "docker_refs": [],
+        "systemd_refs": [],
+        "cron_refs": [],
+        "compose_refs": [],
+        "active_ref_files": []
+      },
+      "exists_after": true
+    }
+  ],
+  "active_runtime_health": {
+    "docker_regressions": [],
+    "protected_active_paths_ok": true,
+    "canonical_runtime_untouched": true
+  },
+  "emergency_halt_status": {
+    "halted": false
+  },
+  "prompt25_supplemental_remediation": {
+    "timestamp_utc": "2026-06-21T19:28:08Z",
+    "protected_content_copy_removed": [
+      {
+        "path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/google-client-secrets.json",
+        "size_bytes": 364,
+        "sha256": "0df47da6825a336de0ce9ba52be5720767e202691168656646d167ddc05e39d5",
+        "reason": "protected-state content copy from Prompt 2 capture removed during Prompt 2.5; metadata only retained",
+        "post_delete_exists": false,
+        "contents_copied_after_prompt25": false,
+        "metadata_manifest": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json"
+      }
+    ],
+    "precanonical_sudo_delete": {
+      "timestamp_utc": "2026-06-21T19:27:30Z",
+      "reason": "initial non-sudo exact rm removed contents but could not remove root-owned directory; sudo available passwordless; target was empty/no active refs",
+      "command_used": "sudo -n rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z\"",
+      "command_return_code": 0,
+      "command_stdout": "",
+      "command_stderr": "",
+      "disk_before": {
+        "total_bytes": 160970244096,
+        "used_bytes": 130982055936,
+        "free_bytes": 29988188160,
+        "used_percent": 81.37,
+        "inode_total": 9732496,
+        "inode_used": 2566373,
+        "inode_free": 7166123,
+        "inode_used_percent": 26.37
+      },
+      "disk_after": {
+        "total_bytes": 160970244096,
+        "used_bytes": 130982055936,
+        "free_bytes": 29988188160,
+        "used_percent": 81.37,
+        "inode_total": 9732496,
+        "inode_used": 2566373,
+        "inode_free": 7166123,
+        "inode_used_percent": 26.37
+      },
+      "bytes_recovered": 0,
+      "post_delete_exists": false
+    }
+  }
+}

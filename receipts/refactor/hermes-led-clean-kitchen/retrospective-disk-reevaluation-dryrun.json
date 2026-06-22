@@ -1,0 +1,2217 @@
+{
+  "timestamp_utc": "2026-06-22T09:25:46Z",
+  "dry_run_only": true,
+  "current_disk": {
+    "total_bytes": 160970244096,
+    "used_bytes": 128963428352,
+    "free_bytes": 25407524864,
+    "used_percent": 84,
+    "free_human": "23.66GB"
+  },
+  "candidates": [
+    {
+      "path": "/srv/agents/database-migration",
+      "exists": true,
+      "bytes": 878132059,
+      "human": "837.45MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "protected_db_migration",
+      "reason": "previously blocked as DB dump-like protected artifact",
+      "confidence": "explicit_operator_approval_required",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "exists": true,
+      "bytes": 1067520068,
+      "human": "1018.07MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_common_or_tooling",
+      "reason": "previously preserved common repo; not active product runtime but may hold work",
+      "confidence": "manual_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "exists": true,
+      "bytes": 11488186,
+      "human": "10.96MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_common_or_tooling",
+      "reason": "previously preserved common repo; not active runtime",
+      "confidence": "manual_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/repos/composio",
+      "exists": true,
+      "bytes": 1357851112,
+      "human": "1.26GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_tooling",
+      "reason": "Composio-related repo/tooling candidate; relevant after layer correction",
+      "confidence": "manual_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/backups",
+      "exists": true,
+      "bytes": 9570565125,
+      "human": "8.91GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "backup_retention",
+      "reason": "backup retention previously deferred",
+      "confidence": "operator_retention_decision_required",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/state-snapshots",
+      "exists": true,
+      "bytes": 1477762899,
+      "human": "1.38GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_state_snapshot",
+      "reason": "Hermes state snapshots previously not touched",
+      "confidence": "manual_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/sessions",
+      "exists": true,
+      "bytes": 563001148,
+      "human": "536.92MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_sessions",
+      "reason": "Hermes session/request dumps; many historical files",
+      "confidence": "archive_or_retention_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/cron/output",
+      "exists": true,
+      "bytes": 17872666,
+      "human": "17.04MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_cron_output",
+      "reason": "Hermes cron output; historical repeated outputs",
+      "confidence": "archive_or_retention_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/pastes",
+      "exists": true,
+      "bytes": 1835954,
+      "human": "1.75MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_pastes",
+      "reason": "Hermes pasted prompt/session artifacts",
+      "confidence": "archive_or_retention_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/profiles",
+      "exists": true,
+      "bytes": 1438586220,
+      "human": "1.34GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_profiles",
+      "reason": "Hermes profiles; not deletion candidate but size relevant",
+      "confidence": "not_delete_without_profile_migration",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/skills/.hub/index-cache",
+      "exists": true,
+      "bytes": 1557724,
+      "human": "1.49MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_skill_cache",
+      "reason": "Hermes skill hub index cache; regenerability needs confirmation",
+      "confidence": "likely_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/hermes/skills/.curator_backups",
+      "exists": true,
+      "bytes": 33203249,
+      "human": "31.67MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "hermes_skill_backup",
+      "reason": "Hermes skill curator backups",
+      "confidence": "manual_review",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "exists": true,
+      "bytes": 1759976233,
+      "human": "1.64GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_tmp_excluded",
+      "reason": "large active runtime temp directory explicitly excluded before",
+      "confidence": "high_value_review",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts",
+      "exists": true,
+      "bytes": 2466884,
+      "human": "2.35MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_receipts",
+      "reason": "runtime-local receipts indexed but not consolidated/deleted",
+      "confidence": "consolidate_then_delete_later",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp",
+      "exists": true,
+      "bytes": 1776376762,
+      "human": "1.65GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_tmp_root",
+      "reason": "remaining active runtime tmp root after phase 4.1",
+      "confidence": "review_subpaths_only",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "exists": true,
+      "bytes": 245268816,
+      "human": "233.91MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_build_cache",
+      "reason": "active runtime Next.js build output/cache previously preserved",
+      "confidence": "rebuildable_but_runtime_sensitive",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.netlify",
+      "exists": true,
+      "bytes": 133770000,
+      "human": "127.57MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_build_cache",
+      "reason": "active runtime Netlify cache/state previously preserved",
+      "confidence": "rebuildable_but_runtime_sensitive",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/node_modules",
+      "exists": true,
+      "bytes": 861616720,
+      "human": "821.70MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_dependencies",
+      "reason": "active runtime dependencies; reinstallable but not low-risk",
+      "confidence": "do_not_delete_unless_reinstall_planned",
+      "notes": ""
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.omx",
+      "exists": true,
+      "bytes": 782700,
+      "human": "764.36KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "active_runtime_agent_context",
+      "reason": "active OMX context previously low priority",
+      "confidence": "manual_review",
+      "notes": ""
+    },
+    {
+      "path": "/tmp/callscore-hermes",
+      "exists": false,
+      "bytes": 0,
+      "human": "0B",
+      "error": null,
+      "category": "tmp_worktree_or_cache",
+      "reason": "previously deferred tmp workspace",
+      "confidence": "review_required",
+      "notes": ""
+    },
+    {
+      "path": "/tmp/cca-hermes",
+      "exists": false,
+      "bytes": 0,
+      "human": "0B",
+      "error": null,
+      "category": "tmp_worktree_or_cache",
+      "reason": "previously deferred tmp workspace",
+      "confidence": "review_required",
+      "notes": ""
+    },
+    {
+      "path": "/tmp/callscore-pr38-build",
+      "exists": false,
+      "bytes": 0,
+      "human": "0B",
+      "error": null,
+      "category": "tmp_build_worktree",
+      "reason": "previously retired if absent; re-check current presence",
+      "confidence": "review_required",
+      "notes": ""
+    },
+    {
+      "path": "/srv/whop-auto/workspace",
+      "exists": true,
+      "bytes": 6989884354,
+      "human": "6.51GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "stale_workspace_root",
+      "reason": "workspace root previously had stale worktrees; re-scan after boundary correction",
+      "confidence": "review_required",
+      "notes": ""
+    },
+    {
+      "path": "/var/log/journal",
+      "exists": true,
+      "bytes": 3959422976,
+      "human": "3.69GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "system_journal",
+      "reason": "journal cleanup previously deferred; use journalctl vacuum only if approved",
+      "confidence": "system_retention_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.npm/_cacache",
+      "exists": true,
+      "bytes": 2857815838,
+      "human": "2.66GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.npm",
+      "exists": true,
+      "bytes": 4589640555,
+      "human": "4.27GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.bun/install/cache",
+      "exists": true,
+      "bytes": 2374334537,
+      "human": "2.21GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.bun",
+      "exists": true,
+      "bytes": 2374334537,
+      "human": "2.21GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/uv/archive-v0",
+      "exists": true,
+      "bytes": 1231604316,
+      "human": "1.15GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/uv",
+      "exists": true,
+      "bytes": 1320112789,
+      "human": "1.23GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/pip",
+      "exists": true,
+      "bytes": 159651440,
+      "human": "152.26MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/pnpm",
+      "exists": true,
+      "bytes": 1770980,
+      "human": "1.69MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/yarn",
+      "exists": false,
+      "bytes": 0,
+      "human": "0B",
+      "error": null,
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/ms-playwright",
+      "exists": true,
+      "bytes": 985922891,
+      "human": "940.25MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/puppeteer",
+      "exists": true,
+      "bytes": 669188537,
+      "human": "638.19MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache/camoufox",
+      "exists": true,
+      "bytes": 1378338652,
+      "human": "1.28GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.cache",
+      "exists": true,
+      "bytes": 5294535050,
+      "human": "4.93GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/home/omar/.local/share/pnpm/store",
+      "exists": true,
+      "bytes": 1192983461,
+      "human": "1.11GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/root/.cache",
+      "exists": false,
+      "bytes": 0,
+      "human": "0B",
+      "error": "PermissionError: [Errno 13] Permission denied: '/root/.cache'",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/root/.npm/_cacache",
+      "exists": false,
+      "bytes": 0,
+      "human": "0B",
+      "error": "PermissionError: [Errno 13] Permission denied: '/root/.npm/_cacache'",
+      "category": "user_or_tool_cache",
+      "reason": "deep cache skipped/deferred during initial cleanup; likely recoverable if tools can regenerate",
+      "confidence": "likely_safe_cache_review",
+      "notes": ""
+    },
+    {
+      "path": "/srv/agents/repos/!",
+      "exists": true,
+      "bytes": 0,
+      "human": "0B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/agents/repos/.omx",
+      "exists": true,
+      "bytes": 846,
+      "human": "846B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/agents/repos/awesome-hermes-agent",
+      "exists": true,
+      "bytes": 137803,
+      "human": "134.57KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/agents/repos/career-ops",
+      "exists": true,
+      "bytes": 80158946,
+      "human": "76.45MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/agents/repos/data",
+      "exists": true,
+      "bytes": 7632,
+      "human": "7.45KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/agents/repos/tsconfig.json",
+      "exists": true,
+      "bytes": 276,
+      "human": "276B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/agents/repos/youtube-transcript-extractor",
+      "exists": true,
+      "bytes": 21537,
+      "human": "21.03KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/agents/repos; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/_tmp",
+      "exists": true,
+      "bytes": 0,
+      "human": "0B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-candidate-autonomy",
+      "exists": true,
+      "bytes": 1158930619,
+      "human": "1.08GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-creator-admission-gate",
+      "exists": true,
+      "bytes": 299894220,
+      "human": "286.00MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-favicon-fix",
+      "exists": true,
+      "bytes": 264188035,
+      "human": "251.95MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-post-checkout-ux",
+      "exists": true,
+      "bytes": 1153844865,
+      "human": "1.07GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-production-launch-master",
+      "exists": true,
+      "bytes": 1126043190,
+      "human": "1.05GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-revenue-activation",
+      "exists": true,
+      "bytes": 774362522,
+      "human": "738.49MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/callscore-transparent-centered-favicon",
+      "exists": true,
+      "bytes": 265084168,
+      "human": "252.80MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/crypto-tuber-ranked",
+      "exists": true,
+      "bytes": 1360726343,
+      "human": "1.27GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/crypto-tuber-ranked-phase4e1e",
+      "exists": true,
+      "bytes": 249540004,
+      "human": "237.98MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/crypto-tuber-ranked-prod-hygiene",
+      "exists": true,
+      "bytes": 15515774,
+      "human": "14.80MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/srv/whop-auto/workspace/crypto-tuber-ranked.preclone-20260506134904",
+      "exists": true,
+      "bytes": 321754614,
+      "human": "306.85MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /srv/whop-auto/workspace; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-artofwar-receipt-5JlPY6",
+      "exists": true,
+      "bytes": 458,
+      "human": "458B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-artofwar-receipt-8VGwaA",
+      "exists": true,
+      "bytes": 458,
+      "human": "458B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-artofwar-receipt-RJV8OF",
+      "exists": true,
+      "bytes": 458,
+      "human": "458B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-channel-head-DiIVFT",
+      "exists": true,
+      "bytes": 4912,
+      "human": "4.80KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-channel-head-FppnLJ",
+      "exists": true,
+      "bytes": 4912,
+      "human": "4.80KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-channel-head-pKbDl6",
+      "exists": true,
+      "bytes": 4912,
+      "human": "4.80KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-env-validator-0cupqb",
+      "exists": true,
+      "bytes": 1534,
+      "human": "1.50KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-env-validator-BIXPPZ",
+      "exists": true,
+      "bytes": 1534,
+      "human": "1.50KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-env-validator-OXpmmo",
+      "exists": true,
+      "bytes": 1534,
+      "human": "1.50KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-env-validator-missing-3ZpXH8",
+      "exists": true,
+      "bytes": 33,
+      "human": "33B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-env-validator-missing-LPOZkO",
+      "exists": true,
+      "bytes": 33,
+      "human": "33B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-env-validator-missing-fm07ur",
+      "exists": true,
+      "bytes": 33,
+      "human": "33B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-gemma-capacity-8ugsjK",
+      "exists": true,
+      "bytes": 250,
+      "human": "250B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-gemma-capacity-Lkzn9i",
+      "exists": true,
+      "bytes": 250,
+      "human": "250B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-gemma-capacity-l0J2HL",
+      "exists": true,
+      "bytes": 250,
+      "human": "250B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-gemma-shadow-receipt-KfJv5C",
+      "exists": true,
+      "bytes": 169,
+      "human": "169B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-gemma-shadow-receipt-Krwaag",
+      "exists": true,
+      "bytes": 169,
+      "human": "169B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-gemma-shadow-receipt-WuhVjY",
+      "exists": true,
+      "bytes": 169,
+      "human": "169B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-domain-RIMAc5",
+      "exists": true,
+      "bytes": 345,
+      "human": "345B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-domain-rKtVwY",
+      "exists": true,
+      "bytes": 345,
+      "human": "345B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-domain-szIDyy",
+      "exists": true,
+      "bytes": 345,
+      "human": "345B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-gate-685hk7",
+      "exists": true,
+      "bytes": 345,
+      "human": "345B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-gate-YXpsyK",
+      "exists": true,
+      "bytes": 345,
+      "human": "345B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-gate-l17zqd",
+      "exists": true,
+      "bytes": 345,
+      "human": "345B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-ready-6Akq9E",
+      "exists": true,
+      "bytes": 314,
+      "human": "314B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-ready-ejbZkO",
+      "exists": true,
+      "bytes": 314,
+      "human": "314B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-ml-verifier-ready-mpDk5P",
+      "exists": true,
+      "bytes": 314,
+      "human": "314B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-rate-limit-2LeIzX",
+      "exists": true,
+      "bytes": 125,
+      "human": "125B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-rate-limit-7kDlHD",
+      "exists": true,
+      "bytes": 125,
+      "human": "125B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-rate-limit-fj5B9u",
+      "exists": true,
+      "bytes": 125,
+      "human": "125B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-receipt-3IQqR6",
+      "exists": true,
+      "bytes": 102,
+      "human": "102B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-receipt-AIFfrQ",
+      "exists": true,
+      "bytes": 102,
+      "human": "102B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-receipt-nMuVtz",
+      "exists": true,
+      "bytes": 102,
+      "human": "102B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-write-canary-Cfd5BW",
+      "exists": true,
+      "bytes": 292,
+      "human": "292B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-write-canary-R5gSKu",
+      "exists": true,
+      "bytes": 292,
+      "human": "292B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/callscore-workplane-write-canary-hDT9Mm",
+      "exists": true,
+      "bytes": 292,
+      "human": "292B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/collector-state-BMdelZ",
+      "exists": true,
+      "bytes": 231,
+      "human": "231B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/collector-state-ByUetJ",
+      "exists": true,
+      "bytes": 231,
+      "human": "231B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/collector-state-bEXZL4",
+      "exists": true,
+      "bytes": 231,
+      "human": "231B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/fresh-call-sentinel-4RpZIg",
+      "exists": true,
+      "bytes": 1172,
+      "human": "1.14KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/fresh-call-sentinel-P3ZfOn",
+      "exists": true,
+      "bytes": 1172,
+      "human": "1.14KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/fresh-call-sentinel-kid4RK",
+      "exists": true,
+      "bytes": 1172,
+      "human": "1.14KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/loop-engineering-job-45V4Ef",
+      "exists": true,
+      "bytes": 7112,
+      "human": "6.95KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/loop-engineering-job-RwC69g",
+      "exists": true,
+      "bytes": 7112,
+      "human": "6.95KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/loop-engineering-job-SPm6zB",
+      "exists": true,
+      "bytes": 7112,
+      "human": "6.95KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/loop-engineering-status-GQtcFB",
+      "exists": true,
+      "bytes": 16,
+      "human": "16B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/loop-engineering-status-O1D28p",
+      "exists": true,
+      "bytes": 16,
+      "human": "16B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/loop-engineering-status-kYS844",
+      "exists": true,
+      "bytes": 16,
+      "human": "16B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-JoMAlf",
+      "exists": true,
+      "bytes": 1375,
+      "human": "1.34KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-Mx0wna",
+      "exists": true,
+      "bytes": 1375,
+      "human": "1.34KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-PNmicK",
+      "exists": true,
+      "bytes": 1375,
+      "human": "1.34KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-main-4MFoXP",
+      "exists": true,
+      "bytes": 1491,
+      "human": "1.46KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-main-iMpnoB",
+      "exists": true,
+      "bytes": 1491,
+      "human": "1.46KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-main-n9SfGv",
+      "exists": true,
+      "bytes": 1491,
+      "human": "1.46KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-schema-9XY8Xm",
+      "exists": true,
+      "bytes": 779,
+      "human": "779B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-schema-9nyvm1",
+      "exists": true,
+      "bytes": 779,
+      "human": "779B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/ml-idle-schema-WxnhKA",
+      "exists": true,
+      "bytes": 779,
+      "human": "779B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/node-compile-cache",
+      "exists": true,
+      "bytes": 1320028,
+      "human": "1.26MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/non-founder-review-gate-Ff0G4e",
+      "exists": true,
+      "bytes": 2318,
+      "human": "2.26KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/non-founder-review-gate-YvKBz8",
+      "exists": true,
+      "bytes": 2318,
+      "human": "2.26KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/non-founder-review-gate-xLTzOm",
+      "exists": true,
+      "bytes": 2318,
+      "human": "2.26KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/non-founder-review-queue-ETS0aQ",
+      "exists": true,
+      "bytes": 2241,
+      "human": "2.19KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/non-founder-review-queue-UGT8zX",
+      "exists": true,
+      "bytes": 2241,
+      "human": "2.19KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/non-founder-review-queue-vRdqXe",
+      "exists": true,
+      "bytes": 2241,
+      "human": "2.19KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/prompt6-print.txt",
+      "exists": true,
+      "bytes": 8734,
+      "human": "8.53KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/secret-hygiene-1782081817776",
+      "exists": true,
+      "bytes": 34,
+      "human": "34B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/secret-hygiene-1782081817779-clean",
+      "exists": true,
+      "bytes": 22,
+      "human": "22B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/secret-hygiene-1782081976194",
+      "exists": true,
+      "bytes": 34,
+      "human": "34B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/secret-hygiene-1782081976197-clean",
+      "exists": true,
+      "bytes": 22,
+      "human": "22B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/secret-hygiene-1782083993588",
+      "exists": true,
+      "bytes": 34,
+      "human": "34B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/secret-hygiene-1782083993591-clean",
+      "exists": true,
+      "bytes": 22,
+      "human": "22B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-artifact-order-hdxY0Q",
+      "exists": true,
+      "bytes": 72,
+      "human": "72B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-artifact-order-oAvs3r",
+      "exists": true,
+      "bytes": 72,
+      "human": "72B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-artifact-order-vVnVgA",
+      "exists": true,
+      "bytes": 72,
+      "human": "72B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-0yQvkX",
+      "exists": true,
+      "bytes": 1516,
+      "human": "1.48KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-NGGvwY",
+      "exists": true,
+      "bytes": 1516,
+      "human": "1.48KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-portable-C1Zntm",
+      "exists": true,
+      "bytes": 2322,
+      "human": "2.27KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-portable-ixR2F7",
+      "exists": true,
+      "bytes": 2322,
+      "human": "2.27KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-portable-lqZGah",
+      "exists": true,
+      "bytes": 2322,
+      "human": "2.27KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-production-schema-FhXVkd",
+      "exists": true,
+      "bytes": 1981,
+      "human": "1.93KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-production-schema-GPMPC0",
+      "exists": true,
+      "bytes": 1981,
+      "human": "1.93KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-production-schema-igbald",
+      "exists": true,
+      "bytes": 1981,
+      "human": "1.93KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-reviewed-87x7N7",
+      "exists": true,
+      "bytes": 3651,
+      "human": "3.57KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-reviewed-9G77sO",
+      "exists": true,
+      "bytes": 3651,
+      "human": "3.57KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-reviewed-gz498k",
+      "exists": true,
+      "bytes": 3651,
+      "human": "3.57KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/shadow-promote-sXGhGG",
+      "exists": true,
+      "bytes": 1516,
+      "human": "1.48KB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/tsx-1000",
+      "exists": true,
+      "bytes": 3246646,
+      "human": "3.10MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/workflow-receipts-HWBSpi",
+      "exists": true,
+      "bytes": 289,
+      "human": "289B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/workflow-receipts-LVy96H",
+      "exists": true,
+      "bytes": 289,
+      "human": "289B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/workflow-receipts-TnF0P7",
+      "exists": true,
+      "bytes": 289,
+      "human": "289B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/workplane-artifacts-4PFux9",
+      "exists": true,
+      "bytes": 224,
+      "human": "224B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/workplane-artifacts-EoLaGu",
+      "exists": true,
+      "bytes": 224,
+      "human": "224B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    },
+    {
+      "path": "/tmp/workplane-artifacts-sncxq1",
+      "exists": true,
+      "bytes": 224,
+      "human": "224B",
+      "du_rc": 0,
+      "du_stderr": "",
+      "category": "repo_or_workspace_first_level",
+      "reason": "first-level item under /tmp; verify active refs before deletion",
+      "confidence": "manual_review"
+    }
+  ],
+  "selected_non_overlapping_candidates": [
+    {
+      "path": "/home/omar/.npm/_cacache",
+      "exists": true,
+      "bytes": 2857815838,
+      "human": "2.66GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/home/omar/.bun/install/cache",
+      "exists": true,
+      "bytes": 2374334537,
+      "human": "2.21GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/home/omar/.cache/uv/archive-v0",
+      "exists": true,
+      "bytes": 1231604316,
+      "human": "1.15GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/home/omar/.cache/pip",
+      "exists": true,
+      "bytes": 159651440,
+      "human": "152.26MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/home/omar/.cache/ms-playwright",
+      "exists": true,
+      "bytes": 985922891,
+      "human": "940.25MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/home/omar/.cache/puppeteer",
+      "exists": true,
+      "bytes": 669188537,
+      "human": "638.19MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/home/omar/.cache/camoufox",
+      "exists": true,
+      "bytes": 1378338652,
+      "human": "1.28GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/hermes/state-snapshots",
+      "exists": true,
+      "bytes": 1477762899,
+      "human": "1.38GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/hermes/cron/output",
+      "exists": true,
+      "bytes": 17872666,
+      "human": "17.04MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/hermes/sessions",
+      "exists": true,
+      "bytes": 563001148,
+      "human": "536.92MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/hermes/pastes",
+      "exists": true,
+      "bytes": 1835954,
+      "human": "1.75MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/hermes/skills/.hub/index-cache",
+      "exists": true,
+      "bytes": 1557724,
+      "human": "1.49MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/backups",
+      "exists": true,
+      "bytes": 9570565125,
+      "human": "8.91GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "exists": true,
+      "bytes": 1759976233,
+      "human": "1.64GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/workflow-receipts",
+      "exists": true,
+      "bytes": 2466884,
+      "human": "2.35MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "exists": true,
+      "bytes": 245268816,
+      "human": "233.91MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.netlify",
+      "exists": true,
+      "bytes": 133770000,
+      "human": "127.57MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/database-migration",
+      "exists": true,
+      "bytes": 878132059,
+      "human": "837.45MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "exists": true,
+      "bytes": 1067520068,
+      "human": "1018.07MB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/agents/repos/composio",
+      "exists": true,
+      "bytes": 1357851112,
+      "human": "1.26GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    },
+    {
+      "path": "/srv/whop-auto/workspace",
+      "exists": true,
+      "bytes": 6989884354,
+      "human": "6.51GB",
+      "du_rc": 0,
+      "du_stderr": "",
+      "selection_note": "non-overlapping dry-run candidate; deletion requires explicit approval and per-path gate"
+    }
+  ],
+  "selected_total_bytes": 33724321253,
+  "selected_total_human": "31.41GB",
+  "docker_system_df_v": {
+    "args": [
+      "docker",
+      "system",
+      "df",
+      "-v"
+    ],
+    "rc": 0,
+    "stdout": "Images space usage:\n\nREPOSITORY                             TAG                         IMAGE ID       CREATED        SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS\ncrypto-tuber-ranked-hermes-worker      latest                      c3bce08d0356   34 hours ago   3.3GB     135.9MB       3.169GB       2\ncallscore-hermes-ytdlp-test            latest                      a161bae23aac   10 days ago    2.34GB    135.9MB       2.208GB       0\noauth-mcp-gateway-oauth-mcp-gateway    latest                      f0de3878ede1   13 days ago    284MB     139.5MB       145MB         1\ncrypto-tuber-ranked-hermes-worker      rollback-20260526T063747Z   c2cbd357ddd7   4 weeks ago    1.92GB    0B            1.921GB       0\npostgres                               17                          0027bef26712   4 weeks ago    667MB     139.5MB       527.1MB       0\ncloudflare/cloudflared                 latest                      6b599ca3e974   3 months ago   104MB     0B            104.3MB       1\nbrainicism/bgutil-ytdlp-pot-provider   1.3.1-node                  1aaa43a0ca72   3 months ago   505MB     0B            505.4MB       1\n\nContainers space usage:\n\nCONTAINER ID   IMAGE                                             COMMAND                  LOCAL VOLUMES   SIZE      CREATED        STATUS                   NAMES\nda4d0e928c00   crypto-tuber-ranked-hermes-worker:latest          \"docker-entrypoint.s\u2026\"   0               582kB     34 hours ago   Up 34 hours              whop-auto-hermes-worker-1\n8787903a1ad5   crypto-tuber-ranked-hermes-worker:latest          \"docker-entrypoint.s\u2026\"   0               3.78MB    34 hours ago   Up 34 hours              whop-auto-channel-agent-worker-1\n70e98d9f9b52   b1369860652d                                      \"docker-entrypoint.s\u2026\"   0               496kB     34 hours ago   Up 34 hours              crypto-tuber-ranked-hermes-worker-1\n362901a5fca0   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   \"/usr/local/bin/node\u2026\"   0               16.4kB    34 hours ago   Up 34 hours (healthy)    crypto-tuber-ranked-ytdlp-pot-provider-1\n1635003474d8   oauth-mcp-gateway-oauth-mcp-gateway               \"uvicorn app:app --h\u2026\"   0               4.1kB     13 days ago    Up 13 days               hh-oauth-mcp-gateway\nb518c0e35938   79476f33a1dc                                      \"docker-entrypoint.s\u2026\"   0               262kB     2 weeks ago    Exited (0) 2 weeks ago   crypto-tuber-ranked-hermes-worker-1-neon-rollback-20260603-214652\n996b7342b827   cloudflare/cloudflared:latest                     \"cloudflared --no-au\u2026\"   0               12.3kB    6 weeks ago    Up 2 weeks               hermes-whop-automation-tunnel\n\nLocal Volumes space usage:\n\nVOLUME NAME                              LINKS     SIZE\nwhop_task5_state_ae7e790                 0         0B\nwhopstage20260506164050_whop_state       0         0B\nwhopstage20260506164050_whop_workspace   0         0B\nwhopstage20260506164836_whop_state       0         0B\nwhopstage20260506164836_whop_workspace   0         24.81kB\nwhop_auto_whop_state                     0         2B\nwhop_auto_whop_workspace                 0         24.78kB\nwhop_phase3a_state_1e2da21_codex         0         169B\n\nBuild cache usage: 18.88GB\n\nCACHE ID       CACHE TYPE     SIZE      CREATED        LAST USED      USAGE     SHARED\nkpvvajhyr1xi   regular        136MB     4 weeks ago    4 weeks ago    1         true\nnbhpkv1wqnwv   regular        72.9kB    4 weeks ago    4 weeks ago    1         true\nz5c3lx2ss3bd   regular        168MB     4 weeks ago    4 weeks ago    1         true\nwel8h1r5aezv   regular        9.03MB    4 weeks ago    4 weeks ago    1         true\n71jcc104hcqs   regular        377kB     4 weeks ago    4 weeks ago    1         false\n96q631qlnhre   regular        20.9kB    4 weeks ago    4 weeks ago    1         true\npohne78tlnnd   regular        12.4kB    4 weeks ago    4 weeks ago    1         false\nwlrnc78vpxup   regular        1.58GB    4 weeks ago    4 weeks ago    1         true\ny4uildoy52cq   regular        8.29kB    4 weeks ago    4 weeks ago    4         true\n7cy3vhozo32m   regular        26.5MB    4 weeks ago    4 weeks ago    1         true\nswcx2g1ml5kn   regular        389kB     4 weeks ago    4 weeks ago    1         true\nhfjwsjnm6ytg   regular        12.4kB    4 weeks ago    3 weeks ago    2         true\nxaxawseup4l5   regular        378kB     3 weeks ago    3 weeks ago    1         false\n6dj3wiqbstam   regular        30.1MB    2 weeks ago    2 weeks ago    1         false\nlkox5gh0puer   regular        6.27MB    2 weeks ago    2 weeks ago    1         false\n5z8btzhdcoej   regular        56.7MB    2 weeks ago    2 weeks ago    1         false\n9972f8srgcbj   regular        16.6kB    2 weeks ago    2 weeks ago    1         false\nixhm91tzy7rd   regular        8.29kB    2 weeks ago    2 weeks ago    1         false\nmwyru4qoyvgo   regular        12.5kB    2 weeks ago    2 weeks ago    1         false\nyw0rnkukuwsl   source.local   8.19kB    2 weeks ago    13 days ago    5         false\n3kzppfm2ocxj   source.local   16.4kB    2 weeks ago    13 days ago    5         false\ncwxc7k0iihlp   regular        82MB      2 weeks ago    13 days ago    5         false\n71hu52azpx3h   source.local   4.1kB     2 weeks ago    13 days ago    5         false\nhxxtjbdoxbgi   regular        355kB     12 days ago    12 days ago    1         false\ns0ggsqiz6wne   regular        27.4MB    11 days ago    11 days ago    1         false\n5sufl7f53i6w   regular        355kB     11 days ago    11 days ago    1         false\n7kp8z6pkf2vh   regular        1.58GB    11 days ago    11 days ago    1         false\nariw26egj0a0   regular        12.4kB    2 weeks ago    11 days ago    3         false\nqz64e53kxthh   regular        72.9kB    10 days ago    10 days ago    1         false\nv9on5pondgkl   regular        201MB     10 days ago    10 days ago    1         false\n85sr2i0e93wf   regular        9.03MB    10 days ago    10 days ago    1         false\nxiju3xv4ebgl   regular        12.4kB    10 days ago    10 days ago    1         false\n123cb1nar3hx   regular        355kB     10 days ago    10 days ago    1         false\njhtgd7xn1c21   regular        242MB     10 days ago    10 days ago    1         false\nqe9nbm6h4v3z   regular        172MB     10 days ago    10 days ago    1         false\nmic5xigswmsh   regular        8.29kB    10 days ago    10 days ago    1         false\ndmweg3pbwghj   regular        1.58GB    10 days ago    10 days ago    2         false\niobl1jtba5lq   regular        242MB     10 days ago    10 days ago    1         false\n3b064m1qhatq   regular        355kB     10 days ago    10 days ago    1         false\nkkyci1fd4d90   regular        1.58GB    10 days ago    10 days ago    1         false\n23d6u1m0przo   regular        242MB     10 days ago    10 days ago    1         false\nw053ma29sh6g   regular        173MB     10 days ago    10 days ago    1         false\nyvmgqmjqek0q   regular        8.29kB    10 days ago    10 days ago    1         false\nvoekxltswaj4   regular        12.4kB    10 days ago    10 days ago    1         false\nyoyfkzb5upeu   regular        20.9kB    10 days ago    10 days ago    3         false\n2a941wne680a   regular        355kB     10 days ago    10 days ago    1         false\ni83uu6zlg610   regular        1.12GB    10 days ago    10 days ago    1         false\nro5m4ij8pn8s   regular        1.58GB    10 days ago    10 days ago    1         false\nleqvbj3oy59w   regular        242MB     10 days ago    10 days ago    1         false\nn1wgqbrjwk4l   regular        8.29kB    10 days ago    10 days ago    1         false\nxtc0l99h32z5   regular        355kB     9 days ago     9 days ago     1         false\nuh8w4ut3l9zj   regular        243MB     9 days ago     9 days ago     1         false\ne8wq236yiob0   regular        12.4kB    10 days ago    9 days ago     2         false\nqoc6e2gfb6q3   regular        1.58GB    9 days ago     9 days ago     1         false\nrshvjiocbps3   regular        136MB     10 days ago    34 hours ago   2         true\nzbxk3uh82hno   regular        72.9kB    34 hours ago   34 hours ago   1         true\notsbgmgft2s2   regular        201MB     34 hours ago   34 hours ago   1         true\n0rizf9d4olii   regular        9.03MB    34 hours ago   34 hours ago   1         true\n6l389ziph7vm   regular        1.12GB    34 hours ago   34 hours ago   1         true\nnsi83y4invag   regular        12.4kB    34 hours ago   34 hours ago   1         true\nj01tsrpk8c4k   regular        355kB     34 hours ago   34 hours ago   1         true\n4x9y1j0akiy0   regular        245MB     34 hours ago   34 hours ago   1         false\n7p5jcz4phg05   regular        20.9kB    34 hours ago   34 hours ago   1         true\nd4nkuwodjzt5   regular        8.29kB    34 hours ago   34 hours ago   1         true\nwanqzj1d72w1   regular        993MB     4 weeks ago    34 hours ago   2         false\noh1954xa11ti   regular        12.3kB    4 weeks ago    34 hours ago   2         false\nojdeawrt0ea6   regular        12.3kB    4 weeks ago    34 hours ago   2         false\n7wk5ysb6dt6i   regular        993MB     3 weeks ago    34 hours ago   3         false\nnsr5bkism7c8   regular        245MB     34 hours ago   34 hours ago   1         false\n5rur5vfowcug   source.local   8.19kB    4 weeks ago    34 hours ago   18        false\nkisf82tqnb4n   regular        245MB     34 hours ago   34 hours ago   1         true\nit90fg7nwfzg   source.local   8.19kB    4 weeks ago    34 hours ago   17        false\nfiymlq8jerz3   regular        1.59GB    34 hours ago   34 hours ago   3         true\nocjos9nge4uc   source.local   166MB     4 weeks ago    34 hours ago   17        false\n",
+    "stderr": ""
+  },
+  "docker_summary_lines": [
+    "Images space usage:",
+    "Containers space usage:",
+    "Local Volumes space usage:"
+  ],
+  "docker_builder_du": {
+    "args": [
+      "docker",
+      "builder",
+      "du"
+    ],
+    "rc": 0,
+    "stdout": "ID                           RECLAIMABLE   SIZE       LAST ACCESSED\n71hu52azpx3hx12udyf427z02*   true          4.096kB    13 days ago\n5rur5vfowcugqtymzxvqs2ly6*   true          8.192kB    34 hours ago\nit90fg7nwfzg9tr09126d5plp*   true          8.192kB    34 hours ago\nyw0rnkukuwsl3p3f2ry4rspzs*   true          8.192kB    13 days ago\nd4nkuwodjzt5dqj0ivnpo2h9l    true          8.285kB*   34 hours ago\nixhm91tzy7rd0vr9sj8u98wig    true          8.285kB    2 weeks ago\nmic5xigswmshg7muluiti2327    true          8.285kB    10 days ago\nn1wgqbrjwk4l4rx2ggk1seq13    true          8.285kB    10 days ago\ny4uildoy52cq53z2wwwn8qqa2    true          8.285kB*   4 weeks ago\nyvmgqmjqek0qwn4z5sic9czpq    true          8.285kB    10 days ago\noh1954xa11ti15oqdiyyikt5d    true          12.29kB    34 hours ago\nojdeawrt0ea6fgdr9pd10lkb6    true          12.29kB    34 hours ago\nnsi83y4invagdr6r1yw5dscqt    true          12.38kB*   34 hours ago\nvoekxltswaj42cmddl9a85vz3    true          12.38kB    10 days ago\nxiju3xv4ebglettywxy5b8b4b    true          12.38kB    10 days ago\nariw26egj0a0016sdyx2mx7wa    true          12.38kB    11 days ago\ne8wq236yiob05hbeqv4ocf6zw    true          12.38kB    9 days ago\nhfjwsjnm6ytg8u157zqdqa279    true          12.38kB*   3 weeks ago\npohne78tlnndn6d6bp3whk5ym    true          12.38kB    4 weeks ago\nmwyru4qoyvgo3qlt5z5s9z01d    true          12.51kB    2 weeks ago\n3kzppfm2ocxjaf6qiutkdb8tf*   true          16.38kB    13 days ago\n9972f8srgcbjl6ns7pj3f3jkl    true          16.63kB    2 weeks ago\n96q631qlnhre12lc0027ce88z    true          20.93kB*   4 weeks ago\n7p5jcz4phg05zzdotrf8wjyfw    true          20.93kB*   34 hours ago\nyoyfkzb5upeus7bk2nez3sgcb    true          20.93kB    10 days ago\nnbhpkv1wqnwvj3jdvi9ampsfc    true          72.94kB*   4 weeks ago\nqz64e53kxthhe49ssw5qlmnqp    true          72.94kB    10 days ago\nzbxk3uh82hnok65jv615n05d2    true          72.94kB*   34 hours ago\nhxxtjbdoxbgi5eds4p9yn90b4    true          354.8kB    12 days ago\n5sufl7f53i6wfm6gb5a8kpdr0    true          354.8kB    11 days ago\n123cb1nar3hx9o1gavmbx0rsb    true          354.9kB    10 days ago\n2a941wne680avbwh35ad18hmj    true          354.9kB    10 days ago\n3b064m1qhatq2b7apay16zbxa    true          354.9kB    10 days ago\nxtc0l99h32z55t7neipwct3bx    true          355kB      9 days ago\nj01tsrpk8c4k42acc2io8ot8u    true          355.2kB*   34 hours ago\n71jcc104hcqs64laeah5qh9yo    true          377.4kB    4 weeks ago\nxaxawseup4l53uwk0t1h9c2mu    true          377.5kB    3 weeks ago\nswcx2g1ml5kno9knfpins4is1    true          388.7kB*   4 weeks ago\nlkox5gh0puer285k2qj35k0x6    true          6.267MB    2 weeks ago\n0rizf9d4oliiwsmofyerl0fc2    true          9.032MB*   34 hours ago\nwel8h1r5aezv4euhh44vpgzdw    true          9.032MB*   4 weeks ago\n85sr2i0e93wfsjnz9ja7nb0b8    true          9.032MB    10 days ago\n7cy3vhozo32mzasfyo1x4upnf    true          26.47MB*   4 weeks ago\ns0ggsqiz6wne7e8t2ku1swngj    true          27.36MB    11 days ago\n6dj3wiqbstamitk0swrmnzejn    true          30.14MB    2 weeks ago\n5z8btzhdcoejjh9cb4woeza2x    true          56.66MB    2 weeks ago\ncwxc7k0iihlpb4aw8aqg9y19i    true          82.05MB    13 days ago\nkpvvajhyr1xife1lkwgfgs30j    true          135.9MB*   4 weeks ago\nrshvjiocbps3p0zht3qik1c2l    true          135.9MB*   34 hours ago\nocjos9nge4uc7813pe2ozj83y*   true          166.3MB    34 hours ago\nz5c3lx2ss3bdnwulu22mcycrs    true          167.5MB*   4 weeks ago\nqe9nbm6h4v3zb79fekg8rsq1r    true          172.4MB    10 days ago\nw053ma29sh6g9kpzjx4i18zdq    true          172.5MB    10 days ago\nv9on5pondgklqr4j4p95yav68    true          201.3MB    10 days ago\notsbgmgft2s2ilb82gpc500xw    true          201.4MB*   34 hours ago\njhtgd7xn1c21w6g1hf8hv2iky    true          242MB      10 days ago\niobl1jtba5lq89jzn6rvgs7fc    true          242MB      10 days ago\n23d6u1m0przo9x28u8s6ajz4k    true          242MB      10 days ago\nleqvbj3oy59wrh9055grlwl53    true          242MB      10 days ago\nuh8w4ut3l9zjf76qtqyo28mgj    true          243.1MB    9 days ago\n4x9y1j0akiy0zbleikmosiauj    true          244.6MB    34 hours ago\nnsr5bkism7c88b1ftzj7ntq07    true          244.7MB    34 hours ago\nkisf82tqnb4ngx8gc8s114ulw    true          244.7MB*   34 hours ago\nwanqzj1d72w1vclnha7b0hvtt    true          992.9MB    34 hours ago\n7wk5ysb6dt6ipj26fh96i0aqc    true          993.3MB    34 hours ago\ni83uu6zlg6105sz4885dkkcqi    true          1.122GB    10 days ago\n6l389ziph7vm9cuabx3x3q5uz    true          1.122GB*   34 hours ago\n7kp8z6pkf2vh9rwpd6ca23dh7    true          1.58GB     11 days ago\nwlrnc78vpxup4c2opkw4ilobb    true          1.582GB*   4 weeks ago\nkkyci1fd4d901a5hhud6pdezw    true          1.583GB    10 days ago\nro5m4ij8pn8smnbxz5bcrk7df    true          1.583GB    10 days ago\ndmweg3pbwghjmcgjsher88mud    true          1.583GB    10 days ago\nqoc6e2gfb6q3vmrg8bvpujwym    true          1.585GB    9 days ago\nfiymlq8jerz316urczm7ie3jt    true          1.592GB*   34 hours ago\nShared:\t\t5.227GB\nPrivate:\t13.65GB\nReclaimable:\t18.88GB\nTotal:\t\t18.88GB\n",
+    "stderr": ""
+  },
+  "git_worktrees": [
+    {
+      "repo": "/opt/crypto-tuber-ranked",
+      "rc": 0,
+      "stdout": "worktree /opt/crypto-tuber-ranked\nHEAD 67f01f2ca8b5536da7876372e6cdc7e8d4926133\nbranch refs/heads/master\n\n",
+      "stderr": ""
+    },
+    {
+      "repo": "/srv/agents/repos/crypto-tuber-ranked",
+      "rc": 0,
+      "stdout": "worktree /srv/agents/repos/crypto-tuber-ranked\nHEAD 00718711526c02a3b1ff7173bea896de7023ea58\nbranch refs/heads/master\n\n",
+      "stderr": ""
+    },
+    {
+      "repo": "/srv/agents/repos/Claude_Code_Automations",
+      "rc": 0,
+      "stdout": "worktree /srv/agents/repos/Claude_Code_Automations\nHEAD 8d69b406408deaa1f462373fbb4318027104cc38\nbranch refs/heads/chore/callscore-launch-domain-sweep\n\n",
+      "stderr": ""
+    },
+    {
+      "repo": "/srv/agents/repos/callscore-workplane",
+      "rc": 0,
+      "stdout": "worktree /srv/agents/repos/callscore-workplane\nHEAD 5ec9afa681771852dae0fca46fe9627afd420121\nbranch refs/heads/master\n\n",
+      "stderr": ""
+    }
+  ],
+  "process_refs_for_large_candidates": [
+    {
+      "path": "/srv/agents/database-migration",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/srv/agents/repos/Claude_Code_Automations",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/srv/agents/repos/composio",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/srv/agents/backups",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/srv/agents/hermes/state-snapshots",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/srv/agents/hermes/sessions",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/srv/agents/hermes/profiles",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.netlify",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/node_modules",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        },
+        {
+          "pid": "1267974",
+          "comm": "esbuild"
+        },
+        {
+          "pid": "1267985",
+          "comm": "esbuild"
+        }
+      ]
+    },
+    {
+      "path": "/srv/whop-auto/workspace",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/var/log/journal",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.npm/_cacache",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.npm",
+      "process_refs": [
+        {
+          "pid": "310034",
+          "comm": "node"
+        },
+        {
+          "pid": "652536",
+          "comm": "node"
+        },
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.bun/install/cache",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.bun",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache/uv/archive-v0",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache/uv",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache/pip",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache/ms-playwright",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache/puppeteer",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache/camoufox",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.cache",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    },
+    {
+      "path": "/home/omar/.local/share/pnpm/store",
+      "process_refs": [
+        {
+          "pid": "652556",
+          "comm": "bash"
+        }
+      ]
+    }
+  ],
+  "docker_mount_refs_for_large_candidates": []
+}

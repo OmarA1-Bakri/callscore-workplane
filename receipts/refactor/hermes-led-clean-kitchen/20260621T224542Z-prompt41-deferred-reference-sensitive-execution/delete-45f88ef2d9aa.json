@@ -1,0 +1,80 @@
+{
+  "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+  "candidate": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+    "exists_now": true,
+    "size_bytes_current": 144885,
+    "file_count_current": 2,
+    "original_reference_count": 1,
+    "reference_sample": [
+      "/opt/crypto-tuber-ranked/docs/hermes/DISCOVERY_REPORT.md"
+    ],
+    "active_reference_check": {
+      "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+      "process_refs": [],
+      "docker_mount_refs": [],
+      "systemd_refs": [],
+      "cron_refs": []
+    },
+    "classification": "DELETE_ELIGIBLE_AFTER_REFERENCE_LEDGER_UPDATE",
+    "recommendation": "stage_for_next_low_risk_deletion_after_docs_ack",
+    "rationale": [
+      "small temp output; no active refs; references appear historical docs/tests"
+    ]
+  },
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "size_bytes": 144885,
+    "file_count": 2,
+    "mtime_utc": "2026-06-18T17:00:51Z",
+    "mode_octal": "0o775"
+  },
+  "active_reference_check": {
+    "process_refs": [],
+    "docker_mount_refs": []
+  },
+  "status": "deleted",
+  "delete_method": "python_exact_path_unlink_or_rmtree",
+  "manifest_sample": [
+    {
+      "rel": "full-discovered-tests-20260618T170051Z.log",
+      "size": 137265,
+      "mode": "0o664"
+    },
+    {
+      "rel": "baseline-validation-20260618T165854Z.log",
+      "size": 7620,
+      "mode": "0o664"
+    }
+  ],
+  "delete_ok": true,
+  "delete_error": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/.tmp/hermes-discovery",
+    "exists": false
+  },
+  "disk_before_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124922986496,
+    "free_bytes": 29447966720,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571953,
+    "inode_free": 7160543,
+    "inode_used_percent": 27
+  },
+  "disk_after_delete": {
+    "total_bytes": 160970244096,
+    "used_bytes": 124922834944,
+    "free_bytes": 29448118272,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2571950,
+    "inode_free": 7160546,
+    "inode_used_percent": 27
+  },
+  "recovered_bytes": 151552
+}

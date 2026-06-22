@@ -1,0 +1,29 @@
+{
+  "profile_id": "callscoreimplementer",
+  "runtime_profile": "callscoreimplementer",
+  "mission": "Perform bounded implementation, tests, docs, and minimum-diff fixes under approval gates.",
+  "agents": [
+    "callscore-implementer-head",
+    "callscore-safety-head"
+  ],
+  "tools": [
+    "git status/diff",
+    "tests",
+    "repo commands",
+    "receipt writer",
+    "Docker read/status",
+    "full canonical agent manifests"
+  ],
+  "gates": [
+    "deploy_gate",
+    "DB_mutation_gate",
+    "destructive_change_gate",
+    "secret_gate"
+  ],
+  "canonical_skill_source": "/srv/agents/hermes/skills",
+  "heartbeat_source": "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+  "agent_workplanes": [
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-implementer-head",
+    "/srv/agents/repos/callscore-workplane/docs/agents/callscore-safety-head"
+  ]
+}

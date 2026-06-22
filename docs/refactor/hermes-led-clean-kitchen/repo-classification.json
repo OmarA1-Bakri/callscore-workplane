@@ -1,0 +1,288 @@
+{
+  "generated_utc": "2026-06-21T18:20:50Z",
+  "task_id": "t_b4b5c45d",
+  "scope": [
+    "/opt/crypto-tuber-ranked",
+    "/srv/agents/repos/crypto-tuber-ranked",
+    "/srv/agents/crypto-tuber-ranked",
+    "/srv/agents/repos/callscore-workplane/apps/callscore-web"
+  ],
+  "safety": {
+    "deletion_performed": false,
+    "secret_handling": "No env file contents or credential values were intentionally captured. Remote URLs with embedded tokens are recorded only in redacted form.",
+    "tree_compare_exclusions": [
+      ".git",
+      "node_modules",
+      ".next",
+      "dist",
+      "build",
+      "coverage",
+      ".cache",
+      ".turbo",
+      "tmp",
+      "temp",
+      ".venv",
+      "venv",
+      "__pycache__",
+      ".env",
+      ".env.local",
+      ".env.hermes",
+      ".env.production",
+      ".env.development"
+    ]
+  },
+  "classification_summary": {
+    "/opt/crypto-tuber-ranked": {
+      "classification": "ACTIVE_RUNTIME_DEPENDENCY_AND_CURRENT_CALLSCORE_PRODUCT_REPO",
+      "action": "protect_do_not_delete_or_clean",
+      "reason": "Docker compose labels and systemd units route active CallScore workers/read APIs through this path. It also contains current dirty implementation work."
+    },
+    "/srv/agents/repos/crypto-tuber-ranked": {
+      "classification": "STALE_MINIMAL_ADOPTION_REPO_WITH_LINKED_WORKTREES",
+      "action": "preserve_until_owner_reviews_two_tracked_files_and_linked_worktrees",
+      "reason": "Clean git checkout with only two tracked product files and no observed live routing proof. It has linked worktrees under the same git common dir, so treat the gitdir as shared state until worktree owners are reviewed."
+    },
+    "/srv/agents/crypto-tuber-ranked": {
+      "classification": "STALE_LEGACY_CLONE_WITH_ONE_UNTRACKED_CRON_SCRIPT",
+      "action": "capture_pipeline_enqueue_script_if_historically_needed_then_retire_after_review",
+      "reason": "Branch is aligned with origin and its HEAD is an ancestor of the active /opt repo, but it has one untracked script that writes pipeline_jobs when run. No active cron/systemd/docker proof points here."
+    },
+    "/srv/agents/repos/callscore-workplane/apps/callscore-web": {
+      "classification": "WORKPLANE_EXTRACTED_PRODUCT_SUBTREE_NOT_LIVE_RUNTIME",
+      "action": "keep_as_workplane_evidence_subtree_until_55_differing_files_are_reviewed_against_active_repo",
+      "reason": "This is tracked inside the callscore-workplane repo, not a standalone git checkout. It has no app-subtree dirty work and no observed runtime routing, but it is part of the control-plane evidence repository."
+    }
+  },
+  "repositories": [
+    {
+      "path": "/opt/crypto-tuber-ranked",
+      "exists": true,
+      "git_top_level": "/opt/crypto-tuber-ranked",
+      "remote_origin": "https://github.com/OmarA1-Bakri/CallScore.git",
+      "branch": "master",
+      "head": "67f01f2ca8b5536da7876372e6cdc7e8d4926133",
+      "upstream": "origin/master",
+      "ahead_behind_vs_upstream": {
+        "ahead": 3,
+        "behind": 0
+      },
+      "tracked_file_count": 640,
+      "dirty_state": {
+        "modified": [
+          "package.json",
+          "src/lib/ml-verifier.ts",
+          "src/lib/video-intelligence/types.ts",
+          "src/lib/video-intelligence/validate-evidence.ts",
+          "src/scripts/callscore-agent-heartbeat.ts",
+          "src/scripts/callscore-cmo-response-monitor.ts",
+          "tests/callscore-cmo-response-monitor.test.ts",
+          "tests/ml-verifier.test.ts",
+          "tests/video-intelligence-workflow.test.ts"
+        ],
+        "untracked": [
+          "docs/ops/.hermes-tmp.UR6IXl",
+          "docs/ops/callscore-anti-over-governance-audit.md",
+          "docs/ops/callscore-autonomy-upgrade-status.md",
+          "docs/ops/callscore-framework-boundary-spike.md",
+          "docs/ops/callscore-fresh-call-sentinel.md",
+          "docs/ops/callscore-headroom-swarm-policy.md",
+          "docs/ops/callscore-non-founder-review.md",
+          "docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md",
+          "src/lib/autonomy/",
+          "src/lib/sentinels/",
+          "src/lib/trust/",
+          "src/scripts/callscore-fresh-call-sentinel.ts",
+          "src/scripts/callscore-non-founder-review.ts",
+          "tests/anti-over-governance.test.ts",
+          "tests/autonomy-contracts.test.ts",
+          "tests/callscore-agent-heartbeat.test.ts",
+          "tests/channel-head-decision.test.ts",
+          "tests/channel-head-scoring.test.ts",
+          "tests/cmo-channel-head-integration.test.ts",
+          "tests/fresh-call-sentinel.test.ts",
+          "tests/non-founder-review-queue.test.ts",
+          "tests/trust-decision-engine.test.ts"
+        ]
+      },
+      "live_routing_proof": [
+        "docker ps compose labels show whop-auto and crypto-tuber-ranked containers with com.docker.compose.project.working_dir=/opt/crypto-tuber-ranked and config_files=/opt/crypto-tuber-ranked/docker-compose.yml",
+        "hermes-worker.service has WorkingDirectory=/opt/crypto-tuber-ranked and ExecStart=/usr/bin/docker compose up -d hermes-worker",
+        "callscore-enqueue.service has WorkingDirectory=/opt/crypto-tuber-ranked and runs node --import tsx src/scripts/callscore-enqueue-server.ts",
+        "callscore-read-api.service has WorkingDirectory=/opt/crypto-tuber-ranked and runs node src/scripts/callscore-read-api-server.mjs",
+        "process table contains esbuild children under /opt/crypto-tuber-ranked/node_modules"
+      ],
+      "risk_notes": [
+        "Active runtime source; keep protected until a later phase proves all Docker/systemd/process routes have moved.",
+        "Contains substantial dirty/untracked user/agent work; no cleanup command should touch it."
+      ]
+    },
+    {
+      "path": "/srv/agents/repos/crypto-tuber-ranked",
+      "exists": true,
+      "git_top_level": "/srv/agents/repos/crypto-tuber-ranked",
+      "remote_origin": "git@github.com:OmarA1-Bakri/crypto-tuber-ranked.git",
+      "branch": "master",
+      "head": "00718711526c02a3b1ff7173bea896de7023ea58",
+      "upstream": null,
+      "ahead_behind_vs_upstream": null,
+      "tracked_file_count": 2,
+      "dirty_state": {
+        "modified": [],
+        "untracked": []
+      },
+      "tracked_files_observed": [
+        ".whop-pipeline.json",
+        "src/app/api/whop/webhook/route.ts"
+      ],
+      "linked_worktrees_from_git_common_dir": [
+        "/srv/agents/repos/callscore-stale-infra-cleanup",
+        "/srv/whop-auto/workspace/callscore-db-portability",
+        "/tmp/callscore-pr38-build"
+      ],
+      "live_routing_proof": [],
+      "negative_routing_evidence": [
+        "No docker compose labels, systemd WorkingDirectory, process args, or cron refs observed for this exact path during this pass.",
+        "No docker-compose.yml exists at this path."
+      ],
+      "risk_notes": [
+        "Although the checkout itself is clean and tiny, its .git common dir owns linked worktrees; avoid deleting or moving without reviewing/pruning those worktrees first.",
+        "The two tracked files are not byte-identical to the active repo equivalents and should be captured/redacted in a review receipt before any retirement."
+      ]
+    },
+    {
+      "path": "/srv/agents/crypto-tuber-ranked",
+      "exists": true,
+      "git_top_level": "/srv/agents/crypto-tuber-ranked",
+      "remote_origin": "https://x-access-token:<redacted>@github.com/OmarA1-Bakri/crypto-tuber-ranked.git",
+      "branch": "master",
+      "head": "03df7f07e98ba43e8cdd580783aab3307b929882",
+      "upstream": "origin/master",
+      "ahead_behind_vs_upstream": {
+        "ahead": 0,
+        "behind": 0
+      },
+      "relationship_to_active_opt_repo": {
+        "head_is_ancestor_of_opt_head": true,
+        "merge_base_with_opt": "03df7f07e98ba43e8cdd580783aab3307b929882"
+      },
+      "tracked_file_count": 426,
+      "dirty_state": {
+        "modified": [],
+        "untracked": [
+          "pipeline-enqueue.sh"
+        ]
+      },
+      "unique_untracked_files": [
+        {
+          "relative_path": "pipeline-enqueue.sh",
+          "type": "legacy_cron_enqueue_script",
+          "notes": "Script sources .env.hermes and writes pipeline_jobs if run. It was read only for classification; do not run it during cleanup."
+        }
+      ],
+      "live_routing_proof": [],
+      "negative_routing_evidence": [
+        "No active docker compose labels point at /srv/agents/crypto-tuber-ranked.",
+        "No systemd WorkingDirectory observed for this path.",
+        "No /etc/crontab or /etc/cron.d reference observed for this path during this pass."
+      ],
+      "risk_notes": [
+        "Remote URL contains an embedded token in local git config; keep any receipts redacted.",
+        "Untracked pipeline-enqueue.sh is the only observed local-only work and should be captured or deliberately superseded by current /opt queue mechanisms before retirement."
+      ]
+    },
+    {
+      "path": "/srv/agents/repos/callscore-workplane/apps/callscore-web",
+      "exists": true,
+      "git_top_level": "/srv/agents/repos/callscore-workplane",
+      "remote_origin": null,
+      "branch": "master",
+      "head": "5ec9afa681771852dae0fca46fe9627afd420121",
+      "upstream": null,
+      "ahead_behind_vs_upstream": null,
+      "tracked_file_count_in_app_subtree": 570,
+      "dirty_state_in_app_subtree": {
+        "modified": [],
+        "untracked": []
+      },
+      "workplane_repo_dirty_state_outside_app": {
+        "untracked_roots": [
+          "docs/migration/receipts/callscore-cmo-monitor-20260618T182018Z.md",
+          "docs/migration/receipts/callscore-owned-public-next-draft-20260618T121352Z.json",
+          "docs/refactor/",
+          "receipts/"
+        ]
+      },
+      "live_routing_proof": [],
+      "negative_routing_evidence": [
+        "No active docker compose labels point at the workplane apps/callscore-web path; active compose labels point at /opt/crypto-tuber-ranked.",
+        "No systemd WorkingDirectory observed for this app subtree.",
+        "The app path is not a standalone git checkout; it is tracked as a subtree of /srv/agents/repos/callscore-workplane."
+      ],
+      "risk_notes": [
+        "This subtree has 55 same-path content differences versus /opt/crypto-tuber-ranked and therefore should not be treated as a disposable duplicate without diff review.",
+        "It has no files that are absent from /opt under the tree comparison, but differing files may still contain historical or control-plane-relevant content."
+      ]
+    }
+  ],
+  "tree_comparison_summary": {
+    "method": "Python os.walk + SHA-256 for files <=2MB after excluding git/dependency/build/cache/env paths; comparison is advisory and should be followed by targeted git diff before any retirement.",
+    "opt_callscore_vs_srv_repos_crypto": {
+      "common_count": 2,
+      "same_hash_count": 0,
+      "different_or_skipped_count": 2,
+      "only_opt_count": 4492,
+      "only_srv_repos_crypto_count": 0
+    },
+    "opt_callscore_vs_srv_agents_crypto": {
+      "common_count": 425,
+      "same_hash_count": 312,
+      "different_or_skipped_count": 113,
+      "only_opt_count": 4069,
+      "only_srv_agents_crypto_count": 2,
+      "only_srv_agents_crypto_sample": [
+        "pipeline-enqueue.sh",
+        "vercel.json"
+      ]
+    },
+    "opt_callscore_vs_workplane_callscore_web": {
+      "common_count": 570,
+      "same_hash_count": 515,
+      "different_or_skipped_count": 55,
+      "only_opt_count": 3924,
+      "only_workplane_callscore_web_count": 0,
+      "differing_same_path_sample": [
+        ".codacy/cli.sh",
+        ".kilo/skills/file-organizer/SKILL.md",
+        ".kilo/skills/file-organizer/local.patch",
+        "CLAUDE.md",
+        "docker-compose.yml",
+        "docs/ops/callscore-gtm-agent-registry.json",
+        "middleware.ts",
+        "package.json",
+        "src/lib/ml-verifier.ts",
+        "src/scripts/hermes-worker.ts",
+        "tests/ml-verifier.test.ts"
+      ]
+    },
+    "srv_agents_crypto_vs_workplane_callscore_web": {
+      "common_count": 423,
+      "same_hash_count": 291,
+      "different_or_skipped_count": 132,
+      "only_srv_agents_crypto_count": 4,
+      "only_workplane_callscore_web_count": 147
+    }
+  },
+  "live_routing_conclusion": {
+    "local_active_runtime_source": "/opt/crypto-tuber-ranked",
+    "evidence_strength": "strong_for_local_HH_runtime",
+    "evidence": [
+      "Docker compose labels for running CallScore/crypto-tuber-ranked containers point to /opt/crypto-tuber-ranked and /opt/crypto-tuber-ranked/docker-compose.yml.",
+      "systemd units callscore-enqueue.service, callscore-read-api.service, and hermes-worker.service use WorkingDirectory=/opt/crypto-tuber-ranked.",
+      "No inspected docker/systemd/cron/process route points to the two /srv/agents crypto-tuber-ranked paths or to workplane/apps/callscore-web."
+    ],
+    "not_proven": [
+      "No production provider/deploy mutation or external Netlify verification was performed by this task.",
+      "This classification does not prove a path is safe to delete; it only identifies what must be captured/reviewed before a later deletion phase."
+    ]
+  }
+}

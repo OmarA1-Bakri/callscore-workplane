@@ -1,0 +1,183 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:26Z",
+  "source": "prompt_5_agent_inventory",
+  "agent_count": 16,
+  "agents": [
+    {
+      "agent_id": "orchestrator",
+      "display_name": "Orchestrator",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 3,
+      "receipt_evidence_count": 20,
+      "cron_job_evidence_count": 9,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "cmo",
+      "display_name": "CMO / Owned Social Growth",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/cmo",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 1,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 5,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "data",
+      "display_name": "Data Pipeline Sentinel",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/data",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 20,
+      "receipt_evidence_count": 20,
+      "cron_job_evidence_count": 15,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "trust",
+      "display_name": "Trust / Non-Founder Reviewer",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/trust",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 1,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 1,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "compliance-linter",
+      "display_name": "Compliance Linter",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 2,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 4,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "reviewer",
+      "display_name": "Reviewer / Parent Verifier",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/reviewer",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 3,
+      "receipt_evidence_count": 10,
+      "cron_job_evidence_count": 5,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "implementer",
+      "display_name": "Implementer",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/implementer",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 0,
+      "receipt_evidence_count": 6,
+      "cron_job_evidence_count": 4,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "safety",
+      "display_name": "Safety",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/safety",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 1,
+      "receipt_evidence_count": 16,
+      "cron_job_evidence_count": 10,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "opportunity-research",
+      "display_name": "Opportunity Research",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 8,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 7,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "display_name": "Email Partnership Drafts",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 0,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 4,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "community",
+      "display_name": "Community Drops",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/community",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 0,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 3,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "whop-commerce",
+      "display_name": "Whop Commerce",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 1,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 5,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "art-of-war",
+      "display_name": "Art-of-War Strategist",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 0,
+      "receipt_evidence_count": 2,
+      "cron_job_evidence_count": 3,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "display_name": "Gemma Transcript / Shadow Pipeline",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 13,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 5,
+      "health_classification": "scheduled"
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "display_name": "Channel Agent Worker",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 1,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 4,
+      "health_classification": "active_runtime_worker"
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "display_name": "Data Pipeline Worker",
+      "workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker",
+      "documentation_complete": true,
+      "gate_matrix_present": true,
+      "script_evidence_count": 1,
+      "receipt_evidence_count": 1,
+      "cron_job_evidence_count": 2,
+      "health_classification": "active_runtime_worker"
+    }
+  ]
+}

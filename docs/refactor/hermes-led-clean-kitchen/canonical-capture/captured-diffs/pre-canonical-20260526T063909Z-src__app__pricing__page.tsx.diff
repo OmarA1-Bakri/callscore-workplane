@@ -1,0 +1,142 @@
+--- active/src/app/pricing/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/pricing/page.tsx
+@@ -1,16 +1,17 @@
+ import Link from "next/link";
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import type { ReactElement } from "react";
+ import { EditorialSection, MetaStrip } from "@/components/primitives";
+ 
+ const TITLE = "Pricing — CallScore";
+ const DESCRIPTION =
+-  "Three tiers: free, pro ($19/mo), alpha ($49/mo). Free profiles and call-history summaries; Pro target prices, alerts, exports, and watchlists; Alpha backtests, API, webhooks, and advanced signals.";
++  "Three tiers: free, pro ($19/mo), alpha ($49/mo). Full research free. Alerts, exports, and API on paid.";
+ 
+ export const metadata: Metadata = {
+   title: TITLE,
+   description: DESCRIPTION,
+-  alternates: { canonical: "/pricing" },
++  alternates: { canonical: SITE_URL + "/pricing" },
+ };
+ 
+ type Glyph = "yes" | "no" | "soon";
+@@ -25,18 +26,17 @@
+ 
+ const FEATURES: readonly FeatureRow[] = [
+   { label: "Full leaderboard",                          free: "yes", pro: "yes", alpha: "yes", href: "/" },
+-  { label: "Creator profiles + call-history summaries", free: "yes", pro: "yes", alpha: "yes", href: "/" },
+-  { label: "Target prices in call history",             free: "no",  pro: "yes", alpha: "yes", href: "/pricing#plans" },
++  { label: "Profiles + call history",                   free: "yes", pro: "yes", alpha: "yes", href: "/" },
+   { label: "Alpha breakdowns",                          free: "yes", pro: "yes", alpha: "yes", href: "/methodology" },
+   { label: "Methodology",                               free: "yes", pro: "yes", alpha: "yes", href: "/methodology" },
+-  { label: "Per-creator email alerts + queue",          free: "no",  pro: "yes", alpha: "yes", href: "/alerts" },
+-  { label: "Watchlists with creator management",        free: "no",  pro: "yes", alpha: "yes", href: "/alerts" },
+-  { label: "90-day recent-context filter",              free: "no",  pro: "yes", alpha: "yes", href: "/?period=90d" },
+-  { label: "CSV export of creator call history",        free: "no",  pro: "yes", alpha: "yes", href: "/pricing#plans" },
++  { label: "Per-creator email alerts + queue",          free: "no",  pro: "yes", alpha: "yes", href: "/settings/alerts" },
++  { label: "Watchlists with creator management",        free: "no",  pro: "yes", alpha: "yes", href: "/settings/alerts" },
++  { label: "Recent-performance filter (30/90d planned)", free: "no", pro: "soon", alpha: "soon" },
++  { label: "CSV export of creator call history",        free: "no",  pro: "yes", alpha: "yes", href: "/api/export/calls" },
+   { label: "Historical backtest simulator",             free: "no",  pro: "no",  alpha: "yes", href: "/backtest" },
+-  { label: "Anti-consensus alerts (Alpha preview)",     free: "no",  pro: "no",  alpha: "soon", href: "/alerts" },
++  { label: "Anti-consensus alerts (Alpha preview)",     free: "no",  pro: "no",  alpha: "soon", href: "/settings/alerts" },
+   { label: "API access with key manager",               free: "no",  pro: "no",  alpha: "yes", href: "/settings/api" },
+-  { label: "Webhook notifications + delivery log",      free: "no",  pro: "no",  alpha: "yes", href: "/webhooks" },
++  { label: "Webhook notifications + delivery log",      free: "no",  pro: "no",  alpha: "yes", href: "/settings/webhooks" },
+ ] as const;
+ 
+ function glyphChar(g: Glyph): string {
+@@ -156,8 +156,7 @@
+           <em className="italic font-normal text-accent">Free research, paid delivery.</em>
+         </h1>
+         <p className="font-serif text-[20px] text-ink-700 leading-relaxed max-w-[760px]">
+-          Free includes creator profiles and call-history summaries. Pro unlocks target prices,
+-          alerts, exports, and watchlists. Alpha adds backtests, API keys, webhooks, and advanced signals.
++          Leaderboards stay free. Paid tiers add alerts, exports, backtests, and API access.
+         </p>
+         <MetaStrip
+           cells={[
+@@ -181,34 +180,10 @@
+             { k: "refund", v: "30 days" },
+           ]}
+         />
+-        <div className="mt-5 border border-ink-250 bg-ink-50 p-4 font-serif text-[17px] leading-relaxed text-ink-700">
+-          After checkout, return to CallScore to confirm access and manage billing from Whop.
+-          <div className="mt-3 flex flex-wrap gap-x-4 gap-y-2 font-mono text-[11px] uppercase tracking-caps">
+-            <Link
+-              href="/checkout/success"
+-              className="text-accent underline decoration-accent/60 underline-offset-4 hover:decoration-accent"
+-            >
+-              Success handoff
+-            </Link>
+-            <Link
+-              href="/checkout/cancelled"
+-              className="text-accent underline decoration-accent/60 underline-offset-4 hover:decoration-accent"
+-            >
+-              Cancelled checkout
+-            </Link>
+-            <Link
+-              href="/settings/billing"
+-              className="text-accent underline decoration-accent/60 underline-offset-4 hover:decoration-accent"
+-            >
+-              Billing help
+-            </Link>
+-          </div>
+-        </div>
+       </section>
+ 
+       {/* 01 — TIERS (asymmetric 1fr-1.2fr-1fr; pro is the editorial anchor) */}
+       <EditorialSection
+-        id="plans"
+         index="01"
+         title={
+           <>
+@@ -228,7 +203,7 @@
+             name="Free"
+             price="$0"
+             cadence="forever"
+-            tagline="Profiles and call-history summaries."
++            tagline="Full public research."
+             cta="Browse leaderboard"
+             ctaHref="/"
+             ctaVariant="soft"
+@@ -237,12 +212,12 @@
+             name="Pro"
+             price="$19"
+             cadence="/mo"
+-            tagline="Target prices, alerts, watchlists, exports."
++            tagline="Alerts, watchlists, exports."
+             cta="Upgrade to Pro"
+             ctaHref="/api/checkout/pro"
+             manageLinks={[
+-              { label: "Email alerts", href: "/alerts" },
+-              { label: "CSV exports", href: "/pricing#plans" },
++              { label: "Manage alerts", href: "/settings/alerts" },
++              { label: "Export calls", href: "/api/export/calls", prefetch: false },
+             ]}
+             emphasis
+           />
+@@ -250,7 +225,7 @@
+             name="Alpha"
+             price="$49"
+             cadence="/mo"
+-            tagline="Backtests, API, webhooks, signals."
++            tagline="Backtests, API, webhooks."
+             cta="Upgrade to Alpha"
+             ctaHref="/api/checkout/alpha"
+             manageLinks={[
+@@ -363,10 +338,10 @@
+           </p>
+           <p>
+             <b className="text-ink-900">What do paid tiers actually buy?</b> Delivery, not
+-            data. Free includes creator profiles and call-history summaries. Pro adds target
+-            prices, alerts, watchlists, and exports. Alpha adds the Backtest Lab, API keys,
+-            webhook delivery logs, and advanced signal workflows for users who want to build on
+-            the data. Anti-consensus delivery is marked preview until the consensus worker is live.
++            data. Pro alerts you when ranked creators move so you don&apos;t have to refresh.
++            Alpha adds the Backtest Lab, API keys, and webhook delivery logs for users who want
++            to build on the data. Anti-consensus delivery is marked preview until the consensus
++            worker is live.
+           </p>
+           <p>
+             <b className="text-ink-900">Refunds?</b> 30 days, full refund. Send the

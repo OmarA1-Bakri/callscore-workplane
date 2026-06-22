@@ -1,0 +1,129 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "CryptoTubers Ranked CryptoTubers Ranked" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "CryptoTubers Ranked" [ref=e6]
+        - generic [ref=e7]:
+          - text: CryptoTubers
+          - generic [ref=e8]: Ranked
+      - navigation [ref=e9]:
+        - link "Leaderboard" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - link "Methodology" [ref=e11] [cursor=pointer]:
+          - /url: /methodology
+        - link "Pricing" [ref=e12] [cursor=pointer]:
+          - /url: /pricing
+        - generic [ref=e13]:
+          - link "Sign In" [ref=e14] [cursor=pointer]:
+            - /url: /api/auth/whop
+            - img [ref=e15]
+            - text: Sign In
+          - link "Get Access" [ref=e18] [cursor=pointer]:
+            - /url: /pricing
+  - main [ref=e19]:
+    - generic [ref=e20]:
+      - link "Back to Leaderboard" [ref=e21] [cursor=pointer]:
+        - /url: /
+        - img [ref=e22]
+        - text: Back to Leaderboard
+      - generic [ref=e24]:
+        - heading "Privacy Policy" [level=1] [ref=e25]
+        - paragraph [ref=e26]: "Last updated: April 11, 2026"
+        - paragraph [ref=e27]: CryptoTubers Ranked ("we," "us," "our") operates the website at cryptotuberranked.com. This policy explains what data we collect, how we use it, and your rights regarding that data.
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - heading "1. Information We Collect" [level=2] [ref=e30]
+          - generic [ref=e31]:
+            - paragraph [ref=e32]: "We collect minimal data to operate and improve our platform:"
+            - paragraph [ref=e33]: "Analytics data: We use privacy-respecting analytics to understand how visitors use the site. This includes page views, referral sources, browser type, and approximate geographic location. We do not track individual users across sessions."
+            - paragraph [ref=e34]: "Feedback submissions: When you submit feedback through our feedback page, we collect the content of your message and any contact information you voluntarily provide."
+            - paragraph [ref=e35]: "Payment data: If you purchase a subscription, payment processing is handled entirely by Whop. We do not store credit card numbers or payment credentials on our servers."
+        - generic [ref=e36]:
+          - heading "2. How We Use Your Information" [level=2] [ref=e37]
+          - generic [ref=e38]:
+            - paragraph [ref=e39]: "We use collected information solely to:"
+            - paragraph [ref=e40]: Operate and maintain the platform, including computing creator scores and rankings.
+            - paragraph [ref=e41]: Improve the user experience based on aggregate usage patterns.
+            - paragraph [ref=e42]: Respond to feedback and support requests.
+            - paragraph [ref=e43]: Process subscriptions through our payment provider (Whop).
+        - generic [ref=e44]:
+          - heading "3. Data We Do NOT Collect" [level=2] [ref=e45]
+          - generic [ref=e46]:
+            - paragraph [ref=e47]: We do not require user accounts to access the free leaderboard.
+            - paragraph [ref=e48]: We do not sell, rent, or share your personal data with third parties for marketing purposes.
+            - paragraph [ref=e49]: We do not use targeted advertising.
+            - paragraph [ref=e50]: We do not build individual user profiles for ad targeting.
+        - generic [ref=e51]:
+          - heading "4. Cookies" [level=2] [ref=e52]
+          - paragraph [ref=e54]: We use only essential cookies required for basic site functionality and analytics. We do not use tracking cookies for advertising or cross-site tracking.
+        - generic [ref=e55]:
+          - heading "5. Third-Party Services" [level=2] [ref=e56]
+          - generic [ref=e57]:
+            - paragraph [ref=e58]: "We use the following third-party services to operate the platform:"
+            - paragraph [ref=e59]: "Vercel: Hosting and deployment. Subject to Vercel's privacy policy."
+            - paragraph [ref=e60]: "Neon: PostgreSQL database hosting for storing creator scores and call data. No personal user data is stored in this database."
+            - paragraph [ref=e61]: "Whop: Payment processing for premium subscriptions. Subject to Whop's privacy policy."
+        - generic [ref=e62]:
+          - heading "6. Data Retention" [level=2] [ref=e63]
+          - generic [ref=e64]:
+            - paragraph [ref=e65]: Analytics data is retained in aggregate form and is not tied to individual users.
+            - paragraph [ref=e66]: Feedback submissions are retained as long as needed to address your inquiry.
+            - paragraph [ref=e67]: Subscription data is managed by Whop according to their data retention policies.
+        - generic [ref=e68]:
+          - heading "7. Your Rights" [level=2] [ref=e69]
+          - generic [ref=e70]:
+            - paragraph [ref=e71]: You may request deletion of any personal data we hold about you (such as feedback submissions) by contacting us at the email below.
+            - paragraph [ref=e72]: Since we do not require user accounts for the free tier, we hold minimal personal data for most visitors.
+        - generic [ref=e73]:
+          - heading "8. Changes to This Policy" [level=2] [ref=e74]
+          - paragraph [ref=e76]: We may update this privacy policy from time to time. Changes will be reflected on this page with an updated revision date. Continued use of the site after changes constitutes acceptance of the revised policy.
+        - generic [ref=e77]:
+          - heading "9. Contact" [level=2] [ref=e78]
+          - paragraph [ref=e80]: For privacy-related questions or data deletion requests, contact us through our feedback page or email us at privacy@cryptotuberranked.com.
+  - contentinfo [ref=e81]:
+    - generic [ref=e82]:
+      - generic [ref=e83]:
+        - generic [ref=e84]:
+          - generic [ref=e85]:
+            - img "CryptoTubers Ranked" [ref=e86]
+            - generic [ref=e87]:
+              - text: CryptoTubers
+              - generic [ref=e88]: Ranked
+          - paragraph [ref=e89]: We track, rank, and score the top 20 crypto YouTube influencers by the actual accuracy of their altcoin calls.
+        - generic [ref=e90]:
+          - heading "Navigate" [level=2] [ref=e91]
+          - list [ref=e92]:
+            - listitem [ref=e93]:
+              - link "Leaderboard" [ref=e94] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e95]:
+              - link "Methodology" [ref=e96] [cursor=pointer]:
+                - /url: /methodology
+            - listitem [ref=e97]:
+              - link "Pricing" [ref=e98] [cursor=pointer]:
+                - /url: /pricing
+            - listitem [ref=e99]:
+              - link "Give Feedback" [ref=e100] [cursor=pointer]:
+                - /url: /feedback
+            - listitem [ref=e101]:
+              - link "About" [ref=e102] [cursor=pointer]:
+                - /url: /about
+        - generic [ref=e103]:
+          - heading "Legal" [level=2] [ref=e104]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "Terms of Service" [ref=e107] [cursor=pointer]:
+                - /url: /terms
+            - listitem [ref=e108]:
+              - link "Privacy Policy" [ref=e109] [cursor=pointer]:
+                - /url: /privacy
+      - generic [ref=e110]:
+        - paragraph [ref=e111]:
+          - strong [ref=e112]: "Financial Disclaimer:"
+          - text: CRYPTO-TUBER RANKED is an informational analytics platform only. Nothing on this site constitutes financial advice, investment recommendations, or endorsements. Cryptocurrency investments are highly volatile and carry substantial risk of loss. Past performance of any creator does not guarantee future results. Always do your own research (DYOR) and consult a licensed financial advisor before making any investment decisions.
+        - paragraph [ref=e113]: © 2026 CRYPTO-TUBER RANKED. All rights reserved.
+  - link "Give Feedback" [ref=e114] [cursor=pointer]:
+    - /url: /feedback
+    - img [ref=e115]
+  - alert [ref=e117]

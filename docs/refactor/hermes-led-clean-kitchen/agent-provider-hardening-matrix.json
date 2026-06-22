@@ -1,0 +1,1099 @@
+{
+  "timestamp_utc": "2026-06-22T08:55:15Z",
+  "agents": [
+    {
+      "agent_id": "orchestrator",
+      "providers_needed": [
+        "github",
+        "composio",
+        "netlify",
+        "whop"
+      ],
+      "current_route_status": {
+        "github": "manual_only",
+        "composio": "not_visible",
+        "netlify": "visible_but_not_verified",
+        "whop": "visible_but_not_verified"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "netlify",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "whop",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [
+        "composio"
+      ],
+      "read_only_probe_later": [
+        "github",
+        "netlify",
+        "whop"
+      ],
+      "write_wrapper_later": {
+        "github": "true_with_gate",
+        "composio": "true_with_gate",
+        "netlify": "true_with_gate",
+        "whop": "true_with_gate"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "whop": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "cmo",
+      "providers_needed": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog",
+        "gmail"
+      ],
+      "current_route_status": {
+        "composio": "not_visible",
+        "x_twitter": "not_visible",
+        "linkedin": "not_visible",
+        "posthog": "not_visible",
+        "gmail": "not_visible"
+      },
+      "allowed_now": [],
+      "blocked_now": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog",
+        "gmail"
+      ],
+      "read_only_probe_later": [],
+      "write_wrapper_later": {
+        "composio": "true_with_gate",
+        "x_twitter": "true_with_gate",
+        "linkedin": "true_with_gate",
+        "posthog": "true_with_gate",
+        "gmail": "true_with_gate"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "posthog": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "gmail": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "data",
+      "providers_needed": [
+        "youtube_ytdlp",
+        "netlify",
+        "github"
+      ],
+      "current_route_status": {
+        "youtube_ytdlp": "runtime_only",
+        "netlify": "visible_but_not_verified",
+        "github": "manual_only"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "youtube_ytdlp",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "netlify",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "youtube_ytdlp",
+        "netlify",
+        "github"
+      ],
+      "write_wrapper_later": {
+        "youtube_ytdlp": "false",
+        "netlify": "true_with_gate",
+        "github": "true_with_gate"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    },
+    {
+      "agent_id": "trust",
+      "providers_needed": [
+        "github",
+        "posthog"
+      ],
+      "current_route_status": {
+        "github": "manual_only",
+        "posthog": "not_visible"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [
+        "posthog"
+      ],
+      "read_only_probe_later": [
+        "github"
+      ],
+      "write_wrapper_later": {
+        "github": "true_with_gate",
+        "posthog": "true_with_gate"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "posthog": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "compliance-linter",
+      "providers_needed": [
+        "github"
+      ],
+      "current_route_status": {
+        "github": "manual_only"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "github"
+      ],
+      "write_wrapper_later": {
+        "github": "true_with_gate"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    },
+    {
+      "agent_id": "reviewer",
+      "providers_needed": [
+        "github",
+        "netlify"
+      ],
+      "current_route_status": {
+        "github": "manual_only",
+        "netlify": "visible_but_not_verified"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "netlify",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "github",
+        "netlify"
+      ],
+      "write_wrapper_later": {
+        "github": "true_with_gate",
+        "netlify": "true_with_gate"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    },
+    {
+      "agent_id": "implementer",
+      "providers_needed": [
+        "github",
+        "netlify"
+      ],
+      "current_route_status": {
+        "github": "manual_only",
+        "netlify": "visible_but_not_verified"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "netlify",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "github",
+        "netlify"
+      ],
+      "write_wrapper_later": {
+        "github": "true_with_gate",
+        "netlify": "true_with_gate"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "netlify": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    },
+    {
+      "agent_id": "safety",
+      "providers_needed": [
+        "github",
+        "cloudflare_tunnel"
+      ],
+      "current_route_status": {
+        "github": "manual_only",
+        "cloudflare_tunnel": "runtime_only"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "cloudflare_tunnel",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "github"
+      ],
+      "write_wrapper_later": {
+        "github": "true_with_gate",
+        "cloudflare_tunnel": "false"
+      },
+      "gates_required": {
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "cloudflare_tunnel": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    },
+    {
+      "agent_id": "opportunity-research",
+      "providers_needed": [
+        "composio",
+        "youtube_ytdlp",
+        "x_twitter",
+        "linkedin"
+      ],
+      "current_route_status": {
+        "composio": "not_visible",
+        "youtube_ytdlp": "runtime_only",
+        "x_twitter": "not_visible",
+        "linkedin": "not_visible"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "youtube_ytdlp",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [
+        "composio",
+        "x_twitter",
+        "linkedin"
+      ],
+      "read_only_probe_later": [
+        "youtube_ytdlp"
+      ],
+      "write_wrapper_later": {
+        "composio": "true_with_gate",
+        "youtube_ytdlp": "false",
+        "x_twitter": "true_with_gate",
+        "linkedin": "true_with_gate"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "providers_needed": [
+        "composio",
+        "gmail"
+      ],
+      "current_route_status": {
+        "composio": "not_visible",
+        "gmail": "not_visible"
+      },
+      "allowed_now": [],
+      "blocked_now": [
+        "composio",
+        "gmail"
+      ],
+      "read_only_probe_later": [],
+      "write_wrapper_later": {
+        "composio": "true_with_gate",
+        "gmail": "true_with_gate"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "gmail": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "community",
+      "providers_needed": [
+        "composio",
+        "discord",
+        "telegram",
+        "x_twitter",
+        "linkedin"
+      ],
+      "current_route_status": {
+        "composio": "not_visible",
+        "discord": "not_visible",
+        "telegram": "not_visible",
+        "x_twitter": "not_visible",
+        "linkedin": "not_visible"
+      },
+      "allowed_now": [],
+      "blocked_now": [
+        "composio",
+        "discord",
+        "telegram",
+        "x_twitter",
+        "linkedin"
+      ],
+      "read_only_probe_later": [],
+      "write_wrapper_later": {
+        "composio": "true_with_gate",
+        "discord": "true_with_gate",
+        "telegram": "true_with_gate",
+        "x_twitter": "true_with_gate",
+        "linkedin": "true_with_gate"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "discord": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "telegram": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "whop-commerce",
+      "providers_needed": [
+        "whop",
+        "composio"
+      ],
+      "current_route_status": {
+        "whop": "visible_but_not_verified",
+        "composio": "not_visible"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "whop",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [
+        "composio"
+      ],
+      "read_only_probe_later": [
+        "whop"
+      ],
+      "write_wrapper_later": {
+        "whop": "true_with_gate",
+        "composio": "true_with_gate"
+      },
+      "gates_required": {
+        "whop": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "art-of-war",
+      "providers_needed": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog"
+      ],
+      "current_route_status": {
+        "composio": "not_visible",
+        "x_twitter": "not_visible",
+        "linkedin": "not_visible",
+        "posthog": "not_visible"
+      },
+      "allowed_now": [],
+      "blocked_now": [
+        "composio",
+        "x_twitter",
+        "linkedin",
+        "posthog"
+      ],
+      "read_only_probe_later": [],
+      "write_wrapper_later": {
+        "composio": "true_with_gate",
+        "x_twitter": "true_with_gate",
+        "linkedin": "true_with_gate",
+        "posthog": "true_with_gate"
+      },
+      "gates_required": {
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "x_twitter": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "linkedin": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "posthog": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "providers_needed": [
+        "youtube_ytdlp"
+      ],
+      "current_route_status": {
+        "youtube_ytdlp": "runtime_only"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "youtube_ytdlp",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "youtube_ytdlp"
+      ],
+      "write_wrapper_later": {
+        "youtube_ytdlp": "false"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "providers_needed": [
+        "youtube_ytdlp",
+        "whop",
+        "composio"
+      ],
+      "current_route_status": {
+        "youtube_ytdlp": "runtime_only",
+        "whop": "visible_but_not_verified",
+        "composio": "not_visible"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "youtube_ytdlp",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "whop",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [
+        "composio"
+      ],
+      "read_only_probe_later": [
+        "youtube_ytdlp",
+        "whop"
+      ],
+      "write_wrapper_later": {
+        "youtube_ytdlp": "false",
+        "whop": "true_with_gate",
+        "composio": "true_with_gate"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "whop": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "composio": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "operator_approval_required",
+          "OUTREACH_GATE": "operator_approval_required",
+          "SPEND_GATE": "operator_approval_required",
+          "WHOP_PAYMENT_GATE": "operator_approval_required",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [
+        "Composio not visible"
+      ],
+      "next_action": "provider automation blocked until route hardening/Composio repair"
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "providers_needed": [
+        "youtube_ytdlp",
+        "github"
+      ],
+      "current_route_status": {
+        "youtube_ytdlp": "runtime_only",
+        "github": "manual_only"
+      },
+      "allowed_now": [
+        {
+          "provider_id": "youtube_ytdlp",
+          "scope": "read-only/status only; no mutation"
+        },
+        {
+          "provider_id": "github",
+          "scope": "read-only/status only; no mutation"
+        }
+      ],
+      "blocked_now": [],
+      "read_only_probe_later": [
+        "youtube_ytdlp",
+        "github"
+      ],
+      "write_wrapper_later": {
+        "youtube_ytdlp": "false",
+        "github": "true_with_gate"
+      },
+      "gates_required": {
+        "youtube_ytdlp": {
+          "PROVIDER_MUTATION_GATE": "fail_closed",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        },
+        "github": {
+          "PROVIDER_MUTATION_GATE": "operator_approval_required",
+          "PUBLIC_POST_GATE": "not_applicable",
+          "OUTREACH_GATE": "not_applicable",
+          "SPEND_GATE": "not_applicable",
+          "WHOP_PAYMENT_GATE": "not_applicable",
+          "DEPLOY_GATE": "operator_approval_required",
+          "DB_MUTATION_GATE": "operator_approval_required",
+          "SECRET_ACCESS_GATE": "operator_approval_required",
+          "OAUTH_CONFIG_GATE": "operator_approval_required",
+          "CREDENTIAL_ROTATION_GATE": "operator_approval_required"
+        }
+      },
+      "missing_tooling": [],
+      "next_action": "read-only/status-only path documented"
+    }
+  ]
+}

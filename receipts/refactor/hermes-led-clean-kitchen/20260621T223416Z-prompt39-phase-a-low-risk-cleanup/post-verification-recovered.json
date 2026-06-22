@@ -1,0 +1,199 @@
+{
+  "timestamp_utc": "2026-06-21T22:35:38Z",
+  "df_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131516936192,
+    "free_bytes": 29453307904,
+    "used_percent": 81.7,
+    "inode_total": 9732496,
+    "inode_used": 2571487,
+    "inode_free": 7161009,
+    "inode_used_percent": 26.42
+  },
+  "df_h": {
+    "cmd": "df -h /",
+    "rc": 0,
+    "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  117G   28G  81% /\n",
+    "stderr": ""
+  },
+  "df_i": {
+    "cmd": "df -i /",
+    "rc": 0,
+    "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2571487 7161009   27% /\n",
+    "stderr": ""
+  },
+  "docker_ps_after": {
+    "cmd": "docker ps --format 'table {{.Names}}\\t{{.Image}}\\t{{.Status}}'",
+    "rc": 0,
+    "stdout": "NAMES                                      IMAGE                                             STATUS\nwhop-auto-hermes-worker-1                  crypto-tuber-ranked-hermes-worker:latest          Up 23 hours\nwhop-auto-channel-agent-worker-1           crypto-tuber-ranked-hermes-worker:latest          Up 23 hours\ncrypto-tuber-ranked-hermes-worker-1        b1369860652d                                      Up 23 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   Up 23 hours (healthy)\nhh-oauth-mcp-gateway                       oauth-mcp-gateway-oauth-mcp-gateway               Up 12 days\nhermes-whop-automation-tunnel              cloudflare/cloudflared:latest                     Up 2 weeks\n",
+    "stderr": ""
+  },
+  "git_status_after": {
+    "cmd": "cd /opt/crypto-tuber-ranked && git status --short",
+    "rc": 0,
+    "stdout": " M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/ops/ytdlp-singleton-provider.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? scripts/start-whop-auto-workers.sh\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n?? tests/ytdlp-singleton-wrapper.test.ts\n",
+    "stderr": ""
+  },
+  "provider_ping": {
+    "status": "ok",
+    "http_status": 200
+  },
+  "safe_path_absence": [
+    {
+      "path": "/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/tsconfig.tsbuildinfo",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/callscore-daily-canary",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/cmo-corrections",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/composio-probe-venv",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/cron-score-refresh",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/full-system-activation",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/last30days-cron",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/last30days-research",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/live-checks",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pipeline-canary",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/pr-audit",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-assets",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-drafts",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-final-drafts",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/social-runs",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/transcript-canary",
+      "exists": false
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/visual-proof",
+      "exists": false
+    }
+  ],
+  "excluded_path_presence": [
+    {
+      "path": "/opt/crypto-tuber-ranked/.tmp/prod-rollout",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "size_lstat_bytes": 4096
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.git",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "size_lstat_bytes": 4096
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/node_modules",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "size_lstat_bytes": 20480
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.next",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "size_lstat_bytes": 4096
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/.netlify",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "is_symlink": false,
+      "mode_octal": "0o775",
+      "size_lstat_bytes": 4096
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false,
+      "is_symlink": false,
+      "mode_octal": "0o664",
+      "size_lstat_bytes": 4382
+    },
+    {
+      "path": "/opt/callscore/secrets",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "is_symlink": false,
+      "mode_octal": "0o755",
+      "size_lstat_bytes": 4096
+    },
+    {
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false,
+      "is_symlink": false,
+      "mode_octal": "0o600",
+      "size_lstat_bytes": 22892
+    }
+  ],
+  "targeted_test_ytdlp_singleton_wrapper": {
+    "cmd": "cd /opt/crypto-tuber-ranked && node --import tsx --test tests/ytdlp-singleton-wrapper.test.ts",
+    "rc": 0,
+    "stdout": "TAP version 13\n# Subtest: whop-auto worker startup wrapper enforces ytdlp singleton guard\nok 1 - whop-auto worker startup wrapper enforces ytdlp singleton guard\n  ---\n  duration_ms: 2.053138\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 478.835835\n",
+    "stderr": ""
+  }
+}

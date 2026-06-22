@@ -1,0 +1,17 @@
+--- active/src/app/terms/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/terms/page.tsx
+@@ -1,12 +1,12 @@
+ import Link from "next/link";
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import { ArrowLeft } from "lucide-react";
+ 
+ export const metadata: Metadata = {
+-  title: "Terms of Service — CallScore",
++  title: "Terms of Service - CallScore",
+   description:
+     "Terms of service for CallScore. Important disclaimers about financial information, data accuracy, and use of this platform.",
+-  alternates: { canonical: "/terms" },
+ };
+ 
+ /* ------------------------------------------------------------------ */

@@ -1,0 +1,67 @@
+{
+  "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+  "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+  "reason": "stale .omx inside non-active legacy/snapshot root /srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+  "exists": true,
+  "size_before_bytes": 149435,
+  "path_info": {
+    "path": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "is_symlink": false,
+    "size_lstat_bytes": 4096,
+    "mtime_utc": "2026-06-05T07:05:37Z",
+    "mode": "0o775"
+  },
+  "safe_to_delete": true,
+  "block_reasons": [],
+  "active_process_check": [],
+  "docker_mount_check": [],
+  "compose_reference_check": [],
+  "cron_reference_check": [],
+  "systemd_reference_check": [],
+  "all_reference_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+  ],
+  "git_status": {
+    "applicable": true,
+    "repo": "/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready",
+    "status": {
+      "exists": true,
+      "is_git": false
+    }
+  },
+  "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+  "deletion_command_used": "rm -rf --one-file-system -- \"/srv/agents/repos/Claude_Code_Automations-marketing-launch-ready/.omx\"",
+  "delete_rc": 0,
+  "delete_stdout": "",
+  "delete_stderr": "",
+  "exists_after": false,
+  "deleted": true,
+  "disk_before_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134043975680,
+    "free_bytes": 26926268416,
+    "used_percent": 83.27,
+    "inode_total": 9732496,
+    "inode_used": 2694745,
+    "inode_free": 7037751,
+    "inode_used_percent": 27.69
+  },
+  "disk_after_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134043758592,
+    "free_bytes": 26926485504,
+    "used_percent": 83.27,
+    "inode_total": 9732496,
+    "inode_used": 2694723,
+    "inode_free": 7037773,
+    "inode_used_percent": 27.69
+  },
+  "disk_space_recovered_bytes": 217088,
+  "post_delete_verification": "absent"
+}

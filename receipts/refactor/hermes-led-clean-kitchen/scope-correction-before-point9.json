@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-06-22T12:50:00Z",
+  "status": "scope_checked_before_point9",
+  "filesystem_surface": "PROVEN_FULL_VM_FOR_ABSOLUTE_PATHS_USED",
+  "bridge_evidence": [
+    "Desktop Commander allowedDirectories: []",
+    "HH hostname: hermes-agent-box",
+    "HH user: omar",
+    "HH pwd: /srv",
+    "df shows / and /srv on /dev/sda1"
+  ],
+  "invalid_or_partial_steps": [
+    "prompt_7b_provider_route_conclusion_requires_hermes_side_check",
+    "prompt_8_provider_route_conclusion_requires_hermes_side_check",
+    "canonical_cmo_deployment_not_done",
+    "point9_not_done"
+  ],
+  "next_required_step": "state_model_update_and_hermes_side_composio_validation"
+}

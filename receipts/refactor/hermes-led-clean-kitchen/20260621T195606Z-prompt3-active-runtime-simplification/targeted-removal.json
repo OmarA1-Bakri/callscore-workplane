@@ -1,0 +1,18 @@
+{
+  "attempted": true,
+  "commands": [
+    {
+      "command_used": "docker stop whop-auto-ytdlp-pot-provider-1",
+      "return_code": 0,
+      "stdout": "whop-auto-ytdlp-pot-provider-1\n",
+      "stderr": ""
+    },
+    {
+      "command_used": "docker rm whop-auto-ytdlp-pot-provider-1",
+      "return_code": 0,
+      "stdout": "whop-auto-ytdlp-pot-provider-1\n",
+      "stderr": ""
+    }
+  ],
+  "reason": null
+}

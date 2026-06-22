@@ -1,0 +1,59 @@
+diff --git a/.omx/logs/tmux-hook-2026-05-03.jsonl b/.omx/logs/tmux-hook-2026-05-03.jsonl
+deleted file mode 100644
+index 3ad713d..0000000
+--- a/.omx/logs/tmux-hook-2026-05-03.jsonl
++++ /dev/null
+@@ -1,53 +0,0 @@
+-{"timestamp":"2026-05-03T01:48:18.588Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:48:32.588Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:48:40.251Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:49:00.510Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:49:26.399Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:50:33.050Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:53:41.082Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:57:41.203Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T01:58:12.812Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:00:18.086Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:01:42.459Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:02:07.048Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:03:55.603Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:06:17.086Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:09:18.173Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:11:02.039Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:25:34.418Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:25:48.031Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:28:24.891Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:28:38.273Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:29:31.258Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:33:14.868Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:34:02.312Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:35:56.762Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:38:15.165Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:45:19.648Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:46:30.698Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:46:42.534Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:49:35.059Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:50:37.725Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:52:17.230Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:56:24.942Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:57:14.501Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:57:16.665Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T02:58:47.965Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:01:33.140Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:02:22.909Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:05:22.893Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:06:25.841Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:06:40.235Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:08:19.239Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:08:36.653Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:10:11.261Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:13:55.240Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:14:58.347Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:53:16.626Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:55:36.150Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T03:59:56.051Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T04:00:52.039Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T04:00:57.399Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T04:02:33.277Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T04:04:32.543Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}
+-{"timestamp":"2026-05-03T04:05:25.221Z","type":"auto_nudge_skipped","reason":"unmanaged_session"}

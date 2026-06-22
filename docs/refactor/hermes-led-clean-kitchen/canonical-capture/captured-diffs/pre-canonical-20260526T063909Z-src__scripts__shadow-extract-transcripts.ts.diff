@@ -1,0 +1,189 @@
+--- active/src/scripts/shadow-extract-transcripts.ts
++++ pre-canonical-20260526T063909Z/src/scripts/shadow-extract-transcripts.ts
+@@ -6,21 +6,12 @@
+ import { buildRunId, hashTranscript, writeJsonFile, writeJsonlRecord, type ShadowExtractedCallRecord, type ShadowExtractionRunMetadata } from "../lib/shadow-extraction";
+ import type { Video } from "../lib/types";
+ import { extractWithModelFallback, parseOpenRouterExtractionArgs, type OpenRouterArgs } from "./extract-calls-openrouter";
+-import { loadEnv, runWithConcurrency, sleep, timestamp } from "./script-helpers";
++import { loadEnv, sleep, timestamp } from "./script-helpers";
+ 
+ type ShadowVideo = Video & { creator_id: number; creator_name: string; youtube_handle: string };
+ 
+ const DEFAULT_VIDEO_AGENTS = 1;
+ const MAX_VIDEO_AGENTS = 3;
+-const DEFAULT_SHADOW_MODEL = "callscore-gemma4-extractor:latest";
+-const DEFAULT_LOCAL_OLLAMA_HOST = "http://127.0.0.1:11434";
+-const DEFAULT_SHADOW_PROMPT_PROFILE = "shadow-compact";
+-const DEFAULT_SHADOW_CHUNK_CHARS = 350;
+-const DEFAULT_SHADOW_CHUNK_OVERLAP = 50;
+-const DEFAULT_SHADOW_MAX_CHUNKS = 1;
+-const DEFAULT_SHADOW_NUM_PREDICT = 350;
+-const DEFAULT_SHADOW_REQUEST_TIMEOUT_MS = 45_000;
+-const SHADOW_PROMPT_VERSION = "callscore-gemma4-shadow-v2-compact";
+ 
+ export interface ShadowExtractArgs extends OpenRouterArgs {
+   readonly execute: boolean;
+@@ -39,17 +30,8 @@
+ }
+ 
+ function withShadowProviderDefaults(argv: readonly string[]): string[] {
+-  const withDefaults = [...argv];
+-  if (!argv.includes("--provider")) withDefaults.push("--provider", "ollama");
+-  if (!argv.includes("--model")) withDefaults.push("--model", DEFAULT_SHADOW_MODEL);
+-  if (!argv.includes("--ollama-host")) withDefaults.push("--ollama-host", DEFAULT_LOCAL_OLLAMA_HOST);
+-  if (!argv.includes("--prompt-profile")) withDefaults.push("--prompt-profile", DEFAULT_SHADOW_PROMPT_PROFILE);
+-  if (!argv.includes("--chunk-chars")) withDefaults.push("--chunk-chars", String(DEFAULT_SHADOW_CHUNK_CHARS));
+-  if (!argv.includes("--chunk-overlap")) withDefaults.push("--chunk-overlap", String(DEFAULT_SHADOW_CHUNK_OVERLAP));
+-  if (!argv.includes("--max-chunks")) withDefaults.push("--max-chunks", String(DEFAULT_SHADOW_MAX_CHUNKS));
+-  if (!argv.includes("--num-predict")) withDefaults.push("--num-predict", String(DEFAULT_SHADOW_NUM_PREDICT));
+-  if (!argv.includes("--request-timeout-ms")) withDefaults.push("--request-timeout-ms", String(DEFAULT_SHADOW_REQUEST_TIMEOUT_MS));
+-  return withDefaults;
++  if (argv.includes("--provider")) return [...argv];
++  return [...argv, "--provider", "ollama"];
+ }
+ 
+ function positiveInt(value: string | null, fallback: number): number {
+@@ -145,12 +127,6 @@
+       chunk_agents: args.chunkAgents,
+       video_agents: args.videoAgents,
+       low_confidence_ready: args.lowConfidenceReady,
+-      chunk_chars: args.chunkChars,
+-      chunk_overlap: args.chunkOverlap,
+-      max_chunks: args.maxChunks,
+-      request_timeout_ms: args.requestTimeoutMs,
+-      num_predict: args.numPredict,
+-      prompt_profile: args.promptProfile,
+     },
+   };
+ }
+@@ -176,22 +152,6 @@
+     },
+     transcript_sha256: hashTranscript(transcript),
+     transcript_length: transcript.length,
+-    prompt_version: SHADOW_PROMPT_VERSION,
+-    schema_valid: false,
+-    confidence_distribution: {
+-      min: null,
+-      max: null,
+-      average: null,
+-      high_confidence_count: 0,
+-      medium_confidence_count: 0,
+-      low_confidence_count: 0,
+-    },
+-    parser_errors: ["dry_run_no_model_call"],
+-    latency_ms: null,
+-    comparison_to_rule_extractor: {
+-      status: "pending_shadow_diff",
+-      note: "Run npm run shadow:diff against this artifact for rule-extractor comparison.",
+-    },
+     candidate_count: 0,
+     accepted_count: 0,
+     accepted_calls: [],
+@@ -204,23 +164,6 @@
+   };
+ }
+ 
+-function confidenceDistribution(calls: readonly { extraction_confidence?: number; confidence?: string | null }[]): NonNullable<ShadowExtractedCallRecord["confidence_distribution"]> {
+-  const scores = calls
+-    .map((call) => Number(call.extraction_confidence ?? 0))
+-    .filter((value) => Number.isFinite(value));
+-  const high = calls.filter((call) => call.confidence === "high").length;
+-  const medium = calls.filter((call) => call.confidence === "medium").length;
+-  const low = calls.filter((call) => call.confidence === "low").length;
+-  return {
+-    min: scores.length ? Math.min(...scores) : null,
+-    max: scores.length ? Math.max(...scores) : null,
+-    average: scores.length ? scores.reduce((sum, value) => sum + value, 0) / scores.length : null,
+-    high_confidence_count: high,
+-    medium_confidence_count: medium,
+-    low_confidence_count: low,
+-  };
+-}
+-
+ interface ShadowVideoResult {
+   readonly processed: number;
+   readonly failed: number;
+@@ -242,9 +185,7 @@
+   }
+ 
+   try {
+-    const started = Date.now();
+     const result = await extractWithModelFallback(args, transcript, video.title);
+-    const latencyMs = Date.now() - started;
+     const record: ShadowExtractedCallRecord = {
+       record_type: "shadow_extraction",
+       ts: timestamp(),
+@@ -264,15 +205,6 @@
+       },
+       transcript_sha256: hashTranscript(transcript),
+       transcript_length: transcript.length,
+-      prompt_version: SHADOW_PROMPT_VERSION,
+-      schema_valid: true,
+-      confidence_distribution: confidenceDistribution(result.calls),
+-      parser_errors: [],
+-      latency_ms: latencyMs,
+-      comparison_to_rule_extractor: {
+-        status: "pending_shadow_diff",
+-        note: "Run npm run shadow:diff against this artifact for rule-extractor comparison.",
+-      },
+       candidate_count: result.candidates.length,
+       accepted_count: result.calls.length,
+       accepted_calls: result.calls,
+@@ -289,7 +221,7 @@
+   } catch (error) {
+     const message = error instanceof Error ? error.message : String(error);
+     const record = dryRunRecord(args, video);
+-    writeJsonlRecord(args.shadowOut, { ...record, error: message, parser_errors: [message] });
++    writeJsonlRecord(args.shadowOut, { ...record, error: message });
+     console.error(`[${timestamp()}] FAIL shadow video ${video.id} (${video.creator_name}): ${message}`);
+     return { processed: 0, failed: 1, accepted: 0 };
+   }
+@@ -300,21 +232,24 @@
+   videos: readonly ShadowVideo[],
+ ): Promise<ShadowVideoResult> {
+   const totals = { processed: 0, failed: 0, accepted: 0 };
+-
+-  const results = await runWithConcurrency(
+-    videos,
+-    args.videoAgents,
+-    async (video, index) => {
+-      const result = await processShadowVideo(args, video, index, videos.length);
+-      if (index + 1 < videos.length && args.gapMs > 0) await sleep(args.gapMs);
+-      return result;
+-    },
+-  );
+-
+-  for (const result of results) {
+-    totals.processed += result.processed;
+-    totals.failed += result.failed;
+-    totals.accepted += result.accepted;
++  const batchSize = Math.max(1, args.videoAgents);
++
++  for (let index = 0; index < videos.length; index += batchSize) {
++    const batch = videos.slice(index, index + batchSize);
++    const results = await Promise.all(
++      batch.map((video, offset) =>
++        processShadowVideo(args, video, index + offset, videos.length),
++      ),
++    );
++
++    for (const result of results) {
++      totals.processed += result.processed;
++      totals.failed += result.failed;
++      totals.accepted += result.accepted;
++    }
++
++    if (index + batch.length < videos.length && args.gapMs > 0)
++      await sleep(args.gapMs);
+   }
+ 
+   return totals;
+@@ -328,7 +263,7 @@
+ 
+   const videos = await loadShadowVideos(args);
+   console.log(
+-    `[${timestamp()}] shadow extract ${args.execute ? "EXECUTE" : "DRY-RUN"}: run=${args.runId}, videos=${videos.length}, provider=${args.provider}, model=${args.model}, promptProfile=${args.promptProfile}, chunkChars=${args.chunkChars}, maxChunks=${args.maxChunks}, numPredict=${args.numPredict}, requestTimeoutMs=${args.requestTimeoutMs}, videoAgents=${args.videoAgents}, chunkAgents=${args.chunkAgents}, modelAttempts=${args.modelAttempts}, out=${args.shadowOut}`,
++    `[${timestamp()}] shadow extract ${args.execute ? "EXECUTE" : "DRY-RUN"}: run=${args.runId}, videos=${videos.length}, provider=${args.provider}, model=${args.model}, videoAgents=${args.videoAgents}, chunkAgents=${args.chunkAgents}, out=${args.shadowOut}`,
+   );
+ 
+   const { processed, failed, accepted: totalAccepted } = await processShadowVideos(

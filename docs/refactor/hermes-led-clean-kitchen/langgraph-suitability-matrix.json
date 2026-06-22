@@ -1,0 +1,127 @@
+{
+  "timestamp_utc": "2026-06-22T16:51:40Z",
+  "schema_version": "callscore_langgraph_suitability_matrix.v1",
+  "overall_decision": "do_not_adopt_langgraph_as_production_control_plane_now",
+  "workflow_decisions": [
+    {
+      "workflow": "Next.js API request validation",
+      "current_rail": "src/app/api/* route handlers",
+      "decision": "KEEP_AS_SCRIPT",
+      "schema_decision": "ZOD_ONLY",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Synchronous API boundary validation is already covered by Zod safeParse; graph orchestration adds no value."
+    },
+    {
+      "workflow": "Public/read API row contracts",
+      "current_rail": "src/lib/api-schemas.ts",
+      "decision": "KEEP_AS_SCRIPT",
+      "schema_decision": "ZOD_ONLY",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "TypeScript runtime and public API data rows are canonical Zod territory."
+    },
+    {
+      "workflow": "Autonomy/channel-head contracts",
+      "current_rail": "src/lib/autonomy/contracts.ts + heartbeat receipts",
+      "decision": "KEEP_AS_HERMES_WORKPLANE",
+      "schema_decision": "ZOD_ONLY",
+      "langgraph_decision": "MIGRATE_TO_LANGGRAPH_LATER",
+      "reason": "Stateful agent loops may be prototyped later, but current authority remains Hermes/Workplane/Zod/receipts."
+    },
+    {
+      "workflow": "Hermes full canonical agents",
+      "current_rail": "callscore-channel-head-souls.yaml + agent heartbeat script",
+      "decision": "KEEP_AS_HERMES_WORKPLANE",
+      "schema_decision": "ZOD_ONLY",
+      "langgraph_decision": "MIGRATE_TO_LANGGRAPH_LATER",
+      "reason": "16 heartbeat agents are proven; no second control plane until a bounded spike proves value."
+    },
+    {
+      "workflow": "Daily pipeline",
+      "current_rail": "run-daily-pipeline.ts + scheduler/cron",
+      "decision": "KEEP_AS_CRON",
+      "schema_decision": "NEEDS_SCHEMA",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Sequential operational job orchestration is already script/cron with receipts."
+    },
+    {
+      "workflow": "Pipeline jobs and worker queue",
+      "current_rail": "pipeline_jobs + hermes-worker/channel-agent-worker",
+      "decision": "KEEP_AS_DB_QUEUE",
+      "schema_decision": "NEEDS_SCHEMA",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "DB queue is production truth for worker tasks; do not replace with graph runtime."
+    },
+    {
+      "workflow": "Transcript acquisition VM route",
+      "current_rail": "backfill-transcripts.ts, transcript-worklist.ts, ytdlp POT provider",
+      "decision": "KEEP_AS_SCRIPT",
+      "schema_decision": "ZOD_ONLY",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Provider cooldown, locks, and audit outputs are procedural and bounded."
+    },
+    {
+      "workflow": "Local laptop transcript acquisition",
+      "current_rail": "scripts/windows/run-transcript-collector.ps1 + workplane claim/ingest",
+      "decision": "KEEP_AS_HERMES_WORKPLANE",
+      "schema_decision": "NEEDS_SCHEMA",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Cross-machine acquisition lane should remain simple, claim-based, and receipt-driven."
+    },
+    {
+      "workflow": "Gemma/Ollama shadow extraction",
+      "current_rail": "shadow:extract/diff/validate/promote + Gemma preflight",
+      "decision": "KEEP_AS_SCRIPT",
+      "schema_decision": "ZOD_CANONICAL_WITH_PYDANTIC_GENERATED",
+      "langgraph_decision": "MIGRATE_TO_LANGGRAPH_LATER",
+      "reason": "Future Python/Pydantic sidecar may help structured model outputs, but TypeScript Zod must revalidate before persistence/promotion."
+    },
+    {
+      "workflow": "ML verifier quality gate",
+      "current_rail": "ml-verifier-quality-gate.ts + ml_verification_runs",
+      "decision": "KEEP_AS_DB_QUEUE",
+      "schema_decision": "ZOD_CANONICAL_WITH_PYDANTIC_GENERATED",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Verifier decisions must remain audit/DB-backed. Pydantic may be internal to future sidecar only."
+    },
+    {
+      "workflow": "Provider automation",
+      "current_rail": "Hermes MCP / Composio MCP",
+      "decision": "KEEP_AS_HERMES_WORKPLANE",
+      "schema_decision": "NEEDS_SCHEMA",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Composio routing is canonical; do not introduce graph layer for provider calls."
+    },
+    {
+      "workflow": "Whop app runtime auth/webhooks/entitlements",
+      "current_rail": "live app runtime direct route exception",
+      "decision": "KEEP_AS_SCRIPT",
+      "schema_decision": "ZOD_ONLY",
+      "langgraph_decision": "DO_NOT_USE_LANGGRAPH",
+      "reason": "Runtime auth/webhook behavior is not agent graph orchestration."
+    },
+    {
+      "workflow": "Framework experiment/spike work",
+      "current_rail": "docs/ops/callscore-framework-boundary-spike.md",
+      "decision": "KEEP_AS_HERMES_WORKPLANE",
+      "schema_decision": "NO_SCHEMA_NEEDED",
+      "langgraph_decision": "MIGRATE_TO_LANGGRAPH_LATER",
+      "reason": "Preserve spike notes; only run isolated spike later with no production authority."
+    }
+  ],
+  "allowed_future_spike_conditions": [
+    "isolated prototype only",
+    "no production DB writes",
+    "no provider mutations",
+    "no public posting/outreach/spend",
+    "must reuse canonical Zod contracts",
+    "must not create second event ledger/gate system",
+    "must prove simpler than existing Hermes/Workplane/DB queue rails"
+  ],
+  "blocked_now": [
+    "production control plane replacement",
+    "provider orchestration replacement",
+    "pipeline_jobs replacement",
+    "public publish workflow replacement",
+    "DB queue replacement"
+  ]
+}

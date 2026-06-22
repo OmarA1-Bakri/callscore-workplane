@@ -1,0 +1,189 @@
+{
+  "timestamp_utc": "2026-06-22T08:08:13Z",
+  "routing": [
+    {
+      "agent_id": "orchestrator",
+      "current_profile_source": [
+        "callscorearchitect",
+        "callscorecmo",
+        "callscoredata",
+        "callscoreimplementer",
+        "callscorereviewer",
+        "callscoresafety",
+        "callscoretrust"
+      ],
+      "proposed_lean_profile": "orchestrator-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "shared_base_manifest_plus_role_manifest"
+    },
+    {
+      "agent_id": "cmo",
+      "current_profile_source": [],
+      "proposed_lean_profile": "cmo-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "dedicated_lean_profile_with_provider_gates"
+    },
+    {
+      "agent_id": "data",
+      "current_profile_source": [],
+      "proposed_lean_profile": "data-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "agent_workplane_manifest_first"
+    },
+    {
+      "agent_id": "trust",
+      "current_profile_source": [],
+      "proposed_lean_profile": "trust-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "agent_workplane_manifest_first"
+    },
+    {
+      "agent_id": "compliance-linter",
+      "current_profile_source": [],
+      "proposed_lean_profile": "compliance-linter-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "agent_workplane_manifest_first"
+    },
+    {
+      "agent_id": "reviewer",
+      "current_profile_source": [],
+      "proposed_lean_profile": "reviewer-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "shared_base_manifest_plus_role_manifest"
+    },
+    {
+      "agent_id": "implementer",
+      "current_profile_source": [],
+      "proposed_lean_profile": "implementer-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "shared_base_manifest_plus_role_manifest"
+    },
+    {
+      "agent_id": "safety",
+      "current_profile_source": [],
+      "proposed_lean_profile": "safety-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "shared_base_manifest_plus_role_manifest"
+    },
+    {
+      "agent_id": "opportunity-research",
+      "current_profile_source": [],
+      "proposed_lean_profile": "opportunity-research-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "agent_workplane_manifest_first"
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "current_profile_source": [],
+      "proposed_lean_profile": "email-partnership-drafts-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "dedicated_lean_profile_with_provider_gates"
+    },
+    {
+      "agent_id": "community",
+      "current_profile_source": [],
+      "proposed_lean_profile": "community-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "dedicated_lean_profile_with_provider_gates"
+    },
+    {
+      "agent_id": "whop-commerce",
+      "current_profile_source": [],
+      "proposed_lean_profile": "whop-commerce-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "agent_workplane_manifest_first"
+    },
+    {
+      "agent_id": "art-of-war",
+      "current_profile_source": [],
+      "proposed_lean_profile": "art-of-war-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": true,
+      "script_only_no_dedicated_llm_profile": false,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "dedicated_lean_profile_with_provider_gates"
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "current_profile_source": [],
+      "proposed_lean_profile": "gemma-transcript-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": false,
+      "should_remain_manual_operator_bound": true,
+      "next_migration_step": "agent_workplane_manifest_first"
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "current_profile_source": [],
+      "proposed_lean_profile": "channel-agent-worker-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": true,
+      "should_remain_manual_operator_bound": false,
+      "next_migration_step": "script_worker_with_manifest_reference"
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "current_profile_source": [],
+      "proposed_lean_profile": "data-pipeline-worker-manifest-profile",
+      "can_share_base_manifest": true,
+      "needs_dedicated_profile": false,
+      "script_only_no_dedicated_llm_profile": true,
+      "should_be_scheduler_bound": true,
+      "should_remain_manual_operator_bound": false,
+      "next_migration_step": "script_worker_with_manifest_reference"
+    }
+  ]
+}

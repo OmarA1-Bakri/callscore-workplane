@@ -1,0 +1,3719 @@
+{
+  "timestamp_utc": "2026-06-21T23:17:46Z",
+  "phase": "prompt_5_agent_workplane_separation",
+  "source_policy": "metadata and filenames only; no env contents read",
+  "baseline": {
+    "timestamp_utc": "2026-06-21T23:17:46Z",
+    "df": {
+      "df_B1": {
+        "args": [
+          "df",
+          "-B1",
+          "/"
+        ],
+        "rc": 0,
+        "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 124940034048 29430919168  81% /\n",
+        "stderr": ""
+      },
+      "df_i": {
+        "args": [
+          "df",
+          "-i",
+          "/"
+        ],
+        "rc": 0,
+        "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2572122 7160374   27% /\n",
+        "stderr": ""
+      },
+      "total_bytes": 160970244096,
+      "used_bytes": 124940034048,
+      "free_bytes": 29430919168,
+      "used_percent": 81,
+      "inode_total": 9732496,
+      "inode_used": 2572122,
+      "inode_free": 7160374,
+      "inode_used_percent": 27
+    },
+    "docker_ps": {
+      "args": [
+        "docker",
+        "ps",
+        "--format",
+        "table {{.Names}}\t{{.Image}}\t{{.Status}}"
+      ],
+      "rc": 0,
+      "stdout": "NAMES                                      IMAGE                                             STATUS\nwhop-auto-hermes-worker-1                  crypto-tuber-ranked-hermes-worker:latest          Up 24 hours\nwhop-auto-channel-agent-worker-1           crypto-tuber-ranked-hermes-worker:latest          Up 24 hours\ncrypto-tuber-ranked-hermes-worker-1        b1369860652d                                      Up 24 hours\ncrypto-tuber-ranked-ytdlp-pot-provider-1   brainicism/bgutil-ytdlp-pot-provider:1.3.1-node   Up 24 hours (healthy)\nhh-oauth-mcp-gateway                       oauth-mcp-gateway-oauth-mcp-gateway               Up 12 days\nhermes-whop-automation-tunnel              cloudflare/cloudflared:latest                     Up 2 weeks\n",
+      "stderr": ""
+    },
+    "provider_ping_4416": {
+      "status": "ok",
+      "http_status": 200
+    },
+    "protected_paths": [
+      {
+        "path": "/opt/crypto-tuber-ranked",
+        "exists": true,
+        "is_file": false,
+        "is_dir": true,
+        "size_bytes": 3044869044,
+        "file_count": 49231,
+        "mode": "0o775",
+        "mtime_utc": "2026-06-21T22:34:16Z"
+      },
+      {
+        "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+        "exists": true,
+        "is_file": true,
+        "is_dir": false,
+        "size_bytes": 4382,
+        "file_count": 1,
+        "mode": "0o664",
+        "mtime_utc": "2026-06-20T23:37:30Z"
+      },
+      {
+        "path": "/opt/callscore/secrets/youtube-cookies.txt",
+        "exists": true,
+        "is_file": true,
+        "is_dir": false,
+        "size_bytes": 22892,
+        "file_count": 1,
+        "mode": "0o600",
+        "mtime_utc": "2026-06-21T03:21:02Z"
+      },
+      {
+        "path": "/srv/agents/repos/callscore-workplane",
+        "exists": true,
+        "is_file": false,
+        "is_dir": true,
+        "size_bytes": 362010117,
+        "file_count": 7896,
+        "mode": "0o755",
+        "mtime_utc": "2026-06-18T09:07:27Z"
+      }
+    ],
+    "git_status": {
+      "/opt/crypto-tuber-ranked": {
+        "args": [
+          "git",
+          "status",
+          "--short"
+        ],
+        "rc": 0,
+        "stdout": " M package.json\n M src/lib/ml-verifier.ts\n M src/lib/video-intelligence/types.ts\n M src/lib/video-intelligence/validate-evidence.ts\n M src/scripts/callscore-agent-heartbeat.ts\n M src/scripts/callscore-cmo-response-monitor.ts\n M tests/callscore-cmo-response-monitor.test.ts\n M tests/ml-verifier.test.ts\n M tests/video-intelligence-workflow.test.ts\n?? docs/ops/callscore-anti-over-governance-audit.md\n?? docs/ops/callscore-autonomy-upgrade-status.md\n?? docs/ops/callscore-framework-boundary-spike.md\n?? docs/ops/callscore-fresh-call-sentinel.md\n?? docs/ops/callscore-headroom-swarm-policy.md\n?? docs/ops/callscore-non-founder-review.md\n?? docs/ops/ytdlp-singleton-provider.md\n?? docs/plans/2026-06-21-callscore-channel-head-intelligence-sentinel-trust-engine.md\n?? scripts/start-whop-auto-workers.sh\n?? src/lib/autonomy/\n?? src/lib/sentinels/\n?? src/lib/trust/\n?? src/scripts/callscore-fresh-call-sentinel.ts\n?? src/scripts/callscore-non-founder-review.ts\n?? tests/anti-over-governance.test.ts\n?? tests/autonomy-contracts.test.ts\n?? tests/callscore-agent-heartbeat.test.ts\n?? tests/channel-head-decision.test.ts\n?? tests/channel-head-scoring.test.ts\n?? tests/cmo-channel-head-integration.test.ts\n?? tests/fresh-call-sentinel.test.ts\n?? tests/non-founder-review-queue.test.ts\n?? tests/trust-decision-engine.test.ts\n?? tests/ytdlp-singleton-wrapper.test.ts\n",
+        "stderr": ""
+      },
+      "/srv/agents/repos/callscore-workplane": {
+        "args": [
+          "git",
+          "status",
+          "--short"
+        ],
+        "rc": 0,
+        "stdout": "?? docs/migration/receipts/callscore-cmo-monitor-20260618T182018Z.md\n?? docs/migration/receipts/callscore-owned-public-next-draft-20260618T121352Z.json\n?? docs/refactor/\n?? receipts/\n",
+        "stderr": ""
+      },
+      "/srv/agents/repos/Claude_Code_Automations": {
+        "args": [
+          "git",
+          "status",
+          "--short"
+        ],
+        "rc": 0,
+        "stdout": " M art-of-war/live/channel-activation-preflight.json\n M art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md\n M art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md\n M art-of-war/live/channels/social_posting/social-posting-candidate-queue.json\n M art-of-war/live/channels/social_posting/social-posting-dry-run-output.json\n M art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json\n M art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json\n M art-of-war/live/dashboard/dashboard-preflight.json\n M art-of-war/live/dashboard/system-dashboard.json\n M art-of-war/live/phase-10a-preflight.json\n?? .netlify/\n?? .serena/\n?? Archon/\n?? art-of-war/campaign-loop/\n?? workplane/.hermes/\n?? workplane/.state/\n",
+        "stderr": ""
+      },
+      "/srv/agents/repos/crypto-tuber-ranked": {
+        "args": [
+          "git",
+          "status",
+          "--short"
+        ],
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    }
+  },
+  "profiles": [
+    {
+      "profile": "callscorearchitect",
+      "path": "/srv/agents/hermes/profiles/callscorearchitect",
+      "exists": true,
+      "size_bytes": 230434118,
+      "file_count": 5285,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    },
+    {
+      "profile": "callscorecmo",
+      "path": "/srv/agents/hermes/profiles/callscorecmo",
+      "exists": true,
+      "size_bytes": 133759849,
+      "file_count": 1571,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    },
+    {
+      "profile": "callscoredata",
+      "path": "/srv/agents/hermes/profiles/callscoredata",
+      "exists": true,
+      "size_bytes": 216380221,
+      "file_count": 5339,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    },
+    {
+      "profile": "callscoreimplementer",
+      "path": "/srv/agents/hermes/profiles/callscoreimplementer",
+      "exists": true,
+      "size_bytes": 229666318,
+      "file_count": 5293,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    },
+    {
+      "profile": "callscorereviewer",
+      "path": "/srv/agents/hermes/profiles/callscorereviewer",
+      "exists": true,
+      "size_bytes": 200413767,
+      "file_count": 5161,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    },
+    {
+      "profile": "callscoresafety",
+      "path": "/srv/agents/hermes/profiles/callscoresafety",
+      "exists": true,
+      "size_bytes": 208594992,
+      "file_count": 5291,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    },
+    {
+      "profile": "callscoretrust",
+      "path": "/srv/agents/hermes/profiles/callscoretrust",
+      "exists": true,
+      "size_bytes": 219336955,
+      "file_count": 5312,
+      "skill_md_count": 189,
+      "local_skill_file_count": 1374,
+      "env_named_file_count": 1,
+      "bloat_classification": "BLOATED"
+    }
+  ],
+  "global_skill_md_count": 176,
+  "cron_jobs_observed_count": 18,
+  "db_observed": {
+    "attempted": false,
+    "status": "deferred_to_prompt_6_observability",
+    "reason": "Prompt 5 is documentation/mapping; no DB access needed to avoid unnecessary risk."
+  },
+  "agents": [
+    {
+      "agent_id": "orchestrator",
+      "display_name": "Orchestrator",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Coordinate bounded CallScore work across agents, queues, receipts, and operator gates.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/workplane-status.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/workplane-laptop-job.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/workplane.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        },
+        {
+          "id": "8e77a2073e6a",
+          "name": "CallScore autonomy implementation progress reporter",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 15,
+            "display": "every 15m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-progress-report.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        },
+        {
+          "id": "8e77a2073e6a",
+          "name": "CallScore autonomy implementation progress reporter",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 15,
+            "display": "every 15m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-progress-report.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/workplane-status.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/workplane-laptop-job.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/workplane.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/autonomy-contracts.test.ts",
+        "/opt/crypto-tuber-ranked/tests/workplane-dispatch.test.ts",
+        "/opt/crypto-tuber-ranked/tests/workplane-jobs.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-autonomy-upgrade-status.md",
+        "/opt/crypto-tuber-ranked/docs/ops/workplane-readiness-audit.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-full-autonomy-heartbeat-contract.md"
+      ],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/final-autonomy-status.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-autonomy-envelope.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-1-deferred-reference-sensitive-execution-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-5-ytdlp-singleton-provider-guard-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-dispatch-check-20260621T181900Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-runtime-simplification-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-8-clean-architecture-staging-plan-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T202048Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-kanban-tasks-20260621T181700Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-clean-architecture-directory-plan-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-parent-verification-after-glm-rate-limit-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6b-residual-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/02-5-linked-worktree-retirement-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/02-canonical-capture-deletion-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-9-phase-a-low-risk-cleanup-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-7c71119244dc.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "fail_closed",
+        "PROVIDER_MUTATION_GATE": "fail_closed",
+        "WHOP_PAYMENT_GATE": "fail_closed",
+        "DB_MUTATION_GATE": "fail_closed",
+        "DEPLOY_GATE": "fail_closed",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "fail_closed",
+        "SPEND_GATE": "fail_closed",
+        "DELETION_GATE": "fail_closed",
+        "MIGRATION_GATE": "fail_closed"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/orchestrator",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "cmo",
+      "display_name": "CMO / Owned Social Growth",
+      "current_status": [
+        "profile_observed",
+        "script_observed",
+        "cron_scheduled"
+      ],
+      "mission": "Drive owned-public growth loops, content drafts, social receipts, and commercial learning while keeping public/outreach gates fail-closed.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-cmo-response-monitor.ts"
+      ],
+      "current_profile_source": [
+        "callscorecmo"
+      ],
+      "current_prompt_skill_source": [
+        "callscorecmo"
+      ],
+      "current_queue_job_source": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "144c3a9cc860",
+          "name": "CallScore CMO cooldown catch-up watcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 5,
+            "display": "every 5m"
+          },
+          "enabled": true,
+          "script": "callscore-cmo-cooldown-catchup.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "144c3a9cc860",
+          "name": "CallScore CMO cooldown catch-up watcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 5,
+            "display": "every 5m"
+          },
+          "enabled": true,
+          "script": "callscore-cmo-cooldown-catchup.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-cmo-response-monitor.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/cmo-channel-head-integration.test.ts",
+        "/opt/crypto-tuber-ranked/tests/callscore-cmo-response-monitor.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/hermes/FULL_AUTONOMOUS_BOUNDED_OWNED_GTM_RECEIPT.md"
+      ],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-risk-review.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-dry-run-output.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-candidate-queue.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/campaign-loop/full-system-activation-20260618T211007Z.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/campaign-loop/callscore-receipts-proof-iteration-1-receipt.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Composio MCP required for external provider automation; public/outreach/spend gates fail-closed"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/cmo",
+      "profile_bloated": true,
+      "prompt_duplication_present": true
+    },
+    {
+      "agent_id": "data",
+      "display_name": "Data Pipeline Sentinel",
+      "current_status": [
+        "profile_observed",
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Maintain data freshness, candles, matching, scoring, and pipeline readiness reporting.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-freshness-check.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/match-stats.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/run-daily-pipeline.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/rescore-derived.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/pipeline-monitor.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/hermes-worker.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/audit-pipeline-readiness.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/pipeline-state-check.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-enqueue-server.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/run-continuous-data-pipeline.ts"
+      ],
+      "current_profile_source": [
+        "callscorearchitect",
+        "callscorecmo",
+        "callscoredata",
+        "callscoreimplementer",
+        "callscorereviewer",
+        "callscoresafety",
+        "callscoretrust"
+      ],
+      "current_prompt_skill_source": [
+        "callscorearchitect",
+        "callscorecmo",
+        "callscoredata",
+        "callscoreimplementer",
+        "callscorereviewer",
+        "callscoresafety",
+        "callscoretrust"
+      ],
+      "current_queue_job_source": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "e4f5b44877b3",
+          "name": "callscore-core-candles-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "*/15 * * * *",
+            "display": "*/15 * * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-candles.sh",
+          "profile": null
+        },
+        {
+          "id": "a9fbeabf4299",
+          "name": "callscore-core-match-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "30 3 * * *",
+            "display": "30 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-match.sh",
+          "profile": null
+        },
+        {
+          "id": "a94f36600ba2",
+          "name": "callscore-core-scores-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "45 3 * * *",
+            "display": "45 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-scores.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "144c3a9cc860",
+          "name": "CallScore CMO cooldown catch-up watcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 5,
+            "display": "every 5m"
+          },
+          "enabled": true,
+          "script": "callscore-cmo-cooldown-catchup.sh"
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        },
+        {
+          "id": "8e77a2073e6a",
+          "name": "CallScore autonomy implementation progress reporter",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 15,
+            "display": "every 15m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-progress-report.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "e4f5b44877b3",
+          "name": "callscore-core-candles-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "*/15 * * * *",
+            "display": "*/15 * * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-candles.sh",
+          "profile": null
+        },
+        {
+          "id": "a9fbeabf4299",
+          "name": "callscore-core-match-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "30 3 * * *",
+            "display": "30 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-match.sh",
+          "profile": null
+        },
+        {
+          "id": "a94f36600ba2",
+          "name": "callscore-core-scores-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "45 3 * * *",
+            "display": "45 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-scores.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "144c3a9cc860",
+          "name": "CallScore CMO cooldown catch-up watcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 5,
+            "display": "every 5m"
+          },
+          "enabled": true,
+          "script": "callscore-cmo-cooldown-catchup.sh"
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        },
+        {
+          "id": "8e77a2073e6a",
+          "name": "CallScore autonomy implementation progress reporter",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 15,
+            "display": "every 15m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-progress-report.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-freshness-check.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/match-stats.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/run-daily-pipeline.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/rescore-derived.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/pipeline-monitor.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/hermes-worker.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/audit-pipeline-readiness.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/pipeline-state-check.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-enqueue-server.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/run-continuous-data-pipeline.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/score-progress.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/leaderboard.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/match-prices-set-based.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/analyze-scores.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/reset-scores.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/refresh-candles.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/run-data-pipeline.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/compute-scores.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/match-prices.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/compute-scores-cli.test.ts",
+        "/opt/crypto-tuber-ranked/tests/alphascore-shape.test.ts",
+        "/opt/crypto-tuber-ranked/tests/refresh-candles.test.ts",
+        "/opt/crypto-tuber-ranked/tests/callscore-agent-heartbeat.test.ts",
+        "/opt/crypto-tuber-ranked/tests/freshness-check.test.ts",
+        "/opt/crypto-tuber-ranked/tests/leaderboard-shape.test.ts",
+        "/opt/crypto-tuber-ranked/tests/callscore-cmo-response-monitor.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline-stats.test.ts",
+        "/opt/crypto-tuber-ranked/tests/data-pipeline.test.ts",
+        "/opt/crypto-tuber-ranked/tests/cron-candles-wrapper.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline-readiness.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline/dispatch-audit.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline/retry.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-loop-failure-taxonomy.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-env-manifest.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-anti-over-governance-audit.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-subagent-roster.md",
+        "/opt/crypto-tuber-ranked/docs/ops/freshness-certification.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-gtm-agent-registry.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-autonomy-upgrade-status.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-session-startup.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-non-founder-review.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-gtm-agent-registry.json",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-fresh-call-sentinel.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-canonical-skill-register.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-loop-engineering-contract.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-headroom-swarm-policy.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-full-autonomy-heartbeat-contract.md",
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-15-callscore-skill-gap-analysis.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-framework-boundary-spike.md"
+      ],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/dashboard-data-contract.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/campaign-loop/callscore-receipts-proof-iteration-1-receipt.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-1-deferred-reference-sensitive-execution-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-5-ytdlp-singleton-provider-guard-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-dispatch-check-20260621T181900Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-baseline.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-runtime-simplification-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-8-clean-architecture-staging-plan-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/01-runtime-routing-cleanup-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T202048Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-kanban-tasks-20260621T181700Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-clean-architecture-directory-plan-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-parent-verification-after-glm-rate-limit-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6b-residual-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/02-5-linked-worktree-retirement-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/02-canonical-capture-deletion-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-baseline-20260621T181500Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-9-phase-a-low-risk-cleanup-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/delete-7c71119244dc.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Netlify direct backup route may be read-only checked; other provider automation via Composio"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/data",
+      "profile_bloated": true,
+      "prompt_duplication_present": true
+    },
+    {
+      "agent_id": "trust",
+      "display_name": "Trust / Non-Founder Reviewer",
+      "current_status": [
+        "profile_observed",
+        "script_observed",
+        "cron_scheduled"
+      ],
+      "mission": "Protect trust boundary, non-founder review, evidence quality, and right-of-reply governance.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts"
+      ],
+      "current_profile_source": [
+        "callscoretrust"
+      ],
+      "current_prompt_skill_source": [
+        "callscoretrust"
+      ],
+      "current_queue_job_source": [
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/non-founder-review-queue.test.ts",
+        "/opt/crypto-tuber-ranked/tests/trust-decision-engine.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-non-founder-review.md"
+      ],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/trust",
+      "profile_bloated": true,
+      "prompt_duplication_present": true
+    },
+    {
+      "agent_id": "compliance-linter",
+      "display_name": "Compliance Linter",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled"
+      ],
+      "mission": "Lint operational artefacts for safety, compliance, and gate correctness.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/ml-verifier-quality-gate.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/check-secret-hygiene.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/ml-verifier-quality-gate.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/check-secret-hygiene.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/ml-verifier-quality-gate.test.ts",
+        "/opt/crypto-tuber-ranked/tests/tiergate-shape.test.ts",
+        "/opt/crypto-tuber-ranked/tests/secret-hygiene.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/2026-06-14-full-system-live-canary-gate-decisions.md",
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-headroom-swarm-policy.md"
+      ],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "fail_closed",
+        "PROVIDER_MUTATION_GATE": "fail_closed",
+        "WHOP_PAYMENT_GATE": "fail_closed",
+        "DB_MUTATION_GATE": "fail_closed",
+        "DEPLOY_GATE": "fail_closed",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "fail_closed",
+        "SPEND_GATE": "fail_closed",
+        "DELETION_GATE": "fail_closed",
+        "MIGRATION_GATE": "fail_closed"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/compliance-linter",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "reviewer",
+      "display_name": "Reviewer / Parent Verifier",
+      "current_status": [
+        "profile_observed",
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Verify deliverables, receipts, tests, and runtime evidence before claiming completion.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/verify-local-postgres-provider.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/verify-public-surface.ts"
+      ],
+      "current_profile_source": [
+        "callscorereviewer"
+      ],
+      "current_prompt_skill_source": [
+        "callscorereviewer"
+      ],
+      "current_queue_job_source": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/verify-local-postgres-provider.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/callscore-non-founder-review.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/verify-public-surface.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/non-founder-review-queue.test.ts",
+        "/opt/crypto-tuber-ranked/tests/review-auth-route.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-non-founder-review.md",
+        "/opt/crypto-tuber-ranked/docs/hermes/FINAL_SYSTEM_VERIFICATION_REPORT.md"
+      ],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-risk-review.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/04-0-deferred-reference-sensitive-cleanup-review-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-7-parent-verification-after-glm-rate-limit-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/post-verification-recovered.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/post-removal-verification.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/post-removal-verification-corrected.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/post-cleanup-verification.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/capture-verification.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/post-verification.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T224026Z-prompt40-deferred-reference-sensitive-review/04-0-deferred-reference-sensitive-cleanup-review-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T190926Z-prompt2-canonical-capture/post-prompt2-verification.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "fail_closed",
+        "PROVIDER_MUTATION_GATE": "fail_closed",
+        "WHOP_PAYMENT_GATE": "fail_closed",
+        "DB_MUTATION_GATE": "fail_closed",
+        "DEPLOY_GATE": "fail_closed",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "fail_closed",
+        "SPEND_GATE": "fail_closed",
+        "DELETION_GATE": "fail_closed",
+        "MIGRATION_GATE": "fail_closed"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/reviewer",
+      "profile_bloated": true,
+      "prompt_duplication_present": true
+    },
+    {
+      "agent_id": "implementer",
+      "display_name": "Implementer",
+      "current_status": [
+        "profile_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Perform bounded implementation work with tests and rollback receipts.",
+      "current_runtime_source": [],
+      "current_profile_source": [
+        "callscoreimplementer"
+      ],
+      "current_prompt_skill_source": [
+        "callscoreimplementer"
+      ],
+      "current_queue_job_source": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        },
+        {
+          "id": "8e77a2073e6a",
+          "name": "CallScore autonomy implementation progress reporter",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 15,
+            "display": "every 15m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-progress-report.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        },
+        {
+          "id": "8e77a2073e6a",
+          "name": "CallScore autonomy implementation progress reporter",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 15,
+            "display": "every 15m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-progress-report.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/workplane-dispatch.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline/dispatch-audit.test.ts"
+      ],
+      "docs_evidence": [],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-hermes-handover.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/final-autonomy-status.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-autonomy-envelope.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channel-activation-registry.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/kill-switch.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channel-activation-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/audits/canonical-full-automation-audit-and-plan.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/system-dashboard.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/dashboard-data-contract.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/agent-interaction-contract.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/operator-action-registry.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/dashboard-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-risk-review.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-dry-run-output.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-candidate-queue.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-dispatch-check-20260621T181900Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-marketing-launch-ready.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-measurement-pack-001.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-pr10-master-clean.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/common-repo-Claude_Code_Automations-classification.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations_callscore_launch_sweep_clean.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/implementer",
+      "profile_bloated": true,
+      "prompt_duplication_present": true
+    },
+    {
+      "agent_id": "safety",
+      "display_name": "Safety",
+      "current_status": [
+        "profile_observed",
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Enforce fail-closed safety gates, secret hygiene, redaction, and emergency halt conditions.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/check-secret-hygiene.ts"
+      ],
+      "current_profile_source": [
+        "callscoresafety"
+      ],
+      "current_prompt_skill_source": [
+        "callscoresafety"
+      ],
+      "current_queue_job_source": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "e4f5b44877b3",
+          "name": "callscore-core-candles-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "*/15 * * * *",
+            "display": "*/15 * * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-candles.sh",
+          "profile": null
+        },
+        {
+          "id": "a9fbeabf4299",
+          "name": "callscore-core-match-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "30 3 * * *",
+            "display": "30 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-match.sh",
+          "profile": null
+        },
+        {
+          "id": "a94f36600ba2",
+          "name": "callscore-core-scores-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "45 3 * * *",
+            "display": "45 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-scores.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "e4f5b44877b3",
+          "name": "callscore-core-candles-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "*/15 * * * *",
+            "display": "*/15 * * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-candles.sh",
+          "profile": null
+        },
+        {
+          "id": "a9fbeabf4299",
+          "name": "callscore-core-match-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "30 3 * * *",
+            "display": "30 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-match.sh",
+          "profile": null
+        },
+        {
+          "id": "a94f36600ba2",
+          "name": "callscore-core-scores-hh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "45 3 * * *",
+            "display": "45 3 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-cron-scores.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/check-secret-hygiene.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/secret-hygiene.test.ts"
+      ],
+      "docs_evidence": [],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-5-ytdlp-singleton-provider-guard-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T195610Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/EMERGENCY_HALT_20260621T202048Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/03-6b-residual-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T223416Z-prompt39-phase-a-low-risk-cleanup/artifact-safety-scan.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T195606Z-prompt3-active-runtime-simplification/emergency-halt-reference.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T222835Z-prompt36b-residual-secret-artifact-scrub/03-6b-residual-secret-artifact-scrub-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/cron-summary.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/03-5-ytdlp-singleton-provider-guard-receipt.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/systemd-summary.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/baseline-before.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/compose-services.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits-focused.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T190926Z-prompt2-canonical-capture/current-safety-baseline-before.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "fail_closed",
+        "PROVIDER_MUTATION_GATE": "fail_closed",
+        "WHOP_PAYMENT_GATE": "fail_closed",
+        "DB_MUTATION_GATE": "fail_closed",
+        "DEPLOY_GATE": "fail_closed",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "fail_closed",
+        "SPEND_GATE": "fail_closed",
+        "DELETION_GATE": "fail_closed",
+        "MIGRATION_GATE": "fail_closed"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/safety",
+      "profile_bloated": true,
+      "prompt_duplication_present": true
+    },
+    {
+      "agent_id": "opportunity-research",
+      "display_name": "Opportunity Research",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Research opportunities, creators, markets, and growth angles without provider mutation.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/ml-autoresearch.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/simulate-creator-eligibility.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/insert-discovered-creators.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/sync-creator-youtube-metrics.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/validate-creators.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/promote-creator-candidates.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/discover-crypto-creators.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/seed-creators.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "d8e212731b34",
+          "name": "Daily Score Refresh",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 3 * * *",
+            "display": "0 3 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/ml-autoresearch.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/simulate-creator-eligibility.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/insert-discovered-creators.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/sync-creator-youtube-metrics.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/validate-creators.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/promote-creator-candidates.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/discover-crypto-creators.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/seed-creators.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/global-creator-candidates.test.ts",
+        "/opt/crypto-tuber-ranked/tests/creator-stats-eligibility.test.ts",
+        "/opt/crypto-tuber-ranked/tests/legacy-creator-overrides.test.ts",
+        "/opt/crypto-tuber-ranked/tests/creator-stats.test.ts",
+        "/opt/crypto-tuber-ranked/tests/creator-target-entitlements.test.ts",
+        "/opt/crypto-tuber-ranked/tests/page-creator-shape.test.ts"
+      ],
+      "docs_evidence": [],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-marketing-launch-ready.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Composio MCP required for external provider automation; public/outreach/spend gates fail-closed"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/opportunity-research",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "email-partnership-drafts",
+      "display_name": "Email Partnership Drafts",
+      "current_status": [
+        "cron_scheduled"
+      ],
+      "mission": "Prepare partnership and email drafts for review; no send without outreach gate approval.",
+      "current_runtime_source": [],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "adf0644c9e8a",
+          "name": "Creator Growth Scout",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 12 * * 3",
+            "display": "0 12 * * 3"
+          },
+          "enabled": true,
+          "script": "callscore-creator-growth-scout.sh",
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [],
+      "tests_covering_it": [],
+      "docs_evidence": [],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Composio MCP required for external provider automation; public/outreach/spend gates fail-closed"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/email-partnership-drafts",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "community",
+      "display_name": "Community Drops",
+      "current_status": [
+        "cron_scheduled"
+      ],
+      "mission": "Prepare community drop material and receipts while preserving public publish gates.",
+      "current_runtime_source": [],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [],
+      "tests_covering_it": [],
+      "docs_evidence": [],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-risk-review.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-dry-run-output.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-candidate-queue.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Composio MCP required for external provider automation; public/outreach/spend gates fail-closed"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/community",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "whop-commerce",
+      "display_name": "Whop Commerce",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Map and monitor Whop runtime/commercial surfaces; automation must route through Composio unless approved.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/bootstrap-whop.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "c5e8001d4429",
+          "name": "whop-daily-status",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 8 * * *",
+            "display": "0 8 * * *"
+          },
+          "enabled": true,
+          "script": "whop-status-collect.sh"
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "c5e8001d4429",
+          "name": "whop-daily-status",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 8 * * *",
+            "display": "0 8 * * *"
+          },
+          "enabled": true,
+          "script": "whop-status-collect.sh"
+        },
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/bootstrap-whop.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/checkout.test.ts",
+        "/opt/crypto-tuber-ranked/tests/whop-certification-pack.test.ts",
+        "/opt/crypto-tuber-ranked/tests/whop-oauth.test.ts",
+        "/opt/crypto-tuber-ranked/tests/page-pricing-shape.test.ts",
+        "/opt/crypto-tuber-ranked/tests/post-checkout-ux.test.ts",
+        "/opt/crypto-tuber-ranked/tests/creator-target-entitlements.test.ts",
+        "/opt/crypto-tuber-ranked/tests/whop-webhook-route.test.ts",
+        "/opt/crypto-tuber-ranked/tests/whop-access.test.ts",
+        "/opt/crypto-tuber-ranked/tests/checkout-route.test.ts",
+        "/opt/crypto-tuber-ranked/tests/routes/checkout-route.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/whop-auto-certification.md"
+      ],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__whop-auto__workspace__callscore-db-portability.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Whop runtime auth/webhooks/entitlements may remain direct; Whop automation must use Composio unless approved"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/whop-commerce",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "art-of-war",
+      "display_name": "Art-of-War Strategist",
+      "current_status": [
+        "cron_scheduled",
+        "receipt_observed"
+      ],
+      "mission": "Operate strategic GTM planning and bounded campaign loops with publish/spend/outreach gates.",
+      "current_runtime_source": [],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "d4784ab37432",
+          "name": "CallScore autonomy board dispatcher",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 2,
+            "display": "every 2m"
+          },
+          "enabled": true,
+          "script": "callscore-autonomy-board-dispatch.sh"
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/workplane-dispatch.test.ts",
+        "/opt/crypto-tuber-ranked/tests/pipeline/dispatch-audit.test.ts"
+      ],
+      "docs_evidence": [],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-hermes-handover.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/final-autonomy-status.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-autonomy-envelope.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/phase-10a-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channel-activation-registry.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/kill-switch.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channel-activation-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/audits/canonical-full-automation-audit-and-plan.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/system-dashboard.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/dashboard-data-contract.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/agent-interaction-contract.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/operator-action-registry.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/dashboard/dashboard-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-risk-review.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-dry-run-output.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-candidate-queue.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-dispatch-check-20260621T181900Z.json",
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T-prompt25-linked-worktree-retirement/srv__agents__repos__Claude_Code_Automations-marketing-launch-ready.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "Composio MCP required for external provider automation; public/outreach/spend gates fail-closed"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/art-of-war",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "gemma-transcript",
+      "display_name": "Gemma Transcript / Shadow Pipeline",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled"
+      ],
+      "mission": "Preserve VM primary, local backup, shadow/main transcript and Gemma verification architecture.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/gemma-capacity-preflight.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/backfill-transcripts.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/transcript-worklist.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/shadow-diff-extractions.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/validate-shadow-extractions.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/scrape-transcripts.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/promote-shadow-extractions.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/workplane-laptop-job.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/scrape-transcripts-v2.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/ingest-transcript-result.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "e1365417c709",
+          "name": "crypto-transcript-backfill-cooldown-retry",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "ce3283193e6c",
+          "name": "crypto-365-video-discovery-continuation",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 20,
+            "display": "every 20m"
+          },
+          "enabled": false,
+          "script": null
+        },
+        {
+          "id": "2571e8396682",
+          "name": "Leaderboard Sentinel",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/gemma-capacity-preflight.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/backfill-transcripts.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/transcript-worklist.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/shadow-diff-extractions.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/validate-shadow-extractions.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/scrape-transcripts.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/promote-shadow-extractions.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/workplane-laptop-job.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/scrape-transcripts-v2.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/ingest-transcript-result.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/shadow-extract-transcripts.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/bakeoff-ollama-cloud-models.ts",
+        "/opt/crypto-tuber-ranked/src/scripts/benchmark-local-extractors.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/laptop-collector-script.test.ts",
+        "/opt/crypto-tuber-ranked/tests/local-extractor-benchmark.test.ts",
+        "/opt/crypto-tuber-ranked/tests/scrape-transcripts-v2.test.ts",
+        "/opt/crypto-tuber-ranked/tests/ollama-bakeoff.test.ts",
+        "/opt/crypto-tuber-ranked/tests/transcript-extraction-methods.test.ts",
+        "/opt/crypto-tuber-ranked/tests/shadow-extraction.test.ts",
+        "/opt/crypto-tuber-ranked/tests/shadow-scripts.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/transcript-extraction-waterfall.md",
+        "/opt/crypto-tuber-ranked/docs/ops/laptop-transcript-collector.md"
+      ],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "YouTube transcript/cookie path protected; no direct provider mutation"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/gemma-transcript",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "channel-agent-worker",
+      "display_name": "Channel Agent Worker",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled",
+        "receipt_observed",
+        "active_runtime_worker"
+      ],
+      "mission": "Execute bounded channel tasks from queues with receipts and provider gates.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/backfill-publication-dates.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "8016c746abb5",
+          "name": "Weekly Marketing Digest",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9 * * 1",
+            "display": "0 9 * * 1"
+          },
+          "enabled": true,
+          "script": null,
+          "profile": null
+        },
+        {
+          "id": "9c03a6eea969",
+          "name": "CallScore twice-daily genuine social CMO loop",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 9,17 * * *",
+            "display": "0 9,17 * * *"
+          },
+          "enabled": true,
+          "script": "callscore-genuine-social-packet.sh"
+        },
+        {
+          "id": "0d03b3a83153",
+          "name": "CallScore agent heartbeat orchestrator",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 60,
+            "display": "every 60m"
+          },
+          "enabled": true,
+          "script": "callscore-agent-heartbeat.sh"
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/backfill-publication-dates.ts"
+      ],
+      "tests_covering_it": [
+        "/opt/crypto-tuber-ranked/tests/cmo-channel-head-integration.test.ts",
+        "/opt/crypto-tuber-ranked/tests/channel-agent-tasks.test.ts",
+        "/opt/crypto-tuber-ranked/tests/channel-head-scoring.test.ts",
+        "/opt/crypto-tuber-ranked/tests/channel-head-decision.test.ts"
+      ],
+      "docs_evidence": [
+        "/opt/crypto-tuber-ranked/docs/ops/callscore-channel-head-souls.yaml"
+      ],
+      "art_of_war_evidence": [
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channel-activation-registry.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channel-activation-preflight.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-x-launch-thread.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-approval.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-live-pilot-packet.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-risk-review.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/asset-pack-001-dispatch-approval-packet.md",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-dry-run-output.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/live/channels/social_posting/social-posting-candidate-queue.json",
+        "/srv/agents/repos/Claude_Code_Automations/art-of-war/fixtures/channel-events.fixture.json"
+      ],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/prompt1-kanban-tasks-20260621T181700Z.json"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/channel-agent-worker",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    },
+    {
+      "agent_id": "data-pipeline-worker",
+      "display_name": "Data Pipeline Worker",
+      "current_status": [
+        "script_observed",
+        "cron_scheduled",
+        "active_runtime_worker"
+      ],
+      "mission": "Process pipeline jobs and runtime queue work while respecting DB mutation boundaries.",
+      "current_runtime_source": [
+        "/opt/crypto-tuber-ranked/src/scripts/hermes-worker.ts"
+      ],
+      "current_profile_source": [],
+      "current_prompt_skill_source": [],
+      "current_queue_job_source": [
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "cron_involvement": [
+        {
+          "id": "d455edcf0f4b",
+          "name": "crypto-transcript-scrape",
+          "schedule": {
+            "kind": "interval",
+            "minutes": 30,
+            "display": "every 30m"
+          },
+          "enabled": true,
+          "script": "scrape-transcripts.sh",
+          "profile": null
+        },
+        {
+          "id": "ce8f8df11e3e",
+          "name": "CallScore 6h observability and learning report",
+          "schedule": {
+            "kind": "cron",
+            "expr": "0 */6 * * *",
+            "display": "0 */6 * * *"
+          },
+          "enabled": true,
+          "script": null
+        }
+      ],
+      "systemd_involvement": [],
+      "db_tables_touched_or_observed": [],
+      "scripts_used": [
+        "/opt/crypto-tuber-ranked/src/scripts/hermes-worker.ts"
+      ],
+      "tests_covering_it": [],
+      "docs_evidence": [],
+      "art_of_war_evidence": [],
+      "receipts_path": [
+        "/srv/agents/repos/callscore-workplane/receipts"
+      ],
+      "logs_path": [
+        "/srv/agents/hermes/logs"
+      ],
+      "heartbeat_source": "agent_heartbeats table to be mapped in Prompt 6; receipts/profile evidence in Prompt 5",
+      "provider_access": [
+        "No provider automation by default; Composio required if added later"
+      ],
+      "composio_requirement": "Required for third-party provider automation except Netlify direct backup route and allowed Whop runtime code.",
+      "approval_gates": {
+        "PUBLIC_POST_GATE": "operator_approval_required",
+        "PROVIDER_MUTATION_GATE": "operator_approval_required",
+        "WHOP_PAYMENT_GATE": "operator_approval_required",
+        "DB_MUTATION_GATE": "operator_approval_required",
+        "DEPLOY_GATE": "operator_approval_required",
+        "SECRET_ACCESS_GATE": "operator_approval_required",
+        "OUTREACH_GATE": "operator_approval_required",
+        "SPEND_GATE": "operator_approval_required",
+        "DELETION_GATE": "operator_approval_required",
+        "MIGRATION_GATE": "operator_approval_required"
+      },
+      "allowed_actions": [
+        "read-only inspection",
+        "draft artefacts",
+        "write receipts/docs within approved scope"
+      ],
+      "forbidden_actions": [
+        "secret access without approval",
+        "DB mutation without approval",
+        "deploy without approval",
+        "provider mutation without approval",
+        "public/outreach/spend without approval",
+        "deletion without deletion gate"
+      ],
+      "failure_modes": [
+        "missing receipt",
+        "stale profile context",
+        "provider gate ambiguity",
+        "runtime/source path drift",
+        "quota/token exhaustion"
+      ],
+      "escalation_path": "Stop, write blocked receipt, update master-state, ask operator for approval or route to HH Control Tunnel continuity.",
+      "recommended_clean_workplane_path": "/srv/agents/repos/callscore-workplane/docs/agents/data-pipeline-worker",
+      "profile_bloated": false,
+      "prompt_duplication_present": false
+    }
+  ]
+}

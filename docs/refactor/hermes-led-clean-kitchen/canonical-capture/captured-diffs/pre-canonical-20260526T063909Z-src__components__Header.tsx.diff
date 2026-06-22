@@ -1,0 +1,27 @@
+--- active/src/components/Header.tsx
++++ pre-canonical-20260526T063909Z/src/components/Header.tsx
+@@ -19,7 +19,7 @@
+             className="flex items-center gap-2.5 group"
+             aria-label="CallScore home"
+           >
+-            <CallScoreBrand className="h-[56px] w-[138px]" />
++            <CallScoreBrand />
+           </Link>
+ 
+           {/* Desktop nav */}
+@@ -40,13 +40,13 @@
+               BACKTEST
+             </Link>
+             <Link
+-              href="/alerts"
++              href="/settings/alerts"
+               className="border-b border-transparent py-1 text-ink-500 transition-colors hover:border-accent/60 hover:text-ink-900"
+             >
+               ALERTS
+             </Link>
+             <Link
+-              href="/webhooks"
++              href="/settings/webhooks"
+               className="border-b border-transparent py-1 text-ink-500 transition-colors hover:border-accent/60 hover:text-ink-900"
+             >
+               WEBHOOKS

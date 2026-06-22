@@ -1,0 +1,31 @@
+--- active/src/app/settings/api/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/settings/api/page.tsx
+@@ -3,12 +3,19 @@
+ import ApiKeyManager from "@/components/ApiKeyManager";
+ import SettingsShell from "@/components/SettingsShell";
+ import { requireSessionAccess } from "@/lib/premium";
++import { SITE_URL } from "@/lib/site";
+ import {
+   API_KEY_REVEAL_COOKIE_NAME,
+   listApiKeyRequests,
+   listApiKeys,
+   parseApiKeyRevealCookieValue,
+ } from "@/lib/api-keys";
++
++export const metadata = {
++  title: "API Keys — CallScore",
++  robots: { index: false, follow: false },
++  alternates: { canonical: SITE_URL + "/settings/api" },
++};
+ 
+ const API_KEYS_ROUTE = "/api/api-keys";
+ 
+@@ -35,7 +42,7 @@
+         <section className="border border-ink-250 bg-ink-50 p-5">
+           <p className="text-ink-700 mb-4">
+             {isGuest
+-              ? "API access is attached when this app is opened from your Whop product."
++              ? "Whop attaches account access to this app when opened from a product experience."
+               : "Alpha unlocks read-only API keys and Backtest Lab endpoints."}
+           </p>
+           <Link

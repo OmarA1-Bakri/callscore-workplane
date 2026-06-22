@@ -1,0 +1,50 @@
+{
+  "path": "/srv/agents/crypto-tuber-ranked",
+  "deletion_type": "raw exact path deletion",
+  "classification": "DELETED_AFTER_PROTECTED_METADATA_CAPTURE",
+  "reason": "stale clone; pipeline-enqueue.sh captured and protected-state metadata manifested; no active references",
+  "pre_delete_size": 519758591,
+  "protected_metadata_manifest_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/protected-stale-state-manifest.json",
+  "unique_work_capture_path": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/legacy-scripts/pipeline-enqueue.sh",
+  "active_reference_check": {
+    "path": "/srv/agents/crypto-tuber-ranked",
+    "process_refs": [],
+    "docker_refs": [],
+    "systemd_refs": [],
+    "cron_refs": [],
+    "compose_refs": [],
+    "active_ref_files": []
+  },
+  "command_used": "rm -rf --one-file-system -- \"/srv/agents/crypto-tuber-ranked\"",
+  "emergency_halt_status": {
+    "halted": false
+  },
+  "command_return_code": 0,
+  "command_stdout": "",
+  "command_stderr": "",
+  "post_delete_exists": false,
+  "bytes_recovered": 650731520,
+  "disk_before": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134441160704,
+    "free_bytes": 26529083392,
+    "used_percent": 83.52,
+    "inode_total": 9732496,
+    "inode_used": 2711340,
+    "inode_free": 7021156,
+    "inode_used_percent": 27.86
+  },
+  "disk_after": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 133790429184,
+    "free_bytes": 27179814912,
+    "used_percent": 83.12,
+    "inode_total": 9732496,
+    "inode_used": 2667773,
+    "inode_free": 7064723,
+    "inode_used_percent": 27.41
+  },
+  "deleted": true
+}

@@ -1,0 +1,110 @@
+{
+  "timestamp_utc": "2026-06-21T23:21:26Z",
+  "host": "hermes-agent-box",
+  "user": "omar",
+  "uptime": {
+    "args": [
+      "uptime"
+    ],
+    "rc": 0,
+    "stdout": " 00:21:26 up 23 days, 16:30,  7 users,  load average: 0.58, 0.46, 0.30\n",
+    "stderr": ""
+  },
+  "disk": {
+    "df_B1": {
+      "args": [
+        "df",
+        "-B1",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem        1B-blocks         Used   Available Use% Mounted on\n/dev/sda1      160970244096 124941701120 29429252096  81% /\n",
+      "stderr": ""
+    },
+    "df_h": {
+      "args": [
+        "df",
+        "-h",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Size  Used Avail Use% Mounted on\n/dev/sda1       150G  117G   28G  81% /\n",
+      "stderr": ""
+    },
+    "df_i": {
+      "args": [
+        "df",
+        "-i",
+        "/"
+      ],
+      "rc": 0,
+      "stdout": "Filesystem      Inodes   IUsed   IFree IUse% Mounted on\n/dev/sda1      9732496 2572388 7160108   27% /\n",
+      "stderr": ""
+    },
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 124941701120,
+    "free_bytes": 29429252096,
+    "used_percent": 81,
+    "inode_total": 9732496,
+    "inode_used": 2572388,
+    "inode_free": 7160108,
+    "inode_used_percent": 27
+  },
+  "protected_paths": [
+    {
+      "path": "/opt/crypto-tuber-ranked",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "size_bytes": 3044869044,
+      "file_count": 49231,
+      "mode": "0o775",
+      "mtime_utc": "2026-06-21T22:34:16Z"
+    },
+    {
+      "path": "/opt/crypto-tuber-ranked/docker-compose.yml",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false,
+      "size_bytes": 4382,
+      "file_count": 1,
+      "mode": "0o664",
+      "mtime_utc": "2026-06-20T23:37:30Z"
+    },
+    {
+      "path": "/opt/callscore/secrets",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "size_bytes": 22892,
+      "file_count": 1,
+      "mode": "0o755",
+      "mtime_utc": "2026-06-12T04:18:19Z"
+    },
+    {
+      "path": "/opt/callscore/secrets/youtube-cookies.txt",
+      "exists": true,
+      "is_file": true,
+      "is_dir": false,
+      "size_bytes": 22892,
+      "file_count": 1,
+      "mode": "0o600",
+      "mtime_utc": "2026-06-21T03:21:02Z"
+    },
+    {
+      "path": "/srv/agents/repos/callscore-workplane",
+      "exists": true,
+      "is_file": false,
+      "is_dir": true,
+      "size_bytes": 362387397,
+      "file_count": 8005,
+      "mode": "0o755",
+      "mtime_utc": "2026-06-18T09:07:27Z"
+    }
+  ],
+  "emergency_thresholds": {
+    "disk_percent_halt": 95,
+    "inode_percent_halt": 95
+  }
+}

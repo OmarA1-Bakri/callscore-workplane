@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-06-21T20:20:48Z",
+  "reason": "prompt35_raw_discovery_artifact_contained_unredacted_secret_assignment",
+  "secret_values_included": false,
+  "affected_artifacts": [
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T200540Z-prompt35-ytdlp-singleton-guard/startup-route-hits-focused.json"
+  ],
+  "remediation": "raw route hit artifacts redacted in place; Prompt 3.5 receipt/master-state updated to record emergency and redaction",
+  "remaining_unredacted_session_secret_assignments": [],
+  "remediation_status": "redacted_complete",
+  "additional_legacy_secret_artifact_redactions": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/unique-source-docs/pre-canonical-20260526T063909Z/audit-output/research/codex-review-w1.md",
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/canonical-capture/captured-diffs/pre-canonical-20260526T063909Z-tests__self-correction.test.ts.diff"
+  ],
+  "remaining_unredacted_session_secret_assignments_in_clean_kitchen_docs": []
+}

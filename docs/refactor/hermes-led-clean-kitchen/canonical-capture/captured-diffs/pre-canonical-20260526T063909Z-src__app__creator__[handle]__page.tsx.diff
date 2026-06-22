@@ -1,0 +1,253 @@
+--- active/src/app/creator/[handle]/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/creator/[handle]/page.tsx
+@@ -1,4 +1,5 @@
+ import type { Metadata } from "next";
++import { SITE_URL } from "@/lib/site";
+ import Link from "next/link";
+ import { notFound } from "next/navigation";
+ import { cache } from "react";
+@@ -11,7 +12,6 @@
+ import { getCurrentTier } from "@/lib/auth";
+ import { creatorHandlePath, findCreatorByHandle } from "@/lib/creator-handles";
+ import { query } from "@/lib/db";
+-import { fetchHhCreator } from "@/lib/hh-read-api";
+ import { CREATOR_JUDGMENT_WINDOW_LABEL, getJudgmentWindowSql } from "@/lib/judgment-window";
+ import { getLiveCallPriceJoinSql, getLiveCallPriceSelectSql } from "@/lib/live-call-pricing";
+ import { hasAccess } from "@/lib/whop";
+@@ -30,29 +30,7 @@
+ }
+ 
+ const getCreatorByHandle = cache(async (handle: string): Promise<Creator | null> => {
+-  const readApiProfile = await fetchHhCreator<Creator, CreatorStats, Call>(handle, "all_time", 1).catch(() => null);
+-  if (readApiProfile?.creator) return readApiProfile.creator;
+   return findCreatorByHandle<Creator>(handle);
+-});
+-
+-interface CreatorProfile {
+-  readonly creator: Creator;
+-  readonly stats: CreatorStats | null;
+-  readonly calls: readonly Call[] | null;
+-}
+-
+-const getCreatorProfileByHandle = cache(async (handle: string): Promise<CreatorProfile | null> => {
+-  const readApiProfile = await fetchHhCreator<Creator, CreatorStats, Call>(handle, "all_time", 50).catch(() => null);
+-  if (readApiProfile?.creator) {
+-    return {
+-      creator: readApiProfile.creator,
+-      stats: readApiProfile.stats ?? null,
+-      calls: Array.isArray(readApiProfile.calls) ? readApiProfile.calls : [],
+-    };
+-  }
+-
+-  const creator = await findCreatorByHandle<Creator>(handle);
+-  return creator ? { creator, stats: null, calls: null } : null;
+ });
+ 
+ export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+@@ -67,7 +45,7 @@
+     return {
+       title: `${creator.name} — Creator Profile | CryptoTubers Ranked`,
+       description: `See ${creator.name}'s crypto call track record, alpha score, win rate, and full call history on CryptoTubers Ranked.`,
+-      alternates: { canonical: `/creator/${creatorHandlePath(creator.youtube_handle)}` },
++      alternates: { canonical: `${SITE_URL}/creator/${creatorHandlePath(creator.youtube_handle)}` },
+     };
+   } catch {
+     return { title: "Creator Not Found | CryptoTubers Ranked" };
+@@ -84,55 +62,48 @@
+   const handle = decodeURIComponent(rawHandle);
+ 
+   // Fetch creator — handle missing table gracefully
+-  let profile: CreatorProfile;
++  let creator: Creator;
+   try {
+-    const resolvedProfile = await getCreatorProfileByHandle(handle);
+-    if (!resolvedProfile) {
++    const resolvedCreator = await getCreatorByHandle(handle);
++    if (!resolvedCreator) {
+       notFound();
+     }
+-    profile = resolvedProfile;
++    creator = resolvedCreator;
+   } catch {
+     notFound();
+   }
+ 
+-  const { creator } = profile;
+-
+   // Fetch creator stats (all_time period stores the rolling creator judgment window).
+-  let stats: CreatorStats | null = profile.stats;
+-  if (!stats) {
+-    try {
+-      const statsRows = await query<CreatorStats>(
+-        `SELECT * FROM creator_stats WHERE creator_id = $1 AND period = 'all_time' LIMIT 1`,
+-        [creator.id],
+-      );
+-      stats = statsRows.length > 0 ? statsRows[0] : null;
+-    } catch {
+-      // Stats table may not exist yet
+-    }
++  let stats: CreatorStats | null = null;
++  try {
++    const statsRows = await query<CreatorStats>(
++      `SELECT * FROM creator_stats WHERE creator_id = $1 AND period = 'all_time' LIMIT 1`,
++      [creator.id],
++    );
++    stats = statsRows.length > 0 ? statsRows[0] : null;
++  } catch {
++    // Stats table may not exist yet
+   }
+ 
+   // Fetch judgment-window calls so creator aggregates and call history use the
+   // same level-playing-field window as the leaderboard.
+   const CALL_LIMIT = 50;
+-  let allCalls: readonly Call[] = profile.calls ?? [];
+-  if (!profile.calls) {
+-    try {
+-      allCalls = await query<Call>(
+-        `SELECT c.*, ${getLiveCallPriceSelectSql()}
+-         FROM calls c
+-         ${getLiveCallPriceJoinSql("c")}
+-         WHERE c.creator_id = $1
+-           AND ${getJudgmentWindowSql("c")}
+-         ORDER BY call_date DESC`,
+-        [creator.id],
+-      );
+-    } catch {
+-      // Calls table may not exist yet
+-    }
+-  }
+-
+-  const currentTier = await getCurrentTier();
+-  const serializedCalls = serializeCalls(allCalls, { userTier: currentTier });
++  let allCalls: Call[] = [];
++  try {
++    allCalls = await query<Call>(
++      `SELECT c.*, ${getLiveCallPriceSelectSql()}
++       FROM calls c
++       ${getLiveCallPriceJoinSql("c")}
++       WHERE c.creator_id = $1
++         AND ${getJudgmentWindowSql("c")}
++       ORDER BY call_date DESC`,
++      [creator.id],
++    );
++  } catch {
++    // Calls table may not exist yet
++  }
++
++  const serializedCalls = serializeCalls(allCalls);
+   const displayCalls = serializedCalls.slice(0, CALL_LIMIT);
+   const trackedCallCount = allCalls.length;
+   const scoreAverages = computeCreatorScoreAverages(allCalls);
+@@ -167,8 +138,8 @@
+   const avgAlpha30d = computeCreatorAvgAlpha30d(allCalls);
+   const scoredCallCount = scoredCalls.length;
+   const hitRate = computeCreatorHitRate(allCalls);
++  const currentTier = await getCurrentTier();
+   const canExport = hasAccess(currentTier, "pro");
+-  const canWatchCreator = hasAccess(currentTier, "pro");
+ 
+   return (
+     <div className="max-w-page mx-auto px-4 tab:px-6 desk:px-8 py-8">
+@@ -200,7 +171,7 @@
+           cells={[
+             { k: "rank", v: stats?.accuracy_rank ?? "—" },
+             { k: "alpha", v: alphaScore.toFixed(1) },
+-            { k: "direction win", v: `${(winRate * 100).toFixed(0)}%` },
++            { k: "win rate", v: `${(winRate * 100).toFixed(0)}%` },
+             { k: "scored calls", v: scoredCallCount },
+           ]}
+         />
+@@ -210,28 +181,30 @@
+       <EditorialSection index="01" title={<><em className="italic text-accent">Why</em> this rank.</>}>
+         <p className="font-serif text-[17px] text-ink-700 leading-relaxed max-w-[680px]">
+           {creator.name} ranks{" "}
+-          <em className="italic text-accent">#{stats?.accuracy_rank ?? "—"}</em> by creator score
++          <em className="italic text-accent">#{stats?.accuracy_rank ?? "—"}</em> on average alpha
+           across {scoredCallCount} scored calls
+           {scoredCallCount > 0
+-            ? `, with a ${(winRate * 100).toFixed(0)}% directional win rate on resolved calls`
++            ? `, with a ${(winRate * 100).toFixed(0)}% directional hit rate at 30 days`
+             : ""}
+           .
+         </p>
+       </EditorialSection>
+ 
+       {/* 02 — headline metrics
+-          The local <MetricTile> primitive below is the canonical shared pattern
+-          for this page's non-alpha numeric chips (border + bg-ink-50 + 2px radius). */}
++          Approach: reuse <AlphaScoreBadge> for the alpha tile and render
++          three sibling tiles using the same hairline-bordered numeric chip
++          pattern (border + bg-ink-50 + 2px radius). Phase 4 may extract
++          this into a shared <MetricTile> primitive — see plan Step 4 TODO. */}
+       <EditorialSection index="02" title={<>Headline <em className="italic text-accent">metrics</em>.</>}>
+         <div className="grid grid-cols-2 tab:grid-cols-4 gap-4">
+           <AlphaScoreBadge score={alphaScore} size="lg" />
+           <MetricTile
+-            label="Target Hit Rate"
++            label="Hit Rate"
+             value={`${(hitRate * 100).toFixed(0)}%`}
+-            unit="target"
++            unit="hit"
+           />
+           <MetricTile
+-            label="Avg α"
++            label="Avg α 30d"
+             value={`${avgAlpha30d >= 0 ? "+" : ""}${avgAlpha30d.toFixed(1)}`}
+             unit="%"
+             tone={avgAlpha30d >= 0 ? "pos" : "neg"}
+@@ -245,11 +218,7 @@
+       </EditorialSection>
+ 
+       {/* 03 — calls */}
+-      <EditorialSection
+-        index="03"
+-        title={<>Recent call <em className="italic text-accent">history</em>.</>}
+-        meta={<>latest 50 tracked calls<br />Last 12 months · newest first</>}
+-      >
++      <EditorialSection index="03" title={<>Recent <em className="italic text-accent">calls</em>.</>}>
+         <div className="mb-4 flex flex-wrap gap-2">
+           <Link
+             href={
+@@ -264,34 +233,23 @@
+             {canExport ? "Export CSV" : "Export CSV · Pro"}
+           </Link>
+           <Link
+-            href={
+-              canWatchCreator
+-                ? `/settings/alerts?q=${encodeURIComponent(creator.youtube_handle)}`
+-                : "/pricing"
+-            }
++            href={`/settings/alerts?q=${encodeURIComponent(creator.youtube_handle)}`}
+             className="inline-block font-mono text-[12px] tracking-caps uppercase border border-ink-250 text-ink-700 hover:bg-ink-100 px-3 py-2 transition-colors"
+             style={{ borderRadius: 2 }}
+             prefetch={false}
+           >
+-            {canWatchCreator ? "Watch creator" : "Watch creator · Pro"}
++            Watch creator · Pro
+           </Link>
+         </div>
+         {displayCalls.length > 0 ? (
+-          <>
+-            {scoredCallCount === 0 ? (
+-              <p className="mb-4 font-mono text-[12px] text-ink-500 tracking-wide">
+-                No public-scored calls in this rolling 12-month window yet. Newer tracked calls may still be awaiting extraction, confidence review, or outcome windows.
+-              </p>
+-            ) : null}
+-            <CallHistory
+-              calls={displayCalls}
+-              totalCount={trackedCallCount}
+-              scoredCount={scoredCallCount}
+-            />
+-          </>
++          <CallHistory
++            calls={displayCalls}
++            totalCount={trackedCallCount}
++            scoredCount={scoredCallCount}
++          />
+         ) : (
+           <p className="font-mono text-[12px] text-ink-500 tracking-wide">
+-            No public-scored calls in this rolling 12-month window yet. Newer tracked calls may still be awaiting extraction, confidence review, or outcome windows.
++            No calls tracked yet for this creator.
+           </p>
+         )}
+       </EditorialSection>

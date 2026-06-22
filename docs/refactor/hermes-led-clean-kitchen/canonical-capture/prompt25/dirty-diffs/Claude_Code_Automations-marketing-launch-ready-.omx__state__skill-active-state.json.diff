@@ -1,0 +1,18 @@
+diff --git a/.omx/state/skill-active-state.json b/.omx/state/skill-active-state.json
+deleted file mode 100644
+index 4fafd0f..0000000
+--- a/.omx/state/skill-active-state.json
++++ /dev/null
+@@ -1,11 +0,0 @@
+-{
+-  "version": 1,
+-  "active": true,
+-  "skill": "code-review",
+-  "keyword": "Code review",
+-  "phase": "executing",
+-  "activated_at": "2026-05-03T04:00:57.130Z",
+-  "updated_at": "2026-05-03T04:05:24.925Z",
+-  "source": "keyword-detector",
+-  "input_lock": null
+-}
+\ No newline at end of file

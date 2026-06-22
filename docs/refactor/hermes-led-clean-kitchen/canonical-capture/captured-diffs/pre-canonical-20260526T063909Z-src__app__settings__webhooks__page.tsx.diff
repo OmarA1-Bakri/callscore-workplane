@@ -1,0 +1,31 @@
+--- active/src/app/settings/webhooks/page.tsx
++++ pre-canonical-20260526T063909Z/src/app/settings/webhooks/page.tsx
+@@ -3,12 +3,19 @@
+ import SettingsShell from "@/components/SettingsShell";
+ import WebhookManager from "@/components/WebhookManager";
+ import { requireSessionAccess } from "@/lib/premium";
++import { SITE_URL } from "@/lib/site";
+ import {
+   listWebhookDeliveries,
+   listWebhooks,
+   parseWebhookRevealCookieValue,
+   WEBHOOK_REVEAL_COOKIE_NAME,
+ } from "@/lib/webhooks";
++
++export const metadata = {
++  title: "Webhooks — CallScore",
++  robots: { index: false, follow: false },
++  alternates: { canonical: SITE_URL + "/settings/webhooks" },
++};
+ 
+ const WEBHOOKS_ROUTE = "/api/webhooks";
+ 
+@@ -36,7 +43,7 @@
+         <section className="border border-ink-250 bg-ink-50 p-5">
+           <p className="text-ink-700 mb-4">
+             {isGuest
+-              ? "Sign in through Whop to access webhook features."
++              ? "Subscribe to an Alpha plan to access webhook features."
+               : "Alpha unlocks signed webhook notifications and delivery logs."}
+           </p>
+           <Link

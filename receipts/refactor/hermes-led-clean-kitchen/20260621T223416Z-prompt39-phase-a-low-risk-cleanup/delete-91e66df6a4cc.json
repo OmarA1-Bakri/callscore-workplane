@@ -1,0 +1,57 @@
+{
+  "path": "/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl",
+  "classification": "TEMPORARY_FILE_PHASE_A_CANDIDATE",
+  "phase_a_bucket": "safe_batch_1",
+  "status": "deleted",
+  "before": {
+    "path": "/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl",
+    "exists": true,
+    "is_file": true,
+    "is_dir": false,
+    "is_symlink": false,
+    "mode_octal": "0o600",
+    "size_lstat_bytes": 0,
+    "recursive_size_bytes": 0,
+    "file_count": 1,
+    "mtime_utc": "2026-06-21T13:54:41Z",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "refs": {
+    "process_refs": [],
+    "docker_mount_refs": [],
+    "findmnt": {
+      "cmd": "findmnt -T \"/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl\" -o TARGET,SOURCE,FSTYPE -n 2>/dev/null || true",
+      "rc": 0,
+      "stdout": "/      /dev/sda1 ext4\n",
+      "stderr": ""
+    }
+  },
+  "command": "rm -f -- \"/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl\"",
+  "command_rc": 0,
+  "stderr": "",
+  "after": {
+    "path": "/opt/crypto-tuber-ranked/docs/ops/.hermes-tmp.UR6IXl",
+    "exists": false
+  },
+  "disk_before": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593789440,
+    "free_bytes": 29376454656,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577129,
+    "inode_free": 7155367,
+    "inode_used_percent": 26.48
+  },
+  "disk_after": {
+    "total_bytes": 160970244096,
+    "used_bytes": 131593789440,
+    "free_bytes": 29376454656,
+    "used_percent": 81.75,
+    "inode_total": 9732496,
+    "inode_used": 2577128,
+    "inode_free": 7155368,
+    "inode_used_percent": 26.48
+  },
+  "recovered_bytes": 0
+}

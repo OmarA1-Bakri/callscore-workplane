@@ -1,0 +1,87 @@
+{
+  "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+  "classification": "DELETE_AFTER_RECEIPT_CAPTURE",
+  "reason": "stale .serena inside non-active legacy/snapshot root /opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+  "exists": true,
+  "size_before_bytes": 2922008,
+  "path_info": {
+    "path": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena",
+    "exists": true,
+    "is_dir": true,
+    "is_file": false,
+    "is_symlink": false,
+    "size_lstat_bytes": 4096,
+    "mtime_utc": "2026-04-30T12:57:28Z",
+    "mode": "0o777"
+  },
+  "safe_to_delete": true,
+  "block_reasons": [],
+  "active_process_check": [],
+  "docker_mount_check": [],
+  "compose_reference_check": [],
+  "cron_reference_check": [],
+  "systemd_reference_check": [],
+  "all_reference_files": [
+    "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/deletion-candidate-matrix.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/20260621T182522Z-runtime-cleanup/deletion-candidate-matrix-before-delete.json"
+  ],
+  "git_status": {
+    "applicable": true,
+    "repo": "/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z",
+    "status": {
+      "exists": true,
+      "is_git": true,
+      "branch": {
+        "rc": 0,
+        "stdout": "master\n",
+        "stderr": ""
+      },
+      "status": {
+        "rc": 0,
+        "stdout": "## No commits yet on master\n?? .codacy/\n?? .copilot-tracking/\n?? .dockerignore\n?? .env.example\n?? .env.hermes.example\n?? .eslintrc.json\n?? .github/\n?? .gitignore\n?? .kilo/\n?? .new-FE-design/\n?? .serena/\n?? .vercelignore\n?? .whop-pipeline.json\n?? CALLSCORE-DATA-PIPELINE-AUDIT-2026-05-01.md\n?? CLAUDE.md\n?? Dockerfile\n?? Dockerfile.hermes\n?? ENDOFFILE\n?? JS\n?? JSEOF\n?? MapHetznerDriveH.bat\n?? audit-transcripts.js\n?? docker-compose.yml\n?? docs/\n?? enq-v3.js\n?? enq-v4.js\n?? enqueue-job21.js\n?? enqueue-local.js\n?? enqueue-phases-4-8.js\n?? enqueue-write-candles.js\n?? fix-and-requeue.js\n?? fix-verifier.js\n?? google-client-secrets.json\n?? middleware.ts\n?? migrations/\n?? next.config.js\n?? ops/\n?? package-lock.json\n?? package.json\n?? postcss.config.mjs\n?? public/\n?? schema.sql\n?? scripts-tmp/\n?? src/\n?? tailwind.config.ts\n?? tests/\n?? tmp_enqueue.js\n?? tsconfig.json\n?? vercel.json\n?? verify-call-accuracy.js\n",
+        "stderr": ""
+      },
+      "remote": {
+        "rc": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "head": {
+        "rc": 128,
+        "stdout": "HEAD\n",
+        "stderr": "fatal: ambiguous argument 'HEAD': unknown revision or path not in the working tree.\nUse '--' to separate paths from revisions, like this:\n'git <command> [<revision>...] -- [<file>...]'\n"
+      }
+    }
+  },
+  "unique_work_capture_status": "receipt_metadata_capture_completed_before_delete; contents not canonical runtime; operator authorized duplicate prompt/profile copies in stale snapshots",
+  "deletion_command_used": "rm -rf --one-file-system -- \"/opt/crypto-tuber-ranked.pre-canonical-20260526T063909Z/.serena\"",
+  "delete_rc": 0,
+  "delete_stdout": "",
+  "delete_stderr": "",
+  "exists_after": false,
+  "deleted": true,
+  "disk_before_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134046920704,
+    "free_bytes": 26923323392,
+    "used_percent": 83.27,
+    "inode_total": 9732496,
+    "inode_used": 2694753,
+    "inode_free": 7037743,
+    "inode_used_percent": 27.69
+  },
+  "disk_after_delete": {
+    "path": "/",
+    "total_bytes": 160970244096,
+    "used_bytes": 134043971584,
+    "free_bytes": 26926272512,
+    "used_percent": 83.27,
+    "inode_total": 9732496,
+    "inode_used": 2694744,
+    "inode_free": 7037752,
+    "inode_used_percent": 27.69
+  },
+  "disk_space_recovered_bytes": 2949120,
+  "post_delete_verification": "absent"
+}

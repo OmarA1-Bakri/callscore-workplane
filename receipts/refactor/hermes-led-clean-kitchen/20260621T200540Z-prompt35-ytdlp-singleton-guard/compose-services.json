@@ -1,0 +1,13 @@
+{
+  "args": [
+    "docker",
+    "compose",
+    "-f",
+    "/opt/crypto-tuber-ranked/docker-compose.yml",
+    "config",
+    "--services"
+  ],
+  "rc": 0,
+  "stdout": "ytdlp-pot-provider\nchannel-agent-worker\ndata-pipeline-continuous\nhermes-worker\n",
+  "stderr": ""
+}
