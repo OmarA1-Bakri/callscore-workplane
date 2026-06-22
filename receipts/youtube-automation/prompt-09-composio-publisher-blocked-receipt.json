@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-06-22T20:21:35Z",
+  "phase": "youtube_automation_prompt_9_composio_discovery_publisher",
+  "status": "blocked",
+  "files": [
+    "src/video/composio/composio-client.ts",
+    "src/video/composio/discover-youtube-tools.ts",
+    "src/video/composio/youtube-publisher.ts",
+    "tests/video-automation-publisher.test.ts",
+    ".tmp/workflow-receipts/youtube_automation/composio-youtube-discovery.json"
+  ],
+  "tests": {
+    "targeted": "node --import tsx --test tests/video-automation-media.test.ts tests/video-automation-publisher.test.ts tests/video-automation-schemas.test.ts tests/video-automation-data-planning.test.ts",
+    "targeted_result": "11/11 passed",
+    "typecheck": "npm run typecheck",
+    "typecheck_result": "completed with no reported errors"
+  },
+  "notes": [
+    "Generic Hermes Composio MCP connection verified",
+    "Publisher interface and mocked upload/thumbnail tests implemented",
+    "Exact YouTube schema discovery blocked by Hermes HTTP 429 before Composio schema execution",
+    "Do not advance to Prompt 10 until exact schema discovery is completed or explicitly deferred by operator"
+  ]
+}
