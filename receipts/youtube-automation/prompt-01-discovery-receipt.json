@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-06-22T19:06:28Z",
+  "phase": "youtube_automation_prompt_1_discovery",
+  "status": "complete",
+  "discovery": "/opt/crypto-tuber-ranked/docs/youtube-automation/discovery.json",
+  "ledger": "/opt/crypto-tuber-ranked/docs/youtube-automation/IMPLEMENTATION_LEDGER.md",
+  "package_manager": "npm",
+  "zod_dependency": "^4.4.3",
+  "framework_dependencies": {
+    "zod": "^4.4.3"
+  },
+  "decisions": {
+    "state_layer": "Zod canonical",
+    "orchestration": "Prefer existing Hermes/Workplane/DB queue rails; BullMQ only if later justified",
+    "langgraph": "Spike-only; not production control plane by default",
+    "youtube_provider": "Composio MCP canonical route",
+    "artifact_root": "artifacts/video-jobs/{jobId}/; generated artifacts not committed"
+  },
+  "runtime_status_count": 1,
+  "workplane_status_count": 1
+}

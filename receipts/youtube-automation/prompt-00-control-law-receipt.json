@@ -1,0 +1,17 @@
+{
+  "timestamp_utc": "2026-06-22T19:05:09Z",
+  "phase": "youtube_automation_prompt_0_control_law",
+  "status": "complete",
+  "runtime_repo": "/opt/crypto-tuber-ranked",
+  "workplane_repo": "/srv/agents/repos/callscore-workplane",
+  "ledger": "/opt/crypto-tuber-ranked/docs/youtube-automation/IMPLEMENTATION_LEDGER.md",
+  "canonical_plan": "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/youtube-automation-canonical-prompt-plan.md",
+  "rules": [
+    "Zod canonical",
+    "Composio YouTube canonical provider route",
+    "full canonical agents only",
+    "no manual approval gates",
+    "no secrets printed or committed",
+    "receipts required"
+  ]
+}
