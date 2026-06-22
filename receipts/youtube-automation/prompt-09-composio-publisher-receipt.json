@@ -1,0 +1,45 @@
+{
+  "timestamp_utc": "2026-06-22T21:10:42Z",
+  "phase": "youtube_automation_prompt_9_composio_discovery_publisher",
+  "status": "complete",
+  "previous_blocker": "Hermes LLM one-shot hit HTTP 429 before Composio schema tool execution.",
+  "resolution": "Used Hermes MCP internals to call COMPOSIO_SEARCH_TOOLS and COMPOSIO_GET_TOOL_SCHEMAS directly without exposing credentials.",
+  "runtime_artifacts": [
+    "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/youtube_automation/composio-youtube-tool-search.json",
+    "/opt/crypto-tuber-ranked/.tmp/workflow-receipts/youtube_automation/composio-youtube-tool-schemas.json",
+    "/opt/crypto-tuber-ranked/docs/youtube-automation/composio-youtube-tool-schema-summary.json"
+  ],
+  "tool_slugs": [
+    "YOUTUBE_UPLOAD_VIDEO",
+    "YOUTUBE_MULTIPART_UPLOAD_VIDEO",
+    "YOUTUBE_UPDATE_THUMBNAIL",
+    "YOUTUBE_UPDATE_VIDEO",
+    "YOUTUBE_LIST_CHANNELS",
+    "YOUTUBE_GET_VIDEO_DETAILS_BATCH",
+    "YOUTUBE_LIST_CHANNEL_VIDEOS",
+    "YOUTUBE_GET_CHANNEL_STATISTICS",
+    "YOUTUBE_LIST_VIDEO_CATEGORIES"
+  ],
+  "publisher_code_updates": [
+    "src/video/composio/youtube-publisher.ts",
+    "tests/video-automation-publisher.test.ts"
+  ],
+  "schema_findings": {
+    "YOUTUBE_UPLOAD_VIDEO": "requires title, description, tags, categoryId, privacyStatus, videoFilePath{name,mimetype,s3key}",
+    "YOUTUBE_MULTIPART_UPLOAD_VIDEO": "requires title, description, categoryId, privacyStatus, videoFile{name,mimetype,s3key}",
+    "YOUTUBE_UPDATE_VIDEO": "requires video_id; accepts title, description, tags, category_id, privacy_status",
+    "YOUTUBE_UPDATE_THUMBNAIL": "requires videoId and thumbnailUrl",
+    "YOUTUBE_LIST_CHANNELS": "accepts mine=true for authenticated channel read-only validation",
+    "YOUTUBE_GET_CHANNEL_STATISTICS": "accepts mine=true for authenticated channel read-only statistics"
+  },
+  "tests": {
+    "targeted": "node --import tsx --test tests/video-automation-publisher.test.ts tests/video-automation-media.test.ts tests/video-automation-schemas.test.ts tests/video-automation-data-planning.test.ts",
+    "targeted_result": "12/12 passed",
+    "typecheck": "npm run typecheck",
+    "typecheck_result": "completed with no reported errors"
+  },
+  "limitations": [
+    "Raw HH local media paths cannot be sent directly to Composio YouTube upload tools; a Composio file object or file bridge is required before Prompt 16 production upload.",
+    "Raw local thumbnail paths cannot be sent directly to YOUTUBE_UPDATE_THUMBNAIL; a thumbnailUrl is required."
+  ]
+}
