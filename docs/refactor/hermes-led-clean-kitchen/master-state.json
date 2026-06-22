@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "program": "callscore-clean-kitchen-refactor",
-  "last_updated_utc": "2026-06-22T18:12:23Z",
+  "last_updated_utc": "2026-06-22T18:15:28Z",
   "current_phase": "post_clean_kitchen_commit_and_blocker_resolution",
-  "phase_status": "cmo_duplicate_skill_maintenance_complete_runtime_verified_commits_pending",
+  "phase_status": "complete_runtime_and_workplane_checkpoints_committed_final_receipt_pending_commit",
   "completed_phases": [
     "phase_1_prompt1_baseline_control_artifacts",
     "runtime_discovery_immediate_disk_recovery",
@@ -750,7 +750,8 @@
     "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/09-prompt-deduplication-cleanup-receipt.json",
     "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/10-framework-plan-cleanup-receipt.json",
     "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/final-verification-cleanup-receipt.json",
-    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/post-clean-kitchen-next-actions-receipt.json"
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/post-clean-kitchen-next-actions-receipt.json",
+    "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/post-clean-kitchen-git-closure-receipt.json"
   ],
   "latest_deliverables": [
     "/srv/agents/repos/callscore-workplane/docs/refactor/hermes-led-clean-kitchen/execution-plan.md",
@@ -894,7 +895,7 @@
     "halted": false,
     "reason": null
   },
-  "next_phase_allowed": "git_commit_checkpoint_then_optional_push_or_root_cleanup",
+  "next_phase_allowed": "optional_push_or_root_owned_tmp_cleanup",
   "mandatory_skills_loaded": [
     "task-router",
     "kanban-orchestrator",
@@ -1288,5 +1289,12 @@
       "status": "captured_to_receipts_and_removed_from_runtime_repo"
     },
     "receipt": "/srv/agents/repos/callscore-workplane/receipts/refactor/hermes-led-clean-kitchen/post-clean-kitchen-next-actions-receipt.json"
+  },
+  "post_clean_git_closure": {
+    "workplane_commit_before_final_receipt": "c1ff82c",
+    "runtime_commit": "1b2e79b",
+    "runtime_status_after_commit": "",
+    "runtime_tests": "82/82 targeted tests passed; heartbeat dry-run 16 agents/16 heartbeats/no DB writes",
+    "cmo_maintenance": "complete; 49 duplicate active CMO skill dirs replaced; gateway restarted; Composio verified"
   }
 }

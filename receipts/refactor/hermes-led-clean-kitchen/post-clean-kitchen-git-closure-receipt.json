@@ -1,0 +1,13 @@
+{
+  "timestamp_utc": "2026-06-22T18:15:28Z",
+  "phase": "post_clean_kitchen_git_closure",
+  "status": "completed",
+  "workplane_commit": "c1ff82c",
+  "runtime_commit": "1b2e79b",
+  "workplane_status_before_this_receipt": "",
+  "runtime_status_after_commit": "",
+  "runtime_tests": "heartbeat dry-run passed; targeted tests 82/82 passed before runtime commit",
+  "cmo_gateway": "running after maintenance as PID 898027 at verification time",
+  "composio_mcp": "callscorecmo profile connected; 7 tools discovered after restart",
+  "secret_shape_scan": "workplane flagged historical key-shaped values, redacted and amended; runtime staged scan had 0 findings"
+}
