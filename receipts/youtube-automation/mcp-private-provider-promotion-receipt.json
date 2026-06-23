@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-06-23T21:31:24Z",
+  "phase": "youtube_automation_mcp_private_provider_promotion",
+  "status": "complete",
+  "runtime_head_before_commit": "pending",
+  "route": "Hermes MCP to Composio MCP only",
+  "canonical_command": "npm run video:mcp-proof -- artifacts/video-jobs/<jobId>/state.json",
+  "private_proof": {
+    "ok": true,
+    "privacyStatus": "private",
+    "youtubeVideoId": "cTTR3HIQavo",
+    "publishUrl": "https://youtu.be/cTTR3HIQavo",
+    "artifact": "/opt/crypto-tuber-ranked/artifacts/video-jobs/daily_short-2026-06-23T09-04-49-194Z/mcp-youtube-publish-result.json"
+  },
+  "tests": {
+    "video_automation_suite": "19/19 passed",
+    "typecheck": "completed with no error output"
+  },
+  "notes": [
+    "No public publish",
+    "No direct Composio HTTP bridge",
+    "No secrets printed"
+  ]
+}
