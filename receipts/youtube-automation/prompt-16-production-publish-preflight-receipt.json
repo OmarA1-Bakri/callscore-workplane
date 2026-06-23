@@ -1,0 +1,18 @@
+{
+  "timestamp_utc": "2026-06-23T09:09:49Z",
+  "phase": "youtube_automation_prompt_16_production_publish_preflight",
+  "status": "complete_no_publish_by_config",
+  "details": {
+    "preflight": "/opt/crypto-tuber-ranked/docs/youtube-automation/production-publish-preflight.json",
+    "schema_summary": "/opt/crypto-tuber-ranked/docs/youtube-automation/composio-youtube-tool-schema-summary.json",
+    "live_upload_attempted": false,
+    "reason": "VIDEO_AUTO_PUBLISH=false",
+    "known_upload_prerequisite": "Composio file object {name,mimetype,s3key} and thumbnailUrl required before live upload."
+  },
+  "notes": [
+    "No production deploy performed",
+    "No provider mutation performed unless explicitly configured; current run did not upload",
+    "No secrets printed",
+    "No manual approval gate added"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "timestamp_utc": "2026-06-23T09:09:49Z",
+  "phase": "youtube_automation_prompt_15_local_pipeline_run",
+  "status": "complete",
+  "details": {
+    "command": "VIDEO_AUTO_PUBLISH=false VIDEO_DEFAULT_FORMAT=daily_short npm run video:daily -- --mock",
+    "artifact_dir": "artifacts/video-jobs/daily_short-2026-06-23T09-04-49-194Z",
+    "qa_report": "artifacts/video-jobs/daily_short-2026-06-23T09-04-49-194Z/qa-report.json",
+    "publish_result": "artifacts/video-jobs/daily_short-2026-06-23T09-04-49-194Z/publish-result.json",
+    "video": "artifacts/video-jobs/daily_short-2026-06-23T09-04-49-194Z/video.mp4",
+    "status": "qa_passed",
+    "published": false,
+    "reason": "auto_publish_disabled"
+  },
+  "notes": [
+    "No production deploy performed",
+    "No provider mutation performed unless explicitly configured; current run did not upload",
+    "No secrets printed",
+    "No manual approval gate added"
+  ]
+}
