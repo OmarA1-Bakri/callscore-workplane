@@ -734,3 +734,20 @@ Acceptance:
 - final report exists
 - system meets acceptance criteria or precise blockers recorded
 
+
+---
+
+## 2026-06-23 Addendum — MCP-only private provider path promoted
+
+Canonical runtime promotion completed in `/opt/crypto-tuber-ranked`.
+
+- Runtime commit: `bbb0aa4` — `Promote MCP-only private provider path`
+- Workplane receipt commit: `2234997` — `Record MCP-only private provider promotion`
+- Canonical command: `npm run video:mcp-proof -- artifacts/video-jobs/<jobId>/state.json`
+- TypeScript wrapper: `src/video/composio/mcp-youtube-publisher.ts`
+- MCP helper: `src/video/composio/private_provider_helper.py`
+- Config selector: `VIDEO_PUBLISH_PROVIDER=hermes_mcp_composio`
+- Safety default: `VIDEO_PRIVATE_CANARY_ONLY=true`
+- Proof artifact: `/opt/crypto-tuber-ranked/artifacts/video-jobs/daily_short-2026-06-23T09-04-49-194Z/mcp-youtube-publish-result.json`
+
+Future agents must use the Hermes MCP → Composio MCP path and must not recreate direct Composio HTTP/API-key bridges.
