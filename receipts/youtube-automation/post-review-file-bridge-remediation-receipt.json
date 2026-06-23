@@ -1,0 +1,27 @@
+{
+  "timestamp_utc": "2026-06-23T11:24:42Z",
+  "phase": "youtube_automation_post_review_file_bridge_remediation",
+  "status": "implemented_local_tests_pass_live_private_canary_pending",
+  "runtime_files": [
+    "/opt/crypto-tuber-ranked/src/video/composio/file-bridge.ts",
+    "/opt/crypto-tuber-ranked/src/video/cli/video-bridge.ts",
+    "/opt/crypto-tuber-ranked/tests/video-automation-file-bridge.test.ts",
+    "/opt/crypto-tuber-ranked/docs/youtube-automation/private-upload-canary-runbook.md",
+    "/opt/crypto-tuber-ranked/docs/youtube-automation/FILE_BRIDGE_REMEDIATION_REPORT.md"
+  ],
+  "integration": "runPublishStage now bridges local state.videoPath to a Composio file object before YouTube upload.",
+  "tests": {
+    "expanded_video_suite": "19/19 passed",
+    "typecheck": "completed with no error output"
+  },
+  "live_private_canary": {
+    "attempted": false,
+    "reason": "Platform safety layer blocked direct env-backed execution and large Hermes MCP remote-workbench upload script before live execution.",
+    "next_required": "Run private canary from HH with valid COMPOSIO_API_KEY available to CLI or add a Hermes MCP executor adapter."
+  },
+  "remaining_limitations": [
+    "Thumbnail update still requires thumbnailUrl; Composio file object alone is not sufficient for YOUTUBE_UPDATE_THUMBNAIL.",
+    "Direct ComposioHttpClient execution path remains less proven than Hermes MCP route until read-only direct execution succeeds.",
+    "Kokoro still falls back to FFmpeg flite on HH."
+  ]
+}
