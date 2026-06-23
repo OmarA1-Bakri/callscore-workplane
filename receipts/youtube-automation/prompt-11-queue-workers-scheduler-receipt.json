@@ -1,0 +1,24 @@
+{
+  "timestamp_utc": "2026-06-23T08:43:21Z",
+  "phase": "youtube_automation_prompt_11_queue_workers_scheduler",
+  "status": "complete",
+  "files": [
+    "src/video/queues/video-queues.ts",
+    "src/video/queues/start-video-workers.ts",
+    "src/video/queues/scheduler.ts",
+    "src/video/queues/workers/*.ts",
+    "tests/video-automation-config-qa.test.ts"
+  ],
+  "tests": {
+    "targeted": "node --import tsx --test tests/video-automation-config-qa.test.ts tests/video-automation-analytics.test.ts tests/video-automation-publisher.test.ts tests/video-automation-media.test.ts tests/video-automation-schemas.test.ts tests/video-automation-data-planning.test.ts",
+    "targeted_result": "17/17 passed",
+    "typecheck": "./node_modules/.bin/tsc --noEmit",
+    "typecheck_result": "completed with no reported errors"
+  },
+  "notes": [
+    "No production deploy performed",
+    "No provider mutation performed",
+    "No manual approval gate added",
+    "Generated production video artifacts remain under gitignored artifacts/"
+  ]
+}
