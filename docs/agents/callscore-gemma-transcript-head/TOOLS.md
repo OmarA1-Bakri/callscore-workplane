@@ -14,3 +14,7 @@
 ## Provider rule
 
 Composio MCP is canonical for third-party automation. Secret values must never be printed.
+
+## Local Gemma status
+
+Live HH Ollama models include `gemma4:latest`, `callscore-gemma4-extractor:latest`, and `callscore-gemma4-eval-extractor:latest`. Use Gemma as shadow/canary extraction evidence only unless promotion gates change.

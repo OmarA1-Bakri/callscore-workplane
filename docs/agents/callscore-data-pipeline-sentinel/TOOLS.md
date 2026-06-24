@@ -14,3 +14,8 @@
 ## Provider rule
 
 Composio MCP is canonical for third-party automation. Secret values must never be printed.
+
+## Pipeline guard
+
+- Before Markov/STORM/transition work, run runtime command: `npm run pipeline:guard -- --out .tmp/callscore-pipeline/pipeline-guard-audit.json` from `/opt/crypto-tuber-ranked`.
+- Treat warnings as design constraints: raw-call snapshots over `creator_stats.30d`, verifier labels as audit-only, news/media exclusion, and raw candles over stale daily closes.
