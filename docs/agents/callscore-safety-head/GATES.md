@@ -10,3 +10,7 @@
 ## News/media exclusion
 
 News/media channels are context sources, not creator reliability subjects. Markov/trajectory or leaderboard-affecting modelling must exclude them unless a reviewed taxonomy says otherwise.
+
+## Lean P0 creator eligibility
+
+Use `/opt/crypto-tuber-ranked/src/lib/creator-eligibility/creator-eligibility.ts` to exclude news/media and unreviewed hybrid channels from creator reliability and transition modelling.

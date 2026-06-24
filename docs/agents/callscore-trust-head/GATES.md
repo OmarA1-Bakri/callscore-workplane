@@ -10,3 +10,7 @@
 ## ML label integrity
 
 `ml_verification_runs` are audit/eval evidence until gated promotion succeeds. Training or trust decisions must exclude anomalous approve rows where `reason_code <> valid_call`.
+
+## Lean P0 verifier policy
+
+Use `/opt/crypto-tuber-ranked/src/lib/ml-verifier-label-policy.ts` before consuming verifier rows for training, promotion, STORM, or transition evidence.
