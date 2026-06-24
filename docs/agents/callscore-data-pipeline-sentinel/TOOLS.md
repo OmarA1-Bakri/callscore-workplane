@@ -29,3 +29,7 @@ Composio MCP is canonical for third-party automation. Secret values must never b
 ## Creator transition report
 
 Runtime command: `npm run transition:report -- --period monthly --from 2017-11-25 --to 2026-06-24 --out .tmp/transition/latest`. Output is artifact-only and must not write DB or publish.
+
+## STORM evidence pack report
+
+Runtime command: `npm run storm:evidence -- --transition-artifact .tmp/transition/latest/states.json --out .tmp/storm/latest`. Output is artifact-only and must not write DB, call providers, or publish.

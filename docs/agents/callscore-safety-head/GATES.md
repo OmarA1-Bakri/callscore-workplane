@@ -18,3 +18,7 @@ Use `/opt/crypto-tuber-ranked/src/lib/creator-eligibility/creator-eligibility.ts
 ## Creator transition safety rule
 
 Do not call transition states predictive. Use language such as creator trajectory, state movement, movement drivers, and trend confidence.
+
+## STORM evidence safety rule
+
+Use STORM language as descriptive evidence only. Block predictive, guaranteed-performance, defamatory, or unsupported named negative claims.

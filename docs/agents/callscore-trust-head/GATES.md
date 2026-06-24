@@ -18,3 +18,7 @@ Use `/opt/crypto-tuber-ranked/src/lib/ml-verifier-label-policy.ts` before consum
 ## Creator transition trust rule
 
 Creator transition states are descriptive evidence for STORM/YouTube selection only. They are not public claims until evidence packs and public gates pass.
+
+## STORM evidence trust rule
+
+STORM evidence packs explain creator transition states. They do not score creators, override `creator_stats`, or create public claims unless every claim maps to evidence and public gates pass.
