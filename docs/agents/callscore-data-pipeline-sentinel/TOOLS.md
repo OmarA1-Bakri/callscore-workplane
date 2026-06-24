@@ -25,3 +25,7 @@ Composio MCP is canonical for third-party automation. Secret values must never b
 - Creator eligibility policy: `/opt/crypto-tuber-ranked/src/lib/creator-eligibility/creator-eligibility.ts`.
 - Transition data policy: `/opt/crypto-tuber-ranked/src/lib/transition/transition-data-policy.ts`.
 - Guard output includes core, transition, STORM, and public readiness classes.
+
+## Creator transition report
+
+Runtime command: `npm run transition:report -- --period monthly --from 2017-11-25 --to 2026-06-24 --out .tmp/transition/latest`. Output is artifact-only and must not write DB or publish.

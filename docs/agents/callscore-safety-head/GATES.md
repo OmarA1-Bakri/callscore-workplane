@@ -14,3 +14,7 @@ News/media channels are context sources, not creator reliability subjects. Marko
 ## Lean P0 creator eligibility
 
 Use `/opt/crypto-tuber-ranked/src/lib/creator-eligibility/creator-eligibility.ts` to exclude news/media and unreviewed hybrid channels from creator reliability and transition modelling.
+
+## Creator transition safety rule
+
+Do not call transition states predictive. Use language such as creator trajectory, state movement, movement drivers, and trend confidence.

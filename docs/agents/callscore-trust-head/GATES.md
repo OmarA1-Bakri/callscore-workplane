@@ -14,3 +14,7 @@
 ## Lean P0 verifier policy
 
 Use `/opt/crypto-tuber-ranked/src/lib/ml-verifier-label-policy.ts` before consuming verifier rows for training, promotion, STORM, or transition evidence.
+
+## Creator transition trust rule
+
+Creator transition states are descriptive evidence for STORM/YouTube selection only. They are not public claims until evidence packs and public gates pass.
