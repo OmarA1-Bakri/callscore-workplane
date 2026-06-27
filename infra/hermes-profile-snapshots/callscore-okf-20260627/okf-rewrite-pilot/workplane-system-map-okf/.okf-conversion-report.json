@@ -1,0 +1,17 @@
+{
+  "bundle": "CallScore Workplane System Map Pilot",
+  "source": "/tmp/callscore-okf-pilot-src-20260627/workplane-system-map",
+  "concept_count": 1,
+  "needs_refinement_count": 1,
+  "concepts": [
+    {
+      "concept_id": "system-map",
+      "path": "system-map.md",
+      "type": "Reference",
+      "type_source": "heuristic",
+      "description": "",
+      "description_source": "heuristic",
+      "needs_refinement": true
+    }
+  ]
+}

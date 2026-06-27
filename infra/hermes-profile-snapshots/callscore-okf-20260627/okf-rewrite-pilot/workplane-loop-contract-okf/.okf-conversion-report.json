@@ -1,0 +1,17 @@
+{
+  "bundle": "CallScore Workplane Loop Contract Pilot",
+  "source": "/tmp/callscore-okf-pilot-src-20260627/workplane-loop-contract",
+  "concept_count": 1,
+  "needs_refinement_count": 1,
+  "concepts": [
+    {
+      "concept_id": "workplane-loop-engineering-eval",
+      "path": "workplane-loop-engineering-eval.md",
+      "type": "Reference",
+      "type_source": "heuristic",
+      "description": "loopengineeringeval is a report-only Workplane job for extraction improvement loops.",
+      "description_source": "heuristic",
+      "needs_refinement": true
+    }
+  ]
+}
