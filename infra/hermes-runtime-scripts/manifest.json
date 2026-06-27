@@ -1,0 +1,16 @@
+{
+  "source": "/srv/agents/hermes/scripts/",
+  "snapshot_timestamp": "2026-06-27T23:09:00Z",
+  "purpose": "CallScore GTM runtime-critical automation scripts",
+  "pipeline": "artofwar-owned-public-gtm",
+  "scripts": [
+    "callscore-cmo-finalizer.sh — CMO draft generation, quality gate, combined execution receipt",
+    "callscore-engagement-executor.sh — Engagement opportunity consumer with graph-owned routing",
+    "callscore-engagement-discovery.sh — Engagement opportunity discovery and packet generation",
+    "callscore-genuine-social-packet.sh — Social data packet generation with call analysis",
+    "callscore-content-quality-gate.py — Opinionated content quality gate (opinion hooks, growth mechanics, visual asset)",
+    "callscore-video-queue-consumer.sh — Video queue consumer (graph-owned dispatcher wrapper)"
+  ],
+  "graph_owned_compliance": "All scripts are parent/provider-safe: they write receipts only, never call provider tools directly. Provider mutation is delegated to operating graph nodes.",
+  "change_notes": "Patched 2026-06-27: cmo-finalizer status changed from quality_gate_passed_publish_submitted to draft_ready_graph_publish_pending; engagement-executor status reports blocked_provider_missing when all opportunities are provider-blocked."
+}
