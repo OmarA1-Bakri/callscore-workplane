@@ -52,8 +52,9 @@ RECEIPTEOF
   exit 0
 fi
 
-# ── Scan for executable opportunities ──
+# ── Scan for executable opportunities and record per-channel blockers ──
 EXECUTABLE=()
+DECLARED_PLATFORM_BLOCKERS=()
 for f in "${DISCOVERY_FILES[@]}"; do
   OPPORTUNITY=$(python3 -c "
 import json, sys
@@ -63,7 +64,6 @@ try:
 except Exception:
     sys.exit(1)
 
-# Check if discovery has usable engagement packet
 outputs = d.get('outputs', [])
 packet_found = False
 for o in outputs:
@@ -75,13 +75,11 @@ status = d.get('status', '')
 channel = d.get('channel', '')
 required_inputs = d.get('required_inputs', {})
 
-# Determine platform-specific blockers
 platform_blockers = []
 if not channel:
     platform_blockers.append('blocked_missing_target')
     packet_found = False
 
-# If no usable packet, emit per-platform blockers
 if not packet_found:
     for o in outputs:
         if o.get('type') == 'engagement_request_packet':
@@ -90,18 +88,39 @@ if not packet_found:
             elif o.get('status') == 'blocked_missing_target':
                 platform_blockers.append('blocked_missing_target')
 
+# Map channel to platform-specific blocker
+channel_blocker = ''
+if channel:
+    c = channel.lower()
+    if c in ('x', 'twitter'):
+        channel_blocker = 'x_provider_tool_missing'
+    elif c == 'linkedin':
+        channel_blocker = 'linkedin_provider_tool_missing'
+    elif c == 'reddit':
+        channel_blocker = 'reddit_provider_tool_missing'
+    elif c == 'youtube':
+        channel_blocker = 'youtube_provider_missing'
+
 result = {
     'channel': channel,
     'executable': packet_found and len(platform_blockers) == 0,
     'blockers': platform_blockers if not packet_found else [],
     'required_inputs': required_inputs,
     'discovery_status': status,
+    'channel_blocker': channel_blocker,
 }
 print(json.dumps(result))
-" 2>/dev/null || echo '{"executable":false,"blockers":["discovery_read_failed"]}')
+" 2>/dev/null || echo '{"executable":false,"blockers":["discovery_read_failed"],"channel_blocker":""}')
 
   EXECUTABLE_JSON=$(echo "$OPPORTUNITY" | python3 -c "import json,sys; d=json.load(sys.stdin); print(json.dumps(d))" 2>/dev/null || echo '{"executable":false}')
   IS_EXECUTABLE=$(echo "$EXECUTABLE_JSON" | python3 -c "import json,sys; d=json.load(sys.stdin); print('true' if d.get('executable') else 'false')" 2>/dev/null || echo "false")
+
+  # Collect per-channel blocker info even for non-executable opportunities
+  CHANNEL=$(echo "$EXECUTABLE_JSON" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('channel',''))" 2>/dev/null || echo "")
+  CHANNEL_BLOCKER=$(echo "$EXECUTABLE_JSON" | python3 -c "import json,sys; d=json.load(sys.stdin); print(d.get('channel_blocker',''))" 2>/dev/null || echo "")
+  if [[ -n "$CHANNEL_BLOCKER" ]]; then
+    DECLARED_PLATFORM_BLOCKERS+=("$CHANNEL_BLOCKER")
+  fi
 
   if [[ "$IS_EXECUTABLE" == "true" ]]; then
     EXECUTABLE+=("$f")
@@ -148,7 +167,18 @@ done
 
 # ── Write execution receipt ──
 RECEIPT="$EXECUTION_DIR/engagement-execution-$TS.json"
-python3 - "$RECEIPT" "$EXECUTED_COUNT" "$BLOCKED_COUNT" "${#DISCOVERY_FILES[@]}" <<'PY'
+
+# Join DECLARED_PLATFORM_BLOCKERS for Python receipt writer
+BLOCKERS_JSON=""
+if [[ ${#DECLARED_PLATFORM_BLOCKERS[@]} -gt 0 ]]; then
+  BLOCKERS_JSON=$(printf '%s\n' "${DECLARED_PLATFORM_BLOCKERS[@]}" | python3 -c "
+import json, sys
+blockers = sorted(set(line.strip() for line in sys.stdin if line.strip()))
+print(json.dumps(blockers))
+" 2>/dev/null || echo '["blocked_provider_missing"]')
+fi
+
+python3 - "$RECEIPT" "$EXECUTED_COUNT" "$BLOCKED_COUNT" "${#DISCOVERY_FILES[@]}" "$BLOCKERS_JSON" "${DISCOVERY_FILES[*]}" <<'PY'
 import json, sys
 from datetime import datetime, timezone
 
@@ -156,6 +186,11 @@ out_path = sys.argv[1]
 executed = int(sys.argv[2])
 blocked = int(sys.argv[3])
 discovery_count = int(sys.argv[4])
+blockers_json = sys.argv[5] if len(sys.argv) > 5 else ''
+source_files_str = sys.argv[6] if len(sys.argv) > 6 else ''
+
+# Parse discovery-level platform blockers
+received_blockers = json.loads(blockers_json) if blockers_json else []
 
 receipt = {
     "schema": "callscore.engagement_execution_receipt.v1",
@@ -170,6 +205,8 @@ receipt = {
     "graph_owned_execution": True,
     "parent_provider_fallback": False,
     "execution_results": [],
+    "source_opportunity_files": [s.strip() for s in source_files_str.split() if s.strip()],
+    "blockers": [],
 }
 
 # Collect per-channel results
@@ -184,13 +221,32 @@ for line in sys.stdin:
     except Exception:
         continue
 
+# Derive platform-specific blockers from execution results + discovery-level blockers
+platform_blockers = set(received_blockers) if received_blockers else set()
+for r in receipt["execution_results"]:
+    ch = r.get("provider") or r.get("channel", "")
+    if r.get("status") in ("blocked_no_provider", "blocked_provider_missing"):
+        if ch == "x":
+            platform_blockers.add("x_provider_tool_missing")
+        elif ch == "linkedin":
+            platform_blockers.add("linkedin_provider_tool_missing")
+        elif ch == "reddit":
+            platform_blockers.add("reddit_provider_tool_missing")
+        elif ch == "youtube":
+            platform_blockers.add("youtube_provider_missing")
+        else:
+            platform_blockers.add("blocked_provider_missing")
+    elif r.get("status") == "blocked_missing_target":
+        platform_blockers.add("blocked_missing_target")
+
 # Determine overall status
 if executed > 0:
     receipt["status"] = "engagement_request_queued"
-    receipt["next_action"] = f"Routed {executed} executable opportunity/ies to graph-owned engagement nodes. Actual execution requires provider tools wired in operating graph."
+    receipt["next_action"] = f"Routed {executed} executable opportunity/ies to graph-owned engagement nodes."
 elif discovery_count > 0:
     receipt["status"] = "blocked_provider_missing"
-    receipt["next_action"] = f"All {discovery_count} opportunities blocked: graph-owned provider nodes not wired (blocked_no_provider)."
+    receipt["blockers"] = sorted(platform_blockers) if platform_blockers else ["blocked_provider_missing"]
+    receipt["next_action"] = f"All {discovery_count} opportunities blocked: {', '.join(sorted(platform_blockers)) if platform_blockers else 'graph-owned provider nodes not wired'}"
 else:
     receipt["status"] = "no_opportunities_found"
     receipt["next_action"] = "No discovery opportunities available."
@@ -202,5 +258,5 @@ for r in "${EXECUTION_RESULTS[@]}"; do
   echo "$r"
 done
 
-echo "{\"status\":\"$([ "$EXECUTED_COUNT" -gt 0 ] && echo 'engagement_request_queued' || ( [ "$DISCOVERY_COUNT" -gt 0 ] && echo 'blocked_provider_missing' || echo 'no_opportunities_found' ))\",\"receipt\":\"$RECEIPT\",\"executed_count\":$EXECUTED_COUNT,\"discovery_count\":${#DISCOVERY_FILES[@]},\"schema\":\"callscore.engagement_execution_receipt.v1\"}"
+echo "{\"status\":\"$([ "$EXECUTED_COUNT" -gt 0 ] && echo 'engagement_request_queued' || ( [ "${#DISCOVERY_FILES[@]}" -gt 0 ] && echo 'blocked_provider_missing' || echo 'no_opportunities_found' ))\",\"receipt\":\"$RECEIPT\",\"executed_count\":$EXECUTED_COUNT,\"discovery_count\":${#DISCOVERY_FILES[@]},\"schema\":\"callscore.engagement_execution_receipt.v1\"}"
 echo "--ENGAGEMENT-EXECUTOR-COMPLETE--"

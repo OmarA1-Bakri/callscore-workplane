@@ -363,7 +363,7 @@ COMBINED="$OUT_DIR/$TS-combined-$COMBINED_STATUS.json"
 COMBINED_TMP="${COMBINED}.$$.tmp"
 
 python3 -c "
-import json, sys
+import hashlib, json, sys, os
 
 quality_path = '$QUALITY_OUT'
 quality_data = None
@@ -376,6 +376,34 @@ except Exception:
 blockers_raw = quality_data.get('blockers', []) or quality_data.get('failures', [])
 if not isinstance(blockers_raw, list):
     blockers_raw = []
+
+# Compute payload hash for each channel
+final_draft_path = '$FINAL_DRAFT'
+payload_hash = None
+per_node_results = {}
+if os.path.exists(final_draft_path):
+    try:
+        with open(final_draft_path) as f:
+            draft_data = json.load(f)
+        channels = draft_data.get('channels', {})
+        for platform_key in ['x', 'linkedin']:
+            chan = channels.get(platform_key, {})
+            draft_text = chan.get('draft', {})
+            text = draft_text.get('text', '') or draft_text.get('hook', '') + '\\n\\n' + draft_text.get('body', '')
+            if text.strip():
+                h = hashlib.sha256(text.encode('utf-8')).hexdigest()
+                per_node_results[f'{platform_key}_owned_publish_node'] = {
+                    'status': 'blocked',
+                    'blocker_code': f'{platform_key}_provider_tool_missing',
+                    'has_payload': True,
+                    'payload_hash': f'sha256:{h}',
+                    'provider_tool': 'TWITTER_CREATION_OF_A_POST' if platform_key == 'x' else 'LINKEDIN_CREATE_LINKED_IN_POST',
+                    'provider_call_permitted': False,
+                    'auth_available': True,
+                }
+                payload_hash = payload_hash or f'sha256:{h}'
+    except Exception:
+        pass
 
 r = {
   'schema': 'callscore.cmo_combined_receipt.v1',
@@ -391,11 +419,13 @@ r = {
   'public_publish_performed': False,
   'provider_mutation_performed': False,
   'external_mutation_performed': False,
+  'payload_hash': payload_hash,
+  'node_results': per_node_results,
   'provider_mutation_blockers': {
     'x': 'x_provider_tool_missing',
     'linkedin': 'linkedin_provider_tool_missing',
   },
-  'next_step': 'invoke operating:goal with --graph-mutation-inputs-json when provider tools are wired and approved',
+  'next_step': 'invoke operating:goal with --graph-mutation-inputs-json when provider tools are wired, provider_response provided, and approved',
 }
 json.dump(r, sys.stdout, indent=2)
 " > "$COMBINED_TMP" 2>/dev/null || echo '{"schema":"callscore.cmo_combined_receipt.v1","status":"repair_required","reason":"receipt_writer_subprocess_failed","blockers":[],"public_publish_performed":false,"provider_mutation_performed":false,"external_mutation_performed":false}' > "$COMBINED_TMP"
