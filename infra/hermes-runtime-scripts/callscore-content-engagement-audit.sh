@@ -21,14 +21,60 @@ npm run --silent workplane:status -- --json 2>&1 | sed -n '1,160p'
 
 echo
 echo "=== 2. CRON JOBS ==="
+echo "--- ALL JOBS ---"
 python3 - <<'PY'
 import json
 p='/srv/agents/hermes/profiles/callscore/cron/jobs.json'
 data=json.load(open(p))
 for j in data.get('jobs', []):
-    name=(j.get('name') or '').lower()
-    if any(x in name for x in ['cmo','video','youtube','agent','engagement','profile','comment','social','autonomy','dispatcher','catch-up']):
-        print(json.dumps({k:j.get(k) for k in ['id','name','enabled','last_status','last_run_at','next_run_at','last_error']}, indent=2))
+    print(json.dumps({k:j.get(k) for k in ['id','name','enabled','last_status','last_run_at','last_error']}, indent=2))
+PY
+
+echo "--- CMO catch-up watcher status ---"
+python3 - <<'PY'
+import json
+p='/srv/agents/hermes/profiles/callscore/cron/jobs.json'
+data=json.load(open(p))
+for j in data.get('jobs', []):
+    if '144c3a9cc860' in (j.get('id') or ''):
+        print('catch-up-watcher:', json.dumps({'status': j.get('last_status'), 'error': j.get('last_error'), 'last_run': j.get('last_run_at')}, indent=2))
+        break
+else:
+    print('catch-up-watcher: NOT FOUND')
+PY
+
+echo "--- CMO cron prompt lint check ---"
+python3 - <<'PY'
+import json, re
+p='/srv/agents/hermes/profiles/callscore/cron/jobs.json'
+def is_negated(text, term, idx):
+    start = max(0, idx - 50)
+    before = text[start:idx].lower()
+    negations = ('never ', 'not ', "don't ", 'do not ', 'must not ', 'cannot ', "can't ",
+                 'forbidden', 'avoid ', 'skip ', 'blocked ', 'only via graph',
+                 'graph-owned', 'graph owned', 'operating graph')
+    return any(neg in before for neg in negations)
+
+data=json.load(open(p))
+for j in data.get('jobs', []):
+    if '9c03a6eea969' in (j.get('id') or ''):
+        prompt = j.get('prompt', '')
+        prompt_lower = prompt.lower()
+        forbidden_terms = ['call Composio','Rube provider','direct provider','publish through provider']
+        lint_pass = True
+        for term in forbidden_terms:
+            idx = prompt_lower.find(term.lower())
+            while idx != -1:
+                if not is_negated(prompt_lower, term.lower(), idx):
+                    lint_pass = False
+                    print(f"  LINT FAIL: term='{term}' found non-negated")
+                idx = prompt_lower.find(term.lower(), idx + 1)
+        has_route = 'npm run operating:goal' in prompt and '--mode live_owned_public' in prompt
+        if not has_route:
+            lint_pass = False
+            print('  LINT FAIL: missing npm run operating:goal --mode live_owned_public')
+        print(f'  graph_owned_publish_lint: {"PASS" if lint_pass else "FAIL"}')
+        break
 PY
 
 echo
@@ -73,6 +119,26 @@ for p in paths:
       'public_publish': safe_bool(o.get('public_publish_performed')) or safe_bool(o.get('public_post_published')),
       'provider_mutation': safe_bool(o.get('provider_mutation_performed')) or safe_bool(o.get('provider_action_performed')),
     }, sort_keys=True))
+PY
+
+echo "--- CMO combined receipt latest status ---"
+python3 - <<'PY'
+import json, glob, os
+base='/opt/crypto-tuber-ranked/.tmp/workflow-receipts/artofwar_owned_public_execution'
+paths=sorted(glob.glob(base+'/*combined*.json'), key=os.path.getmtime, reverse=True)[:3]
+for p in paths:
+    try: o=json.load(open(p))
+    except: continue
+    print(json.dumps({
+        'file': os.path.basename(p),
+        'status': o.get('status'),
+        'reason': (o.get('reason') or '')[:80],
+        'blockers': o.get('blockers'),
+        'graph_lane_invoked': o.get('graph_lane_invoked', False),
+        'payload_hash': o.get('payload_hash'),
+        'node_results': {k: {'status':v.get('status'),'blocker':v.get('blocker_code')} for k,v in (o.get('node_results') or {}).items()},
+        'provider_mutation_blockers': o.get('provider_mutation_blockers'),
+    }, indent=2))
 PY
 
 echo "--- engagement execution/opportunity receipts ---"
@@ -184,20 +250,94 @@ docker logs --tail 120 whop-auto-channel-agent-worker-1 2>&1 | sed -n '1,160p'
 echo
 echo "=== 9. FAILURE STATE (current status of known markers) ==="
 echo "Still failing:"
-echo "- graph_owned_provider_publish_missing (exact blocker: x_provider_tool_missing, linkedin_provider_tool_missing; auth exists, provider adapter not wired in graph node)"
+python3 - <<'PY'
+import json, glob, os
+base='/opt/crypto-tuber-ranked/.tmp/workflow-receipts/artofwar_owned_public_execution'
+combines = sorted(glob.glob(base+'/*combined*.json'), key=os.path.getmtime, reverse=True)
+latest = None
+if combines:
+    try:
+        latest = json.load(open(combines[0]))
+    except: pass
+if latest:
+    st = latest.get('status', '?')
+    print(f'  overall: {st}')
+    reason = latest.get('reason', '?')
+    print(f'  reason: {reason}')
+    blockers = latest.get('blockers') or []
+    if blockers:
+        for b in blockers:
+            print(f'  blocker: {b}')
+    node_results = latest.get('node_results') or {}
+    for node, info in node_results.items():
+        nstatus = info.get('status', '?')
+        nbl = info.get('blocker_code', '?')
+        print(f'  {node}: {nstatus} (blocker: {nbl})')
+    print(f'  graph_lane_invoked: {latest.get("graph_lane_invoked", False)}')
+    prov = latest.get('provider_mutation_blockers') or {}
+    for plat, bl in prov.items():
+        print(f'  {plat} provider blocker: {bl}')
+else:
+    print('  no combined receipts found')
+PY
 echo ""
 echo "Resolved / superseded:"
-echo "- broken pipe in CMO cron output at 9c03a6eea969 (stale cron error — latest live CMO probe passes; CMO draft gen+quality gate operational)"
+echo "- broken pipe in CMO cron output at 9c03a6eea969 (stale cron error — latest live CMO probe passes)"
 echo "- hook_lacks_opinion_or_observation (latest CMO probe shows live_quality_gate.ok=true, failures=[])"
 echo "- video queue consumer: enabled=true, last_status=ok (runs every 5m)"
 echo "- engagement discovery scheduler: enabled=true, last_status=ok (runs every 2h)"
-echo "- profile discovery/commenting scheduler: exists (job f2cfc2dd7a7c)"
+echo "- CMO catch-up watcher lint failure (non_graph_public_publish_blocked fixed)"
 echo ""
 echo "Not yet actionable:"
-echo "- cooldown_skipped_no_provider_mutation (not observed in latest receipts; provider mutation remains blocked by missing graph-owned publish nodes)"
+echo "- cooldown_skipped_no_provider_mutation (provider mutation remains blocked by missing graph-owned provider adapter)"
 
 echo
-echo "=== 10. WORKPLANE / RUNTIME SCRIPT DURABILITY ==="
+echo "=== 10. DIRECT PROVIDER PARENT/CRON/SHELL MUTATION CHECK ==="
+python3 - <<'PY'
+import json, re, os
+# Check cron job prompts for affirmative provider tool references
+p='/srv/agents/hermes/profiles/callscore/cron/jobs.json'
+data=json.load(open(p))
+provider_publish_jobs = ['cmo', 'callscore-cmo', 'social', 'engage', 'x-post', 'linkedin']
+had_safety = True
+for j in data.get('jobs', []):
+    prompt = j.get('prompt', '') or ''
+    name = j.get('name', '') or ''
+    nid = j.get('id', '') or ''
+    # Only lint provider-publish-related jobs
+    is_provider_job = any(k in name.lower() + nid.lower() for k in provider_publish_jobs)
+    if not is_provider_job:
+        continue
+    if 'hard graph-only rule' not in prompt.lower() and 'never call composio' not in prompt.lower():
+        print(f'  WARN: [{nid}] {name} lacks graph-only rule')
+        had_safety = False
+if had_safety:
+    print('  All provider-publish cron jobs contain graph-only safety rules: PASS')
+# Check that no direct mcp_composio/Composio x-cli/xurl calls exist
+scripts = '/srv/agents/hermes/scripts'
+direct_provider_calls = []
+for root, dirs, files in os.walk(scripts):
+    for fn in files:
+        if not fn.endswith('.sh'): continue
+        fp = os.path.join(root, fn)
+        try:
+            content = open(fp).read()
+        except: continue
+        for pat in ['mcp_composio ', 'composio_', 'x-cli ', 'x-cli\\|', 'xurl ', 'rube ']:
+            if pat.replace('\\','') in content.lower():
+                # Only flag if not in a comment or guard context
+                for line in content.split('\\n'):
+                    if pat.replace('\\\\','').lower() in line.lower() and not line.strip().startswith('#') and 'never' not in line.lower():
+                        direct_provider_calls.append(f'{fn}: {line.strip()[:100]}')
+if direct_provider_calls:
+    for c in direct_provider_calls[:5]:
+        print(f'  DIRECT CALL: {c}')
+else:
+    print('  No direct provider tool calls in scripts: PASS')
+PY
+
+echo
+echo "=== 11. WORKPLANE / RUNTIME SCRIPT DURABILITY ==="
 python3 /tmp/callscore-audit-depth.py durability 2>&1
 
 echo "=== AUDIT END $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="

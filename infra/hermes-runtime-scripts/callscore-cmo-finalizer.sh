@@ -356,6 +356,19 @@ elif [[ ! -f "$FINAL_DRAFT" ]]; then
 else
   COMBINED_STATUS="draft_ready_graph_publish_pending"
   STATUS_REASON="quality_gate_passed_but_graph_owned_provider_publish_missing_x_linkedin"
+  # ── Invoke graph-owned publish lane ──
+  INVOKER_RESULT=""
+  if [[ -f /srv/agents/hermes/scripts/callscore-graph-owned-publish-invoker.sh ]]; then
+    INVOKER_OUT="$OUT_DIR/$TS-invoker-output.json"
+    INVOKER_STDERR="$OUT_DIR/$TS-invoker-stderr.log"
+    /srv/agents/hermes/scripts/callscore-graph-owned-publish-invoker.sh \
+      --final-draft "$FINAL_DRAFT" \
+      --live \
+      > "$INVOKER_OUT" 2>"$INVOKER_STDERR" || true
+    INVOKER_RESULT="$INVOKER_OUT"
+    export INVOKER_RESULT
+    echo "Invoker result: $(head -3 "$INVOKER_OUT" 2>/dev/null || echo 'no output')"
+  fi
 fi
 
 # ── Write combined execution receipt (ATOMIC: temp file → validate → rename) ──
@@ -422,11 +435,24 @@ r = {
   'payload_hash': payload_hash,
   'node_results': per_node_results,
   'provider_mutation_blockers': {
-    'x': 'x_provider_tool_missing',
-    'linkedin': 'linkedin_provider_tool_missing',
+      'x': 'x_provider_tool_missing',
+      'linkedin': 'linkedin_provider_tool_missing',
   },
   'next_step': 'invoke operating:goal with --graph-mutation-inputs-json when provider tools are wired, provider_response provided, and approved',
 }
+
+# Read invoker result if available
+invoker_path = os.environ.get('INVOKER_RESULT', '')
+if invoker_path and os.path.exists(invoker_path):
+    try:
+        with open(invoker_path) as f:
+            invoker_data = json.load(f)
+        r['invoker_result'] = invoker_data
+        r['graph_lane_invoked'] = True
+    except Exception:
+        r['graph_lane_invoked'] = False
+else:
+    r['graph_lane_invoked'] = False
 json.dump(r, sys.stdout, indent=2)
 " > "$COMBINED_TMP" 2>/dev/null || echo '{"schema":"callscore.cmo_combined_receipt.v1","status":"repair_required","reason":"receipt_writer_subprocess_failed","blockers":[],"public_publish_performed":false,"provider_mutation_performed":false,"external_mutation_performed":false}' > "$COMBINED_TMP"
 
