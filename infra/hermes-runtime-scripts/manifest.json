@@ -4,14 +4,15 @@
   "purpose": "CallScore GTM runtime-critical automation scripts",
   "pipeline": "artofwar-owned-public-gtm",
   "scripts": [
-    "callscore-cmo-finalizer.sh — CMO draft generation, quality gate, combined execution receipt",
-    "callscore-engagement-executor.sh — Engagement opportunity consumer with graph-owned routing",
-    "callscore-engagement-discovery.sh — Engagement opportunity discovery and packet generation",
-    "callscore-genuine-social-packet.sh — Social data packet generation with call analysis",
-    "callscore-content-quality-gate.py — Opinionated content quality gate (opinion hooks, growth mechanics, visual asset)",
-    "callscore-graph-owned-publish-invoker.sh — Graph-owned publish invoker; builds mutation inputs and invokes operating graph only",
-    "callscore-video-queue-consumer.sh — Video queue consumer (graph-owned dispatcher wrapper)"
+    "callscore-cmo-finalizer.sh \u2014 CMO draft generation, quality gate, combined execution receipt",
+    "callscore-engagement-executor.sh \u2014 Engagement opportunity consumer with graph-owned routing",
+    "callscore-engagement-discovery.sh \u2014 Engagement opportunity discovery and packet generation",
+    "callscore-genuine-social-packet.sh \u2014 Social data packet generation with call analysis",
+    "callscore-content-quality-gate.py \u2014 Opinionated content quality gate (opinion hooks, growth mechanics, visual asset)",
+    "callscore-graph-owned-publish-invoker.sh \u2014 Graph-owned publish invoker; builds mutation inputs and invokes operating graph only",
+    "callscore-video-queue-consumer.sh \u2014 Video queue consumer (graph-owned dispatcher wrapper)",
+    "callscore-genuine-social-packet-impl.sh \u2014 Implementation for genuine social packet generation"
   ],
   "graph_owned_compliance": "All scripts are parent/provider-safe: they write receipts only, never call provider tools directly. Provider mutation is delegated to operating graph nodes.",
-  "change_notes": "Patched 2026-06-29: publish invoker builds schema-correct mutation inputs, complete graph context, clean JSON/raw stdout, and passes project-scoped Composio env into LangGraph only; cmo-finalizer consumes real invoker graph result and aligns combined receipt filename with final status."
+  "change_notes": "Patched 2026-06-29: cleaned stale provider-missing publish markers and snapshotted genuine-social-packet implementation."
 }
