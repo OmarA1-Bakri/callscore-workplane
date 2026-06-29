@@ -321,7 +321,11 @@ print(json.dumps({
 ENGCAP
 
 echo
-echo "=== 11. DIRECT PROVIDER PARENT/CRON/SHELL MUTATION CHECK ==="
+echo "=== 11. CANONICAL AGENT MAPPING / LEARNING / YOUTUBE ==="
+python3 /srv/agents/hermes/scripts/callscore-canonical-agent-audit.py 2>&1
+
+echo
+echo "=== 12. DIRECT PROVIDER PARENT/CRON/SHELL MUTATION CHECK ==="
 python3 - <<'PY'
 import json, re, os
 # Check cron job prompts for affirmative provider tool references
@@ -376,7 +380,7 @@ else:
 PY
 
 echo
-echo "=== 12. WORKPLANE / RUNTIME SCRIPT DURABILITY ==="
+echo "=== 13. WORKPLANE / RUNTIME SCRIPT DURABILITY ==="
 python3 /tmp/callscore-audit-depth.py durability 2>&1
 
 echo "=== AUDIT END $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="
