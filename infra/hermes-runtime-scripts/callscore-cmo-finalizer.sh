@@ -457,6 +457,7 @@ if invoker_path and os.path.exists(invoker_path):
             r['reason'] = invoker_status or 'partial_graph_owned_provider_publish'
             r['blockers'] = invoker_blockers
             r['provider_mutation_blockers'] = {'graph': r['blockers'][0] if r.get('blockers') else 'partial_blocked'}
+            r['node_results'] = {'graph_owned_publish': {'status': 'partial', 'blocker_code': r['blockers'][0] if r.get('blockers') else 'partial_blocked', 'provider_call_permitted': True, 'provider_mutation_performed': True, 'public_publish_performed': True}}
             r['public_publish_performed'] = True
             r['provider_mutation_performed'] = True
             r['external_mutation_performed'] = True
@@ -464,6 +465,9 @@ if invoker_path and os.path.exists(invoker_path):
             r['status'] = 'published_graph_owned'
             r['reason'] = 'graph_owned_provider_publish_completed'
             r['blockers'] = []
+            r['provider_mutation_blockers'] = {}
+            r['node_results'] = {'graph_owned_publish': {'status': 'ok', 'blocker_code': None, 'provider_call_permitted': True, 'provider_mutation_performed': True, 'public_publish_performed': True}}
+            r['next_step'] = 'published_graph_owned_complete'
             r['public_publish_performed'] = True
             r['provider_mutation_performed'] = True
             r['external_mutation_performed'] = True
@@ -472,6 +476,7 @@ if invoker_path and os.path.exists(invoker_path):
             r['reason'] = invoker_status
             r['blockers'] = invoker_blockers or r.get('blockers', [])
             r['provider_mutation_blockers'] = {'graph': r['blockers'][0] if r.get('blockers') else invoker_status}
+            r['node_results'] = {'graph_owned_publish': {'status': 'blocked', 'blocker_code': r['blockers'][0] if r.get('blockers') else invoker_status, 'provider_call_permitted': True, 'provider_mutation_performed': False, 'public_publish_performed': False}}
     except Exception:
         r['graph_lane_invoked'] = False
 else:
