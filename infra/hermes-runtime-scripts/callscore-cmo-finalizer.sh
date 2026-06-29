@@ -355,7 +355,7 @@ elif [[ ! -f "$FINAL_DRAFT" ]]; then
   STATUS_REASON="final_draft_not_written"
 else
   COMBINED_STATUS="draft_ready_graph_publish_pending"
-  STATUS_REASON="quality_gate_passed_but_graph_owned_provider_publish_missing_x_linkedin"
+  STATUS_REASON="quality_gate_passed_graph_owned_provider_publish_pending"
   # ── Invoke graph-owned publish lane ──
   INVOKER_RESULT=""
   if [[ -f /srv/agents/hermes/scripts/callscore-graph-owned-publish-invoker.sh ]]; then
@@ -406,12 +406,12 @@ if os.path.exists(final_draft_path):
             if text.strip():
                 h = hashlib.sha256(text.encode('utf-8')).hexdigest()
                 per_node_results[f'{platform_key}_owned_publish_node'] = {
-                    'status': 'blocked',
-                    'blocker_code': f'{platform_key}_provider_tool_missing',
+                    'status': 'pending',
+                    'blocker_code': 'graph_owned_provider_publish_pending',
                     'has_payload': True,
                     'payload_hash': f'sha256:{h}',
                     'provider_tool': 'TWITTER_CREATION_OF_A_POST' if platform_key == 'x' else 'LINKEDIN_CREATE_LINKED_IN_POST',
-                    'provider_call_permitted': False,
+                    'provider_call_permitted': True,
                     'auth_available': True,
                 }
                 payload_hash = payload_hash or f'sha256:{h}'
@@ -427,17 +427,14 @@ r = {
   'packet_path': '$PACKET_PATH',
   'final_draft_path': '$FINAL_DRAFT',
   'quality_gate_path': quality_path,
-  'blockers': ['graph_owned_provider_publish_missing'] if '$COMBINED_STATUS' == 'draft_ready_graph_publish_pending' else blockers_raw,
+  'blockers': ['graph_owned_provider_publish_pending'] if '$COMBINED_STATUS' == 'draft_ready_graph_publish_pending' else blockers_raw,
   'quality_gate_result': quality_data,
   'public_publish_performed': False,
   'provider_mutation_performed': False,
   'external_mutation_performed': False,
   'payload_hash': payload_hash,
   'node_results': per_node_results,
-  'provider_mutation_blockers': {
-      'x': 'x_provider_tool_missing',
-      'linkedin': 'linkedin_provider_tool_missing',
-  },
+  'provider_mutation_blockers': {},
   'next_step': 'invoke operating:goal with --graph-mutation-inputs-json when provider tools are wired, provider_response provided, and approved',
 }
 
