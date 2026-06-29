@@ -452,7 +452,15 @@ if invoker_path and os.path.exists(invoker_path):
         invoker_status = invoker_data.get('status')
         invoker_blockers = invoker_data.get('blockers', []) if isinstance(invoker_data.get('blockers', []), list) else []
         invoker_flags = invoker_data.get('mutation_flags', {}) if isinstance(invoker_data.get('mutation_flags', {}), dict) else {}
-        if invoker_flags.get('provider_mutation_performed') and invoker_flags.get('public_publish_performed'):
+        if invoker_blockers and invoker_flags.get('provider_mutation_performed') and invoker_flags.get('public_publish_performed'):
+            r['status'] = 'partial_graph_owned_publish_blocked'
+            r['reason'] = invoker_status or 'partial_graph_owned_provider_publish'
+            r['blockers'] = invoker_blockers
+            r['provider_mutation_blockers'] = {'graph': r['blockers'][0] if r.get('blockers') else 'partial_blocked'}
+            r['public_publish_performed'] = True
+            r['provider_mutation_performed'] = True
+            r['external_mutation_performed'] = True
+        elif invoker_flags.get('provider_mutation_performed') and invoker_flags.get('public_publish_performed'):
             r['status'] = 'published_graph_owned'
             r['reason'] = 'graph_owned_provider_publish_completed'
             r['blockers'] = []

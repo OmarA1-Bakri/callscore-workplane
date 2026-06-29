@@ -30,6 +30,14 @@ if [[ ! -f "$FINAL_DRAFT" ]]; then
   exit 0
 fi
 
+# Load runtime env before building mutation inputs and before entering LangGraph.
+set -a
+for env_file in "$REPO/.env" "$REPO/.env.local" "$REPO/.env.hermes" "$REPO/.env.production" "$REPO/.env.live"; do
+  [[ -f "$env_file" ]] && . "$env_file"
+done
+[[ -f /srv/agents/hermes/composio-project-context/.env.local ]] && . /srv/agents/hermes/composio-project-context/.env.local
+set +a
+
 # Build graph_mutation_inputs.json from final draft
 # Each channel entry has provider_tool, payload, provider_execution_receipt_id
 MUTATION_INPUTS="$RECEIPTS_DIR/graph-mutation-inputs-$TS.json"
@@ -214,10 +222,12 @@ node_count = graph_out.get('node_count', 0)
 receipt_count = graph_out.get('receipt_count', 0)
 
 # Determine explicit status
-if mutation_flags.get('provider_mutation_performed') and mutation_flags.get('public_publish_performed'):
-    explicit_status = 'published_graph_owned'
+if blockers and mutation_flags.get('provider_mutation_performed') and mutation_flags.get('public_publish_performed'):
+    explicit_status = 'partial_graph_owned_publish_blocked'
 elif blockers:
     explicit_status = 'blocked'
+elif mutation_flags.get('provider_mutation_performed') and mutation_flags.get('public_publish_performed'):
+    explicit_status = 'published_graph_owned'
 elif st == 'ok':
     explicit_status = 'graph_routed_ok'
 else:
