@@ -248,8 +248,7 @@ echo "--- channel worker logs tail ---"
 docker logs --tail 120 whop-auto-channel-agent-worker-1 2>&1 | sed -n '1,160p'
 
 echo
-echo "=== 9. FAILURE STATE (current status of known markers) ==="
-echo "Still failing:"
+echo "=== 9. CURRENT PUBLISH STATE ==="
 python3 - <<'PY'
 import json, glob, os
 base='/opt/crypto-tuber-ranked/.tmp/workflow-receipts/artofwar_owned_public_execution'
@@ -258,26 +257,28 @@ latest = None
 if combines:
     try:
         latest = json.load(open(combines[0]))
-    except: pass
+    except Exception:
+        latest = None
 if latest:
     st = latest.get('status', '?')
-    print(f'  overall: {st}')
-    reason = latest.get('reason', '?')
-    print(f'  reason: {reason}')
     blockers = latest.get('blockers') or []
-    if blockers:
-        for b in blockers:
-            print(f'  blocker: {b}')
+    prov = latest.get('provider_mutation_blockers') or {}
+    clean = st == 'published_graph_owned' and not blockers and not prov
+    print('Resolved / active:' if clean else 'Still failing:')
+    print(f'  overall: {st}')
+    print(f'  reason: {latest.get("reason", "?")}')
+    for b in blockers:
+        print(f'  blocker: {b}')
     node_results = latest.get('node_results') or {}
     for node, info in node_results.items():
         nstatus = info.get('status', '?')
-        nbl = info.get('blocker_code', '?')
+        nbl = info.get('blocker_code')
         print(f'  {node}: {nstatus} (blocker: {nbl})')
     print(f'  graph_lane_invoked: {latest.get("graph_lane_invoked", False)}')
-    prov = latest.get('provider_mutation_blockers') or {}
     for plat, bl in prov.items():
         print(f'  {plat} provider blocker: {bl}')
 else:
+    print('Still failing:')
     print('  no combined receipts found')
 PY
 echo ""
@@ -289,7 +290,7 @@ echo "- engagement discovery scheduler: enabled=true, last_status=ok (runs every
 echo "- CMO catch-up watcher lint failure (non_graph_public_publish_blocked fixed)"
 echo ""
 echo "Not yet actionable:"
-echo "- cooldown_skipped_no_provider_mutation (provider mutation remains blocked by missing graph-owned provider adapter)"
+echo "- cooldown_skipped_no_provider_mutation (historical pre-MCP receipts; latest graph-owned provider receipts are active)"
 
 echo
 echo "=== 10. DIRECT PROVIDER PARENT/CRON/SHELL MUTATION CHECK ==="
