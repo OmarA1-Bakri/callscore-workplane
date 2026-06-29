@@ -37,13 +37,24 @@ MODE="dry_run"
 MUTATION_FLAGS_JSON='{"external_mutation_performed":false,"provider_mutation_performed":false,"public_publish_performed":false,"public_engagement_performed":false}'
 
 python3 -c "
-import json, sys
+import hashlib, json, os, sys
 
 with open('$FINAL_DRAFT') as f:
     draft = json.load(f)
 
+def stable_json(value):
+    return json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+
+def payload_hash(value):
+    return 'sha256:' + hashlib.sha256(stable_json(value).encode('utf-8')).hexdigest()
+
+def provider_receipt_id(tool, payload):
+    material = stable_json({'tool': tool, 'payload': payload})
+    return 'provider-exec-' + hashlib.sha256(material.encode('utf-8')).hexdigest()[:16]
+
 channels = draft.get('channels', {})
 inputs = {}
+linkedin_author = os.environ.get('LINKEDIN_AUTHOR_URN', '').strip()
 
 for platform_key, provider_tool in [('x', 'x'), ('linkedin', 'linkedin')]:
     chan = channels.get(platform_key, {})
@@ -55,31 +66,39 @@ for platform_key, provider_tool in [('x', 'x'), ('linkedin', 'linkedin')]:
     if not text.strip():
         continue  # skip channels without copy
     
-    payload = {
-        'text': text,
-        'visual_path': visual_path if chan.get('visual_required') else None,
-        'growth_mechanics': chan.get('growth_mechanics', {}),
-        'content_type': draft.get('content_type', 'proof_post'),
-        'capability_usage': draft.get('capability_usage', {}),
-    }
+    tool_slug = 'TWITTER_CREATION_OF_A_POST' if platform_key == 'x' else 'LINKEDIN_CREATE_LINKED_IN_POST'
+    if platform_key == 'x':
+        payload = {'text': text}
+    else:
+        payload = {'author': linkedin_author, 'commentary': text, 'visibility': 'PUBLIC'}
     
-    receipt_id = f'graph-owned-{platform_key}-{draft.get(\"created_at_utc\", \"\")[:10]}'
+    receipt_id = provider_receipt_id(tool_slug, payload)
+    node_id = f'{platform_key}_owned_publish_node'
+    evidence_id = f'quality-gate-{draft.get(\"created_at_utc\", \"$TS\")[:10]}'
+    agent_id = 'callscore-x-posting-agent' if platform_key == 'x' else 'callscore-linkedin-posting-agent'
     
-    inputs[f'{platform_key}_owned_publish_node'] = {
-        'provider_tool': 'TWITTER_CREATION_OF_A_POST' if platform_key == 'x' else 'LINKEDIN_CREATE_LINKED_IN_POST',
+    inputs[node_id] = {
+        'provider_tool': tool_slug,
         'provider_payload': payload,
         'payload': payload,
         'provider_execution_receipt_id': receipt_id,
+        'child_receipt_ids': [receipt_id],
         'target_url_or_id': None,
         'graph_context': {
-            'graph_node_id': f'{platform_key}_owned_publish_node',
-            'platform': platform_key,
-            'goal': 'revenue_now',
             'operating_graph_run_id': f'cmo-publish-{platform_key}-$TS',
-            'mode': 'live_owned_public',
+            'graph_node_id': node_id,
+            'goal': 'revenue_now',
+            'platform': platform_key,
+            'mutation_family': 'public_publish',
+            'acting_agent_id': agent_id,
+            'authority': 'owned_public_publish',
+            'approval_receipt_id': evidence_id,
+            'approved_payload_hash': payload_hash(payload),
+            'evidence_receipt_id': evidence_id,
+            'originality_receipt_id': evidence_id,
             'provider_execution_receipt_id': receipt_id,
-            'approved': True,
-            'approval_receipt_id': f'quality-gate-{draft.get(\"created_at_utc\", \"\")[:10]}',
+            'dry_run': False,
+            'parent_receipt_id': '$FINAL_DRAFT'.split('/')[-1],
         },
         'approved': True,
     }
@@ -103,6 +122,7 @@ if [[ "$INPUT_COUNT" -eq 0 ]]; then
 fi
 
 # ── Invoke operating graph ──
+GRAPH_STDOUT_RAW="$RECEIPTS_DIR/publish-graph-stdout-$TS.raw.log"
 GRAPH_STDOUT="$RECEIPTS_DIR/publish-graph-stdout-$TS.json"
 GRAPH_STDERR="$RECEIPTS_DIR/publish-graph-stderr-$TS.log"
 
@@ -122,8 +142,36 @@ fi
 
 (
   cd "$REPO" && npm run operating:goal -- "${args[@]}"
-) >"$GRAPH_STDOUT" 2>"$GRAPH_STDERR"
+) >"$GRAPH_STDOUT_RAW" 2>"$GRAPH_STDERR"
 GRAPH_STATUS=$?
+
+python3 -c "
+import json, re
+raw_path = '$GRAPH_STDOUT_RAW'
+json_path = '$GRAPH_STDOUT'
+raw = open(raw_path, errors='replace').read() if __import__('os').path.exists(raw_path) else ''
+parsed = None
+err = None
+for i, _line in enumerate(raw.splitlines()):
+    candidate = '\n'.join(raw.splitlines()[i:]).strip()
+    if not candidate.startswith('{'):
+        continue
+    try:
+        parsed = json.loads(candidate)
+        break
+    except Exception as exc:
+        err = str(exc)
+if parsed is None:
+    m = re.search(r'\{[\s\S]*\}\s*$', raw)
+    if m:
+        try:
+            parsed = json.loads(m.group(0))
+        except Exception as exc:
+            err = str(exc)
+if parsed is None:
+    parsed = {'status':'unparsed','blockers':['graph_stdout_unparsed'],'raw_stdout_path':raw_path,'parse_error':err or 'no_json_object_found'}
+open(json_path, 'w').write(json.dumps(parsed, indent=2) + '\n')
+"
 
 # ── Write publish receipt ──
 PUBLISH_RECEIPT="$RECEIPTS_DIR/$TS-publish-receipt.json"
@@ -157,7 +205,9 @@ node_count = graph_out.get('node_count', 0)
 receipt_count = graph_out.get('receipt_count', 0)
 
 # Determine explicit status
-if blockers:
+if mutation_flags.get('provider_mutation_performed') and mutation_flags.get('public_publish_performed'):
+    explicit_status = 'published_graph_owned'
+elif blockers:
     explicit_status = 'blocked'
 elif st == 'ok':
     explicit_status = 'graph_routed_ok'
@@ -177,6 +227,8 @@ receipt = {
     'final_draft_path': '$FINAL_DRAFT',
     'mutation_inputs_path': '$MUTATION_INPUTS',
     'graph_stdout_path': stdout_path,
+    'graph_stdout_raw_path': '$GRAPH_STDOUT_RAW',
+    'graph_stderr_path': stderr_path,
     'graph_stderr_tail': stderr_tail,
     'graph_exit_code': $GRAPH_STATUS,
     'dry_run': '$DRY_RUN' == 'true',
