@@ -293,7 +293,35 @@ echo "Not yet actionable:"
 echo "- cooldown_skipped_no_provider_mutation (historical pre-MCP receipts; latest graph-owned provider receipts are active)"
 
 echo
-echo "=== 10. DIRECT PROVIDER PARENT/CRON/SHELL MUTATION CHECK ==="
+echo "=== 10. ENGAGEMENT / DISCOVERY AUTOMATION CAPABILITY ==="
+python3 - <<'ENGCAP'
+import json, glob, os
+
+def latest(pattern):
+    paths=sorted(glob.glob(pattern), key=os.path.getmtime, reverse=True)
+    return paths[0] if paths else None
+summary_path=latest('/opt/crypto-tuber-ranked/.tmp/workflow-receipts/engagement_opportunity/engagement-discovery-summary-*.json')
+exec_path=latest('/opt/crypto-tuber-ranked/.tmp/workflow-receipts/engagement_execution/engagement-execution-*.json')
+summary=json.load(open(summary_path)) if summary_path else {}
+exe=json.load(open(exec_path)) if exec_path else {}
+print(json.dumps({
+  'latest_discovery': os.path.basename(summary_path) if summary_path else None,
+  'discovery_status': summary.get('status'),
+  'provider_backed_discovery': summary.get('provider_backed_discovery'),
+  'opportunity_count': summary.get('opportunity_count'),
+  'capabilities': summary.get('capabilities'),
+  'blocked_capabilities': summary.get('blocked_capabilities'),
+  'latest_execution': os.path.basename(exec_path) if exec_path else None,
+  'execution_status': exe.get('status'),
+  'executed_count': exe.get('executed_count'),
+  'public_engagement_performed': exe.get('public_engagement_performed'),
+  'provider_mutation_performed': exe.get('provider_mutation_performed'),
+  'recent_blockers': [r.get('blockers') for r in (exe.get('results') or []) if r.get('blockers')][:5],
+}, indent=2, sort_keys=True))
+ENGCAP
+
+echo
+echo "=== 11. DIRECT PROVIDER PARENT/CRON/SHELL MUTATION CHECK ==="
 python3 - <<'PY'
 import json, re, os
 # Check cron job prompts for affirmative provider tool references
@@ -338,7 +366,7 @@ else:
 PY
 
 echo
-echo "=== 11. WORKPLANE / RUNTIME SCRIPT DURABILITY ==="
+echo "=== 12. WORKPLANE / RUNTIME SCRIPT DURABILITY ==="
 python3 /tmp/callscore-audit-depth.py durability 2>&1
 
 echo "=== AUDIT END $(date -u +%Y-%m-%dT%H:%M:%SZ) ==="

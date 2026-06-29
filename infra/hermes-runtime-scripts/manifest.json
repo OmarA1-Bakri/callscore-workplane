@@ -11,8 +11,11 @@
     "callscore-content-quality-gate.py \u2014 Opinionated content quality gate (opinion hooks, growth mechanics, visual asset)",
     "callscore-graph-owned-publish-invoker.sh \u2014 Graph-owned publish invoker; builds mutation inputs and invokes operating graph only",
     "callscore-video-queue-consumer.sh \u2014 Video queue consumer (graph-owned dispatcher wrapper)",
-    "callscore-genuine-social-packet-impl.sh \u2014 Implementation for genuine social packet generation"
+    "callscore-genuine-social-packet-impl.sh \u2014 Implementation for genuine social packet generation",
+    "callscore-engagement-discovery-impl.py \u2014 Provider-backed engagement discovery via Composio MCP",
+    "callscore-engagement-executor-impl.py \u2014 Graph-owned engagement executor with caps and dedupe",
+    "callscore_composio_mcp.py \u2014 Shared Composio MCP runtime helper"
   ],
   "graph_owned_compliance": "All scripts are parent/provider-safe: they write receipts only, never call provider tools directly. Provider mutation is delegated to operating graph nodes.",
-  "change_notes": "Patched 2026-06-29: cleaned stale provider-missing publish markers and snapshotted genuine-social-packet implementation."
+  "change_notes": "Patched 2026-06-29: provider-backed engagement discovery/execution via Composio MCP, X follow node, and engagement audit coverage."
 }
