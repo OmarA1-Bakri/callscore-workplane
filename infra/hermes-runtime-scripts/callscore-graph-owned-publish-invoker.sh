@@ -140,9 +140,12 @@ if [[ "$DRY_RUN" == "true" ]]; then
   args+=(--dry-run)
 fi
 
-# Load project-scoped Composio credentials for the graph-owned node process.
-# This only passes credentials into LangGraph; this wrapper never calls providers.
+# Load runtime env for direct CLI use. This only passes credentials/config into
+# LangGraph; this wrapper never calls providers.
 set -a
+for env_file in "$REPO/.env" "$REPO/.env.local" "$REPO/.env.hermes" "$REPO/.env.production" "$REPO/.env.live"; do
+  [[ -f "$env_file" ]] && . "$env_file"
+done
 [[ -f /srv/agents/hermes/composio-project-context/.env.local ]] && . /srv/agents/hermes/composio-project-context/.env.local
 set +a
 
