@@ -337,7 +337,17 @@ for j in data.get('jobs', []):
     is_provider_job = any(k in name.lower() + nid.lower() for k in provider_publish_jobs)
     if not is_provider_job:
         continue
-    if 'hard graph-only rule' not in prompt.lower() and 'never call composio' not in prompt.lower():
+    script = j.get('script', '') or ''
+    no_agent = bool(j.get('no_agent'))
+    script_path = os.path.join('/srv/agents/hermes/scripts', script) if script else ''
+    script_ok = False
+    if no_agent and script_path and os.path.exists(script_path):
+        try:
+            body = open(script_path).read().lower()
+            script_ok = 'graph-owned' in body or 'graph_owned' in body or 'operating:goal' in body
+        except Exception:
+            script_ok = False
+    if not script_ok and 'hard graph-only rule' not in prompt.lower() and 'never call composio' not in prompt.lower():
         print(f'  WARN: [{nid}] {name} lacks graph-only rule')
         had_safety = False
 if had_safety:
