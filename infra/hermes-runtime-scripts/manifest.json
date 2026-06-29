@@ -13,5 +13,5 @@
     "callscore-video-queue-consumer.sh — Video queue consumer (graph-owned dispatcher wrapper)"
   ],
   "graph_owned_compliance": "All scripts are parent/provider-safe: they write receipts only, never call provider tools directly. Provider mutation is delegated to operating graph nodes.",
-  "change_notes": "Patched 2026-06-29: publish invoker builds schema-correct mutation inputs, complete graph context, and clean JSON/raw stdout; cmo-finalizer consumes real invoker graph result."
+  "change_notes": "Patched 2026-06-29: publish invoker builds schema-correct mutation inputs, complete graph context, clean JSON/raw stdout, and passes project-scoped Composio env into LangGraph only; cmo-finalizer consumes real invoker graph result and aligns combined receipt filename with final status."
 }

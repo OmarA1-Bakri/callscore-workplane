@@ -140,6 +140,12 @@ if [[ "$DRY_RUN" == "true" ]]; then
   args+=(--dry-run)
 fi
 
+# Load project-scoped Composio credentials for the graph-owned node process.
+# This only passes credentials into LangGraph; this wrapper never calls providers.
+set -a
+[[ -f /srv/agents/hermes/composio-project-context/.env.local ]] && . /srv/agents/hermes/composio-project-context/.env.local
+set +a
+
 (
   cd "$REPO" && npm run operating:goal -- "${args[@]}"
 ) >"$GRAPH_STDOUT_RAW" 2>"$GRAPH_STDERR"

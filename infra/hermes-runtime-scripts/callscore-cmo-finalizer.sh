@@ -477,6 +477,13 @@ python3 -c "import json; json.load(open('$COMBINED_TMP')); print('valid')" 2>/de
   rm -f "$COMBINED_TMP"
 }
 
+ACTUAL_STATUS=$(python3 -c "import json; print(json.load(open('$COMBINED')).get('status','unknown'))" 2>/dev/null || echo unknown)
+if [[ -n "$ACTUAL_STATUS" && "$ACTUAL_STATUS" != "$COMBINED_STATUS" ]]; then
+  COMBINED_RENAMED="$OUT_DIR/$TS-combined-$ACTUAL_STATUS.json"
+  mv "$COMBINED" "$COMBINED_RENAMED"
+  COMBINED="$COMBINED_RENAMED"
+fi
+
 # Clear pending draft (consumed)
 rm -f "$PENDING_DRAFT"
 
