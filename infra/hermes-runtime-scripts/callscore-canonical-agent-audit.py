@@ -5,9 +5,17 @@ import re
 from pathlib import Path
 
 repo = Path('/opt/crypto-tuber-ranked')
+profile_root = Path('/srv/agents/hermes/profiles/callscore')
 base = repo / 'docs/ops/canonical-agent-mapping'
 source_path = base / 'callscore_canonical_agent_mapping.source.json'
+runtime_path = repo / 'src/lib/autonomy/canonical-operational-runtime.ts'
 souls_path = repo / 'docs/ops/callscore-channel-head-souls.yaml'
+profile_yaml = profile_root / 'profile.yaml'
+config_yaml = profile_root / 'config.yaml'
+soul_md = profile_root / 'SOUL.md'
+startup_skill = profile_root / 'skills/orchestration/callscore-startup/SKILL.md'
+canonical_skill = profile_root / 'skills/callscore-canonical-runtime/SKILL.md'
+
 required_docs = [
     'callscore_canonical_agent_mapping.md',
     'callscore_agent_role_matrix.md',
@@ -36,7 +44,9 @@ required_receipts = [
     'experiment_result.v1',
 ]
 
-runtime_path = repo / 'src/lib/autonomy/canonical-operational-runtime.ts'
+def contains(path: Path, needle: str) -> bool:
+    return path.exists() and needle in path.read_text(errors='replace')
+
 summary = {
     'source_path': str(source_path),
     'source_exists': source_path.exists(),
@@ -44,11 +54,13 @@ summary = {
     'runtime_exists': runtime_path.exists(),
     'souls_path': str(souls_path),
     'souls_exists': souls_path.exists(),
+    'profile_root': str(profile_root),
     'missing_docs': [],
     'missing_youtube_agents': [],
     'missing_receipts': [],
     'docs_markdown_only': True,
     'mermaid_flows_present': False,
+    'profile_skill_checks': {},
 }
 
 for name in required_docs:
@@ -60,6 +72,7 @@ for name in required_docs:
     summary['mermaid_flows_present'] = summary['mermaid_flows_present'] or '```mermaid' in text
     if re.search(r'\.html|\.png|\.svg', text, re.I):
         summary['docs_markdown_only'] = False
+
 if source_path.exists():
     source = json.loads(source_path.read_text())
     ns = source.get('new_agent_summary', {})
@@ -75,10 +88,22 @@ if souls_path.exists():
     summary['souls_agent_count'] = len(ids)
     summary['missing_youtube_agents'] = [a for a in required_new if a not in ids]
 
+summary['profile_skill_checks'] = {
+    'profile_description_51_agent': contains(profile_yaml, '51-agent canonical runtime'),
+    'config_prompt_canonical_operational': contains(config_yaml, 'canonical operational'),
+    'soul_51_agent': contains(soul_md, '51-agent canonical runtime'),
+    'soul_loads_canonical_runtime_skill': contains(soul_md, 'callscore-canonical-runtime'),
+    'startup_loads_canonical_runtime_skill': contains(startup_skill, 'callscore-canonical-runtime'),
+    'canonical_runtime_skill_exists': canonical_skill.exists(),
+    'canonical_runtime_skill_receipts': contains(canonical_skill, 'editorial_angle_receipt.v1'),
+    'canonical_runtime_skill_youtube': contains(canonical_skill, 'callscore-youtube-thumbnail-agent'),
+}
+summary['profile_skill_ok'] = all(summary['profile_skill_checks'].values())
 summary['youtube_cluster_complete'] = not summary.get('missing_youtube_agents') and summary.get('souls_agent_count') == 51
 summary['learning_cluster_artifacts_declared'] = not summary.get('missing_receipts')
 summary['status'] = 'ok' if (
     summary.get('source_exists')
+    and summary.get('runtime_exists')
     and summary.get('souls_exists')
     and not summary.get('missing_docs')
     and summary.get('docs_markdown_only')
@@ -89,6 +114,7 @@ summary['status'] = 'ok' if (
     and summary.get('souls_agent_count') == 51
     and summary.get('youtube_cluster_complete')
     and summary.get('learning_cluster_artifacts_declared')
+    and summary.get('profile_skill_ok')
 ) else 'blocked'
 
 print(json.dumps(summary, indent=2, sort_keys=True))
