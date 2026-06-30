@@ -93,6 +93,9 @@ fi
 echo "--- CMO status probe (supersedes stale cron error) ---"
 python3 /tmp/callscore-audit-depth.py cmo 2>&1
 
+echo "--- CMO ANTI-SLOP REGRESSION ---"
+python3 /srv/agents/hermes/scripts/callscore-cmo-regression-test.py 2>&1 || true
+
 echo
 echo "=== 4. RECENT SOCIAL / CMO RECEIPTS ==="
 echo "--- artofwar owned public execution (boolean-safe) ---"

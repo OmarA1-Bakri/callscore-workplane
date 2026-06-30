@@ -43,6 +43,14 @@ KNOWN_TEMPLATES = [
     r"\d+[,\d]*\s+price-backed\s+calls?",
     # Template: "NFA."
     r"^nfa\.?\s*$",
+    # Post-20260630 regression: deterministic accountability boilerplate.
+    r"tracked\s+calls?\s+matter\s+more\s+than\s+price\s+predictions",
+    r"accountability\s+isn['\u2019]?t\s+a\s+feature",
+    r"standard\s+for\s+knowing\s+who['\u2019]?s\s+actually\s+right",
+    r"the\s+thing\s+about\s+market\s+prediction\s+accuracy",
+    r"most\s+analysts\s+don['\u2019]?t\s+track\s+their\s+own\s+calls",
+    r"evidence-backed\s+market\s+intelligence",
+    r"data\s+shows\s+clear\s+patterns\s+in\s+who\s+delivers",
 ]
 
 SENTENCE_STRUCTURE_FINGERPRINTS = re.compile(
@@ -132,6 +140,26 @@ def has_forbidden_tropes(text: str) -> list[str]:
         if re.search(trope, text, re.IGNORECASE):
             hits.append(trope)
     return hits
+
+
+def semantic_slop_failures(text: str, channel: str) -> list[str]:
+    n = norm(text)
+    failures: list[str] = []
+    vague_claims = [
+        'accountability', 'transparency', 'market intelligence', 'better information',
+        'track record', 'signal from noise', 'evidence-backed', 'data-driven',
+        'who delivers', 'who is actually right', 'price predictions'
+    ]
+    vague_hits = sum(1 for term in vague_claims if term in n)
+    has_named_creator = bool(re.search(r'alex becker|brian jung|altcoin daily|crypto banter|discover crypto|investanswers|virtualbacon|cryptosrus|99bitcoins', n))
+    has_specific_metric = bool(re.search(r'\b\d+[,.]?\d*%|alpha\s+score|avg\s+alpha|\bn\s*=|calls?\s+with\s+entry', n))
+    if vague_hits >= 2 and not (has_named_creator or has_specific_metric):
+        failures.append(f'{channel}_generic_abstract_accountability_slop')
+    if '—' in text or '–' in text:
+        failures.append(f'{channel}_forbidden_ai_dash')
+    if re.search(r'follow\s+callscore\s+for', n):
+        failures.append(f'{channel}_generic_follow_callscore_cta')
+    return failures
 
 
 def is_opinion_or_observation(text: str) -> tuple[bool, str | None]:
@@ -308,6 +336,11 @@ def main() -> int:
         hits = has_forbidden_tropes(li_text)
         if hits:
             failures.append(f'linkedin_forbidden_trope_{hits[0][:30]}')
+
+    if x_text:
+        failures.extend(semantic_slop_failures(x_text, 'x'))
+    if li_text:
+        failures.extend(semantic_slop_failures(li_text, 'linkedin'))
 
     # ── Originality (X vs LinkedIn) ──
     if x_text and li_text and not single_channel:

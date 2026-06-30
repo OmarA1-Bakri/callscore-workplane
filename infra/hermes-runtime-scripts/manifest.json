@@ -15,8 +15,9 @@
     "callscore-engagement-discovery-impl.py \u2014 Provider-backed engagement discovery via Composio MCP",
     "callscore-engagement-executor-impl.py \u2014 Graph-owned engagement executor with caps and dedupe",
     "callscore_composio_mcp.py \u2014 Shared Composio MCP runtime helper",
-    "callscore-canonical-agent-audit.py \u2014 Canonical agent mapping, learning cluster, and YouTube cluster audit helper"
+    "callscore-canonical-agent-audit.py \u2014 Canonical agent mapping, learning cluster, and YouTube cluster audit helper",
+    "callscore-cmo-regression-test.py \u2014 CMO anti-slop and full LinkedIn payload regression test"
   ],
   "graph_owned_compliance": "All scripts are parent/provider-safe: they write receipts only, never call provider tools directly. Provider mutation is delegated to operating graph nodes.",
-  "change_notes": "Patched 2026-06-30: canonical agent mapping, 51-agent souls coverage, YouTube production cluster, learning cluster, and audit coverage."
+  "change_notes": "Patched 2026-06-30: removed deterministic CMO slop generator; finalizer requires agent-written drafts; quality gate rejects 20260630 slop regression; invoker preserves full LinkedIn exact_copy."
 }

@@ -60,15 +60,36 @@ def provider_receipt_id(tool, payload):
     material = stable_json({'tool': tool, 'payload': payload})
     return 'provider-exec-' + hashlib.sha256(material.encode('utf-8')).hexdigest()[:16]
 
-channels = draft.get('channels', {})
+channels = draft.get('channels', {}) if isinstance(draft.get('channels'), dict) else {}
 inputs = {}
 linkedin_author = os.environ.get('LINKEDIN_AUTHOR_URN', '').strip()
 
+def channel_for(platform_key):
+    chan = channels.get(platform_key) if isinstance(channels, dict) else None
+    if isinstance(chan, dict) and chan:
+        return chan
+    root_chan = draft.get(platform_key)
+    return root_chan if isinstance(root_chan, dict) else {}
+
+def copy_for(chan):
+    for key in ('exact_copy', 'text'):
+        value = chan.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    nested = chan.get('draft')
+    if isinstance(nested, dict):
+        value = nested.get('text')
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+        ordered = [nested.get(k) for k in ('hook', 'thesis', 'evidence', 'why_it_matters', 'body', 'cta')]
+        parts = [str(v).strip() for v in ordered if isinstance(v, str) and str(v).strip()]
+        if parts:
+            return '\n\n'.join(parts)
+    return ''
+
 for platform_key, provider_tool in [('x', 'x'), ('linkedin', 'linkedin')]:
-    chan = channels.get(platform_key, {})
-    # Build provider_payload from draft data
-    draft_text = chan.get('draft', {})
-    text = draft_text.get('text', '') or draft_text.get('hook', '') + '\n\n' + draft_text.get('body', '')
+    chan = channel_for(platform_key)
+    text = copy_for(chan)
     visual_path = draft.get('visual_asset', {}).get('path', '')
     
     if not text.strip():
@@ -264,6 +285,7 @@ print(json.dumps({
     'blockers': blockers,
     'node_count': node_count,
     'receipt_path': '$PUBLISH_RECEIPT',
+    'mutation_inputs_path': '$MUTATION_INPUTS',
     'mutation_flags': mutation_flags,
 }))
 # removed: --PUBLISH-INVOKED-- marker (stdout must be pure JSON)
