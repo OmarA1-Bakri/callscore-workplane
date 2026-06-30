@@ -36,9 +36,12 @@ required_receipts = [
     'experiment_result.v1',
 ]
 
+runtime_path = repo / 'src/lib/autonomy/canonical-operational-runtime.ts'
 summary = {
     'source_path': str(source_path),
     'source_exists': source_path.exists(),
+    'runtime_path': str(runtime_path),
+    'runtime_exists': runtime_path.exists(),
     'souls_path': str(souls_path),
     'souls_exists': souls_path.exists(),
     'missing_docs': [],
