@@ -17,8 +17,9 @@
     "callscore_composio_mcp.py \u2014 Shared Composio MCP runtime helper",
     "callscore-canonical-agent-audit.py \u2014 Canonical agent mapping, learning cluster, and YouTube cluster audit helper",
     "callscore-cmo-regression-test.py \u2014 CMO anti-slop and full LinkedIn payload regression test",
-    "callscore-cmo-source-audit.py"
+    "callscore-cmo-source-audit.py",
+    "callscore-cmo-draft-writer.py"
   ],
   "graph_owned_compliance": "All scripts are parent/provider-safe: they write receipts only, never call provider tools directly. Provider mutation is delegated to operating graph nodes.",
-  "change_notes": "Patched 2026-06-30: added CMO source audit alongside CMO regression test."
+  "change_notes": "Patched 2026-06-30: CMO packet wrapper writes concrete platform draft files before finalizer; CMO cron no_agent avoids broken pipe."
 }

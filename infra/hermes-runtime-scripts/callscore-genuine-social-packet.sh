@@ -12,8 +12,10 @@ TS="$(date -u +%Y%m%dT%H%M%SZ)"
 OUT_DIR="${CALLSCORE_SOCIAL_OPERATING_DIR:-$REPO/.tmp/social-operating-packets/$TS}"
 PACKET_JSON="$OUT_DIR/genuine-social-packet.json"
 PACKET_STDERR="$OUT_DIR/genuine-social-packet.stderr.log"
+GRAPH_STDOUT_RAW="$OUT_DIR/revenue-operating-goal.stdout.log"
 GRAPH_STDOUT="$OUT_DIR/revenue-operating-goal.stdout.json"
 GRAPH_STDERR="$OUT_DIR/revenue-operating-goal.stderr.log"
+OPERATING_PACKET_SCHEMA="callscore.genuine_social_operating_packet.v1"
 WORKPLANE_JSON="$OUT_DIR/workplane-status.json"
 HEARTBEAT_JSON="$OUT_DIR/heartbeat.json"
 WORKPLANE_RAW="$OUT_DIR/workplane-status.raw"
@@ -146,8 +148,16 @@ if [[ "$PACKET_STATUS" -eq 0 ]]; then
   fi
   (
     cd "$REPO" && npm run operating:goal -- "${args[@]}"
-  ) >"$GRAPH_STDOUT" 2>"$GRAPH_STDERR"
+  ) >"$GRAPH_STDOUT_RAW" 2>"$GRAPH_STDERR"
   GRAPH_STATUS=$?
+  # Extract clean JSON from raw npm output (npm may emit non-JSON warnings/stderr-messages to stdout)
+  if [[ -s "$GRAPH_STDOUT_RAW" ]]; then
+    extract_first_json_object "$GRAPH_STDOUT_RAW" "$GRAPH_STDOUT" >>"$CONTEXT_LOG" 2>&1 || {
+      echo '{"status":"unparsed","blockers":["operating_goal_stdout_parse_error"],"warnings":["Failed to extract JSON from operating goal stdout"]}' >"$GRAPH_STDOUT"
+    }
+  else
+    echo '{"status":"no_output","blockers":["operating_goal_no_stdout"],"warnings":[]}' >"$GRAPH_STDOUT"
+  fi
 else
   printf '{"status":"skipped","reason":"packet_generation_failed"}\n' >"$GRAPH_STDOUT"
   GRAPH_STATUS=0
@@ -171,6 +181,7 @@ cat > "$DRAFT_RECEIPT" <<DRAFTEOF
   "graph_stderr_path": "$GRAPH_STDERR",
   "out_dir": "$OUT_DIR",
   "status": "data_packet_generated",
+  "packet_schema": "$OPERATING_PACKET_SCHEMA",
   "public_publish_performed": false,
   "provider_mutation_performed": false,
   "external_mutation_performed": false,
@@ -178,12 +189,26 @@ cat > "$DRAFT_RECEIPT" <<DRAFTEOF
 }
 DRAFTEOF
 
-# ── Finalize: produce platform-native copy, quality gate, combined receipt ──
-FINALIZER="${CALLSCORE_CMO_FINALIZER:-$SCRIPT_DIR/callscore-cmo-finalizer.sh}"
-if [[ -x "$FINALIZER" ]]; then
-  "$FINALIZER" "$DRAFT_RECEIPT" >/dev/null 2>&1 || true
+# ── CMO draft writer: produce concrete platform draft files before finalizer ──
+DRAFT_WRITER="${CALLSCORE_CMO_DRAFT_WRITER:-$SCRIPT_DIR/callscore-cmo-draft-writer.py}"
+DRAFT_WRITER_STATUS="not_run"
+if [[ -f "$DRAFT_WRITER" ]]; then
+  python3 "$DRAFT_WRITER" "$PACKET_JSON" "$OUT_DIR" >"$OUT_DIR/cmo-draft-writer.stdout.json" 2>"$OUT_DIR/cmo-draft-writer.stderr.log" || true
+  if [[ -s "$OUT_DIR/cmo-x-draft.txt" && -s "$OUT_DIR/cmo-linkedin-draft.txt" ]]; then
+    DRAFT_WRITER_STATUS="drafts_written"
+  else
+    DRAFT_WRITER_STATUS="drafts_missing"
+  fi
 fi
 
+FINALIZER="${CALLSCORE_CMO_FINALIZER:-$SCRIPT_DIR/callscore-cmo-finalizer.sh}"
+FINALIZER_STATUS="waiting_for_agent_platform_drafts"
+if [[ -s "$OUT_DIR/cmo-x-draft.txt" && -s "$OUT_DIR/cmo-linkedin-draft.txt" && -x "$FINALIZER" ]]; then
+  "$FINALIZER" "$DRAFT_RECEIPT" >/dev/null 2>&1 || true
+  FINALIZER_STATUS="finalized_agent_platform_drafts"
+fi
+
+export DRAFT_WRITER_STATUS FINALIZER_STATUS
 # ── Emit minimal compact status summary to stdout ──
 # (Big JSON output causes broken pipe in no_agent=false cron)
 python3 - "$OUT_DIR" "$PACKET_JSON" "$PACKET_STDERR" "$GRAPH_STDOUT" "$GRAPH_STDERR" "$DRAFT_RECEIPT" <<'PY'
@@ -219,6 +244,10 @@ summary = {
     'packet_path': packet_json,
     'out_dir': out_dir,
     'draft_receipt_path': draft_receipt,
+    'required_x_draft_path': str(Path(out_dir) / 'cmo-x-draft.txt'),
+    'required_linkedin_draft_path': str(Path(out_dir) / 'cmo-linkedin-draft.txt'),
+    'draft_writer_status': os.environ.get('DRAFT_WRITER_STATUS', 'not_run'),
+    'finalizer_status': os.environ.get('FINALIZER_STATUS', 'waiting_for_agent_platform_drafts'),
     'operating_graph_stdout_path': graph_stdout,
     'stderr_tail': (p_err.strip().split('\n')[-3:] if p_err.strip() else []) + (g_err.strip().split('\n')[-3:] if g_err.strip() else []),
 }

@@ -21,6 +21,7 @@ SKIP_PARTS = {
 ALLOWLIST_FILE_PATTERNS = [
     'callscore-content-quality-gate.py',
     'callscore-cmo-regression-test.py',
+    'callscore-cmo-draft-writer.py',
     'sha256sums.txt',
     'manifest.json',
 ]

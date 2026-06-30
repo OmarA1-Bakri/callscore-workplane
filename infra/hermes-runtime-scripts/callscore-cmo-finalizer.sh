@@ -190,7 +190,9 @@ if [[ -z "$BLOCKERS" ]]; then
 fi
 
 STATUS="blocked_quality"
-if [[ -z "$BLOCKERS" ]]; then
+if [[ "$BLOCKERS" == "graph_owned_invoker_missing" ]]; then
+  STATUS="blocked_graph_owned_provider_publish"
+elif [[ -z "$BLOCKERS" ]]; then
   STATUS="draft_ready_graph_publish_pending"
   if [[ -n "$INVOKER_RESULT" && -f "$INVOKER_RESULT" ]]; then
     STATUS=$(python3 - "$INVOKER_RESULT" <<'PY'

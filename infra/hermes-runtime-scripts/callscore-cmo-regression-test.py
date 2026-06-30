@@ -90,6 +90,33 @@ with tempfile.TemporaryDirectory(prefix='callscore-cmo-finalizer-missing-') as t
         ok = combined_obj.get('status') == 'blocked_quality' and final_obj.get('status') == 'blocked_missing_agent_platform_drafts'
     check('finalizer blocks missing agent draft files at runtime', ok, proc.stdout[-500:] + proc.stderr[-500:])
 
+# 5. Draft writer creates concrete quality-passing platform files from a live packet.
+packet_candidates = sorted((Path('/opt/crypto-tuber-ranked') / '.tmp/social-operating-packets').glob('*/genuine-social-packet.json'), key=lambda p: p.stat().st_mtime, reverse=True)
+if packet_candidates:
+    with tempfile.TemporaryDirectory(prefix='callscore-cmo-writer-') as td:
+        tmp = Path(td)
+        packet = tmp / 'genuine-social-packet.json'
+        packet.write_text(packet_candidates[0].read_text())
+        writer = Path('/srv/agents/hermes/scripts/callscore-cmo-draft-writer.py')
+        proc = subprocess.run([str(writer), str(packet), str(tmp)], text=True, capture_output=True, cwd=str(REPO), timeout=60)
+        ok = proc.returncode == 0 and (tmp / 'cmo-x-draft.txt').exists() and (tmp / 'cmo-linkedin-draft.txt').exists()
+        if ok:
+            final = tmp / 'final-draft.json'
+            x = (tmp / 'cmo-x-draft.txt').read_text().strip()
+            li = (tmp / 'cmo-linkedin-draft.txt').read_text().strip()
+            final.write_text(json.dumps({
+                'schema': 'callscore.cmo_final_draft.v1', 'content_type': 'proof_post',
+                'x': {'exact_copy': x, 'text': x, 'growth_mechanics': {'media_plan': 'image'}},
+                'linkedin': {'exact_copy': li, 'text': li, 'growth_mechanics': {'media_plan': 'image'}},
+                'drafts': {'x': {'exact_copy': x, 'text': x, 'growth_mechanics': {'media_plan': 'image'}}, 'linkedin': {'exact_copy': li, 'text': li, 'growth_mechanics': {'media_plan': 'image'}}},
+                'visual_asset': {'required': True, 'png_sha256': 'abc123', 'path': '/tmp/card.png'},
+            }, indent=2))
+            q = run_quality(final)
+            ok = q.get('ok') is True
+        check('draft writer creates quality-passing X and LinkedIn files', ok, proc.stdout[-500:] + proc.stderr[-500:])
+else:
+    check('draft writer has a packet fixture', False, 'no packet found')
+
 if failures:
     print('STATUS=blocked')
     raise SystemExit(1)
